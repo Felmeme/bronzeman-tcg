@@ -1,9 +1,9 @@
 {
 	"schemaSource": "osrs-tcg Card.json snapshot",
 	"schema": 2,
-	"npcCount": 1198,
+	"entityCount": 1198,
 	"cardCount": 1225,
-	"npcToCards": {
+	"entityToCards": {
 		"a corpse": [
 			"A corpse"
 		],

@@ -21,14 +21,22 @@ only, no automation).
   `RuneScapeProfileChanged`. **Fails closed** on decode failure (empty
   collection → all tracked NPCs blocked). This is deliberate: breakage should
   be loud for a challenge-mode plugin. Discuss before changing to fail-open.
-- `TrackedMonsterCatalog` loads `src/main/resources/tracked_monster_names.json`
-  — a snapshot of the 1,227 card names tagged `Monster` in osrs-tcg's
-  `Card.json` (6,376 cards total, all names globally unique, no ID fields —
-  cards link to game entities **by exact name only**).
-  NPCs *not* in this list are never restricted (they could never be unlocked).
+- `CardNameCatalog` (abstract) loads a `{entityToCards: {name -> [cards]}}`
+  snapshot resource; `TrackedMonsterCatalog` (1,198 NPCs <- 1,225 Monster
+  cards) and `TrackedItemCatalog` (5,149 items <- 5,149 Resource cards, 1:1)
+  are thin subclasses. Card.json's 6,376 cards partition exactly into
+  Monster/Resource with globally unique names and no ID fields — cards link
+  to game entities **by exact name** (after stripping wiki-style bracket
+  disambiguators; owning any variant unlocks the entity). Entities *not* in
+  a snapshot are never restricted (they could never be unlocked).
 - `BronzemanTcgPlugin` consumes `MenuOptionClicked`:
   - `NPC_FIRST..FIFTH_OPTION` where option text == "Attack"
   - `WIDGET_TARGET_ON_NPC` (spell/item on NPC), config-gated
+  - `GROUND_ITEM_FIRST..FIFTH_OPTION` where option text == "Take", plus
+    `WIDGET_TARGET_ON_GROUND_ITEM` (telegrab), gated by `restrictLoot`;
+    item name via `ItemManager.getItemComposition(event.getId())`; a
+    user-editable comma-separated exempt list (default "Coins") keeps
+    universal drops lootable
   - NPC name via `getTransformedComposition()` when present, `Text.removeTags`,
     exact case-insensitive match.
 
@@ -64,18 +72,20 @@ only, no automation).
 
 ## Roadmap (agreed with owner)
 1. **This phase**: compile, run, fix API drift, manual test pass.
-2. **Loot restriction**: block picking up ground items whose card isn't owned
-   (maps directly — most of the 6,376 cards ARE items; reuse the same
-   owned-name set, new catalog snapshot filtered to item categories).
+2. **Loot restriction**: implemented (2026-07-10) — blocks Take/telegrab on
+   ground items whose Resource card isn't owned, with a config exempt list
+   (default "Coins": every common drop has a card, including Coins and Bones,
+   so pure blocking would brick the early game). Needs its manual test pass:
+   drop-blocked item Take, telegrab, exempt list entry, `::tcg-give` unlock.
 3. Overlay/UI: visual indicator on locked NPCs; maybe a side panel of
    nearest unlocks.
 4. Hub submission.
 
 ## Maintenance contracts with upstream osrs-tcg
-- If its `Card.json` changes: regenerate `tracked_monster_names.json` with
-  `python scripts/generate_tracked_monsters.py <path-to-Card.json>` (filters
-  Monster category, strips bracket suffixes into the npc->cards map, skips
-  `(unused)` cards).
+- If its `Card.json` changes: regenerate both snapshot resources with
+  `python scripts/generate_tracked_monsters.py <path-to-Card.json>` (splits
+  Monster/Resource categories, strips bracket suffixes into the
+  entity->cards maps, skips `(unused)` cards).
 - If its storage prefix/shape changes: update `TcgStateDecoder` / `TcgStateDto`.
 - Owning normal **or** foil counts as collected.
 

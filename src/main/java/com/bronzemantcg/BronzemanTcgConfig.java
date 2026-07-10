@@ -34,10 +34,34 @@ public interface BronzemanTcgConfig extends Config
 	}
 
 	@ConfigItem(
+		keyName = "restrictLoot",
+		name = "Restrict loot pickup",
+		description = "Block picking up (or telegrabbing) ground items whose card you have not yet "
+			+ "collected in the OSRS TCG plugin. Items with no card in the TCG catalog are never restricted.",
+		position = 2
+	)
+	default boolean restrictLoot()
+	{
+		return true;
+	}
+
+	@ConfigItem(
+		keyName = "lootExemptNames",
+		name = "Loot exempt list",
+		description = "Comma-separated item names that are always lootable even without their card, "
+			+ "e.g. universal drops that would make the early game unplayable. Case-insensitive.",
+		position = 3
+	)
+	default String lootExemptNames()
+	{
+		return "Coins";
+	}
+
+	@ConfigItem(
 		keyName = "chatFeedback",
 		name = "Chat feedback",
 		description = "Send a game chat message explaining why an action was blocked.",
-		position = 2
+		position = 4
 	)
 	default boolean chatFeedback()
 	{
