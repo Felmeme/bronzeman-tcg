@@ -52,9 +52,8 @@ only, no automation).
   collisions (e.g. `Ferret` the Resource card vs `Ferret (Hunter)` the
   monster) are why the map must stay Monster-only — mind this in the Phase-2
   loot catalog, which reuses the same owned-name set.
-- ❌ Suffix-matching fix not yet re-verified in-game: attack Monkey/Penguin
-  without the card (expect blocked now), then `::tcg-give Monkey (monster)`
-  (expect unlocked).
+- ✅ Suffix-matching verified in-game (2026-07-10): Monkey blocked without
+  the card, unlocked after `::tcg-give Monkey (monster)`. Phase 1 complete.
 
 ## Manual test plan (needs a logged-in account with osrs-tcg installed)
 1. Attack an NPC that has a Monster card you don't own → blocked + chat message.
