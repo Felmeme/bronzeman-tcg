@@ -8,797 +8,6 @@
 	],
 	"nodes": [
 		{
-			"category": "woodcutting",
-			"kind": "object",
-			"name": "Dead tree",
-			"options": [
-				"chop down"
-			],
-			"requiredCards": [
-				"Logs"
-			],
-			"requireAll": true,
-			"notes": "Regular logs. Draynor/desert dead trees."
-		},
-		{
-			"category": "woodcutting",
-			"kind": "object",
-			"name": "Evergreen tree",
-			"options": [
-				"chop down"
-			],
-			"requiredCards": [
-				"Logs"
-			],
-			"requireAll": true,
-			"notes": "Regular logs."
-		},
-		{
-			"category": "woodcutting",
-			"kind": "object",
-			"name": "Hollow tree",
-			"options": [
-				"chop down"
-			],
-			"requiredCards": [
-				"Bark"
-			],
-			"requireAll": true,
-			"notes": "Yields Bark (not logs). Option may be 'Chop-up'/'Chop down'; verify. Located Haunted Woods / Isafdar."
-		},
-		{
-			"category": "woodcutting",
-			"kind": "object",
-			"name": "Magic tree",
-			"options": [
-				"chop down"
-			],
-			"requiredCards": [
-				"Magic logs"
-			],
-			"requireAll": true,
-			"notes": ""
-		},
-		{
-			"category": "woodcutting",
-			"kind": "object",
-			"name": "Mahogany",
-			"options": [
-				"chop down"
-			],
-			"requiredCards": [
-				"Mahogany logs"
-			],
-			"requireAll": true,
-			"notes": "Verify in-game object name suffix ('X' vs 'X tree'); both variants included as separate nodes."
-		},
-		{
-			"category": "woodcutting",
-			"kind": "object",
-			"name": "Mahogany tree",
-			"options": [
-				"chop down"
-			],
-			"requiredCards": [
-				"Mahogany logs"
-			],
-			"requireAll": true,
-			"notes": "Verify in-game object name suffix ('X' vs 'X tree'); both variants included as separate nodes."
-		},
-		{
-			"category": "woodcutting",
-			"kind": "object",
-			"name": "Maple tree",
-			"options": [
-				"chop down"
-			],
-			"requiredCards": [
-				"Maple logs"
-			],
-			"requireAll": true,
-			"notes": ""
-		},
-		{
-			"category": "woodcutting",
-			"kind": "object",
-			"name": "Oak",
-			"options": [
-				"chop down"
-			],
-			"requiredCards": [
-				"Oak logs"
-			],
-			"requireAll": true,
-			"notes": "Verify in-game object name suffix ('X' vs 'X tree'); both variants included as separate nodes."
-		},
-		{
-			"category": "woodcutting",
-			"kind": "object",
-			"name": "Oak tree",
-			"options": [
-				"chop down"
-			],
-			"requiredCards": [
-				"Oak logs"
-			],
-			"requireAll": true,
-			"notes": "Verify in-game object name suffix ('X' vs 'X tree'); both variants included as separate nodes."
-		},
-		{
-			"category": "woodcutting",
-			"kind": "object",
-			"name": "Redwood",
-			"options": [
-				"chop down"
-			],
-			"requiredCards": [
-				"Redwood logs"
-			],
-			"requireAll": true,
-			"notes": "Verify in-game object name suffix ('X' vs 'X tree'); both variants included as separate nodes."
-		},
-		{
-			"category": "woodcutting",
-			"kind": "object",
-			"name": "Redwood tree",
-			"options": [
-				"chop down"
-			],
-			"requiredCards": [
-				"Redwood logs"
-			],
-			"requireAll": true,
-			"notes": "Verify in-game object name suffix ('X' vs 'X tree'); both variants included as separate nodes."
-		},
-		{
-			"category": "woodcutting",
-			"kind": "object",
-			"name": "Teak",
-			"options": [
-				"chop down"
-			],
-			"requiredCards": [
-				"Teak logs"
-			],
-			"requireAll": true,
-			"notes": "Verify in-game object name suffix ('X' vs 'X tree'); both variants included as separate nodes."
-		},
-		{
-			"category": "woodcutting",
-			"kind": "object",
-			"name": "Teak tree",
-			"options": [
-				"chop down"
-			],
-			"requiredCards": [
-				"Teak logs"
-			],
-			"requireAll": true,
-			"notes": "Verify in-game object name suffix ('X' vs 'X tree'); both variants included as separate nodes."
-		},
-		{
-			"category": "woodcutting",
-			"kind": "object",
-			"name": "Tree",
-			"options": [
-				"chop down"
-			],
-			"requiredCards": [
-				"Logs"
-			],
-			"requireAll": true,
-			"notes": "Standard tree."
-		},
-		{
-			"category": "woodcutting",
-			"kind": "object",
-			"name": "Willow",
-			"options": [
-				"chop down"
-			],
-			"requiredCards": [
-				"Willow logs"
-			],
-			"requireAll": true,
-			"notes": "Verify in-game object name suffix ('X' vs 'X tree'); both variants included as separate nodes."
-		},
-		{
-			"category": "woodcutting",
-			"kind": "object",
-			"name": "Willow tree",
-			"options": [
-				"chop down"
-			],
-			"requiredCards": [
-				"Willow logs"
-			],
-			"requireAll": true,
-			"notes": "Verify in-game object name suffix ('X' vs 'X tree'); both variants included as separate nodes."
-		},
-		{
-			"category": "woodcutting",
-			"kind": "object",
-			"name": "Yew",
-			"options": [
-				"chop down"
-			],
-			"requiredCards": [
-				"Yew logs"
-			],
-			"requireAll": true,
-			"notes": "Verify in-game object name suffix ('X' vs 'X tree'); both variants included as separate nodes."
-		},
-		{
-			"category": "woodcutting",
-			"kind": "object",
-			"name": "Yew tree",
-			"options": [
-				"chop down"
-			],
-			"requiredCards": [
-				"Yew logs"
-			],
-			"requireAll": true,
-			"notes": "Verify in-game object name suffix ('X' vs 'X tree'); both variants included as separate nodes."
-		},
-		{
-			"category": "mining",
-			"kind": "object",
-			"name": "Adamantite rocks",
-			"options": [
-				"mine"
-			],
-			"requiredCards": [
-				"Adamantite ore"
-			],
-			"requireAll": true,
-			"notes": ""
-		},
-		{
-			"category": "mining",
-			"kind": "object",
-			"name": "Amethyst crystals",
-			"options": [
-				"mine"
-			],
-			"requiredCards": [
-				"Amethyst"
-			],
-			"requireAll": true,
-			"notes": "Amethyst mining; option 'Mine'."
-		},
-		{
-			"category": "mining",
-			"kind": "object",
-			"name": "Clay rocks",
-			"options": [
-				"mine"
-			],
-			"requiredCards": [
-				"Clay"
-			],
-			"requireAll": true,
-			"notes": "Object name may just be 'Rocks'; verify."
-		},
-		{
-			"category": "mining",
-			"kind": "object",
-			"name": "Coal rocks",
-			"options": [
-				"mine"
-			],
-			"requiredCards": [
-				"Coal"
-			],
-			"requireAll": true,
-			"notes": ""
-		},
-		{
-			"category": "mining",
-			"kind": "object",
-			"name": "Copper rocks",
-			"options": [
-				"mine"
-			],
-			"requiredCards": [
-				"Copper ore"
-			],
-			"requireAll": true,
-			"notes": ""
-		},
-		{
-			"category": "mining",
-			"kind": "object",
-			"name": "Gem rocks",
-			"options": [
-				"mine"
-			],
-			"requiredCards": [
-				"Uncut opal",
-				"Uncut jade",
-				"Uncut red topaz",
-				"Uncut sapphire",
-				"Uncut emerald",
-				"Uncut ruby",
-				"Uncut diamond"
-			],
-			"requireAll": false,
-			"notes": "Random gem per mine; owning any listed uncut gem unlocks."
-		},
-		{
-			"category": "mining",
-			"kind": "object",
-			"name": "Gold rocks",
-			"options": [
-				"mine"
-			],
-			"requiredCards": [
-				"Gold ore"
-			],
-			"requireAll": true,
-			"notes": ""
-		},
-		{
-			"category": "mining",
-			"kind": "object",
-			"name": "Granite rocks",
-			"options": [
-				"mine"
-			],
-			"requiredCards": [
-				"Granite"
-			],
-			"requireAll": true,
-			"notes": "Desert Quarry object is generically named 'Rocks' in-game; verify."
-		},
-		{
-			"category": "mining",
-			"kind": "object",
-			"name": "Iron rocks",
-			"options": [
-				"mine"
-			],
-			"requiredCards": [
-				"Iron ore"
-			],
-			"requireAll": true,
-			"notes": ""
-		},
-		{
-			"category": "mining",
-			"kind": "object",
-			"name": "Limestone rocks",
-			"options": [
-				"mine"
-			],
-			"requiredCards": [
-				"Limestone"
-			],
-			"requireAll": true,
-			"notes": "Silvarea/quarry."
-		},
-		{
-			"category": "mining",
-			"kind": "object",
-			"name": "Lovakite rocks",
-			"options": [
-				"mine"
-			],
-			"requiredCards": [
-				"Lovakite ore"
-			],
-			"requireAll": true,
-			"notes": "Lovakengj mine."
-		},
-		{
-			"category": "mining",
-			"kind": "object",
-			"name": "Mithril rocks",
-			"options": [
-				"mine"
-			],
-			"requiredCards": [
-				"Mithril ore"
-			],
-			"requireAll": true,
-			"notes": ""
-		},
-		{
-			"category": "mining",
-			"kind": "object",
-			"name": "Rune Essence",
-			"options": [
-				"mine"
-			],
-			"requiredCards": [
-				"Rune essence",
-				"Pure essence"
-			],
-			"requireAll": false,
-			"notes": "Essence rock; low levels yield Rune essence, 30+ Pure essence. Owning either unlocks."
-		},
-		{
-			"category": "mining",
-			"kind": "object",
-			"name": "Runite rocks",
-			"options": [
-				"mine"
-			],
-			"requiredCards": [
-				"Runite ore"
-			],
-			"requireAll": true,
-			"notes": ""
-		},
-		{
-			"category": "mining",
-			"kind": "object",
-			"name": "Sandstone rocks",
-			"options": [
-				"mine"
-			],
-			"requiredCards": [
-				"Sandstone"
-			],
-			"requireAll": true,
-			"notes": "Desert Quarry object is generically named 'Rocks' in-game; verify."
-		},
-		{
-			"category": "mining",
-			"kind": "object",
-			"name": "Silver rocks",
-			"options": [
-				"mine"
-			],
-			"requiredCards": [
-				"Silver ore"
-			],
-			"requireAll": true,
-			"notes": ""
-		},
-		{
-			"category": "mining",
-			"kind": "object",
-			"name": "Tin rocks",
-			"options": [
-				"mine"
-			],
-			"requiredCards": [
-				"Tin ore"
-			],
-			"requireAll": true,
-			"notes": ""
-		},
-		{
-			"category": "fishing",
-			"kind": "npc",
-			"name": "Fishing spot",
-			"options": [
-				"bait"
-			],
-			"requiredCards": [
-				"Raw sardine",
-				"Raw herring",
-				"Raw pike",
-				"Raw anglerfish"
-			],
-			"requireAll": false,
-			"notes": "Fishing spots yield different fish by location; we list the UNION and use requireAll=false so owning ANY yielded fish unlocks the spot (cannot distinguish location). Includes anglerfish (Port Piscarilius bait spot)."
-		},
-		{
-			"category": "fishing",
-			"kind": "npc",
-			"name": "Fishing spot",
-			"options": [
-				"big net"
-			],
-			"requiredCards": [
-				"Raw mackerel",
-				"Raw cod",
-				"Raw bass"
-			],
-			"requireAll": false,
-			"notes": "Fishing spots yield different fish by location; we list the UNION and use requireAll=false so owning ANY yielded fish unlocks the spot (cannot distinguish location)."
-		},
-		{
-			"category": "fishing",
-			"kind": "npc",
-			"name": "Fishing spot",
-			"options": [
-				"cage"
-			],
-			"requiredCards": [
-				"Raw lobster",
-				"Raw dark crab"
-			],
-			"requireAll": false,
-			"notes": "Fishing spots yield different fish by location; we list the UNION and use requireAll=false so owning ANY yielded fish unlocks the spot (cannot distinguish location)."
-		},
-		{
-			"category": "fishing",
-			"kind": "npc",
-			"name": "Fishing spot",
-			"options": [
-				"fish"
-			],
-			"requiredCards": [
-				"Raw karambwan"
-			],
-			"requireAll": false,
-			"notes": "Fishing spots yield different fish by location; we list the UNION and use requireAll=false so owning ANY yielded fish unlocks the spot (cannot distinguish location). Karambwan spot; verify option text ('Fish')."
-		},
-		{
-			"category": "fishing",
-			"kind": "npc",
-			"name": "Fishing spot",
-			"options": [
-				"harpoon"
-			],
-			"requiredCards": [
-				"Raw tuna",
-				"Raw swordfish",
-				"Raw shark"
-			],
-			"requireAll": false,
-			"notes": "Fishing spots yield different fish by location; we list the UNION and use requireAll=false so owning ANY yielded fish unlocks the spot (cannot distinguish location)."
-		},
-		{
-			"category": "fishing",
-			"kind": "npc",
-			"name": "Fishing spot",
-			"options": [
-				"lure"
-			],
-			"requiredCards": [
-				"Raw trout",
-				"Raw salmon"
-			],
-			"requireAll": false,
-			"notes": "Fishing spots yield different fish by location; we list the UNION and use requireAll=false so owning ANY yielded fish unlocks the spot (cannot distinguish location)."
-		},
-		{
-			"category": "fishing",
-			"kind": "npc",
-			"name": "Fishing spot",
-			"options": [
-				"net"
-			],
-			"requiredCards": [
-				"Raw shrimps",
-				"Raw anchovies",
-				"Raw monkfish"
-			],
-			"requireAll": false,
-			"notes": "Fishing spots yield different fish by location; we list the UNION and use requireAll=false so owning ANY yielded fish unlocks the spot (cannot distinguish location)."
-		},
-		{
-			"category": "fishing",
-			"kind": "npc",
-			"name": "Fishing spot",
-			"options": [
-				"small net"
-			],
-			"requiredCards": [
-				"Minnow"
-			],
-			"requireAll": false,
-			"notes": "Fishing spots yield different fish by location; we list the UNION and use requireAll=false so owning ANY yielded fish unlocks the spot (cannot distinguish location)."
-		},
-		{
-			"category": "fishing",
-			"kind": "npc",
-			"name": "Fishing spot",
-			"options": [
-				"use-rod"
-			],
-			"requiredCards": [
-				"Leaping trout",
-				"Leaping salmon",
-				"Leaping sturgeon"
-			],
-			"requireAll": false,
-			"notes": "Fishing spots yield different fish by location; we list the UNION and use requireAll=false so owning ANY yielded fish unlocks the spot (cannot distinguish location). Barbarian Fishing; verify option text ('Use-rod')."
-		},
-		{
-			"category": "fishing",
-			"kind": "npc",
-			"name": "Rod Fishing spot",
-			"options": [
-				"bait"
-			],
-			"requiredCards": [
-				"Raw sardine",
-				"Raw herring",
-				"Raw pike",
-				"Raw anglerfish"
-			],
-			"requireAll": false,
-			"notes": "Fishing spots yield different fish by location; we list the UNION and use requireAll=false so owning ANY yielded fish unlocks the spot (cannot distinguish location). 'Rod Fishing spot' NPC variant."
-		},
-		{
-			"category": "fishing",
-			"kind": "npc",
-			"name": "Rod Fishing spot",
-			"options": [
-				"lure"
-			],
-			"requiredCards": [
-				"Raw trout",
-				"Raw salmon"
-			],
-			"requireAll": false,
-			"notes": "Fishing spots yield different fish by location; we list the UNION and use requireAll=false so owning ANY yielded fish unlocks the spot (cannot distinguish location). 'Rod Fishing spot' NPC variant."
-		},
-		{
-			"category": "fishing",
-			"kind": "npc",
-			"name": "Rod Fishing spot",
-			"options": [
-				"use-rod"
-			],
-			"requiredCards": [
-				"Leaping trout",
-				"Leaping salmon",
-				"Leaping sturgeon"
-			],
-			"requireAll": false,
-			"notes": "Fishing spots yield different fish by location; we list the UNION and use requireAll=false so owning ANY yielded fish unlocks the spot (cannot distinguish location). 'Rod Fishing spot' NPC variant."
-		},
-		{
-			"category": "pickpocketing",
-			"kind": "npc",
-			"name": "Farmer",
-			"options": [
-				"pickpocket"
-			],
-			"requiredCards": [
-				"Coins",
-				"Coin pouch"
-			],
-			"requireAll": true,
-			"notes": "Also drops seeds; simplified to Coins+pouch."
-		},
-		{
-			"category": "pickpocketing",
-			"kind": "npc",
-			"name": "Guard",
-			"options": [
-				"pickpocket"
-			],
-			"requiredCards": [
-				"Coins",
-				"Coin pouch"
-			],
-			"requireAll": true,
-			"notes": ""
-		},
-		{
-			"category": "pickpocketing",
-			"kind": "npc",
-			"name": "H.A.M. Member",
-			"options": [
-				"pickpocket"
-			],
-			"requiredCards": [
-				"Coins",
-				"Coin pouch"
-			],
-			"requireAll": true,
-			"notes": "Verify exact name/casing ('H.A.M. Member')."
-		},
-		{
-			"category": "pickpocketing",
-			"kind": "npc",
-			"name": "Hero",
-			"options": [
-				"pickpocket"
-			],
-			"requiredCards": [
-				"Coins",
-				"Coin pouch"
-			],
-			"requireAll": true,
-			"notes": "Also drops gems/blood runes; simplified."
-		},
-		{
-			"category": "pickpocketing",
-			"kind": "npc",
-			"name": "Knight of Ardougne",
-			"options": [
-				"pickpocket"
-			],
-			"requiredCards": [
-				"Coins",
-				"Coin pouch"
-			],
-			"requireAll": true,
-			"notes": ""
-		},
-		{
-			"category": "pickpocketing",
-			"kind": "npc",
-			"name": "Man",
-			"options": [
-				"pickpocket"
-			],
-			"requiredCards": [
-				"Coins",
-				"Coin pouch"
-			],
-			"requireAll": true,
-			"notes": ""
-		},
-		{
-			"category": "pickpocketing",
-			"kind": "npc",
-			"name": "Paladin",
-			"options": [
-				"pickpocket"
-			],
-			"requiredCards": [
-				"Coins",
-				"Coin pouch"
-			],
-			"requireAll": true,
-			"notes": "Also drops chaos runes/coins; simplified."
-		},
-		{
-			"category": "pickpocketing",
-			"kind": "npc",
-			"name": "Rogue",
-			"options": [
-				"pickpocket"
-			],
-			"requiredCards": [
-				"Coins",
-				"Coin pouch"
-			],
-			"requireAll": true,
-			"notes": "Also drops rogue equipment; simplified."
-		},
-		{
-			"category": "pickpocketing",
-			"kind": "npc",
-			"name": "Vyrewatch Sentinel",
-			"options": [
-				"pickpocket"
-			],
-			"requiredCards": [
-				"Coins",
-				"Coin pouch"
-			],
-			"requireAll": true,
-			"notes": "Actually yields Blood shard/coins; simplified to Coins+pouch."
-		},
-		{
-			"category": "pickpocketing",
-			"kind": "npc",
-			"name": "Warrior woman",
-			"options": [
-				"pickpocket"
-			],
-			"requiredCards": [
-				"Coins",
-				"Coin pouch"
-			],
-			"requireAll": true,
-			"notes": ""
-		},
-		{
-			"category": "pickpocketing",
-			"kind": "npc",
-			"name": "Woman",
-			"options": [
-				"pickpocket"
-			],
-			"requiredCards": [
-				"Coins",
-				"Coin pouch"
-			],
-			"requireAll": true,
-			"notes": ""
-		},
-		{
 			"category": "cooking",
 			"kind": "item-on-object",
 			"name": "Bread dough",
@@ -1305,6 +514,1690 @@
 			],
 			"requireAll": true,
 			"notes": "Raw sweetcorn ('Sweetcorn') cooked to 'Cooked sweetcorn'."
+		},
+		{
+			"category": "fishing",
+			"kind": "npc",
+			"name": "Fishing spot",
+			"options": [
+				"bait"
+			],
+			"requiredCards": [
+				"Raw sardine",
+				"Raw herring",
+				"Raw pike",
+				"Raw anglerfish"
+			],
+			"requireAll": false,
+			"notes": "Fishing spots yield different fish by location; we list the UNION and use requireAll=false so owning ANY yielded fish unlocks the spot (cannot distinguish location). Includes anglerfish (Port Piscarilius bait spot)."
+		},
+		{
+			"category": "fishing",
+			"kind": "npc",
+			"name": "Fishing spot",
+			"options": [
+				"big net"
+			],
+			"requiredCards": [
+				"Raw mackerel",
+				"Raw cod",
+				"Raw bass"
+			],
+			"requireAll": false,
+			"notes": "Fishing spots yield different fish by location; we list the UNION and use requireAll=false so owning ANY yielded fish unlocks the spot (cannot distinguish location)."
+		},
+		{
+			"category": "fishing",
+			"kind": "npc",
+			"name": "Fishing spot",
+			"options": [
+				"cage"
+			],
+			"requiredCards": [
+				"Raw lobster",
+				"Raw dark crab"
+			],
+			"requireAll": false,
+			"notes": "Fishing spots yield different fish by location; we list the UNION and use requireAll=false so owning ANY yielded fish unlocks the spot (cannot distinguish location)."
+		},
+		{
+			"category": "fishing",
+			"kind": "npc",
+			"name": "Fishing spot",
+			"options": [
+				"fish"
+			],
+			"requiredCards": [
+				"Raw karambwan"
+			],
+			"requireAll": false,
+			"notes": "Fishing spots yield different fish by location; we list the UNION and use requireAll=false so owning ANY yielded fish unlocks the spot (cannot distinguish location). Karambwan spot; verify option text ('Fish')."
+		},
+		{
+			"category": "fishing",
+			"kind": "npc",
+			"name": "Fishing spot",
+			"options": [
+				"harpoon"
+			],
+			"requiredCards": [
+				"Raw tuna",
+				"Raw swordfish",
+				"Raw shark"
+			],
+			"requireAll": false,
+			"notes": "Fishing spots yield different fish by location; we list the UNION and use requireAll=false so owning ANY yielded fish unlocks the spot (cannot distinguish location)."
+		},
+		{
+			"category": "fishing",
+			"kind": "npc",
+			"name": "Fishing spot",
+			"options": [
+				"lure"
+			],
+			"requiredCards": [
+				"Raw trout",
+				"Raw salmon"
+			],
+			"requireAll": false,
+			"notes": "Fishing spots yield different fish by location; we list the UNION and use requireAll=false so owning ANY yielded fish unlocks the spot (cannot distinguish location)."
+		},
+		{
+			"category": "fishing",
+			"kind": "npc",
+			"name": "Fishing spot",
+			"options": [
+				"net"
+			],
+			"requiredCards": [
+				"Raw shrimps",
+				"Raw anchovies",
+				"Raw monkfish"
+			],
+			"requireAll": false,
+			"notes": "Fishing spots yield different fish by location; we list the UNION and use requireAll=false so owning ANY yielded fish unlocks the spot (cannot distinguish location)."
+		},
+		{
+			"category": "fishing",
+			"kind": "npc",
+			"name": "Fishing spot",
+			"options": [
+				"small net"
+			],
+			"requiredCards": [
+				"Minnow"
+			],
+			"requireAll": false,
+			"notes": "Fishing spots yield different fish by location; we list the UNION and use requireAll=false so owning ANY yielded fish unlocks the spot (cannot distinguish location)."
+		},
+		{
+			"category": "fishing",
+			"kind": "npc",
+			"name": "Fishing spot",
+			"options": [
+				"use-rod"
+			],
+			"requiredCards": [
+				"Leaping trout",
+				"Leaping salmon",
+				"Leaping sturgeon"
+			],
+			"requireAll": false,
+			"notes": "Fishing spots yield different fish by location; we list the UNION and use requireAll=false so owning ANY yielded fish unlocks the spot (cannot distinguish location). Barbarian Fishing; verify option text ('Use-rod')."
+		},
+		{
+			"category": "fishing",
+			"kind": "npc",
+			"name": "Rod Fishing spot",
+			"options": [
+				"bait"
+			],
+			"requiredCards": [
+				"Raw sardine",
+				"Raw herring",
+				"Raw pike",
+				"Raw anglerfish"
+			],
+			"requireAll": false,
+			"notes": "Fishing spots yield different fish by location; we list the UNION and use requireAll=false so owning ANY yielded fish unlocks the spot (cannot distinguish location). 'Rod Fishing spot' NPC variant."
+		},
+		{
+			"category": "fishing",
+			"kind": "npc",
+			"name": "Rod Fishing spot",
+			"options": [
+				"lure"
+			],
+			"requiredCards": [
+				"Raw trout",
+				"Raw salmon"
+			],
+			"requireAll": false,
+			"notes": "Fishing spots yield different fish by location; we list the UNION and use requireAll=false so owning ANY yielded fish unlocks the spot (cannot distinguish location). 'Rod Fishing spot' NPC variant."
+		},
+		{
+			"category": "fishing",
+			"kind": "npc",
+			"name": "Rod Fishing spot",
+			"options": [
+				"use-rod"
+			],
+			"requiredCards": [
+				"Leaping trout",
+				"Leaping salmon",
+				"Leaping sturgeon"
+			],
+			"requireAll": false,
+			"notes": "Fishing spots yield different fish by location; we list the UNION and use requireAll=false so owning ANY yielded fish unlocks the spot (cannot distinguish location). 'Rod Fishing spot' NPC variant."
+		},
+		{
+			"category": "mining",
+			"kind": "object",
+			"name": "Adamantite rocks",
+			"options": [
+				"mine"
+			],
+			"requiredCards": [
+				"Adamantite ore"
+			],
+			"requireAll": true,
+			"notes": ""
+		},
+		{
+			"category": "mining",
+			"kind": "object",
+			"name": "Amethyst crystals",
+			"options": [
+				"mine"
+			],
+			"requiredCards": [
+				"Amethyst"
+			],
+			"requireAll": true,
+			"notes": "Amethyst mining; option 'Mine'."
+		},
+		{
+			"category": "mining",
+			"kind": "object",
+			"name": "Ash pile",
+			"options": [
+				"mine"
+			],
+			"requiredCards": [
+				"Volcanic ash"
+			],
+			"requireAll": true,
+			"notes": "Fossil Island Volcano."
+		},
+		{
+			"category": "mining",
+			"kind": "object",
+			"name": "Basalt rocks",
+			"options": [
+				"mine"
+			],
+			"requiredCards": [
+				"Basalt"
+			],
+			"requireAll": true,
+			"notes": "Weiss/Salt Mine."
+		},
+		{
+			"category": "mining",
+			"kind": "object",
+			"name": "Clay rocks",
+			"options": [
+				"mine"
+			],
+			"requiredCards": [
+				"Clay"
+			],
+			"requireAll": true,
+			"notes": "Object name may just be 'Rocks'; verify."
+		},
+		{
+			"category": "mining",
+			"kind": "object",
+			"name": "Coal rocks",
+			"options": [
+				"mine"
+			],
+			"requiredCards": [
+				"Coal"
+			],
+			"requireAll": true,
+			"notes": ""
+		},
+		{
+			"category": "mining",
+			"kind": "object",
+			"name": "Copper rocks",
+			"options": [
+				"mine"
+			],
+			"requiredCards": [
+				"Copper ore"
+			],
+			"requireAll": true,
+			"notes": ""
+		},
+		{
+			"category": "mining",
+			"kind": "object",
+			"name": "Daeyalt Essence",
+			"options": [
+				"mine"
+			],
+			"requiredCards": [
+				"Daeyalt shard"
+			],
+			"requireAll": true,
+			"notes": "Darkmeyer; object confirmed named 'Daeyalt Essence', yields Daeyalt shards."
+		},
+		{
+			"category": "mining",
+			"kind": "object",
+			"name": "Daeyalt rocks",
+			"options": [
+				"mine"
+			],
+			"requiredCards": [
+				"Daeyalt ore"
+			],
+			"requireAll": true,
+			"notes": "Meiyerditch mine (Darkness of Hallowvale)."
+		},
+		{
+			"category": "mining",
+			"kind": "object",
+			"name": "Efh salt rocks",
+			"options": [
+				"mine"
+			],
+			"requiredCards": [
+				"Efh salt"
+			],
+			"requireAll": true,
+			"notes": "Salt Mine."
+		},
+		{
+			"category": "mining",
+			"kind": "object",
+			"name": "Gem rocks",
+			"options": [
+				"mine"
+			],
+			"requiredCards": [
+				"Uncut opal",
+				"Uncut jade",
+				"Uncut red topaz",
+				"Uncut sapphire",
+				"Uncut emerald",
+				"Uncut ruby",
+				"Uncut diamond"
+			],
+			"requireAll": false,
+			"notes": "Random gem per mine; owning any listed uncut gem unlocks."
+		},
+		{
+			"category": "mining",
+			"kind": "object",
+			"name": "Gold rocks",
+			"options": [
+				"mine"
+			],
+			"requiredCards": [
+				"Gold ore"
+			],
+			"requireAll": true,
+			"notes": ""
+		},
+		{
+			"category": "mining",
+			"kind": "object",
+			"name": "Granite rocks",
+			"options": [
+				"mine"
+			],
+			"requiredCards": [
+				"Granite"
+			],
+			"requireAll": true,
+			"notes": "Desert Quarry object is generically named 'Rocks' in-game; verify."
+		},
+		{
+			"category": "mining",
+			"kind": "object",
+			"name": "Iron rocks",
+			"options": [
+				"mine"
+			],
+			"requiredCards": [
+				"Iron ore"
+			],
+			"requireAll": true,
+			"notes": ""
+		},
+		{
+			"category": "mining",
+			"kind": "object",
+			"name": "Limestone rocks",
+			"options": [
+				"mine"
+			],
+			"requiredCards": [
+				"Limestone"
+			],
+			"requireAll": true,
+			"notes": "Silvarea/quarry."
+		},
+		{
+			"category": "mining",
+			"kind": "object",
+			"name": "Lovakite rocks",
+			"options": [
+				"mine"
+			],
+			"requiredCards": [
+				"Lovakite ore"
+			],
+			"requireAll": true,
+			"notes": "Lovakengj mine."
+		},
+		{
+			"category": "mining",
+			"kind": "object",
+			"name": "Mithril rocks",
+			"options": [
+				"mine"
+			],
+			"requiredCards": [
+				"Mithril ore"
+			],
+			"requireAll": true,
+			"notes": ""
+		},
+		{
+			"category": "mining",
+			"kind": "object",
+			"name": "Rune Essence",
+			"options": [
+				"mine"
+			],
+			"requiredCards": [
+				"Rune essence",
+				"Pure essence"
+			],
+			"requireAll": false,
+			"notes": "Essence rock; low levels yield Rune essence, 30+ Pure essence. Owning either unlocks."
+		},
+		{
+			"category": "mining",
+			"kind": "object",
+			"name": "Runite rocks",
+			"options": [
+				"mine"
+			],
+			"requiredCards": [
+				"Runite ore"
+			],
+			"requireAll": true,
+			"notes": ""
+		},
+		{
+			"category": "mining",
+			"kind": "object",
+			"name": "Saltpetre",
+			"options": [
+				"dig"
+			],
+			"requiredCards": [
+				"Saltpetre"
+			],
+			"requireAll": true,
+			"notes": "Hosidius deposit; option is Dig, not Mine."
+		},
+		{
+			"category": "mining",
+			"kind": "object",
+			"name": "Sandstone rocks",
+			"options": [
+				"mine"
+			],
+			"requiredCards": [
+				"Sandstone"
+			],
+			"requireAll": true,
+			"notes": "Desert Quarry object is generically named 'Rocks' in-game; verify."
+		},
+		{
+			"category": "mining",
+			"kind": "object",
+			"name": "Silver rocks",
+			"options": [
+				"mine"
+			],
+			"requiredCards": [
+				"Silver ore"
+			],
+			"requireAll": true,
+			"notes": ""
+		},
+		{
+			"category": "mining",
+			"kind": "object",
+			"name": "Te salt rocks",
+			"options": [
+				"mine"
+			],
+			"requiredCards": [
+				"Te salt"
+			],
+			"requireAll": true,
+			"notes": "Salt Mine."
+		},
+		{
+			"category": "mining",
+			"kind": "object",
+			"name": "Tin rocks",
+			"options": [
+				"mine"
+			],
+			"requiredCards": [
+				"Tin ore"
+			],
+			"requireAll": true,
+			"notes": ""
+		},
+		{
+			"category": "mining",
+			"kind": "object",
+			"name": "Urt salt rocks",
+			"options": [
+				"mine"
+			],
+			"requiredCards": [
+				"Urt salt"
+			],
+			"requireAll": true,
+			"notes": "Salt Mine."
+		},
+		{
+			"category": "pickpocketing",
+			"kind": "npc",
+			"name": "Anaire",
+			"options": [
+				"pickpocket"
+			],
+			"requiredCards": [
+				"Coins",
+				"Coin pouch"
+			],
+			"requireAll": true,
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+		},
+		{
+			"category": "pickpocketing",
+			"kind": "npc",
+			"name": "Aranwe",
+			"options": [
+				"pickpocket"
+			],
+			"requiredCards": [
+				"Coins",
+				"Coin pouch"
+			],
+			"requireAll": true,
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+		},
+		{
+			"category": "pickpocketing",
+			"kind": "npc",
+			"name": "Aredhel",
+			"options": [
+				"pickpocket"
+			],
+			"requiredCards": [
+				"Coins",
+				"Coin pouch"
+			],
+			"requireAll": true,
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+		},
+		{
+			"category": "pickpocketing",
+			"kind": "npc",
+			"name": "Arvel",
+			"options": [
+				"pickpocket"
+			],
+			"requiredCards": [
+				"Coins",
+				"Coin pouch"
+			],
+			"requireAll": true,
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+		},
+		{
+			"category": "pickpocketing",
+			"kind": "npc",
+			"name": "Caranthir",
+			"options": [
+				"pickpocket"
+			],
+			"requiredCards": [
+				"Coins",
+				"Coin pouch"
+			],
+			"requireAll": true,
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+		},
+		{
+			"category": "pickpocketing",
+			"kind": "npc",
+			"name": "Celebrian",
+			"options": [
+				"pickpocket"
+			],
+			"requiredCards": [
+				"Coins",
+				"Coin pouch"
+			],
+			"requireAll": true,
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+		},
+		{
+			"category": "pickpocketing",
+			"kind": "npc",
+			"name": "Celegorm",
+			"options": [
+				"pickpocket"
+			],
+			"requiredCards": [
+				"Coins",
+				"Coin pouch"
+			],
+			"requireAll": true,
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+		},
+		{
+			"category": "pickpocketing",
+			"kind": "npc",
+			"name": "Cirdan",
+			"options": [
+				"pickpocket"
+			],
+			"requiredCards": [
+				"Coins",
+				"Coin pouch"
+			],
+			"requireAll": true,
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+		},
+		{
+			"category": "pickpocketing",
+			"kind": "npc",
+			"name": "Curufin",
+			"options": [
+				"pickpocket"
+			],
+			"requiredCards": [
+				"Coins",
+				"Coin pouch"
+			],
+			"requireAll": true,
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+		},
+		{
+			"category": "pickpocketing",
+			"kind": "npc",
+			"name": "Earwen",
+			"options": [
+				"pickpocket"
+			],
+			"requiredCards": [
+				"Coins",
+				"Coin pouch"
+			],
+			"requireAll": true,
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+		},
+		{
+			"category": "pickpocketing",
+			"kind": "npc",
+			"name": "Edrahil",
+			"options": [
+				"pickpocket"
+			],
+			"requiredCards": [
+				"Coins",
+				"Coin pouch"
+			],
+			"requireAll": true,
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+		},
+		{
+			"category": "pickpocketing",
+			"kind": "npc",
+			"name": "Elenwe",
+			"options": [
+				"pickpocket"
+			],
+			"requiredCards": [
+				"Coins",
+				"Coin pouch"
+			],
+			"requireAll": true,
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+		},
+		{
+			"category": "pickpocketing",
+			"kind": "npc",
+			"name": "Elladan",
+			"options": [
+				"pickpocket"
+			],
+			"requiredCards": [
+				"Coins",
+				"Coin pouch"
+			],
+			"requireAll": true,
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+		},
+		{
+			"category": "pickpocketing",
+			"kind": "npc",
+			"name": "Enel",
+			"options": [
+				"pickpocket"
+			],
+			"requiredCards": [
+				"Coins",
+				"Coin pouch"
+			],
+			"requireAll": true,
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+		},
+		{
+			"category": "pickpocketing",
+			"kind": "npc",
+			"name": "Enelye",
+			"options": [
+				"pickpocket"
+			],
+			"requiredCards": [
+				"Coins",
+				"Coin pouch"
+			],
+			"requireAll": true,
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+		},
+		{
+			"category": "pickpocketing",
+			"kind": "npc",
+			"name": "Enerdhil",
+			"options": [
+				"pickpocket"
+			],
+			"requiredCards": [
+				"Coins",
+				"Coin pouch"
+			],
+			"requireAll": true,
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+		},
+		{
+			"category": "pickpocketing",
+			"kind": "npc",
+			"name": "Erestor",
+			"options": [
+				"pickpocket"
+			],
+			"requiredCards": [
+				"Coins",
+				"Coin pouch"
+			],
+			"requireAll": true,
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+		},
+		{
+			"category": "pickpocketing",
+			"kind": "npc",
+			"name": "Farmer",
+			"options": [
+				"pickpocket"
+			],
+			"requiredCards": [
+				"Coins",
+				"Coin pouch"
+			],
+			"requireAll": true,
+			"notes": "Also drops seeds; simplified to Coins+pouch."
+		},
+		{
+			"category": "pickpocketing",
+			"kind": "npc",
+			"name": "Feanor",
+			"options": [
+				"pickpocket"
+			],
+			"requiredCards": [
+				"Coins",
+				"Coin pouch"
+			],
+			"requireAll": true,
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+		},
+		{
+			"category": "pickpocketing",
+			"kind": "npc",
+			"name": "Findis",
+			"options": [
+				"pickpocket"
+			],
+			"requiredCards": [
+				"Coins",
+				"Coin pouch"
+			],
+			"requireAll": true,
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+		},
+		{
+			"category": "pickpocketing",
+			"kind": "npc",
+			"name": "Finduilas",
+			"options": [
+				"pickpocket"
+			],
+			"requiredCards": [
+				"Coins",
+				"Coin pouch"
+			],
+			"requireAll": true,
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+		},
+		{
+			"category": "pickpocketing",
+			"kind": "npc",
+			"name": "Fingolfin",
+			"options": [
+				"pickpocket"
+			],
+			"requiredCards": [
+				"Coins",
+				"Coin pouch"
+			],
+			"requireAll": true,
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+		},
+		{
+			"category": "pickpocketing",
+			"kind": "npc",
+			"name": "Fingon",
+			"options": [
+				"pickpocket"
+			],
+			"requiredCards": [
+				"Coins",
+				"Coin pouch"
+			],
+			"requireAll": true,
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+		},
+		{
+			"category": "pickpocketing",
+			"kind": "npc",
+			"name": "Galathil",
+			"options": [
+				"pickpocket"
+			],
+			"requiredCards": [
+				"Coins",
+				"Coin pouch"
+			],
+			"requireAll": true,
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+		},
+		{
+			"category": "pickpocketing",
+			"kind": "npc",
+			"name": "Gelmir",
+			"options": [
+				"pickpocket"
+			],
+			"requiredCards": [
+				"Coins",
+				"Coin pouch"
+			],
+			"requireAll": true,
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+		},
+		{
+			"category": "pickpocketing",
+			"kind": "npc",
+			"name": "Glorfindel",
+			"options": [
+				"pickpocket"
+			],
+			"requiredCards": [
+				"Coins",
+				"Coin pouch"
+			],
+			"requireAll": true,
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+		},
+		{
+			"category": "pickpocketing",
+			"kind": "npc",
+			"name": "Goreu",
+			"options": [
+				"pickpocket"
+			],
+			"requiredCards": [
+				"Coins",
+				"Coin pouch"
+			],
+			"requireAll": true,
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+		},
+		{
+			"category": "pickpocketing",
+			"kind": "npc",
+			"name": "Guard",
+			"options": [
+				"pickpocket"
+			],
+			"requiredCards": [
+				"Coins",
+				"Coin pouch"
+			],
+			"requireAll": true,
+			"notes": ""
+		},
+		{
+			"category": "pickpocketing",
+			"kind": "npc",
+			"name": "Guilin",
+			"options": [
+				"pickpocket"
+			],
+			"requiredCards": [
+				"Coins",
+				"Coin pouch"
+			],
+			"requireAll": true,
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+		},
+		{
+			"category": "pickpocketing",
+			"kind": "npc",
+			"name": "H.A.M. Member",
+			"options": [
+				"pickpocket"
+			],
+			"requiredCards": [
+				"Coins",
+				"Coin pouch"
+			],
+			"requireAll": true,
+			"notes": "Verify exact name/casing ('H.A.M. Member')."
+		},
+		{
+			"category": "pickpocketing",
+			"kind": "npc",
+			"name": "Hendor",
+			"options": [
+				"pickpocket"
+			],
+			"requiredCards": [
+				"Coins",
+				"Coin pouch"
+			],
+			"requireAll": true,
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+		},
+		{
+			"category": "pickpocketing",
+			"kind": "npc",
+			"name": "Hero",
+			"options": [
+				"pickpocket"
+			],
+			"requiredCards": [
+				"Coins",
+				"Coin pouch"
+			],
+			"requireAll": true,
+			"notes": "Also drops gems/blood runes; simplified."
+		},
+		{
+			"category": "pickpocketing",
+			"kind": "npc",
+			"name": "Idril",
+			"options": [
+				"pickpocket"
+			],
+			"requiredCards": [
+				"Coins",
+				"Coin pouch"
+			],
+			"requireAll": true,
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+		},
+		{
+			"category": "pickpocketing",
+			"kind": "npc",
+			"name": "Imin",
+			"options": [
+				"pickpocket"
+			],
+			"requiredCards": [
+				"Coins",
+				"Coin pouch"
+			],
+			"requireAll": true,
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+		},
+		{
+			"category": "pickpocketing",
+			"kind": "npc",
+			"name": "Iminye",
+			"options": [
+				"pickpocket"
+			],
+			"requiredCards": [
+				"Coins",
+				"Coin pouch"
+			],
+			"requireAll": true,
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+		},
+		{
+			"category": "pickpocketing",
+			"kind": "npc",
+			"name": "Indis",
+			"options": [
+				"pickpocket"
+			],
+			"requiredCards": [
+				"Coins",
+				"Coin pouch"
+			],
+			"requireAll": true,
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+		},
+		{
+			"category": "pickpocketing",
+			"kind": "npc",
+			"name": "Ingwe",
+			"options": [
+				"pickpocket"
+			],
+			"requiredCards": [
+				"Coins",
+				"Coin pouch"
+			],
+			"requireAll": true,
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+		},
+		{
+			"category": "pickpocketing",
+			"kind": "npc",
+			"name": "Ingwion",
+			"options": [
+				"pickpocket"
+			],
+			"requiredCards": [
+				"Coins",
+				"Coin pouch"
+			],
+			"requireAll": true,
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+		},
+		{
+			"category": "pickpocketing",
+			"kind": "npc",
+			"name": "Kelyn",
+			"options": [
+				"pickpocket"
+			],
+			"requiredCards": [
+				"Coins",
+				"Coin pouch"
+			],
+			"requireAll": true,
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+		},
+		{
+			"category": "pickpocketing",
+			"kind": "npc",
+			"name": "Knight of Ardougne",
+			"options": [
+				"pickpocket"
+			],
+			"requiredCards": [
+				"Coins",
+				"Coin pouch"
+			],
+			"requireAll": true,
+			"notes": ""
+		},
+		{
+			"category": "pickpocketing",
+			"kind": "npc",
+			"name": "Lenwe",
+			"options": [
+				"pickpocket"
+			],
+			"requiredCards": [
+				"Coins",
+				"Coin pouch"
+			],
+			"requireAll": true,
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+		},
+		{
+			"category": "pickpocketing",
+			"kind": "npc",
+			"name": "Lindir",
+			"options": [
+				"pickpocket"
+			],
+			"requiredCards": [
+				"Coins",
+				"Coin pouch"
+			],
+			"requireAll": true,
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+		},
+		{
+			"category": "pickpocketing",
+			"kind": "npc",
+			"name": "Maeglin",
+			"options": [
+				"pickpocket"
+			],
+			"requiredCards": [
+				"Coins",
+				"Coin pouch"
+			],
+			"requireAll": true,
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+		},
+		{
+			"category": "pickpocketing",
+			"kind": "npc",
+			"name": "Mahtan",
+			"options": [
+				"pickpocket"
+			],
+			"requiredCards": [
+				"Coins",
+				"Coin pouch"
+			],
+			"requireAll": true,
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+		},
+		{
+			"category": "pickpocketing",
+			"kind": "npc",
+			"name": "Man",
+			"options": [
+				"pickpocket"
+			],
+			"requiredCards": [
+				"Coins",
+				"Coin pouch"
+			],
+			"requireAll": true,
+			"notes": ""
+		},
+		{
+			"category": "pickpocketing",
+			"kind": "npc",
+			"name": "Mawrth",
+			"options": [
+				"pickpocket"
+			],
+			"requiredCards": [
+				"Coins",
+				"Coin pouch"
+			],
+			"requireAll": true,
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+		},
+		{
+			"category": "pickpocketing",
+			"kind": "npc",
+			"name": "Miriel",
+			"options": [
+				"pickpocket"
+			],
+			"requiredCards": [
+				"Coins",
+				"Coin pouch"
+			],
+			"requireAll": true,
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+		},
+		{
+			"category": "pickpocketing",
+			"kind": "npc",
+			"name": "Mithrellas",
+			"options": [
+				"pickpocket"
+			],
+			"requiredCards": [
+				"Coins",
+				"Coin pouch"
+			],
+			"requireAll": true,
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+		},
+		{
+			"category": "pickpocketing",
+			"kind": "npc",
+			"name": "Nellas",
+			"options": [
+				"pickpocket"
+			],
+			"requiredCards": [
+				"Coins",
+				"Coin pouch"
+			],
+			"requireAll": true,
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+		},
+		{
+			"category": "pickpocketing",
+			"kind": "npc",
+			"name": "Nerdanel",
+			"options": [
+				"pickpocket"
+			],
+			"requiredCards": [
+				"Coins",
+				"Coin pouch"
+			],
+			"requireAll": true,
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+		},
+		{
+			"category": "pickpocketing",
+			"kind": "npc",
+			"name": "Nimloth",
+			"options": [
+				"pickpocket"
+			],
+			"requiredCards": [
+				"Coins",
+				"Coin pouch"
+			],
+			"requireAll": true,
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+		},
+		{
+			"category": "pickpocketing",
+			"kind": "npc",
+			"name": "Oropher",
+			"options": [
+				"pickpocket"
+			],
+			"requiredCards": [
+				"Coins",
+				"Coin pouch"
+			],
+			"requireAll": true,
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+		},
+		{
+			"category": "pickpocketing",
+			"kind": "npc",
+			"name": "Orophin",
+			"options": [
+				"pickpocket"
+			],
+			"requiredCards": [
+				"Coins",
+				"Coin pouch"
+			],
+			"requireAll": true,
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+		},
+		{
+			"category": "pickpocketing",
+			"kind": "npc",
+			"name": "Paladin",
+			"options": [
+				"pickpocket"
+			],
+			"requiredCards": [
+				"Coins",
+				"Coin pouch"
+			],
+			"requireAll": true,
+			"notes": "Also drops chaos runes/coins; simplified."
+		},
+		{
+			"category": "pickpocketing",
+			"kind": "npc",
+			"name": "Rogue",
+			"options": [
+				"pickpocket"
+			],
+			"requiredCards": [
+				"Coins",
+				"Coin pouch"
+			],
+			"requireAll": true,
+			"notes": "Also drops rogue equipment; simplified."
+		},
+		{
+			"category": "pickpocketing",
+			"kind": "npc",
+			"name": "Saeros",
+			"options": [
+				"pickpocket"
+			],
+			"requiredCards": [
+				"Coins",
+				"Coin pouch"
+			],
+			"requireAll": true,
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+		},
+		{
+			"category": "pickpocketing",
+			"kind": "npc",
+			"name": "Salgant",
+			"options": [
+				"pickpocket"
+			],
+			"requiredCards": [
+				"Coins",
+				"Coin pouch"
+			],
+			"requireAll": true,
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+		},
+		{
+			"category": "pickpocketing",
+			"kind": "npc",
+			"name": "Tatie",
+			"options": [
+				"pickpocket"
+			],
+			"requiredCards": [
+				"Coins",
+				"Coin pouch"
+			],
+			"requireAll": true,
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+		},
+		{
+			"category": "pickpocketing",
+			"kind": "npc",
+			"name": "Thingol",
+			"options": [
+				"pickpocket"
+			],
+			"requiredCards": [
+				"Coins",
+				"Coin pouch"
+			],
+			"requireAll": true,
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+		},
+		{
+			"category": "pickpocketing",
+			"kind": "npc",
+			"name": "Turgon",
+			"options": [
+				"pickpocket"
+			],
+			"requiredCards": [
+				"Coins",
+				"Coin pouch"
+			],
+			"requireAll": true,
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+		},
+		{
+			"category": "pickpocketing",
+			"kind": "npc",
+			"name": "Vaire",
+			"options": [
+				"pickpocket"
+			],
+			"requiredCards": [
+				"Coins",
+				"Coin pouch"
+			],
+			"requireAll": true,
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+		},
+		{
+			"category": "pickpocketing",
+			"kind": "npc",
+			"name": "Vyrewatch Sentinel",
+			"options": [
+				"pickpocket"
+			],
+			"requiredCards": [
+				"Coins",
+				"Coin pouch"
+			],
+			"requireAll": true,
+			"notes": "Actually yields Blood shard/coins; simplified to Coins+pouch."
+		},
+		{
+			"category": "pickpocketing",
+			"kind": "npc",
+			"name": "Warrior woman",
+			"options": [
+				"pickpocket"
+			],
+			"requiredCards": [
+				"Coins",
+				"Coin pouch"
+			],
+			"requireAll": true,
+			"notes": ""
+		},
+		{
+			"category": "pickpocketing",
+			"kind": "npc",
+			"name": "Woman",
+			"options": [
+				"pickpocket"
+			],
+			"requiredCards": [
+				"Coins",
+				"Coin pouch"
+			],
+			"requireAll": true,
+			"notes": ""
+		},
+		{
+			"category": "woodcutting",
+			"kind": "object",
+			"name": "Dead tree",
+			"options": [
+				"chop down"
+			],
+			"requiredCards": [
+				"Logs"
+			],
+			"requireAll": true,
+			"notes": "Regular logs. Draynor/desert dead trees."
+		},
+		{
+			"category": "woodcutting",
+			"kind": "object",
+			"name": "Evergreen tree",
+			"options": [
+				"chop down"
+			],
+			"requiredCards": [
+				"Logs"
+			],
+			"requireAll": true,
+			"notes": "Regular logs."
+		},
+		{
+			"category": "woodcutting",
+			"kind": "object",
+			"name": "Hollow tree",
+			"options": [
+				"chop down"
+			],
+			"requiredCards": [
+				"Bark"
+			],
+			"requireAll": true,
+			"notes": "Yields Bark (not logs). Option may be 'Chop-up'/'Chop down'; verify. Located Haunted Woods / Isafdar."
+		},
+		{
+			"category": "woodcutting",
+			"kind": "object",
+			"name": "Magic tree",
+			"options": [
+				"chop down"
+			],
+			"requiredCards": [
+				"Magic logs"
+			],
+			"requireAll": true,
+			"notes": ""
+		},
+		{
+			"category": "woodcutting",
+			"kind": "object",
+			"name": "Mahogany",
+			"options": [
+				"chop down"
+			],
+			"requiredCards": [
+				"Mahogany logs"
+			],
+			"requireAll": true,
+			"notes": "Verify in-game object name suffix ('X' vs 'X tree'); both variants included as separate nodes."
+		},
+		{
+			"category": "woodcutting",
+			"kind": "object",
+			"name": "Mahogany tree",
+			"options": [
+				"chop down"
+			],
+			"requiredCards": [
+				"Mahogany logs"
+			],
+			"requireAll": true,
+			"notes": "Verify in-game object name suffix ('X' vs 'X tree'); both variants included as separate nodes."
+		},
+		{
+			"category": "woodcutting",
+			"kind": "object",
+			"name": "Maple tree",
+			"options": [
+				"chop down"
+			],
+			"requiredCards": [
+				"Maple logs"
+			],
+			"requireAll": true,
+			"notes": ""
+		},
+		{
+			"category": "woodcutting",
+			"kind": "object",
+			"name": "Oak",
+			"options": [
+				"chop down"
+			],
+			"requiredCards": [
+				"Oak logs"
+			],
+			"requireAll": true,
+			"notes": "Verify in-game object name suffix ('X' vs 'X tree'); both variants included as separate nodes."
+		},
+		{
+			"category": "woodcutting",
+			"kind": "object",
+			"name": "Oak tree",
+			"options": [
+				"chop down"
+			],
+			"requiredCards": [
+				"Oak logs"
+			],
+			"requireAll": true,
+			"notes": "Verify in-game object name suffix ('X' vs 'X tree'); both variants included as separate nodes."
+		},
+		{
+			"category": "woodcutting",
+			"kind": "object",
+			"name": "Redwood",
+			"options": [
+				"chop down"
+			],
+			"requiredCards": [
+				"Redwood logs"
+			],
+			"requireAll": true,
+			"notes": "Verify in-game object name suffix ('X' vs 'X tree'); both variants included as separate nodes."
+		},
+		{
+			"category": "woodcutting",
+			"kind": "object",
+			"name": "Redwood tree",
+			"options": [
+				"chop down"
+			],
+			"requiredCards": [
+				"Redwood logs"
+			],
+			"requireAll": true,
+			"notes": "Verify in-game object name suffix ('X' vs 'X tree'); both variants included as separate nodes."
+		},
+		{
+			"category": "woodcutting",
+			"kind": "object",
+			"name": "Teak",
+			"options": [
+				"chop down"
+			],
+			"requiredCards": [
+				"Teak logs"
+			],
+			"requireAll": true,
+			"notes": "Verify in-game object name suffix ('X' vs 'X tree'); both variants included as separate nodes."
+		},
+		{
+			"category": "woodcutting",
+			"kind": "object",
+			"name": "Teak tree",
+			"options": [
+				"chop down"
+			],
+			"requiredCards": [
+				"Teak logs"
+			],
+			"requireAll": true,
+			"notes": "Verify in-game object name suffix ('X' vs 'X tree'); both variants included as separate nodes."
+		},
+		{
+			"category": "woodcutting",
+			"kind": "object",
+			"name": "Tree",
+			"options": [
+				"chop down"
+			],
+			"requiredCards": [
+				"Logs"
+			],
+			"requireAll": true,
+			"notes": "Standard tree."
+		},
+		{
+			"category": "woodcutting",
+			"kind": "object",
+			"name": "Willow",
+			"options": [
+				"chop down"
+			],
+			"requiredCards": [
+				"Willow logs"
+			],
+			"requireAll": true,
+			"notes": "Verify in-game object name suffix ('X' vs 'X tree'); both variants included as separate nodes."
+		},
+		{
+			"category": "woodcutting",
+			"kind": "object",
+			"name": "Willow tree",
+			"options": [
+				"chop down"
+			],
+			"requiredCards": [
+				"Willow logs"
+			],
+			"requireAll": true,
+			"notes": "Verify in-game object name suffix ('X' vs 'X tree'); both variants included as separate nodes."
+		},
+		{
+			"category": "woodcutting",
+			"kind": "object",
+			"name": "Yew",
+			"options": [
+				"chop down"
+			],
+			"requiredCards": [
+				"Yew logs"
+			],
+			"requireAll": true,
+			"notes": "Verify in-game object name suffix ('X' vs 'X tree'); both variants included as separate nodes."
+		},
+		{
+			"category": "woodcutting",
+			"kind": "object",
+			"name": "Yew tree",
+			"options": [
+				"chop down"
+			],
+			"requiredCards": [
+				"Yew logs"
+			],
+			"requireAll": true,
+			"notes": "Verify in-game object name suffix ('X' vs 'X tree'); both variants included as separate nodes."
 		}
+	],
+	"masterFarmerSeedCards": [
+		"Asgarnian seed",
+		"Avantoe seed",
+		"Barley seed",
+		"Belladonna seed",
+		"Cabbage seed",
+		"Cactus seed",
+		"Cadantine seed",
+		"Cadavaberry seed",
+		"Dwarf weed seed",
+		"Dwellberry seed",
+		"Guam seed",
+		"Hammerstone seed",
+		"Harralander seed",
+		"Irit seed",
+		"Jangerberry seed",
+		"Jute seed",
+		"Krandorian seed",
+		"Kwuarm seed",
+		"Lantadyme seed",
+		"Limpwurt seed",
+		"Marigold seed",
+		"Marrentill seed",
+		"Mushroom spore",
+		"Nasturtium seed",
+		"Onion seed",
+		"Poison ivy seed",
+		"Potato cactus seed",
+		"Potato seed",
+		"Ranarr seed",
+		"Redberry seed",
+		"Rosemary seed",
+		"Seaweed spore",
+		"Snapdragon seed",
+		"Snape grass seed",
+		"Strawberry seed",
+		"Sweetcorn seed",
+		"Tarromin seed",
+		"Toadflax seed",
+		"Tomato seed",
+		"Torstol seed",
+		"Watermelon seed",
+		"Whiteberry seed",
+		"Wildblood seed",
+		"Woad seed",
+		"Yanillian seed"
 	]
 }

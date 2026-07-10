@@ -109,3 +109,26 @@ Potato -> Baked potato, Sweetcorn -> Cooked sweetcorn).
 3. Fishing option strings for Barbarian (`Use-rod`) and Karambwan (`Fish`).
 4. Hollow tree option string (`Chop-up` vs `Chop down`).
 5. Comfort with fishing `requireAll=false` union semantics (owning any yielded fish unlocks).
+
+---
+
+## Addendum (2026-07-10, second research pass)
+
+Owner decisions applied: fishing became a three-way config mode (Off/Any of/
+Require ALL); Master Farmer became a dedicated mode (Off/Coins+Pouch/Insanity).
+
+**Master Farmer seed table (Insanity mode)**: all 45 seeds on his wiki drop
+table exist as cards with exact names; shipped as `masterFarmerSeedCards`.
+
+**Minerals added (8)**: Ash pile -> Volcanic ash; Basalt/Efh/Te/Urt salt rocks
+-> respective salt cards (Weiss Salt Mine); Daeyalt rocks -> Daeyalt ore
+(Meiyerditch quest mine); "Daeyalt Essence" rock -> Daeyalt shard (Darkmeyer;
+object name confirmed via wiki infobox); Saltpetre -> Saltpetre (Hosidius,
+option is **Dig**, not Mine).
+
+**Still excluded**: Volcanic Mine Calcite/Pyrophosphite — the minable object
+is boulder stages with ambiguous names and mixed yields; revisit if wanted.
+
+**Elves added (53)**: 4 Lletya (Arvel, Goreu, Kelyn, Mawrth) + 49 Prifddinas
+named elves from the wiki's pickpocketable list. Crystal shard has NO card,
+so they use the Coins+Coin pouch convention like other pickpocket targets.

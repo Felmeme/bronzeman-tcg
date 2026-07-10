@@ -42,15 +42,20 @@ only, no automation).
   - `GAME_OBJECT_FIRST..FIFTH_OPTION`, NPC options, and
     `WIDGET_TARGET_ON_GAME_OBJECT` are checked against `ResourceNodeCatalog`
     (resources/resource_nodes.json, 89 hand-curated rules): trees need their
-    logs card, rocks their ore, fishing spots any fish they can yield
-    (locations are indistinguishable, so `requireAll=false` union per menu
-    option), pickpocketing needs Coins+Coin pouch (`requireAll=true`), and
-    using raw food on a fire/range needs the cooked card (parsed from the
-    "item -> object" menu target). Five per-skill config toggles in a
-    "Resource nodes" section; unknown categories restrict by default so new
-    data is loud, not inert. See docs/resource_nodes_report.md for coverage,
-    exclusions (no card exists: Arctic pine, Blurite ore, ...), and items
-    deliberately omitted pending owner decisions.
+    logs card, rocks their ore, fishing spots fish they can yield,
+    pickpocketing needs Coins+Coin pouch (`requireAll=true`), and using raw
+    food on a fire/range needs the cooked card (parsed from the
+    "item -> object" menu target). Config in a "Resource nodes" section:
+    toggles for woodcutting/mining/pickpocketing/cooking, a three-way
+    fishing mode (Off / Any of / Require ALL — spot locations are
+    indistinguishable so rules hold the union per menu option and the mode
+    overrides requireAll), and a dedicated Master Farmer mode (Off /
+    Coins+Pouch / Insanity = all 45 seed cards from
+    `masterFarmerSeedCards`, code path in the plugin, not a generic node).
+    Unknown categories restrict by default so new data is loud, not inert.
+    See docs/resource_nodes_report.md (+ addendum) for coverage, exclusions
+    (no card: Arctic pine, Blurite ore, Crystal shard...; ambiguous object:
+    Volcanic Mine), and deliberate omissions.
 
 ## Current status
 - ✅ Compiles green (`./gradlew build`, Gradle 8.10 wrapper, Temurin JDK 11).
