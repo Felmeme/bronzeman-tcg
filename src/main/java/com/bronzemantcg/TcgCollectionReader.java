@@ -77,14 +77,14 @@ public class TcgCollectionReader
 			}
 
 			TcgStateDto dto = gson.fromJson(json, TcgStateDto.class);
-			if (dto == null || dto.collectionState == null || dto.collectionState.instances == null)
+			if (dto == null || dto.cardInstances == null)
 			{
 				cachedOwnedLowerCaseNames = Collections.emptySet();
 				return;
 			}
 
 			Set<String> names = new HashSet<>();
-			for (TcgStateDto.OwnedCardInstanceDto instance : dto.collectionState.instances)
+			for (TcgStateDto.OwnedCardInstanceDto instance : dto.cardInstances)
 			{
 				if (instance != null && instance.cardName != null && !instance.cardName.trim().isEmpty())
 				{
