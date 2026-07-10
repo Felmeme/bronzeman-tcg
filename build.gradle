@@ -1,0 +1,41 @@
+plugins {
+	id 'java'
+}
+
+repositories {
+	maven {
+		url = 'https://repo.runelite.net'
+		content {
+			includeGroupByRegex("net\\.runelite.*")
+		}
+	}
+	mavenCentral()
+}
+
+def runeLiteVersion = 'latest.release'
+
+dependencies {
+	compileOnly group: 'net.runelite', name: 'client', version: runeLiteVersion
+
+	compileOnly 'org.projectlombok:lombok:1.18.30'
+	annotationProcessor 'org.projectlombok:lombok:1.18.30'
+
+	testImplementation group: 'net.runelite', name: 'client', version: runeLiteVersion
+	testImplementation group: 'net.runelite', name: 'jshell', version: runeLiteVersion
+}
+
+group = 'com.bronzemantcg'
+version = '0.1.0'
+
+tasks.withType(JavaCompile).configureEach {
+	options.encoding = 'UTF-8'
+	options.release.set(11)
+}
+
+tasks.register('run', JavaExec) {
+	classpath = sourceSets.test.runtimeClasspath
+	mainClass = 'com.bronzemantcg.BronzemanTcgPluginTest'
+
+	jvmArgs "-ea"
+	args "--developer-mode", "--debug"
+}
