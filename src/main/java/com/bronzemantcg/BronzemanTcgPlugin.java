@@ -376,8 +376,9 @@ public class BronzemanTcgPlugin extends Plugin
 		}
 
 		// Production interfaces outside the groups matched above (e.g. furnace smelting):
-		// a make-verb click still names its product in the menu target.
-		if (MAKE_VERBS.contains(optionLower))
+		// a make-verb click still names its product in the menu target. Prefix match so
+		// quantity variants ("Smelt-1", "Make-5", "Cook-all") are covered too.
+		if (isMakeVerb(optionLower))
 		{
 			String product = Text.removeTags(event.getMenuTarget()).trim();
 			if (!product.isEmpty())
@@ -526,6 +527,18 @@ public class BronzemanTcgPlugin extends Plugin
 		{
 			checkRecipe(event, RecipeCatalog.KIND_ITEM_ON_ITEM, destination, source);
 		}
+	}
+
+	private static boolean isMakeVerb(String optionLower)
+	{
+		for (String verb : MAKE_VERBS)
+		{
+			if (optionLower.startsWith(verb))
+			{
+				return true;
+			}
+		}
+		return false;
 	}
 
 	private boolean isSelectedWidgetSpell()
