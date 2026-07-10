@@ -1,7 +1,9 @@
 package com.bronzemantcg;
 
 import com.google.inject.Provides;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Locale;
 import java.util.Set;
 import javax.inject.Inject;
@@ -23,8 +25,8 @@ import net.runelite.client.util.Text;
 
 /**
  * Bronzeman-style restriction driven by the OSRS TCG plugin's collection:
- * you may only attack NPCs, and loot ground items, whose card you have
- * already pulled.
+ * you may only attack NPCs, loot ground items, and gather from resource
+ * nodes whose card(s) you have already pulled.
  *
  * Interop is read-only via osrs-tcg's persisted ConfigManager state
  * (see {@link TcgCollectionReader}); there is no compile-time dependency,
@@ -33,13 +35,14 @@ import net.runelite.client.util.Text;
 @Slf4j
 @PluginDescriptor(
 	name = "Bronzeman TCG",
-	description = "Restricts attacking NPCs and looting items until you've collected their card in the OSRS TCG plugin",
+	description = "Restricts attacking NPCs, looting items and gathering resources until you've collected their card in the OSRS TCG plugin",
 	tags = {"bronzeman", "tcg", "restriction", "ironman", "challenge"}
 )
 public class BronzemanTcgPlugin extends Plugin
 {
 	private static final String ATTACK_OPTION = "attack";
 	private static final String TAKE_OPTION = "take";
+	private static final String USED_ON_SEPARATOR = " -> ";
 	private static final long CHAT_THROTTLE_MS = 1_200L;
 
 	@Inject
@@ -60,14 +63,17 @@ public class BronzemanTcgPlugin extends Plugin
 	@Inject
 	private TrackedItemCatalog itemCatalog;
 
+	@Inject
+	private ResourceNodeCatalog nodeCatalog;
+
 	private long lastBlockMessageMs;
 
 	@Override
 	protected void startUp()
 	{
 		collectionReader.invalidate();
-		log.info("Bronzeman TCG started. Tracking {} TCG-linked NPCs and {} items.",
-			monsterCatalog.size(), itemCatalog.size());
+		log.info("Bronzeman TCG started. Tracking {} TCG-linked NPCs, {} items, {} resource node rules.",
+			monsterCatalog.size(), itemCatalog.size(), nodeCatalog.size());
 	}
 
 	@Override
@@ -92,40 +98,80 @@ public class BronzemanTcgPlugin extends Plugin
 			handleNpcInteraction(event, npc);
 			return;
 		}
-		handleGroundItemInteraction(event);
+
+		MenuAction action = event.getMenuAction();
+		if (action == null)
+		{
+			return;
+		}
+		switch (action)
+		{
+			case GROUND_ITEM_FIRST_OPTION:
+			case GROUND_ITEM_SECOND_OPTION:
+			case GROUND_ITEM_THIRD_OPTION:
+			case GROUND_ITEM_FOURTH_OPTION:
+			case GROUND_ITEM_FIFTH_OPTION:
+			case WIDGET_TARGET_ON_GROUND_ITEM:
+				handleGroundItemInteraction(event, action);
+				return;
+			case GAME_OBJECT_FIRST_OPTION:
+			case GAME_OBJECT_SECOND_OPTION:
+			case GAME_OBJECT_THIRD_OPTION:
+			case GAME_OBJECT_FOURTH_OPTION:
+			case GAME_OBJECT_FIFTH_OPTION:
+				handleGameObjectInteraction(event);
+				return;
+			case WIDGET_TARGET_ON_GAME_OBJECT:
+				handleItemOnGameObject(event);
+				return;
+			default:
+		}
 	}
 
 	private void handleNpcInteraction(MenuOptionClicked event, NPC npc)
 	{
-		if (!isRestrictedNpcInteraction(event))
-		{
-			return;
-		}
-
 		String npcName = resolveNpcName(npc);
 		if (npcName == null || npcName.isEmpty())
 		{
 			return;
 		}
 
+		// Attack / spell-or-item-on-NPC restriction against the monster catalog.
 		// Not part of the TCG catalog at all -> never restrict (it could never be unlocked).
 		// Owning any variant card (normal or foil) -> allowed. Cards with wiki-style
 		// disambiguation suffixes ("Soldier (Yanille)") all unlock the plain NPC name,
 		// since that's the only name RuneLite exposes at attack time.
-		if (isUnlocked(monsterCatalog, npcName))
+		if (isRestrictedNpcInteraction(event) && !isUnlocked(monsterCatalog, npcName))
 		{
+			event.consume();
+			sendBlockedMessage(npcName);
 			return;
 		}
 
-		event.consume();
-		sendBlockedMessage(npcName);
-	}
-
-	private void handleGroundItemInteraction(MenuOptionClicked event)
-	{
-		if (!config.restrictLoot() || !isRestrictedGroundItemInteraction(event))
+		// Resource-node rules on NPCs: pickpocketing, fishing spot options.
+		String option = event.getMenuOption();
+		if (option == null)
 		{
 			return;
+		}
+		checkNodeRule(event, ResourceNodeCatalog.KIND_NPC, npcName, Text.removeTags(option));
+	}
+
+	private void handleGroundItemInteraction(MenuOptionClicked event, MenuAction action)
+	{
+		if (!config.restrictLoot())
+		{
+			return;
+		}
+		if (action != MenuAction.WIDGET_TARGET_ON_GROUND_ITEM)
+		{
+			// Telegrab (widget-on-ground-item) is always loot; plain clicks only for "Take".
+			String option = event.getMenuOption();
+			if (option == null
+				|| !TAKE_OPTION.equals(Text.removeTags(option).trim().toLowerCase(Locale.ROOT)))
+			{
+				return;
+			}
 		}
 
 		ItemComposition composition = itemManager.getItemComposition(event.getId());
@@ -142,6 +188,106 @@ public class BronzemanTcgPlugin extends Plugin
 
 		event.consume();
 		sendBlockedMessage(itemName);
+	}
+
+	private void handleGameObjectInteraction(MenuOptionClicked event)
+	{
+		String option = event.getMenuOption();
+		if (option == null)
+		{
+			return;
+		}
+		String objectName = Text.removeTags(event.getMenuTarget()).trim();
+		checkNodeRule(event, ResourceNodeCatalog.KIND_OBJECT, objectName, Text.removeTags(option));
+	}
+
+	private void handleItemOnGameObject(MenuOptionClicked event)
+	{
+		// Menu target reads "<used item> -> <target object>", e.g. "Raw shrimps -> Fire".
+		String target = Text.removeTags(event.getMenuTarget());
+		int separator = target.lastIndexOf(USED_ON_SEPARATOR);
+		if (separator < 0)
+		{
+			return;
+		}
+		String usedItemName = target.substring(0, separator).trim();
+		String objectName = target.substring(separator + USED_ON_SEPARATOR.length()).trim();
+		checkNodeRule(event, ResourceNodeCatalog.KIND_ITEM_ON_OBJECT, usedItemName, objectName);
+	}
+
+	private void checkNodeRule(MenuOptionClicked event, String kind, String name, String option)
+	{
+		ResourceNodeCatalog.Rule rule = nodeCatalog.find(kind, name, option);
+		if (rule == null || !isCategoryRestricted(rule.category))
+		{
+			return;
+		}
+
+		List<String> missing = missingCards(rule);
+		boolean satisfied = rule.requireAll
+			? missing.isEmpty()
+			: missing.size() < rule.requiredCards.size();
+		if (satisfied)
+		{
+			return;
+		}
+
+		event.consume();
+		sendBlockedCardsMessage(missing);
+	}
+
+	private boolean isCategoryRestricted(String category)
+	{
+		switch (category)
+		{
+			case "woodcutting":
+				return config.restrictWoodcutting();
+			case "mining":
+				return config.restrictMining();
+			case "fishing":
+				return config.restrictFishing();
+			case "pickpocketing":
+				return config.restrictPickpocketing();
+			case "cooking":
+				return config.restrictCooking();
+			default:
+				// Data shipped a category this build has no toggle for: restrict, so new
+				// data stays challenge-mode-loud rather than silently inert.
+				return true;
+		}
+	}
+
+	private List<String> missingCards(ResourceNodeCatalog.Rule rule)
+	{
+		Set<String> owned = collectionReader.getOwnedCardNamesLowerCase();
+		List<String> missing = new ArrayList<>();
+		for (String card : rule.requiredCards)
+		{
+			if (!owned.contains(card.trim().toLowerCase(Locale.ROOT)))
+			{
+				missing.add(card);
+			}
+		}
+		return missing;
+	}
+
+	private boolean isUnlocked(CardNameCatalog catalog, String entityName)
+	{
+		Set<String> variantCards = catalog.getCardVariantsLowerCase(entityName);
+		if (variantCards.isEmpty())
+		{
+			// Untracked -> never restricted (it could never be unlocked).
+			return true;
+		}
+		Set<String> owned = collectionReader.getOwnedCardNamesLowerCase();
+		for (String card : variantCards)
+		{
+			if (owned.contains(card))
+			{
+				return true;
+			}
+		}
+		return false;
 	}
 
 	private boolean isRestrictedNpcInteraction(MenuOptionClicked event)
@@ -174,53 +320,6 @@ public class BronzemanTcgPlugin extends Plugin
 			default:
 				return false;
 		}
-	}
-
-	private boolean isRestrictedGroundItemInteraction(MenuOptionClicked event)
-	{
-		MenuAction action = event.getMenuAction();
-		if (action == null)
-		{
-			return false;
-		}
-
-		switch (action)
-		{
-			case GROUND_ITEM_FIRST_OPTION:
-			case GROUND_ITEM_SECOND_OPTION:
-			case GROUND_ITEM_THIRD_OPTION:
-			case GROUND_ITEM_FOURTH_OPTION:
-			case GROUND_ITEM_FIFTH_OPTION:
-			{
-				String option = event.getMenuOption();
-				return option != null
-					&& TAKE_OPTION.equals(Text.removeTags(option).trim().toLowerCase(Locale.ROOT));
-			}
-			case WIDGET_TARGET_ON_GROUND_ITEM:
-				// Telegrab, or item used on a ground item.
-				return true;
-			default:
-				return false;
-		}
-	}
-
-	private boolean isUnlocked(CardNameCatalog catalog, String entityName)
-	{
-		Set<String> variantCards = catalog.getCardVariantsLowerCase(entityName);
-		if (variantCards.isEmpty())
-		{
-			// Untracked -> never restricted (it could never be unlocked).
-			return true;
-		}
-		Set<String> owned = collectionReader.getOwnedCardNamesLowerCase();
-		for (String card : variantCards)
-		{
-			if (owned.contains(card))
-			{
-				return true;
-			}
-		}
-		return false;
 	}
 
 	private boolean isLootExempt(String itemName)
@@ -261,6 +360,30 @@ public class BronzemanTcgPlugin extends Plugin
 		client.addChatMessage(ChatMessageType.GAMEMESSAGE, "",
 			String.format(Locale.US,
 				"[Bronzeman TCG] You haven't collected the %s card yet - open more packs!", entityName),
+			null);
+	}
+
+	private void sendBlockedCardsMessage(List<String> missingCards)
+	{
+		if (missingCards.size() == 1)
+		{
+			sendBlockedMessage(missingCards.get(0));
+			return;
+		}
+		if (!config.chatFeedback())
+		{
+			return;
+		}
+		long now = System.currentTimeMillis();
+		if (now - lastBlockMessageMs < CHAT_THROTTLE_MS)
+		{
+			return;
+		}
+		lastBlockMessageMs = now;
+		client.addChatMessage(ChatMessageType.GAMEMESSAGE, "",
+			String.format(Locale.US,
+				"[Bronzeman TCG] You haven't collected these cards yet: %s - open more packs!",
+				String.join(", ", missingCards)),
 			null);
 	}
 

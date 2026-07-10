@@ -3,6 +3,7 @@ package com.bronzemantcg;
 import net.runelite.client.config.Config;
 import net.runelite.client.config.ConfigGroup;
 import net.runelite.client.config.ConfigItem;
+import net.runelite.client.config.ConfigSection;
 
 @ConfigGroup(BronzemanTcgConfig.GROUP)
 public interface BronzemanTcgConfig extends Config
@@ -64,6 +65,74 @@ public interface BronzemanTcgConfig extends Config
 		position = 4
 	)
 	default boolean chatFeedback()
+	{
+		return true;
+	}
+
+	@ConfigSection(
+		name = "Resource nodes",
+		description = "Block gathering from skill resource nodes until the card of the item they yield is collected.",
+		position = 5
+	)
+	String resourceNodesSection = "resourceNodesSection";
+
+	@ConfigItem(
+		keyName = "restrictWoodcutting",
+		name = "Restrict woodcutting",
+		description = "Block chopping trees until the respective logs card is collected (e.g. Oak tree needs Oak logs).",
+		section = resourceNodesSection,
+		position = 0
+	)
+	default boolean restrictWoodcutting()
+	{
+		return true;
+	}
+
+	@ConfigItem(
+		keyName = "restrictMining",
+		name = "Restrict mining",
+		description = "Block mining rocks until the respective ore card is collected (e.g. Copper rocks need Copper ore).",
+		section = resourceNodesSection,
+		position = 1
+	)
+	default boolean restrictMining()
+	{
+		return true;
+	}
+
+	@ConfigItem(
+		keyName = "restrictFishing",
+		name = "Restrict fishing",
+		description = "Block fishing spots until a card of a fish they yield is collected "
+			+ "(spot locations can't be told apart, so owning any fish that spot type can give unlocks it).",
+		section = resourceNodesSection,
+		position = 2
+	)
+	default boolean restrictFishing()
+	{
+		return true;
+	}
+
+	@ConfigItem(
+		keyName = "restrictPickpocketing",
+		name = "Restrict pickpocketing",
+		description = "Block pickpocketing NPCs until the cards of their loot are collected (e.g. Coins and coin pouch).",
+		section = resourceNodesSection,
+		position = 3
+	)
+	default boolean restrictPickpocketing()
+	{
+		return true;
+	}
+
+	@ConfigItem(
+		keyName = "restrictCooking",
+		name = "Restrict cooking",
+		description = "Block using raw food on fires/ranges until the cooked version's card is collected.",
+		section = resourceNodesSection,
+		position = 4
+	)
+	default boolean restrictCooking()
 	{
 		return true;
 	}

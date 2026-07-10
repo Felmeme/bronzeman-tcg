@@ -39,6 +39,18 @@ only, no automation).
     universal drops lootable
   - NPC name via `getTransformedComposition()` when present, `Text.removeTags`,
     exact case-insensitive match.
+  - `GAME_OBJECT_FIRST..FIFTH_OPTION`, NPC options, and
+    `WIDGET_TARGET_ON_GAME_OBJECT` are checked against `ResourceNodeCatalog`
+    (resources/resource_nodes.json, 89 hand-curated rules): trees need their
+    logs card, rocks their ore, fishing spots any fish they can yield
+    (locations are indistinguishable, so `requireAll=false` union per menu
+    option), pickpocketing needs Coins+Coin pouch (`requireAll=true`), and
+    using raw food on a fire/range needs the cooked card (parsed from the
+    "item -> object" menu target). Five per-skill config toggles in a
+    "Resource nodes" section; unknown categories restrict by default so new
+    data is loud, not inert. See docs/resource_nodes_report.md for coverage,
+    exclusions (no card exists: Arctic pine, Blurite ore, ...), and items
+    deliberately omitted pending owner decisions.
 
 ## Current status
 - ✅ Compiles green (`./gradlew build`, Gradle 8.10 wrapper, Temurin JDK 11).
@@ -77,9 +89,20 @@ only, no automation).
    (default "Coins": every common drop has a card, including Coins and Bones,
    so pure blocking would brick the early game). Needs its manual test pass:
    drop-blocked item Take, telegrab, exempt list entry, `::tcg-give` unlock.
-3. Overlay/UI: visual indicator on locked NPCs; maybe a side panel of
+3. **Resource nodes**: implemented (2026-07-10) — woodcutting/mining/fishing/
+   pickpocketing/cooking gated behind yielded-item cards, per-skill toggles.
+   Needs its manual test pass; specific things the data audit could not
+   verify without a client (fix resource_nodes.json + regenerate nothing —
+   it's hand-curated, just edit it):
+   - tree object names: both "Oak" and "Oak tree" style nodes shipped —
+     prune whichever doesn't match after testing
+   - ore rocks assumed per-ore names ("Iron rocks"); if the client shows
+     generic "Rocks", the 15 ore nodes need object-ID work instead
+   - option strings to confirm in-game: "Use-rod" (barbarian fishing),
+     "Fish" (karambwan), "Small Net" (minnows)
+4. Overlay/UI: visual indicator on locked NPCs; maybe a side panel of
    nearest unlocks.
-4. Hub submission.
+5. Hub submission.
 
 ## Maintenance contracts with upstream osrs-tcg
 - If its `Card.json` changes: regenerate both snapshot resources with
