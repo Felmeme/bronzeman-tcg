@@ -101,16 +101,19 @@ public interface BronzemanTcgConfig extends Config
 	}
 
 	@ConfigItem(
-		keyName = "restrictFishing",
+		keyName = "fishingMode",
 		name = "Restrict fishing",
-		description = "Block fishing spots until a card of a fish they yield is collected "
-			+ "(spot locations can't be told apart, so owning any fish that spot type can give unlocks it).",
+		description = "Fishing spots share one name everywhere, so each spot type lists every fish it can "
+			+ "yield at any location. 'Any of': owning any one of those fish unlocks that spot type "
+			+ "(e.g. Raw tuna unlocks all Harpoon spots, shark spots included). "
+			+ "'Require ALL': the spot type stays locked until you own every fish it can yield "
+			+ "(e.g. Harpoon needs Raw tuna, Raw swordfish AND Raw shark). 'Off': no fishing restriction.",
 		section = resourceNodesSection,
 		position = 2
 	)
-	default boolean restrictFishing()
+	default FishingRestrictionMode fishingMode()
 	{
-		return true;
+		return FishingRestrictionMode.ANY_OF;
 	}
 
 	@ConfigItem(
@@ -126,11 +129,26 @@ public interface BronzemanTcgConfig extends Config
 	}
 
 	@ConfigItem(
+		keyName = "masterFarmerMode",
+		name = "Master Farmer",
+		description = "Master Farmers give seeds, not coin pouches, so they get their own dial. "
+			+ "'Coins+Pouch': same simple rule as other pickpocket targets. "
+			+ "'Insanity': locked until you own EVERY seed card on his drop table. "
+			+ "'Off': never restricted. Independent of the pickpocketing toggle above.",
+		section = resourceNodesSection,
+		position = 4
+	)
+	default MasterFarmerMode masterFarmerMode()
+	{
+		return MasterFarmerMode.COINS_POUCH;
+	}
+
+	@ConfigItem(
 		keyName = "restrictCooking",
 		name = "Restrict cooking",
 		description = "Block using raw food on fires/ranges until the cooked version's card is collected.",
 		section = resourceNodesSection,
-		position = 4
+		position = 5
 	)
 	default boolean restrictCooking()
 	{

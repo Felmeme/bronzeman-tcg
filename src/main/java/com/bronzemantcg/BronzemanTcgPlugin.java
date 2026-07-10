@@ -42,8 +42,11 @@ public class BronzemanTcgPlugin extends Plugin
 {
 	private static final String ATTACK_OPTION = "attack";
 	private static final String TAKE_OPTION = "take";
+	private static final String PICKPOCKET_OPTION = "pickpocket";
+	private static final String MASTER_FARMER_NAME = "master farmer";
 	private static final String USED_ON_SEPARATOR = " -> ";
 	private static final long CHAT_THROTTLE_MS = 1_200L;
+	private static final int MAX_LISTED_MISSING_CARDS = 4;
 
 	@Inject
 	private Client client;
@@ -154,7 +157,18 @@ public class BronzemanTcgPlugin extends Plugin
 		{
 			return;
 		}
-		checkNodeRule(event, ResourceNodeCatalog.KIND_NPC, npcName, Text.removeTags(option));
+		String cleanOption = Text.removeTags(option).trim();
+
+		// Master Farmer has his own difficulty dial (he gives seeds, not coin pouches),
+		// independent of the generic pickpocketing toggle.
+		if (MASTER_FARMER_NAME.equals(npcName.toLowerCase(Locale.ROOT))
+			&& PICKPOCKET_OPTION.equals(cleanOption.toLowerCase(Locale.ROOT)))
+		{
+			checkMasterFarmer(event);
+			return;
+		}
+
+		checkNodeRule(event, ResourceNodeCatalog.KIND_NPC, npcName, cleanOption);
 	}
 
 	private void handleGroundItemInteraction(MenuOptionClicked event, MenuAction action)
@@ -215,16 +229,64 @@ public class BronzemanTcgPlugin extends Plugin
 		checkNodeRule(event, ResourceNodeCatalog.KIND_ITEM_ON_OBJECT, usedItemName, objectName);
 	}
 
+	private void checkMasterFarmer(MenuOptionClicked event)
+	{
+		MasterFarmerMode mode = config.masterFarmerMode();
+		List<String> required;
+		switch (mode)
+		{
+			case COINS_POUCH:
+				required = List.of("Coins", "Coin pouch");
+				break;
+			case INSANITY:
+				required = nodeCatalog.getMasterFarmerSeedCards();
+				break;
+			default:
+				return;
+		}
+		if (required.isEmpty())
+		{
+			// Insanity selected but the seed list is missing from the data file: leaving him
+			// pickpocketable would silently disable the mode, so fall back to Coins+Pouch.
+			required = List.of("Coins", "Coin pouch");
+		}
+
+		List<String> missing = missingCards(required);
+		if (missing.isEmpty())
+		{
+			return;
+		}
+		event.consume();
+		sendBlockedCardsMessage(missing);
+	}
+
 	private void checkNodeRule(MenuOptionClicked event, String kind, String name, String option)
 	{
 		ResourceNodeCatalog.Rule rule = nodeCatalog.find(kind, name, option);
-		if (rule == null || !isCategoryRestricted(rule.category))
+		if (rule == null)
 		{
 			return;
 		}
 
-		List<String> missing = missingCards(rule);
-		boolean satisfied = rule.requireAll
+		boolean requireAll = rule.requireAll;
+		if ("fishing".equals(rule.category))
+		{
+			// Fishing has a three-way mode instead of a toggle; it overrides the rule's
+			// requireAll since the any/all choice is the player's difficulty dial.
+			FishingRestrictionMode mode = config.fishingMode();
+			if (mode == FishingRestrictionMode.OFF)
+			{
+				return;
+			}
+			requireAll = mode == FishingRestrictionMode.REQUIRE_ALL;
+		}
+		else if (!isCategoryRestricted(rule.category))
+		{
+			return;
+		}
+
+		List<String> missing = missingCards(rule.requiredCards);
+		boolean satisfied = requireAll
 			? missing.isEmpty()
 			: missing.size() < rule.requiredCards.size();
 		if (satisfied)
@@ -244,8 +306,6 @@ public class BronzemanTcgPlugin extends Plugin
 				return config.restrictWoodcutting();
 			case "mining":
 				return config.restrictMining();
-			case "fishing":
-				return config.restrictFishing();
 			case "pickpocketing":
 				return config.restrictPickpocketing();
 			case "cooking":
@@ -257,11 +317,11 @@ public class BronzemanTcgPlugin extends Plugin
 		}
 	}
 
-	private List<String> missingCards(ResourceNodeCatalog.Rule rule)
+	private List<String> missingCards(List<String> requiredCards)
 	{
 		Set<String> owned = collectionReader.getOwnedCardNamesLowerCase();
 		List<String> missing = new ArrayList<>();
-		for (String card : rule.requiredCards)
+		for (String card : requiredCards)
 		{
 			if (!owned.contains(card.trim().toLowerCase(Locale.ROOT)))
 			{
@@ -380,10 +440,17 @@ public class BronzemanTcgPlugin extends Plugin
 			return;
 		}
 		lastBlockMessageMs = now;
+		// Insanity mode can be missing dozens of seeds; keep the chat line readable.
+		String listed = String.join(", ", missingCards.subList(0,
+			Math.min(missingCards.size(), MAX_LISTED_MISSING_CARDS)));
+		if (missingCards.size() > MAX_LISTED_MISSING_CARDS)
+		{
+			listed += String.format(Locale.US, " and %d more",
+				missingCards.size() - MAX_LISTED_MISSING_CARDS);
+		}
 		client.addChatMessage(ChatMessageType.GAMEMESSAGE, "",
 			String.format(Locale.US,
-				"[Bronzeman TCG] You haven't collected these cards yet: %s - open more packs!",
-				String.join(", ", missingCards)),
+				"[Bronzeman TCG] You haven't collected these cards yet: %s - open more packs!", listed),
 			null);
 	}
 

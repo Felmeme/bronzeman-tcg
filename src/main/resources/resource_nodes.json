@@ -1,1324 +1,1310 @@
 {
-  "categories": [
-    "woodcutting",
-    "mining",
-    "fishing",
-    "pickpocketing",
-    "cooking"
-  ],
-  "nodes": [
-    {
-      "category": "woodcutting",
-      "kind": "object",
-      "name": "Dead tree",
-      "options": [
-        "chop down"
-      ],
-      "requiredCards": [
-        "Logs"
-      ],
-      "requireAll": true,
-      "notes": "Regular logs. Draynor/desert dead trees."
-    },
-    {
-      "category": "woodcutting",
-      "kind": "object",
-      "name": "Evergreen tree",
-      "options": [
-        "chop down"
-      ],
-      "requiredCards": [
-        "Logs"
-      ],
-      "requireAll": true,
-      "notes": "Regular logs."
-    },
-    {
-      "category": "woodcutting",
-      "kind": "object",
-      "name": "Hollow tree",
-      "options": [
-        "chop down"
-      ],
-      "requiredCards": [
-        "Bark"
-      ],
-      "requireAll": true,
-      "notes": "Yields Bark (not logs). Option may be 'Chop-up'/'Chop down'; verify. Located Haunted Woods / Isafdar."
-    },
-    {
-      "category": "woodcutting",
-      "kind": "object",
-      "name": "Magic tree",
-      "options": [
-        "chop down"
-      ],
-      "requiredCards": [
-        "Magic logs"
-      ],
-      "requireAll": true,
-      "notes": ""
-    },
-    {
-      "category": "woodcutting",
-      "kind": "object",
-      "name": "Mahogany",
-      "options": [
-        "chop down"
-      ],
-      "requiredCards": [
-        "Mahogany logs"
-      ],
-      "requireAll": true,
-      "notes": "Verify in-game object name suffix ('X' vs 'X tree'); both variants included as separate nodes."
-    },
-    {
-      "category": "woodcutting",
-      "kind": "object",
-      "name": "Mahogany tree",
-      "options": [
-        "chop down"
-      ],
-      "requiredCards": [
-        "Mahogany logs"
-      ],
-      "requireAll": true,
-      "notes": "Verify in-game object name suffix ('X' vs 'X tree'); both variants included as separate nodes."
-    },
-    {
-      "category": "woodcutting",
-      "kind": "object",
-      "name": "Maple tree",
-      "options": [
-        "chop down"
-      ],
-      "requiredCards": [
-        "Maple logs"
-      ],
-      "requireAll": true,
-      "notes": ""
-    },
-    {
-      "category": "woodcutting",
-      "kind": "object",
-      "name": "Oak",
-      "options": [
-        "chop down"
-      ],
-      "requiredCards": [
-        "Oak logs"
-      ],
-      "requireAll": true,
-      "notes": "Verify in-game object name suffix ('X' vs 'X tree'); both variants included as separate nodes."
-    },
-    {
-      "category": "woodcutting",
-      "kind": "object",
-      "name": "Oak tree",
-      "options": [
-        "chop down"
-      ],
-      "requiredCards": [
-        "Oak logs"
-      ],
-      "requireAll": true,
-      "notes": "Verify in-game object name suffix ('X' vs 'X tree'); both variants included as separate nodes."
-    },
-    {
-      "category": "woodcutting",
-      "kind": "object",
-      "name": "Redwood",
-      "options": [
-        "chop down"
-      ],
-      "requiredCards": [
-        "Redwood logs"
-      ],
-      "requireAll": true,
-      "notes": "Verify in-game object name suffix ('X' vs 'X tree'); both variants included as separate nodes."
-    },
-    {
-      "category": "woodcutting",
-      "kind": "object",
-      "name": "Redwood tree",
-      "options": [
-        "chop down"
-      ],
-      "requiredCards": [
-        "Redwood logs"
-      ],
-      "requireAll": true,
-      "notes": "Verify in-game object name suffix ('X' vs 'X tree'); both variants included as separate nodes."
-    },
-    {
-      "category": "woodcutting",
-      "kind": "object",
-      "name": "Teak",
-      "options": [
-        "chop down"
-      ],
-      "requiredCards": [
-        "Teak logs"
-      ],
-      "requireAll": true,
-      "notes": "Verify in-game object name suffix ('X' vs 'X tree'); both variants included as separate nodes."
-    },
-    {
-      "category": "woodcutting",
-      "kind": "object",
-      "name": "Teak tree",
-      "options": [
-        "chop down"
-      ],
-      "requiredCards": [
-        "Teak logs"
-      ],
-      "requireAll": true,
-      "notes": "Verify in-game object name suffix ('X' vs 'X tree'); both variants included as separate nodes."
-    },
-    {
-      "category": "woodcutting",
-      "kind": "object",
-      "name": "Tree",
-      "options": [
-        "chop down"
-      ],
-      "requiredCards": [
-        "Logs"
-      ],
-      "requireAll": true,
-      "notes": "Standard tree."
-    },
-    {
-      "category": "woodcutting",
-      "kind": "object",
-      "name": "Willow",
-      "options": [
-        "chop down"
-      ],
-      "requiredCards": [
-        "Willow logs"
-      ],
-      "requireAll": true,
-      "notes": "Verify in-game object name suffix ('X' vs 'X tree'); both variants included as separate nodes."
-    },
-    {
-      "category": "woodcutting",
-      "kind": "object",
-      "name": "Willow tree",
-      "options": [
-        "chop down"
-      ],
-      "requiredCards": [
-        "Willow logs"
-      ],
-      "requireAll": true,
-      "notes": "Verify in-game object name suffix ('X' vs 'X tree'); both variants included as separate nodes."
-    },
-    {
-      "category": "woodcutting",
-      "kind": "object",
-      "name": "Yew",
-      "options": [
-        "chop down"
-      ],
-      "requiredCards": [
-        "Yew logs"
-      ],
-      "requireAll": true,
-      "notes": "Verify in-game object name suffix ('X' vs 'X tree'); both variants included as separate nodes."
-    },
-    {
-      "category": "woodcutting",
-      "kind": "object",
-      "name": "Yew tree",
-      "options": [
-        "chop down"
-      ],
-      "requiredCards": [
-        "Yew logs"
-      ],
-      "requireAll": true,
-      "notes": "Verify in-game object name suffix ('X' vs 'X tree'); both variants included as separate nodes."
-    },
-    {
-      "category": "mining",
-      "kind": "object",
-      "name": "Adamantite rocks",
-      "options": [
-        "mine"
-      ],
-      "requiredCards": [
-        "Adamantite ore"
-      ],
-      "requireAll": true,
-      "notes": ""
-    },
-    {
-      "category": "mining",
-      "kind": "object",
-      "name": "Amethyst crystals",
-      "options": [
-        "mine"
-      ],
-      "requiredCards": [
-        "Amethyst"
-      ],
-      "requireAll": true,
-      "notes": "Amethyst mining; option 'Mine'."
-    },
-    {
-      "category": "mining",
-      "kind": "object",
-      "name": "Clay rocks",
-      "options": [
-        "mine"
-      ],
-      "requiredCards": [
-        "Clay"
-      ],
-      "requireAll": true,
-      "notes": "Object name may just be 'Rocks'; verify."
-    },
-    {
-      "category": "mining",
-      "kind": "object",
-      "name": "Coal rocks",
-      "options": [
-        "mine"
-      ],
-      "requiredCards": [
-        "Coal"
-      ],
-      "requireAll": true,
-      "notes": ""
-    },
-    {
-      "category": "mining",
-      "kind": "object",
-      "name": "Copper rocks",
-      "options": [
-        "mine"
-      ],
-      "requiredCards": [
-        "Copper ore"
-      ],
-      "requireAll": true,
-      "notes": ""
-    },
-    {
-      "category": "mining",
-      "kind": "object",
-      "name": "Gem rocks",
-      "options": [
-        "mine"
-      ],
-      "requiredCards": [
-        "Uncut opal",
-        "Uncut jade",
-        "Uncut red topaz",
-        "Uncut sapphire",
-        "Uncut emerald",
-        "Uncut ruby",
-        "Uncut diamond"
-      ],
-      "requireAll": false,
-      "notes": "Random gem per mine; owning any listed uncut gem unlocks."
-    },
-    {
-      "category": "mining",
-      "kind": "object",
-      "name": "Gold rocks",
-      "options": [
-        "mine"
-      ],
-      "requiredCards": [
-        "Gold ore"
-      ],
-      "requireAll": true,
-      "notes": ""
-    },
-    {
-      "category": "mining",
-      "kind": "object",
-      "name": "Granite rocks",
-      "options": [
-        "mine"
-      ],
-      "requiredCards": [
-        "Granite"
-      ],
-      "requireAll": true,
-      "notes": "Desert Quarry object is generically named 'Rocks' in-game; verify."
-    },
-    {
-      "category": "mining",
-      "kind": "object",
-      "name": "Iron rocks",
-      "options": [
-        "mine"
-      ],
-      "requiredCards": [
-        "Iron ore"
-      ],
-      "requireAll": true,
-      "notes": ""
-    },
-    {
-      "category": "mining",
-      "kind": "object",
-      "name": "Limestone rocks",
-      "options": [
-        "mine"
-      ],
-      "requiredCards": [
-        "Limestone"
-      ],
-      "requireAll": true,
-      "notes": "Silvarea/quarry."
-    },
-    {
-      "category": "mining",
-      "kind": "object",
-      "name": "Lovakite rocks",
-      "options": [
-        "mine"
-      ],
-      "requiredCards": [
-        "Lovakite ore"
-      ],
-      "requireAll": true,
-      "notes": "Lovakengj mine."
-    },
-    {
-      "category": "mining",
-      "kind": "object",
-      "name": "Mithril rocks",
-      "options": [
-        "mine"
-      ],
-      "requiredCards": [
-        "Mithril ore"
-      ],
-      "requireAll": true,
-      "notes": ""
-    },
-    {
-      "category": "mining",
-      "kind": "object",
-      "name": "Rune Essence",
-      "options": [
-        "mine"
-      ],
-      "requiredCards": [
-        "Rune essence",
-        "Pure essence"
-      ],
-      "requireAll": false,
-      "notes": "Essence rock; low levels yield Rune essence, 30+ Pure essence. Owning either unlocks."
-    },
-    {
-      "category": "mining",
-      "kind": "object",
-      "name": "Runite rocks",
-      "options": [
-        "mine"
-      ],
-      "requiredCards": [
-        "Runite ore"
-      ],
-      "requireAll": true,
-      "notes": ""
-    },
-    {
-      "category": "mining",
-      "kind": "object",
-      "name": "Sandstone rocks",
-      "options": [
-        "mine"
-      ],
-      "requiredCards": [
-        "Sandstone"
-      ],
-      "requireAll": true,
-      "notes": "Desert Quarry object is generically named 'Rocks' in-game; verify."
-    },
-    {
-      "category": "mining",
-      "kind": "object",
-      "name": "Silver rocks",
-      "options": [
-        "mine"
-      ],
-      "requiredCards": [
-        "Silver ore"
-      ],
-      "requireAll": true,
-      "notes": ""
-    },
-    {
-      "category": "mining",
-      "kind": "object",
-      "name": "Tin rocks",
-      "options": [
-        "mine"
-      ],
-      "requiredCards": [
-        "Tin ore"
-      ],
-      "requireAll": true,
-      "notes": ""
-    },
-    {
-      "category": "fishing",
-      "kind": "npc",
-      "name": "Fishing spot",
-      "options": [
-        "bait"
-      ],
-      "requiredCards": [
-        "Raw sardine",
-        "Raw herring",
-        "Raw pike",
-        "Raw anglerfish"
-      ],
-      "requireAll": false,
-      "notes": "Fishing spots yield different fish by location; we list the UNION and use requireAll=false so owning ANY yielded fish unlocks the spot (cannot distinguish location). Includes anglerfish (Port Piscarilius bait spot)."
-    },
-    {
-      "category": "fishing",
-      "kind": "npc",
-      "name": "Fishing spot",
-      "options": [
-        "big net"
-      ],
-      "requiredCards": [
-        "Raw mackerel",
-        "Raw cod",
-        "Raw bass"
-      ],
-      "requireAll": false,
-      "notes": "Fishing spots yield different fish by location; we list the UNION and use requireAll=false so owning ANY yielded fish unlocks the spot (cannot distinguish location)."
-    },
-    {
-      "category": "fishing",
-      "kind": "npc",
-      "name": "Fishing spot",
-      "options": [
-        "cage"
-      ],
-      "requiredCards": [
-        "Raw lobster",
-        "Raw dark crab"
-      ],
-      "requireAll": false,
-      "notes": "Fishing spots yield different fish by location; we list the UNION and use requireAll=false so owning ANY yielded fish unlocks the spot (cannot distinguish location)."
-    },
-    {
-      "category": "fishing",
-      "kind": "npc",
-      "name": "Fishing spot",
-      "options": [
-        "fish"
-      ],
-      "requiredCards": [
-        "Raw karambwan"
-      ],
-      "requireAll": false,
-      "notes": "Fishing spots yield different fish by location; we list the UNION and use requireAll=false so owning ANY yielded fish unlocks the spot (cannot distinguish location). Karambwan spot; verify option text ('Fish')."
-    },
-    {
-      "category": "fishing",
-      "kind": "npc",
-      "name": "Fishing spot",
-      "options": [
-        "harpoon"
-      ],
-      "requiredCards": [
-        "Raw tuna",
-        "Raw swordfish",
-        "Raw shark"
-      ],
-      "requireAll": false,
-      "notes": "Fishing spots yield different fish by location; we list the UNION and use requireAll=false so owning ANY yielded fish unlocks the spot (cannot distinguish location)."
-    },
-    {
-      "category": "fishing",
-      "kind": "npc",
-      "name": "Fishing spot",
-      "options": [
-        "lure"
-      ],
-      "requiredCards": [
-        "Raw trout",
-        "Raw salmon"
-      ],
-      "requireAll": false,
-      "notes": "Fishing spots yield different fish by location; we list the UNION and use requireAll=false so owning ANY yielded fish unlocks the spot (cannot distinguish location)."
-    },
-    {
-      "category": "fishing",
-      "kind": "npc",
-      "name": "Fishing spot",
-      "options": [
-        "net"
-      ],
-      "requiredCards": [
-        "Raw shrimps",
-        "Raw anchovies",
-        "Raw monkfish"
-      ],
-      "requireAll": false,
-      "notes": "Fishing spots yield different fish by location; we list the UNION and use requireAll=false so owning ANY yielded fish unlocks the spot (cannot distinguish location)."
-    },
-    {
-      "category": "fishing",
-      "kind": "npc",
-      "name": "Fishing spot",
-      "options": [
-        "small net"
-      ],
-      "requiredCards": [
-        "Minnow"
-      ],
-      "requireAll": false,
-      "notes": "Fishing spots yield different fish by location; we list the UNION and use requireAll=false so owning ANY yielded fish unlocks the spot (cannot distinguish location)."
-    },
-    {
-      "category": "fishing",
-      "kind": "npc",
-      "name": "Fishing spot",
-      "options": [
-        "use-rod"
-      ],
-      "requiredCards": [
-        "Leaping trout",
-        "Leaping salmon",
-        "Leaping sturgeon"
-      ],
-      "requireAll": false,
-      "notes": "Fishing spots yield different fish by location; we list the UNION and use requireAll=false so owning ANY yielded fish unlocks the spot (cannot distinguish location). Barbarian Fishing; verify option text ('Use-rod')."
-    },
-    {
-      "category": "fishing",
-      "kind": "npc",
-      "name": "Rod Fishing spot",
-      "options": [
-        "bait"
-      ],
-      "requiredCards": [
-        "Raw sardine",
-        "Raw herring",
-        "Raw pike",
-        "Raw anglerfish"
-      ],
-      "requireAll": false,
-      "notes": "Fishing spots yield different fish by location; we list the UNION and use requireAll=false so owning ANY yielded fish unlocks the spot (cannot distinguish location). 'Rod Fishing spot' NPC variant."
-    },
-    {
-      "category": "fishing",
-      "kind": "npc",
-      "name": "Rod Fishing spot",
-      "options": [
-        "lure"
-      ],
-      "requiredCards": [
-        "Raw trout",
-        "Raw salmon"
-      ],
-      "requireAll": false,
-      "notes": "Fishing spots yield different fish by location; we list the UNION and use requireAll=false so owning ANY yielded fish unlocks the spot (cannot distinguish location). 'Rod Fishing spot' NPC variant."
-    },
-    {
-      "category": "fishing",
-      "kind": "npc",
-      "name": "Rod Fishing spot",
-      "options": [
-        "use-rod"
-      ],
-      "requiredCards": [
-        "Leaping trout",
-        "Leaping salmon",
-        "Leaping sturgeon"
-      ],
-      "requireAll": false,
-      "notes": "Fishing spots yield different fish by location; we list the UNION and use requireAll=false so owning ANY yielded fish unlocks the spot (cannot distinguish location). 'Rod Fishing spot' NPC variant."
-    },
-    {
-      "category": "pickpocketing",
-      "kind": "npc",
-      "name": "Farmer",
-      "options": [
-        "pickpocket"
-      ],
-      "requiredCards": [
-        "Coins",
-        "Coin pouch"
-      ],
-      "requireAll": true,
-      "notes": "Also drops seeds; simplified to Coins+pouch."
-    },
-    {
-      "category": "pickpocketing",
-      "kind": "npc",
-      "name": "Guard",
-      "options": [
-        "pickpocket"
-      ],
-      "requiredCards": [
-        "Coins",
-        "Coin pouch"
-      ],
-      "requireAll": true,
-      "notes": ""
-    },
-    {
-      "category": "pickpocketing",
-      "kind": "npc",
-      "name": "H.A.M. Member",
-      "options": [
-        "pickpocket"
-      ],
-      "requiredCards": [
-        "Coins",
-        "Coin pouch"
-      ],
-      "requireAll": true,
-      "notes": "Verify exact name/casing ('H.A.M. Member')."
-    },
-    {
-      "category": "pickpocketing",
-      "kind": "npc",
-      "name": "Hero",
-      "options": [
-        "pickpocket"
-      ],
-      "requiredCards": [
-        "Coins",
-        "Coin pouch"
-      ],
-      "requireAll": true,
-      "notes": "Also drops gems/blood runes; simplified."
-    },
-    {
-      "category": "pickpocketing",
-      "kind": "npc",
-      "name": "Knight of Ardougne",
-      "options": [
-        "pickpocket"
-      ],
-      "requiredCards": [
-        "Coins",
-        "Coin pouch"
-      ],
-      "requireAll": true,
-      "notes": ""
-    },
-    {
-      "category": "pickpocketing",
-      "kind": "npc",
-      "name": "Man",
-      "options": [
-        "pickpocket"
-      ],
-      "requiredCards": [
-        "Coins",
-        "Coin pouch"
-      ],
-      "requireAll": true,
-      "notes": ""
-    },
-    {
-      "category": "pickpocketing",
-      "kind": "npc",
-      "name": "Master Farmer",
-      "options": [
-        "pickpocket"
-      ],
-      "requiredCards": [
-        "Coins",
-        "Coin pouch"
-      ],
-      "requireAll": true,
-      "notes": "Actually yields seeds + coin pouch, NOT coins; requiredCards simplified to Coins+pouch (no single 'Seeds' card exists)."
-    },
-    {
-      "category": "pickpocketing",
-      "kind": "npc",
-      "name": "Paladin",
-      "options": [
-        "pickpocket"
-      ],
-      "requiredCards": [
-        "Coins",
-        "Coin pouch"
-      ],
-      "requireAll": true,
-      "notes": "Also drops chaos runes/coins; simplified."
-    },
-    {
-      "category": "pickpocketing",
-      "kind": "npc",
-      "name": "Rogue",
-      "options": [
-        "pickpocket"
-      ],
-      "requiredCards": [
-        "Coins",
-        "Coin pouch"
-      ],
-      "requireAll": true,
-      "notes": "Also drops rogue equipment; simplified."
-    },
-    {
-      "category": "pickpocketing",
-      "kind": "npc",
-      "name": "Vyrewatch Sentinel",
-      "options": [
-        "pickpocket"
-      ],
-      "requiredCards": [
-        "Coins",
-        "Coin pouch"
-      ],
-      "requireAll": true,
-      "notes": "Actually yields Blood shard/coins; simplified to Coins+pouch."
-    },
-    {
-      "category": "pickpocketing",
-      "kind": "npc",
-      "name": "Warrior woman",
-      "options": [
-        "pickpocket"
-      ],
-      "requiredCards": [
-        "Coins",
-        "Coin pouch"
-      ],
-      "requireAll": true,
-      "notes": ""
-    },
-    {
-      "category": "pickpocketing",
-      "kind": "npc",
-      "name": "Woman",
-      "options": [
-        "pickpocket"
-      ],
-      "requiredCards": [
-        "Coins",
-        "Coin pouch"
-      ],
-      "requireAll": true,
-      "notes": ""
-    },
-    {
-      "category": "cooking",
-      "kind": "item-on-object",
-      "name": "Bread dough",
-      "options": [
-        "clay oven",
-        "cooking range",
-        "range",
-        "stove"
-      ],
-      "requiredCards": [
-        "Bread"
-      ],
-      "requireAll": true,
-      "notes": "Range-only (cannot cook on open fire)."
-    },
-    {
-      "category": "cooking",
-      "kind": "item-on-object",
-      "name": "Pitta dough",
-      "options": [
-        "clay oven",
-        "cooking range",
-        "range",
-        "stove"
-      ],
-      "requiredCards": [
-        "Pitta bread"
-      ],
-      "requireAll": true,
-      "notes": "Range-only."
-    },
-    {
-      "category": "cooking",
-      "kind": "item-on-object",
-      "name": "Potato",
-      "options": [
-        "clay oven",
-        "cooking range",
-        "fire",
-        "range",
-        "stove"
-      ],
-      "requiredCards": [
-        "Baked potato"
-      ],
-      "requireAll": true,
-      "notes": "Raw potato baked on fire/range."
-    },
-    {
-      "category": "cooking",
-      "kind": "item-on-object",
-      "name": "Raw anchovies",
-      "options": [
-        "clay oven",
-        "cooking range",
-        "fire",
-        "range",
-        "stove"
-      ],
-      "requiredCards": [
-        "Anchovies"
-      ],
-      "requireAll": true,
-      "notes": ""
-    },
-    {
-      "category": "cooking",
-      "kind": "item-on-object",
-      "name": "Raw anglerfish",
-      "options": [
-        "clay oven",
-        "cooking range",
-        "fire",
-        "range",
-        "stove"
-      ],
-      "requiredCards": [
-        "Anglerfish"
-      ],
-      "requireAll": true,
-      "notes": ""
-    },
-    {
-      "category": "cooking",
-      "kind": "item-on-object",
-      "name": "Raw bass",
-      "options": [
-        "clay oven",
-        "cooking range",
-        "fire",
-        "range",
-        "stove"
-      ],
-      "requiredCards": [
-        "Bass"
-      ],
-      "requireAll": true,
-      "notes": ""
-    },
-    {
-      "category": "cooking",
-      "kind": "item-on-object",
-      "name": "Raw bear meat",
-      "options": [
-        "clay oven",
-        "cooking range",
-        "fire",
-        "range",
-        "stove"
-      ],
-      "requiredCards": [
-        "Cooked meat"
-      ],
-      "requireAll": true,
-      "notes": "Cooks to 'Cooked meat'."
-    },
-    {
-      "category": "cooking",
-      "kind": "item-on-object",
-      "name": "Raw beef",
-      "options": [
-        "clay oven",
-        "cooking range",
-        "fire",
-        "range",
-        "stove"
-      ],
-      "requiredCards": [
-        "Cooked meat"
-      ],
-      "requireAll": true,
-      "notes": "Cooks to 'Cooked meat'."
-    },
-    {
-      "category": "cooking",
-      "kind": "item-on-object",
-      "name": "Raw cave eel",
-      "options": [
-        "clay oven",
-        "cooking range",
-        "fire",
-        "range",
-        "stove"
-      ],
-      "requiredCards": [
-        "Cave eel"
-      ],
-      "requireAll": true,
-      "notes": ""
-    },
-    {
-      "category": "cooking",
-      "kind": "item-on-object",
-      "name": "Raw cavefish",
-      "options": [
-        "clay oven",
-        "cooking range",
-        "fire",
-        "range",
-        "stove"
-      ],
-      "requiredCards": [
-        "Cavefish"
-      ],
-      "requireAll": true,
-      "notes": ""
-    },
-    {
-      "category": "cooking",
-      "kind": "item-on-object",
-      "name": "Raw chicken",
-      "options": [
-        "clay oven",
-        "cooking range",
-        "fire",
-        "range",
-        "stove"
-      ],
-      "requiredCards": [
-        "Cooked chicken"
-      ],
-      "requireAll": true,
-      "notes": ""
-    },
-    {
-      "category": "cooking",
-      "kind": "item-on-object",
-      "name": "Raw cod",
-      "options": [
-        "clay oven",
-        "cooking range",
-        "fire",
-        "range",
-        "stove"
-      ],
-      "requiredCards": [
-        "Cod"
-      ],
-      "requireAll": true,
-      "notes": ""
-    },
-    {
-      "category": "cooking",
-      "kind": "item-on-object",
-      "name": "Raw dark crab",
-      "options": [
-        "clay oven",
-        "cooking range",
-        "fire",
-        "range",
-        "stove"
-      ],
-      "requiredCards": [
-        "Dark crab"
-      ],
-      "requireAll": true,
-      "notes": ""
-    },
-    {
-      "category": "cooking",
-      "kind": "item-on-object",
-      "name": "Raw herring",
-      "options": [
-        "clay oven",
-        "cooking range",
-        "fire",
-        "range",
-        "stove"
-      ],
-      "requiredCards": [
-        "Herring"
-      ],
-      "requireAll": true,
-      "notes": ""
-    },
-    {
-      "category": "cooking",
-      "kind": "item-on-object",
-      "name": "Raw karambwan",
-      "options": [
-        "clay oven",
-        "cooking range",
-        "fire",
-        "range",
-        "stove"
-      ],
-      "requiredCards": [
-        "Cooked karambwan"
-      ],
-      "requireAll": true,
-      "notes": "Requires Cooking Guild/thoroughly cooking to avoid poison; still item-on-object."
-    },
-    {
-      "category": "cooking",
-      "kind": "item-on-object",
-      "name": "Raw lobster",
-      "options": [
-        "clay oven",
-        "cooking range",
-        "fire",
-        "range",
-        "stove"
-      ],
-      "requiredCards": [
-        "Lobster"
-      ],
-      "requireAll": true,
-      "notes": ""
-    },
-    {
-      "category": "cooking",
-      "kind": "item-on-object",
-      "name": "Raw mackerel",
-      "options": [
-        "clay oven",
-        "cooking range",
-        "fire",
-        "range",
-        "stove"
-      ],
-      "requiredCards": [
-        "Mackerel"
-      ],
-      "requireAll": true,
-      "notes": ""
-    },
-    {
-      "category": "cooking",
-      "kind": "item-on-object",
-      "name": "Raw monkfish",
-      "options": [
-        "clay oven",
-        "cooking range",
-        "fire",
-        "range",
-        "stove"
-      ],
-      "requiredCards": [
-        "Monkfish"
-      ],
-      "requireAll": true,
-      "notes": ""
-    },
-    {
-      "category": "cooking",
-      "kind": "item-on-object",
-      "name": "Raw pike",
-      "options": [
-        "clay oven",
-        "cooking range",
-        "fire",
-        "range",
-        "stove"
-      ],
-      "requiredCards": [
-        "Pike"
-      ],
-      "requireAll": true,
-      "notes": ""
-    },
-    {
-      "category": "cooking",
-      "kind": "item-on-object",
-      "name": "Raw rat meat",
-      "options": [
-        "clay oven",
-        "cooking range",
-        "fire",
-        "range",
-        "stove"
-      ],
-      "requiredCards": [
-        "Cooked meat"
-      ],
-      "requireAll": true,
-      "notes": "Cooks to 'Cooked meat'."
-    },
-    {
-      "category": "cooking",
-      "kind": "item-on-object",
-      "name": "Raw salmon",
-      "options": [
-        "clay oven",
-        "cooking range",
-        "fire",
-        "range",
-        "stove"
-      ],
-      "requiredCards": [
-        "Salmon"
-      ],
-      "requireAll": true,
-      "notes": ""
-    },
-    {
-      "category": "cooking",
-      "kind": "item-on-object",
-      "name": "Raw sardine",
-      "options": [
-        "clay oven",
-        "cooking range",
-        "fire",
-        "range",
-        "stove"
-      ],
-      "requiredCards": [
-        "Sardine"
-      ],
-      "requireAll": true,
-      "notes": ""
-    },
-    {
-      "category": "cooking",
-      "kind": "item-on-object",
-      "name": "Raw shark",
-      "options": [
-        "clay oven",
-        "cooking range",
-        "fire",
-        "range",
-        "stove"
-      ],
-      "requiredCards": [
-        "Shark"
-      ],
-      "requireAll": true,
-      "notes": ""
-    },
-    {
-      "category": "cooking",
-      "kind": "item-on-object",
-      "name": "Raw shrimps",
-      "options": [
-        "clay oven",
-        "cooking range",
-        "fire",
-        "range",
-        "stove"
-      ],
-      "requiredCards": [
-        "Shrimps"
-      ],
-      "requireAll": true,
-      "notes": ""
-    },
-    {
-      "category": "cooking",
-      "kind": "item-on-object",
-      "name": "Raw slimy eel",
-      "options": [
-        "clay oven",
-        "cooking range",
-        "fire",
-        "range",
-        "stove"
-      ],
-      "requiredCards": [
-        "Cooked slimy eel"
-      ],
-      "requireAll": true,
-      "notes": ""
-    },
-    {
-      "category": "cooking",
-      "kind": "item-on-object",
-      "name": "Raw swordfish",
-      "options": [
-        "clay oven",
-        "cooking range",
-        "fire",
-        "range",
-        "stove"
-      ],
-      "requiredCards": [
-        "Swordfish"
-      ],
-      "requireAll": true,
-      "notes": ""
-    },
-    {
-      "category": "cooking",
-      "kind": "item-on-object",
-      "name": "Raw trout",
-      "options": [
-        "clay oven",
-        "cooking range",
-        "fire",
-        "range",
-        "stove"
-      ],
-      "requiredCards": [
-        "Trout"
-      ],
-      "requireAll": true,
-      "notes": ""
-    },
-    {
-      "category": "cooking",
-      "kind": "item-on-object",
-      "name": "Raw tuna",
-      "options": [
-        "clay oven",
-        "cooking range",
-        "fire",
-        "range",
-        "stove"
-      ],
-      "requiredCards": [
-        "Tuna"
-      ],
-      "requireAll": true,
-      "notes": ""
-    },
-    {
-      "category": "cooking",
-      "kind": "item-on-object",
-      "name": "Raw ugthanki meat",
-      "options": [
-        "clay oven",
-        "cooking range",
-        "fire",
-        "range",
-        "stove"
-      ],
-      "requiredCards": [
-        "Ugthanki meat"
-      ],
-      "requireAll": true,
-      "notes": "Cooked on range."
-    },
-    {
-      "category": "cooking",
-      "kind": "item-on-object",
-      "name": "Sweetcorn",
-      "options": [
-        "clay oven",
-        "cooking range",
-        "fire",
-        "range",
-        "stove"
-      ],
-      "requiredCards": [
-        "Cooked sweetcorn"
-      ],
-      "requireAll": true,
-      "notes": "Raw sweetcorn ('Sweetcorn') cooked to 'Cooked sweetcorn'."
-    }
-  ]
+	"categories": [
+		"woodcutting",
+		"mining",
+		"fishing",
+		"pickpocketing",
+		"cooking"
+	],
+	"nodes": [
+		{
+			"category": "woodcutting",
+			"kind": "object",
+			"name": "Dead tree",
+			"options": [
+				"chop down"
+			],
+			"requiredCards": [
+				"Logs"
+			],
+			"requireAll": true,
+			"notes": "Regular logs. Draynor/desert dead trees."
+		},
+		{
+			"category": "woodcutting",
+			"kind": "object",
+			"name": "Evergreen tree",
+			"options": [
+				"chop down"
+			],
+			"requiredCards": [
+				"Logs"
+			],
+			"requireAll": true,
+			"notes": "Regular logs."
+		},
+		{
+			"category": "woodcutting",
+			"kind": "object",
+			"name": "Hollow tree",
+			"options": [
+				"chop down"
+			],
+			"requiredCards": [
+				"Bark"
+			],
+			"requireAll": true,
+			"notes": "Yields Bark (not logs). Option may be 'Chop-up'/'Chop down'; verify. Located Haunted Woods / Isafdar."
+		},
+		{
+			"category": "woodcutting",
+			"kind": "object",
+			"name": "Magic tree",
+			"options": [
+				"chop down"
+			],
+			"requiredCards": [
+				"Magic logs"
+			],
+			"requireAll": true,
+			"notes": ""
+		},
+		{
+			"category": "woodcutting",
+			"kind": "object",
+			"name": "Mahogany",
+			"options": [
+				"chop down"
+			],
+			"requiredCards": [
+				"Mahogany logs"
+			],
+			"requireAll": true,
+			"notes": "Verify in-game object name suffix ('X' vs 'X tree'); both variants included as separate nodes."
+		},
+		{
+			"category": "woodcutting",
+			"kind": "object",
+			"name": "Mahogany tree",
+			"options": [
+				"chop down"
+			],
+			"requiredCards": [
+				"Mahogany logs"
+			],
+			"requireAll": true,
+			"notes": "Verify in-game object name suffix ('X' vs 'X tree'); both variants included as separate nodes."
+		},
+		{
+			"category": "woodcutting",
+			"kind": "object",
+			"name": "Maple tree",
+			"options": [
+				"chop down"
+			],
+			"requiredCards": [
+				"Maple logs"
+			],
+			"requireAll": true,
+			"notes": ""
+		},
+		{
+			"category": "woodcutting",
+			"kind": "object",
+			"name": "Oak",
+			"options": [
+				"chop down"
+			],
+			"requiredCards": [
+				"Oak logs"
+			],
+			"requireAll": true,
+			"notes": "Verify in-game object name suffix ('X' vs 'X tree'); both variants included as separate nodes."
+		},
+		{
+			"category": "woodcutting",
+			"kind": "object",
+			"name": "Oak tree",
+			"options": [
+				"chop down"
+			],
+			"requiredCards": [
+				"Oak logs"
+			],
+			"requireAll": true,
+			"notes": "Verify in-game object name suffix ('X' vs 'X tree'); both variants included as separate nodes."
+		},
+		{
+			"category": "woodcutting",
+			"kind": "object",
+			"name": "Redwood",
+			"options": [
+				"chop down"
+			],
+			"requiredCards": [
+				"Redwood logs"
+			],
+			"requireAll": true,
+			"notes": "Verify in-game object name suffix ('X' vs 'X tree'); both variants included as separate nodes."
+		},
+		{
+			"category": "woodcutting",
+			"kind": "object",
+			"name": "Redwood tree",
+			"options": [
+				"chop down"
+			],
+			"requiredCards": [
+				"Redwood logs"
+			],
+			"requireAll": true,
+			"notes": "Verify in-game object name suffix ('X' vs 'X tree'); both variants included as separate nodes."
+		},
+		{
+			"category": "woodcutting",
+			"kind": "object",
+			"name": "Teak",
+			"options": [
+				"chop down"
+			],
+			"requiredCards": [
+				"Teak logs"
+			],
+			"requireAll": true,
+			"notes": "Verify in-game object name suffix ('X' vs 'X tree'); both variants included as separate nodes."
+		},
+		{
+			"category": "woodcutting",
+			"kind": "object",
+			"name": "Teak tree",
+			"options": [
+				"chop down"
+			],
+			"requiredCards": [
+				"Teak logs"
+			],
+			"requireAll": true,
+			"notes": "Verify in-game object name suffix ('X' vs 'X tree'); both variants included as separate nodes."
+		},
+		{
+			"category": "woodcutting",
+			"kind": "object",
+			"name": "Tree",
+			"options": [
+				"chop down"
+			],
+			"requiredCards": [
+				"Logs"
+			],
+			"requireAll": true,
+			"notes": "Standard tree."
+		},
+		{
+			"category": "woodcutting",
+			"kind": "object",
+			"name": "Willow",
+			"options": [
+				"chop down"
+			],
+			"requiredCards": [
+				"Willow logs"
+			],
+			"requireAll": true,
+			"notes": "Verify in-game object name suffix ('X' vs 'X tree'); both variants included as separate nodes."
+		},
+		{
+			"category": "woodcutting",
+			"kind": "object",
+			"name": "Willow tree",
+			"options": [
+				"chop down"
+			],
+			"requiredCards": [
+				"Willow logs"
+			],
+			"requireAll": true,
+			"notes": "Verify in-game object name suffix ('X' vs 'X tree'); both variants included as separate nodes."
+		},
+		{
+			"category": "woodcutting",
+			"kind": "object",
+			"name": "Yew",
+			"options": [
+				"chop down"
+			],
+			"requiredCards": [
+				"Yew logs"
+			],
+			"requireAll": true,
+			"notes": "Verify in-game object name suffix ('X' vs 'X tree'); both variants included as separate nodes."
+		},
+		{
+			"category": "woodcutting",
+			"kind": "object",
+			"name": "Yew tree",
+			"options": [
+				"chop down"
+			],
+			"requiredCards": [
+				"Yew logs"
+			],
+			"requireAll": true,
+			"notes": "Verify in-game object name suffix ('X' vs 'X tree'); both variants included as separate nodes."
+		},
+		{
+			"category": "mining",
+			"kind": "object",
+			"name": "Adamantite rocks",
+			"options": [
+				"mine"
+			],
+			"requiredCards": [
+				"Adamantite ore"
+			],
+			"requireAll": true,
+			"notes": ""
+		},
+		{
+			"category": "mining",
+			"kind": "object",
+			"name": "Amethyst crystals",
+			"options": [
+				"mine"
+			],
+			"requiredCards": [
+				"Amethyst"
+			],
+			"requireAll": true,
+			"notes": "Amethyst mining; option 'Mine'."
+		},
+		{
+			"category": "mining",
+			"kind": "object",
+			"name": "Clay rocks",
+			"options": [
+				"mine"
+			],
+			"requiredCards": [
+				"Clay"
+			],
+			"requireAll": true,
+			"notes": "Object name may just be 'Rocks'; verify."
+		},
+		{
+			"category": "mining",
+			"kind": "object",
+			"name": "Coal rocks",
+			"options": [
+				"mine"
+			],
+			"requiredCards": [
+				"Coal"
+			],
+			"requireAll": true,
+			"notes": ""
+		},
+		{
+			"category": "mining",
+			"kind": "object",
+			"name": "Copper rocks",
+			"options": [
+				"mine"
+			],
+			"requiredCards": [
+				"Copper ore"
+			],
+			"requireAll": true,
+			"notes": ""
+		},
+		{
+			"category": "mining",
+			"kind": "object",
+			"name": "Gem rocks",
+			"options": [
+				"mine"
+			],
+			"requiredCards": [
+				"Uncut opal",
+				"Uncut jade",
+				"Uncut red topaz",
+				"Uncut sapphire",
+				"Uncut emerald",
+				"Uncut ruby",
+				"Uncut diamond"
+			],
+			"requireAll": false,
+			"notes": "Random gem per mine; owning any listed uncut gem unlocks."
+		},
+		{
+			"category": "mining",
+			"kind": "object",
+			"name": "Gold rocks",
+			"options": [
+				"mine"
+			],
+			"requiredCards": [
+				"Gold ore"
+			],
+			"requireAll": true,
+			"notes": ""
+		},
+		{
+			"category": "mining",
+			"kind": "object",
+			"name": "Granite rocks",
+			"options": [
+				"mine"
+			],
+			"requiredCards": [
+				"Granite"
+			],
+			"requireAll": true,
+			"notes": "Desert Quarry object is generically named 'Rocks' in-game; verify."
+		},
+		{
+			"category": "mining",
+			"kind": "object",
+			"name": "Iron rocks",
+			"options": [
+				"mine"
+			],
+			"requiredCards": [
+				"Iron ore"
+			],
+			"requireAll": true,
+			"notes": ""
+		},
+		{
+			"category": "mining",
+			"kind": "object",
+			"name": "Limestone rocks",
+			"options": [
+				"mine"
+			],
+			"requiredCards": [
+				"Limestone"
+			],
+			"requireAll": true,
+			"notes": "Silvarea/quarry."
+		},
+		{
+			"category": "mining",
+			"kind": "object",
+			"name": "Lovakite rocks",
+			"options": [
+				"mine"
+			],
+			"requiredCards": [
+				"Lovakite ore"
+			],
+			"requireAll": true,
+			"notes": "Lovakengj mine."
+		},
+		{
+			"category": "mining",
+			"kind": "object",
+			"name": "Mithril rocks",
+			"options": [
+				"mine"
+			],
+			"requiredCards": [
+				"Mithril ore"
+			],
+			"requireAll": true,
+			"notes": ""
+		},
+		{
+			"category": "mining",
+			"kind": "object",
+			"name": "Rune Essence",
+			"options": [
+				"mine"
+			],
+			"requiredCards": [
+				"Rune essence",
+				"Pure essence"
+			],
+			"requireAll": false,
+			"notes": "Essence rock; low levels yield Rune essence, 30+ Pure essence. Owning either unlocks."
+		},
+		{
+			"category": "mining",
+			"kind": "object",
+			"name": "Runite rocks",
+			"options": [
+				"mine"
+			],
+			"requiredCards": [
+				"Runite ore"
+			],
+			"requireAll": true,
+			"notes": ""
+		},
+		{
+			"category": "mining",
+			"kind": "object",
+			"name": "Sandstone rocks",
+			"options": [
+				"mine"
+			],
+			"requiredCards": [
+				"Sandstone"
+			],
+			"requireAll": true,
+			"notes": "Desert Quarry object is generically named 'Rocks' in-game; verify."
+		},
+		{
+			"category": "mining",
+			"kind": "object",
+			"name": "Silver rocks",
+			"options": [
+				"mine"
+			],
+			"requiredCards": [
+				"Silver ore"
+			],
+			"requireAll": true,
+			"notes": ""
+		},
+		{
+			"category": "mining",
+			"kind": "object",
+			"name": "Tin rocks",
+			"options": [
+				"mine"
+			],
+			"requiredCards": [
+				"Tin ore"
+			],
+			"requireAll": true,
+			"notes": ""
+		},
+		{
+			"category": "fishing",
+			"kind": "npc",
+			"name": "Fishing spot",
+			"options": [
+				"bait"
+			],
+			"requiredCards": [
+				"Raw sardine",
+				"Raw herring",
+				"Raw pike",
+				"Raw anglerfish"
+			],
+			"requireAll": false,
+			"notes": "Fishing spots yield different fish by location; we list the UNION and use requireAll=false so owning ANY yielded fish unlocks the spot (cannot distinguish location). Includes anglerfish (Port Piscarilius bait spot)."
+		},
+		{
+			"category": "fishing",
+			"kind": "npc",
+			"name": "Fishing spot",
+			"options": [
+				"big net"
+			],
+			"requiredCards": [
+				"Raw mackerel",
+				"Raw cod",
+				"Raw bass"
+			],
+			"requireAll": false,
+			"notes": "Fishing spots yield different fish by location; we list the UNION and use requireAll=false so owning ANY yielded fish unlocks the spot (cannot distinguish location)."
+		},
+		{
+			"category": "fishing",
+			"kind": "npc",
+			"name": "Fishing spot",
+			"options": [
+				"cage"
+			],
+			"requiredCards": [
+				"Raw lobster",
+				"Raw dark crab"
+			],
+			"requireAll": false,
+			"notes": "Fishing spots yield different fish by location; we list the UNION and use requireAll=false so owning ANY yielded fish unlocks the spot (cannot distinguish location)."
+		},
+		{
+			"category": "fishing",
+			"kind": "npc",
+			"name": "Fishing spot",
+			"options": [
+				"fish"
+			],
+			"requiredCards": [
+				"Raw karambwan"
+			],
+			"requireAll": false,
+			"notes": "Fishing spots yield different fish by location; we list the UNION and use requireAll=false so owning ANY yielded fish unlocks the spot (cannot distinguish location). Karambwan spot; verify option text ('Fish')."
+		},
+		{
+			"category": "fishing",
+			"kind": "npc",
+			"name": "Fishing spot",
+			"options": [
+				"harpoon"
+			],
+			"requiredCards": [
+				"Raw tuna",
+				"Raw swordfish",
+				"Raw shark"
+			],
+			"requireAll": false,
+			"notes": "Fishing spots yield different fish by location; we list the UNION and use requireAll=false so owning ANY yielded fish unlocks the spot (cannot distinguish location)."
+		},
+		{
+			"category": "fishing",
+			"kind": "npc",
+			"name": "Fishing spot",
+			"options": [
+				"lure"
+			],
+			"requiredCards": [
+				"Raw trout",
+				"Raw salmon"
+			],
+			"requireAll": false,
+			"notes": "Fishing spots yield different fish by location; we list the UNION and use requireAll=false so owning ANY yielded fish unlocks the spot (cannot distinguish location)."
+		},
+		{
+			"category": "fishing",
+			"kind": "npc",
+			"name": "Fishing spot",
+			"options": [
+				"net"
+			],
+			"requiredCards": [
+				"Raw shrimps",
+				"Raw anchovies",
+				"Raw monkfish"
+			],
+			"requireAll": false,
+			"notes": "Fishing spots yield different fish by location; we list the UNION and use requireAll=false so owning ANY yielded fish unlocks the spot (cannot distinguish location)."
+		},
+		{
+			"category": "fishing",
+			"kind": "npc",
+			"name": "Fishing spot",
+			"options": [
+				"small net"
+			],
+			"requiredCards": [
+				"Minnow"
+			],
+			"requireAll": false,
+			"notes": "Fishing spots yield different fish by location; we list the UNION and use requireAll=false so owning ANY yielded fish unlocks the spot (cannot distinguish location)."
+		},
+		{
+			"category": "fishing",
+			"kind": "npc",
+			"name": "Fishing spot",
+			"options": [
+				"use-rod"
+			],
+			"requiredCards": [
+				"Leaping trout",
+				"Leaping salmon",
+				"Leaping sturgeon"
+			],
+			"requireAll": false,
+			"notes": "Fishing spots yield different fish by location; we list the UNION and use requireAll=false so owning ANY yielded fish unlocks the spot (cannot distinguish location). Barbarian Fishing; verify option text ('Use-rod')."
+		},
+		{
+			"category": "fishing",
+			"kind": "npc",
+			"name": "Rod Fishing spot",
+			"options": [
+				"bait"
+			],
+			"requiredCards": [
+				"Raw sardine",
+				"Raw herring",
+				"Raw pike",
+				"Raw anglerfish"
+			],
+			"requireAll": false,
+			"notes": "Fishing spots yield different fish by location; we list the UNION and use requireAll=false so owning ANY yielded fish unlocks the spot (cannot distinguish location). 'Rod Fishing spot' NPC variant."
+		},
+		{
+			"category": "fishing",
+			"kind": "npc",
+			"name": "Rod Fishing spot",
+			"options": [
+				"lure"
+			],
+			"requiredCards": [
+				"Raw trout",
+				"Raw salmon"
+			],
+			"requireAll": false,
+			"notes": "Fishing spots yield different fish by location; we list the UNION and use requireAll=false so owning ANY yielded fish unlocks the spot (cannot distinguish location). 'Rod Fishing spot' NPC variant."
+		},
+		{
+			"category": "fishing",
+			"kind": "npc",
+			"name": "Rod Fishing spot",
+			"options": [
+				"use-rod"
+			],
+			"requiredCards": [
+				"Leaping trout",
+				"Leaping salmon",
+				"Leaping sturgeon"
+			],
+			"requireAll": false,
+			"notes": "Fishing spots yield different fish by location; we list the UNION and use requireAll=false so owning ANY yielded fish unlocks the spot (cannot distinguish location). 'Rod Fishing spot' NPC variant."
+		},
+		{
+			"category": "pickpocketing",
+			"kind": "npc",
+			"name": "Farmer",
+			"options": [
+				"pickpocket"
+			],
+			"requiredCards": [
+				"Coins",
+				"Coin pouch"
+			],
+			"requireAll": true,
+			"notes": "Also drops seeds; simplified to Coins+pouch."
+		},
+		{
+			"category": "pickpocketing",
+			"kind": "npc",
+			"name": "Guard",
+			"options": [
+				"pickpocket"
+			],
+			"requiredCards": [
+				"Coins",
+				"Coin pouch"
+			],
+			"requireAll": true,
+			"notes": ""
+		},
+		{
+			"category": "pickpocketing",
+			"kind": "npc",
+			"name": "H.A.M. Member",
+			"options": [
+				"pickpocket"
+			],
+			"requiredCards": [
+				"Coins",
+				"Coin pouch"
+			],
+			"requireAll": true,
+			"notes": "Verify exact name/casing ('H.A.M. Member')."
+		},
+		{
+			"category": "pickpocketing",
+			"kind": "npc",
+			"name": "Hero",
+			"options": [
+				"pickpocket"
+			],
+			"requiredCards": [
+				"Coins",
+				"Coin pouch"
+			],
+			"requireAll": true,
+			"notes": "Also drops gems/blood runes; simplified."
+		},
+		{
+			"category": "pickpocketing",
+			"kind": "npc",
+			"name": "Knight of Ardougne",
+			"options": [
+				"pickpocket"
+			],
+			"requiredCards": [
+				"Coins",
+				"Coin pouch"
+			],
+			"requireAll": true,
+			"notes": ""
+		},
+		{
+			"category": "pickpocketing",
+			"kind": "npc",
+			"name": "Man",
+			"options": [
+				"pickpocket"
+			],
+			"requiredCards": [
+				"Coins",
+				"Coin pouch"
+			],
+			"requireAll": true,
+			"notes": ""
+		},
+		{
+			"category": "pickpocketing",
+			"kind": "npc",
+			"name": "Paladin",
+			"options": [
+				"pickpocket"
+			],
+			"requiredCards": [
+				"Coins",
+				"Coin pouch"
+			],
+			"requireAll": true,
+			"notes": "Also drops chaos runes/coins; simplified."
+		},
+		{
+			"category": "pickpocketing",
+			"kind": "npc",
+			"name": "Rogue",
+			"options": [
+				"pickpocket"
+			],
+			"requiredCards": [
+				"Coins",
+				"Coin pouch"
+			],
+			"requireAll": true,
+			"notes": "Also drops rogue equipment; simplified."
+		},
+		{
+			"category": "pickpocketing",
+			"kind": "npc",
+			"name": "Vyrewatch Sentinel",
+			"options": [
+				"pickpocket"
+			],
+			"requiredCards": [
+				"Coins",
+				"Coin pouch"
+			],
+			"requireAll": true,
+			"notes": "Actually yields Blood shard/coins; simplified to Coins+pouch."
+		},
+		{
+			"category": "pickpocketing",
+			"kind": "npc",
+			"name": "Warrior woman",
+			"options": [
+				"pickpocket"
+			],
+			"requiredCards": [
+				"Coins",
+				"Coin pouch"
+			],
+			"requireAll": true,
+			"notes": ""
+		},
+		{
+			"category": "pickpocketing",
+			"kind": "npc",
+			"name": "Woman",
+			"options": [
+				"pickpocket"
+			],
+			"requiredCards": [
+				"Coins",
+				"Coin pouch"
+			],
+			"requireAll": true,
+			"notes": ""
+		},
+		{
+			"category": "cooking",
+			"kind": "item-on-object",
+			"name": "Bread dough",
+			"options": [
+				"clay oven",
+				"cooking range",
+				"range",
+				"stove"
+			],
+			"requiredCards": [
+				"Bread"
+			],
+			"requireAll": true,
+			"notes": "Range-only (cannot cook on open fire)."
+		},
+		{
+			"category": "cooking",
+			"kind": "item-on-object",
+			"name": "Pitta dough",
+			"options": [
+				"clay oven",
+				"cooking range",
+				"range",
+				"stove"
+			],
+			"requiredCards": [
+				"Pitta bread"
+			],
+			"requireAll": true,
+			"notes": "Range-only."
+		},
+		{
+			"category": "cooking",
+			"kind": "item-on-object",
+			"name": "Potato",
+			"options": [
+				"clay oven",
+				"cooking range",
+				"fire",
+				"range",
+				"stove"
+			],
+			"requiredCards": [
+				"Baked potato"
+			],
+			"requireAll": true,
+			"notes": "Raw potato baked on fire/range."
+		},
+		{
+			"category": "cooking",
+			"kind": "item-on-object",
+			"name": "Raw anchovies",
+			"options": [
+				"clay oven",
+				"cooking range",
+				"fire",
+				"range",
+				"stove"
+			],
+			"requiredCards": [
+				"Anchovies"
+			],
+			"requireAll": true,
+			"notes": ""
+		},
+		{
+			"category": "cooking",
+			"kind": "item-on-object",
+			"name": "Raw anglerfish",
+			"options": [
+				"clay oven",
+				"cooking range",
+				"fire",
+				"range",
+				"stove"
+			],
+			"requiredCards": [
+				"Anglerfish"
+			],
+			"requireAll": true,
+			"notes": ""
+		},
+		{
+			"category": "cooking",
+			"kind": "item-on-object",
+			"name": "Raw bass",
+			"options": [
+				"clay oven",
+				"cooking range",
+				"fire",
+				"range",
+				"stove"
+			],
+			"requiredCards": [
+				"Bass"
+			],
+			"requireAll": true,
+			"notes": ""
+		},
+		{
+			"category": "cooking",
+			"kind": "item-on-object",
+			"name": "Raw bear meat",
+			"options": [
+				"clay oven",
+				"cooking range",
+				"fire",
+				"range",
+				"stove"
+			],
+			"requiredCards": [
+				"Cooked meat"
+			],
+			"requireAll": true,
+			"notes": "Cooks to 'Cooked meat'."
+		},
+		{
+			"category": "cooking",
+			"kind": "item-on-object",
+			"name": "Raw beef",
+			"options": [
+				"clay oven",
+				"cooking range",
+				"fire",
+				"range",
+				"stove"
+			],
+			"requiredCards": [
+				"Cooked meat"
+			],
+			"requireAll": true,
+			"notes": "Cooks to 'Cooked meat'."
+		},
+		{
+			"category": "cooking",
+			"kind": "item-on-object",
+			"name": "Raw cave eel",
+			"options": [
+				"clay oven",
+				"cooking range",
+				"fire",
+				"range",
+				"stove"
+			],
+			"requiredCards": [
+				"Cave eel"
+			],
+			"requireAll": true,
+			"notes": ""
+		},
+		{
+			"category": "cooking",
+			"kind": "item-on-object",
+			"name": "Raw cavefish",
+			"options": [
+				"clay oven",
+				"cooking range",
+				"fire",
+				"range",
+				"stove"
+			],
+			"requiredCards": [
+				"Cavefish"
+			],
+			"requireAll": true,
+			"notes": ""
+		},
+		{
+			"category": "cooking",
+			"kind": "item-on-object",
+			"name": "Raw chicken",
+			"options": [
+				"clay oven",
+				"cooking range",
+				"fire",
+				"range",
+				"stove"
+			],
+			"requiredCards": [
+				"Cooked chicken"
+			],
+			"requireAll": true,
+			"notes": ""
+		},
+		{
+			"category": "cooking",
+			"kind": "item-on-object",
+			"name": "Raw cod",
+			"options": [
+				"clay oven",
+				"cooking range",
+				"fire",
+				"range",
+				"stove"
+			],
+			"requiredCards": [
+				"Cod"
+			],
+			"requireAll": true,
+			"notes": ""
+		},
+		{
+			"category": "cooking",
+			"kind": "item-on-object",
+			"name": "Raw dark crab",
+			"options": [
+				"clay oven",
+				"cooking range",
+				"fire",
+				"range",
+				"stove"
+			],
+			"requiredCards": [
+				"Dark crab"
+			],
+			"requireAll": true,
+			"notes": ""
+		},
+		{
+			"category": "cooking",
+			"kind": "item-on-object",
+			"name": "Raw herring",
+			"options": [
+				"clay oven",
+				"cooking range",
+				"fire",
+				"range",
+				"stove"
+			],
+			"requiredCards": [
+				"Herring"
+			],
+			"requireAll": true,
+			"notes": ""
+		},
+		{
+			"category": "cooking",
+			"kind": "item-on-object",
+			"name": "Raw karambwan",
+			"options": [
+				"clay oven",
+				"cooking range",
+				"fire",
+				"range",
+				"stove"
+			],
+			"requiredCards": [
+				"Cooked karambwan"
+			],
+			"requireAll": true,
+			"notes": "Requires Cooking Guild/thoroughly cooking to avoid poison; still item-on-object."
+		},
+		{
+			"category": "cooking",
+			"kind": "item-on-object",
+			"name": "Raw lobster",
+			"options": [
+				"clay oven",
+				"cooking range",
+				"fire",
+				"range",
+				"stove"
+			],
+			"requiredCards": [
+				"Lobster"
+			],
+			"requireAll": true,
+			"notes": ""
+		},
+		{
+			"category": "cooking",
+			"kind": "item-on-object",
+			"name": "Raw mackerel",
+			"options": [
+				"clay oven",
+				"cooking range",
+				"fire",
+				"range",
+				"stove"
+			],
+			"requiredCards": [
+				"Mackerel"
+			],
+			"requireAll": true,
+			"notes": ""
+		},
+		{
+			"category": "cooking",
+			"kind": "item-on-object",
+			"name": "Raw monkfish",
+			"options": [
+				"clay oven",
+				"cooking range",
+				"fire",
+				"range",
+				"stove"
+			],
+			"requiredCards": [
+				"Monkfish"
+			],
+			"requireAll": true,
+			"notes": ""
+		},
+		{
+			"category": "cooking",
+			"kind": "item-on-object",
+			"name": "Raw pike",
+			"options": [
+				"clay oven",
+				"cooking range",
+				"fire",
+				"range",
+				"stove"
+			],
+			"requiredCards": [
+				"Pike"
+			],
+			"requireAll": true,
+			"notes": ""
+		},
+		{
+			"category": "cooking",
+			"kind": "item-on-object",
+			"name": "Raw rat meat",
+			"options": [
+				"clay oven",
+				"cooking range",
+				"fire",
+				"range",
+				"stove"
+			],
+			"requiredCards": [
+				"Cooked meat"
+			],
+			"requireAll": true,
+			"notes": "Cooks to 'Cooked meat'."
+		},
+		{
+			"category": "cooking",
+			"kind": "item-on-object",
+			"name": "Raw salmon",
+			"options": [
+				"clay oven",
+				"cooking range",
+				"fire",
+				"range",
+				"stove"
+			],
+			"requiredCards": [
+				"Salmon"
+			],
+			"requireAll": true,
+			"notes": ""
+		},
+		{
+			"category": "cooking",
+			"kind": "item-on-object",
+			"name": "Raw sardine",
+			"options": [
+				"clay oven",
+				"cooking range",
+				"fire",
+				"range",
+				"stove"
+			],
+			"requiredCards": [
+				"Sardine"
+			],
+			"requireAll": true,
+			"notes": ""
+		},
+		{
+			"category": "cooking",
+			"kind": "item-on-object",
+			"name": "Raw shark",
+			"options": [
+				"clay oven",
+				"cooking range",
+				"fire",
+				"range",
+				"stove"
+			],
+			"requiredCards": [
+				"Shark"
+			],
+			"requireAll": true,
+			"notes": ""
+		},
+		{
+			"category": "cooking",
+			"kind": "item-on-object",
+			"name": "Raw shrimps",
+			"options": [
+				"clay oven",
+				"cooking range",
+				"fire",
+				"range",
+				"stove"
+			],
+			"requiredCards": [
+				"Shrimps"
+			],
+			"requireAll": true,
+			"notes": ""
+		},
+		{
+			"category": "cooking",
+			"kind": "item-on-object",
+			"name": "Raw slimy eel",
+			"options": [
+				"clay oven",
+				"cooking range",
+				"fire",
+				"range",
+				"stove"
+			],
+			"requiredCards": [
+				"Cooked slimy eel"
+			],
+			"requireAll": true,
+			"notes": ""
+		},
+		{
+			"category": "cooking",
+			"kind": "item-on-object",
+			"name": "Raw swordfish",
+			"options": [
+				"clay oven",
+				"cooking range",
+				"fire",
+				"range",
+				"stove"
+			],
+			"requiredCards": [
+				"Swordfish"
+			],
+			"requireAll": true,
+			"notes": ""
+		},
+		{
+			"category": "cooking",
+			"kind": "item-on-object",
+			"name": "Raw trout",
+			"options": [
+				"clay oven",
+				"cooking range",
+				"fire",
+				"range",
+				"stove"
+			],
+			"requiredCards": [
+				"Trout"
+			],
+			"requireAll": true,
+			"notes": ""
+		},
+		{
+			"category": "cooking",
+			"kind": "item-on-object",
+			"name": "Raw tuna",
+			"options": [
+				"clay oven",
+				"cooking range",
+				"fire",
+				"range",
+				"stove"
+			],
+			"requiredCards": [
+				"Tuna"
+			],
+			"requireAll": true,
+			"notes": ""
+		},
+		{
+			"category": "cooking",
+			"kind": "item-on-object",
+			"name": "Raw ugthanki meat",
+			"options": [
+				"clay oven",
+				"cooking range",
+				"fire",
+				"range",
+				"stove"
+			],
+			"requiredCards": [
+				"Ugthanki meat"
+			],
+			"requireAll": true,
+			"notes": "Cooked on range."
+		},
+		{
+			"category": "cooking",
+			"kind": "item-on-object",
+			"name": "Sweetcorn",
+			"options": [
+				"clay oven",
+				"cooking range",
+				"fire",
+				"range",
+				"stove"
+			],
+			"requiredCards": [
+				"Cooked sweetcorn"
+			],
+			"requireAll": true,
+			"notes": "Raw sweetcorn ('Sweetcorn') cooked to 'Cooked sweetcorn'."
+		}
+	]
 }

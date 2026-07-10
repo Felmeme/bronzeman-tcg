@@ -35,11 +35,18 @@ public class ResourceNodeCatalog
 	public static final String KIND_ITEM_ON_OBJECT = "item-on-object";
 
 	private Map<String, Rule> rules = Collections.emptyMap();
+	private List<String> masterFarmerSeedCards = Collections.emptyList();
 
 	@Inject
 	public ResourceNodeCatalog(Gson gson)
 	{
 		load(gson);
+	}
+
+	/** Exact card names of every seed on Master Farmer's drop table (for Insanity mode). */
+	public List<String> getMasterFarmerSeedCards()
+	{
+		return masterFarmerSeedCards;
 	}
 
 	/** @return the rule for this interaction, or null if the node is unrestricted. */
@@ -98,7 +105,12 @@ public class ResourceNodeCatalog
 				}
 			}
 			rules = Collections.unmodifiableMap(map);
-			log.info("Loaded {} resource node rules from snapshot", rules.size());
+			if (snapshot.masterFarmerSeedCards != null)
+			{
+				masterFarmerSeedCards = Collections.unmodifiableList(snapshot.masterFarmerSeedCards);
+			}
+			log.info("Loaded {} resource node rules ({} Master Farmer seeds) from snapshot",
+				rules.size(), masterFarmerSeedCards.size());
 		}
 		catch (IOException ex)
 		{
@@ -134,6 +146,7 @@ public class ResourceNodeCatalog
 	private static class Snapshot
 	{
 		List<NodeDto> nodes;
+		List<String> masterFarmerSeedCards;
 	}
 
 	private static class NodeDto
