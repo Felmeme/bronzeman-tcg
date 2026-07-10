@@ -33,13 +33,21 @@ only, no automation).
     exact case-insensitive match.
 
 ## Current status
-- ✅ Decode round-trip verified; JSON resource validated; structural checks pass.
-- ❌ **Never compiled** — written in a sandbox without network access to pull
-  RuneLite deps. First task: `./gradlew build` and fix any API drift
-  (candidates: `MenuEntry.getNpc()` availability, `MenuAction` enum names,
-  `RuneScapeProfileChanged` package).
-- ❌ Never run in-game. Test via `./gradlew run` (dev-mode launcher in
-  `src/test/.../BronzemanTcgPluginTest.java`) with osrs-tcg also installed.
+- ✅ Compiles green (`./gradlew build`, Gradle 8.10 wrapper, Temurin JDK 11).
+  None of the suspected API-drift candidates had drifted.
+- ✅ Full manual test pass completed in-game (2026-07-10): block + chat
+  message, `::tcg-give` unlock within 5s, untracked NPC unaffected,
+  spell/item-on-NPC gating, config toggles.
+- ✅ Fixed during testing: `TcgStateDto` assumed `collectionState.instances[]`
+  but osrs-tcg (schemaVersion 3) stores a top-level `cardInstances[]` —
+  verified against a real decoded state blob from a live client.
+- ⚠️ **Known issue — bracketed card names**: 67 tracked names carry wiki-style
+  disambiguation suffixes (e.g. `Monkey (monster)`, `Penguin (monster)`,
+  `Mummy (Pyramid Plunder)`). Exact-name matching means those NPCs are never
+  restricted and never unlockable. Audit of all 6,376 upstream card names is
+  in progress; likely fix is an `npcName -> [cardNames]` mapping in the
+  snapshot so owning any variant unlocks the NPC. Until fixed, Monkey/Penguin
+  attack freely despite having cards.
 
 ## Manual test plan (needs a logged-in account with osrs-tcg installed)
 1. Attack an NPC that has a Monster card you don't own → blocked + chat message.
