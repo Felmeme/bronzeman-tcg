@@ -107,8 +107,9 @@ only, no automation).
    banking), shop buying, best-effort GE search blocking (owner-accepted
    leaky; keyboard flows may bypass), potion-drink blocking (dose folding),
    378 recipes (firemaking/smelt/smith/craft/enchant/fletch/herblore via
-   RecipeCatalog + recipe_nodes.json; make-X = mouse-only, spacebar bypass
-   owner-accepted), hunter (5 methods, any-of gear+creature groups),
+   RecipeCatalog + recipe_nodes.json; make-X = mouse-only — spacebar AND
+   the materials-for-exactly-one case bypass the menu pipeline, both
+   owner-accepted honor system; quantity options prefix-matched), hunter (5 methods, any-of gear+creature groups),
    Extreme Hunter rumours, slayer masters+monsters (merged rules with
    master/monsters roles), runecrafting altars, farming rake/plant/compost.
    Deferred: Sailing (needs deep dive); Time Tracking plugin interop for
