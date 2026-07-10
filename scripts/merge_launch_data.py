@@ -138,8 +138,14 @@ def main():
 		json.dump(data, f, indent="\t", ensure_ascii=False)
 		f.write("\n")
 
-	# ---- recipes straight copy (validated upstream; re-verify here) ----
+	# ---- recipes copy (validated upstream; re-verify here) ----
 	recipes = json.load(open(f"{SCRATCH}/recipe_nodes.json", encoding="utf-8"))
+	# Owner addition after testing: smithing at an anvil should require the Hammer
+	# card too, consistent with Chisel/Needle being required for crafting.
+	assert "Hammer" in CARDS
+	for r in recipes["recipes"]:
+		if r["category"] == "smithing-forge" and ["Hammer"] not in r["inputs"]:
+			r["inputs"].append(["Hammer"])
 	for r in recipes["recipes"]:
 		for g in r["inputs"]:
 			for c in g:

@@ -587,6 +587,9 @@
 			"inputs": [
 				[
 					"Bronze bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Bronze dagger",
@@ -604,6 +607,9 @@
 			"inputs": [
 				[
 					"Bronze bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Bronze axe",
@@ -621,6 +627,9 @@
 			"inputs": [
 				[
 					"Bronze bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Bronze pickaxe",
@@ -638,6 +647,9 @@
 			"inputs": [
 				[
 					"Bronze bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Bronze mace",
@@ -655,6 +667,9 @@
 			"inputs": [
 				[
 					"Bronze bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Bronze med helm",
@@ -672,6 +687,9 @@
 			"inputs": [
 				[
 					"Bronze bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Bronze sword",
@@ -689,6 +707,9 @@
 			"inputs": [
 				[
 					"Bronze bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Bronze scimitar",
@@ -706,6 +727,9 @@
 			"inputs": [
 				[
 					"Bronze bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Bronze longsword",
@@ -723,6 +747,9 @@
 			"inputs": [
 				[
 					"Bronze bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Bronze 2h sword",
@@ -740,6 +767,9 @@
 			"inputs": [
 				[
 					"Bronze bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Bronze full helm",
@@ -757,6 +787,9 @@
 			"inputs": [
 				[
 					"Bronze bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Bronze sq shield",
@@ -774,6 +807,9 @@
 			"inputs": [
 				[
 					"Bronze bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Bronze warhammer",
@@ -791,6 +827,9 @@
 			"inputs": [
 				[
 					"Bronze bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Bronze battleaxe",
@@ -808,6 +847,9 @@
 			"inputs": [
 				[
 					"Bronze bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Bronze chainbody",
@@ -825,6 +867,9 @@
 			"inputs": [
 				[
 					"Bronze bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Bronze kiteshield",
@@ -842,6 +887,9 @@
 			"inputs": [
 				[
 					"Bronze bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Bronze claws",
@@ -859,6 +907,9 @@
 			"inputs": [
 				[
 					"Bronze bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Bronze platelegs",
@@ -876,6 +927,9 @@
 			"inputs": [
 				[
 					"Bronze bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Bronze plateskirt",
@@ -893,6 +947,9 @@
 			"inputs": [
 				[
 					"Bronze bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Bronze platebody",
@@ -910,6 +967,9 @@
 			"inputs": [
 				[
 					"Bronze bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Bronze spear",
@@ -927,6 +987,9 @@
 			"inputs": [
 				[
 					"Bronze bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Bronze hasta",
@@ -944,6 +1007,9 @@
 			"inputs": [
 				[
 					"Bronze bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Bronze knife",
@@ -961,6 +1027,9 @@
 			"inputs": [
 				[
 					"Bronze bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Bronze nails",
@@ -978,6 +1047,9 @@
 			"inputs": [
 				[
 					"Bronze bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Bronze limbs",
@@ -995,6 +1067,9 @@
 			"inputs": [
 				[
 					"Bronze bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Bronze wire",
@@ -1012,6 +1087,9 @@
 			"inputs": [
 				[
 					"Iron bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Iron dagger",
@@ -1029,6 +1107,9 @@
 			"inputs": [
 				[
 					"Iron bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Iron axe",
@@ -1046,6 +1127,9 @@
 			"inputs": [
 				[
 					"Iron bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Iron pickaxe",
@@ -1063,6 +1147,9 @@
 			"inputs": [
 				[
 					"Iron bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Iron mace",
@@ -1080,6 +1167,9 @@
 			"inputs": [
 				[
 					"Iron bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Iron med helm",
@@ -1097,6 +1187,9 @@
 			"inputs": [
 				[
 					"Iron bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Iron sword",
@@ -1114,6 +1207,9 @@
 			"inputs": [
 				[
 					"Iron bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Iron scimitar",
@@ -1131,6 +1227,9 @@
 			"inputs": [
 				[
 					"Iron bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Iron longsword",
@@ -1148,6 +1247,9 @@
 			"inputs": [
 				[
 					"Iron bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Iron 2h sword",
@@ -1165,6 +1267,9 @@
 			"inputs": [
 				[
 					"Iron bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Iron full helm",
@@ -1182,6 +1287,9 @@
 			"inputs": [
 				[
 					"Iron bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Iron sq shield",
@@ -1199,6 +1307,9 @@
 			"inputs": [
 				[
 					"Iron bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Iron warhammer",
@@ -1216,6 +1327,9 @@
 			"inputs": [
 				[
 					"Iron bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Iron battleaxe",
@@ -1233,6 +1347,9 @@
 			"inputs": [
 				[
 					"Iron bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Iron chainbody",
@@ -1250,6 +1367,9 @@
 			"inputs": [
 				[
 					"Iron bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Iron kiteshield",
@@ -1267,6 +1387,9 @@
 			"inputs": [
 				[
 					"Iron bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Iron claws",
@@ -1284,6 +1407,9 @@
 			"inputs": [
 				[
 					"Iron bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Iron platelegs",
@@ -1301,6 +1427,9 @@
 			"inputs": [
 				[
 					"Iron bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Iron plateskirt",
@@ -1318,6 +1447,9 @@
 			"inputs": [
 				[
 					"Iron bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Iron platebody",
@@ -1335,6 +1467,9 @@
 			"inputs": [
 				[
 					"Iron bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Iron spear",
@@ -1352,6 +1487,9 @@
 			"inputs": [
 				[
 					"Iron bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Iron hasta",
@@ -1369,6 +1507,9 @@
 			"inputs": [
 				[
 					"Iron bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Iron knife",
@@ -1386,6 +1527,9 @@
 			"inputs": [
 				[
 					"Iron bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Iron nails",
@@ -1403,6 +1547,9 @@
 			"inputs": [
 				[
 					"Iron bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Iron limbs",
@@ -1420,6 +1567,9 @@
 			"inputs": [
 				[
 					"Steel bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Steel dagger",
@@ -1437,6 +1587,9 @@
 			"inputs": [
 				[
 					"Steel bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Steel axe",
@@ -1454,6 +1607,9 @@
 			"inputs": [
 				[
 					"Steel bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Steel pickaxe",
@@ -1471,6 +1627,9 @@
 			"inputs": [
 				[
 					"Steel bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Steel mace",
@@ -1488,6 +1647,9 @@
 			"inputs": [
 				[
 					"Steel bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Steel med helm",
@@ -1505,6 +1667,9 @@
 			"inputs": [
 				[
 					"Steel bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Steel sword",
@@ -1522,6 +1687,9 @@
 			"inputs": [
 				[
 					"Steel bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Steel scimitar",
@@ -1539,6 +1707,9 @@
 			"inputs": [
 				[
 					"Steel bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Steel longsword",
@@ -1556,6 +1727,9 @@
 			"inputs": [
 				[
 					"Steel bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Steel 2h sword",
@@ -1573,6 +1747,9 @@
 			"inputs": [
 				[
 					"Steel bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Steel full helm",
@@ -1590,6 +1767,9 @@
 			"inputs": [
 				[
 					"Steel bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Steel sq shield",
@@ -1607,6 +1787,9 @@
 			"inputs": [
 				[
 					"Steel bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Steel warhammer",
@@ -1624,6 +1807,9 @@
 			"inputs": [
 				[
 					"Steel bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Steel battleaxe",
@@ -1641,6 +1827,9 @@
 			"inputs": [
 				[
 					"Steel bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Steel chainbody",
@@ -1658,6 +1847,9 @@
 			"inputs": [
 				[
 					"Steel bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Steel kiteshield",
@@ -1675,6 +1867,9 @@
 			"inputs": [
 				[
 					"Steel bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Steel claws",
@@ -1692,6 +1887,9 @@
 			"inputs": [
 				[
 					"Steel bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Steel platelegs",
@@ -1709,6 +1907,9 @@
 			"inputs": [
 				[
 					"Steel bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Steel plateskirt",
@@ -1726,6 +1927,9 @@
 			"inputs": [
 				[
 					"Steel bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Steel platebody",
@@ -1743,6 +1947,9 @@
 			"inputs": [
 				[
 					"Steel bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Steel spear",
@@ -1760,6 +1967,9 @@
 			"inputs": [
 				[
 					"Steel bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Steel hasta",
@@ -1777,6 +1987,9 @@
 			"inputs": [
 				[
 					"Steel bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Steel knife",
@@ -1794,6 +2007,9 @@
 			"inputs": [
 				[
 					"Steel bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Steel nails",
@@ -1811,6 +2027,9 @@
 			"inputs": [
 				[
 					"Steel bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Steel limbs",
@@ -1828,6 +2047,9 @@
 			"inputs": [
 				[
 					"Mithril bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Mithril dagger",
@@ -1845,6 +2067,9 @@
 			"inputs": [
 				[
 					"Mithril bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Mithril axe",
@@ -1862,6 +2087,9 @@
 			"inputs": [
 				[
 					"Mithril bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Mithril pickaxe",
@@ -1879,6 +2107,9 @@
 			"inputs": [
 				[
 					"Mithril bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Mithril mace",
@@ -1896,6 +2127,9 @@
 			"inputs": [
 				[
 					"Mithril bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Mithril med helm",
@@ -1913,6 +2147,9 @@
 			"inputs": [
 				[
 					"Mithril bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Mithril sword",
@@ -1930,6 +2167,9 @@
 			"inputs": [
 				[
 					"Mithril bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Mithril scimitar",
@@ -1947,6 +2187,9 @@
 			"inputs": [
 				[
 					"Mithril bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Mithril longsword",
@@ -1964,6 +2207,9 @@
 			"inputs": [
 				[
 					"Mithril bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Mithril 2h sword",
@@ -1981,6 +2227,9 @@
 			"inputs": [
 				[
 					"Mithril bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Mithril full helm",
@@ -1998,6 +2247,9 @@
 			"inputs": [
 				[
 					"Mithril bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Mithril sq shield",
@@ -2015,6 +2267,9 @@
 			"inputs": [
 				[
 					"Mithril bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Mithril warhammer",
@@ -2032,6 +2287,9 @@
 			"inputs": [
 				[
 					"Mithril bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Mithril battleaxe",
@@ -2049,6 +2307,9 @@
 			"inputs": [
 				[
 					"Mithril bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Mithril chainbody",
@@ -2066,6 +2327,9 @@
 			"inputs": [
 				[
 					"Mithril bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Mithril kiteshield",
@@ -2083,6 +2347,9 @@
 			"inputs": [
 				[
 					"Mithril bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Mithril claws",
@@ -2100,6 +2367,9 @@
 			"inputs": [
 				[
 					"Mithril bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Mithril platelegs",
@@ -2117,6 +2387,9 @@
 			"inputs": [
 				[
 					"Mithril bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Mithril plateskirt",
@@ -2134,6 +2407,9 @@
 			"inputs": [
 				[
 					"Mithril bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Mithril platebody",
@@ -2151,6 +2427,9 @@
 			"inputs": [
 				[
 					"Mithril bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Mithril spear",
@@ -2168,6 +2447,9 @@
 			"inputs": [
 				[
 					"Mithril bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Mithril hasta",
@@ -2185,6 +2467,9 @@
 			"inputs": [
 				[
 					"Mithril bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Mithril knife",
@@ -2202,6 +2487,9 @@
 			"inputs": [
 				[
 					"Mithril bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Mithril nails",
@@ -2219,6 +2507,9 @@
 			"inputs": [
 				[
 					"Mithril bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Mithril limbs",
@@ -2236,6 +2527,9 @@
 			"inputs": [
 				[
 					"Mithril bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Mithril dart tip",
@@ -2253,6 +2547,9 @@
 			"inputs": [
 				[
 					"Adamantite bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Adamant dagger",
@@ -2270,6 +2567,9 @@
 			"inputs": [
 				[
 					"Adamantite bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Adamant axe",
@@ -2287,6 +2587,9 @@
 			"inputs": [
 				[
 					"Adamantite bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Adamant pickaxe",
@@ -2304,6 +2607,9 @@
 			"inputs": [
 				[
 					"Adamantite bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Adamant mace",
@@ -2321,6 +2627,9 @@
 			"inputs": [
 				[
 					"Adamantite bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Adamant med helm",
@@ -2338,6 +2647,9 @@
 			"inputs": [
 				[
 					"Adamantite bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Adamant sword",
@@ -2355,6 +2667,9 @@
 			"inputs": [
 				[
 					"Adamantite bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Adamant scimitar",
@@ -2372,6 +2687,9 @@
 			"inputs": [
 				[
 					"Adamantite bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Adamant longsword",
@@ -2389,6 +2707,9 @@
 			"inputs": [
 				[
 					"Adamantite bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Adamant 2h sword",
@@ -2406,6 +2727,9 @@
 			"inputs": [
 				[
 					"Adamantite bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Adamant full helm",
@@ -2423,6 +2747,9 @@
 			"inputs": [
 				[
 					"Adamantite bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Adamant sq shield",
@@ -2440,6 +2767,9 @@
 			"inputs": [
 				[
 					"Adamantite bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Adamant warhammer",
@@ -2457,6 +2787,9 @@
 			"inputs": [
 				[
 					"Adamantite bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Adamant battleaxe",
@@ -2474,6 +2807,9 @@
 			"inputs": [
 				[
 					"Adamantite bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Adamant chainbody",
@@ -2491,6 +2827,9 @@
 			"inputs": [
 				[
 					"Adamantite bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Adamant kiteshield",
@@ -2508,6 +2847,9 @@
 			"inputs": [
 				[
 					"Adamantite bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Adamant claws",
@@ -2525,6 +2867,9 @@
 			"inputs": [
 				[
 					"Adamantite bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Adamant platelegs",
@@ -2542,6 +2887,9 @@
 			"inputs": [
 				[
 					"Adamantite bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Adamant plateskirt",
@@ -2559,6 +2907,9 @@
 			"inputs": [
 				[
 					"Adamantite bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Adamant platebody",
@@ -2576,6 +2927,9 @@
 			"inputs": [
 				[
 					"Adamantite bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Adamant spear",
@@ -2593,6 +2947,9 @@
 			"inputs": [
 				[
 					"Adamantite bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Adamant hasta",
@@ -2610,6 +2967,9 @@
 			"inputs": [
 				[
 					"Adamantite bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Adamant knife",
@@ -2627,6 +2987,9 @@
 			"inputs": [
 				[
 					"Adamantite bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Adamantite nails",
@@ -2644,6 +3007,9 @@
 			"inputs": [
 				[
 					"Adamantite bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Adamantite limbs",
@@ -2661,6 +3027,9 @@
 			"inputs": [
 				[
 					"Runite bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Rune dagger",
@@ -2678,6 +3047,9 @@
 			"inputs": [
 				[
 					"Runite bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Rune axe",
@@ -2695,6 +3067,9 @@
 			"inputs": [
 				[
 					"Runite bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Rune pickaxe",
@@ -2712,6 +3087,9 @@
 			"inputs": [
 				[
 					"Runite bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Rune mace",
@@ -2729,6 +3107,9 @@
 			"inputs": [
 				[
 					"Runite bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Rune med helm",
@@ -2746,6 +3127,9 @@
 			"inputs": [
 				[
 					"Runite bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Rune sword",
@@ -2763,6 +3147,9 @@
 			"inputs": [
 				[
 					"Runite bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Rune scimitar",
@@ -2780,6 +3167,9 @@
 			"inputs": [
 				[
 					"Runite bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Rune longsword",
@@ -2797,6 +3187,9 @@
 			"inputs": [
 				[
 					"Runite bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Rune 2h sword",
@@ -2814,6 +3207,9 @@
 			"inputs": [
 				[
 					"Runite bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Rune full helm",
@@ -2831,6 +3227,9 @@
 			"inputs": [
 				[
 					"Runite bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Rune sq shield",
@@ -2848,6 +3247,9 @@
 			"inputs": [
 				[
 					"Runite bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Rune warhammer",
@@ -2865,6 +3267,9 @@
 			"inputs": [
 				[
 					"Runite bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Rune battleaxe",
@@ -2882,6 +3287,9 @@
 			"inputs": [
 				[
 					"Runite bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Rune chainbody",
@@ -2899,6 +3307,9 @@
 			"inputs": [
 				[
 					"Runite bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Rune kiteshield",
@@ -2916,6 +3327,9 @@
 			"inputs": [
 				[
 					"Runite bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Rune claws",
@@ -2933,6 +3347,9 @@
 			"inputs": [
 				[
 					"Runite bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Rune platelegs",
@@ -2950,6 +3367,9 @@
 			"inputs": [
 				[
 					"Runite bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Rune plateskirt",
@@ -2967,6 +3387,9 @@
 			"inputs": [
 				[
 					"Runite bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Rune platebody",
@@ -2984,6 +3407,9 @@
 			"inputs": [
 				[
 					"Runite bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Rune spear",
@@ -3001,6 +3427,9 @@
 			"inputs": [
 				[
 					"Runite bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Rune hasta",
@@ -3018,6 +3447,9 @@
 			"inputs": [
 				[
 					"Runite bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Rune knife",
@@ -3035,6 +3467,9 @@
 			"inputs": [
 				[
 					"Runite bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Rune nails",
@@ -3052,6 +3487,9 @@
 			"inputs": [
 				[
 					"Runite bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Runite limbs",
@@ -3069,6 +3507,9 @@
 			"inputs": [
 				[
 					"Steel bar"
+				],
+				[
+					"Hammer"
 				]
 			],
 			"output": "Steel cannonball",

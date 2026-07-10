@@ -17,6 +17,7 @@ import net.runelite.api.MenuAction;
 import net.runelite.api.MenuEntry;
 import net.runelite.api.NPC;
 import net.runelite.api.NPCComposition;
+import net.runelite.api.events.MenuOpened;
 import net.runelite.api.events.MenuOptionClicked;
 import net.runelite.api.gameval.InterfaceID;
 import net.runelite.api.widgets.Widget;
@@ -62,6 +63,12 @@ public class BronzemanTcgPlugin extends Plugin
 	private static final Set<String> EQUIP_VERBS = new HashSet<>(List.of("wear", "wield", "equip"));
 	private static final Set<String> FORCED_DROP_ALLOWED = new HashSet<>(List.of(
 		"drop", "examine", "destroy", "release"));
+	// Production-interface verbs: the furnace smelting screen (and possibly other stations)
+	// uses a different widget group than the SKILLMULTI/SMITHING ones we match directly, so
+	// any interface click with one of these options gets a recipe lookup by product name.
+	private static final Set<String> MAKE_VERBS = new HashSet<>(List.of(
+		"smelt", "make", "make-x", "make-all", "make sets", "craft", "smith",
+		"string", "mix", "cook", "bake", "fletch", "spin", "fire"));
 
 	@Inject
 	private Client client;
@@ -364,8 +371,69 @@ public class BronzemanTcgPlugin extends Plugin
 			{
 				event.consume();
 				sendBlockedMessage(targetName);
+				return;
 			}
 		}
+
+		// Production interfaces outside the groups matched above (e.g. furnace smelting):
+		// a make-verb click still names its product in the menu target.
+		if (MAKE_VERBS.contains(optionLower))
+		{
+			String product = Text.removeTags(event.getMenuTarget()).trim();
+			if (!product.isEmpty())
+			{
+				checkRecipe(event, RecipeCatalog.KIND_INTERFACE, product, null);
+			}
+		}
+	}
+
+	/**
+	 * Forced drop, presentation half: locked items' menus only offer the allowed options.
+	 * The click-consume path in {@link #handleInventoryOp} stays as the backstop for
+	 * left-click defaults, which never open a menu.
+	 */
+	@Subscribe
+	public void onMenuOpened(MenuOpened event)
+	{
+		if (config.forcedDropMode() == ForcedDropMode.OFF)
+		{
+			return;
+		}
+		MenuEntry[] entries = event.getMenuEntries();
+		List<MenuEntry> kept = new ArrayList<>(entries.length);
+		for (MenuEntry entry : entries)
+		{
+			if (!isForcedDropHiddenEntry(entry))
+			{
+				kept.add(entry);
+			}
+		}
+		if (kept.size() != entries.length)
+		{
+			event.setMenuEntries(kept.toArray(new MenuEntry[0]));
+		}
+	}
+
+	private boolean isForcedDropHiddenEntry(MenuEntry entry)
+	{
+		boolean inventoryUse = entry.getType() == MenuAction.WIDGET_TARGET;
+		if (!entry.isItemOp() && !inventoryUse)
+		{
+			return false;
+		}
+		if (WidgetUtil.componentToInterface(entry.getParam1()) != InterfaceID.INVENTORY)
+		{
+			return false;
+		}
+		String option = Text.removeTags(entry.getOption()).trim().toLowerCase(Locale.ROOT);
+		if (FORCED_DROP_ALLOWED.contains(option))
+		{
+			return false;
+		}
+		String itemName = entry.getItemId() > 0
+			? itemManager.getItemComposition(entry.getItemId()).getName()
+			: Text.removeTags(entry.getTarget()).trim();
+		return itemName != null && !itemName.isEmpty() && !isUnlocked(itemCatalog, itemName);
 	}
 
 	private void handleInventoryOp(MenuOptionClicked event, MenuEntry entry, String option,
