@@ -516,6 +516,1299 @@
 			"notes": "Raw sweetcorn ('Sweetcorn') cooked to 'Cooked sweetcorn'."
 		},
 		{
+			"category": "farming-compost",
+			"kind": "object",
+			"name": "Compost Bin",
+			"options": [
+				"take",
+				"take-compost"
+			],
+			"requiredCardGroups": [
+				[
+					"Compost",
+					"Supercompost",
+					"Ultracompost"
+				]
+			],
+			"groupRoles": [
+				"compost"
+			],
+			"requireAll": true,
+			"notes": "Retrieving finished compost. Bin state (compost/super/ultra) is NOT distinguishable by object name, so any compost card satisfies. 'Big Compost Bin' is a separate object with the same semantics."
+		},
+		{
+			"category": "farming-plant",
+			"kind": "item-on-object",
+			"name": "Asgarnian seed",
+			"options": [
+				"hops patch"
+			],
+			"requiredCardGroups": [
+				[
+					"Seed dibber"
+				],
+				[
+					"Asgarnian seed"
+				],
+				[
+					"Asgarnian hops"
+				]
+			],
+			"groupRoles": [
+				"tool",
+				"seed",
+				"produce"
+			],
+			"requireAll": true,
+			"notes": "Plant Asgarnian seed in Hops patch. Tools-only mode keeps [tool]; seed/produce groups drop per mode."
+		},
+		{
+			"category": "farming-plant",
+			"kind": "item-on-object",
+			"name": "Avantoe seed",
+			"options": [
+				"herb patch"
+			],
+			"requiredCardGroups": [
+				[
+					"Seed dibber"
+				],
+				[
+					"Avantoe seed"
+				],
+				[
+					"Grimy avantoe"
+				]
+			],
+			"groupRoles": [
+				"tool",
+				"seed",
+				"produce"
+			],
+			"requireAll": true,
+			"notes": "Plant Avantoe seed in Herb patch. Tools-only mode keeps [tool]; seed/produce groups drop per mode."
+		},
+		{
+			"category": "farming-plant",
+			"kind": "item-on-object",
+			"name": "Barley seed",
+			"options": [
+				"hops patch"
+			],
+			"requiredCardGroups": [
+				[
+					"Seed dibber"
+				],
+				[
+					"Barley seed"
+				],
+				[
+					"Barley"
+				]
+			],
+			"groupRoles": [
+				"tool",
+				"seed",
+				"produce"
+			],
+			"requireAll": true,
+			"notes": "Plant Barley seed in Hops patch. Tools-only mode keeps [tool]; seed/produce groups drop per mode."
+		},
+		{
+			"category": "farming-plant",
+			"kind": "item-on-object",
+			"name": "Belladonna seed",
+			"options": [
+				"belladonna"
+			],
+			"requiredCardGroups": [
+				[
+					"Seed dibber"
+				],
+				[
+					"Belladonna seed"
+				],
+				[
+					"Cave nightshade"
+				]
+			],
+			"groupRoles": [
+				"tool",
+				"seed",
+				"produce"
+			],
+			"requireAll": true,
+			"notes": "Plant Belladonna seed in Belladonna. Tools-only mode keeps [tool]; seed/produce groups drop per mode."
+		},
+		{
+			"category": "farming-plant",
+			"kind": "item-on-object",
+			"name": "Buchu seed",
+			"options": [
+				"herb patch"
+			],
+			"requiredCardGroups": [
+				[
+					"Seed dibber"
+				],
+				[
+					"Buchu seed"
+				],
+				[
+					"Grimy buchu leaf"
+				]
+			],
+			"groupRoles": [
+				"tool",
+				"seed",
+				"produce"
+			],
+			"requireAll": true,
+			"notes": "Plant Buchu seed in Herb patch. Tools-only mode keeps [tool]; seed/produce groups drop per mode."
+		},
+		{
+			"category": "farming-plant",
+			"kind": "item-on-object",
+			"name": "Cabbage seed",
+			"options": [
+				"allotment"
+			],
+			"requiredCardGroups": [
+				[
+					"Seed dibber"
+				],
+				[
+					"Cabbage seed"
+				],
+				[
+					"Cabbage"
+				]
+			],
+			"groupRoles": [
+				"tool",
+				"seed",
+				"produce"
+			],
+			"requireAll": true,
+			"notes": "Plant Cabbage seed in Allotment. Tools-only mode keeps [tool]; seed/produce groups drop per mode."
+		},
+		{
+			"category": "farming-plant",
+			"kind": "item-on-object",
+			"name": "Cactus seed",
+			"options": [
+				"cactus patch"
+			],
+			"requiredCardGroups": [
+				[
+					"Seed dibber"
+				],
+				[
+					"Cactus seed"
+				],
+				[
+					"Cactus spine"
+				]
+			],
+			"groupRoles": [
+				"tool",
+				"seed",
+				"produce"
+			],
+			"requireAll": true,
+			"notes": "Plant Cactus seed in Cactus patch. Tools-only mode keeps [tool]; seed/produce groups drop per mode."
+		},
+		{
+			"category": "farming-plant",
+			"kind": "item-on-object",
+			"name": "Cadantine seed",
+			"options": [
+				"herb patch"
+			],
+			"requiredCardGroups": [
+				[
+					"Seed dibber"
+				],
+				[
+					"Cadantine seed"
+				],
+				[
+					"Grimy cadantine"
+				]
+			],
+			"groupRoles": [
+				"tool",
+				"seed",
+				"produce"
+			],
+			"requireAll": true,
+			"notes": "Plant Cadantine seed in Herb patch. Tools-only mode keeps [tool]; seed/produce groups drop per mode."
+		},
+		{
+			"category": "farming-plant",
+			"kind": "item-on-object",
+			"name": "Dwarf weed seed",
+			"options": [
+				"herb patch"
+			],
+			"requiredCardGroups": [
+				[
+					"Seed dibber"
+				],
+				[
+					"Dwarf weed seed"
+				],
+				[
+					"Grimy dwarf weed"
+				]
+			],
+			"groupRoles": [
+				"tool",
+				"seed",
+				"produce"
+			],
+			"requireAll": true,
+			"notes": "Plant Dwarf weed seed in Herb patch. Tools-only mode keeps [tool]; seed/produce groups drop per mode."
+		},
+		{
+			"category": "farming-plant",
+			"kind": "item-on-object",
+			"name": "Golpar seed",
+			"options": [
+				"herb patch"
+			],
+			"requiredCardGroups": [
+				[
+					"Seed dibber"
+				],
+				[
+					"Golpar seed"
+				],
+				[
+					"Grimy golpar"
+				]
+			],
+			"groupRoles": [
+				"tool",
+				"seed",
+				"produce"
+			],
+			"requireAll": true,
+			"notes": "Plant Golpar seed in Herb patch. Tools-only mode keeps [tool]; seed/produce groups drop per mode."
+		},
+		{
+			"category": "farming-plant",
+			"kind": "item-on-object",
+			"name": "Grape seed",
+			"options": [
+				"vine patch"
+			],
+			"requiredCardGroups": [
+				[
+					"Seed dibber"
+				],
+				[
+					"Grape seed"
+				],
+				[
+					"Grapes"
+				]
+			],
+			"groupRoles": [
+				"tool",
+				"seed",
+				"produce"
+			],
+			"requireAll": true,
+			"notes": "Plant Grape seed in Vine patch. Tools-only mode keeps [tool]; seed/produce groups drop per mode."
+		},
+		{
+			"category": "farming-plant",
+			"kind": "item-on-object",
+			"name": "Guam seed",
+			"options": [
+				"herb patch"
+			],
+			"requiredCardGroups": [
+				[
+					"Seed dibber"
+				],
+				[
+					"Guam seed"
+				],
+				[
+					"Grimy guam leaf"
+				]
+			],
+			"groupRoles": [
+				"tool",
+				"seed",
+				"produce"
+			],
+			"requireAll": true,
+			"notes": "Plant Guam seed in Herb patch. Tools-only mode keeps [tool]; seed/produce groups drop per mode."
+		},
+		{
+			"category": "farming-plant",
+			"kind": "item-on-object",
+			"name": "Hammerstone seed",
+			"options": [
+				"hops patch"
+			],
+			"requiredCardGroups": [
+				[
+					"Seed dibber"
+				],
+				[
+					"Hammerstone seed"
+				],
+				[
+					"Hammerstone hops"
+				]
+			],
+			"groupRoles": [
+				"tool",
+				"seed",
+				"produce"
+			],
+			"requireAll": true,
+			"notes": "Plant Hammerstone seed in Hops patch. Tools-only mode keeps [tool]; seed/produce groups drop per mode."
+		},
+		{
+			"category": "farming-plant",
+			"kind": "item-on-object",
+			"name": "Harralander seed",
+			"options": [
+				"herb patch"
+			],
+			"requiredCardGroups": [
+				[
+					"Seed dibber"
+				],
+				[
+					"Harralander seed"
+				],
+				[
+					"Grimy harralander"
+				]
+			],
+			"groupRoles": [
+				"tool",
+				"seed",
+				"produce"
+			],
+			"requireAll": true,
+			"notes": "Plant Harralander seed in Herb patch. Tools-only mode keeps [tool]; seed/produce groups drop per mode."
+		},
+		{
+			"category": "farming-plant",
+			"kind": "item-on-object",
+			"name": "Huasca seed",
+			"options": [
+				"herb patch"
+			],
+			"requiredCardGroups": [
+				[
+					"Seed dibber"
+				],
+				[
+					"Huasca seed"
+				],
+				[
+					"Grimy huasca"
+				]
+			],
+			"groupRoles": [
+				"tool",
+				"seed",
+				"produce"
+			],
+			"requireAll": true,
+			"notes": "Plant Huasca seed in Herb patch. Tools-only mode keeps [tool]; seed/produce groups drop per mode."
+		},
+		{
+			"category": "farming-plant",
+			"kind": "item-on-object",
+			"name": "Irit seed",
+			"options": [
+				"herb patch"
+			],
+			"requiredCardGroups": [
+				[
+					"Seed dibber"
+				],
+				[
+					"Irit seed"
+				],
+				[
+					"Grimy irit leaf"
+				]
+			],
+			"groupRoles": [
+				"tool",
+				"seed",
+				"produce"
+			],
+			"requireAll": true,
+			"notes": "Plant Irit seed in Herb patch. Tools-only mode keeps [tool]; seed/produce groups drop per mode."
+		},
+		{
+			"category": "farming-plant",
+			"kind": "item-on-object",
+			"name": "Jangerberry seed",
+			"options": [
+				"bush patch"
+			],
+			"requiredCardGroups": [
+				[
+					"Seed dibber"
+				],
+				[
+					"Jangerberry seed"
+				],
+				[
+					"Jangerberries"
+				]
+			],
+			"groupRoles": [
+				"tool",
+				"seed",
+				"produce"
+			],
+			"requireAll": true,
+			"notes": "Plant Jangerberry seed in Bush patch. Tools-only mode keeps [tool]; seed/produce groups drop per mode."
+		},
+		{
+			"category": "farming-plant",
+			"kind": "item-on-object",
+			"name": "Jute seed",
+			"options": [
+				"hops patch"
+			],
+			"requiredCardGroups": [
+				[
+					"Seed dibber"
+				],
+				[
+					"Jute seed"
+				],
+				[
+					"Jute fibre"
+				]
+			],
+			"groupRoles": [
+				"tool",
+				"seed",
+				"produce"
+			],
+			"requireAll": true,
+			"notes": "Plant Jute seed in Hops patch. Tools-only mode keeps [tool]; seed/produce groups drop per mode."
+		},
+		{
+			"category": "farming-plant",
+			"kind": "item-on-object",
+			"name": "Krandorian seed",
+			"options": [
+				"hops patch"
+			],
+			"requiredCardGroups": [
+				[
+					"Seed dibber"
+				],
+				[
+					"Krandorian seed"
+				],
+				[
+					"Krandorian hops"
+				]
+			],
+			"groupRoles": [
+				"tool",
+				"seed",
+				"produce"
+			],
+			"requireAll": true,
+			"notes": "Plant Krandorian seed in Hops patch. Tools-only mode keeps [tool]; seed/produce groups drop per mode."
+		},
+		{
+			"category": "farming-plant",
+			"kind": "item-on-object",
+			"name": "Kwuarm seed",
+			"options": [
+				"herb patch"
+			],
+			"requiredCardGroups": [
+				[
+					"Seed dibber"
+				],
+				[
+					"Kwuarm seed"
+				],
+				[
+					"Grimy kwuarm"
+				]
+			],
+			"groupRoles": [
+				"tool",
+				"seed",
+				"produce"
+			],
+			"requireAll": true,
+			"notes": "Plant Kwuarm seed in Herb patch. Tools-only mode keeps [tool]; seed/produce groups drop per mode."
+		},
+		{
+			"category": "farming-plant",
+			"kind": "item-on-object",
+			"name": "Lantadyme seed",
+			"options": [
+				"herb patch"
+			],
+			"requiredCardGroups": [
+				[
+					"Seed dibber"
+				],
+				[
+					"Lantadyme seed"
+				],
+				[
+					"Grimy lantadyme"
+				]
+			],
+			"groupRoles": [
+				"tool",
+				"seed",
+				"produce"
+			],
+			"requireAll": true,
+			"notes": "Plant Lantadyme seed in Herb patch. Tools-only mode keeps [tool]; seed/produce groups drop per mode."
+		},
+		{
+			"category": "farming-plant",
+			"kind": "item-on-object",
+			"name": "Limpwurt seed",
+			"options": [
+				"flower patch"
+			],
+			"requiredCardGroups": [
+				[
+					"Seed dibber"
+				],
+				[
+					"Limpwurt seed"
+				],
+				[
+					"Limpwurt root"
+				]
+			],
+			"groupRoles": [
+				"tool",
+				"seed",
+				"produce"
+			],
+			"requireAll": true,
+			"notes": "Plant Limpwurt seed in Flower patch. Tools-only mode keeps [tool]; seed/produce groups drop per mode."
+		},
+		{
+			"category": "farming-plant",
+			"kind": "item-on-object",
+			"name": "Marrentill seed",
+			"options": [
+				"herb patch"
+			],
+			"requiredCardGroups": [
+				[
+					"Seed dibber"
+				],
+				[
+					"Marrentill seed"
+				],
+				[
+					"Grimy marrentill"
+				]
+			],
+			"groupRoles": [
+				"tool",
+				"seed",
+				"produce"
+			],
+			"requireAll": true,
+			"notes": "Plant Marrentill seed in Herb patch. Tools-only mode keeps [tool]; seed/produce groups drop per mode."
+		},
+		{
+			"category": "farming-plant",
+			"kind": "item-on-object",
+			"name": "Mushroom spore",
+			"options": [
+				"mushroom patch"
+			],
+			"requiredCardGroups": [
+				[
+					"Seed dibber"
+				],
+				[
+					"Mushroom spore"
+				],
+				[
+					"Mushroom"
+				]
+			],
+			"groupRoles": [
+				"tool",
+				"seed",
+				"produce"
+			],
+			"requireAll": true,
+			"notes": "Plant Mushroom spore in Mushroom patch. Tools-only mode keeps [tool]; seed/produce groups drop per mode."
+		},
+		{
+			"category": "farming-plant",
+			"kind": "item-on-object",
+			"name": "Noxifer seed",
+			"options": [
+				"herb patch"
+			],
+			"requiredCardGroups": [
+				[
+					"Seed dibber"
+				],
+				[
+					"Noxifer seed"
+				],
+				[
+					"Grimy noxifer"
+				]
+			],
+			"groupRoles": [
+				"tool",
+				"seed",
+				"produce"
+			],
+			"requireAll": true,
+			"notes": "Plant Noxifer seed in Herb patch. Tools-only mode keeps [tool]; seed/produce groups drop per mode."
+		},
+		{
+			"category": "farming-plant",
+			"kind": "item-on-object",
+			"name": "Onion seed",
+			"options": [
+				"allotment"
+			],
+			"requiredCardGroups": [
+				[
+					"Seed dibber"
+				],
+				[
+					"Onion seed"
+				],
+				[
+					"Onion"
+				]
+			],
+			"groupRoles": [
+				"tool",
+				"seed",
+				"produce"
+			],
+			"requireAll": true,
+			"notes": "Plant Onion seed in Allotment. Tools-only mode keeps [tool]; seed/produce groups drop per mode."
+		},
+		{
+			"category": "farming-plant",
+			"kind": "item-on-object",
+			"name": "Poison ivy seed",
+			"options": [
+				"bush patch"
+			],
+			"requiredCardGroups": [
+				[
+					"Seed dibber"
+				],
+				[
+					"Poison ivy seed"
+				],
+				[
+					"Poison ivy berries"
+				]
+			],
+			"groupRoles": [
+				"tool",
+				"seed",
+				"produce"
+			],
+			"requireAll": true,
+			"notes": "Plant Poison ivy seed in Bush patch. Tools-only mode keeps [tool]; seed/produce groups drop per mode."
+		},
+		{
+			"category": "farming-plant",
+			"kind": "item-on-object",
+			"name": "Potato cactus seed",
+			"options": [
+				"cactus patch"
+			],
+			"requiredCardGroups": [
+				[
+					"Seed dibber"
+				],
+				[
+					"Potato cactus seed"
+				],
+				[
+					"Potato cactus"
+				]
+			],
+			"groupRoles": [
+				"tool",
+				"seed",
+				"produce"
+			],
+			"requireAll": true,
+			"notes": "Plant Potato cactus seed in Cactus patch. Tools-only mode keeps [tool]; seed/produce groups drop per mode."
+		},
+		{
+			"category": "farming-plant",
+			"kind": "item-on-object",
+			"name": "Potato seed",
+			"options": [
+				"allotment"
+			],
+			"requiredCardGroups": [
+				[
+					"Seed dibber"
+				],
+				[
+					"Potato seed"
+				],
+				[
+					"Potato"
+				]
+			],
+			"groupRoles": [
+				"tool",
+				"seed",
+				"produce"
+			],
+			"requireAll": true,
+			"notes": "Plant Potato seed in Allotment. Tools-only mode keeps [tool]; seed/produce groups drop per mode."
+		},
+		{
+			"category": "farming-plant",
+			"kind": "item-on-object",
+			"name": "Ranarr seed",
+			"options": [
+				"herb patch"
+			],
+			"requiredCardGroups": [
+				[
+					"Seed dibber"
+				],
+				[
+					"Ranarr seed"
+				],
+				[
+					"Grimy ranarr weed"
+				]
+			],
+			"groupRoles": [
+				"tool",
+				"seed",
+				"produce"
+			],
+			"requireAll": true,
+			"notes": "Plant Ranarr seed in Herb patch. Tools-only mode keeps [tool]; seed/produce groups drop per mode."
+		},
+		{
+			"category": "farming-plant",
+			"kind": "item-on-object",
+			"name": "Redberry seed",
+			"options": [
+				"bush patch"
+			],
+			"requiredCardGroups": [
+				[
+					"Seed dibber"
+				],
+				[
+					"Redberry seed"
+				],
+				[
+					"Redberries"
+				]
+			],
+			"groupRoles": [
+				"tool",
+				"seed",
+				"produce"
+			],
+			"requireAll": true,
+			"notes": "Plant Redberry seed in Bush patch. Tools-only mode keeps [tool]; seed/produce groups drop per mode."
+		},
+		{
+			"category": "farming-plant",
+			"kind": "item-on-object",
+			"name": "Seaweed spore",
+			"options": [
+				"seaweed patch"
+			],
+			"requiredCardGroups": [
+				[
+					"Seed dibber"
+				],
+				[
+					"Seaweed spore"
+				],
+				[
+					"Giant seaweed"
+				]
+			],
+			"groupRoles": [
+				"tool",
+				"seed",
+				"produce"
+			],
+			"requireAll": true,
+			"notes": "Plant Seaweed spore in Seaweed patch. Tools-only mode keeps [tool]; seed/produce groups drop per mode."
+		},
+		{
+			"category": "farming-plant",
+			"kind": "item-on-object",
+			"name": "Snapdragon seed",
+			"options": [
+				"herb patch"
+			],
+			"requiredCardGroups": [
+				[
+					"Seed dibber"
+				],
+				[
+					"Snapdragon seed"
+				],
+				[
+					"Grimy snapdragon"
+				]
+			],
+			"groupRoles": [
+				"tool",
+				"seed",
+				"produce"
+			],
+			"requireAll": true,
+			"notes": "Plant Snapdragon seed in Herb patch. Tools-only mode keeps [tool]; seed/produce groups drop per mode."
+		},
+		{
+			"category": "farming-plant",
+			"kind": "item-on-object",
+			"name": "Strawberry seed",
+			"options": [
+				"allotment"
+			],
+			"requiredCardGroups": [
+				[
+					"Seed dibber"
+				],
+				[
+					"Strawberry seed"
+				],
+				[
+					"Strawberry"
+				]
+			],
+			"groupRoles": [
+				"tool",
+				"seed",
+				"produce"
+			],
+			"requireAll": true,
+			"notes": "Plant Strawberry seed in Allotment. Tools-only mode keeps [tool]; seed/produce groups drop per mode."
+		},
+		{
+			"category": "farming-plant",
+			"kind": "item-on-object",
+			"name": "Sweetcorn seed",
+			"options": [
+				"allotment"
+			],
+			"requiredCardGroups": [
+				[
+					"Seed dibber"
+				],
+				[
+					"Sweetcorn seed"
+				],
+				[
+					"Sweetcorn"
+				]
+			],
+			"groupRoles": [
+				"tool",
+				"seed",
+				"produce"
+			],
+			"requireAll": true,
+			"notes": "Plant Sweetcorn seed in Allotment. Tools-only mode keeps [tool]; seed/produce groups drop per mode."
+		},
+		{
+			"category": "farming-plant",
+			"kind": "item-on-object",
+			"name": "Tarromin seed",
+			"options": [
+				"herb patch"
+			],
+			"requiredCardGroups": [
+				[
+					"Seed dibber"
+				],
+				[
+					"Tarromin seed"
+				],
+				[
+					"Grimy tarromin"
+				]
+			],
+			"groupRoles": [
+				"tool",
+				"seed",
+				"produce"
+			],
+			"requireAll": true,
+			"notes": "Plant Tarromin seed in Herb patch. Tools-only mode keeps [tool]; seed/produce groups drop per mode."
+		},
+		{
+			"category": "farming-plant",
+			"kind": "item-on-object",
+			"name": "Toadflax seed",
+			"options": [
+				"herb patch"
+			],
+			"requiredCardGroups": [
+				[
+					"Seed dibber"
+				],
+				[
+					"Toadflax seed"
+				],
+				[
+					"Grimy toadflax"
+				]
+			],
+			"groupRoles": [
+				"tool",
+				"seed",
+				"produce"
+			],
+			"requireAll": true,
+			"notes": "Plant Toadflax seed in Herb patch. Tools-only mode keeps [tool]; seed/produce groups drop per mode."
+		},
+		{
+			"category": "farming-plant",
+			"kind": "item-on-object",
+			"name": "Tomato seed",
+			"options": [
+				"allotment"
+			],
+			"requiredCardGroups": [
+				[
+					"Seed dibber"
+				],
+				[
+					"Tomato seed"
+				],
+				[
+					"Tomato"
+				]
+			],
+			"groupRoles": [
+				"tool",
+				"seed",
+				"produce"
+			],
+			"requireAll": true,
+			"notes": "Plant Tomato seed in Allotment. Tools-only mode keeps [tool]; seed/produce groups drop per mode."
+		},
+		{
+			"category": "farming-plant",
+			"kind": "item-on-object",
+			"name": "Torstol seed",
+			"options": [
+				"herb patch"
+			],
+			"requiredCardGroups": [
+				[
+					"Seed dibber"
+				],
+				[
+					"Torstol seed"
+				],
+				[
+					"Grimy torstol"
+				]
+			],
+			"groupRoles": [
+				"tool",
+				"seed",
+				"produce"
+			],
+			"requireAll": true,
+			"notes": "Plant Torstol seed in Herb patch. Tools-only mode keeps [tool]; seed/produce groups drop per mode."
+		},
+		{
+			"category": "farming-plant",
+			"kind": "item-on-object",
+			"name": "Watermelon seed",
+			"options": [
+				"allotment"
+			],
+			"requiredCardGroups": [
+				[
+					"Seed dibber"
+				],
+				[
+					"Watermelon seed"
+				],
+				[
+					"Watermelon"
+				]
+			],
+			"groupRoles": [
+				"tool",
+				"seed",
+				"produce"
+			],
+			"requireAll": true,
+			"notes": "Plant Watermelon seed in Allotment. Tools-only mode keeps [tool]; seed/produce groups drop per mode."
+		},
+		{
+			"category": "farming-plant",
+			"kind": "item-on-object",
+			"name": "Whiteberry seed",
+			"options": [
+				"bush patch"
+			],
+			"requiredCardGroups": [
+				[
+					"Seed dibber"
+				],
+				[
+					"Whiteberry seed"
+				],
+				[
+					"White berries"
+				]
+			],
+			"groupRoles": [
+				"tool",
+				"seed",
+				"produce"
+			],
+			"requireAll": true,
+			"notes": "Plant Whiteberry seed in Bush patch. Tools-only mode keeps [tool]; seed/produce groups drop per mode."
+		},
+		{
+			"category": "farming-plant",
+			"kind": "item-on-object",
+			"name": "Wildblood seed",
+			"options": [
+				"hops patch"
+			],
+			"requiredCardGroups": [
+				[
+					"Seed dibber"
+				],
+				[
+					"Wildblood seed"
+				],
+				[
+					"Wildblood hops"
+				]
+			],
+			"groupRoles": [
+				"tool",
+				"seed",
+				"produce"
+			],
+			"requireAll": true,
+			"notes": "Plant Wildblood seed in Hops patch. Tools-only mode keeps [tool]; seed/produce groups drop per mode."
+		},
+		{
+			"category": "farming-plant",
+			"kind": "item-on-object",
+			"name": "Yanillian seed",
+			"options": [
+				"hops patch"
+			],
+			"requiredCardGroups": [
+				[
+					"Seed dibber"
+				],
+				[
+					"Yanillian seed"
+				],
+				[
+					"Yanillian hops"
+				]
+			],
+			"groupRoles": [
+				"tool",
+				"seed",
+				"produce"
+			],
+			"requireAll": true,
+			"notes": "Plant Yanillian seed in Hops patch. Tools-only mode keeps [tool]; seed/produce groups drop per mode."
+		},
+		{
+			"category": "farming-rake",
+			"kind": "object",
+			"name": "Allotment",
+			"options": [
+				"rake"
+			],
+			"requiredCardGroups": [
+				[
+					"Rake"
+				],
+				[
+					"Weeds"
+				]
+			],
+			"groupRoles": [
+				"tool",
+				"weeds"
+			],
+			"requireAll": true,
+			"notes": "Raking weeds. Tools-only mode drops the weeds group. Special patches (cactus/belladonna/mushroom/seaweed) never weed and are omitted."
+		},
+		{
+			"category": "farming-rake",
+			"kind": "object",
+			"name": "Bush patch",
+			"options": [
+				"rake"
+			],
+			"requiredCardGroups": [
+				[
+					"Rake"
+				],
+				[
+					"Weeds"
+				]
+			],
+			"groupRoles": [
+				"tool",
+				"weeds"
+			],
+			"requireAll": true,
+			"notes": "Raking weeds. Tools-only mode drops the weeds group. Special patches (cactus/belladonna/mushroom/seaweed) never weed and are omitted."
+		},
+		{
+			"category": "farming-rake",
+			"kind": "object",
+			"name": "Flower patch",
+			"options": [
+				"rake"
+			],
+			"requiredCardGroups": [
+				[
+					"Rake"
+				],
+				[
+					"Weeds"
+				]
+			],
+			"groupRoles": [
+				"tool",
+				"weeds"
+			],
+			"requireAll": true,
+			"notes": "Raking weeds. Tools-only mode drops the weeds group. Special patches (cactus/belladonna/mushroom/seaweed) never weed and are omitted."
+		},
+		{
+			"category": "farming-rake",
+			"kind": "object",
+			"name": "Fruit tree patch",
+			"options": [
+				"rake"
+			],
+			"requiredCardGroups": [
+				[
+					"Rake"
+				],
+				[
+					"Weeds"
+				]
+			],
+			"groupRoles": [
+				"tool",
+				"weeds"
+			],
+			"requireAll": true,
+			"notes": "Raking weeds. Tools-only mode drops the weeds group. Special patches (cactus/belladonna/mushroom/seaweed) never weed and are omitted."
+		},
+		{
+			"category": "farming-rake",
+			"kind": "object",
+			"name": "Herb patch",
+			"options": [
+				"rake"
+			],
+			"requiredCardGroups": [
+				[
+					"Rake"
+				],
+				[
+					"Weeds"
+				]
+			],
+			"groupRoles": [
+				"tool",
+				"weeds"
+			],
+			"requireAll": true,
+			"notes": "Raking weeds. Tools-only mode drops the weeds group. Special patches (cactus/belladonna/mushroom/seaweed) never weed and are omitted."
+		},
+		{
+			"category": "farming-rake",
+			"kind": "object",
+			"name": "Hops patch",
+			"options": [
+				"rake"
+			],
+			"requiredCardGroups": [
+				[
+					"Rake"
+				],
+				[
+					"Weeds"
+				]
+			],
+			"groupRoles": [
+				"tool",
+				"weeds"
+			],
+			"requireAll": true,
+			"notes": "Raking weeds. Tools-only mode drops the weeds group. Special patches (cactus/belladonna/mushroom/seaweed) never weed and are omitted."
+		},
+		{
+			"category": "farming-rake",
+			"kind": "object",
+			"name": "Tree patch",
+			"options": [
+				"rake"
+			],
+			"requiredCardGroups": [
+				[
+					"Rake"
+				],
+				[
+					"Weeds"
+				]
+			],
+			"groupRoles": [
+				"tool",
+				"weeds"
+			],
+			"requireAll": true,
+			"notes": "Raking weeds. Tools-only mode drops the weeds group. Special patches (cactus/belladonna/mushroom/seaweed) never weed and are omitted."
+		},
+		{
 			"category": "fishing",
 			"kind": "npc",
 			"name": "Fishing spot",
@@ -689,6 +1982,991 @@
 			],
 			"requireAll": false,
 			"notes": "Fishing spots yield different fish by location; we list the UNION and use requireAll=false so owning ANY yielded fish unlocks the spot (cannot distinguish location). 'Rod Fishing spot' NPC variant."
+		},
+		{
+			"category": "hunter-birds",
+			"kind": "inventory",
+			"name": "Bird snare",
+			"options": [
+				"lay"
+			],
+			"requiredCardGroups": [
+				[
+					"Bird snare"
+				],
+				[
+					"Crimson swift",
+					"Golden warbler",
+					"Tropical wagtail"
+				]
+			],
+			"groupRoles": [
+				"",
+				"creature"
+			],
+			"requireAll": true,
+			"notes": "FLAG(kind): laying is an INVENTORY item option ('Bird snare' -> 'Lay'), not one of the 4 schema kinds; kind set to 'object' as best-fit, plugin likely needs inventory-item handling. FLAG(model): bird NPCs have NO 'Catch' option - you lay the snare, birds are trapped automatically, then Check the collapsed trap. 'All Bird Drops' mode cannot be attached to the lay action because the target bird is unknowable at lay time (same problem as chinchompa box traps). See report for per-bird card mapping (Crimson swift / Golden warbler / Tropical wagtail have creature cards; Copper longtail / Cerulean twitch do NOT)."
+		},
+		{
+			"category": "hunter-butterflies",
+			"kind": "npc",
+			"name": "Black warlock",
+			"options": [
+				"catch"
+			],
+			"requiredCardGroups": [
+				[
+					"Butterfly net",
+					"Magic butterfly net"
+				],
+				[
+					"Butterfly jar"
+				]
+			],
+			"groupRoles": [
+				"",
+				"extra"
+			],
+			"requireAll": true,
+			"notes": "Net-only base mode = net group (magic net counts). 'With jar' mode adds the Butterfly jar group. 'All Butterfly Drops' mode would add this species' own creature card, but NO butterfly/moth creature card exists in Card.json (only '<name> mix' and, for moths, '<name> wing') - a per-species creature requirement is impossible; see report."
+		},
+		{
+			"category": "hunter-butterflies",
+			"kind": "npc",
+			"name": "Moonlight moth",
+			"options": [
+				"catch"
+			],
+			"requiredCardGroups": [
+				[
+					"Butterfly net",
+					"Magic butterfly net"
+				],
+				[
+					"Butterfly jar"
+				]
+			],
+			"groupRoles": [
+				"",
+				"extra"
+			],
+			"requireAll": true,
+			"notes": "Net-only base mode = net group (magic net counts). 'With jar' mode adds the Butterfly jar group. 'All Butterfly Drops' mode would add this species' own creature card, but NO butterfly/moth creature card exists in Card.json (only '<name> mix' and, for moths, '<name> wing') - a per-species creature requirement is impossible; see report."
+		},
+		{
+			"category": "hunter-butterflies",
+			"kind": "npc",
+			"name": "Ruby harvest",
+			"options": [
+				"catch"
+			],
+			"requiredCardGroups": [
+				[
+					"Butterfly net",
+					"Magic butterfly net"
+				],
+				[
+					"Butterfly jar"
+				]
+			],
+			"groupRoles": [
+				"",
+				"extra"
+			],
+			"requireAll": true,
+			"notes": "Net-only base mode = net group (magic net counts). 'With jar' mode adds the Butterfly jar group. 'All Butterfly Drops' mode would add this species' own creature card, but NO butterfly/moth creature card exists in Card.json (only '<name> mix' and, for moths, '<name> wing') - a per-species creature requirement is impossible; see report."
+		},
+		{
+			"category": "hunter-butterflies",
+			"kind": "npc",
+			"name": "Sapphire glacialis",
+			"options": [
+				"catch"
+			],
+			"requiredCardGroups": [
+				[
+					"Butterfly net",
+					"Magic butterfly net"
+				],
+				[
+					"Butterfly jar"
+				]
+			],
+			"groupRoles": [
+				"",
+				"extra"
+			],
+			"requireAll": true,
+			"notes": "Net-only base mode = net group (magic net counts). 'With jar' mode adds the Butterfly jar group. 'All Butterfly Drops' mode would add this species' own creature card, but NO butterfly/moth creature card exists in Card.json (only '<name> mix' and, for moths, '<name> wing') - a per-species creature requirement is impossible; see report."
+		},
+		{
+			"category": "hunter-butterflies",
+			"kind": "npc",
+			"name": "Snowy knight",
+			"options": [
+				"catch"
+			],
+			"requiredCardGroups": [
+				[
+					"Butterfly net",
+					"Magic butterfly net"
+				],
+				[
+					"Butterfly jar"
+				]
+			],
+			"groupRoles": [
+				"",
+				"extra"
+			],
+			"requireAll": true,
+			"notes": "Net-only base mode = net group (magic net counts). 'With jar' mode adds the Butterfly jar group. 'All Butterfly Drops' mode would add this species' own creature card, but NO butterfly/moth creature card exists in Card.json (only '<name> mix' and, for moths, '<name> wing') - a per-species creature requirement is impossible; see report."
+		},
+		{
+			"category": "hunter-butterflies",
+			"kind": "npc",
+			"name": "Sunlight moth",
+			"options": [
+				"catch"
+			],
+			"requiredCardGroups": [
+				[
+					"Butterfly net",
+					"Magic butterfly net"
+				],
+				[
+					"Butterfly jar"
+				]
+			],
+			"groupRoles": [
+				"",
+				"extra"
+			],
+			"requireAll": true,
+			"notes": "Net-only base mode = net group (magic net counts). 'With jar' mode adds the Butterfly jar group. 'All Butterfly Drops' mode would add this species' own creature card, but NO butterfly/moth creature card exists in Card.json (only '<name> mix' and, for moths, '<name> wing') - a per-species creature requirement is impossible; see report."
+		},
+		{
+			"category": "hunter-chins",
+			"kind": "inventory",
+			"name": "Box trap",
+			"options": [
+				"lay"
+			],
+			"requiredCardGroups": [
+				[
+					"Box trap"
+				],
+				[
+					"Chinchompa",
+					"Red chinchompa",
+					"Black chinchompa"
+				],
+				[
+					"Chinchompa",
+					"Red chinchompa",
+					"Black chinchompa"
+				]
+			],
+			"groupRoles": [
+				"",
+				"extra",
+				"creature"
+			],
+			"requireAll": true,
+			"notes": "FLAG(kind): laying is an INVENTORY item option ('Box trap' -> 'Lay'), not one of the 4 schema kinds; kind set to 'object' as best-fit. DISCUSSION: a laid box trap cannot know which chinchompa will enter it, so an exact per-species card requirement is impossible at lay time. Proposed 'All Chinchompa Drops' mode uses a single any-of group of the three chin cards (grey chinchompa's caught item is the base 'Chinchompa' card). Alternative: key the species off the hunting area/region instead of the trap. Grey chinchompa == card 'Chinchompa'."
+		},
+		{
+			"category": "hunter-implings",
+			"kind": "npc",
+			"name": "Baby impling",
+			"options": [
+				"catch"
+			],
+			"requiredCardGroups": [
+				[
+					"Butterfly net",
+					"Magic butterfly net"
+				],
+				[
+					"Impling jar"
+				]
+			],
+			"groupRoles": [
+				"",
+				"extra"
+			],
+			"requireAll": true,
+			"notes": "Net-only mode = net group. 'Both' mode adds the Impling jar group (jar is mandatory in Puro-Puro, optional overworld). Barehanded catching (10 levels above net requirement) uses the SAME 'Catch' option, so the rule still keys on 'catch'. Per-impling '<name> impling jar' cards all exist if an 'all drops' mode is desired later."
+		},
+		{
+			"category": "hunter-implings",
+			"kind": "npc",
+			"name": "Crystal impling",
+			"options": [
+				"catch"
+			],
+			"requiredCardGroups": [
+				[
+					"Butterfly net",
+					"Magic butterfly net"
+				],
+				[
+					"Impling jar"
+				]
+			],
+			"groupRoles": [
+				"",
+				"extra"
+			],
+			"requireAll": true,
+			"notes": "Net-only mode = net group. 'Both' mode adds the Impling jar group (jar is mandatory in Puro-Puro, optional overworld). Barehanded catching (10 levels above net requirement) uses the SAME 'Catch' option, so the rule still keys on 'catch'. Per-impling '<name> impling jar' cards all exist if an 'all drops' mode is desired later."
+		},
+		{
+			"category": "hunter-implings",
+			"kind": "npc",
+			"name": "Dragon impling",
+			"options": [
+				"catch"
+			],
+			"requiredCardGroups": [
+				[
+					"Butterfly net",
+					"Magic butterfly net"
+				],
+				[
+					"Impling jar"
+				]
+			],
+			"groupRoles": [
+				"",
+				"extra"
+			],
+			"requireAll": true,
+			"notes": "Net-only mode = net group. 'Both' mode adds the Impling jar group (jar is mandatory in Puro-Puro, optional overworld). Barehanded catching (10 levels above net requirement) uses the SAME 'Catch' option, so the rule still keys on 'catch'. Per-impling '<name> impling jar' cards all exist if an 'all drops' mode is desired later."
+		},
+		{
+			"category": "hunter-implings",
+			"kind": "npc",
+			"name": "Earth impling",
+			"options": [
+				"catch"
+			],
+			"requiredCardGroups": [
+				[
+					"Butterfly net",
+					"Magic butterfly net"
+				],
+				[
+					"Impling jar"
+				]
+			],
+			"groupRoles": [
+				"",
+				"extra"
+			],
+			"requireAll": true,
+			"notes": "Net-only mode = net group. 'Both' mode adds the Impling jar group (jar is mandatory in Puro-Puro, optional overworld). Barehanded catching (10 levels above net requirement) uses the SAME 'Catch' option, so the rule still keys on 'catch'. Per-impling '<name> impling jar' cards all exist if an 'all drops' mode is desired later."
+		},
+		{
+			"category": "hunter-implings",
+			"kind": "npc",
+			"name": "Eclectic impling",
+			"options": [
+				"catch"
+			],
+			"requiredCardGroups": [
+				[
+					"Butterfly net",
+					"Magic butterfly net"
+				],
+				[
+					"Impling jar"
+				]
+			],
+			"groupRoles": [
+				"",
+				"extra"
+			],
+			"requireAll": true,
+			"notes": "Net-only mode = net group. 'Both' mode adds the Impling jar group (jar is mandatory in Puro-Puro, optional overworld). Barehanded catching (10 levels above net requirement) uses the SAME 'Catch' option, so the rule still keys on 'catch'. Per-impling '<name> impling jar' cards all exist if an 'all drops' mode is desired later."
+		},
+		{
+			"category": "hunter-implings",
+			"kind": "npc",
+			"name": "Essence impling",
+			"options": [
+				"catch"
+			],
+			"requiredCardGroups": [
+				[
+					"Butterfly net",
+					"Magic butterfly net"
+				],
+				[
+					"Impling jar"
+				]
+			],
+			"groupRoles": [
+				"",
+				"extra"
+			],
+			"requireAll": true,
+			"notes": "Net-only mode = net group. 'Both' mode adds the Impling jar group (jar is mandatory in Puro-Puro, optional overworld). Barehanded catching (10 levels above net requirement) uses the SAME 'Catch' option, so the rule still keys on 'catch'. Per-impling '<name> impling jar' cards all exist if an 'all drops' mode is desired later."
+		},
+		{
+			"category": "hunter-implings",
+			"kind": "npc",
+			"name": "Gourmet impling",
+			"options": [
+				"catch"
+			],
+			"requiredCardGroups": [
+				[
+					"Butterfly net",
+					"Magic butterfly net"
+				],
+				[
+					"Impling jar"
+				]
+			],
+			"groupRoles": [
+				"",
+				"extra"
+			],
+			"requireAll": true,
+			"notes": "Net-only mode = net group. 'Both' mode adds the Impling jar group (jar is mandatory in Puro-Puro, optional overworld). Barehanded catching (10 levels above net requirement) uses the SAME 'Catch' option, so the rule still keys on 'catch'. Per-impling '<name> impling jar' cards all exist if an 'all drops' mode is desired later."
+		},
+		{
+			"category": "hunter-implings",
+			"kind": "npc",
+			"name": "Lucky impling",
+			"options": [
+				"catch"
+			],
+			"requiredCardGroups": [
+				[
+					"Butterfly net",
+					"Magic butterfly net"
+				],
+				[
+					"Impling jar"
+				]
+			],
+			"groupRoles": [
+				"",
+				"extra"
+			],
+			"requireAll": true,
+			"notes": "Net-only mode = net group. 'Both' mode adds the Impling jar group (jar is mandatory in Puro-Puro, optional overworld). Barehanded catching (10 levels above net requirement) uses the SAME 'Catch' option, so the rule still keys on 'catch'. Per-impling '<name> impling jar' cards all exist if an 'all drops' mode is desired later."
+		},
+		{
+			"category": "hunter-implings",
+			"kind": "npc",
+			"name": "Magpie impling",
+			"options": [
+				"catch"
+			],
+			"requiredCardGroups": [
+				[
+					"Butterfly net",
+					"Magic butterfly net"
+				],
+				[
+					"Impling jar"
+				]
+			],
+			"groupRoles": [
+				"",
+				"extra"
+			],
+			"requireAll": true,
+			"notes": "Net-only mode = net group. 'Both' mode adds the Impling jar group (jar is mandatory in Puro-Puro, optional overworld). Barehanded catching (10 levels above net requirement) uses the SAME 'Catch' option, so the rule still keys on 'catch'. Per-impling '<name> impling jar' cards all exist if an 'all drops' mode is desired later."
+		},
+		{
+			"category": "hunter-implings",
+			"kind": "npc",
+			"name": "Nature impling",
+			"options": [
+				"catch"
+			],
+			"requiredCardGroups": [
+				[
+					"Butterfly net",
+					"Magic butterfly net"
+				],
+				[
+					"Impling jar"
+				]
+			],
+			"groupRoles": [
+				"",
+				"extra"
+			],
+			"requireAll": true,
+			"notes": "Net-only mode = net group. 'Both' mode adds the Impling jar group (jar is mandatory in Puro-Puro, optional overworld). Barehanded catching (10 levels above net requirement) uses the SAME 'Catch' option, so the rule still keys on 'catch'. Per-impling '<name> impling jar' cards all exist if an 'all drops' mode is desired later."
+		},
+		{
+			"category": "hunter-implings",
+			"kind": "npc",
+			"name": "Ninja impling",
+			"options": [
+				"catch"
+			],
+			"requiredCardGroups": [
+				[
+					"Butterfly net",
+					"Magic butterfly net"
+				],
+				[
+					"Impling jar"
+				]
+			],
+			"groupRoles": [
+				"",
+				"extra"
+			],
+			"requireAll": true,
+			"notes": "Net-only mode = net group. 'Both' mode adds the Impling jar group (jar is mandatory in Puro-Puro, optional overworld). Barehanded catching (10 levels above net requirement) uses the SAME 'Catch' option, so the rule still keys on 'catch'. Per-impling '<name> impling jar' cards all exist if an 'all drops' mode is desired later."
+		},
+		{
+			"category": "hunter-implings",
+			"kind": "npc",
+			"name": "Young impling",
+			"options": [
+				"catch"
+			],
+			"requiredCardGroups": [
+				[
+					"Butterfly net",
+					"Magic butterfly net"
+				],
+				[
+					"Impling jar"
+				]
+			],
+			"groupRoles": [
+				"",
+				"extra"
+			],
+			"requireAll": true,
+			"notes": "Net-only mode = net group. 'Both' mode adds the Impling jar group (jar is mandatory in Puro-Puro, optional overworld). Barehanded catching (10 levels above net requirement) uses the SAME 'Catch' option, so the rule still keys on 'catch'. Per-impling '<name> impling jar' cards all exist if an 'all drops' mode is desired later."
+		},
+		{
+			"category": "hunter-pitfalls",
+			"kind": "npc",
+			"name": "Horned graahk",
+			"options": [
+				"tease"
+			],
+			"requiredCardGroups": [
+				[
+					"Teasing stick"
+				],
+				[
+					"Knife"
+				],
+				[
+					"Logs",
+					"Oak logs",
+					"Willow logs",
+					"Teak logs",
+					"Maple logs",
+					"Mahogany logs",
+					"Yew logs",
+					"Magic logs"
+				],
+				[
+					"Horned graahk"
+				]
+			],
+			"groupRoles": [
+				"",
+				"",
+				"",
+				"creature"
+			],
+			"requireAll": true,
+			"notes": "Pitfall: tease the animal (option 'Tease') to lure it into the spiked pit; building the pit consumes Knife + any logs (redwood/arctic pine excluded). Items-only base mode = Teasing stick group AND Knife group AND logs group (any-of the 8 standard firemaking logs). 'All' mode adds the animal's own creature card group. AXE IS OPTIONAL (only cuts nearby trees for extra logs) so it is intentionally NOT required - see report for the axe card list if the owner still wants it. Larupia & Kyatt are also pitfall/deadfall creatures but have NO creature card, so they are excluded."
+		},
+		{
+			"category": "hunter-pitfalls",
+			"kind": "npc",
+			"name": "Moonlight antelope",
+			"options": [
+				"tease"
+			],
+			"requiredCardGroups": [
+				[
+					"Teasing stick"
+				],
+				[
+					"Knife"
+				],
+				[
+					"Logs",
+					"Oak logs",
+					"Willow logs",
+					"Teak logs",
+					"Maple logs",
+					"Mahogany logs",
+					"Yew logs",
+					"Magic logs"
+				],
+				[
+					"Moonlight antelope"
+				]
+			],
+			"groupRoles": [
+				"",
+				"",
+				"",
+				"creature"
+			],
+			"requireAll": true,
+			"notes": "Pitfall: tease the animal (option 'Tease') to lure it into the spiked pit; building the pit consumes Knife + any logs (redwood/arctic pine excluded). Items-only base mode = Teasing stick group AND Knife group AND logs group (any-of the 8 standard firemaking logs). 'All' mode adds the animal's own creature card group. AXE IS OPTIONAL (only cuts nearby trees for extra logs) so it is intentionally NOT required - see report for the axe card list if the owner still wants it. Larupia & Kyatt are also pitfall/deadfall creatures but have NO creature card, so they are excluded."
+		},
+		{
+			"category": "hunter-pitfalls",
+			"kind": "npc",
+			"name": "Sunlight antelope",
+			"options": [
+				"tease"
+			],
+			"requiredCardGroups": [
+				[
+					"Teasing stick"
+				],
+				[
+					"Knife"
+				],
+				[
+					"Logs",
+					"Oak logs",
+					"Willow logs",
+					"Teak logs",
+					"Maple logs",
+					"Mahogany logs",
+					"Yew logs",
+					"Magic logs"
+				],
+				[
+					"Sunlight antelope"
+				]
+			],
+			"groupRoles": [
+				"",
+				"",
+				"",
+				"creature"
+			],
+			"requireAll": true,
+			"notes": "Pitfall: tease the animal (option 'Tease') to lure it into the spiked pit; building the pit consumes Knife + any logs (redwood/arctic pine excluded). Items-only base mode = Teasing stick group AND Knife group AND logs group (any-of the 8 standard firemaking logs). 'All' mode adds the animal's own creature card group. AXE IS OPTIONAL (only cuts nearby trees for extra logs) so it is intentionally NOT required - see report for the axe card list if the owner still wants it. Larupia & Kyatt are also pitfall/deadfall creatures but have NO creature card, so they are excluded."
+		},
+		{
+			"category": "hunter-rumours",
+			"kind": "npc",
+			"name": "Guild Hunter Aco",
+			"options": [
+				"talk-to"
+			],
+			"requiredCardGroups": [
+				[
+					"Orange salamander"
+				],
+				[
+					"Chinchompa"
+				],
+				[
+					"Dark kebbit"
+				],
+				[
+					"Red salamander"
+				],
+				[
+					"Red chinchompa"
+				],
+				[
+					"Dashing kebbit"
+				],
+				[
+					"Sunlight antelope"
+				],
+				[
+					"Tecu salamander"
+				]
+			],
+			"groupRoles": [
+				"",
+				"",
+				"",
+				"",
+				"",
+				"",
+				"",
+				""
+			],
+			"requireAll": true,
+			"notes": "expert-tier rumour master. Requires ALL cards for every assignable creature that HAS a card. Excluded (no matching card in Card.json): Sabre-toothed kebbit, Sabre-toothed kyatt, Moonlight moth. Judgment mappings used: Spotted kebbit->'Spotted kebbit fur', Grey chinchompa->'Chinchompa', Pyre fox->'Raw pyre fox' (caught items)."
+		},
+		{
+			"category": "hunter-rumours",
+			"kind": "npc",
+			"name": "Guild Hunter Cervus",
+			"options": [
+				"talk-to"
+			],
+			"requiredCardGroups": [
+				[
+					"Swamp lizard"
+				],
+				[
+					"Horned graahk"
+				],
+				[
+					"Spotted kebbit fur"
+				],
+				[
+					"Orange salamander"
+				],
+				[
+					"Chinchompa"
+				],
+				[
+					"Dark kebbit"
+				],
+				[
+					"Raw pyre fox"
+				],
+				[
+					"Red chinchompa"
+				]
+			],
+			"groupRoles": [
+				"",
+				"",
+				"",
+				"",
+				"",
+				"",
+				"",
+				""
+			],
+			"requireAll": true,
+			"notes": "adept-tier rumour master. Requires ALL cards for every assignable creature that HAS a card. Excluded (no matching card in Card.json): Black warlock, Razor-backed kebbit, Sabre-toothed kebbit, Sunlight moth. Judgment mappings used: Spotted kebbit->'Spotted kebbit fur', Grey chinchompa->'Chinchompa', Pyre fox->'Raw pyre fox' (caught items)."
+		},
+		{
+			"category": "hunter-rumours",
+			"kind": "npc",
+			"name": "Guild Hunter Ornus",
+			"options": [
+				"talk-to"
+			],
+			"requiredCardGroups": [
+				[
+					"Swamp lizard"
+				],
+				[
+					"Spotted kebbit fur"
+				],
+				[
+					"Raw pyre fox"
+				],
+				[
+					"Red salamander"
+				],
+				[
+					"Red chinchompa"
+				]
+			],
+			"groupRoles": [
+				"",
+				"",
+				"",
+				"",
+				""
+			],
+			"requireAll": true,
+			"notes": "adept-tier rumour master. Requires ALL cards for every assignable creature that HAS a card. Excluded (no matching card in Card.json): Spined larupia, Snowy knight, Black warlock, Razor-backed kebbit, Sabre-toothed kebbit, Sabre-toothed kyatt. Judgment mappings used: Spotted kebbit->'Spotted kebbit fur', Grey chinchompa->'Chinchompa', Pyre fox->'Raw pyre fox' (caught items)."
+		},
+		{
+			"category": "hunter-rumours",
+			"kind": "npc",
+			"name": "Guild Hunter Teco",
+			"options": [
+				"talk-to"
+			],
+			"requiredCardGroups": [
+				[
+					"Chinchompa"
+				],
+				[
+					"Dark kebbit"
+				],
+				[
+					"Red salamander"
+				],
+				[
+					"Red chinchompa"
+				],
+				[
+					"Dashing kebbit"
+				]
+			],
+			"groupRoles": [
+				"",
+				"",
+				"",
+				"",
+				""
+			],
+			"requireAll": true,
+			"notes": "expert-tier rumour master. Requires ALL cards for every assignable creature that HAS a card. Excluded (no matching card in Card.json): Sabre-toothed kebbit, Sabre-toothed kyatt, Sunlight moth, Herbiboar. Judgment mappings used: Spotted kebbit->'Spotted kebbit fur', Grey chinchompa->'Chinchompa', Pyre fox->'Raw pyre fox' (caught items)."
+		},
+		{
+			"category": "hunter-rumours",
+			"kind": "npc",
+			"name": "Guild Hunter Wolf",
+			"options": [
+				"talk-to"
+			],
+			"requiredCardGroups": [
+				[
+					"Red salamander"
+				],
+				[
+					"Red chinchompa"
+				],
+				[
+					"Dashing kebbit"
+				],
+				[
+					"Tecu salamander"
+				],
+				[
+					"Moonlight antelope"
+				]
+			],
+			"groupRoles": [
+				"",
+				"",
+				"",
+				"",
+				""
+			],
+			"requireAll": true,
+			"notes": "master-tier rumour master. Requires ALL cards for every assignable creature that HAS a card. Excluded (no matching card in Card.json): Moonlight moth. Judgment mappings used: Spotted kebbit->'Spotted kebbit fur', Grey chinchompa->'Chinchompa', Pyre fox->'Raw pyre fox' (caught items)."
+		},
+		{
+			"category": "hunter-rumours",
+			"kind": "npc",
+			"name": "Huntmaster Gilman",
+			"options": [
+				"talk-to"
+			],
+			"requiredCardGroups": [
+				[
+					"Tropical wagtail"
+				],
+				[
+					"Wild kebbit"
+				],
+				[
+					"Swamp lizard"
+				],
+				[
+					"Barb-tailed kebbit"
+				],
+				[
+					"Embertailed jerboa"
+				],
+				[
+					"Horned graahk"
+				],
+				[
+					"Spotted kebbit fur"
+				],
+				[
+					"Orange salamander"
+				],
+				[
+					"Chinchompa"
+				],
+				[
+					"Dark kebbit"
+				],
+				[
+					"Raw pyre fox"
+				],
+				[
+					"Red salamander"
+				],
+				[
+					"Red chinchompa"
+				],
+				[
+					"Dashing kebbit"
+				],
+				[
+					"Sunlight antelope"
+				],
+				[
+					"Tecu salamander"
+				],
+				[
+					"Moonlight antelope"
+				]
+			],
+			"groupRoles": [
+				"",
+				"",
+				"",
+				"",
+				"",
+				"",
+				"",
+				"",
+				"",
+				"",
+				"",
+				"",
+				"",
+				"",
+				"",
+				"",
+				""
+			],
+			"requireAll": true,
+			"notes": "novice-tier rumour master. Requires ALL cards for every assignable creature that HAS a card. Excluded (no matching card in Card.json): Sapphire glacialis, Spined larupia, Snowy knight, Prickly kebbit, Black warlock, Razor-backed kebbit, Sabre-toothed kebbit, Sabre-toothed kyatt, Sunlight moth, Herbiboar, Moonlight moth. Judgment mappings used: Spotted kebbit->'Spotted kebbit fur', Grey chinchompa->'Chinchompa', Pyre fox->'Raw pyre fox' (caught items)."
+		},
+		{
+			"category": "hunter-salamanders",
+			"kind": "object",
+			"name": "Young tree",
+			"options": [
+				"set-trap"
+			],
+			"requiredCardGroups": [
+				[
+					"Rope"
+				],
+				[
+					"Small fishing net"
+				],
+				[
+					"Swamp lizard"
+				]
+			],
+			"groupRoles": [
+				"",
+				"",
+				"creature"
+			],
+			"requireAll": true,
+			"notes": "Net-trap object is 'Young tree', option 'Set-trap'; each salamander area has its own Young tree - node distinguished by the 'Swamp lizard' add-on. Rope+Net base mode = Rope group AND Small fishing net group. 'Items+Sally' mode adds the salamander's own card group. Object name for the Varlamore Tecu salamander should be re-verified in-game."
+		},
+		{
+			"category": "hunter-salamanders",
+			"kind": "object",
+			"name": "Young tree",
+			"options": [
+				"set-trap"
+			],
+			"requiredCardGroups": [
+				[
+					"Rope"
+				],
+				[
+					"Small fishing net"
+				],
+				[
+					"Orange salamander"
+				]
+			],
+			"groupRoles": [
+				"",
+				"",
+				"creature"
+			],
+			"requireAll": true,
+			"notes": "Net-trap object is 'Young tree', option 'Set-trap'; each salamander area has its own Young tree - node distinguished by the 'Orange salamander' add-on. Rope+Net base mode = Rope group AND Small fishing net group. 'Items+Sally' mode adds the salamander's own card group. Object name for the Varlamore Tecu salamander should be re-verified in-game."
+		},
+		{
+			"category": "hunter-salamanders",
+			"kind": "object",
+			"name": "Young tree",
+			"options": [
+				"set-trap"
+			],
+			"requiredCardGroups": [
+				[
+					"Rope"
+				],
+				[
+					"Small fishing net"
+				],
+				[
+					"Red salamander"
+				]
+			],
+			"groupRoles": [
+				"",
+				"",
+				"creature"
+			],
+			"requireAll": true,
+			"notes": "Net-trap object is 'Young tree', option 'Set-trap'; each salamander area has its own Young tree - node distinguished by the 'Red salamander' add-on. Rope+Net base mode = Rope group AND Small fishing net group. 'Items+Sally' mode adds the salamander's own card group. Object name for the Varlamore Tecu salamander should be re-verified in-game."
+		},
+		{
+			"category": "hunter-salamanders",
+			"kind": "object",
+			"name": "Young tree",
+			"options": [
+				"set-trap"
+			],
+			"requiredCardGroups": [
+				[
+					"Rope"
+				],
+				[
+					"Small fishing net"
+				],
+				[
+					"Black salamander"
+				]
+			],
+			"groupRoles": [
+				"",
+				"",
+				"creature"
+			],
+			"requireAll": true,
+			"notes": "Net-trap object is 'Young tree', option 'Set-trap'; each salamander area has its own Young tree - node distinguished by the 'Black salamander' add-on. Rope+Net base mode = Rope group AND Small fishing net group. 'Items+Sally' mode adds the salamander's own card group. Object name for the Varlamore Tecu salamander should be re-verified in-game."
+		},
+		{
+			"category": "hunter-salamanders",
+			"kind": "object",
+			"name": "Young tree",
+			"options": [
+				"set-trap"
+			],
+			"requiredCardGroups": [
+				[
+					"Rope"
+				],
+				[
+					"Small fishing net"
+				],
+				[
+					"Tecu salamander"
+				]
+			],
+			"groupRoles": [
+				"",
+				"",
+				"creature"
+			],
+			"requireAll": true,
+			"notes": "Net-trap object is 'Young tree', option 'Set-trap'; each salamander area has its own Young tree - node distinguished by the 'Tecu salamander' add-on. Rope+Net base mode = Rope group AND Small fishing net group. 'Items+Sally' mode adds the salamander's own card group. Object name for the Varlamore Tecu salamander should be re-verified in-game."
 		},
 		{
 			"category": "mining",
@@ -1917,6 +4195,2730 @@
 			],
 			"requireAll": true,
 			"notes": ""
+		},
+		{
+			"category": "runecrafting",
+			"kind": "object",
+			"name": "Air altar",
+			"options": [
+				"craft-rune"
+			],
+			"requiredCardGroups": [
+				[
+					"Rune essence",
+					"Pure essence",
+					"Daeyalt essence"
+				],
+				[
+					"Air talisman",
+					"Air tiara"
+				],
+				[
+					"Air rune"
+				]
+			],
+			"groupRoles": [
+				"essence",
+				"talisman",
+				"rune"
+			],
+			"requireAll": true,
+			"notes": "Standard elemental/catalytic altar."
+		},
+		{
+			"category": "runecrafting",
+			"kind": "object",
+			"name": "Altar",
+			"options": [
+				"craft-rune"
+			],
+			"requiredCardGroups": [
+				[
+					"Pure essence",
+					"Daeyalt essence"
+				]
+			],
+			"groupRoles": [
+				"essence"
+			],
+			"requireAll": true,
+			"notes": "Ourania (ZMI) altar. No talisman needed; crafts RANDOM runes (level-based), so no specific rune group. Pure or daeyalt essence only. Object name is generic 'Altar' (distinct from the renamed 'X altar' objects)."
+		},
+		{
+			"category": "runecrafting",
+			"kind": "object",
+			"name": "Astral altar",
+			"options": [
+				"craft-rune"
+			],
+			"requiredCardGroups": [
+				[
+					"Pure essence",
+					"Daeyalt essence"
+				],
+				[
+					"Astral rune"
+				]
+			],
+			"groupRoles": [
+				"essence",
+				"rune"
+			],
+			"requireAll": true,
+			"notes": "Requires pure (or daeyalt) essence; rune essence cannot craft this rune. No talisman/tiara needed for access (favour/quest-gated); talisman group omitted."
+		},
+		{
+			"category": "runecrafting",
+			"kind": "object",
+			"name": "Blood altar",
+			"options": [
+				"craft-rune"
+			],
+			"requiredCardGroups": [
+				[
+					"Pure essence",
+					"Daeyalt essence"
+				],
+				[
+					"Blood rune"
+				]
+			],
+			"groupRoles": [
+				"essence",
+				"rune"
+			],
+			"requireAll": true,
+			"notes": "Requires pure (or daeyalt) essence; rune essence cannot craft this rune. No talisman/tiara needed for access (favour/quest-gated); talisman group omitted."
+		},
+		{
+			"category": "runecrafting",
+			"kind": "object",
+			"name": "Body altar",
+			"options": [
+				"craft-rune"
+			],
+			"requiredCardGroups": [
+				[
+					"Rune essence",
+					"Pure essence",
+					"Daeyalt essence"
+				],
+				[
+					"Body talisman",
+					"Body tiara"
+				],
+				[
+					"Body rune"
+				]
+			],
+			"groupRoles": [
+				"essence",
+				"talisman",
+				"rune"
+			],
+			"requireAll": true,
+			"notes": "Standard elemental/catalytic altar."
+		},
+		{
+			"category": "runecrafting",
+			"kind": "object",
+			"name": "Chaos altar",
+			"options": [
+				"craft-rune"
+			],
+			"requiredCardGroups": [
+				[
+					"Pure essence",
+					"Daeyalt essence"
+				],
+				[
+					"Chaos talisman",
+					"Chaos tiara"
+				],
+				[
+					"Chaos rune"
+				]
+			],
+			"groupRoles": [
+				"essence",
+				"talisman",
+				"rune"
+			],
+			"requireAll": true,
+			"notes": "Requires pure (or daeyalt) essence; rune essence cannot craft this rune."
+		},
+		{
+			"category": "runecrafting",
+			"kind": "object",
+			"name": "Cosmic altar",
+			"options": [
+				"craft-rune"
+			],
+			"requiredCardGroups": [
+				[
+					"Pure essence",
+					"Daeyalt essence"
+				],
+				[
+					"Cosmic talisman",
+					"Cosmic tiara"
+				],
+				[
+					"Cosmic rune"
+				]
+			],
+			"groupRoles": [
+				"essence",
+				"talisman",
+				"rune"
+			],
+			"requireAll": true,
+			"notes": "Requires pure (or daeyalt) essence; rune essence cannot craft this rune."
+		},
+		{
+			"category": "runecrafting",
+			"kind": "object",
+			"name": "Death altar",
+			"options": [
+				"craft-rune"
+			],
+			"requiredCardGroups": [
+				[
+					"Pure essence",
+					"Daeyalt essence"
+				],
+				[
+					"Death tiara"
+				],
+				[
+					"Death rune"
+				]
+			],
+			"groupRoles": [
+				"essence",
+				"talisman",
+				"rune"
+			],
+			"requireAll": true,
+			"notes": "Requires pure (or daeyalt) essence; rune essence cannot craft this rune. No 'Death talisman' card exists; access represented by Death tiara only."
+		},
+		{
+			"category": "runecrafting",
+			"kind": "object",
+			"name": "Earth altar",
+			"options": [
+				"craft-rune"
+			],
+			"requiredCardGroups": [
+				[
+					"Rune essence",
+					"Pure essence",
+					"Daeyalt essence"
+				],
+				[
+					"Earth talisman",
+					"Earth tiara"
+				],
+				[
+					"Earth rune"
+				]
+			],
+			"groupRoles": [
+				"essence",
+				"talisman",
+				"rune"
+			],
+			"requireAll": true,
+			"notes": "Standard elemental/catalytic altar."
+		},
+		{
+			"category": "runecrafting",
+			"kind": "object",
+			"name": "Fire altar",
+			"options": [
+				"craft-rune"
+			],
+			"requiredCardGroups": [
+				[
+					"Rune essence",
+					"Pure essence",
+					"Daeyalt essence"
+				],
+				[
+					"Fire talisman",
+					"Fire tiara"
+				],
+				[
+					"Fire rune"
+				]
+			],
+			"groupRoles": [
+				"essence",
+				"talisman",
+				"rune"
+			],
+			"requireAll": true,
+			"notes": "Standard elemental/catalytic altar."
+		},
+		{
+			"category": "runecrafting",
+			"kind": "object",
+			"name": "Law altar",
+			"options": [
+				"craft-rune"
+			],
+			"requiredCardGroups": [
+				[
+					"Pure essence",
+					"Daeyalt essence"
+				],
+				[
+					"Law talisman",
+					"Law tiara"
+				],
+				[
+					"Law rune"
+				]
+			],
+			"groupRoles": [
+				"essence",
+				"talisman",
+				"rune"
+			],
+			"requireAll": true,
+			"notes": "Requires pure (or daeyalt) essence; rune essence cannot craft this rune."
+		},
+		{
+			"category": "runecrafting",
+			"kind": "object",
+			"name": "Mind altar",
+			"options": [
+				"craft-rune"
+			],
+			"requiredCardGroups": [
+				[
+					"Rune essence",
+					"Pure essence",
+					"Daeyalt essence"
+				],
+				[
+					"Mind talisman",
+					"Mind tiara"
+				],
+				[
+					"Mind rune"
+				]
+			],
+			"groupRoles": [
+				"essence",
+				"talisman",
+				"rune"
+			],
+			"requireAll": true,
+			"notes": "Standard elemental/catalytic altar."
+		},
+		{
+			"category": "runecrafting",
+			"kind": "object",
+			"name": "Nature altar",
+			"options": [
+				"craft-rune"
+			],
+			"requiredCardGroups": [
+				[
+					"Pure essence",
+					"Daeyalt essence"
+				],
+				[
+					"Nature talisman",
+					"Nature tiara"
+				],
+				[
+					"Nature rune"
+				]
+			],
+			"groupRoles": [
+				"essence",
+				"talisman",
+				"rune"
+			],
+			"requireAll": true,
+			"notes": "Requires pure (or daeyalt) essence; rune essence cannot craft this rune."
+		},
+		{
+			"category": "runecrafting",
+			"kind": "object",
+			"name": "Soul altar",
+			"options": [
+				"craft-rune"
+			],
+			"requiredCardGroups": [
+				[
+					"Pure essence",
+					"Daeyalt essence"
+				],
+				[
+					"Soul rune"
+				]
+			],
+			"groupRoles": [
+				"essence",
+				"rune"
+			],
+			"requireAll": true,
+			"notes": "Requires pure (or daeyalt) essence; rune essence cannot craft this rune. No talisman/tiara needed for access (favour/quest-gated); talisman group omitted."
+		},
+		{
+			"category": "runecrafting",
+			"kind": "object",
+			"name": "Water altar",
+			"options": [
+				"craft-rune"
+			],
+			"requiredCardGroups": [
+				[
+					"Rune essence",
+					"Pure essence",
+					"Daeyalt essence"
+				],
+				[
+					"Water talisman",
+					"Water tiara"
+				],
+				[
+					"Water rune"
+				]
+			],
+			"groupRoles": [
+				"essence",
+				"talisman",
+				"rune"
+			],
+			"requireAll": true,
+			"notes": "Standard elemental/catalytic altar."
+		},
+		{
+			"category": "runecrafting",
+			"kind": "object",
+			"name": "Wrath altar",
+			"options": [
+				"craft-rune"
+			],
+			"requiredCardGroups": [
+				[
+					"Pure essence",
+					"Daeyalt essence"
+				],
+				[
+					"Wrath talisman",
+					"Wrath tiara"
+				],
+				[
+					"Wrath rune"
+				]
+			],
+			"groupRoles": [
+				"essence",
+				"talisman",
+				"rune"
+			],
+			"requireAll": true,
+			"notes": "Requires pure (or daeyalt) essence; rune essence cannot craft this rune."
+		},
+		{
+			"category": "slayer",
+			"kind": "npc",
+			"name": "Aya",
+			"options": [
+				"talk-to",
+				"assignment",
+				"trade",
+				"rewards"
+			],
+			"requiredCardGroups": [
+				[
+					"Aya"
+				],
+				[
+					"Banshee"
+				],
+				[
+					"Bat"
+				],
+				[
+					"Bird"
+				],
+				[
+					"Black bear"
+				],
+				[
+					"Cave bug"
+				],
+				[
+					"Cave crawler"
+				],
+				[
+					"Cave slime"
+				],
+				[
+					"Cow"
+				],
+				[
+					"Crawling Hand"
+				],
+				[
+					"Dwarf"
+				],
+				[
+					"Ghost"
+				],
+				[
+					"Goblin"
+				],
+				[
+					"Grizzly bear"
+				],
+				[
+					"Guard dog"
+				],
+				[
+					"Icefiend"
+				],
+				[
+					"Jackal"
+				],
+				[
+					"Kalphite Guardian"
+				],
+				[
+					"Kalphite Soldier"
+				],
+				[
+					"Kalphite Worker"
+				],
+				[
+					"Lizard"
+				],
+				[
+					"Minotaur"
+				],
+				[
+					"Monkey (monster)"
+				],
+				[
+					"Rat"
+				],
+				[
+					"Scorpion"
+				],
+				[
+					"Skeleton"
+				],
+				[
+					"Spider"
+				],
+				[
+					"Wild dog"
+				],
+				[
+					"Wolf"
+				],
+				[
+					"Zombie"
+				]
+			],
+			"groupRoles": [
+				"master",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters"
+			],
+			"requireAll": true,
+			"notes": "master card + 29 assignable-monster cards; toggles include/exclude roles"
+		},
+		{
+			"category": "slayer",
+			"kind": "npc",
+			"name": "Chaeldar",
+			"options": [
+				"talk-to",
+				"assignment",
+				"trade",
+				"rewards"
+			],
+			"requiredCardGroups": [
+				[
+					"Chaeldar"
+				],
+				[
+					"Aberrant spectre"
+				],
+				[
+					"Abyssal demon"
+				],
+				[
+					"Ancient Wyvern"
+				],
+				[
+					"Ancient Zygomite"
+				],
+				[
+					"Aviansie"
+				],
+				[
+					"Basilisk"
+				],
+				[
+					"Black demon"
+				],
+				[
+					"Bloodveld"
+				],
+				[
+					"Blue dragon"
+				],
+				[
+					"Brine rat"
+				],
+				[
+					"Cave horror"
+				],
+				[
+					"Cave kraken"
+				],
+				[
+					"Crab"
+				],
+				[
+					"Dagannoth"
+				],
+				[
+					"Dust devil"
+				],
+				[
+					"Earthen Nagua"
+				],
+				[
+					"Elder custodian stalker"
+				],
+				[
+					"Elf Archer"
+				],
+				[
+					"Elf Warrior"
+				],
+				[
+					"Feral Vampyre"
+				],
+				[
+					"Fever spider"
+				],
+				[
+					"Fire giant"
+				],
+				[
+					"Frost Nagua"
+				],
+				[
+					"Gargoyle"
+				],
+				[
+					"Greater demon"
+				],
+				[
+					"Gryphon"
+				],
+				[
+					"Hellhound"
+				],
+				[
+					"Jelly"
+				],
+				[
+					"Jungle horror"
+				],
+				[
+					"Juvenile custodian stalker"
+				],
+				[
+					"Kalphite Guardian"
+				],
+				[
+					"Kalphite Soldier"
+				],
+				[
+					"Kalphite Worker"
+				],
+				[
+					"Kurask"
+				],
+				[
+					"Lesser demon"
+				],
+				[
+					"Lizardman"
+				],
+				[
+					"Long-tailed Wyvern"
+				],
+				[
+					"Mature custodian stalker"
+				],
+				[
+					"Mountain troll"
+				],
+				[
+					"Nechryael"
+				],
+				[
+					"Shadow warrior"
+				],
+				[
+					"Skeletal Wyvern"
+				],
+				[
+					"Spiritual mage"
+				],
+				[
+					"Spiritual ranger"
+				],
+				[
+					"Spiritual warrior"
+				],
+				[
+					"Spitting Wyvern"
+				],
+				[
+					"Sulphur Nagua"
+				],
+				[
+					"Taloned Wyvern"
+				],
+				[
+					"Turoth"
+				],
+				[
+					"TzHaar-Hur"
+				],
+				[
+					"TzHaar-Ket"
+				],
+				[
+					"TzHaar-Mej"
+				],
+				[
+					"TzHaar-Xil"
+				],
+				[
+					"Vampyre Juvinate"
+				],
+				[
+					"Warped Terrorbird"
+				],
+				[
+					"Warped Tortoise"
+				],
+				[
+					"Wyrm"
+				],
+				[
+					"Zygomite"
+				]
+			],
+			"groupRoles": [
+				"master",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters"
+			],
+			"requireAll": true,
+			"notes": "master card + 58 assignable-monster cards; toggles include/exclude roles"
+		},
+		{
+			"category": "slayer",
+			"kind": "npc",
+			"name": "Duradel",
+			"options": [
+				"talk-to",
+				"assignment",
+				"trade",
+				"rewards"
+			],
+			"requiredCardGroups": [
+				[
+					"Duradel"
+				],
+				[
+					"Aberrant spectre"
+				],
+				[
+					"Abyssal demon"
+				],
+				[
+					"Ancient Wyvern"
+				],
+				[
+					"Ancient Zygomite"
+				],
+				[
+					"Ankou"
+				],
+				[
+					"Aquanite"
+				],
+				[
+					"Araxyte"
+				],
+				[
+					"Aviansie"
+				],
+				[
+					"Basilisk"
+				],
+				[
+					"Black demon"
+				],
+				[
+					"Black dragon"
+				],
+				[
+					"Bloodveld"
+				],
+				[
+					"Blue dragon"
+				],
+				[
+					"Bronze dragon"
+				],
+				[
+					"Cave horror"
+				],
+				[
+					"Cave kraken"
+				],
+				[
+					"Dagannoth"
+				],
+				[
+					"Dark beast"
+				],
+				[
+					"Drake"
+				],
+				[
+					"Dust devil"
+				],
+				[
+					"Elf Archer"
+				],
+				[
+					"Elf Warrior"
+				],
+				[
+					"Feral Vampyre"
+				],
+				[
+					"Fire giant"
+				],
+				[
+					"Frost dragon"
+				],
+				[
+					"Gargoyle"
+				],
+				[
+					"Greater demon"
+				],
+				[
+					"Gryphon"
+				],
+				[
+					"Hellhound"
+				],
+				[
+					"Iron dragon"
+				],
+				[
+					"Kalphite Guardian"
+				],
+				[
+					"Kalphite Soldier"
+				],
+				[
+					"Kalphite Worker"
+				],
+				[
+					"Kurask"
+				],
+				[
+					"Lizardman"
+				],
+				[
+					"Long-tailed Wyvern"
+				],
+				[
+					"Mountain troll"
+				],
+				[
+					"Nechryael"
+				],
+				[
+					"Red dragon"
+				],
+				[
+					"Skeletal Wyvern"
+				],
+				[
+					"Smoke devil"
+				],
+				[
+					"Spiritual mage"
+				],
+				[
+					"Spiritual ranger"
+				],
+				[
+					"Spiritual warrior"
+				],
+				[
+					"Spitting Wyvern"
+				],
+				[
+					"Steel dragon"
+				],
+				[
+					"Suqah"
+				],
+				[
+					"Taloned Wyvern"
+				],
+				[
+					"TzHaar-Hur"
+				],
+				[
+					"TzHaar-Ket"
+				],
+				[
+					"TzHaar-Mej"
+				],
+				[
+					"TzHaar-Xil"
+				],
+				[
+					"Vampyre Juvinate"
+				],
+				[
+					"Warped Terrorbird"
+				],
+				[
+					"Warped Tortoise"
+				],
+				[
+					"Waterfiend"
+				],
+				[
+					"Wyrm"
+				],
+				[
+					"Zygomite"
+				]
+			],
+			"groupRoles": [
+				"master",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters"
+			],
+			"requireAll": true,
+			"notes": "master card + 58 assignable-monster cards; toggles include/exclude roles"
+		},
+		{
+			"category": "slayer",
+			"kind": "npc",
+			"name": "Konar quo Maten",
+			"options": [
+				"talk-to",
+				"assignment",
+				"trade",
+				"rewards"
+			],
+			"requiredCardGroups": [
+				[
+					"Konar quo Maten"
+				],
+				[
+					"Aberrant spectre"
+				],
+				[
+					"Abyssal demon"
+				],
+				[
+					"Ancient Wyvern"
+				],
+				[
+					"Ancient Zygomite"
+				],
+				[
+					"Ankou"
+				],
+				[
+					"Aviansie"
+				],
+				[
+					"Basilisk"
+				],
+				[
+					"Black demon"
+				],
+				[
+					"Black dragon"
+				],
+				[
+					"Bloodveld"
+				],
+				[
+					"Blue dragon"
+				],
+				[
+					"Brine rat"
+				],
+				[
+					"Bronze dragon"
+				],
+				[
+					"Cave kraken"
+				],
+				[
+					"Dagannoth"
+				],
+				[
+					"Dark beast"
+				],
+				[
+					"Drake"
+				],
+				[
+					"Dust devil"
+				],
+				[
+					"Earthen Nagua"
+				],
+				[
+					"Feral Vampyre"
+				],
+				[
+					"Fire giant"
+				],
+				[
+					"Frost Nagua"
+				],
+				[
+					"Gargoyle"
+				],
+				[
+					"Greater demon"
+				],
+				[
+					"Hellhound"
+				],
+				[
+					"Hydra"
+				],
+				[
+					"Iron dragon"
+				],
+				[
+					"Jelly"
+				],
+				[
+					"Kalphite Guardian"
+				],
+				[
+					"Kalphite Soldier"
+				],
+				[
+					"Kalphite Worker"
+				],
+				[
+					"Kurask"
+				],
+				[
+					"Lizardman"
+				],
+				[
+					"Long-tailed Wyvern"
+				],
+				[
+					"Mountain troll"
+				],
+				[
+					"Nechryael"
+				],
+				[
+					"Red dragon"
+				],
+				[
+					"Skeletal Wyvern"
+				],
+				[
+					"Smoke devil"
+				],
+				[
+					"Spitting Wyvern"
+				],
+				[
+					"Steel dragon"
+				],
+				[
+					"Sulphur Nagua"
+				],
+				[
+					"Taloned Wyvern"
+				],
+				[
+					"Turoth"
+				],
+				[
+					"Vampyre Juvinate"
+				],
+				[
+					"Warped Terrorbird"
+				],
+				[
+					"Warped Tortoise"
+				],
+				[
+					"Waterfiend"
+				],
+				[
+					"Wyrm"
+				],
+				[
+					"Zygomite"
+				]
+			],
+			"groupRoles": [
+				"master",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters"
+			],
+			"requireAll": true,
+			"notes": "master card + 50 assignable-monster cards; toggles include/exclude roles"
+		},
+		{
+			"category": "slayer",
+			"kind": "npc",
+			"name": "Krystilia",
+			"options": [
+				"talk-to",
+				"assignment",
+				"trade",
+				"rewards"
+			],
+			"requiredCardGroups": [
+				[
+					"Krystilia"
+				],
+				[
+					"Abyssal demon"
+				],
+				[
+					"Ankou"
+				],
+				[
+					"Aviansie"
+				],
+				[
+					"Bandit"
+				],
+				[
+					"Black Knight"
+				],
+				[
+					"Black bear"
+				],
+				[
+					"Black demon"
+				],
+				[
+					"Black dragon"
+				],
+				[
+					"Bloodveld"
+				],
+				[
+					"Callisto"
+				],
+				[
+					"Chaos Elemental"
+				],
+				[
+					"Chaos Fanatic"
+				],
+				[
+					"Chaos druid"
+				],
+				[
+					"Crazy archaeologist"
+				],
+				[
+					"Dark warrior"
+				],
+				[
+					"Dust devil"
+				],
+				[
+					"Earth warrior"
+				],
+				[
+					"Ent"
+				],
+				[
+					"Fire giant"
+				],
+				[
+					"Greater demon"
+				],
+				[
+					"Green dragon"
+				],
+				[
+					"Grizzly bear"
+				],
+				[
+					"Hellhound"
+				],
+				[
+					"Hill Giant"
+				],
+				[
+					"Ice giant"
+				],
+				[
+					"Ice warrior"
+				],
+				[
+					"Jelly"
+				],
+				[
+					"Lava dragon"
+				],
+				[
+					"Lesser demon"
+				],
+				[
+					"Magic axe"
+				],
+				[
+					"Mammoth"
+				],
+				[
+					"Moss giant"
+				],
+				[
+					"Nechryael"
+				],
+				[
+					"Pirate"
+				],
+				[
+					"Rogue"
+				],
+				[
+					"Scorpia"
+				],
+				[
+					"Scorpion"
+				],
+				[
+					"Skeleton"
+				],
+				[
+					"Spider"
+				],
+				[
+					"Spiritual mage"
+				],
+				[
+					"Spiritual ranger"
+				],
+				[
+					"Spiritual warrior"
+				],
+				[
+					"Venenatis"
+				],
+				[
+					"Vet'ion"
+				],
+				[
+					"Zombie"
+				]
+			],
+			"groupRoles": [
+				"master",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters"
+			],
+			"requireAll": true,
+			"notes": "master card + 45 assignable-monster cards; toggles include/exclude roles"
+		},
+		{
+			"category": "slayer",
+			"kind": "npc",
+			"name": "Mazchna",
+			"options": [
+				"talk-to",
+				"assignment",
+				"trade",
+				"rewards"
+			],
+			"requiredCardGroups": [
+				[
+					"Mazchna"
+				],
+				[
+					"Banshee"
+				],
+				[
+					"Bat"
+				],
+				[
+					"Black bear"
+				],
+				[
+					"Catablepon"
+				],
+				[
+					"Cave bug"
+				],
+				[
+					"Cave crawler"
+				],
+				[
+					"Cave slime"
+				],
+				[
+					"Cockatrice"
+				],
+				[
+					"Crab"
+				],
+				[
+					"Crawling Hand"
+				],
+				[
+					"Feral Vampyre"
+				],
+				[
+					"Flesh Crawler"
+				],
+				[
+					"Ghost"
+				],
+				[
+					"Ghoul"
+				],
+				[
+					"Grizzly bear"
+				],
+				[
+					"Guard dog"
+				],
+				[
+					"Hill Giant"
+				],
+				[
+					"Hobgoblin"
+				],
+				[
+					"Ice warrior"
+				],
+				[
+					"Jackal"
+				],
+				[
+					"Kalphite Guardian"
+				],
+				[
+					"Kalphite Soldier"
+				],
+				[
+					"Kalphite Worker"
+				],
+				[
+					"Killerwatt"
+				],
+				[
+					"Lizard"
+				],
+				[
+					"Mogre"
+				],
+				[
+					"Pyrefiend"
+				],
+				[
+					"Rockslug"
+				],
+				[
+					"Scorpion"
+				],
+				[
+					"Shade"
+				],
+				[
+					"Skeleton"
+				],
+				[
+					"Vampyre Juvinate"
+				],
+				[
+					"Wall beast"
+				],
+				[
+					"Wild dog"
+				],
+				[
+					"Wolf"
+				],
+				[
+					"Zombie"
+				]
+			],
+			"groupRoles": [
+				"master",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters"
+			],
+			"requireAll": true,
+			"notes": "master card + 36 assignable-monster cards; toggles include/exclude roles"
+		},
+		{
+			"category": "slayer",
+			"kind": "npc",
+			"name": "Nieve",
+			"options": [
+				"talk-to",
+				"assignment",
+				"trade",
+				"rewards"
+			],
+			"requiredCardGroups": [
+				[
+					"Nieve"
+				],
+				[
+					"Aberrant spectre"
+				],
+				[
+					"Abyssal demon"
+				],
+				[
+					"Ancient Wyvern"
+				],
+				[
+					"Ancient Zygomite"
+				],
+				[
+					"Ankou"
+				],
+				[
+					"Aquanite"
+				],
+				[
+					"Araxyte"
+				],
+				[
+					"Aviansie"
+				],
+				[
+					"Basilisk"
+				],
+				[
+					"Black demon"
+				],
+				[
+					"Black dragon"
+				],
+				[
+					"Bloodveld"
+				],
+				[
+					"Blue dragon"
+				],
+				[
+					"Brine rat"
+				],
+				[
+					"Bronze dragon"
+				],
+				[
+					"Cave horror"
+				],
+				[
+					"Cave kraken"
+				],
+				[
+					"Dagannoth"
+				],
+				[
+					"Dark beast"
+				],
+				[
+					"Drake"
+				],
+				[
+					"Dust devil"
+				],
+				[
+					"Elder custodian stalker"
+				],
+				[
+					"Elf Archer"
+				],
+				[
+					"Elf Warrior"
+				],
+				[
+					"Feral Vampyre"
+				],
+				[
+					"Fire giant"
+				],
+				[
+					"Frost dragon"
+				],
+				[
+					"Gargoyle"
+				],
+				[
+					"Greater demon"
+				],
+				[
+					"Gryphon"
+				],
+				[
+					"Hellhound"
+				],
+				[
+					"Iron dragon"
+				],
+				[
+					"Juvenile custodian stalker"
+				],
+				[
+					"Kalphite Guardian"
+				],
+				[
+					"Kalphite Soldier"
+				],
+				[
+					"Kalphite Worker"
+				],
+				[
+					"Kurask"
+				],
+				[
+					"Lizardman"
+				],
+				[
+					"Locust rider"
+				],
+				[
+					"Long-tailed Wyvern"
+				],
+				[
+					"Mature custodian stalker"
+				],
+				[
+					"Mountain troll"
+				],
+				[
+					"Nechryael"
+				],
+				[
+					"Red dragon"
+				],
+				[
+					"Scarab Mage"
+				],
+				[
+					"Skeletal Wyvern"
+				],
+				[
+					"Smoke devil"
+				],
+				[
+					"Spiritual mage"
+				],
+				[
+					"Spiritual ranger"
+				],
+				[
+					"Spiritual warrior"
+				],
+				[
+					"Spitting Wyvern"
+				],
+				[
+					"Steel dragon"
+				],
+				[
+					"Suqah"
+				],
+				[
+					"Taloned Wyvern"
+				],
+				[
+					"Turoth"
+				],
+				[
+					"TzHaar-Hur"
+				],
+				[
+					"TzHaar-Ket"
+				],
+				[
+					"TzHaar-Mej"
+				],
+				[
+					"TzHaar-Xil"
+				],
+				[
+					"Vampyre Juvinate"
+				],
+				[
+					"Warped Terrorbird"
+				],
+				[
+					"Warped Tortoise"
+				],
+				[
+					"Wyrm"
+				],
+				[
+					"Zygomite"
+				]
+			],
+			"groupRoles": [
+				"master",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters"
+			],
+			"requireAll": true,
+			"notes": "master card + 64 assignable-monster cards; toggles include/exclude roles"
+		},
+		{
+			"category": "slayer",
+			"kind": "npc",
+			"name": "Spria",
+			"options": [
+				"talk-to",
+				"assignment",
+				"trade",
+				"rewards"
+			],
+			"requiredCardGroups": [
+				[
+					"Spria"
+				],
+				[
+					"Banshee"
+				],
+				[
+					"Bat"
+				],
+				[
+					"Bird"
+				],
+				[
+					"Black bear"
+				],
+				[
+					"Cave bug"
+				],
+				[
+					"Cave crawler"
+				],
+				[
+					"Cave slime"
+				],
+				[
+					"Cow"
+				],
+				[
+					"Crawling Hand"
+				],
+				[
+					"Dwarf"
+				],
+				[
+					"Ghost"
+				],
+				[
+					"Goblin"
+				],
+				[
+					"Grizzly bear"
+				],
+				[
+					"Guard dog"
+				],
+				[
+					"Icefiend"
+				],
+				[
+					"Jackal"
+				],
+				[
+					"Kalphite Guardian"
+				],
+				[
+					"Kalphite Soldier"
+				],
+				[
+					"Kalphite Worker"
+				],
+				[
+					"Lizard"
+				],
+				[
+					"Minotaur"
+				],
+				[
+					"Monkey (monster)"
+				],
+				[
+					"Rat"
+				],
+				[
+					"Scorpion"
+				],
+				[
+					"Skeleton"
+				],
+				[
+					"Sourhog"
+				],
+				[
+					"Spider"
+				],
+				[
+					"Wild dog"
+				],
+				[
+					"Wolf"
+				],
+				[
+					"Zombie"
+				]
+			],
+			"groupRoles": [
+				"master",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters"
+			],
+			"requireAll": true,
+			"notes": "master card + 30 assignable-monster cards; toggles include/exclude roles"
+		},
+		{
+			"category": "slayer",
+			"kind": "npc",
+			"name": "Steve",
+			"options": [
+				"talk-to",
+				"assignment",
+				"trade",
+				"rewards"
+			],
+			"requiredCardGroups": [
+				[
+					"Steve"
+				],
+				[
+					"Aberrant spectre"
+				],
+				[
+					"Abyssal demon"
+				],
+				[
+					"Ancient Wyvern"
+				],
+				[
+					"Ancient Zygomite"
+				],
+				[
+					"Ankou"
+				],
+				[
+					"Aquanite"
+				],
+				[
+					"Araxyte"
+				],
+				[
+					"Aviansie"
+				],
+				[
+					"Basilisk"
+				],
+				[
+					"Black demon"
+				],
+				[
+					"Black dragon"
+				],
+				[
+					"Blue dragon"
+				],
+				[
+					"Brine rat"
+				],
+				[
+					"Bronze dragon"
+				],
+				[
+					"Cave horror"
+				],
+				[
+					"Cave kraken"
+				],
+				[
+					"Dagannoth"
+				],
+				[
+					"Dark beast"
+				],
+				[
+					"Drake"
+				],
+				[
+					"Dust devil"
+				],
+				[
+					"Elder custodian stalker"
+				],
+				[
+					"Elf Archer"
+				],
+				[
+					"Elf Warrior"
+				],
+				[
+					"Feral Vampyre"
+				],
+				[
+					"Fire giant"
+				],
+				[
+					"Frost dragon"
+				],
+				[
+					"Gargoyle"
+				],
+				[
+					"Greater demon"
+				],
+				[
+					"Gryphon"
+				],
+				[
+					"Hellhound"
+				],
+				[
+					"Iron dragon"
+				],
+				[
+					"Juvenile custodian stalker"
+				],
+				[
+					"Kalphite Guardian"
+				],
+				[
+					"Kalphite Soldier"
+				],
+				[
+					"Kalphite Worker"
+				],
+				[
+					"Kurask"
+				],
+				[
+					"Lizardman"
+				],
+				[
+					"Locust rider"
+				],
+				[
+					"Long-tailed Wyvern"
+				],
+				[
+					"Mature custodian stalker"
+				],
+				[
+					"Mountain troll"
+				],
+				[
+					"Nechryael"
+				],
+				[
+					"Red dragon"
+				],
+				[
+					"Scarab Mage"
+				],
+				[
+					"Skeletal Wyvern"
+				],
+				[
+					"Smoke devil"
+				],
+				[
+					"Spiritual mage"
+				],
+				[
+					"Spiritual ranger"
+				],
+				[
+					"Spiritual warrior"
+				],
+				[
+					"Spitting Wyvern"
+				],
+				[
+					"Steel dragon"
+				],
+				[
+					"Suqah"
+				],
+				[
+					"Taloned Wyvern"
+				],
+				[
+					"Turoth"
+				],
+				[
+					"TzHaar-Hur"
+				],
+				[
+					"TzHaar-Ket"
+				],
+				[
+					"TzHaar-Mej"
+				],
+				[
+					"TzHaar-Xil"
+				],
+				[
+					"Vampyre Juvinate"
+				],
+				[
+					"Warped Terrorbird"
+				],
+				[
+					"Warped Tortoise"
+				],
+				[
+					"Wyrm"
+				],
+				[
+					"Zygomite"
+				]
+			],
+			"groupRoles": [
+				"master",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters"
+			],
+			"requireAll": true,
+			"notes": "master card + 63 assignable-monster cards; toggles include/exclude roles"
+		},
+		{
+			"category": "slayer",
+			"kind": "npc",
+			"name": "Turael",
+			"options": [
+				"talk-to",
+				"assignment",
+				"trade",
+				"rewards"
+			],
+			"requiredCardGroups": [
+				[
+					"Turael"
+				],
+				[
+					"Banshee"
+				],
+				[
+					"Bat"
+				],
+				[
+					"Bird"
+				],
+				[
+					"Black bear"
+				],
+				[
+					"Cave bug"
+				],
+				[
+					"Cave crawler"
+				],
+				[
+					"Cave slime"
+				],
+				[
+					"Cow"
+				],
+				[
+					"Crawling Hand"
+				],
+				[
+					"Dwarf"
+				],
+				[
+					"Ghost"
+				],
+				[
+					"Goblin"
+				],
+				[
+					"Grizzly bear"
+				],
+				[
+					"Guard dog"
+				],
+				[
+					"Icefiend"
+				],
+				[
+					"Jackal"
+				],
+				[
+					"Kalphite Guardian"
+				],
+				[
+					"Kalphite Soldier"
+				],
+				[
+					"Kalphite Worker"
+				],
+				[
+					"Lizard"
+				],
+				[
+					"Minotaur"
+				],
+				[
+					"Monkey (monster)"
+				],
+				[
+					"Rat"
+				],
+				[
+					"Scorpion"
+				],
+				[
+					"Skeleton"
+				],
+				[
+					"Spider"
+				],
+				[
+					"Wild dog"
+				],
+				[
+					"Wolf"
+				],
+				[
+					"Zombie"
+				]
+			],
+			"groupRoles": [
+				"master",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters"
+			],
+			"requireAll": true,
+			"notes": "master card + 29 assignable-monster cards; toggles include/exclude roles"
+		},
+		{
+			"category": "slayer",
+			"kind": "npc",
+			"name": "Vannaka",
+			"options": [
+				"talk-to",
+				"assignment",
+				"trade",
+				"rewards"
+			],
+			"requiredCardGroups": [
+				[
+					"Vannaka"
+				],
+				[
+					"Aberrant spectre"
+				],
+				[
+					"Abyssal demon"
+				],
+				[
+					"Ankou"
+				],
+				[
+					"Basilisk"
+				],
+				[
+					"Bloodveld"
+				],
+				[
+					"Blue dragon"
+				],
+				[
+					"Brine rat"
+				],
+				[
+					"Cockatrice"
+				],
+				[
+					"Crab"
+				],
+				[
+					"Crocodile"
+				],
+				[
+					"Dagannoth"
+				],
+				[
+					"Dust devil"
+				],
+				[
+					"Elf Archer"
+				],
+				[
+					"Elf Warrior"
+				],
+				[
+					"Feral Vampyre"
+				],
+				[
+					"Fever spider"
+				],
+				[
+					"Fire giant"
+				],
+				[
+					"Gargoyle"
+				],
+				[
+					"Ghoul"
+				],
+				[
+					"Giant Sea Snake"
+				],
+				[
+					"Gryphon"
+				],
+				[
+					"Harpie Bug Swarm"
+				],
+				[
+					"Hellhound"
+				],
+				[
+					"Hill Giant"
+				],
+				[
+					"Hobgoblin"
+				],
+				[
+					"Ice giant"
+				],
+				[
+					"Ice warrior"
+				],
+				[
+					"Infernal Mage"
+				],
+				[
+					"Jelly"
+				],
+				[
+					"Jungle horror"
+				],
+				[
+					"Kalphite Guardian"
+				],
+				[
+					"Kalphite Soldier"
+				],
+				[
+					"Kalphite Worker"
+				],
+				[
+					"Kurask"
+				],
+				[
+					"Lesser demon"
+				],
+				[
+					"Mogre"
+				],
+				[
+					"Molanisk"
+				],
+				[
+					"Moss giant"
+				],
+				[
+					"Mountain troll"
+				],
+				[
+					"Nechryael"
+				],
+				[
+					"Ogre"
+				],
+				[
+					"Otherworldly being"
+				],
+				[
+					"Pyrefiend"
+				],
+				[
+					"Sea Snake Hatchling"
+				],
+				[
+					"Sea Snake Young"
+				],
+				[
+					"Shade"
+				],
+				[
+					"Shadow warrior"
+				],
+				[
+					"Spiritual mage"
+				],
+				[
+					"Spiritual ranger"
+				],
+				[
+					"Spiritual warrior"
+				],
+				[
+					"Terror dog"
+				],
+				[
+					"Turoth"
+				],
+				[
+					"Vampyre Juvinate"
+				],
+				[
+					"Werewolf"
+				]
+			],
+			"groupRoles": [
+				"master",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters"
+			],
+			"requireAll": true,
+			"notes": "master card + 54 assignable-monster cards; toggles include/exclude roles"
 		},
 		{
 			"category": "woodcutting",

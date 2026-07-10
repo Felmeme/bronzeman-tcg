@@ -4,6 +4,7 @@ import com.google.inject.Provides;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import java.util.Set;
@@ -13,9 +14,13 @@ import net.runelite.api.ChatMessageType;
 import net.runelite.api.Client;
 import net.runelite.api.ItemComposition;
 import net.runelite.api.MenuAction;
+import net.runelite.api.MenuEntry;
 import net.runelite.api.NPC;
 import net.runelite.api.NPCComposition;
 import net.runelite.api.events.MenuOptionClicked;
+import net.runelite.api.gameval.InterfaceID;
+import net.runelite.api.widgets.Widget;
+import net.runelite.api.widgets.WidgetUtil;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.events.RuneScapeProfileChanged;
@@ -26,17 +31,21 @@ import net.runelite.client.util.Text;
 
 /**
  * Bronzeman-style restriction driven by the OSRS TCG plugin's collection:
- * you may only attack NPCs, loot ground items, and gather from resource
- * nodes whose card(s) you have already pulled.
+ * attacking NPCs, looting, equipping, buying, gathering and processing are
+ * gated behind owning the matching card(s).
  *
  * Interop is read-only via osrs-tcg's persisted ConfigManager state
  * (see {@link TcgCollectionReader}); there is no compile-time dependency,
  * so both plugins can be installed independently from the Plugin Hub.
+ *
+ * Everything works by consuming MenuOptionClicked. Known limitation
+ * (documented, owner-accepted): keyboard-driven interface defaults
+ * (spacebar "make") bypass the menu pipeline and cannot be consumed.
  */
 @Slf4j
 @PluginDescriptor(
 	name = "Bronzeman TCG",
-	description = "Restricts attacking NPCs, looting items and gathering resources until you've collected their card in the OSRS TCG plugin",
+	description = "Restricts attacking, looting, equipping, buying, gathering and crafting until you've collected the card in the OSRS TCG plugin",
 	tags = {"bronzeman", "tcg", "restriction", "ironman", "challenge"}
 )
 public class BronzemanTcgPlugin extends Plugin
@@ -46,8 +55,13 @@ public class BronzemanTcgPlugin extends Plugin
 	private static final String PICKPOCKET_OPTION = "pickpocket";
 	private static final String MASTER_FARMER_NAME = "master farmer";
 	private static final String USED_ON_SEPARATOR = " -> ";
+	private static final String CAST_PREFIX = "Cast ";
 	private static final long CHAT_THROTTLE_MS = 1_200L;
 	private static final int MAX_LISTED_MISSING_CARDS = 4;
+
+	private static final Set<String> EQUIP_VERBS = new HashSet<>(List.of("wear", "wield", "equip"));
+	private static final Set<String> FORCED_DROP_ALLOWED = new HashSet<>(List.of(
+		"drop", "examine", "destroy", "release"));
 
 	@Inject
 	private Client client;
@@ -70,14 +84,17 @@ public class BronzemanTcgPlugin extends Plugin
 	@Inject
 	private ResourceNodeCatalog nodeCatalog;
 
+	@Inject
+	private RecipeCatalog recipeCatalog;
+
 	private long lastBlockMessageMs;
 
 	@Override
 	protected void startUp()
 	{
 		collectionReader.invalidate();
-		log.info("Bronzeman TCG started. Tracking {} TCG-linked NPCs, {} items, {} resource node rules.",
-			monsterCatalog.size(), itemCatalog.size(), nodeCatalog.size());
+		log.info("Bronzeman TCG started. Tracking {} TCG-linked NPCs, {} items, {} node rules, {} recipe rules.",
+			monsterCatalog.size(), itemCatalog.size(), nodeCatalog.size(), recipeCatalog.size());
 	}
 
 	@Override
@@ -128,9 +145,21 @@ public class BronzemanTcgPlugin extends Plugin
 			case WIDGET_TARGET_ON_GAME_OBJECT:
 				handleItemOnGameObject(event);
 				return;
+			case CC_OP:
+			case CC_OP_LOW_PRIORITY:
+				handleWidgetOp(event);
+				return;
+			case WIDGET_TARGET:
+				handleUseSelected(event);
+				return;
+			case WIDGET_TARGET_ON_WIDGET:
+				handleWidgetOnWidget(event);
+				return;
 			default:
 		}
 	}
+
+	// ------------------------------------------------------------------ NPC path
 
 	private void handleNpcInteraction(MenuOptionClicked event, NPC npc)
 	{
@@ -152,7 +181,8 @@ public class BronzemanTcgPlugin extends Plugin
 			return;
 		}
 
-		// Resource-node rules on NPCs: pickpocketing, fishing spot options.
+		// Resource-node rules on NPCs: pickpocketing, fishing spots, slayer masters,
+		// rumour masters, pitfall beasts.
 		String option = event.getMenuOption();
 		if (option == null)
 		{
@@ -171,6 +201,39 @@ public class BronzemanTcgPlugin extends Plugin
 
 		checkNodeRule(event, ResourceNodeCatalog.KIND_NPC, npcName, cleanOption);
 	}
+
+	private void checkMasterFarmer(MenuOptionClicked event)
+	{
+		MasterFarmerMode mode = config.masterFarmerMode();
+		List<String> required;
+		switch (mode)
+		{
+			case COINS_POUCH:
+				required = List.of("Coins", "Coin pouch");
+				break;
+			case INSANITY:
+				required = nodeCatalog.getMasterFarmerSeedCards();
+				break;
+			default:
+				return;
+		}
+		if (required.isEmpty())
+		{
+			// Insanity selected but the seed list is missing from the data file: leaving him
+			// pickpocketable would silently disable the mode, so fall back to Coins+Pouch.
+			required = List.of("Coins", "Coin pouch");
+		}
+
+		List<String> missing = missingCards(required);
+		if (missing.isEmpty())
+		{
+			return;
+		}
+		event.consume();
+		sendBlockedCardsMessage(missing);
+	}
+
+	// ------------------------------------------------------------------ ground items
 
 	private void handleGroundItemInteraction(MenuOptionClicked event, MenuAction action)
 	{
@@ -205,6 +268,8 @@ public class BronzemanTcgPlugin extends Plugin
 		sendBlockedMessage(itemName);
 	}
 
+	// ------------------------------------------------------------------ game objects
+
 	private void handleGameObjectInteraction(MenuOptionClicked event)
 	{
 		String option = event.getMenuOption();
@@ -227,49 +292,202 @@ public class BronzemanTcgPlugin extends Plugin
 		}
 		String usedItemName = target.substring(0, separator).trim();
 		String objectName = target.substring(separator + USED_ON_SEPARATOR.length()).trim();
-		checkNodeRule(event, ResourceNodeCatalog.KIND_ITEM_ON_OBJECT, usedItemName, objectName);
-	}
-
-	private void checkMasterFarmer(MenuOptionClicked event)
-	{
-		MasterFarmerMode mode = config.masterFarmerMode();
-		List<String> required;
-		switch (mode)
-		{
-			case COINS_POUCH:
-				required = List.of("Coins", "Coin pouch");
-				break;
-			case INSANITY:
-				required = nodeCatalog.getMasterFarmerSeedCards();
-				break;
-			default:
-				return;
-		}
-		if (required.isEmpty())
-		{
-			// Insanity selected but the seed list is missing from the data file: leaving him
-			// pickpocketable would silently disable the mode, so fall back to Coins+Pouch.
-			required = List.of("Coins", "Coin pouch");
-		}
-
-		List<String> missing = missingCards(required);
-		if (missing.isEmpty())
+		if (checkNodeRule(event, ResourceNodeCatalog.KIND_ITEM_ON_OBJECT, usedItemName, objectName))
 		{
 			return;
 		}
-		event.consume();
-		sendBlockedCardsMessage(missing);
+		// Processing recipes triggered by item-on-object (e.g. ore on furnace).
+		checkRecipe(event, RecipeCatalog.KIND_ITEM_ON_OBJECT, usedItemName, objectName);
 	}
 
-	private void checkNodeRule(MenuOptionClicked event, String kind, String name, String option)
+	// ------------------------------------------------------------------ widget ops (CC_OP)
+
+	private void handleWidgetOp(MenuOptionClicked event)
+	{
+		MenuEntry entry = event.getMenuEntry();
+		String option = Text.removeTags(event.getMenuOption()).trim();
+		String optionLower = option.toLowerCase(Locale.ROOT);
+		int group = WidgetUtil.componentToInterface(entry.getParam1());
+
+		// Bank: discriminate on option text (the bank-side panels are not the inventory group).
+		if (optionLower.startsWith("withdraw"))
+		{
+			if (config.forcedDropMode() != ForcedDropMode.OFF)
+			{
+				blockIfLockedItem(event, itemOpName(event, entry));
+			}
+			return;
+		}
+		if (optionLower.startsWith("deposit"))
+		{
+			// Allow-banking mode: the bank is the holding pen, deposits always allowed.
+			if (config.forcedDropMode() == ForcedDropMode.DROP)
+			{
+				blockIfLockedItem(event, itemOpName(event, entry));
+			}
+			return;
+		}
+
+		if (group == InterfaceID.SHOPMAIN)
+		{
+			if (config.restrictBuying() && optionLower.startsWith("buy"))
+			{
+				blockIfLockedItem(event, itemOpName(event, entry));
+			}
+			return;
+		}
+
+		if (group == InterfaceID.SKILLMULTI || group == InterfaceID.SMITHING)
+		{
+			// Make-X product click: only the product name is reliable. Mouse-only block;
+			// keyboard defaults bypass the menu pipeline (owner-accepted limitation).
+			String product = Text.removeTags(event.getMenuTarget()).trim();
+			if (!product.isEmpty())
+			{
+				checkRecipe(event, RecipeCatalog.KIND_INTERFACE, product, null);
+			}
+			return;
+		}
+
+		if (group == InterfaceID.INVENTORY)
+		{
+			handleInventoryOp(event, entry, option, optionLower);
+			return;
+		}
+
+		// Grand Exchange search results live in the chatbox; consuming the selection is
+		// the best preventive hook available (best-effort - keyboard flows may bypass).
+		if (config.restrictBuying() && group == InterfaceID.CHATBOX && isGrandExchangeOpen())
+		{
+			String targetName = Text.removeTags(event.getMenuTarget()).trim();
+			if (!targetName.isEmpty() && !isUnlocked(itemCatalog, targetName))
+			{
+				event.consume();
+				sendBlockedMessage(targetName);
+			}
+		}
+	}
+
+	private void handleInventoryOp(MenuOptionClicked event, MenuEntry entry, String option,
+		String optionLower)
+	{
+		String itemName = itemOpName(event, entry);
+		if (itemName == null || itemName.isEmpty())
+		{
+			return;
+		}
+
+		// Node rules keyed on inventory items (laying bird snares / box traps).
+		if (checkNodeRule(event, ResourceNodeCatalog.KIND_INVENTORY, itemName, option))
+		{
+			return;
+		}
+
+		// Firemaking: "Light" on logs is the tinderbox recipe from the item-op side.
+		if ("light".equals(optionLower)
+			&& checkRecipe(event, RecipeCatalog.KIND_ITEM_ON_ITEM, "Tinderbox", itemName))
+		{
+			return;
+		}
+
+		if (config.restrictEquipping() && EQUIP_VERBS.contains(optionLower)
+			&& blockIfLockedItem(event, itemName))
+		{
+			return;
+		}
+
+		if (config.restrictPotionDrinking() && "drink".equals(optionLower)
+			&& blockIfLockedItem(event, itemName))
+		{
+			return;
+		}
+
+		if (config.forcedDropMode() != ForcedDropMode.OFF && !FORCED_DROP_ALLOWED.contains(optionLower))
+		{
+			blockIfLockedItem(event, itemName);
+		}
+	}
+
+	/** "Use" with an inventory item selected: in forced-drop mode a locked item can't be used. */
+	private void handleUseSelected(MenuOptionClicked event)
+	{
+		if (config.forcedDropMode() == ForcedDropMode.OFF)
+		{
+			return;
+		}
+		if (WidgetUtil.componentToInterface(event.getMenuEntry().getParam1()) != InterfaceID.INVENTORY)
+		{
+			return;
+		}
+		blockIfLockedItem(event, Text.removeTags(event.getMenuTarget()).trim());
+	}
+
+	// ------------------------------------------------------------------ item/spell on item
+
+	private void handleWidgetOnWidget(MenuOptionClicked event)
+	{
+		String target = Text.removeTags(event.getMenuTarget());
+		int separator = target.lastIndexOf(USED_ON_SEPARATOR);
+		if (separator < 0)
+		{
+			return;
+		}
+		String source = target.substring(0, separator).trim();
+		String destination = target.substring(separator + USED_ON_SEPARATOR.length()).trim();
+
+		boolean isSpell = source.startsWith(CAST_PREFIX) || isSelectedWidgetSpell();
+		if (isSpell)
+		{
+			if (config.restrictEnchanting())
+			{
+				// Keyed by the target jewellery alone; each item has exactly one enchant.
+				checkRecipe(event, RecipeCatalog.KIND_SPELL_ON_ITEM, destination, null);
+			}
+			return;
+		}
+
+		// Forced drop: a locked item can't be used on anything (or be used upon).
+		if (config.forcedDropMode() != ForcedDropMode.OFF
+			&& (blockIfLockedItem(event, source) || blockIfLockedItem(event, destination)))
+		{
+			return;
+		}
+
+		// Processing recipes; data keys tool->material, clicks can arrive either way round.
+		if (!checkRecipe(event, RecipeCatalog.KIND_ITEM_ON_ITEM, source, destination))
+		{
+			checkRecipe(event, RecipeCatalog.KIND_ITEM_ON_ITEM, destination, source);
+		}
+	}
+
+	private boolean isSelectedWidgetSpell()
+	{
+		if (!client.isWidgetSelected())
+		{
+			return false;
+		}
+		Widget selected = client.getSelectedWidget();
+		return selected != null && selected.getItemId() <= 0;
+	}
+
+	private boolean isGrandExchangeOpen()
+	{
+		return client.getWidget(InterfaceID.GE_OFFERS, 0) != null;
+	}
+
+	// ------------------------------------------------------------------ rule evaluation
+
+	/** @return true when the event was consumed (blocked). */
+	private boolean checkNodeRule(MenuOptionClicked event, String kind, String name, String option)
 	{
 		ResourceNodeCatalog.Rule rule = nodeCatalog.find(kind, name, option);
 		if (rule == null)
 		{
-			return;
+			return false;
 		}
 
 		boolean forceAllInGroups = false;
+		Set<String> excludedRoles;
 		if ("fishing".equals(rule.category))
 		{
 			// Fishing has a three-way mode instead of a toggle; it overrides the rule's
@@ -277,57 +495,279 @@ public class BronzemanTcgPlugin extends Plugin
 			FishingRestrictionMode mode = config.fishingMode();
 			if (mode == FishingRestrictionMode.OFF)
 			{
-				return;
+				return false;
 			}
 			forceAllInGroups = mode == FishingRestrictionMode.REQUIRE_ALL;
+			excludedRoles = Collections.emptySet();
 		}
-		else if (!isCategoryRestricted(rule.category))
+		else
 		{
-			return;
+			excludedRoles = excludedRolesFor(rule.category);
+			if (excludedRoles == null)
+			{
+				return false;
+			}
 		}
 
 		List<String> missing = rule.missingRequirements(
-			collectionReader.getOwnedCardNamesLowerCase(), Collections.emptySet(), forceAllInGroups);
+			collectionReader.getOwnedCardNamesLowerCase(), excludedRoles, forceAllInGroups);
 		if (missing.isEmpty())
 		{
-			return;
+			return false;
 		}
 
 		event.consume();
 		sendBlockedCardsMessage(missing);
+		return true;
 	}
 
-	private boolean isCategoryRestricted(String category)
+	/**
+	 * Config gate per node category.
+	 *
+	 * @return roles to skip during evaluation, or null when the category is switched off.
+	 *         Unknown categories restrict fully so new data stays loud rather than inert.
+	 */
+	private Set<String> excludedRolesFor(String category)
 	{
 		switch (category)
 		{
 			case "woodcutting":
-				return config.restrictWoodcutting();
+				return config.restrictWoodcutting() ? Collections.emptySet() : null;
 			case "mining":
-				return config.restrictMining();
+				return config.restrictMining() ? Collections.emptySet() : null;
 			case "pickpocketing":
-				return config.restrictPickpocketing();
+				return config.restrictPickpocketing() ? Collections.emptySet() : null;
 			case "cooking":
-				return config.restrictCooking();
+				return config.restrictCooking() ? Collections.emptySet() : null;
+			case "farming-compost":
+				return config.restrictCompost() ? Collections.emptySet() : null;
+			case "hunter-chins":
+				return config.restrictChins() ? Collections.emptySet() : null;
+			case "hunter-rumours":
+				return config.restrictHunterRumours() ? Collections.emptySet() : null;
+			case "runecrafting":
+				switch (config.runecraftingMode())
+				{
+					case TALISMAN:
+						return Set.of("rune");
+					case TALISMAN_RUNES:
+						return Collections.emptySet();
+					default:
+						return null;
+				}
+			case "farming-rake":
+				switch (config.farmingRakeMode())
+				{
+					case TOOLS:
+						return Set.of("weeds");
+					case BOTH:
+						return Collections.emptySet();
+					default:
+						return null;
+				}
+			case "farming-plant":
+				switch (config.farmingPlantMode())
+				{
+					case TOOLS:
+						return Set.of("seed", "produce");
+					case TOOLS_SEEDS:
+						return Set.of("produce");
+					case ALL:
+						return Collections.emptySet();
+					default:
+						return null;
+				}
+			case "slayer":
+			{
+				Set<String> excluded = new HashSet<>();
+				if (!config.restrictSlayerMasters())
+				{
+					excluded.add("master");
+				}
+				if (!config.restrictSlayerMonsters())
+				{
+					excluded.add("monsters");
+				}
+				return excluded.size() == 2 ? null : excluded;
+			}
+			case "hunter-birds":
+			case "hunter-butterflies":
+				switch (config.hunterBirdsMode())
+				{
+					case NET_ONLY:
+						return Set.of("creature", "extra");
+					case ALL_DROPS:
+						return Collections.emptySet();
+					default:
+						return null;
+				}
+			case "hunter-implings":
+				switch (config.implingMode())
+				{
+					case NET_ONLY:
+						return Set.of("extra");
+					case BOTH:
+						return Collections.emptySet();
+					default:
+						return null;
+				}
+			case "hunter-salamanders":
+				switch (config.salamanderMode())
+				{
+					case ROPE_NET:
+						return Set.of("creature");
+					case ITEMS_SALLY:
+						return Collections.emptySet();
+					default:
+						return null;
+				}
+			case "hunter-pitfalls":
+				switch (config.pitfallMode())
+				{
+					case TOOLS:
+						return Set.of("creature");
+					case ALL:
+						return Collections.emptySet();
+					default:
+						return null;
+				}
 			default:
 				// Data shipped a category this build has no toggle for: restrict, so new
 				// data stays challenge-mode-loud rather than silently inert.
-				return true;
+				return Collections.emptySet();
 		}
 	}
 
-	private List<String> missingCards(List<String> requiredCards)
+	/** @return true when the event was consumed (blocked). */
+	private boolean checkRecipe(MenuOptionClicked event, String kind, String name, String target)
 	{
-		Set<String> owned = collectionReader.getOwnedCardNamesLowerCase();
-		List<String> missing = new ArrayList<>();
-		for (String card : requiredCards)
+		RecipeCatalog.Recipe recipe = recipeCatalog.find(kind, name, target);
+		if (recipe == null)
 		{
-			if (!owned.contains(card.trim().toLowerCase(Locale.ROOT)))
+			return false;
+		}
+
+		boolean enforceInputs;
+		boolean enforceOutput;
+		boolean skipTinderbox = false;
+		switch (recipe.category)
+		{
+			case "firemaking":
 			{
-				missing.add(card);
+				FiremakingMode mode = config.firemakingMode();
+				if (mode == FiremakingMode.OFF
+					|| (recipe.eventLog && !config.restrictEventLogs()))
+				{
+					return false;
+				}
+				enforceInputs = true;
+				enforceOutput = false;
+				skipTinderbox = mode == FiremakingMode.JUST_LOGS;
+				break;
+			}
+			case "smithing-smelt":
+			{
+				SmeltingMode mode = config.smeltingMode();
+				if (mode == SmeltingMode.OFF)
+				{
+					return false;
+				}
+				enforceInputs = mode == SmeltingMode.ORE || mode == SmeltingMode.BOTH;
+				enforceOutput = mode == SmeltingMode.BARS || mode == SmeltingMode.BOTH;
+				break;
+			}
+			case "smithing-forge":
+			{
+				SmithingMode mode = config.smithingMode();
+				if (mode == SmithingMode.OFF)
+				{
+					return false;
+				}
+				enforceInputs = mode == SmithingMode.BARS || mode == SmithingMode.BOTH;
+				enforceOutput = mode == SmithingMode.ITEMS || mode == SmithingMode.BOTH;
+				break;
+			}
+			case "crafting":
+				if (!config.restrictCrafting())
+				{
+					return false;
+				}
+				enforceInputs = true;
+				enforceOutput = true;
+				break;
+			case "enchanting":
+				if (!config.restrictEnchanting())
+				{
+					return false;
+				}
+				enforceInputs = true;
+				enforceOutput = true;
+				break;
+			case "fletching":
+				if (!config.restrictFletching())
+				{
+					return false;
+				}
+				enforceInputs = true;
+				enforceOutput = true;
+				break;
+			case "herblore":
+				if (!config.restrictHerblore())
+				{
+					return false;
+				}
+				enforceInputs = true;
+				enforceOutput = true;
+				break;
+			default:
+				enforceInputs = true;
+				enforceOutput = true;
+		}
+
+		List<String> missing = recipe.missingRequirements(
+			collectionReader.getOwnedCardNamesLowerCase(), enforceInputs, enforceOutput);
+		if (skipTinderbox)
+		{
+			for (Iterator<String> it = missing.iterator(); it.hasNext(); )
+			{
+				if ("Tinderbox".equalsIgnoreCase(it.next()))
+				{
+					it.remove();
+				}
 			}
 		}
-		return missing;
+		if (missing.isEmpty())
+		{
+			return false;
+		}
+
+		event.consume();
+		sendBlockedCardsMessage(missing);
+		return true;
+	}
+
+	// ------------------------------------------------------------------ helpers
+
+	/** Item name for an item-op entry, falling back to the menu target for non-item-ops. */
+	private String itemOpName(MenuOptionClicked event, MenuEntry entry)
+	{
+		if (entry.isItemOp() && event.getItemId() > 0)
+		{
+			return itemManager.getItemComposition(event.getItemId()).getName();
+		}
+		return Text.removeTags(event.getMenuTarget()).trim();
+	}
+
+	/** @return true when the item is tracked-but-unowned and the event was consumed. */
+	private boolean blockIfLockedItem(MenuOptionClicked event, String itemName)
+	{
+		if (itemName == null || itemName.isEmpty() || isUnlocked(itemCatalog, itemName))
+		{
+			return false;
+		}
+		event.consume();
+		sendBlockedMessage(itemName);
+		return true;
 	}
 
 	private boolean isUnlocked(CardNameCatalog catalog, String entityName)
@@ -390,6 +830,20 @@ public class BronzemanTcgPlugin extends Plugin
 			exempt.add(entry.trim().toLowerCase(Locale.ROOT));
 		}
 		return exempt.contains(needle);
+	}
+
+	private List<String> missingCards(List<String> requiredCards)
+	{
+		Set<String> owned = collectionReader.getOwnedCardNamesLowerCase();
+		List<String> missing = new ArrayList<>();
+		for (String card : requiredCards)
+		{
+			if (!owned.contains(card.trim().toLowerCase(Locale.ROOT)))
+			{
+				missing.add(card);
+			}
+		}
+		return missing;
 	}
 
 	private String resolveNpcName(NPC npc)

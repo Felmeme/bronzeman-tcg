@@ -41,6 +41,7 @@ public class ResourceNodeCatalog
 	public static final String KIND_OBJECT = "object";
 	public static final String KIND_NPC = "npc";
 	public static final String KIND_ITEM_ON_OBJECT = "item-on-object";
+	public static final String KIND_INVENTORY = "inventory";
 
 	private Map<String, Rule> rules = Collections.emptyMap();
 	private List<String> masterFarmerSeedCards = Collections.emptyList();

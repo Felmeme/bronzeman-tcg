@@ -1,0 +1,7089 @@
+{
+	"recipes": [
+		{
+			"category": "firemaking",
+			"inputs": [
+				[
+					"Logs"
+				],
+				[
+					"Tinderbox"
+				]
+			],
+			"output": null,
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Tinderbox",
+				"targets": [
+					"logs"
+				]
+			},
+			"notes": "Light log with tinderbox (produces a fire, no item output)."
+		},
+		{
+			"category": "firemaking",
+			"inputs": [
+				[
+					"Oak logs"
+				],
+				[
+					"Tinderbox"
+				]
+			],
+			"output": null,
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Tinderbox",
+				"targets": [
+					"oak logs"
+				]
+			},
+			"notes": "Light log with tinderbox (produces a fire, no item output)."
+		},
+		{
+			"category": "firemaking",
+			"inputs": [
+				[
+					"Willow logs"
+				],
+				[
+					"Tinderbox"
+				]
+			],
+			"output": null,
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Tinderbox",
+				"targets": [
+					"willow logs"
+				]
+			},
+			"notes": "Light log with tinderbox (produces a fire, no item output)."
+		},
+		{
+			"category": "firemaking",
+			"inputs": [
+				[
+					"Teak logs"
+				],
+				[
+					"Tinderbox"
+				]
+			],
+			"output": null,
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Tinderbox",
+				"targets": [
+					"teak logs"
+				]
+			},
+			"notes": "Light log with tinderbox (produces a fire, no item output)."
+		},
+		{
+			"category": "firemaking",
+			"inputs": [
+				[
+					"Maple logs"
+				],
+				[
+					"Tinderbox"
+				]
+			],
+			"output": null,
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Tinderbox",
+				"targets": [
+					"maple logs"
+				]
+			},
+			"notes": "Light log with tinderbox (produces a fire, no item output)."
+		},
+		{
+			"category": "firemaking",
+			"inputs": [
+				[
+					"Mahogany logs"
+				],
+				[
+					"Tinderbox"
+				]
+			],
+			"output": null,
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Tinderbox",
+				"targets": [
+					"mahogany logs"
+				]
+			},
+			"notes": "Light log with tinderbox (produces a fire, no item output)."
+		},
+		{
+			"category": "firemaking",
+			"inputs": [
+				[
+					"Yew logs"
+				],
+				[
+					"Tinderbox"
+				]
+			],
+			"output": null,
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Tinderbox",
+				"targets": [
+					"yew logs"
+				]
+			},
+			"notes": "Light log with tinderbox (produces a fire, no item output)."
+		},
+		{
+			"category": "firemaking",
+			"inputs": [
+				[
+					"Magic logs"
+				],
+				[
+					"Tinderbox"
+				]
+			],
+			"output": null,
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Tinderbox",
+				"targets": [
+					"magic logs"
+				]
+			},
+			"notes": "Light log with tinderbox (produces a fire, no item output)."
+		},
+		{
+			"category": "firemaking",
+			"inputs": [
+				[
+					"Redwood logs"
+				],
+				[
+					"Tinderbox"
+				]
+			],
+			"output": null,
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Tinderbox",
+				"targets": [
+					"redwood logs"
+				]
+			},
+			"notes": "Light log with tinderbox (produces a fire, no item output)."
+		},
+		{
+			"category": "firemaking",
+			"inputs": [
+				[
+					"Blue logs"
+				],
+				[
+					"Tinderbox"
+				]
+			],
+			"output": null,
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Tinderbox",
+				"targets": [
+					"blue logs"
+				]
+			},
+			"notes": "Coloured log (2014 event content) - genuinely tinderbox-lightable for coloured flames."
+		},
+		{
+			"category": "firemaking",
+			"inputs": [
+				[
+					"Green logs"
+				],
+				[
+					"Tinderbox"
+				]
+			],
+			"output": null,
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Tinderbox",
+				"targets": [
+					"green logs"
+				]
+			},
+			"notes": "Coloured log (2014 event content) - genuinely tinderbox-lightable for coloured flames."
+		},
+		{
+			"category": "firemaking",
+			"inputs": [
+				[
+					"Red logs"
+				],
+				[
+					"Tinderbox"
+				]
+			],
+			"output": null,
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Tinderbox",
+				"targets": [
+					"red logs"
+				]
+			},
+			"notes": "Coloured log (2014 event content) - genuinely tinderbox-lightable for coloured flames."
+		},
+		{
+			"category": "firemaking",
+			"inputs": [
+				[
+					"Purple logs"
+				],
+				[
+					"Tinderbox"
+				]
+			],
+			"output": null,
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Tinderbox",
+				"targets": [
+					"purple logs"
+				]
+			},
+			"notes": "Coloured log (2014 event content) - genuinely tinderbox-lightable for coloured flames."
+		},
+		{
+			"category": "firemaking",
+			"inputs": [
+				[
+					"White logs"
+				],
+				[
+					"Tinderbox"
+				]
+			],
+			"output": null,
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Tinderbox",
+				"targets": [
+					"white logs"
+				]
+			},
+			"notes": "Coloured log (2014 event content) - genuinely tinderbox-lightable for coloured flames."
+		},
+		{
+			"category": "smithing-smelt",
+			"inputs": [
+				[
+					"Copper ore"
+				],
+				[
+					"Tin ore"
+				]
+			],
+			"output": "Bronze bar",
+			"trigger": {
+				"kind": "item-on-object",
+				"name": "Copper ore",
+				"targets": [
+					"furnace"
+				]
+			},
+			"notes": "1 copper + 1 tin ore. Use ore on furnace."
+		},
+		{
+			"category": "smithing-smelt",
+			"inputs": [
+				[
+					"Copper ore"
+				],
+				[
+					"Tin ore"
+				]
+			],
+			"output": "Bronze bar",
+			"trigger": {
+				"kind": "interface",
+				"name": "Bronze bar",
+				"targets": [
+					"furnace"
+				]
+			},
+			"notes": "1 copper + 1 tin ore. Smelting make-interface product click."
+		},
+		{
+			"category": "smithing-smelt",
+			"inputs": [
+				[
+					"Iron ore"
+				]
+			],
+			"output": "Iron bar",
+			"trigger": {
+				"kind": "item-on-object",
+				"name": "Iron ore",
+				"targets": [
+					"furnace"
+				]
+			},
+			"notes": "1 iron ore (~50% success without a ring of forging). Use ore on furnace."
+		},
+		{
+			"category": "smithing-smelt",
+			"inputs": [
+				[
+					"Iron ore"
+				]
+			],
+			"output": "Iron bar",
+			"trigger": {
+				"kind": "interface",
+				"name": "Iron bar",
+				"targets": [
+					"furnace"
+				]
+			},
+			"notes": "1 iron ore (~50% success without a ring of forging). Smelting make-interface product click."
+		},
+		{
+			"category": "smithing-smelt",
+			"inputs": [
+				[
+					"Silver ore"
+				]
+			],
+			"output": "Silver bar",
+			"trigger": {
+				"kind": "item-on-object",
+				"name": "Silver ore",
+				"targets": [
+					"furnace"
+				]
+			},
+			"notes": "1 silver ore. Use ore on furnace."
+		},
+		{
+			"category": "smithing-smelt",
+			"inputs": [
+				[
+					"Silver ore"
+				]
+			],
+			"output": "Silver bar",
+			"trigger": {
+				"kind": "interface",
+				"name": "Silver bar",
+				"targets": [
+					"furnace"
+				]
+			},
+			"notes": "1 silver ore. Smelting make-interface product click."
+		},
+		{
+			"category": "smithing-smelt",
+			"inputs": [
+				[
+					"Iron ore"
+				],
+				[
+					"Coal"
+				]
+			],
+			"output": "Steel bar",
+			"trigger": {
+				"kind": "item-on-object",
+				"name": "Iron ore",
+				"targets": [
+					"furnace"
+				]
+			},
+			"notes": "1 iron ore + 2 coal. Use ore on furnace."
+		},
+		{
+			"category": "smithing-smelt",
+			"inputs": [
+				[
+					"Iron ore"
+				],
+				[
+					"Coal"
+				]
+			],
+			"output": "Steel bar",
+			"trigger": {
+				"kind": "interface",
+				"name": "Steel bar",
+				"targets": [
+					"furnace"
+				]
+			},
+			"notes": "1 iron ore + 2 coal. Smelting make-interface product click."
+		},
+		{
+			"category": "smithing-smelt",
+			"inputs": [
+				[
+					"Gold ore"
+				]
+			],
+			"output": "Gold bar",
+			"trigger": {
+				"kind": "item-on-object",
+				"name": "Gold ore",
+				"targets": [
+					"furnace"
+				]
+			},
+			"notes": "1 gold ore. Use ore on furnace."
+		},
+		{
+			"category": "smithing-smelt",
+			"inputs": [
+				[
+					"Gold ore"
+				]
+			],
+			"output": "Gold bar",
+			"trigger": {
+				"kind": "interface",
+				"name": "Gold bar",
+				"targets": [
+					"furnace"
+				]
+			},
+			"notes": "1 gold ore. Smelting make-interface product click."
+		},
+		{
+			"category": "smithing-smelt",
+			"inputs": [
+				[
+					"Mithril ore"
+				],
+				[
+					"Coal"
+				]
+			],
+			"output": "Mithril bar",
+			"trigger": {
+				"kind": "item-on-object",
+				"name": "Mithril ore",
+				"targets": [
+					"furnace"
+				]
+			},
+			"notes": "1 mithril ore + 4 coal. Use ore on furnace."
+		},
+		{
+			"category": "smithing-smelt",
+			"inputs": [
+				[
+					"Mithril ore"
+				],
+				[
+					"Coal"
+				]
+			],
+			"output": "Mithril bar",
+			"trigger": {
+				"kind": "interface",
+				"name": "Mithril bar",
+				"targets": [
+					"furnace"
+				]
+			},
+			"notes": "1 mithril ore + 4 coal. Smelting make-interface product click."
+		},
+		{
+			"category": "smithing-smelt",
+			"inputs": [
+				[
+					"Adamantite ore"
+				],
+				[
+					"Coal"
+				]
+			],
+			"output": "Adamantite bar",
+			"trigger": {
+				"kind": "item-on-object",
+				"name": "Adamantite ore",
+				"targets": [
+					"furnace"
+				]
+			},
+			"notes": "1 adamantite ore + 6 coal. Use ore on furnace."
+		},
+		{
+			"category": "smithing-smelt",
+			"inputs": [
+				[
+					"Adamantite ore"
+				],
+				[
+					"Coal"
+				]
+			],
+			"output": "Adamantite bar",
+			"trigger": {
+				"kind": "interface",
+				"name": "Adamantite bar",
+				"targets": [
+					"furnace"
+				]
+			},
+			"notes": "1 adamantite ore + 6 coal. Smelting make-interface product click."
+		},
+		{
+			"category": "smithing-smelt",
+			"inputs": [
+				[
+					"Runite ore"
+				],
+				[
+					"Coal"
+				]
+			],
+			"output": "Runite bar",
+			"trigger": {
+				"kind": "item-on-object",
+				"name": "Runite ore",
+				"targets": [
+					"furnace"
+				]
+			},
+			"notes": "1 runite ore + 8 coal. Use ore on furnace."
+		},
+		{
+			"category": "smithing-smelt",
+			"inputs": [
+				[
+					"Runite ore"
+				],
+				[
+					"Coal"
+				]
+			],
+			"output": "Runite bar",
+			"trigger": {
+				"kind": "interface",
+				"name": "Runite bar",
+				"targets": [
+					"furnace"
+				]
+			},
+			"notes": "1 runite ore + 8 coal. Smelting make-interface product click."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Bronze bar"
+				]
+			],
+			"output": "Bronze dagger",
+			"trigger": {
+				"kind": "interface",
+				"name": "Bronze dagger",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Bronze bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Bronze bar"
+				]
+			],
+			"output": "Bronze axe",
+			"trigger": {
+				"kind": "interface",
+				"name": "Bronze axe",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Bronze bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Bronze bar"
+				]
+			],
+			"output": "Bronze pickaxe",
+			"trigger": {
+				"kind": "interface",
+				"name": "Bronze pickaxe",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Bronze bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Bronze bar"
+				]
+			],
+			"output": "Bronze mace",
+			"trigger": {
+				"kind": "interface",
+				"name": "Bronze mace",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Bronze bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Bronze bar"
+				]
+			],
+			"output": "Bronze med helm",
+			"trigger": {
+				"kind": "interface",
+				"name": "Bronze med helm",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Bronze bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Bronze bar"
+				]
+			],
+			"output": "Bronze sword",
+			"trigger": {
+				"kind": "interface",
+				"name": "Bronze sword",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Bronze bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Bronze bar"
+				]
+			],
+			"output": "Bronze scimitar",
+			"trigger": {
+				"kind": "interface",
+				"name": "Bronze scimitar",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Bronze bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Bronze bar"
+				]
+			],
+			"output": "Bronze longsword",
+			"trigger": {
+				"kind": "interface",
+				"name": "Bronze longsword",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Bronze bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Bronze bar"
+				]
+			],
+			"output": "Bronze 2h sword",
+			"trigger": {
+				"kind": "interface",
+				"name": "Bronze 2h sword",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Bronze bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Bronze bar"
+				]
+			],
+			"output": "Bronze full helm",
+			"trigger": {
+				"kind": "interface",
+				"name": "Bronze full helm",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Bronze bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Bronze bar"
+				]
+			],
+			"output": "Bronze sq shield",
+			"trigger": {
+				"kind": "interface",
+				"name": "Bronze sq shield",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Bronze bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Bronze bar"
+				]
+			],
+			"output": "Bronze warhammer",
+			"trigger": {
+				"kind": "interface",
+				"name": "Bronze warhammer",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Bronze bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Bronze bar"
+				]
+			],
+			"output": "Bronze battleaxe",
+			"trigger": {
+				"kind": "interface",
+				"name": "Bronze battleaxe",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Bronze bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Bronze bar"
+				]
+			],
+			"output": "Bronze chainbody",
+			"trigger": {
+				"kind": "interface",
+				"name": "Bronze chainbody",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Bronze bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Bronze bar"
+				]
+			],
+			"output": "Bronze kiteshield",
+			"trigger": {
+				"kind": "interface",
+				"name": "Bronze kiteshield",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Bronze bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Bronze bar"
+				]
+			],
+			"output": "Bronze claws",
+			"trigger": {
+				"kind": "interface",
+				"name": "Bronze claws",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Bronze bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Bronze bar"
+				]
+			],
+			"output": "Bronze platelegs",
+			"trigger": {
+				"kind": "interface",
+				"name": "Bronze platelegs",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Bronze bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Bronze bar"
+				]
+			],
+			"output": "Bronze plateskirt",
+			"trigger": {
+				"kind": "interface",
+				"name": "Bronze plateskirt",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Bronze bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Bronze bar"
+				]
+			],
+			"output": "Bronze platebody",
+			"trigger": {
+				"kind": "interface",
+				"name": "Bronze platebody",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Bronze bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Bronze bar"
+				]
+			],
+			"output": "Bronze spear",
+			"trigger": {
+				"kind": "interface",
+				"name": "Bronze spear",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Bronze bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Bronze bar"
+				]
+			],
+			"output": "Bronze hasta",
+			"trigger": {
+				"kind": "interface",
+				"name": "Bronze hasta",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Bronze bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Bronze bar"
+				]
+			],
+			"output": "Bronze knife",
+			"trigger": {
+				"kind": "interface",
+				"name": "Bronze knife",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Bronze bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Bronze bar"
+				]
+			],
+			"output": "Bronze nails",
+			"trigger": {
+				"kind": "interface",
+				"name": "Bronze nails",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Bronze bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Bronze bar"
+				]
+			],
+			"output": "Bronze limbs",
+			"trigger": {
+				"kind": "interface",
+				"name": "Bronze limbs",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Bronze bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Bronze bar"
+				]
+			],
+			"output": "Bronze wire",
+			"trigger": {
+				"kind": "interface",
+				"name": "Bronze wire",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Bronze bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Iron bar"
+				]
+			],
+			"output": "Iron dagger",
+			"trigger": {
+				"kind": "interface",
+				"name": "Iron dagger",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Iron bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Iron bar"
+				]
+			],
+			"output": "Iron axe",
+			"trigger": {
+				"kind": "interface",
+				"name": "Iron axe",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Iron bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Iron bar"
+				]
+			],
+			"output": "Iron pickaxe",
+			"trigger": {
+				"kind": "interface",
+				"name": "Iron pickaxe",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Iron bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Iron bar"
+				]
+			],
+			"output": "Iron mace",
+			"trigger": {
+				"kind": "interface",
+				"name": "Iron mace",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Iron bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Iron bar"
+				]
+			],
+			"output": "Iron med helm",
+			"trigger": {
+				"kind": "interface",
+				"name": "Iron med helm",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Iron bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Iron bar"
+				]
+			],
+			"output": "Iron sword",
+			"trigger": {
+				"kind": "interface",
+				"name": "Iron sword",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Iron bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Iron bar"
+				]
+			],
+			"output": "Iron scimitar",
+			"trigger": {
+				"kind": "interface",
+				"name": "Iron scimitar",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Iron bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Iron bar"
+				]
+			],
+			"output": "Iron longsword",
+			"trigger": {
+				"kind": "interface",
+				"name": "Iron longsword",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Iron bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Iron bar"
+				]
+			],
+			"output": "Iron 2h sword",
+			"trigger": {
+				"kind": "interface",
+				"name": "Iron 2h sword",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Iron bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Iron bar"
+				]
+			],
+			"output": "Iron full helm",
+			"trigger": {
+				"kind": "interface",
+				"name": "Iron full helm",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Iron bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Iron bar"
+				]
+			],
+			"output": "Iron sq shield",
+			"trigger": {
+				"kind": "interface",
+				"name": "Iron sq shield",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Iron bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Iron bar"
+				]
+			],
+			"output": "Iron warhammer",
+			"trigger": {
+				"kind": "interface",
+				"name": "Iron warhammer",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Iron bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Iron bar"
+				]
+			],
+			"output": "Iron battleaxe",
+			"trigger": {
+				"kind": "interface",
+				"name": "Iron battleaxe",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Iron bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Iron bar"
+				]
+			],
+			"output": "Iron chainbody",
+			"trigger": {
+				"kind": "interface",
+				"name": "Iron chainbody",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Iron bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Iron bar"
+				]
+			],
+			"output": "Iron kiteshield",
+			"trigger": {
+				"kind": "interface",
+				"name": "Iron kiteshield",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Iron bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Iron bar"
+				]
+			],
+			"output": "Iron claws",
+			"trigger": {
+				"kind": "interface",
+				"name": "Iron claws",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Iron bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Iron bar"
+				]
+			],
+			"output": "Iron platelegs",
+			"trigger": {
+				"kind": "interface",
+				"name": "Iron platelegs",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Iron bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Iron bar"
+				]
+			],
+			"output": "Iron plateskirt",
+			"trigger": {
+				"kind": "interface",
+				"name": "Iron plateskirt",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Iron bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Iron bar"
+				]
+			],
+			"output": "Iron platebody",
+			"trigger": {
+				"kind": "interface",
+				"name": "Iron platebody",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Iron bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Iron bar"
+				]
+			],
+			"output": "Iron spear",
+			"trigger": {
+				"kind": "interface",
+				"name": "Iron spear",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Iron bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Iron bar"
+				]
+			],
+			"output": "Iron hasta",
+			"trigger": {
+				"kind": "interface",
+				"name": "Iron hasta",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Iron bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Iron bar"
+				]
+			],
+			"output": "Iron knife",
+			"trigger": {
+				"kind": "interface",
+				"name": "Iron knife",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Iron bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Iron bar"
+				]
+			],
+			"output": "Iron nails",
+			"trigger": {
+				"kind": "interface",
+				"name": "Iron nails",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Iron bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Iron bar"
+				]
+			],
+			"output": "Iron limbs",
+			"trigger": {
+				"kind": "interface",
+				"name": "Iron limbs",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Iron bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Steel bar"
+				]
+			],
+			"output": "Steel dagger",
+			"trigger": {
+				"kind": "interface",
+				"name": "Steel dagger",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Steel bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Steel bar"
+				]
+			],
+			"output": "Steel axe",
+			"trigger": {
+				"kind": "interface",
+				"name": "Steel axe",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Steel bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Steel bar"
+				]
+			],
+			"output": "Steel pickaxe",
+			"trigger": {
+				"kind": "interface",
+				"name": "Steel pickaxe",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Steel bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Steel bar"
+				]
+			],
+			"output": "Steel mace",
+			"trigger": {
+				"kind": "interface",
+				"name": "Steel mace",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Steel bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Steel bar"
+				]
+			],
+			"output": "Steel med helm",
+			"trigger": {
+				"kind": "interface",
+				"name": "Steel med helm",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Steel bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Steel bar"
+				]
+			],
+			"output": "Steel sword",
+			"trigger": {
+				"kind": "interface",
+				"name": "Steel sword",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Steel bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Steel bar"
+				]
+			],
+			"output": "Steel scimitar",
+			"trigger": {
+				"kind": "interface",
+				"name": "Steel scimitar",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Steel bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Steel bar"
+				]
+			],
+			"output": "Steel longsword",
+			"trigger": {
+				"kind": "interface",
+				"name": "Steel longsword",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Steel bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Steel bar"
+				]
+			],
+			"output": "Steel 2h sword",
+			"trigger": {
+				"kind": "interface",
+				"name": "Steel 2h sword",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Steel bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Steel bar"
+				]
+			],
+			"output": "Steel full helm",
+			"trigger": {
+				"kind": "interface",
+				"name": "Steel full helm",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Steel bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Steel bar"
+				]
+			],
+			"output": "Steel sq shield",
+			"trigger": {
+				"kind": "interface",
+				"name": "Steel sq shield",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Steel bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Steel bar"
+				]
+			],
+			"output": "Steel warhammer",
+			"trigger": {
+				"kind": "interface",
+				"name": "Steel warhammer",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Steel bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Steel bar"
+				]
+			],
+			"output": "Steel battleaxe",
+			"trigger": {
+				"kind": "interface",
+				"name": "Steel battleaxe",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Steel bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Steel bar"
+				]
+			],
+			"output": "Steel chainbody",
+			"trigger": {
+				"kind": "interface",
+				"name": "Steel chainbody",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Steel bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Steel bar"
+				]
+			],
+			"output": "Steel kiteshield",
+			"trigger": {
+				"kind": "interface",
+				"name": "Steel kiteshield",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Steel bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Steel bar"
+				]
+			],
+			"output": "Steel claws",
+			"trigger": {
+				"kind": "interface",
+				"name": "Steel claws",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Steel bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Steel bar"
+				]
+			],
+			"output": "Steel platelegs",
+			"trigger": {
+				"kind": "interface",
+				"name": "Steel platelegs",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Steel bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Steel bar"
+				]
+			],
+			"output": "Steel plateskirt",
+			"trigger": {
+				"kind": "interface",
+				"name": "Steel plateskirt",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Steel bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Steel bar"
+				]
+			],
+			"output": "Steel platebody",
+			"trigger": {
+				"kind": "interface",
+				"name": "Steel platebody",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Steel bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Steel bar"
+				]
+			],
+			"output": "Steel spear",
+			"trigger": {
+				"kind": "interface",
+				"name": "Steel spear",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Steel bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Steel bar"
+				]
+			],
+			"output": "Steel hasta",
+			"trigger": {
+				"kind": "interface",
+				"name": "Steel hasta",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Steel bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Steel bar"
+				]
+			],
+			"output": "Steel knife",
+			"trigger": {
+				"kind": "interface",
+				"name": "Steel knife",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Steel bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Steel bar"
+				]
+			],
+			"output": "Steel nails",
+			"trigger": {
+				"kind": "interface",
+				"name": "Steel nails",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Steel bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Steel bar"
+				]
+			],
+			"output": "Steel limbs",
+			"trigger": {
+				"kind": "interface",
+				"name": "Steel limbs",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Steel bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Mithril bar"
+				]
+			],
+			"output": "Mithril dagger",
+			"trigger": {
+				"kind": "interface",
+				"name": "Mithril dagger",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Mithril bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Mithril bar"
+				]
+			],
+			"output": "Mithril axe",
+			"trigger": {
+				"kind": "interface",
+				"name": "Mithril axe",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Mithril bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Mithril bar"
+				]
+			],
+			"output": "Mithril pickaxe",
+			"trigger": {
+				"kind": "interface",
+				"name": "Mithril pickaxe",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Mithril bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Mithril bar"
+				]
+			],
+			"output": "Mithril mace",
+			"trigger": {
+				"kind": "interface",
+				"name": "Mithril mace",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Mithril bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Mithril bar"
+				]
+			],
+			"output": "Mithril med helm",
+			"trigger": {
+				"kind": "interface",
+				"name": "Mithril med helm",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Mithril bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Mithril bar"
+				]
+			],
+			"output": "Mithril sword",
+			"trigger": {
+				"kind": "interface",
+				"name": "Mithril sword",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Mithril bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Mithril bar"
+				]
+			],
+			"output": "Mithril scimitar",
+			"trigger": {
+				"kind": "interface",
+				"name": "Mithril scimitar",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Mithril bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Mithril bar"
+				]
+			],
+			"output": "Mithril longsword",
+			"trigger": {
+				"kind": "interface",
+				"name": "Mithril longsword",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Mithril bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Mithril bar"
+				]
+			],
+			"output": "Mithril 2h sword",
+			"trigger": {
+				"kind": "interface",
+				"name": "Mithril 2h sword",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Mithril bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Mithril bar"
+				]
+			],
+			"output": "Mithril full helm",
+			"trigger": {
+				"kind": "interface",
+				"name": "Mithril full helm",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Mithril bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Mithril bar"
+				]
+			],
+			"output": "Mithril sq shield",
+			"trigger": {
+				"kind": "interface",
+				"name": "Mithril sq shield",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Mithril bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Mithril bar"
+				]
+			],
+			"output": "Mithril warhammer",
+			"trigger": {
+				"kind": "interface",
+				"name": "Mithril warhammer",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Mithril bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Mithril bar"
+				]
+			],
+			"output": "Mithril battleaxe",
+			"trigger": {
+				"kind": "interface",
+				"name": "Mithril battleaxe",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Mithril bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Mithril bar"
+				]
+			],
+			"output": "Mithril chainbody",
+			"trigger": {
+				"kind": "interface",
+				"name": "Mithril chainbody",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Mithril bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Mithril bar"
+				]
+			],
+			"output": "Mithril kiteshield",
+			"trigger": {
+				"kind": "interface",
+				"name": "Mithril kiteshield",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Mithril bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Mithril bar"
+				]
+			],
+			"output": "Mithril claws",
+			"trigger": {
+				"kind": "interface",
+				"name": "Mithril claws",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Mithril bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Mithril bar"
+				]
+			],
+			"output": "Mithril platelegs",
+			"trigger": {
+				"kind": "interface",
+				"name": "Mithril platelegs",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Mithril bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Mithril bar"
+				]
+			],
+			"output": "Mithril plateskirt",
+			"trigger": {
+				"kind": "interface",
+				"name": "Mithril plateskirt",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Mithril bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Mithril bar"
+				]
+			],
+			"output": "Mithril platebody",
+			"trigger": {
+				"kind": "interface",
+				"name": "Mithril platebody",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Mithril bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Mithril bar"
+				]
+			],
+			"output": "Mithril spear",
+			"trigger": {
+				"kind": "interface",
+				"name": "Mithril spear",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Mithril bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Mithril bar"
+				]
+			],
+			"output": "Mithril hasta",
+			"trigger": {
+				"kind": "interface",
+				"name": "Mithril hasta",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Mithril bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Mithril bar"
+				]
+			],
+			"output": "Mithril knife",
+			"trigger": {
+				"kind": "interface",
+				"name": "Mithril knife",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Mithril bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Mithril bar"
+				]
+			],
+			"output": "Mithril nails",
+			"trigger": {
+				"kind": "interface",
+				"name": "Mithril nails",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Mithril bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Mithril bar"
+				]
+			],
+			"output": "Mithril limbs",
+			"trigger": {
+				"kind": "interface",
+				"name": "Mithril limbs",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Mithril bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Mithril bar"
+				]
+			],
+			"output": "Mithril dart tip",
+			"trigger": {
+				"kind": "interface",
+				"name": "Mithril dart tip",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Mithril bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Adamantite bar"
+				]
+			],
+			"output": "Adamant dagger",
+			"trigger": {
+				"kind": "interface",
+				"name": "Adamant dagger",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Adamantite bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Adamantite bar"
+				]
+			],
+			"output": "Adamant axe",
+			"trigger": {
+				"kind": "interface",
+				"name": "Adamant axe",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Adamantite bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Adamantite bar"
+				]
+			],
+			"output": "Adamant pickaxe",
+			"trigger": {
+				"kind": "interface",
+				"name": "Adamant pickaxe",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Adamantite bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Adamantite bar"
+				]
+			],
+			"output": "Adamant mace",
+			"trigger": {
+				"kind": "interface",
+				"name": "Adamant mace",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Adamantite bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Adamantite bar"
+				]
+			],
+			"output": "Adamant med helm",
+			"trigger": {
+				"kind": "interface",
+				"name": "Adamant med helm",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Adamantite bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Adamantite bar"
+				]
+			],
+			"output": "Adamant sword",
+			"trigger": {
+				"kind": "interface",
+				"name": "Adamant sword",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Adamantite bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Adamantite bar"
+				]
+			],
+			"output": "Adamant scimitar",
+			"trigger": {
+				"kind": "interface",
+				"name": "Adamant scimitar",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Adamantite bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Adamantite bar"
+				]
+			],
+			"output": "Adamant longsword",
+			"trigger": {
+				"kind": "interface",
+				"name": "Adamant longsword",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Adamantite bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Adamantite bar"
+				]
+			],
+			"output": "Adamant 2h sword",
+			"trigger": {
+				"kind": "interface",
+				"name": "Adamant 2h sword",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Adamantite bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Adamantite bar"
+				]
+			],
+			"output": "Adamant full helm",
+			"trigger": {
+				"kind": "interface",
+				"name": "Adamant full helm",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Adamantite bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Adamantite bar"
+				]
+			],
+			"output": "Adamant sq shield",
+			"trigger": {
+				"kind": "interface",
+				"name": "Adamant sq shield",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Adamantite bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Adamantite bar"
+				]
+			],
+			"output": "Adamant warhammer",
+			"trigger": {
+				"kind": "interface",
+				"name": "Adamant warhammer",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Adamantite bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Adamantite bar"
+				]
+			],
+			"output": "Adamant battleaxe",
+			"trigger": {
+				"kind": "interface",
+				"name": "Adamant battleaxe",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Adamantite bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Adamantite bar"
+				]
+			],
+			"output": "Adamant chainbody",
+			"trigger": {
+				"kind": "interface",
+				"name": "Adamant chainbody",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Adamantite bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Adamantite bar"
+				]
+			],
+			"output": "Adamant kiteshield",
+			"trigger": {
+				"kind": "interface",
+				"name": "Adamant kiteshield",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Adamantite bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Adamantite bar"
+				]
+			],
+			"output": "Adamant claws",
+			"trigger": {
+				"kind": "interface",
+				"name": "Adamant claws",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Adamantite bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Adamantite bar"
+				]
+			],
+			"output": "Adamant platelegs",
+			"trigger": {
+				"kind": "interface",
+				"name": "Adamant platelegs",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Adamantite bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Adamantite bar"
+				]
+			],
+			"output": "Adamant plateskirt",
+			"trigger": {
+				"kind": "interface",
+				"name": "Adamant plateskirt",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Adamantite bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Adamantite bar"
+				]
+			],
+			"output": "Adamant platebody",
+			"trigger": {
+				"kind": "interface",
+				"name": "Adamant platebody",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Adamantite bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Adamantite bar"
+				]
+			],
+			"output": "Adamant spear",
+			"trigger": {
+				"kind": "interface",
+				"name": "Adamant spear",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Adamantite bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Adamantite bar"
+				]
+			],
+			"output": "Adamant hasta",
+			"trigger": {
+				"kind": "interface",
+				"name": "Adamant hasta",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Adamantite bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Adamantite bar"
+				]
+			],
+			"output": "Adamant knife",
+			"trigger": {
+				"kind": "interface",
+				"name": "Adamant knife",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Adamantite bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Adamantite bar"
+				]
+			],
+			"output": "Adamantite nails",
+			"trigger": {
+				"kind": "interface",
+				"name": "Adamantite nails",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Adamantite bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Adamantite bar"
+				]
+			],
+			"output": "Adamantite limbs",
+			"trigger": {
+				"kind": "interface",
+				"name": "Adamantite limbs",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Adamantite bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Runite bar"
+				]
+			],
+			"output": "Rune dagger",
+			"trigger": {
+				"kind": "interface",
+				"name": "Rune dagger",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Runite bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Runite bar"
+				]
+			],
+			"output": "Rune axe",
+			"trigger": {
+				"kind": "interface",
+				"name": "Rune axe",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Runite bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Runite bar"
+				]
+			],
+			"output": "Rune pickaxe",
+			"trigger": {
+				"kind": "interface",
+				"name": "Rune pickaxe",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Runite bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Runite bar"
+				]
+			],
+			"output": "Rune mace",
+			"trigger": {
+				"kind": "interface",
+				"name": "Rune mace",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Runite bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Runite bar"
+				]
+			],
+			"output": "Rune med helm",
+			"trigger": {
+				"kind": "interface",
+				"name": "Rune med helm",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Runite bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Runite bar"
+				]
+			],
+			"output": "Rune sword",
+			"trigger": {
+				"kind": "interface",
+				"name": "Rune sword",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Runite bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Runite bar"
+				]
+			],
+			"output": "Rune scimitar",
+			"trigger": {
+				"kind": "interface",
+				"name": "Rune scimitar",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Runite bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Runite bar"
+				]
+			],
+			"output": "Rune longsword",
+			"trigger": {
+				"kind": "interface",
+				"name": "Rune longsword",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Runite bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Runite bar"
+				]
+			],
+			"output": "Rune 2h sword",
+			"trigger": {
+				"kind": "interface",
+				"name": "Rune 2h sword",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Runite bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Runite bar"
+				]
+			],
+			"output": "Rune full helm",
+			"trigger": {
+				"kind": "interface",
+				"name": "Rune full helm",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Runite bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Runite bar"
+				]
+			],
+			"output": "Rune sq shield",
+			"trigger": {
+				"kind": "interface",
+				"name": "Rune sq shield",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Runite bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Runite bar"
+				]
+			],
+			"output": "Rune warhammer",
+			"trigger": {
+				"kind": "interface",
+				"name": "Rune warhammer",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Runite bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Runite bar"
+				]
+			],
+			"output": "Rune battleaxe",
+			"trigger": {
+				"kind": "interface",
+				"name": "Rune battleaxe",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Runite bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Runite bar"
+				]
+			],
+			"output": "Rune chainbody",
+			"trigger": {
+				"kind": "interface",
+				"name": "Rune chainbody",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Runite bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Runite bar"
+				]
+			],
+			"output": "Rune kiteshield",
+			"trigger": {
+				"kind": "interface",
+				"name": "Rune kiteshield",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Runite bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Runite bar"
+				]
+			],
+			"output": "Rune claws",
+			"trigger": {
+				"kind": "interface",
+				"name": "Rune claws",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Runite bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Runite bar"
+				]
+			],
+			"output": "Rune platelegs",
+			"trigger": {
+				"kind": "interface",
+				"name": "Rune platelegs",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Runite bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Runite bar"
+				]
+			],
+			"output": "Rune plateskirt",
+			"trigger": {
+				"kind": "interface",
+				"name": "Rune plateskirt",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Runite bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Runite bar"
+				]
+			],
+			"output": "Rune platebody",
+			"trigger": {
+				"kind": "interface",
+				"name": "Rune platebody",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Runite bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Runite bar"
+				]
+			],
+			"output": "Rune spear",
+			"trigger": {
+				"kind": "interface",
+				"name": "Rune spear",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Runite bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Runite bar"
+				]
+			],
+			"output": "Rune hasta",
+			"trigger": {
+				"kind": "interface",
+				"name": "Rune hasta",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Runite bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Runite bar"
+				]
+			],
+			"output": "Rune knife",
+			"trigger": {
+				"kind": "interface",
+				"name": "Rune knife",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Runite bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Runite bar"
+				]
+			],
+			"output": "Rune nails",
+			"trigger": {
+				"kind": "interface",
+				"name": "Rune nails",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Runite bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Runite bar"
+				]
+			],
+			"output": "Runite limbs",
+			"trigger": {
+				"kind": "interface",
+				"name": "Runite limbs",
+				"targets": [
+					"anvil"
+				]
+			},
+			"notes": "Smith at anvil from Runite bar."
+		},
+		{
+			"category": "smithing-forge",
+			"inputs": [
+				[
+					"Steel bar"
+				]
+			],
+			"output": "Steel cannonball",
+			"trigger": {
+				"kind": "interface",
+				"name": "Steel cannonball",
+				"targets": [
+					"furnace"
+				]
+			},
+			"notes": "Smithing: 1 steel bar + ammo mould = 4 cannonballs at a furnace."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Chisel"
+				],
+				[
+					"Uncut sapphire"
+				]
+			],
+			"output": "Sapphire",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Chisel",
+				"targets": [
+					"uncut sapphire"
+				]
+			},
+			"notes": "Cut gem with a chisel."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Chisel"
+				],
+				[
+					"Uncut emerald"
+				]
+			],
+			"output": "Emerald",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Chisel",
+				"targets": [
+					"uncut emerald"
+				]
+			},
+			"notes": "Cut gem with a chisel."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Chisel"
+				],
+				[
+					"Uncut ruby"
+				]
+			],
+			"output": "Ruby",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Chisel",
+				"targets": [
+					"uncut ruby"
+				]
+			},
+			"notes": "Cut gem with a chisel."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Chisel"
+				],
+				[
+					"Uncut diamond"
+				]
+			],
+			"output": "Diamond",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Chisel",
+				"targets": [
+					"uncut diamond"
+				]
+			},
+			"notes": "Cut gem with a chisel."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Chisel"
+				],
+				[
+					"Uncut dragonstone"
+				]
+			],
+			"output": "Dragonstone",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Chisel",
+				"targets": [
+					"uncut dragonstone"
+				]
+			},
+			"notes": "Cut gem with a chisel."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Chisel"
+				],
+				[
+					"Uncut onyx"
+				]
+			],
+			"output": "Onyx",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Chisel",
+				"targets": [
+					"uncut onyx"
+				]
+			},
+			"notes": "Cut gem with a chisel."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Chisel"
+				],
+				[
+					"Uncut opal"
+				]
+			],
+			"output": "Opal",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Chisel",
+				"targets": [
+					"uncut opal"
+				]
+			},
+			"notes": "Cut gem with a chisel."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Chisel"
+				],
+				[
+					"Uncut jade"
+				]
+			],
+			"output": "Jade",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Chisel",
+				"targets": [
+					"uncut jade"
+				]
+			},
+			"notes": "Cut gem with a chisel."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Chisel"
+				],
+				[
+					"Uncut red topaz"
+				]
+			],
+			"output": "Red topaz",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Chisel",
+				"targets": [
+					"uncut red topaz"
+				]
+			},
+			"notes": "Cut gem with a chisel."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Chisel"
+				],
+				[
+					"Uncut zenyte"
+				]
+			],
+			"output": "Zenyte",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Chisel",
+				"targets": [
+					"uncut zenyte"
+				]
+			},
+			"notes": "Cut gem with a chisel."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Wool"
+				]
+			],
+			"output": "Ball of wool",
+			"trigger": {
+				"kind": "interface",
+				"name": "Ball of wool",
+				"targets": [
+					"spinning wheel"
+				]
+			},
+			"notes": "Spin wool into a ball of wool."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Flax"
+				]
+			],
+			"output": "Bow string",
+			"trigger": {
+				"kind": "interface",
+				"name": "Bow string",
+				"targets": [
+					"spinning wheel"
+				]
+			},
+			"notes": "Spin flax into a bow string."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Glassblowing pipe"
+				],
+				[
+					"Molten glass"
+				]
+			],
+			"output": "Beer glass",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Glassblowing pipe",
+				"targets": [
+					"molten glass"
+				]
+			},
+			"notes": "Glassblow molten glass."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Glassblowing pipe"
+				],
+				[
+					"Molten glass"
+				]
+			],
+			"output": "Vial",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Glassblowing pipe",
+				"targets": [
+					"molten glass"
+				]
+			},
+			"notes": "Glassblow molten glass."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Glassblowing pipe"
+				],
+				[
+					"Molten glass"
+				]
+			],
+			"output": "Unpowered orb",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Glassblowing pipe",
+				"targets": [
+					"molten glass"
+				]
+			},
+			"notes": "Glassblow molten glass."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Glassblowing pipe"
+				],
+				[
+					"Molten glass"
+				]
+			],
+			"output": "Lantern lens",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Glassblowing pipe",
+				"targets": [
+					"molten glass"
+				]
+			},
+			"notes": "Glassblow molten glass."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Glassblowing pipe"
+				],
+				[
+					"Molten glass"
+				]
+			],
+			"output": "Fishbowl",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Glassblowing pipe",
+				"targets": [
+					"molten glass"
+				]
+			},
+			"notes": "Glassblow molten glass."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Glassblowing pipe"
+				],
+				[
+					"Molten glass"
+				]
+			],
+			"output": "Empty light orb",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Glassblowing pipe",
+				"targets": [
+					"molten glass"
+				]
+			},
+			"notes": "Glassblow molten glass."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Soft clay"
+				]
+			],
+			"output": "Pot",
+			"trigger": {
+				"kind": "interface",
+				"name": "Pot",
+				"targets": [
+					"potter's wheel"
+				]
+			},
+			"notes": "Pottery: mould soft clay on wheel then fire in a pottery oven (2-step; simplified to product)."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Soft clay"
+				]
+			],
+			"output": "Bowl",
+			"trigger": {
+				"kind": "interface",
+				"name": "Bowl",
+				"targets": [
+					"potter's wheel"
+				]
+			},
+			"notes": "Pottery: mould soft clay on wheel then fire in a pottery oven (2-step; simplified to product)."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Soft clay"
+				]
+			],
+			"output": "Pie dish",
+			"trigger": {
+				"kind": "interface",
+				"name": "Pie dish",
+				"targets": [
+					"potter's wheel"
+				]
+			},
+			"notes": "Pottery: mould soft clay on wheel then fire in a pottery oven (2-step; simplified to product)."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Needle"
+				],
+				[
+					"Thread"
+				],
+				[
+					"Leather"
+				]
+			],
+			"output": "Leather gloves",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Needle",
+				"targets": [
+					"leather"
+				]
+			},
+			"notes": "Craft with needle+thread on leather."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Needle"
+				],
+				[
+					"Thread"
+				],
+				[
+					"Leather"
+				]
+			],
+			"output": "Leather boots",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Needle",
+				"targets": [
+					"leather"
+				]
+			},
+			"notes": "Craft with needle+thread on leather."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Needle"
+				],
+				[
+					"Thread"
+				],
+				[
+					"Leather"
+				]
+			],
+			"output": "Leather cowl",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Needle",
+				"targets": [
+					"leather"
+				]
+			},
+			"notes": "Craft with needle+thread on leather."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Needle"
+				],
+				[
+					"Thread"
+				],
+				[
+					"Leather"
+				]
+			],
+			"output": "Leather vambraces",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Needle",
+				"targets": [
+					"leather"
+				]
+			},
+			"notes": "Craft with needle+thread on leather."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Needle"
+				],
+				[
+					"Thread"
+				],
+				[
+					"Leather"
+				]
+			],
+			"output": "Leather body",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Needle",
+				"targets": [
+					"leather"
+				]
+			},
+			"notes": "Craft with needle+thread on leather."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Needle"
+				],
+				[
+					"Thread"
+				],
+				[
+					"Leather"
+				]
+			],
+			"output": "Leather chaps",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Needle",
+				"targets": [
+					"leather"
+				]
+			},
+			"notes": "Craft with needle+thread on leather."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Needle"
+				],
+				[
+					"Thread"
+				],
+				[
+					"Green dragon leather"
+				]
+			],
+			"output": "Green d'hide vambraces",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Needle",
+				"targets": [
+					"green dragon leather"
+				]
+			},
+			"notes": "Craft dragonhide armour with needle+thread."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Needle"
+				],
+				[
+					"Thread"
+				],
+				[
+					"Green dragon leather"
+				]
+			],
+			"output": "Green d'hide chaps",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Needle",
+				"targets": [
+					"green dragon leather"
+				]
+			},
+			"notes": "Craft dragonhide armour with needle+thread."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Needle"
+				],
+				[
+					"Thread"
+				],
+				[
+					"Green dragon leather"
+				]
+			],
+			"output": "Green d'hide body",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Needle",
+				"targets": [
+					"green dragon leather"
+				]
+			},
+			"notes": "Craft dragonhide armour with needle+thread."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Needle"
+				],
+				[
+					"Thread"
+				],
+				[
+					"Blue dragon leather"
+				]
+			],
+			"output": "Blue d'hide vambraces",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Needle",
+				"targets": [
+					"blue dragon leather"
+				]
+			},
+			"notes": "Craft dragonhide armour with needle+thread."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Needle"
+				],
+				[
+					"Thread"
+				],
+				[
+					"Blue dragon leather"
+				]
+			],
+			"output": "Blue d'hide chaps",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Needle",
+				"targets": [
+					"blue dragon leather"
+				]
+			},
+			"notes": "Craft dragonhide armour with needle+thread."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Needle"
+				],
+				[
+					"Thread"
+				],
+				[
+					"Blue dragon leather"
+				]
+			],
+			"output": "Blue d'hide body",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Needle",
+				"targets": [
+					"blue dragon leather"
+				]
+			},
+			"notes": "Craft dragonhide armour with needle+thread."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Needle"
+				],
+				[
+					"Thread"
+				],
+				[
+					"Red dragon leather"
+				]
+			],
+			"output": "Red d'hide vambraces",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Needle",
+				"targets": [
+					"red dragon leather"
+				]
+			},
+			"notes": "Craft dragonhide armour with needle+thread."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Needle"
+				],
+				[
+					"Thread"
+				],
+				[
+					"Red dragon leather"
+				]
+			],
+			"output": "Red d'hide chaps",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Needle",
+				"targets": [
+					"red dragon leather"
+				]
+			},
+			"notes": "Craft dragonhide armour with needle+thread."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Needle"
+				],
+				[
+					"Thread"
+				],
+				[
+					"Red dragon leather"
+				]
+			],
+			"output": "Red d'hide body",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Needle",
+				"targets": [
+					"red dragon leather"
+				]
+			},
+			"notes": "Craft dragonhide armour with needle+thread."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Needle"
+				],
+				[
+					"Thread"
+				],
+				[
+					"Black dragon leather"
+				]
+			],
+			"output": "Black d'hide vambraces",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Needle",
+				"targets": [
+					"black dragon leather"
+				]
+			},
+			"notes": "Craft dragonhide armour with needle+thread."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Needle"
+				],
+				[
+					"Thread"
+				],
+				[
+					"Black dragon leather"
+				]
+			],
+			"output": "Black d'hide chaps",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Needle",
+				"targets": [
+					"black dragon leather"
+				]
+			},
+			"notes": "Craft dragonhide armour with needle+thread."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Needle"
+				],
+				[
+					"Thread"
+				],
+				[
+					"Black dragon leather"
+				]
+			],
+			"output": "Black d'hide body",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Needle",
+				"targets": [
+					"black dragon leather"
+				]
+			},
+			"notes": "Craft dragonhide armour with needle+thread."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Gold bar"
+				],
+				[
+					"Ring mould"
+				]
+			],
+			"output": "Gold ring",
+			"trigger": {
+				"kind": "interface",
+				"name": "Gold ring",
+				"targets": [
+					"furnace"
+				]
+			},
+			"notes": "Jewellery: gold bar + Ring mould at a furnace."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Gold bar"
+				],
+				[
+					"Sapphire"
+				],
+				[
+					"Ring mould"
+				]
+			],
+			"output": "Sapphire ring",
+			"trigger": {
+				"kind": "interface",
+				"name": "Sapphire ring",
+				"targets": [
+					"furnace"
+				]
+			},
+			"notes": "Jewellery: gold bar + Sapphire + Ring mould at a furnace."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Gold bar"
+				],
+				[
+					"Emerald"
+				],
+				[
+					"Ring mould"
+				]
+			],
+			"output": "Emerald ring",
+			"trigger": {
+				"kind": "interface",
+				"name": "Emerald ring",
+				"targets": [
+					"furnace"
+				]
+			},
+			"notes": "Jewellery: gold bar + Emerald + Ring mould at a furnace."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Gold bar"
+				],
+				[
+					"Ruby"
+				],
+				[
+					"Ring mould"
+				]
+			],
+			"output": "Ruby ring",
+			"trigger": {
+				"kind": "interface",
+				"name": "Ruby ring",
+				"targets": [
+					"furnace"
+				]
+			},
+			"notes": "Jewellery: gold bar + Ruby + Ring mould at a furnace."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Gold bar"
+				],
+				[
+					"Diamond"
+				],
+				[
+					"Ring mould"
+				]
+			],
+			"output": "Diamond ring",
+			"trigger": {
+				"kind": "interface",
+				"name": "Diamond ring",
+				"targets": [
+					"furnace"
+				]
+			},
+			"notes": "Jewellery: gold bar + Diamond + Ring mould at a furnace."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Gold bar"
+				],
+				[
+					"Dragonstone"
+				],
+				[
+					"Ring mould"
+				]
+			],
+			"output": "Dragonstone ring",
+			"trigger": {
+				"kind": "interface",
+				"name": "Dragonstone ring",
+				"targets": [
+					"furnace"
+				]
+			},
+			"notes": "Jewellery: gold bar + Dragonstone + Ring mould at a furnace."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Gold bar"
+				],
+				[
+					"Zenyte"
+				],
+				[
+					"Ring mould"
+				]
+			],
+			"output": "Zenyte ring",
+			"trigger": {
+				"kind": "interface",
+				"name": "Zenyte ring",
+				"targets": [
+					"furnace"
+				]
+			},
+			"notes": "Jewellery: gold bar + Zenyte + Ring mould at a furnace."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Gold bar"
+				],
+				[
+					"Opal"
+				],
+				[
+					"Ring mould"
+				]
+			],
+			"output": "Opal ring",
+			"trigger": {
+				"kind": "interface",
+				"name": "Opal ring",
+				"targets": [
+					"furnace"
+				]
+			},
+			"notes": "Jewellery: gold bar + Opal + Ring mould at a furnace."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Gold bar"
+				],
+				[
+					"Jade"
+				],
+				[
+					"Ring mould"
+				]
+			],
+			"output": "Jade ring",
+			"trigger": {
+				"kind": "interface",
+				"name": "Jade ring",
+				"targets": [
+					"furnace"
+				]
+			},
+			"notes": "Jewellery: gold bar + Jade + Ring mould at a furnace."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Gold bar"
+				],
+				[
+					"Red topaz"
+				],
+				[
+					"Ring mould"
+				]
+			],
+			"output": "Topaz ring",
+			"trigger": {
+				"kind": "interface",
+				"name": "Topaz ring",
+				"targets": [
+					"furnace"
+				]
+			},
+			"notes": "Jewellery: gold bar + Red topaz + Ring mould at a furnace."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Gold bar"
+				],
+				[
+					"Necklace mould"
+				]
+			],
+			"output": "Gold necklace",
+			"trigger": {
+				"kind": "interface",
+				"name": "Gold necklace",
+				"targets": [
+					"furnace"
+				]
+			},
+			"notes": "Jewellery: gold bar + Necklace mould at a furnace."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Gold bar"
+				],
+				[
+					"Sapphire"
+				],
+				[
+					"Necklace mould"
+				]
+			],
+			"output": "Sapphire necklace",
+			"trigger": {
+				"kind": "interface",
+				"name": "Sapphire necklace",
+				"targets": [
+					"furnace"
+				]
+			},
+			"notes": "Jewellery: gold bar + Sapphire + Necklace mould at a furnace."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Gold bar"
+				],
+				[
+					"Emerald"
+				],
+				[
+					"Necklace mould"
+				]
+			],
+			"output": "Emerald necklace",
+			"trigger": {
+				"kind": "interface",
+				"name": "Emerald necklace",
+				"targets": [
+					"furnace"
+				]
+			},
+			"notes": "Jewellery: gold bar + Emerald + Necklace mould at a furnace."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Gold bar"
+				],
+				[
+					"Ruby"
+				],
+				[
+					"Necklace mould"
+				]
+			],
+			"output": "Ruby necklace",
+			"trigger": {
+				"kind": "interface",
+				"name": "Ruby necklace",
+				"targets": [
+					"furnace"
+				]
+			},
+			"notes": "Jewellery: gold bar + Ruby + Necklace mould at a furnace."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Gold bar"
+				],
+				[
+					"Diamond"
+				],
+				[
+					"Necklace mould"
+				]
+			],
+			"output": "Diamond necklace",
+			"trigger": {
+				"kind": "interface",
+				"name": "Diamond necklace",
+				"targets": [
+					"furnace"
+				]
+			},
+			"notes": "Jewellery: gold bar + Diamond + Necklace mould at a furnace."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Gold bar"
+				],
+				[
+					"Dragonstone"
+				],
+				[
+					"Necklace mould"
+				]
+			],
+			"output": "Dragon necklace",
+			"trigger": {
+				"kind": "interface",
+				"name": "Dragon necklace",
+				"targets": [
+					"furnace"
+				]
+			},
+			"notes": "Jewellery: gold bar + Dragonstone + Necklace mould at a furnace."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Gold bar"
+				],
+				[
+					"Onyx"
+				],
+				[
+					"Necklace mould"
+				]
+			],
+			"output": "Onyx necklace",
+			"trigger": {
+				"kind": "interface",
+				"name": "Onyx necklace",
+				"targets": [
+					"furnace"
+				]
+			},
+			"notes": "Jewellery: gold bar + Onyx + Necklace mould at a furnace."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Gold bar"
+				],
+				[
+					"Zenyte"
+				],
+				[
+					"Necklace mould"
+				]
+			],
+			"output": "Zenyte necklace",
+			"trigger": {
+				"kind": "interface",
+				"name": "Zenyte necklace",
+				"targets": [
+					"furnace"
+				]
+			},
+			"notes": "Jewellery: gold bar + Zenyte + Necklace mould at a furnace."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Gold bar"
+				],
+				[
+					"Opal"
+				],
+				[
+					"Necklace mould"
+				]
+			],
+			"output": "Opal necklace",
+			"trigger": {
+				"kind": "interface",
+				"name": "Opal necklace",
+				"targets": [
+					"furnace"
+				]
+			},
+			"notes": "Jewellery: gold bar + Opal + Necklace mould at a furnace."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Gold bar"
+				],
+				[
+					"Jade"
+				],
+				[
+					"Necklace mould"
+				]
+			],
+			"output": "Jade necklace",
+			"trigger": {
+				"kind": "interface",
+				"name": "Jade necklace",
+				"targets": [
+					"furnace"
+				]
+			},
+			"notes": "Jewellery: gold bar + Jade + Necklace mould at a furnace."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Gold bar"
+				],
+				[
+					"Red topaz"
+				],
+				[
+					"Necklace mould"
+				]
+			],
+			"output": "Topaz necklace",
+			"trigger": {
+				"kind": "interface",
+				"name": "Topaz necklace",
+				"targets": [
+					"furnace"
+				]
+			},
+			"notes": "Jewellery: gold bar + Red topaz + Necklace mould at a furnace."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Gold bar"
+				],
+				[
+					"Amulet mould"
+				]
+			],
+			"output": "Gold amulet",
+			"trigger": {
+				"kind": "interface",
+				"name": "Gold amulet",
+				"targets": [
+					"furnace"
+				]
+			},
+			"notes": "Jewellery: gold bar + Amulet mould at a furnace."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Gold bar"
+				],
+				[
+					"Sapphire"
+				],
+				[
+					"Amulet mould"
+				]
+			],
+			"output": "Sapphire amulet",
+			"trigger": {
+				"kind": "interface",
+				"name": "Sapphire amulet",
+				"targets": [
+					"furnace"
+				]
+			},
+			"notes": "Jewellery: gold bar + Sapphire + Amulet mould at a furnace."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Gold bar"
+				],
+				[
+					"Emerald"
+				],
+				[
+					"Amulet mould"
+				]
+			],
+			"output": "Emerald amulet",
+			"trigger": {
+				"kind": "interface",
+				"name": "Emerald amulet",
+				"targets": [
+					"furnace"
+				]
+			},
+			"notes": "Jewellery: gold bar + Emerald + Amulet mould at a furnace."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Gold bar"
+				],
+				[
+					"Ruby"
+				],
+				[
+					"Amulet mould"
+				]
+			],
+			"output": "Ruby amulet",
+			"trigger": {
+				"kind": "interface",
+				"name": "Ruby amulet",
+				"targets": [
+					"furnace"
+				]
+			},
+			"notes": "Jewellery: gold bar + Ruby + Amulet mould at a furnace."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Gold bar"
+				],
+				[
+					"Diamond"
+				],
+				[
+					"Amulet mould"
+				]
+			],
+			"output": "Diamond amulet",
+			"trigger": {
+				"kind": "interface",
+				"name": "Diamond amulet",
+				"targets": [
+					"furnace"
+				]
+			},
+			"notes": "Jewellery: gold bar + Diamond + Amulet mould at a furnace."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Gold bar"
+				],
+				[
+					"Dragonstone"
+				],
+				[
+					"Amulet mould"
+				]
+			],
+			"output": "Dragonstone amulet",
+			"trigger": {
+				"kind": "interface",
+				"name": "Dragonstone amulet",
+				"targets": [
+					"furnace"
+				]
+			},
+			"notes": "Jewellery: gold bar + Dragonstone + Amulet mould at a furnace."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Gold bar"
+				],
+				[
+					"Onyx"
+				],
+				[
+					"Amulet mould"
+				]
+			],
+			"output": "Onyx amulet",
+			"trigger": {
+				"kind": "interface",
+				"name": "Onyx amulet",
+				"targets": [
+					"furnace"
+				]
+			},
+			"notes": "Jewellery: gold bar + Onyx + Amulet mould at a furnace."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Gold bar"
+				],
+				[
+					"Zenyte"
+				],
+				[
+					"Amulet mould"
+				]
+			],
+			"output": "Zenyte amulet",
+			"trigger": {
+				"kind": "interface",
+				"name": "Zenyte amulet",
+				"targets": [
+					"furnace"
+				]
+			},
+			"notes": "Jewellery: gold bar + Zenyte + Amulet mould at a furnace."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Gold bar"
+				],
+				[
+					"Opal"
+				],
+				[
+					"Amulet mould"
+				]
+			],
+			"output": "Opal amulet",
+			"trigger": {
+				"kind": "interface",
+				"name": "Opal amulet",
+				"targets": [
+					"furnace"
+				]
+			},
+			"notes": "Jewellery: gold bar + Opal + Amulet mould at a furnace."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Gold bar"
+				],
+				[
+					"Jade"
+				],
+				[
+					"Amulet mould"
+				]
+			],
+			"output": "Jade amulet",
+			"trigger": {
+				"kind": "interface",
+				"name": "Jade amulet",
+				"targets": [
+					"furnace"
+				]
+			},
+			"notes": "Jewellery: gold bar + Jade + Amulet mould at a furnace."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Gold bar"
+				],
+				[
+					"Red topaz"
+				],
+				[
+					"Amulet mould"
+				]
+			],
+			"output": "Topaz amulet",
+			"trigger": {
+				"kind": "interface",
+				"name": "Topaz amulet",
+				"targets": [
+					"furnace"
+				]
+			},
+			"notes": "Jewellery: gold bar + Red topaz + Amulet mould at a furnace."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Gold bar"
+				],
+				[
+					"Bracelet mould"
+				]
+			],
+			"output": "Gold bracelet",
+			"trigger": {
+				"kind": "interface",
+				"name": "Gold bracelet",
+				"targets": [
+					"furnace"
+				]
+			},
+			"notes": "Jewellery: gold bar + Bracelet mould at a furnace."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Gold bar"
+				],
+				[
+					"Sapphire"
+				],
+				[
+					"Bracelet mould"
+				]
+			],
+			"output": "Sapphire bracelet",
+			"trigger": {
+				"kind": "interface",
+				"name": "Sapphire bracelet",
+				"targets": [
+					"furnace"
+				]
+			},
+			"notes": "Jewellery: gold bar + Sapphire + Bracelet mould at a furnace."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Gold bar"
+				],
+				[
+					"Emerald"
+				],
+				[
+					"Bracelet mould"
+				]
+			],
+			"output": "Emerald bracelet",
+			"trigger": {
+				"kind": "interface",
+				"name": "Emerald bracelet",
+				"targets": [
+					"furnace"
+				]
+			},
+			"notes": "Jewellery: gold bar + Emerald + Bracelet mould at a furnace."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Gold bar"
+				],
+				[
+					"Ruby"
+				],
+				[
+					"Bracelet mould"
+				]
+			],
+			"output": "Ruby bracelet",
+			"trigger": {
+				"kind": "interface",
+				"name": "Ruby bracelet",
+				"targets": [
+					"furnace"
+				]
+			},
+			"notes": "Jewellery: gold bar + Ruby + Bracelet mould at a furnace."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Gold bar"
+				],
+				[
+					"Diamond"
+				],
+				[
+					"Bracelet mould"
+				]
+			],
+			"output": "Diamond bracelet",
+			"trigger": {
+				"kind": "interface",
+				"name": "Diamond bracelet",
+				"targets": [
+					"furnace"
+				]
+			},
+			"notes": "Jewellery: gold bar + Diamond + Bracelet mould at a furnace."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Gold bar"
+				],
+				[
+					"Dragonstone"
+				],
+				[
+					"Bracelet mould"
+				]
+			],
+			"output": "Dragonstone bracelet",
+			"trigger": {
+				"kind": "interface",
+				"name": "Dragonstone bracelet",
+				"targets": [
+					"furnace"
+				]
+			},
+			"notes": "Jewellery: gold bar + Dragonstone + Bracelet mould at a furnace."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Gold bar"
+				],
+				[
+					"Onyx"
+				],
+				[
+					"Bracelet mould"
+				]
+			],
+			"output": "Onyx bracelet",
+			"trigger": {
+				"kind": "interface",
+				"name": "Onyx bracelet",
+				"targets": [
+					"furnace"
+				]
+			},
+			"notes": "Jewellery: gold bar + Onyx + Bracelet mould at a furnace."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Gold bar"
+				],
+				[
+					"Zenyte"
+				],
+				[
+					"Bracelet mould"
+				]
+			],
+			"output": "Zenyte bracelet",
+			"trigger": {
+				"kind": "interface",
+				"name": "Zenyte bracelet",
+				"targets": [
+					"furnace"
+				]
+			},
+			"notes": "Jewellery: gold bar + Zenyte + Bracelet mould at a furnace."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Gold bar"
+				],
+				[
+					"Opal"
+				],
+				[
+					"Bracelet mould"
+				]
+			],
+			"output": "Opal bracelet",
+			"trigger": {
+				"kind": "interface",
+				"name": "Opal bracelet",
+				"targets": [
+					"furnace"
+				]
+			},
+			"notes": "Jewellery: gold bar + Opal + Bracelet mould at a furnace."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Gold bar"
+				],
+				[
+					"Jade"
+				],
+				[
+					"Bracelet mould"
+				]
+			],
+			"output": "Jade bracelet",
+			"trigger": {
+				"kind": "interface",
+				"name": "Jade bracelet",
+				"targets": [
+					"furnace"
+				]
+			},
+			"notes": "Jewellery: gold bar + Jade + Bracelet mould at a furnace."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Gold bar"
+				],
+				[
+					"Red topaz"
+				],
+				[
+					"Bracelet mould"
+				]
+			],
+			"output": "Topaz bracelet",
+			"trigger": {
+				"kind": "interface",
+				"name": "Topaz bracelet",
+				"targets": [
+					"furnace"
+				]
+			},
+			"notes": "Jewellery: gold bar + Red topaz + Bracelet mould at a furnace."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Battlestaff"
+				],
+				[
+					"Air orb"
+				]
+			],
+			"output": "Air battlestaff",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Air orb",
+				"targets": [
+					"battlestaff"
+				]
+			},
+			"notes": "Craft elemental battlestaff by using an orb on a battlestaff."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Battlestaff"
+				],
+				[
+					"Water orb"
+				]
+			],
+			"output": "Water battlestaff",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Water orb",
+				"targets": [
+					"battlestaff"
+				]
+			},
+			"notes": "Craft elemental battlestaff by using an orb on a battlestaff."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Battlestaff"
+				],
+				[
+					"Earth orb"
+				]
+			],
+			"output": "Earth battlestaff",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Earth orb",
+				"targets": [
+					"battlestaff"
+				]
+			},
+			"notes": "Craft elemental battlestaff by using an orb on a battlestaff."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Battlestaff"
+				],
+				[
+					"Fire orb"
+				]
+			],
+			"output": "Fire battlestaff",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Fire orb",
+				"targets": [
+					"battlestaff"
+				]
+			},
+			"notes": "Craft elemental battlestaff by using an orb on a battlestaff."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Silver bar"
+				],
+				[
+					"Holy mould"
+				]
+			],
+			"output": "Unstrung symbol",
+			"trigger": {
+				"kind": "interface",
+				"name": "Unstrung symbol",
+				"targets": [
+					"furnace"
+				]
+			},
+			"notes": "Silver crafting at furnace with a mould."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Silver bar"
+				],
+				[
+					"Sickle mould"
+				]
+			],
+			"output": "Silver sickle",
+			"trigger": {
+				"kind": "interface",
+				"name": "Silver sickle",
+				"targets": [
+					"furnace"
+				]
+			},
+			"notes": "Silver crafting at furnace with a mould."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Silver bar"
+				],
+				[
+					"Tiara mould"
+				]
+			],
+			"output": "Tiara",
+			"trigger": {
+				"kind": "interface",
+				"name": "Tiara",
+				"targets": [
+					"furnace"
+				]
+			},
+			"notes": "Blank tiara from silver bar + tiara mould."
+		},
+		{
+			"category": "enchanting",
+			"inputs": [
+				[
+					"Sapphire ring"
+				]
+			],
+			"output": "Ring of recoil",
+			"trigger": {
+				"kind": "spell-on-item",
+				"name": "Lvl-1 Enchant",
+				"targets": [
+					"sapphire ring"
+				]
+			},
+			"notes": "Cast Lvl-1 Enchant on Sapphire ring."
+		},
+		{
+			"category": "enchanting",
+			"inputs": [
+				[
+					"Sapphire necklace"
+				]
+			],
+			"output": "Games necklace",
+			"trigger": {
+				"kind": "spell-on-item",
+				"name": "Lvl-1 Enchant",
+				"targets": [
+					"sapphire necklace"
+				]
+			},
+			"notes": "Cast Lvl-1 Enchant on Sapphire necklace."
+		},
+		{
+			"category": "enchanting",
+			"inputs": [
+				[
+					"Sapphire bracelet"
+				]
+			],
+			"output": "Bracelet of clay",
+			"trigger": {
+				"kind": "spell-on-item",
+				"name": "Lvl-1 Enchant",
+				"targets": [
+					"sapphire bracelet"
+				]
+			},
+			"notes": "Cast Lvl-1 Enchant on Sapphire bracelet."
+		},
+		{
+			"category": "enchanting",
+			"inputs": [
+				[
+					"Sapphire amulet"
+				]
+			],
+			"output": "Amulet of magic",
+			"trigger": {
+				"kind": "spell-on-item",
+				"name": "Lvl-1 Enchant",
+				"targets": [
+					"sapphire amulet"
+				]
+			},
+			"notes": "Cast Lvl-1 Enchant on Sapphire amulet."
+		},
+		{
+			"category": "enchanting",
+			"inputs": [
+				[
+					"Opal ring"
+				]
+			],
+			"output": "Ring of pursuit",
+			"trigger": {
+				"kind": "spell-on-item",
+				"name": "Lvl-1 Enchant",
+				"targets": [
+					"opal ring"
+				]
+			},
+			"notes": "Cast Lvl-1 Enchant on Opal ring."
+		},
+		{
+			"category": "enchanting",
+			"inputs": [
+				[
+					"Opal necklace"
+				]
+			],
+			"output": "Dodgy necklace",
+			"trigger": {
+				"kind": "spell-on-item",
+				"name": "Lvl-1 Enchant",
+				"targets": [
+					"opal necklace"
+				]
+			},
+			"notes": "Cast Lvl-1 Enchant on Opal necklace."
+		},
+		{
+			"category": "enchanting",
+			"inputs": [
+				[
+					"Opal bracelet"
+				]
+			],
+			"output": "Expeditious bracelet",
+			"trigger": {
+				"kind": "spell-on-item",
+				"name": "Lvl-1 Enchant",
+				"targets": [
+					"opal bracelet"
+				]
+			},
+			"notes": "Cast Lvl-1 Enchant on Opal bracelet."
+		},
+		{
+			"category": "enchanting",
+			"inputs": [
+				[
+					"Opal amulet"
+				]
+			],
+			"output": "Amulet of bounty",
+			"trigger": {
+				"kind": "spell-on-item",
+				"name": "Lvl-1 Enchant",
+				"targets": [
+					"opal amulet"
+				]
+			},
+			"notes": "Cast Lvl-1 Enchant on Opal amulet."
+		},
+		{
+			"category": "enchanting",
+			"inputs": [
+				[
+					"Emerald ring"
+				]
+			],
+			"output": "Ring of dueling",
+			"trigger": {
+				"kind": "spell-on-item",
+				"name": "Lvl-2 Enchant",
+				"targets": [
+					"emerald ring"
+				]
+			},
+			"notes": "Cast Lvl-2 Enchant on Emerald ring."
+		},
+		{
+			"category": "enchanting",
+			"inputs": [
+				[
+					"Emerald necklace"
+				]
+			],
+			"output": "Binding necklace",
+			"trigger": {
+				"kind": "spell-on-item",
+				"name": "Lvl-2 Enchant",
+				"targets": [
+					"emerald necklace"
+				]
+			},
+			"notes": "Cast Lvl-2 Enchant on Emerald necklace."
+		},
+		{
+			"category": "enchanting",
+			"inputs": [
+				[
+					"Emerald bracelet"
+				]
+			],
+			"output": "Castle wars bracelet",
+			"trigger": {
+				"kind": "spell-on-item",
+				"name": "Lvl-2 Enchant",
+				"targets": [
+					"emerald bracelet"
+				]
+			},
+			"notes": "Cast Lvl-2 Enchant on Emerald bracelet."
+		},
+		{
+			"category": "enchanting",
+			"inputs": [
+				[
+					"Emerald amulet"
+				]
+			],
+			"output": "Amulet of defence",
+			"trigger": {
+				"kind": "spell-on-item",
+				"name": "Lvl-2 Enchant",
+				"targets": [
+					"emerald amulet"
+				]
+			},
+			"notes": "Cast Lvl-2 Enchant on Emerald amulet."
+		},
+		{
+			"category": "enchanting",
+			"inputs": [
+				[
+					"Jade ring"
+				]
+			],
+			"output": "Ring of returning",
+			"trigger": {
+				"kind": "spell-on-item",
+				"name": "Lvl-2 Enchant",
+				"targets": [
+					"jade ring"
+				]
+			},
+			"notes": "Cast Lvl-2 Enchant on Jade ring."
+		},
+		{
+			"category": "enchanting",
+			"inputs": [
+				[
+					"Jade necklace"
+				]
+			],
+			"output": "Necklace of passage",
+			"trigger": {
+				"kind": "spell-on-item",
+				"name": "Lvl-2 Enchant",
+				"targets": [
+					"jade necklace"
+				]
+			},
+			"notes": "Cast Lvl-2 Enchant on Jade necklace."
+		},
+		{
+			"category": "enchanting",
+			"inputs": [
+				[
+					"Jade bracelet"
+				]
+			],
+			"output": "Flamtaer bracelet",
+			"trigger": {
+				"kind": "spell-on-item",
+				"name": "Lvl-2 Enchant",
+				"targets": [
+					"jade bracelet"
+				]
+			},
+			"notes": "Cast Lvl-2 Enchant on Jade bracelet."
+		},
+		{
+			"category": "enchanting",
+			"inputs": [
+				[
+					"Jade amulet"
+				]
+			],
+			"output": "Amulet of chemistry",
+			"trigger": {
+				"kind": "spell-on-item",
+				"name": "Lvl-2 Enchant",
+				"targets": [
+					"jade amulet"
+				]
+			},
+			"notes": "Cast Lvl-2 Enchant on Jade amulet."
+		},
+		{
+			"category": "enchanting",
+			"inputs": [
+				[
+					"Ruby ring"
+				]
+			],
+			"output": "Ring of forging",
+			"trigger": {
+				"kind": "spell-on-item",
+				"name": "Lvl-3 Enchant",
+				"targets": [
+					"ruby ring"
+				]
+			},
+			"notes": "Cast Lvl-3 Enchant on Ruby ring."
+		},
+		{
+			"category": "enchanting",
+			"inputs": [
+				[
+					"Ruby necklace"
+				]
+			],
+			"output": "Digsite pendant",
+			"trigger": {
+				"kind": "spell-on-item",
+				"name": "Lvl-3 Enchant",
+				"targets": [
+					"ruby necklace"
+				]
+			},
+			"notes": "Cast Lvl-3 Enchant on Ruby necklace."
+		},
+		{
+			"category": "enchanting",
+			"inputs": [
+				[
+					"Ruby bracelet"
+				]
+			],
+			"output": "Inoculation bracelet",
+			"trigger": {
+				"kind": "spell-on-item",
+				"name": "Lvl-3 Enchant",
+				"targets": [
+					"ruby bracelet"
+				]
+			},
+			"notes": "Cast Lvl-3 Enchant on Ruby bracelet."
+		},
+		{
+			"category": "enchanting",
+			"inputs": [
+				[
+					"Ruby amulet"
+				]
+			],
+			"output": "Amulet of strength",
+			"trigger": {
+				"kind": "spell-on-item",
+				"name": "Lvl-3 Enchant",
+				"targets": [
+					"ruby amulet"
+				]
+			},
+			"notes": "Cast Lvl-3 Enchant on Ruby amulet."
+		},
+		{
+			"category": "enchanting",
+			"inputs": [
+				[
+					"Topaz ring"
+				]
+			],
+			"output": "Efaritay's aid",
+			"trigger": {
+				"kind": "spell-on-item",
+				"name": "Lvl-3 Enchant",
+				"targets": [
+					"topaz ring"
+				]
+			},
+			"notes": "Cast Lvl-3 Enchant on Topaz ring."
+		},
+		{
+			"category": "enchanting",
+			"inputs": [
+				[
+					"Topaz necklace"
+				]
+			],
+			"output": "Necklace of faith",
+			"trigger": {
+				"kind": "spell-on-item",
+				"name": "Lvl-3 Enchant",
+				"targets": [
+					"topaz necklace"
+				]
+			},
+			"notes": "Cast Lvl-3 Enchant on Topaz necklace."
+		},
+		{
+			"category": "enchanting",
+			"inputs": [
+				[
+					"Topaz bracelet"
+				]
+			],
+			"output": "Bracelet of slaughter",
+			"trigger": {
+				"kind": "spell-on-item",
+				"name": "Lvl-3 Enchant",
+				"targets": [
+					"topaz bracelet"
+				]
+			},
+			"notes": "Cast Lvl-3 Enchant on Topaz bracelet."
+		},
+		{
+			"category": "enchanting",
+			"inputs": [
+				[
+					"Topaz amulet"
+				]
+			],
+			"output": "Burning amulet",
+			"trigger": {
+				"kind": "spell-on-item",
+				"name": "Lvl-3 Enchant",
+				"targets": [
+					"topaz amulet"
+				]
+			},
+			"notes": "Cast Lvl-3 Enchant on Topaz amulet."
+		},
+		{
+			"category": "enchanting",
+			"inputs": [
+				[
+					"Diamond ring"
+				]
+			],
+			"output": "Ring of life",
+			"trigger": {
+				"kind": "spell-on-item",
+				"name": "Lvl-4 Enchant",
+				"targets": [
+					"diamond ring"
+				]
+			},
+			"notes": "Cast Lvl-4 Enchant on Diamond ring."
+		},
+		{
+			"category": "enchanting",
+			"inputs": [
+				[
+					"Diamond necklace"
+				]
+			],
+			"output": "Phoenix necklace",
+			"trigger": {
+				"kind": "spell-on-item",
+				"name": "Lvl-4 Enchant",
+				"targets": [
+					"diamond necklace"
+				]
+			},
+			"notes": "Cast Lvl-4 Enchant on Diamond necklace."
+		},
+		{
+			"category": "enchanting",
+			"inputs": [
+				[
+					"Diamond bracelet"
+				]
+			],
+			"output": "Abyssal bracelet",
+			"trigger": {
+				"kind": "spell-on-item",
+				"name": "Lvl-4 Enchant",
+				"targets": [
+					"diamond bracelet"
+				]
+			},
+			"notes": "Cast Lvl-4 Enchant on Diamond bracelet."
+		},
+		{
+			"category": "enchanting",
+			"inputs": [
+				[
+					"Diamond amulet"
+				]
+			],
+			"output": "Amulet of power",
+			"trigger": {
+				"kind": "spell-on-item",
+				"name": "Lvl-4 Enchant",
+				"targets": [
+					"diamond amulet"
+				]
+			},
+			"notes": "Cast Lvl-4 Enchant on Diamond amulet."
+		},
+		{
+			"category": "enchanting",
+			"inputs": [
+				[
+					"Dragonstone ring"
+				]
+			],
+			"output": "Ring of wealth",
+			"trigger": {
+				"kind": "spell-on-item",
+				"name": "Lvl-5 Enchant",
+				"targets": [
+					"dragonstone ring"
+				]
+			},
+			"notes": "Cast Lvl-5 Enchant on Dragonstone ring."
+		},
+		{
+			"category": "enchanting",
+			"inputs": [
+				[
+					"Dragon necklace"
+				]
+			],
+			"output": "Skills necklace",
+			"trigger": {
+				"kind": "spell-on-item",
+				"name": "Lvl-5 Enchant",
+				"targets": [
+					"dragon necklace"
+				]
+			},
+			"notes": "Cast Lvl-5 Enchant on Dragon necklace."
+		},
+		{
+			"category": "enchanting",
+			"inputs": [
+				[
+					"Dragonstone bracelet"
+				]
+			],
+			"output": "Combat bracelet",
+			"trigger": {
+				"kind": "spell-on-item",
+				"name": "Lvl-5 Enchant",
+				"targets": [
+					"dragonstone bracelet"
+				]
+			},
+			"notes": "Cast Lvl-5 Enchant on Dragonstone bracelet."
+		},
+		{
+			"category": "enchanting",
+			"inputs": [
+				[
+					"Dragonstone amulet"
+				]
+			],
+			"output": "Amulet of Glory",
+			"trigger": {
+				"kind": "spell-on-item",
+				"name": "Lvl-5 Enchant",
+				"targets": [
+					"dragonstone amulet"
+				]
+			},
+			"notes": "Cast Lvl-5 Enchant on Dragonstone amulet."
+		},
+		{
+			"category": "enchanting",
+			"inputs": [
+				[
+					"Onyx necklace"
+				]
+			],
+			"output": "Berserker necklace",
+			"trigger": {
+				"kind": "spell-on-item",
+				"name": "Lvl-6 Enchant",
+				"targets": [
+					"onyx necklace"
+				]
+			},
+			"notes": "Cast Lvl-6 Enchant on Onyx necklace."
+		},
+		{
+			"category": "enchanting",
+			"inputs": [
+				[
+					"Onyx bracelet"
+				]
+			],
+			"output": "Regen bracelet",
+			"trigger": {
+				"kind": "spell-on-item",
+				"name": "Lvl-6 Enchant",
+				"targets": [
+					"onyx bracelet"
+				]
+			},
+			"notes": "Cast Lvl-6 Enchant on Onyx bracelet."
+		},
+		{
+			"category": "enchanting",
+			"inputs": [
+				[
+					"Onyx amulet"
+				]
+			],
+			"output": "Amulet of fury",
+			"trigger": {
+				"kind": "spell-on-item",
+				"name": "Lvl-6 Enchant",
+				"targets": [
+					"onyx amulet"
+				]
+			},
+			"notes": "Cast Lvl-6 Enchant on Onyx amulet."
+		},
+		{
+			"category": "enchanting",
+			"inputs": [
+				[
+					"Zenyte ring"
+				]
+			],
+			"output": "Ring of suffering",
+			"trigger": {
+				"kind": "spell-on-item",
+				"name": "Lvl-7 Enchant",
+				"targets": [
+					"zenyte ring"
+				]
+			},
+			"notes": "Cast Lvl-7 Enchant on Zenyte ring."
+		},
+		{
+			"category": "enchanting",
+			"inputs": [
+				[
+					"Zenyte necklace"
+				]
+			],
+			"output": "Necklace of anguish",
+			"trigger": {
+				"kind": "spell-on-item",
+				"name": "Lvl-7 Enchant",
+				"targets": [
+					"zenyte necklace"
+				]
+			},
+			"notes": "Cast Lvl-7 Enchant on Zenyte necklace."
+		},
+		{
+			"category": "enchanting",
+			"inputs": [
+				[
+					"Zenyte bracelet"
+				]
+			],
+			"output": "Tormented bracelet",
+			"trigger": {
+				"kind": "spell-on-item",
+				"name": "Lvl-7 Enchant",
+				"targets": [
+					"zenyte bracelet"
+				]
+			},
+			"notes": "Cast Lvl-7 Enchant on Zenyte bracelet."
+		},
+		{
+			"category": "enchanting",
+			"inputs": [
+				[
+					"Zenyte amulet"
+				]
+			],
+			"output": "Amulet of torture",
+			"trigger": {
+				"kind": "spell-on-item",
+				"name": "Lvl-7 Enchant",
+				"targets": [
+					"zenyte amulet"
+				]
+			},
+			"notes": "Cast Lvl-7 Enchant on Zenyte amulet."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Logs"
+				]
+			],
+			"output": "Arrow shaft",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Knife",
+				"targets": [
+					"logs"
+				]
+			},
+			"notes": "Cut logs into arrow shafts with a knife."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Logs"
+				],
+				[
+					"Bow string"
+				]
+			],
+			"output": "Shortbow",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Knife",
+				"targets": [
+					"logs"
+				]
+			},
+			"notes": "Fletch Logs into an (unstrung) bow with a knife, then add a bow string. Product card = strung bow."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Logs"
+				],
+				[
+					"Bow string"
+				]
+			],
+			"output": "Longbow",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Knife",
+				"targets": [
+					"logs"
+				]
+			},
+			"notes": "Fletch Logs into an (unstrung) bow with a knife, then add a bow string. Product card = strung bow."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Oak logs"
+				],
+				[
+					"Bow string"
+				]
+			],
+			"output": "Oak shortbow",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Knife",
+				"targets": [
+					"oak logs"
+				]
+			},
+			"notes": "Fletch Oak logs into an (unstrung) bow with a knife, then add a bow string. Product card = strung bow."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Oak logs"
+				],
+				[
+					"Bow string"
+				]
+			],
+			"output": "Oak longbow",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Knife",
+				"targets": [
+					"oak logs"
+				]
+			},
+			"notes": "Fletch Oak logs into an (unstrung) bow with a knife, then add a bow string. Product card = strung bow."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Willow logs"
+				],
+				[
+					"Bow string"
+				]
+			],
+			"output": "Willow shortbow",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Knife",
+				"targets": [
+					"willow logs"
+				]
+			},
+			"notes": "Fletch Willow logs into an (unstrung) bow with a knife, then add a bow string. Product card = strung bow."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Willow logs"
+				],
+				[
+					"Bow string"
+				]
+			],
+			"output": "Willow longbow",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Knife",
+				"targets": [
+					"willow logs"
+				]
+			},
+			"notes": "Fletch Willow logs into an (unstrung) bow with a knife, then add a bow string. Product card = strung bow."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Maple logs"
+				],
+				[
+					"Bow string"
+				]
+			],
+			"output": "Maple shortbow",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Knife",
+				"targets": [
+					"maple logs"
+				]
+			},
+			"notes": "Fletch Maple logs into an (unstrung) bow with a knife, then add a bow string. Product card = strung bow."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Maple logs"
+				],
+				[
+					"Bow string"
+				]
+			],
+			"output": "Maple longbow",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Knife",
+				"targets": [
+					"maple logs"
+				]
+			},
+			"notes": "Fletch Maple logs into an (unstrung) bow with a knife, then add a bow string. Product card = strung bow."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Yew logs"
+				],
+				[
+					"Bow string"
+				]
+			],
+			"output": "Yew shortbow",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Knife",
+				"targets": [
+					"yew logs"
+				]
+			},
+			"notes": "Fletch Yew logs into an (unstrung) bow with a knife, then add a bow string. Product card = strung bow."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Yew logs"
+				],
+				[
+					"Bow string"
+				]
+			],
+			"output": "Yew longbow",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Knife",
+				"targets": [
+					"yew logs"
+				]
+			},
+			"notes": "Fletch Yew logs into an (unstrung) bow with a knife, then add a bow string. Product card = strung bow."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Magic logs"
+				],
+				[
+					"Bow string"
+				]
+			],
+			"output": "Magic shortbow",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Knife",
+				"targets": [
+					"magic logs"
+				]
+			},
+			"notes": "Fletch Magic logs into an (unstrung) bow with a knife, then add a bow string. Product card = strung bow."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Magic logs"
+				],
+				[
+					"Bow string"
+				]
+			],
+			"output": "Magic longbow",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Knife",
+				"targets": [
+					"magic logs"
+				]
+			},
+			"notes": "Fletch Magic logs into an (unstrung) bow with a knife, then add a bow string. Product card = strung bow."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Arrow shaft"
+				],
+				[
+					"Feather"
+				]
+			],
+			"output": "Headless arrow",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Feather",
+				"targets": [
+					"arrow shaft"
+				]
+			},
+			"notes": "Feather on arrow shafts = headless arrows."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Headless arrow"
+				]
+			],
+			"output": "Bronze arrow",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Headless arrow",
+				"targets": [
+					"bronze arrowtips"
+				]
+			},
+			"notes": "Attach Bronze arrowtips (arrowtip card absent) to headless arrows."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Headless arrow"
+				]
+			],
+			"output": "Iron arrow",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Headless arrow",
+				"targets": [
+					"iron arrowtips"
+				]
+			},
+			"notes": "Attach Iron arrowtips (arrowtip card absent) to headless arrows."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Headless arrow"
+				]
+			],
+			"output": "Steel arrow",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Headless arrow",
+				"targets": [
+					"steel arrowtips"
+				]
+			},
+			"notes": "Attach Steel arrowtips (arrowtip card absent) to headless arrows."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Headless arrow"
+				]
+			],
+			"output": "Mithril arrow",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Headless arrow",
+				"targets": [
+					"mithril arrowtips"
+				]
+			},
+			"notes": "Attach Mithril arrowtips (arrowtip card absent) to headless arrows."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Headless arrow"
+				]
+			],
+			"output": "Adamant arrow",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Headless arrow",
+				"targets": [
+					"adamant arrowtips"
+				]
+			},
+			"notes": "Attach Adamant arrowtips (arrowtip card absent) to headless arrows."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Headless arrow"
+				]
+			],
+			"output": "Rune arrow",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Headless arrow",
+				"targets": [
+					"rune arrowtips"
+				]
+			},
+			"notes": "Attach Rune arrowtips (arrowtip card absent) to headless arrows."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Headless arrow"
+				]
+			],
+			"output": "Dragon arrow",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Headless arrow",
+				"targets": [
+					"dragon arrowtips"
+				]
+			},
+			"notes": "Attach Dragon arrowtips (arrowtip card absent) to headless arrows."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Headless arrow"
+				]
+			],
+			"output": "Amethyst arrow",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Headless arrow",
+				"targets": [
+					"amethyst arrowtips"
+				]
+			},
+			"notes": "Attach Amethyst arrowtips (arrowtip card absent) to headless arrows."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Feather"
+				]
+			],
+			"output": "Bronze dart",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Feather",
+				"targets": [
+					"bronze dart tip"
+				]
+			},
+			"notes": "Feather Bronze dart tips (dart-tip card absent) into darts."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Feather"
+				]
+			],
+			"output": "Iron dart",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Feather",
+				"targets": [
+					"iron dart tip"
+				]
+			},
+			"notes": "Feather Iron dart tips (dart-tip card absent) into darts."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Feather"
+				]
+			],
+			"output": "Steel dart",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Feather",
+				"targets": [
+					"steel dart tip"
+				]
+			},
+			"notes": "Feather Steel dart tips (dart-tip card absent) into darts."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Mithril dart tip"
+				],
+				[
+					"Feather"
+				]
+			],
+			"output": "Mithril dart",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Feather",
+				"targets": [
+					"mithril dart tip"
+				]
+			},
+			"notes": "Feather dart tips into darts."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Feather"
+				]
+			],
+			"output": "Adamant dart",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Feather",
+				"targets": [
+					"adamant dart tip"
+				]
+			},
+			"notes": "Feather Adamant dart tips (dart-tip card absent) into darts."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Feather"
+				]
+			],
+			"output": "Rune dart",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Feather",
+				"targets": [
+					"rune dart tip"
+				]
+			},
+			"notes": "Feather Rune dart tips (dart-tip card absent) into darts."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Feather"
+				]
+			],
+			"output": "Dragon dart",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Feather",
+				"targets": [
+					"dragon dart tip"
+				]
+			},
+			"notes": "Feather Dragon dart tips (dart-tip card absent) into darts."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Feather"
+				]
+			],
+			"output": "Bronze bolts",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Feather",
+				"targets": [
+					"bronze bolts (unf)"
+				]
+			},
+			"notes": "Feather unfinished Bronze bolts (unf card absent) into bolts."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Feather"
+				]
+			],
+			"output": "Iron bolts",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Feather",
+				"targets": [
+					"iron bolts (unf)"
+				]
+			},
+			"notes": "Feather unfinished Iron bolts (unf card absent) into bolts."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Feather"
+				]
+			],
+			"output": "Steel bolts",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Feather",
+				"targets": [
+					"steel bolts (unf)"
+				]
+			},
+			"notes": "Feather unfinished Steel bolts (unf card absent) into bolts."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Feather"
+				]
+			],
+			"output": "Mithril bolts",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Feather",
+				"targets": [
+					"mithril bolts (unf)"
+				]
+			},
+			"notes": "Feather unfinished Mithril bolts (unf card absent) into bolts."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Feather"
+				]
+			],
+			"output": "Adamant bolts",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Feather",
+				"targets": [
+					"adamant bolts (unf)"
+				]
+			},
+			"notes": "Feather unfinished Adamant bolts (unf card absent) into bolts."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Feather"
+				]
+			],
+			"output": "Runite bolts",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Feather",
+				"targets": [
+					"runite bolts (unf)"
+				]
+			},
+			"notes": "Feather unfinished Runite bolts (unf card absent) into bolts."
+		},
+		{
+			"category": "herblore",
+			"inputs": [
+				[
+					"Guam leaf"
+				],
+				[
+					"Vial of water"
+				]
+			],
+			"output": "Guam potion",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Guam leaf",
+				"targets": [
+					"vial of water"
+				]
+			},
+			"notes": "Add clean herb to a vial of water = unfinished potion."
+		},
+		{
+			"category": "herblore",
+			"inputs": [
+				[
+					"Marrentill"
+				],
+				[
+					"Vial of water"
+				]
+			],
+			"output": "Marrentill potion",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Marrentill",
+				"targets": [
+					"vial of water"
+				]
+			},
+			"notes": "Add clean herb to a vial of water = unfinished potion."
+		},
+		{
+			"category": "herblore",
+			"inputs": [
+				[
+					"Tarromin"
+				],
+				[
+					"Vial of water"
+				]
+			],
+			"output": "Tarromin potion",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Tarromin",
+				"targets": [
+					"vial of water"
+				]
+			},
+			"notes": "Add clean herb to a vial of water = unfinished potion."
+		},
+		{
+			"category": "herblore",
+			"inputs": [
+				[
+					"Harralander"
+				],
+				[
+					"Vial of water"
+				]
+			],
+			"output": "Harralander potion",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Harralander",
+				"targets": [
+					"vial of water"
+				]
+			},
+			"notes": "Add clean herb to a vial of water = unfinished potion."
+		},
+		{
+			"category": "herblore",
+			"inputs": [
+				[
+					"Ranarr weed"
+				],
+				[
+					"Vial of water"
+				]
+			],
+			"output": "Ranarr potion",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Ranarr weed",
+				"targets": [
+					"vial of water"
+				]
+			},
+			"notes": "Add clean herb to a vial of water = unfinished potion."
+		},
+		{
+			"category": "herblore",
+			"inputs": [
+				[
+					"Toadflax"
+				],
+				[
+					"Vial of water"
+				]
+			],
+			"output": "Toadflax potion",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Toadflax",
+				"targets": [
+					"vial of water"
+				]
+			},
+			"notes": "Add clean herb to a vial of water = unfinished potion."
+		},
+		{
+			"category": "herblore",
+			"inputs": [
+				[
+					"Irit leaf"
+				],
+				[
+					"Vial of water"
+				]
+			],
+			"output": "Irit potion",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Irit leaf",
+				"targets": [
+					"vial of water"
+				]
+			},
+			"notes": "Add clean herb to a vial of water = unfinished potion."
+		},
+		{
+			"category": "herblore",
+			"inputs": [
+				[
+					"Avantoe"
+				],
+				[
+					"Vial of water"
+				]
+			],
+			"output": "Avantoe potion",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Avantoe",
+				"targets": [
+					"vial of water"
+				]
+			},
+			"notes": "Add clean herb to a vial of water = unfinished potion."
+		},
+		{
+			"category": "herblore",
+			"inputs": [
+				[
+					"Kwuarm"
+				],
+				[
+					"Vial of water"
+				]
+			],
+			"output": "Kwuarm potion",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Kwuarm",
+				"targets": [
+					"vial of water"
+				]
+			},
+			"notes": "Add clean herb to a vial of water = unfinished potion."
+		},
+		{
+			"category": "herblore",
+			"inputs": [
+				[
+					"Snapdragon"
+				],
+				[
+					"Vial of water"
+				]
+			],
+			"output": "Snapdragon potion",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Snapdragon",
+				"targets": [
+					"vial of water"
+				]
+			},
+			"notes": "Add clean herb to a vial of water = unfinished potion."
+		},
+		{
+			"category": "herblore",
+			"inputs": [
+				[
+					"Cadantine"
+				],
+				[
+					"Vial of water"
+				]
+			],
+			"output": "Cadantine potion",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Cadantine",
+				"targets": [
+					"vial of water"
+				]
+			},
+			"notes": "Add clean herb to a vial of water = unfinished potion."
+		},
+		{
+			"category": "herblore",
+			"inputs": [
+				[
+					"Lantadyme"
+				],
+				[
+					"Vial of water"
+				]
+			],
+			"output": "Lantadyme potion",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Lantadyme",
+				"targets": [
+					"vial of water"
+				]
+			},
+			"notes": "Add clean herb to a vial of water = unfinished potion."
+		},
+		{
+			"category": "herblore",
+			"inputs": [
+				[
+					"Dwarf weed"
+				],
+				[
+					"Vial of water"
+				]
+			],
+			"output": "Dwarf weed potion",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Dwarf weed",
+				"targets": [
+					"vial of water"
+				]
+			},
+			"notes": "Add clean herb to a vial of water = unfinished potion."
+		},
+		{
+			"category": "herblore",
+			"inputs": [
+				[
+					"Torstol"
+				],
+				[
+					"Vial of water"
+				]
+			],
+			"output": "Torstol potion",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Torstol",
+				"targets": [
+					"vial of water"
+				]
+			},
+			"notes": "Add clean herb to a vial of water = unfinished potion."
+		},
+		{
+			"category": "herblore",
+			"inputs": [
+				[
+					"Huasca"
+				],
+				[
+					"Vial of water"
+				]
+			],
+			"output": "Huasca potion",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Huasca",
+				"targets": [
+					"vial of water"
+				]
+			},
+			"notes": "Add clean herb to a vial of water = unfinished potion."
+		},
+		{
+			"category": "herblore",
+			"inputs": [
+				[
+					"Guam potion"
+				],
+				[
+					"Eye of newt"
+				]
+			],
+			"output": "Attack potion",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Eye of newt",
+				"targets": [
+					"guam potion"
+				]
+			},
+			"notes": "Attack potion. Add secondary to unfinished potion. Card names are dose-less."
+		},
+		{
+			"category": "herblore",
+			"inputs": [
+				[
+					"Marrentill potion"
+				],
+				[
+					"Unicorn horn dust"
+				]
+			],
+			"output": "Antipoison potion",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Unicorn horn dust",
+				"targets": [
+					"marrentill potion"
+				]
+			},
+			"notes": "Antipoison. Add secondary to unfinished potion. Card names are dose-less."
+		},
+		{
+			"category": "herblore",
+			"inputs": [
+				[
+					"Tarromin potion"
+				],
+				[
+					"Limpwurt root"
+				]
+			],
+			"output": "Strength potion",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Limpwurt root",
+				"targets": [
+					"tarromin potion"
+				]
+			},
+			"notes": "Strength potion. Add secondary to unfinished potion. Card names are dose-less."
+		},
+		{
+			"category": "herblore",
+			"inputs": [
+				[
+					"Harralander potion"
+				],
+				[
+					"Red spiders' eggs"
+				]
+			],
+			"output": "Restore potion",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Red spiders' eggs",
+				"targets": [
+					"harralander potion"
+				]
+			},
+			"notes": "Stat restore. Add secondary to unfinished potion. Card names are dose-less."
+		},
+		{
+			"category": "herblore",
+			"inputs": [
+				[
+					"Harralander potion"
+				],
+				[
+					"Chocolate dust"
+				]
+			],
+			"output": "Energy potion",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Chocolate dust",
+				"targets": [
+					"harralander potion"
+				]
+			},
+			"notes": "Energy potion. Add secondary to unfinished potion. Card names are dose-less."
+		},
+		{
+			"category": "herblore",
+			"inputs": [
+				[
+					"Harralander potion"
+				],
+				[
+					"Goat horn dust"
+				]
+			],
+			"output": "Combat potion",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Goat horn dust",
+				"targets": [
+					"harralander potion"
+				]
+			},
+			"notes": "Combat potion. Add secondary to unfinished potion. Card names are dose-less."
+		},
+		{
+			"category": "herblore",
+			"inputs": [
+				[
+					"Ranarr potion"
+				],
+				[
+					"White berries"
+				]
+			],
+			"output": "Defence potion",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "White berries",
+				"targets": [
+					"ranarr potion"
+				]
+			},
+			"notes": "Defence potion. Add secondary to unfinished potion. Card names are dose-less."
+		},
+		{
+			"category": "herblore",
+			"inputs": [
+				[
+					"Ranarr potion"
+				],
+				[
+					"Snape grass"
+				]
+			],
+			"output": "Prayer potion",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Snape grass",
+				"targets": [
+					"ranarr potion"
+				]
+			},
+			"notes": "Prayer potion. Add secondary to unfinished potion. Card names are dose-less."
+		},
+		{
+			"category": "herblore",
+			"inputs": [
+				[
+					"Toadflax potion"
+				],
+				[
+					"Toad's legs"
+				]
+			],
+			"output": "Agility potion",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Toad's legs",
+				"targets": [
+					"toadflax potion"
+				]
+			},
+			"notes": "Agility potion. Add secondary to unfinished potion. Card names are dose-less."
+		},
+		{
+			"category": "herblore",
+			"inputs": [
+				[
+					"Toadflax potion"
+				],
+				[
+					"Crushed nest"
+				]
+			],
+			"output": "Saradomin brew",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Crushed nest",
+				"targets": [
+					"toadflax potion"
+				]
+			},
+			"notes": "Saradomin brew. Add secondary to unfinished potion. Card names are dose-less."
+		},
+		{
+			"category": "herblore",
+			"inputs": [
+				[
+					"Irit potion"
+				],
+				[
+					"Eye of newt"
+				]
+			],
+			"output": "Super attack",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Eye of newt",
+				"targets": [
+					"irit potion"
+				]
+			},
+			"notes": "Super attack. Add secondary to unfinished potion. Card names are dose-less."
+		},
+		{
+			"category": "herblore",
+			"inputs": [
+				[
+					"Avantoe potion"
+				],
+				[
+					"Snape grass"
+				]
+			],
+			"output": "Fishing potion",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Snape grass",
+				"targets": [
+					"avantoe potion"
+				]
+			},
+			"notes": "Fishing potion. Add secondary to unfinished potion. Card names are dose-less."
+		},
+		{
+			"category": "herblore",
+			"inputs": [
+				[
+					"Avantoe potion"
+				],
+				[
+					"Mort myre fungus"
+				]
+			],
+			"output": "Super energy",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Mort myre fungus",
+				"targets": [
+					"avantoe potion"
+				]
+			},
+			"notes": "Super energy. Add secondary to unfinished potion. Card names are dose-less."
+		},
+		{
+			"category": "herblore",
+			"inputs": [
+				[
+					"Avantoe potion"
+				],
+				[
+					"Kebbit teeth dust"
+				]
+			],
+			"output": "Hunter potion",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Kebbit teeth dust",
+				"targets": [
+					"avantoe potion"
+				]
+			},
+			"notes": "Hunter potion. Add secondary to unfinished potion. Card names are dose-less."
+		},
+		{
+			"category": "herblore",
+			"inputs": [
+				[
+					"Kwuarm potion"
+				],
+				[
+					"Limpwurt root"
+				]
+			],
+			"output": "Super strength",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Limpwurt root",
+				"targets": [
+					"kwuarm potion"
+				]
+			},
+			"notes": "Super strength. Add secondary to unfinished potion. Card names are dose-less."
+		},
+		{
+			"category": "herblore",
+			"inputs": [
+				[
+					"Lantadyme potion"
+				],
+				[
+					"Potato cactus"
+				]
+			],
+			"output": "Magic potion",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Potato cactus",
+				"targets": [
+					"lantadyme potion"
+				]
+			},
+			"notes": "Magic potion. Add secondary to unfinished potion. Card names are dose-less."
+		},
+		{
+			"category": "herblore",
+			"inputs": [
+				[
+					"Lantadyme potion"
+				],
+				[
+					"Dragon scale dust"
+				]
+			],
+			"output": "Antifire potion",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Dragon scale dust",
+				"targets": [
+					"lantadyme potion"
+				]
+			},
+			"notes": "Antifire potion. Add secondary to unfinished potion. Card names are dose-less."
+		},
+		{
+			"category": "herblore",
+			"inputs": [
+				[
+					"Cadantine potion"
+				],
+				[
+					"White berries"
+				]
+			],
+			"output": "Super defence",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "White berries",
+				"targets": [
+					"cadantine potion"
+				]
+			},
+			"notes": "Super defence. Add secondary to unfinished potion. Card names are dose-less."
+		},
+		{
+			"category": "herblore",
+			"inputs": [
+				[
+					"Dwarf weed potion"
+				],
+				[
+					"Wine of zamorak"
+				]
+			],
+			"output": "Ranging potion",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Wine of zamorak",
+				"targets": [
+					"dwarf weed potion"
+				]
+			},
+			"notes": "Ranging potion. Add secondary to unfinished potion. Card names are dose-less."
+		},
+		{
+			"category": "herblore",
+			"inputs": [
+				[
+					"Snapdragon potion"
+				],
+				[
+					"Red spiders' eggs"
+				]
+			],
+			"output": "Super restore",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Red spiders' eggs",
+				"targets": [
+					"snapdragon potion"
+				]
+			},
+			"notes": "Super restore. Add secondary to unfinished potion. Card names are dose-less."
+		},
+		{
+			"category": "herblore",
+			"inputs": [
+				[
+					"Torstol potion"
+				],
+				[
+					"Jangerberries"
+				]
+			],
+			"output": "Zamorak brew",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Jangerberries",
+				"targets": [
+					"torstol potion"
+				]
+			},
+			"notes": "Zamorak brew. Add secondary to unfinished potion. Card names are dose-less."
+		},
+		{
+			"category": "herblore",
+			"inputs": [
+				[
+					"Torstol"
+				],
+				[
+					"Super attack"
+				],
+				[
+					"Super strength"
+				],
+				[
+					"Super defence"
+				]
+			],
+			"output": "Super combat potion",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Torstol",
+				"targets": [
+					"super attack",
+					"super strength",
+					"super defence"
+				]
+			},
+			"notes": "Super combat: crushed Torstol + (4)-dose super attack/strength/defence."
+		},
+		{
+			"category": "herblore",
+			"inputs": [
+				[
+					"Super energy"
+				],
+				[
+					"Amylase crystal"
+				]
+			],
+			"output": "Stamina potion",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Amylase crystal",
+				"targets": [
+					"super energy"
+				]
+			},
+			"notes": "Stamina potion: super energy + amylase crystal."
+		}
+	]
+}
