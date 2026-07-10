@@ -54,8 +54,20 @@ abstract class CardNameCatalog
 		{
 			return Collections.emptySet();
 		}
-		return entityToCardsLowerCase.getOrDefault(
-			entityName.trim().toLowerCase(Locale.ROOT), Collections.emptySet());
+		String key = entityName.trim().toLowerCase(Locale.ROOT);
+		Set<String> exact = entityToCardsLowerCase.get(key);
+		if (exact != null)
+		{
+			return exact;
+		}
+		// Potion doses: in-game items are "Attack potion(3)" but cards are dose-less
+		// ("Attack potion"), so all four dose types resolve to the one card.
+		String doseless = CardNames.stripDoseSuffix(key);
+		if (!doseless.equals(key))
+		{
+			return entityToCardsLowerCase.getOrDefault(doseless, Collections.emptySet());
+		}
+		return Collections.emptySet();
 	}
 
 	public int size()

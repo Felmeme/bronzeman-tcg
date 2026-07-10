@@ -2,6 +2,7 @@ package com.bronzemantcg;
 
 import com.google.inject.Provides;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
@@ -268,28 +269,26 @@ public class BronzemanTcgPlugin extends Plugin
 			return;
 		}
 
-		boolean requireAll = rule.requireAll;
+		boolean forceAllInGroups = false;
 		if ("fishing".equals(rule.category))
 		{
 			// Fishing has a three-way mode instead of a toggle; it overrides the rule's
-			// requireAll since the any/all choice is the player's difficulty dial.
+			// any-of group since the any/all choice is the player's difficulty dial.
 			FishingRestrictionMode mode = config.fishingMode();
 			if (mode == FishingRestrictionMode.OFF)
 			{
 				return;
 			}
-			requireAll = mode == FishingRestrictionMode.REQUIRE_ALL;
+			forceAllInGroups = mode == FishingRestrictionMode.REQUIRE_ALL;
 		}
 		else if (!isCategoryRestricted(rule.category))
 		{
 			return;
 		}
 
-		List<String> missing = missingCards(rule.requiredCards);
-		boolean satisfied = requireAll
-			? missing.isEmpty()
-			: missing.size() < rule.requiredCards.size();
-		if (satisfied)
+		List<String> missing = rule.missingRequirements(
+			collectionReader.getOwnedCardNamesLowerCase(), Collections.emptySet(), forceAllInGroups);
+		if (missing.isEmpty())
 		{
 			return;
 		}

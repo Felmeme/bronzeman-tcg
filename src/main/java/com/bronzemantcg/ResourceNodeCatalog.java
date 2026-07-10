@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -18,13 +19,20 @@ import lombok.extern.slf4j.Slf4j;
 
 /**
  * Rules for gating skill resource nodes (trees, rocks, fishing spots, pickpocket targets,
- * raw-food-on-fire) behind ownership of the cards of the items they yield. Loaded from
- * resources/resource_nodes.json, which is hand-curated (assisted by an audit of osrs-tcg's
- * Card.json for exact card names) and expected to grow over time.
+ * raw-food-on-fire, ...) behind ownership of the cards of the items they yield or consume.
+ * Loaded from resources/resource_nodes.json, which is hand-curated (assisted by audits of
+ * osrs-tcg's Card.json for exact card names) and expected to grow over time.
  *
  * Lookup is by (kind, in-game name, menu option) — all lower-cased. For "item-on-object"
  * rules the roles shift: name = the used item, options = the target object names, because
  * that's what a "Use Raw shrimps -> Fire" click gives us.
+ *
+ * Requirements come in two data shapes, unified internally into card GROUPS:
+ *  - requiredCards + requireAll (legacy): requireAll=true -> each card its own group
+ *    (all needed); requireAll=false -> one group (any one card suffices).
+ *  - requiredCardGroups (+ optional parallel groupRoles): every group must be satisfied,
+ *    a group is satisfied by owning ANY one of its cards. Roles let config modes drop
+ *    groups (e.g. runecrafting's "rune" group in Talisman-only mode).
  */
 @Slf4j
 @Singleton
@@ -56,8 +64,8 @@ public class ResourceNodeCatalog
 		{
 			return null;
 		}
-		return rules.get(key(kind, name.trim().toLowerCase(Locale.ROOT),
-			option.trim().toLowerCase(Locale.ROOT)));
+		String nameKey = CardNames.stripDoseSuffix(name.trim().toLowerCase(Locale.ROOT));
+		return rules.get(key(kind, nameKey, option.trim().toLowerCase(Locale.ROOT)));
 	}
 
 	public int size()
@@ -88,12 +96,16 @@ public class ResourceNodeCatalog
 			Map<String, Rule> map = new HashMap<>();
 			for (NodeDto node : snapshot.nodes)
 			{
-				if (node == null || node.kind == null || node.name == null
-					|| node.options == null || node.requiredCards == null || node.requiredCards.isEmpty())
+				if (node == null || node.kind == null || node.name == null || node.options == null)
 				{
 					continue;
 				}
-				Rule rule = new Rule(node.category, node.requireAll, node.requiredCards);
+				List<CardGroup> groups = buildGroups(node);
+				if (groups.isEmpty())
+				{
+					continue;
+				}
+				Rule rule = new Rule(node.category, groups);
 				String nameLower = node.name.trim().toLowerCase(Locale.ROOT);
 				for (String option : node.options)
 				{
@@ -118,28 +130,144 @@ public class ResourceNodeCatalog
 		}
 	}
 
+	private static List<CardGroup> buildGroups(NodeDto node)
+	{
+		List<CardGroup> groups = new ArrayList<>();
+		if (node.requiredCardGroups != null)
+		{
+			for (int i = 0; i < node.requiredCardGroups.size(); i++)
+			{
+				List<String> cards = node.requiredCardGroups.get(i);
+				String role = node.groupRoles != null && i < node.groupRoles.size()
+					? node.groupRoles.get(i) : null;
+				CardGroup group = CardGroup.of(cards, role);
+				if (group != null)
+				{
+					groups.add(group);
+				}
+			}
+		}
+		else if (node.requiredCards != null)
+		{
+			if (node.requireAll)
+			{
+				for (String card : node.requiredCards)
+				{
+					CardGroup group = CardGroup.of(Collections.singletonList(card), null);
+					if (group != null)
+					{
+						groups.add(group);
+					}
+				}
+			}
+			else
+			{
+				CardGroup group = CardGroup.of(node.requiredCards, null);
+				if (group != null)
+				{
+					groups.add(group);
+				}
+			}
+		}
+		return groups;
+	}
+
 	public static class Rule
 	{
 		public final String category;
-		public final boolean requireAll;
-		/** Original casing, for chat messages. */
-		public final List<String> requiredCards;
-		public final Set<String> requiredCardsLowerCase;
+		public final List<CardGroup> groups;
 
-		Rule(String category, boolean requireAll, List<String> requiredCards)
+		Rule(String category, List<CardGroup> groups)
 		{
 			this.category = category == null ? "" : category.toLowerCase(Locale.ROOT);
-			this.requireAll = requireAll;
-			this.requiredCards = Collections.unmodifiableList(requiredCards);
-			Set<String> lower = new HashSet<>();
-			for (String card : requiredCards)
+			this.groups = Collections.unmodifiableList(groups);
+		}
+
+		/**
+		 * @param owned         lower-cased owned card names
+		 * @param excludedRoles group roles a config mode has switched off (never null)
+		 * @param forceAllInGroups treat any-of groups as all-required (fishing "Require ALL")
+		 * @return display strings for each unsatisfied requirement, empty when allowed.
+		 *         Any-of groups render as "A / B" so the player sees the alternatives.
+		 */
+		public List<String> missingRequirements(Set<String> owned, Set<String> excludedRoles,
+			boolean forceAllInGroups)
+		{
+			List<String> missing = new ArrayList<>();
+			for (CardGroup group : groups)
 			{
-				if (card != null)
+				if (group.role != null && excludedRoles.contains(group.role))
 				{
+					continue;
+				}
+				if (forceAllInGroups)
+				{
+					for (int i = 0; i < group.displayCards.size(); i++)
+					{
+						if (!owned.contains(group.lowerCards.get(i)))
+						{
+							missing.add(group.displayCards.get(i));
+						}
+					}
+				}
+				else if (!group.isSatisfied(owned))
+				{
+					missing.add(String.join(" / ", group.displayCards));
+				}
+			}
+			return missing;
+		}
+	}
+
+	public static class CardGroup
+	{
+		/** Original casing, for chat messages; lowerCards is index-aligned. */
+		public final List<String> displayCards;
+		public final List<String> lowerCards;
+		public final String role;
+
+		private CardGroup(List<String> displayCards, List<String> lowerCards, String role)
+		{
+			this.displayCards = Collections.unmodifiableList(displayCards);
+			this.lowerCards = Collections.unmodifiableList(lowerCards);
+			this.role = role;
+		}
+
+		static CardGroup of(List<String> cards, String role)
+		{
+			if (cards == null)
+			{
+				return null;
+			}
+			List<String> display = new ArrayList<>();
+			List<String> lower = new ArrayList<>();
+			for (String card : cards)
+			{
+				if (card != null && !card.trim().isEmpty())
+				{
+					display.add(card.trim());
 					lower.add(card.trim().toLowerCase(Locale.ROOT));
 				}
 			}
-			this.requiredCardsLowerCase = Collections.unmodifiableSet(lower);
+			if (display.isEmpty())
+			{
+				return null;
+			}
+			String cleanRole = role == null || role.trim().isEmpty()
+				? null : role.trim().toLowerCase(Locale.ROOT);
+			return new CardGroup(display, lower, cleanRole);
+		}
+
+		boolean isSatisfied(Set<String> owned)
+		{
+			for (String card : lowerCards)
+			{
+				if (owned.contains(card))
+				{
+					return true;
+				}
+			}
+			return false;
 		}
 	}
 
@@ -156,6 +284,8 @@ public class ResourceNodeCatalog
 		String name;
 		List<String> options;
 		List<String> requiredCards;
+		List<List<String>> requiredCardGroups;
+		List<String> groupRoles;
 		boolean requireAll;
 	}
 }
