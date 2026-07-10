@@ -41,13 +41,20 @@ only, no automation).
 - ✅ Fixed during testing: `TcgStateDto` assumed `collectionState.instances[]`
   but osrs-tcg (schemaVersion 3) stores a top-level `cardInstances[]` —
   verified against a real decoded state blob from a live client.
-- ⚠️ **Known issue — bracketed card names**: 67 tracked names carry wiki-style
-  disambiguation suffixes (e.g. `Monkey (monster)`, `Penguin (monster)`,
-  `Mummy (Pyramid Plunder)`). Exact-name matching means those NPCs are never
-  restricted and never unlockable. Audit of all 6,376 upstream card names is
-  in progress; likely fix is an `npcName -> [cardNames]` mapping in the
-  snapshot so owning any variant unlocks the NPC. Until fixed, Monkey/Penguin
-  attack freely despite having cards.
+- ✅ **Bracketed card names handled** (full-catalog audit, 2026-07-10): 67 of
+  the 1,227 monster cards carry wiki-style disambiguation suffixes
+  (`Monkey (monster)`, `Soldier (Yanille)`, ...) that in-game NPC names never
+  contain — and only monster cards do (0 of the other 5,149 cards). The
+  snapshot is now a `npcName -> [cardNames]` map (1,198 NPCs <- 1,225 cards;
+  the 2 `(unused)` cards are excluded as non-attackable); owning ANY variant
+  unlocks the NPC, since RuneLite only exposes the plain NPC name at attack
+  time. 15 NPCs have multiple variants (Soldier has 11). Item-card name
+  collisions (e.g. `Ferret` the Resource card vs `Ferret (Hunter)` the
+  monster) are why the map must stay Monster-only — mind this in the Phase-2
+  loot catalog, which reuses the same owned-name set.
+- ❌ Suffix-matching fix not yet re-verified in-game: attack Monkey/Penguin
+  without the card (expect blocked now), then `::tcg-give Monkey (monster)`
+  (expect unlocked).
 
 ## Manual test plan (needs a logged-in account with osrs-tcg installed)
 1. Attack an NPC that has a Monster card you don't own → blocked + chat message.
@@ -66,8 +73,10 @@ only, no automation).
 4. Hub submission.
 
 ## Maintenance contracts with upstream osrs-tcg
-- If its `Card.json` changes: regenerate `tracked_monster_names.json`
-  (filter category contains "Monster", dedupe, keep the `count` field accurate).
+- If its `Card.json` changes: regenerate `tracked_monster_names.json` with
+  `python scripts/generate_tracked_monsters.py <path-to-Card.json>` (filters
+  Monster category, strips bracket suffixes into the npc->cards map, skips
+  `(unused)` cards).
 - If its storage prefix/shape changes: update `TcgStateDecoder` / `TcgStateDto`.
 - Owning normal **or** foil counts as collected.
 

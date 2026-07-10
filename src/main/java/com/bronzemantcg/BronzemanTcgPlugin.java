@@ -2,6 +2,7 @@ package com.bronzemantcg;
 
 import com.google.inject.Provides;
 import java.util.Locale;
+import java.util.Set;
 import javax.inject.Inject;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.ChatMessageType;
@@ -54,7 +55,7 @@ public class BronzemanTcgPlugin extends Plugin
 	protected void startUp()
 	{
 		collectionReader.invalidate();
-		log.info("Bronzeman TCG started. Tracking {} TCG monster cards.", monsterCatalog.size());
+		log.info("Bronzeman TCG started. Tracking {} TCG-linked NPCs.", monsterCatalog.size());
 	}
 
 	@Override
@@ -91,15 +92,22 @@ public class BronzemanTcgPlugin extends Plugin
 		}
 
 		// Not part of the TCG catalog at all -> never restrict (it could never be unlocked).
-		if (!monsterCatalog.isTracked(npcName))
+		Set<String> variantCards = monsterCatalog.getCardVariantsLowerCase(npcName);
+		if (variantCards.isEmpty())
 		{
 			return;
 		}
 
-		// Owned (normal or foil) -> allowed.
-		if (collectionReader.getOwnedCardNamesLowerCase().contains(npcName.toLowerCase(Locale.ROOT)))
+		// Owning any variant card (normal or foil) -> allowed. Cards with wiki-style
+		// disambiguation suffixes ("Soldier (Yanille)") all unlock the plain NPC name,
+		// since that's the only name RuneLite exposes at attack time.
+		Set<String> owned = collectionReader.getOwnedCardNamesLowerCase();
+		for (String card : variantCards)
 		{
-			return;
+			if (owned.contains(card))
+			{
+				return;
+			}
 		}
 
 		event.consume();
