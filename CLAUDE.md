@@ -102,9 +102,22 @@ only, no automation).
    unverified in-game (niche): option strings "Use-rod" (barbarian
    fishing), "Fish" (karambwan), "Small Net" (minnows); the Weiss salt /
    Daeyalt / Saltpetre / elf nodes from the second research pass.
-4. Overlay/UI: visual indicator on locked NPCs; maybe a side panel of
+4. **Launch hardening**: implemented (2026-07-11), needs manual test pass —
+   equip blocking, forced-drop mode (Drop/Allow-banking/Off; deposit-only
+   banking), shop buying, best-effort GE search blocking (owner-accepted
+   leaky; keyboard flows may bypass), potion-drink blocking (dose folding),
+   378 recipes (firemaking/smelt/smith/craft/enchant/fletch/herblore via
+   RecipeCatalog + recipe_nodes.json; make-X = mouse-only, spacebar bypass
+   owner-accepted), hunter (5 methods, any-of gear+creature groups),
+   Extreme Hunter rumours, slayer masters+monsters (merged rules with
+   master/monsters roles), runecrafting altars, farming rake/plant/compost.
+   Deferred: Sailing (needs deep dive); Time Tracking plugin interop for
+   per-patch harvest + compost-type discrimination (read its ConfigManager
+   state like we do osrs-tcg's); Krystilia difficulty revisit; upstream
+   card gaps (Onyx ring; larupia/kyatt/kebbits/moths/Herbiboar creatures).
+5. Overlay/UI: visual indicator on locked NPCs; maybe a side panel of
    nearest unlocks.
-5. Hub submission.
+6. Hub submission.
 
 ## Maintenance contracts with upstream osrs-tcg
 - If its `Card.json` changes: regenerate both snapshot resources with
