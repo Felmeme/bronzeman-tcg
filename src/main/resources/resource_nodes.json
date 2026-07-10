@@ -1973,19 +1973,6 @@
 		{
 			"category": "woodcutting",
 			"kind": "object",
-			"name": "Mahogany",
-			"options": [
-				"chop down"
-			],
-			"requiredCards": [
-				"Mahogany logs"
-			],
-			"requireAll": true,
-			"notes": "Verify in-game object name suffix ('X' vs 'X tree'); both variants included as separate nodes."
-		},
-		{
-			"category": "woodcutting",
-			"kind": "object",
 			"name": "Mahogany tree",
 			"options": [
 				"chop down"
@@ -2012,19 +1999,6 @@
 		{
 			"category": "woodcutting",
 			"kind": "object",
-			"name": "Oak",
-			"options": [
-				"chop down"
-			],
-			"requiredCards": [
-				"Oak logs"
-			],
-			"requireAll": true,
-			"notes": "Verify in-game object name suffix ('X' vs 'X tree'); both variants included as separate nodes."
-		},
-		{
-			"category": "woodcutting",
-			"kind": "object",
 			"name": "Oak tree",
 			"options": [
 				"chop down"
@@ -2038,38 +2012,12 @@
 		{
 			"category": "woodcutting",
 			"kind": "object",
-			"name": "Redwood",
-			"options": [
-				"chop down"
-			],
-			"requiredCards": [
-				"Redwood logs"
-			],
-			"requireAll": true,
-			"notes": "Verify in-game object name suffix ('X' vs 'X tree'); both variants included as separate nodes."
-		},
-		{
-			"category": "woodcutting",
-			"kind": "object",
 			"name": "Redwood tree",
 			"options": [
 				"chop down"
 			],
 			"requiredCards": [
 				"Redwood logs"
-			],
-			"requireAll": true,
-			"notes": "Verify in-game object name suffix ('X' vs 'X tree'); both variants included as separate nodes."
-		},
-		{
-			"category": "woodcutting",
-			"kind": "object",
-			"name": "Teak",
-			"options": [
-				"chop down"
-			],
-			"requiredCards": [
-				"Teak logs"
 			],
 			"requireAll": true,
 			"notes": "Verify in-game object name suffix ('X' vs 'X tree'); both variants included as separate nodes."
@@ -2103,38 +2051,12 @@
 		{
 			"category": "woodcutting",
 			"kind": "object",
-			"name": "Willow",
-			"options": [
-				"chop down"
-			],
-			"requiredCards": [
-				"Willow logs"
-			],
-			"requireAll": true,
-			"notes": "Verify in-game object name suffix ('X' vs 'X tree'); both variants included as separate nodes."
-		},
-		{
-			"category": "woodcutting",
-			"kind": "object",
 			"name": "Willow tree",
 			"options": [
 				"chop down"
 			],
 			"requiredCards": [
 				"Willow logs"
-			],
-			"requireAll": true,
-			"notes": "Verify in-game object name suffix ('X' vs 'X tree'); both variants included as separate nodes."
-		},
-		{
-			"category": "woodcutting",
-			"kind": "object",
-			"name": "Yew",
-			"options": [
-				"chop down"
-			],
-			"requiredCards": [
-				"Yew logs"
 			],
 			"requireAll": true,
 			"notes": "Verify in-game object name suffix ('X' vs 'X tree'); both variants included as separate nodes."

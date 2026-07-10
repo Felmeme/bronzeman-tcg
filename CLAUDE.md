@@ -94,17 +94,14 @@ only, no automation).
    (default "Coins": every common drop has a card, including Coins and Bones,
    so pure blocking would brick the early game). Needs its manual test pass:
    drop-blocked item Take, telegrab, exempt list entry, `::tcg-give` unlock.
-3. **Resource nodes**: implemented (2026-07-10) — woodcutting/mining/fishing/
-   pickpocketing/cooking gated behind yielded-item cards, per-skill toggles.
-   Needs its manual test pass; specific things the data audit could not
-   verify without a client (fix resource_nodes.json + regenerate nothing —
-   it's hand-curated, just edit it):
-   - tree object names: both "Oak" and "Oak tree" style nodes shipped —
-     prune whichever doesn't match after testing
-   - ore rocks assumed per-ore names ("Iron rocks"); if the client shows
-     generic "Rocks", the 15 ore nodes need object-ID work instead
-   - option strings to confirm in-game: "Use-rod" (barbarian fishing),
-     "Fish" (karambwan), "Small Net" (minnows)
+3. **Resource nodes**: implemented and manually tested (2026-07-10) —
+   woodcutting/mining/fishing/pickpocketing/cooking gated behind
+   yielded-item cards, per-skill config. Tree names confirmed "Oak tree"
+   style (bare-name duplicates pruned); per-ore rock names confirmed
+   working. resource_nodes.json is hand-curated — just edit it. Still
+   unverified in-game (niche): option strings "Use-rod" (barbarian
+   fishing), "Fish" (karambwan), "Small Net" (minnows); the Weiss salt /
+   Daeyalt / Saltpetre / elf nodes from the second research pass.
 4. Overlay/UI: visual indicator on locked NPCs; maybe a side panel of
    nearest unlocks.
 5. Hub submission.
