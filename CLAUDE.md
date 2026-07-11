@@ -168,6 +168,16 @@ docs/sailing_nodes_report.md):
    pushing here and bumping the PR's commit= line.
 
 ## Post-launch backlog (agreed with owner)
+- **Collection backup + regression detection**: periodically (and via a
+  side-panel button) export the DECODED collection as plain JSON to
+  .runelite/bronzeman-tcg/collection-backup.json (timestamped; card names
+  are the universal key, translatable to any future upstream format). On
+  each cache refresh, diff owned names against the last snapshot: if
+  previously-owned cards vanish, warn loudly in chat ("N cards missing vs
+  backup from <date>"). WARN ONLY, never auto-restore and never write to
+  osrs-tcg's storage (we stay read-only on their data) — the collection
+  can shrink legitimately (osrs-tcg has debug commands and may grow
+  trade/sacrifice mechanics), so make the warning dismissible.
 - **Grey model recolor** as a third Visuals choice (dropdown: Outline /
   Grey model / Off, outline default): mutate NPC Model face color arrays
   (getFaceColors1/2/3, packed HSL) to greyscale for locked NPCs. Needs
