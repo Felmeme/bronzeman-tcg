@@ -160,10 +160,12 @@ docs/sailing_nodes_report.md):
    cards/cosmetic/double-gating): masts, helms, cannons, cargo holds,
    chum, nets, port tasks, charting, crew, paints, dragon schematics.
    See docs/sailing_nodes_report.md.
-7. Hub submission (in progress 2026-07-12: LICENSE/README/icon/properties
-   done, config UX pass done, RenderCallbackManager migration done; owner
-   creating the GitHub repo, then plugin-hub PR pinned to the release
-   commit).
+7. Hub submission: **submitted 2026-07-12** — repo public at
+   github.com/Felmeme/bronzeman-tcg, plugin-hub PR open with CI green
+   (pinned commit 802e7c9; first CI run failed on a missing
+   build=standard in runelite-plugin.properties, restored). Awaiting
+   manual review; reviewer feedback lands as PR comments, fixes ship by
+   pushing here and bumping the PR's commit= line.
 
 ## Post-launch backlog (agreed with owner)
 - **Grey model recolor** as a third Visuals choice (dropdown: Outline /
