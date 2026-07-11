@@ -424,6 +424,41 @@ public interface BronzemanTcgConfig extends Config
 		return false;
 	}
 
+	// ------------------------------------------------------------------ visuals
+
+	@ConfigSection(
+		name = "Visuals",
+		description = "How locked NPCs and items are shown in the game world.",
+		position = 10
+	)
+	String visualsSection = "visualsSection";
+
+	@ConfigItem(
+		keyName = "tintLockedNpcs",
+		name = "Tint locked NPCs grey",
+		description = "NPCs whose card you have not collected are greyed out in the world, "
+			+ "so you can see at a glance what you can't fight yet.",
+		section = visualsSection,
+		position = 0
+	)
+	default boolean tintLockedNpcs()
+	{
+		return true;
+	}
+
+	@ConfigItem(
+		keyName = "hideLockedEntities",
+		name = "Hide locked NPCs & items",
+		description = "Completely hides NPCs and ground items whose card you have not collected. "
+			+ "Overrides the grey tint. Loot-exempt items (e.g. Coins) stay visible.",
+		section = visualsSection,
+		position = 1
+	)
+	default boolean hideLockedEntities()
+	{
+		return false;
+	}
+
 	// ------------------------------------------------------------------ resource nodes (existing)
 
 	@ConfigSection(

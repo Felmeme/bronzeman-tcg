@@ -26,6 +26,8 @@ import net.runelite.api.MenuEntry;
 import net.runelite.api.NPC;
 import net.runelite.api.NPCComposition;
 import net.runelite.api.Player;
+import net.runelite.api.Renderable;
+import net.runelite.api.TileItem;
 import net.runelite.api.coords.WorldPoint;
 import net.runelite.api.events.GameTick;
 import net.runelite.api.events.MenuOpened;
@@ -34,6 +36,7 @@ import net.runelite.api.gameval.InterfaceID;
 import net.runelite.api.gameval.ItemID;
 import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetUtil;
+import net.runelite.client.callback.Hooks;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.events.RuneScapeProfileChanged;
@@ -42,6 +45,7 @@ import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
 import net.runelite.client.ui.ClientToolbar;
 import net.runelite.client.ui.NavigationButton;
+import net.runelite.client.ui.overlay.OverlayManager;
 import net.runelite.client.util.AsyncBufferedImage;
 import net.runelite.client.util.Text;
 
@@ -112,6 +116,17 @@ public class BronzemanTcgPlugin extends Plugin
 	@Inject
 	private ClientToolbar clientToolbar;
 
+	@Inject
+	private OverlayManager overlayManager;
+
+	@Inject
+	private BronzemanTcgOverlay overlay;
+
+	@Inject
+	private Hooks hooks;
+
+	private final Hooks.RenderableDrawListener drawListener = this::shouldDraw;
+
 	private long lastBlockMessageMs;
 	private BronzemanTcgPanel panel;
 	private NavigationButton navButton;
@@ -130,6 +145,8 @@ public class BronzemanTcgPlugin extends Plugin
 			.panel(panel)
 			.build();
 		clientToolbar.addNavigation(navButton);
+		overlayManager.add(overlay);
+		hooks.registerRenderableDrawListener(drawListener);
 
 		log.info("Bronzeman TCG started. Tracking {} TCG-linked NPCs, {} items, {} node rules, {} recipe rules.",
 			monsterCatalog.size(), itemCatalog.size(), nodeCatalog.size(), recipeCatalog.size());
@@ -138,10 +155,36 @@ public class BronzemanTcgPlugin extends Plugin
 	@Override
 	protected void shutDown()
 	{
+		hooks.unregisterRenderableDrawListener(drawListener);
+		overlayManager.remove(overlay);
 		clientToolbar.removeNavigation(navButton);
 		navButton = null;
 		panel = null;
 		log.info("Bronzeman TCG stopped.");
+	}
+
+	/**
+	 * Renderable draw hook (same mechanism as the built-in Entity Hider): returning false
+	 * skips drawing. Runs per renderable per frame on the client thread, so the checks
+	 * stay to map lookups. Loot-exempt items (Coins) are never hidden.
+	 */
+	private boolean shouldDraw(Renderable renderable, boolean drawingUi)
+	{
+		if (!config.hideLockedEntities())
+		{
+			return true;
+		}
+		if (renderable instanceof NPC)
+		{
+			String name = resolveNpcName((NPC) renderable);
+			return name == null || name.isEmpty() || isUnlocked(monsterCatalog, name);
+		}
+		if (renderable instanceof TileItem)
+		{
+			String name = itemManager.getItemComposition(((TileItem) renderable).getId()).getName();
+			return name == null || isLootExempt(name) || isUnlocked(itemCatalog, name);
+		}
+		return true;
 	}
 
 	/**
