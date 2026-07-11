@@ -33,7 +33,8 @@ import net.runelite.api.gameval.InterfaceID;
 import net.runelite.api.gameval.ItemID;
 import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetUtil;
-import net.runelite.client.callback.Hooks;
+import net.runelite.client.callback.RenderCallback;
+import net.runelite.client.callback.RenderCallbackManager;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.events.RuneScapeProfileChanged;
@@ -65,7 +66,7 @@ import net.runelite.client.util.Text;
 	description = "Restricts attacking, looting, equipping, buying, gathering and crafting until you've collected the card in the OSRS TCG plugin",
 	tags = {"bronzeman", "tcg", "restriction", "ironman", "challenge"}
 )
-public class BronzemanTcgPlugin extends Plugin
+public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 {
 	private static final String ATTACK_OPTION = "attack";
 	private static final String TAKE_OPTION = "take";
@@ -120,9 +121,7 @@ public class BronzemanTcgPlugin extends Plugin
 	private BronzemanTcgOverlay overlay;
 
 	@Inject
-	private Hooks hooks;
-
-	private final Hooks.RenderableDrawListener drawListener = this::shouldDraw;
+	private RenderCallbackManager renderCallbackManager;
 
 	private long lastBlockMessageMs;
 	private BronzemanTcgPanel panel;
@@ -145,7 +144,7 @@ public class BronzemanTcgPlugin extends Plugin
 			.build();
 		clientToolbar.addNavigation(navButton);
 		overlayManager.add(overlay);
-		hooks.registerRenderableDrawListener(drawListener);
+		renderCallbackManager.register(this);
 
 		log.info("Bronzeman TCG started. Tracking {} TCG-linked NPCs, {} items, {} node rules, {} recipe rules.",
 			monsterCatalog.size(), itemCatalog.size(), nodeCatalog.size(), recipeCatalog.size());
@@ -154,7 +153,7 @@ public class BronzemanTcgPlugin extends Plugin
 	@Override
 	protected void shutDown()
 	{
-		hooks.unregisterRenderableDrawListener(drawListener);
+		renderCallbackManager.unregister(this);
 		overlayManager.remove(overlay);
 		clientToolbar.removeNavigation(navButton);
 		navButton = null;
@@ -163,12 +162,14 @@ public class BronzemanTcgPlugin extends Plugin
 	}
 
 	/**
-	 * Renderable draw hook (same mechanism as the built-in Entity Hider): returning false
-	 * skips drawing. NPCs only - ground items don't route through this hook (verified
-	 * in-game), so they stay visible and rely on the Take-blocking instead. Runs per
-	 * renderable per frame on the client thread, so the check stays to map lookups.
+	 * Render callback: returning false keeps the entity out of the scene (and removes its
+	 * clickbox). NPCs only - ground items don't route through this callback (verified
+	 * in-game on the predecessor hook), so they stay visible and rely on the
+	 * Take-blocking instead. Called many times per frame on the client thread, so the
+	 * check stays to map lookups.
 	 */
-	private boolean shouldDraw(Renderable renderable, boolean drawingUi)
+	@Override
+	public boolean addEntity(Renderable renderable, boolean ui)
 	{
 		if (!config.hideLockedEntities() || !(renderable instanceof NPC))
 		{

@@ -38,28 +38,28 @@ public interface BronzemanTcgConfig extends Config
 	@ConfigSection(
 			name = "Firemaking",
 			description = "Lighting fires requires the log (and optionally Tinderbox) cards.",
-			position = 2
+			position = 5
 	)
 	String firemakingSection = "firemakingSection";
 
 	@ConfigSection(
 			name = "Smithing",
 			description = "Smelting bars and smithing items require ore, bar and product cards.",
-			position = 3
+			position = 7
 	)
 	String smithingSection = "smithingSection";
 
 	@ConfigSection(
 			name = "Crafting",
 			description = "Crafting and enchanting require the input and output item cards.",
-			position = 4
+			position = 3
 	)
 	String craftingSection = "craftingSection";
 
 	@ConfigSection(
 			name = "Skill Options",
 			description = "Recipe restrictions for the remaining skills: making things requires the cards of what goes in and/or what comes out.",
-			position = 5
+			position = 2
 	)
 	String skillOptionsSection = "skillOptionsSection";
 
@@ -73,7 +73,7 @@ public interface BronzemanTcgConfig extends Config
 	@ConfigSection(
 			name = "Farming",
 			description = "Patch and compost restrictions.",
-			position = 7
+			position = 4
 	)
 	String farmingSection = "farmingSection";
 
@@ -87,14 +87,14 @@ public interface BronzemanTcgConfig extends Config
 	@ConfigSection(
 			name = "Thieving",
 			description = "Pickpocketing restrictions.",
-			position = 9
+			position = 10
 	)
 	String thievingSection = "thievingSection";
 
 	@ConfigSection(
 			name = "Sailing",
 			description = "Boat upgrade and salvaging restrictions.",
-			position = 10
+			position = 9
 	)
 	String sailingSection = "sailingSection";
 
