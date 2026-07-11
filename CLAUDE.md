@@ -1,5 +1,42 @@
 # Bronzeman TCG — RuneLite plugin
 
+## HANDOFF NOTES (2026-07-12, written for the next assistant taking over)
+- **IN FLIGHT**: a research agent was building the PvM content rosters
+  (Fight Caves/Inferno/Colosseum/CoX/ToA/Corrupted Gauntlet/ToB → monster
+  cards). Its deliverables (content_cards.json + content_cards_report.md)
+  land in the ORIGINATING SESSION's scratchpad:
+  `C:\Users\ocari\AppData\Local\Temp\claude\D--ClaudeFolder\7ce6b1e2-8f99-4e53-b8e5-25eebd1548d5\scratchpad\`
+  — check there first. Integration = validate every card string against
+  Card.json exactly, copy content_cards.json to src/main/resources/, report
+  to docs/, build, relaunch for owner test, commit, push. The panel section
+  and ContentCatalog already ship and tolerate missing data. If the files
+  never appeared, re-run the research (prompt pattern: enumerate each
+  content's NPC roster from its wiki page, resolve through
+  tracked_monster_names.json, ~7-12 fetches).
+- **Operational knowledge the hard way**:
+  - Build: `export JAVA_HOME="/c/Program Files/Eclipse Adoptium/jdk-11.0.31.11-hotspot" && ./gradlew build --no-daemon`;
+    dev client via `./gradlew run` or the owner's local launch-client.bat
+    (untracked, on disk).
+  - Research agents die on session limits: ALWAYS instruct them to write
+    deliverable files BEFORE their final message; if one dies, its
+    generation scripts/raw fetches usually survive in the scratchpad and
+    can be finished locally.
+  - Bulk wiki data: use the MediaWiki API (api.php?action=parse / batch
+    revisions, 50 titles per request), never per-page fetches.
+  - Hub releases: push here, then PR to runelite/plugin-hub bumping
+    plugins/bronzeman-tcg `commit=`. runelite-plugin.properties MUST keep
+    `build=standard`. Config keyNames are a public contract now.
+  - The shell-permission service occasionally drops for a few minutes
+    ("temporarily unavailable... classifier"); Write/Edit still work — route
+    file changes through them and commit when it recovers.
+- **Owner working style**: see the memory files (Opus agents for wiki/data
+  research with exact-match validation against Card.json; every difficulty
+  knob is a config dropdown; owner decides design calls from concise
+  option lists; he manual-tests in-game and reports tersely; explain
+  non-obvious RuneLite choices — he's learning; commit at every green
+  milestone). Cross-project study notes live in
+  `D:\ClaudeFolder\RuneLite Research\`.
+
 ## What this is
 A bronzeman-style restriction plugin: the player may only **attack NPCs whose card
 they have already pulled** in the separate [OSRS TCG plugin](https://github.com/Azderi/osrs-tcg)
