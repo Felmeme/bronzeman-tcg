@@ -1056,7 +1056,7 @@ public class BronzemanTcgPlugin extends Plugin
 
 	private void sendBlockedMessage(String entityName)
 	{
-		if (!config.chatFeedback())
+		if (config.chatFeedback())
 		{
 			return;
 		}
@@ -1079,7 +1079,7 @@ public class BronzemanTcgPlugin extends Plugin
 			sendBlockedMessage(missingCards.get(0));
 			return;
 		}
-		if (!config.chatFeedback())
+		if (config.chatFeedback())
 		{
 			return;
 		}

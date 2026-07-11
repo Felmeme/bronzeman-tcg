@@ -13,12 +13,108 @@ public interface BronzemanTcgConfig extends Config
 {
 	String GROUP = "bronzemantcg";
 
+	@ConfigSection(
+			name = "General Settings",
+			description = "Restrictions on holding, equipping, and acquiring items whose card is locked.",
+			position = 0
+	)
+	String generalSettings = "generalSettings";
+
+//  Items and Economy tab, was used in earlier iterations. Commented out in case of potential use later.
+//	@ConfigSection(
+//			name = "Items & economy",
+//			description = "Restrictions on holding, equipping, and acquiring items whose card is locked.",
+//			position = #
+//	)
+//	String itemsSection = "itemsSection";
+
+	@ConfigSection(
+			name = "Resource nodes",
+			description = "Block gathering from skill resource nodes until the card of the item they yield is collected.",
+			position = 1
+	)
+	String resourceNodesSection = "resourceNodesSection";
+
+	@ConfigSection(
+			name = "Firemaking",
+			description = "Lighting fires requires the log (and optionally Tinderbox) cards.",
+			position = 2
+	)
+	String firemakingSection = "firemakingSection";
+
+	@ConfigSection(
+			name = "Smithing",
+			description = "Smelting bars and smithing items require ore, bar and product cards.",
+			position = 3
+	)
+	String smithingSection = "smithingSection";
+
+	@ConfigSection(
+			name = "Crafting",
+			description = "Crafting and enchanting require the input and output item cards.",
+			position = 4
+	)
+	String craftingSection = "craftingSection";
+
+	@ConfigSection(
+			name = "Skill Options",
+			description = "Recipe restrictions for the remaining skills: making things requires the cards of what goes in and/or what comes out.",
+			position = 5
+	)
+	String skillOptionsSection = "skillOptionsSection";
+
+	@ConfigSection(
+			name = "Hunter",
+			description = "Hunting requires the gear cards (and optionally the creature cards) for each method.",
+			position = 6
+	)
+	String hunterSection = "hunterSection";
+
+	@ConfigSection(
+			name = "Farming",
+			description = "Patch and compost restrictions.",
+			position = 7
+	)
+	String farmingSection = "farmingSection";
+
+	@ConfigSection(
+			name = "Slayer",
+			description = "Slayer master restrictions.",
+			position = 8
+	)
+	String slayerSection = "slayerSection";
+
+	@ConfigSection(
+			name = "Thieving",
+			description = "Pickpocketing restrictions.",
+			position = 9
+	)
+	String thievingSection = "thievingSection";
+
+	@ConfigSection(
+			name = "Sailing",
+			description = "Boat upgrade and salvaging restrictions.",
+			position = 10
+	)
+	String sailingSection = "sailingSection";
+
+	@ConfigSection(
+			name = "Visuals",
+			description = "How locked NPCs and items are shown in the game world.",
+			position = 11
+	)
+	String visualsSection = "visualsSection";
+
+	//----------------
+	//General Settings
+	//----------------
 	@ConfigItem(
 		keyName = "restrictAttacks",
-		name = "Restrict attacks",
+		name = "Restrict Combat",
 		description = "Block attacking any NPC whose card you have not yet collected in the OSRS TCG plugin. "
-			+ "NPCs with no card in the TCG catalog are never restricted.",
-		position = 0
+			+ "<br>NPCs with no card in the TCG catalog are never restricted.",
+		section = generalSettings,
+		position = 1
 	)
 	default boolean restrictAttacks()
 	{
@@ -27,10 +123,11 @@ public interface BronzemanTcgConfig extends Config
 
 	@ConfigItem(
 		keyName = "restrictSpellCasts",
-		name = "Restrict spells/items on NPCs",
-		description = "Also block casting spells on, or using items on, uncollected NPCs "
-			+ "(prevents bypassing the restriction with magic or ranged via spell casts).",
-		position = 1
+		name = "Restrict Using Items on NPCs",
+		description = "Also block casting spells on, or using items on, uncollected NPCs. "
+			+ "<br>Prevents bypassing the restriction with magic or ranged.",
+		section = generalSettings,
+		position = 2
 	)
 	default boolean restrictSpellCasts()
 	{
@@ -41,8 +138,10 @@ public interface BronzemanTcgConfig extends Config
 		keyName = "restrictLoot",
 		name = "Restrict loot pickup",
 		description = "Block picking up (or telegrabbing) ground items whose card you have not yet "
-			+ "collected in the OSRS TCG plugin. Items with no card in the TCG catalog are never restricted.",
-		position = 2
+			+ "collected in the OSRS TCG plugin."
+			+ "<br>Items with no card in the TCG catalog are never restricted.",
+		section = generalSettings,
+		position = 3
 	)
 	default boolean restrictLoot()
 	{
@@ -50,11 +149,70 @@ public interface BronzemanTcgConfig extends Config
 	}
 
 	@ConfigItem(
+			keyName = "restrictEquipping",
+			name = "Restrict equipping",
+			description = "Block Wear/Wield/Equip on any inventory item whose card you have not collected. "
+					+ "<br>Items with no card are never restricted.",
+			section = generalSettings,
+			position = 4
+	)
+	default boolean restrictEquipping()
+	{
+		return true;
+	}
+
+	@ConfigItem(
+			keyName = "restrictBuying",
+			name = "Restrict shop/GE buying",
+			description = "Block buying items whose card is locked from shops, and block selecting them in "
+					+ "the Grand Exchange search."
+					+ "<br>Items with no card can always be bought.",
+			section = generalSettings,
+			position = 5
+	)
+	default boolean restrictBuying()
+	{
+		return true;
+	}
+
+	@ConfigItem(
+			keyName = "restrictPotionDrinking",
+			name = "Restrict potion drinking",
+			description = "Block drinking any potion whose card is locked."
+					+ "<br>All four dose types map to the "
+					+ "one card, unlocking the card unlocks every dose.",
+			section = generalSettings,
+			position = 6
+	)
+	default boolean restrictPotionDrinking()
+	{
+		return true;
+	}
+
+	@ConfigItem(
+			keyName = "forcedDropMode",
+			name = "Forced drop",
+			description = "Items in your inventory whose card is locked (e.g. quest rewards) can only be "
+					+ "Dropped, Examined or Destroyed. Use option is disabled."
+					+ "<br>'Allow banking' additionally permits depositing them "
+					+ "(the bank becomes a holding pen - withdrawing stays blocked until the card unlocks). "
+					+ "<br>Once the card is unlocked the item works normally.",
+			section = generalSettings,
+			position = 7
+	)
+	default ForcedDropMode forcedDropMode()
+	{
+		return ForcedDropMode.OFF;
+	}
+
+	@ConfigItem(
 		keyName = "lootExemptNames",
 		name = "Loot exempt list",
 		description = "Comma-separated item names that are always lootable even without their card, "
-			+ "e.g. universal drops that would make the early game unplayable. Case-insensitive.",
-		position = 3
+			+ "e.g. universal drops that would make the early game unplayable."
+			+ "<br>Case-insensitive. Remove coins for a true challenge.",
+		section = generalSettings,
+		position = 8
 	)
 	default String lootExemptNames()
 	{
@@ -65,92 +223,82 @@ public interface BronzemanTcgConfig extends Config
 		keyName = "chatFeedback",
 		name = "Chat feedback",
 		description = "Send a game chat message explaining why an action was blocked.",
-		position = 4
+		section = generalSettings,
+		position = 9
 	)
 	default boolean chatFeedback()
 	{
 		return true;
 	}
 
-	// ------------------------------------------------------------------ items & economy
-
-	@ConfigSection(
-		name = "Items & economy",
-		description = "Restrictions on holding, equipping, and acquiring items whose card is locked.",
-		position = 5
-	)
-	String itemsSection = "itemsSection";
-
+	//----------------
+	//Resource nodes
+	//----------------
 	@ConfigItem(
-		keyName = "restrictEquipping",
-		name = "Restrict equipping",
-		description = "Block Wear/Wield/Equip on any inventory item whose card you have not collected. "
-			+ "Items with no card are never restricted.",
-		section = itemsSection,
+		keyName = "restrictWoodcutting",
+		name = "Restrict woodcutting",
+		description = "Block chopping trees until the respective logs card is collected."
+			+ "<br>e.g. Oak tree needs Oak logs.",
+		section = resourceNodesSection,
 		position = 0
 	)
-	default boolean restrictEquipping()
+	default boolean restrictWoodcutting()
 	{
 		return true;
 	}
 
 	@ConfigItem(
-		keyName = "forcedDropMode",
-		name = "Forced drop",
-		description = "Items in your inventory whose card is locked (e.g. quest rewards) can only be "
-			+ "Dropped, Examined or Destroyed. 'Allow banking' additionally permits depositing them "
-			+ "(the bank becomes a holding pen - withdrawing stays blocked until the card unlocks). "
-			+ "Once the card is unlocked the item works normally.",
-		section = itemsSection,
+		keyName = "restrictMining",
+		name = "Restrict mining",
+		description = "Block mining rocks until the respective ore card is collected."
+			+ "<br>e.g. Copper rocks need Copper ore.",
+		section = resourceNodesSection,
 		position = 1
 	)
-	default ForcedDropMode forcedDropMode()
+	default boolean restrictMining()
 	{
-		return ForcedDropMode.OFF;
+		return true;
 	}
 
 	@ConfigItem(
-		keyName = "restrictBuying",
-		name = "Restrict shop/GE buying",
-		description = "Block buying items whose card is locked from shops, and block selecting them in "
-			+ "the Grand Exchange search. Items with no card can always be bought. Note: GE blocking is "
-			+ "best-effort - the search-result click is consumed, but keyboard-driven flows may bypass it.",
-		section = itemsSection,
+		keyName = "fishingMode",
+		name = "Restrict fishing",
+		description = "Fishing spots share one name everywhere, so each spot type lists every fish it can "
+			+ "yield at any location."
+			+ "<br>'Any of': owning any one of those fish unlocks that spot type "
+			+ "(e.g. Raw tuna unlocks all Harpoon spots, shark spots included)."
+			+ "<br>'Require ALL': the spot type stays locked until you own every fish it can yield "
+			+ "(e.g. Harpoon needs Raw tuna, Raw swordfish AND Raw shark)."
+			+ "<br>'Off': no fishing restriction.",
+		section = resourceNodesSection,
 		position = 2
 	)
-	default boolean restrictBuying()
+	default FishingRestrictionMode fishingMode()
 	{
-		return true;
+		return FishingRestrictionMode.ANY_OF;
 	}
 
 	@ConfigItem(
-		keyName = "restrictPotionDrinking",
-		name = "Restrict potion drinking",
-		description = "Block drinking any potion whose card is locked. All four dose types map to the "
-			+ "one card (cards are dose-less), so unlocking the card unlocks every dose.",
-		section = itemsSection,
+		keyName = "restrictCooking",
+		name = "Restrict cooking",
+		description = "Block using raw food on fires/ranges until the cooked version's card is collected.",
+		section = resourceNodesSection,
 		position = 3
 	)
-	default boolean restrictPotionDrinking()
+	default boolean restrictCooking()
 	{
 		return true;
 	}
 
-	// ------------------------------------------------------------------ processing skills
-
-	@ConfigSection(
-		name = "Processing skills",
-		description = "Recipe restrictions: making things requires the cards of what goes in and/or what comes out.",
-		position = 6
-	)
-	String processingSection = "processingSection";
-
+	//----------------
+	//Firemaking
+	//----------------
 	@ConfigItem(
 		keyName = "firemakingMode",
-		name = "Firemaking",
-		description = "'Just logs': lighting a fire requires the card of the specific logs being lit. "
-			+ "'Logs + Tinderbox': additionally requires the Tinderbox card.",
-		section = processingSection,
+		name = "Restrict firemaking",
+		description = "'Just logs': lighting a fire requires the card of the specific logs being lit."
+			+ "<br>'Logs + Tinderbox': additionally requires the Tinderbox card.",
+		section = firemakingSection,
 		position = 0
 	)
 	default FiremakingMode firemakingMode()
@@ -161,9 +309,9 @@ public interface BronzemanTcgConfig extends Config
 	@ConfigItem(
 		keyName = "restrictEventLogs",
 		name = "Include event logs",
-		description = "Also apply the firemaking restriction to the 2014-event coloured logs "
-			+ "(Blue/Green/Red/Purple/White logs).",
-		section = processingSection,
+		description = "Also apply the firemaking restriction to the 2014-event coloured logs."
+			+ "<br>Blue/Green/Red/Purple/White logs.",
+		section = firemakingSection,
 		position = 1
 	)
 	default boolean restrictEventLogs()
@@ -171,13 +319,16 @@ public interface BronzemanTcgConfig extends Config
 		return true;
 	}
 
+	//----------------
+	//Smithing
+	//----------------
 	@ConfigItem(
 		keyName = "smeltingMode",
 		name = "Smelting",
-		description = "Smelting a bar at a furnace requires: 'Ore' = the ore cards, 'Bars' = the bar card, "
-			+ "'Both' = all of them.",
-		section = processingSection,
-		position = 2
+		description = "Smelting a bar at a furnace requires:"
+			+ "<br>'Ore' = the ore cards, 'Bars' = the bar card, 'Both' = all of them.",
+		section = smithingSection,
+		position = 0
 	)
 	default SmeltingMode smeltingMode()
 	{
@@ -187,23 +338,27 @@ public interface BronzemanTcgConfig extends Config
 	@ConfigItem(
 		keyName = "smithingMode",
 		name = "Smithing",
-		description = "Smithing an item at an anvil requires: 'Bars' = the bar card, 'Items' = the "
-			+ "product's card, 'Both' = both.",
-		section = processingSection,
-		position = 3
+		description = "Smithing an item at an anvil requires:"
+			+ "<br>'Bars' = the bar card, 'Items' = the product's card, 'Both' = both."
+			+ "<br>The Hammer card is always required while enabled.",
+		section = smithingSection,
+		position = 1
 	)
 	default SmithingMode smithingMode()
 	{
 		return SmithingMode.BOTH;
 	}
 
+	//----------------
+	//Crafting
+	//----------------
 	@ConfigItem(
 		keyName = "restrictCrafting",
 		name = "Restrict crafting",
-		description = "Crafting (gems, leather, glass, jewellery, spinning, pottery, battlestaves) requires "
-			+ "the input AND output item cards.",
-		section = processingSection,
-		position = 4
+		description = "Crafting requires the input AND output item cards."
+			+ "<br>Covers gems, leather, glass, jewellery, spinning, pottery and battlestaves.",
+		section = craftingSection,
+		position = 0
 	)
 	default boolean restrictCrafting()
 	{
@@ -215,21 +370,24 @@ public interface BronzemanTcgConfig extends Config
 		name = "Restrict enchanting",
 		description = "Enchanting jewellery requires the unenchanted item's card AND the enchanted "
 			+ "product's card.",
-		section = processingSection,
-		position = 5
+		section = craftingSection,
+		position = 1
 	)
 	default boolean restrictEnchanting()
 	{
 		return true;
 	}
 
+	//----------------
+	//Skill Options
+	//----------------
 	@ConfigItem(
 		keyName = "restrictFletching",
 		name = "Restrict fletching",
-		description = "Fletching requires the input and output item cards (where input cards exist - "
-			+ "arrowtips and most dart tips have no cards, so those recipes enforce the output).",
-		section = processingSection,
-		position = 6
+		description = "Fletching requires the input and output item cards where input cards exist."
+			+ "<br>Arrowtips and most dart tips have no cards, so those recipes enforce the output.",
+		section = skillOptionsSection,
+		position = 0
 	)
 	default boolean restrictFletching()
 	{
@@ -240,30 +398,40 @@ public interface BronzemanTcgConfig extends Config
 		keyName = "restrictHerblore",
 		name = "Restrict herblore",
 		description = "Making potions requires the input cards (herb/unfinished/secondary) and the "
-			+ "output potion card. Card names are dose-less, so any dose matches the one card.",
-		section = processingSection,
-		position = 7
+			+ "output potion card."
+			+ "<br>Card names are dose-less, so any dose matches the one card.",
+		section = skillOptionsSection,
+		position = 1
 	)
 	default boolean restrictHerblore()
 	{
 		return true;
 	}
 
-	// ------------------------------------------------------------------ hunter
-
-	@ConfigSection(
-		name = "Hunter",
-		description = "Hunting requires the gear cards (and optionally the creature cards) for each method.",
-		position = 7
+	@ConfigItem(
+		keyName = "runecraftingMode",
+		name = "Runecrafting",
+		description = "Crafting at an altar requires essence + talisman (tiara counts) cards."
+			+ "<br>'Talisman and Runes' additionally requires the crafted rune's card."
+			+ "<br>Altars with no talisman (Astral/Blood/Soul) skip that part.",
+		section = skillOptionsSection,
+		position = 2
 	)
-	String hunterSection = "hunterSection";
+	default RunecraftingMode runecraftingMode()
+	{
+		return RunecraftingMode.TALISMAN_RUNES;
+	}
 
+	//----------------
+	//Hunter
+	//----------------
 	@ConfigItem(
 		keyName = "hunterBirdsMode",
 		name = "Birds & butterflies",
 		description = "'Gear only': bird snaring needs the Bird snare card; catching butterflies needs "
-			+ "Butterfly net (Magic butterfly net counts). 'All bird drops': additionally requires the "
-			+ "creature cards (any-of for snares, since a laid snare can't know which bird lands).",
+			+ "Butterfly net (Magic butterfly net counts)."
+			+ "<br>'All bird drops': additionally requires the creature cards "
+			+ "(any-of for snares, since a laid snare can't know which bird lands).",
 		section = hunterSection,
 		position = 0
 	)
@@ -275,8 +443,8 @@ public interface BronzemanTcgConfig extends Config
 	@ConfigItem(
 		keyName = "implingMode",
 		name = "Implings",
-		description = "'Butterfly net only': catching implings needs a butterfly net card (Magic counts). "
-			+ "'Net + jar': additionally requires the Impling jar card.",
+		description = "'Butterfly net only': catching implings needs a butterfly net card (Magic counts)."
+			+ "<br>'Net + jar': additionally requires the Impling jar card.",
 		section = hunterSection,
 		position = 1
 	)
@@ -288,8 +456,8 @@ public interface BronzemanTcgConfig extends Config
 	@ConfigItem(
 		keyName = "restrictChins",
 		name = "Chinchompas",
-		description = "Laying a box trap requires the Box trap card plus any chinchompa card "
-			+ "(a laid trap can't know which species wanders in).",
+		description = "Laying a box trap requires the Box trap card plus any chinchompa card."
+			+ "<br>A laid trap can't know which species wanders in.",
 		section = hunterSection,
 		position = 2
 	)
@@ -301,8 +469,8 @@ public interface BronzemanTcgConfig extends Config
 	@ConfigItem(
 		keyName = "salamanderMode",
 		name = "Salamanders",
-		description = "'Rope + Net': setting a net trap needs the Rope and Small fishing net cards. "
-			+ "'Items + Salamander': additionally requires the respective salamander's card.",
+		description = "'Rope + Net': setting a net trap needs the Rope and Small fishing net cards."
+			+ "<br>'Items + Salamander': additionally requires the respective salamander's card.",
 		section = hunterSection,
 		position = 3
 	)
@@ -314,9 +482,11 @@ public interface BronzemanTcgConfig extends Config
 	@ConfigItem(
 		keyName = "pitfallMode",
 		name = "Pitfalls",
-		description = "'Just tools': teasing a beast into a pitfall needs the tool cards (teasing stick, "
-			+ "knife, any logs). 'All': additionally requires the beast's own card. Only Horned graahk "
-			+ "and antelopes have cards - larupia/kyatt have none and are never restricted.",
+		description = "'Just tools': teasing a beast into a pitfall needs the tool cards "
+			+ "(teasing stick, knife, any logs)."
+			+ "<br>'All': additionally requires the beast's own card."
+			+ "<br>Only Horned graahk and antelopes have cards - larupia/kyatt have none and are "
+			+ "never restricted.",
 		section = hunterSection,
 		position = 4
 	)
@@ -329,7 +499,8 @@ public interface BronzemanTcgConfig extends Config
 		keyName = "restrictHunterRumours",
 		name = "Extreme: rumour masters",
 		description = "Block each Hunters' Guild rumour master until you own the card of every creature "
-			+ "they can assign (creatures with no card are excluded from the requirement).",
+			+ "they can assign."
+			+ "<br>Creatures with no card are excluded from the requirement.",
 		section = hunterSection,
 		position = 5
 	)
@@ -338,36 +509,16 @@ public interface BronzemanTcgConfig extends Config
 		return false;
 	}
 
-	// ------------------------------------------------------------------ gathering & slayer
-
-	@ConfigSection(
-		name = "Runecrafting, Farming & Slayer",
-		description = "Altar, patch and slayer master restrictions.",
-		position = 8
-	)
-	String gatheringSection = "gatheringSection";
-
-	@ConfigItem(
-		keyName = "runecraftingMode",
-		name = "Runecrafting",
-		description = "Crafting at an altar requires essence + talisman (tiara counts) cards; "
-			+ "'Talisman and Runes' additionally requires the crafted rune's card. Altars with no "
-			+ "talisman (Astral/Blood/Soul) skip that part.",
-		section = gatheringSection,
-		position = 0
-	)
-	default RunecraftingMode runecraftingMode()
-	{
-		return RunecraftingMode.TALISMAN_RUNES;
-	}
-
+	//----------------
+	//Farming
+	//----------------
 	@ConfigItem(
 		keyName = "farmingRakeMode",
-		name = "Farming: raking",
-		description = "Raking a patch requires the Rake card; 'Tools + Weeds' additionally requires the "
-			+ "Weeds card.",
-		section = gatheringSection,
-		position = 1
+		name = "Raking",
+		description = "Raking a patch requires the Rake card."
+			+ "<br>'Tools + Weeds' additionally requires the Weeds card.",
+		section = farmingSection,
+		position = 0
 	)
 	default FarmingRakeMode farmingRakeMode()
 	{
@@ -376,12 +527,13 @@ public interface BronzemanTcgConfig extends Config
 
 	@ConfigItem(
 		keyName = "farmingPlantMode",
-		name = "Farming: planting",
-		description = "Planting a seed requires the tool card; 'Tools + Seeds' adds the seed's card; "
-			+ "'All' also requires the harvested produce's card. Harvesting itself is not intercepted "
-			+ "(a patch object doesn't reveal its crop), so produce enforcement happens at plant time.",
-		section = gatheringSection,
-		position = 2
+		name = "Planting",
+		description = "Planting a seed requires the tool card."
+			+ "<br>'Tools + Seeds' adds the seed's card. 'All' also requires the harvested produce's card."
+			+ "<br>Harvesting itself is not intercepted (a patch object doesn't reveal its crop), "
+			+ "so produce enforcement happens at plant time.",
+		section = farmingSection,
+		position = 1
 	)
 	default FarmingPlantMode farmingPlantMode()
 	{
@@ -390,24 +542,27 @@ public interface BronzemanTcgConfig extends Config
 
 	@ConfigItem(
 		keyName = "restrictCompost",
-		name = "Farming: compost bins",
-		description = "Collecting compost from a bin requires any compost card (bin contents aren't "
-			+ "distinguishable by object name).",
-		section = gatheringSection,
-		position = 3
+		name = "Compost bins",
+		description = "Collecting compost from a bin requires any compost card."
+			+ "<br>Bin contents aren't distinguishable by object name.",
+		section = farmingSection,
+		position = 2
 	)
 	default boolean restrictCompost()
 	{
 		return true;
 	}
 
+	//----------------
+	//Slayer
+	//----------------
 	@ConfigItem(
 		keyName = "restrictSlayerMasters",
-		name = "Slayer: require masters",
+		name = "Require masters",
 		description = "Using a slayer master (Talk-to/Assignment/Trade/Rewards) is blocked until you own "
 			+ "that master's own NPC card.",
-		section = gatheringSection,
-		position = 4
+		section = slayerSection,
+		position = 0
 	)
 	default boolean restrictSlayerMasters()
 	{
@@ -416,26 +571,62 @@ public interface BronzemanTcgConfig extends Config
 
 	@ConfigItem(
 		keyName = "restrictSlayerMonsters",
-		name = "Slayer: require monsters",
+		name = "Require monsters",
 		description = "Using a slayer master is blocked until you own EVERY card of the monsters that "
-			+ "master can assign (bosses and revenants excluded - no representative cards).",
-		section = gatheringSection,
-		position = 5
+			+ "master can assign."
+			+ "<br>Bosses and revenants excluded - no representative cards.",
+		section = slayerSection,
+		position = 1
 	)
 	default boolean restrictSlayerMonsters()
 	{
 		return false;
 	}
 
+	//----------------
+	//Thieving
+	//----------------
+	@ConfigItem(
+		keyName = "restrictPickpocketing",
+		name = "Restrict pickpocketing",
+		description = "Block pickpocketing NPCs until the cards of their loot are collected."
+			+ "<br>e.g. Coins and Coin pouch.",
+		section = thievingSection,
+		position = 0
+	)
+	default boolean restrictPickpocketing()
+	{
+		return true;
+	}
+
+	@ConfigItem(
+		keyName = "masterFarmerMode",
+		name = "Master Farmer",
+		description = "Master Farmers give seeds, not coin pouches, so they get their own dial."
+			+ "<br>'Coins+Pouch': same simple rule as other pickpocket targets."
+			+ "<br>'Insanity': locked until you own EVERY seed card on his drop table."
+			+ "<br>'Off': never restricted. Independent of the pickpocketing toggle above.",
+		section = thievingSection,
+		position = 1
+	)
+	default MasterFarmerMode masterFarmerMode()
+	{
+		return MasterFarmerMode.COINS_POUCH;
+	}
+
+	//----------------
+	//Sailing
+	//----------------
 	@ConfigItem(
 		keyName = "sailingUpgradeMode",
-		name = "Sailing: boat upgrades",
-		description = "Installing a hull or keel tier requires cards. 'Parts': the tier's part card "
-			+ "(e.g. Oak hull parts). 'Parts + Materials': also the underlying material card (Oak "
-			+ "logs, Bronze bar). 'Everything': additionally the Large part variant's card. Masts, "
-			+ "helms, cannons and cargo holds have no part cards and are never restricted.",
-		section = gatheringSection,
-		position = 6
+		name = "Boat upgrades",
+		description = "Installing a hull or keel tier requires cards."
+			+ "<br>'Parts': the tier's part card (e.g. Oak hull parts)."
+			+ "<br>'Parts + Materials': also the underlying material card (Oak plank, Bronze bar)."
+			+ "<br>'Everything': additionally the log card and the Large part variant's card."
+			+ "<br>Masts, helms, cannons and cargo holds have no part cards and are never restricted.",
+		section = sailingSection,
+		position = 0
 	)
 	default SailingUpgradeMode sailingUpgradeMode()
 	{
@@ -444,26 +635,20 @@ public interface BronzemanTcgConfig extends Config
 
 	@ConfigItem(
 		keyName = "restrictSalvaging",
-		name = "Sailing: salvaging",
-		description = "Salvaging a shipwreck requires the card of the salvage type that wreck tier "
-			+ "yields (e.g. Barracuda shipwrecks need the Barracuda salvage card).",
-		section = gatheringSection,
-		position = 7
+		name = "Salvaging",
+		description = "Salvaging a shipwreck requires the card of the salvage type that wreck tier yields."
+			+ "<br>e.g. Barracuda shipwrecks need the Barracuda salvage card.",
+		section = sailingSection,
+		position = 1
 	)
 	default boolean restrictSalvaging()
 	{
 		return true;
 	}
 
-	// ------------------------------------------------------------------ visuals
-
-	@ConfigSection(
-		name = "Visuals",
-		description = "How locked NPCs and items are shown in the game world.",
-		position = 10
-	)
-	String visualsSection = "visualsSection";
-
+	//----------------
+	//Visuals
+	//----------------
 	@ConfigItem(
 		keyName = "tintLockedNpcs",
 		name = "Tint locked NPCs grey",
@@ -503,7 +688,7 @@ public interface BronzemanTcgConfig extends Config
 		return 2;
 	}
 
-	@Range(min = 0, max = 6)
+	@Range(max = 6)
 	@ConfigItem(
 		keyName = "lockedOutlineFeather",
 		name = "Outline feather",
@@ -519,102 +704,14 @@ public interface BronzemanTcgConfig extends Config
 	@ConfigItem(
 		keyName = "hideLockedEntities",
 		name = "Hide locked NPCs",
-		description = "Completely hides NPCs whose card you have not collected. Overrides the "
-			+ "grey outline. (Ground items can't be hidden by the client hook; locked loot is "
-			+ "still blocked from pickup.)",
+		description = "Completely hides NPCs whose card you have not collected. Overrides the grey outline."
+			+ "<br>Ground items can't be hidden by the client hook; locked loot is still blocked "
+			+ "from pickup.",
 		section = visualsSection,
 		position = 4
 	)
 	default boolean hideLockedEntities()
 	{
 		return false;
-	}
-
-	// ------------------------------------------------------------------ resource nodes (existing)
-
-	@ConfigSection(
-		name = "Resource nodes",
-		description = "Block gathering from skill resource nodes until the card of the item they yield is collected.",
-		position = 9
-	)
-	String resourceNodesSection = "resourceNodesSection";
-
-	@ConfigItem(
-		keyName = "restrictWoodcutting",
-		name = "Restrict woodcutting",
-		description = "Block chopping trees until the respective logs card is collected (e.g. Oak tree needs Oak logs).",
-		section = resourceNodesSection,
-		position = 0
-	)
-	default boolean restrictWoodcutting()
-	{
-		return true;
-	}
-
-	@ConfigItem(
-		keyName = "restrictMining",
-		name = "Restrict mining",
-		description = "Block mining rocks until the respective ore card is collected (e.g. Copper rocks need Copper ore).",
-		section = resourceNodesSection,
-		position = 1
-	)
-	default boolean restrictMining()
-	{
-		return true;
-	}
-
-	@ConfigItem(
-		keyName = "fishingMode",
-		name = "Restrict fishing",
-		description = "Fishing spots share one name everywhere, so each spot type lists every fish it can "
-			+ "yield at any location. 'Any of': owning any one of those fish unlocks that spot type "
-			+ "(e.g. Raw tuna unlocks all Harpoon spots, shark spots included). "
-			+ "'Require ALL': the spot type stays locked until you own every fish it can yield "
-			+ "(e.g. Harpoon needs Raw tuna, Raw swordfish AND Raw shark). 'Off': no fishing restriction.",
-		section = resourceNodesSection,
-		position = 2
-	)
-	default FishingRestrictionMode fishingMode()
-	{
-		return FishingRestrictionMode.ANY_OF;
-	}
-
-	@ConfigItem(
-		keyName = "restrictPickpocketing",
-		name = "Restrict pickpocketing",
-		description = "Block pickpocketing NPCs until the cards of their loot are collected (e.g. Coins and coin pouch).",
-		section = resourceNodesSection,
-		position = 3
-	)
-	default boolean restrictPickpocketing()
-	{
-		return true;
-	}
-
-	@ConfigItem(
-		keyName = "masterFarmerMode",
-		name = "Master Farmer",
-		description = "Master Farmers give seeds, not coin pouches, so they get their own dial. "
-			+ "'Coins+Pouch': same simple rule as other pickpocket targets. "
-			+ "'Insanity': locked until you own EVERY seed card on his drop table. "
-			+ "'Off': never restricted. Independent of the pickpocketing toggle above.",
-		section = resourceNodesSection,
-		position = 4
-	)
-	default MasterFarmerMode masterFarmerMode()
-	{
-		return MasterFarmerMode.COINS_POUCH;
-	}
-
-	@ConfigItem(
-		keyName = "restrictCooking",
-		name = "Restrict cooking",
-		description = "Block using raw food on fires/ranges until the cooked version's card is collected.",
-		section = resourceNodesSection,
-		position = 5
-	)
-	default boolean restrictCooking()
-	{
-		return true;
 	}
 }
