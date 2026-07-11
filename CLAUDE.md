@@ -169,6 +169,12 @@ docs/sailing_nodes_report.md):
    prefer the dev client only for testing - play on the hub build.
 
 ## Post-launch backlog (agreed with owner)
+- **PvM content readiness panels (AFTER quests ship — owner explicitly
+  deferred the research)**: same concept as the quest section but for
+  instanced content — Fight Caves, Inferno, Chambers of Xeric, ToB?, ToA?,
+  Fortis Colosseum: the monster cards needed to complete each piece of
+  content, with progress bars and click-to-expand checklists. Data pass =
+  per-content monster rosters resolved through the monster snapshot.
 - **Collection backup + regression detection**: periodically (and via a
   side-panel button) export the DECODED collection as plain JSON to
   .runelite/bronzeman-tcg/collection-backup.json (timestamped; card names
@@ -186,7 +192,8 @@ docs/sailing_nodes_report.md):
   iteration for animation edge cases; models are shared per NPC type
   (coherent for us — lock state is per-name). Hub precedent exists but
   expect closer review.
-- Side panel design iteration (ask owner what to change first).
+- Side panel design iteration (ask owner what to change first). Rendering
+  study notes: "D:\ClaudeFolder\RuneLite Research\osrs-tcg-overlay-techniques.md".
 - Time Tracking plugin interop: per-patch crop harvest restriction +
   compost-type discrimination by reading its persisted config state
   (same pattern as the osrs-tcg interop).

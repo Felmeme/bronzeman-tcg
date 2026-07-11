@@ -112,6 +112,9 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	private RecipeCatalog recipeCatalog;
 
 	@Inject
+	private QuestCatalog questCatalog;
+
+	@Inject
 	private ClientToolbar clientToolbar;
 
 	@Inject
@@ -135,7 +138,7 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	{
 		collectionReader.invalidate();
 
-		panel = new BronzemanTcgPanel(monsterCatalog, itemCatalog, nodeCatalog, collectionReader);
+		panel = new BronzemanTcgPanel(monsterCatalog, itemCatalog, nodeCatalog, questCatalog, collectionReader);
 		navButton = NavigationButton.builder()
 			.tooltip("Bronzeman TCG")
 			.icon(drawPanelIcon())

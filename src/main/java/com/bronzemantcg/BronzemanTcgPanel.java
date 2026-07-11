@@ -2,8 +2,14 @@ package com.bronzemantcg;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
@@ -40,19 +46,25 @@ class BronzemanTcgPanel extends PluginPanel
 	private final TrackedMonsterCatalog monsterCatalog;
 	private final TrackedItemCatalog itemCatalog;
 	private final ResourceNodeCatalog nodeCatalog;
+	private final QuestCatalog questCatalog;
 	private final TcgCollectionReader collectionReader;
 
 	private final IconTextField searchBar = new IconTextField();
 	private final JPanel searchResults = sectionBody();
 	private final JPanel nearbyList = sectionBody();
 	private final JPanel progressList = sectionBody();
+	private final JPanel questList = sectionBody();
+	private final JLabel questsHeader = sectionHeader("Quests ▸");
+	private boolean questsExpanded;
+	private final Set<String> expandedQuests = new HashSet<>();
 
 	BronzemanTcgPanel(TrackedMonsterCatalog monsterCatalog, TrackedItemCatalog itemCatalog,
-		ResourceNodeCatalog nodeCatalog, TcgCollectionReader collectionReader)
+		ResourceNodeCatalog nodeCatalog, QuestCatalog questCatalog, TcgCollectionReader collectionReader)
 	{
 		this.monsterCatalog = monsterCatalog;
 		this.itemCatalog = itemCatalog;
 		this.nodeCatalog = nodeCatalog;
+		this.questCatalog = questCatalog;
 		this.collectionReader = collectionReader;
 
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
@@ -89,8 +101,107 @@ class BronzemanTcgPanel extends PluginPanel
 		add(nearbyList);
 		add(sectionHeader("Progress"));
 		add(progressList);
+		questsHeader.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		questsHeader.addMouseListener(new MouseAdapter()
+		{
+			@Override
+			public void mouseClicked(MouseEvent e)
+			{
+				questsExpanded = !questsExpanded;
+				refreshQuests();
+			}
+		});
+		add(questsHeader);
+		add(questList);
 
 		refreshProgress();
+		refreshQuests();
+	}
+
+	// ------------------------------------------------------------------ quests
+
+	private void refreshQuests()
+	{
+		questList.removeAll();
+		List<QuestCatalog.QuestEntry> quests = questCatalog.getQuests();
+		Set<String> owned = collectionReader.getOwnedCardNamesLowerCase();
+
+		int completable = 0;
+		for (QuestCatalog.QuestEntry quest : quests)
+		{
+			if (quest.satisfiedCount(owned) == quest.requirements.size())
+			{
+				completable++;
+			}
+		}
+		questsHeader.setText(String.format("Quests %s  %d/%d completable",
+			questsExpanded ? "▾" : "▸", completable, quests.size()));
+
+		if (questsExpanded)
+		{
+			if (quests.isEmpty())
+			{
+				questList.add(mutedRow("No quest data bundled"));
+			}
+			// Completable first, then fewest missing, then alphabetical.
+			List<QuestCatalog.QuestEntry> sorted = new ArrayList<>(quests);
+			sorted.sort(Comparator
+				.comparingInt((QuestCatalog.QuestEntry q) -> q.requirements.size() - q.satisfiedCount(owned))
+				.thenComparing(q -> q.name, String.CASE_INSENSITIVE_ORDER));
+			for (QuestCatalog.QuestEntry quest : sorted)
+			{
+				questList.add(questRow(quest, owned));
+				if (expandedQuests.contains(quest.name))
+				{
+					for (QuestCatalog.Requirement requirement : quest.requirements)
+					{
+						boolean have = requirement.isSatisfied(owned);
+						questList.add(requirementRow(requirement, have));
+					}
+					if (quest.requirements.isEmpty())
+					{
+						questList.add(mutedRow("  No card-backed requirements"));
+					}
+				}
+			}
+		}
+		questList.revalidate();
+		questList.repaint();
+	}
+
+	private JPanel questRow(QuestCatalog.QuestEntry quest, Set<String> owned)
+	{
+		int have = quest.satisfiedCount(owned);
+		int total = quest.requirements.size();
+		JPanel row = progressRow(quest.name + (quest.miniquest ? " (mini)" : ""), have, Math.max(total, 0));
+		if (total == 0)
+		{
+			row.setToolTipText("No card-backed requirements - always completable");
+		}
+		row.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		row.addMouseListener(new MouseAdapter()
+		{
+			@Override
+			public void mouseClicked(MouseEvent e)
+			{
+				if (!expandedQuests.remove(quest.name))
+				{
+					expandedQuests.add(quest.name);
+				}
+				refreshQuests();
+			}
+		});
+		return row;
+	}
+
+	private JPanel requirementRow(QuestCatalog.Requirement requirement, boolean have)
+	{
+		String alternatives = requirement.displayCards.size() > 1
+			? ": " + String.join(" / ", requirement.displayCards)
+			: "";
+		JPanel row = statusRow("  " + requirement.label + alternatives, have, null);
+		row.setBackground(ColorScheme.DARK_GRAY_COLOR);
+		return row;
 	}
 
 	// ------------------------------------------------------------------ search
@@ -156,6 +267,10 @@ class BronzemanTcgPanel extends PluginPanel
 	/** Called on the EDT with a snapshot the plugin gathered on the client thread. */
 	void updateNearby(List<NearbyEntry> entries)
 	{
+		if (questsExpanded)
+		{
+			refreshQuests();
+		}
 		nearbyList.removeAll();
 		Set<String> owned = collectionReader.getOwnedCardNamesLowerCase();
 		int shown = 0;
