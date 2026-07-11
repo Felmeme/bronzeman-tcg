@@ -160,7 +160,27 @@ docs/sailing_nodes_report.md):
    cards/cosmetic/double-gating): masts, helms, cannons, cargo holds,
    chum, nets, port tasks, charting, crew, paints, dragon schematics.
    See docs/sailing_nodes_report.md.
-7. Hub submission.
+7. Hub submission (in progress 2026-07-12: LICENSE/README/icon/properties
+   done, config UX pass done, RenderCallbackManager migration done; owner
+   creating the GitHub repo, then plugin-hub PR pinned to the release
+   commit).
+
+## Post-launch backlog (agreed with owner)
+- **Grey model recolor** as a third Visuals choice (dropdown: Outline /
+  Grey model / Off, outline default): mutate NPC Model face color arrays
+  (getFaceColors1/2/3, packed HSL) to greyscale for locked NPCs. Needs
+  original-color snapshot/restore on unlock/toggle/shutdown, and in-game
+  iteration for animation edge cases; models are shared per NPC type
+  (coherent for us — lock state is per-name). Hub precedent exists but
+  expect closer review.
+- Side panel design iteration (ask owner what to change first).
+- Time Tracking plugin interop: per-patch crop harvest restriction +
+  compost-type discrimination by reading its persisted config state
+  (same pattern as the osrs-tcg interop).
+- Krystilia require-all difficulty revisit (wilderness bosses).
+- Sailing test pass (see DEFERRED section above).
+- Upstream card-gap report to osrs-tcg: Onyx ring; larupia/kyatt/kebbits/
+  moths/Herbiboar hunter creatures; blurite/barronite ores.
 
 ## Maintenance contracts with upstream osrs-tcg
 - If its `Card.json` changes: regenerate both snapshot resources with
