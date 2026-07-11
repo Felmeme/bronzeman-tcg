@@ -67,6 +67,11 @@ dependency, so both plugins install independently. Card catalogs are bundled
 snapshots generated from osrs-tcg's `Card.json` by `scripts/` (regenerate
 when upstream updates; see script docstrings).
 
+Curious how it all works? [docs/HOW_IT_WORKS.md](docs/HOW_IT_WORKS.md) is a
+plain-language walkthrough of the whole architecture, from the collection
+decode chain to the life of a blocked click. The other files in `docs/` are
+the data-audit reports behind the bundled catalogs.
+
 ## Dev
 
 ```
