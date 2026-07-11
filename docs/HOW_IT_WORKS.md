@@ -1,8 +1,8 @@
 # Bronzeman TCG, Under the Hood
 
-*An engineering walkthrough of your own plugin — how the code actually enforces the challenge, layer by layer.*
+*An engineering walkthrough of the plugin — how the code actually enforces the challenge, layer by layer.*
 
-You designed every feature in here. What this document does is show you how those design decisions became running Java: what a RuneLite plugin is at the machine level, how the code learns what you own and what exists, how a single mouse click gets inspected and sometimes cancelled, and why the whole thing is built to break loudly rather than quietly cheat in your favour. No prior Java or RuneLite knowledge assumed — jargon gets defined the first time it shows up — but nothing here is dumbed down either.
+What this document does is show you what a RuneLite plugin is at the machine level, how the code learns what you own and what exists, how a single mouse click gets inspected and sometimes cancelled, and why the whole thing is built to break loudly rather than quietly cheat in your favour. No prior Java or RuneLite knowledge assumed — jargon gets defined the first time it shows up — but nothing here is dumbed down either.
 
 ---
 
@@ -10,7 +10,7 @@ You designed every feature in here. What this document does is show you how thos
 
 **What a RuneLite plugin is.** RuneLite is the third-party OSRS client, written in Java. It's built to be extended: instead of a single monolithic program, it's a host that loads dozens of small modules called *plugins*, and it hands each one a controlled window into the running game. Three mechanisms make that possible, and this plugin uses all three.
 
-- **Event subscribers.** RuneLite has an internal *event bus* — a public address system that announces things as they happen: "a game tick elapsed," "the player clicked a menu option," "the account profile changed." Your code subscribes to the announcements it cares about by writing a method and tagging it `@Subscribe`. The `@` symbol is a Java *annotation*: a label you stick on code that tools (here, RuneLite's event bus) read and act on. When RuneLite sees `@Subscribe` above a method whose argument is a `MenuOptionClicked`, it files that method away and calls it every time a menu option is clicked. You never call it yourself; RuneLite does.
+- **Event subscribers.** RuneLite has an internal *event bus* — a public address system that announces things as they happen: "a game tick elapsed," "the player clicked a menu option," "the account profile changed." The code subscribes to the announcements it cares about by writing a method and tagging it `@Subscribe`. The `@` symbol is a Java *annotation*: a label you stick on code that tools (here, RuneLite's event bus) read and act on. When RuneLite sees `@Subscribe` above a method whose argument is a `MenuOptionClicked`, it files that method away and calls it every time a menu option is clicked. You never call it yourself; RuneLite does.
 
 - **Dependency injection.** Look at the top of `BronzemanTcgPlugin` and you'll see a stack of fields each marked `@Inject` — `Client`, `ItemManager`, `ConfigManager`, plus your own catalogs. Injection means you *declare* "I need a Client" and the framework *supplies* a fully-built one at startup. You never write `new Client()`. This matters because there's exactly one real game client, one item database, one config store, and everyone must share the same instances; injection is how RuneLite guarantees that. `@Singleton` on your catalog classes is the other half of the deal — it tells the framework "build exactly one of these and give everyone the same copy."
 
@@ -124,7 +124,7 @@ The routing works in two tiers. First, a fast check: does the clicked menu entry
 
 - **Item-on-item and spell-on-item** (`WIDGET_TARGET_ON_WIDGET`). Same `" -> "` split. If the source is a spell (`Cast …`, or a non-item selected widget) it routes to enchanting, keyed on the target jewellery alone since each item has exactly one enchant. Otherwise it's a crafting recipe, tried both directions because the data keys tool→material but you might click either way round.
 
-**The honour-system caveat.** The whole design rests on one hard limit: RuneLite can only consume clicks that go *through the menu*. Some actions don't. The classic is a keyboard "make" — pressing spacebar on the "how many?" dialog, or the case where you're holding materials for exactly one product so the game skips the menu entirely. Those never generate a `MenuOptionClicked`, so there's nothing to consume. This isn't a bug to be fixed; it's a boundary of the platform. You accepted it as an honour-system gap, and the code comments say so out loud rather than pretending otherwise.
+**The honour-system caveat.** The whole design rests on one hard limit: RuneLite can only consume clicks that go *through the menu*. Some actions don't. The classic is a keyboard "make" — pressing spacebar on the "how many?" dialog, or the case where you're holding materials for exactly one product so the game skips the menu entirely. Those never generate a `MenuOptionClicked`, so there's nothing to consume. This isn't a bug to be fixed; it's a boundary of the platform. It's been left as an honour-system gap, and the code comments say so out loud rather than pretending otherwise.
 
 ---
 
