@@ -3,7 +3,6 @@ package com.bronzemantcg;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
-import java.awt.Shape;
 import java.util.Set;
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -13,31 +12,38 @@ import net.runelite.api.NPCComposition;
 import net.runelite.client.ui.overlay.Overlay;
 import net.runelite.client.ui.overlay.OverlayLayer;
 import net.runelite.client.ui.overlay.OverlayPosition;
+import net.runelite.client.ui.overlay.outline.ModelOutlineRenderer;
 import net.runelite.client.util.Text;
 
 /**
- * Greys out NPCs whose card hasn't been collected: a translucent dark fill over the
- * model's convex hull, the inverse of the usual highlight overlay. Runs on the client
- * thread each frame, so the per-NPC work stays to two map lookups.
+ * Marks NPCs whose card hasn't been collected with a grey model outline (the same
+ * silhouette-hugging renderer NPC Indicators uses, in "disabled grey" rather than a
+ * highlight colour). Runs on the client thread each frame, so the per-NPC work stays
+ * to two map lookups.
  */
 @Singleton
 class BronzemanTcgOverlay extends Overlay
 {
-	private static final Color LOCKED_TINT = new Color(60, 60, 60, 140);
+	private static final Color LOCKED_OUTLINE = new Color(60, 60, 60, 200);
+	private static final int OUTLINE_WIDTH = 2;
+	private static final int OUTLINE_FEATHER = 2;
 
 	private final Client client;
 	private final BronzemanTcgConfig config;
 	private final TrackedMonsterCatalog monsterCatalog;
 	private final TcgCollectionReader collectionReader;
+	private final ModelOutlineRenderer modelOutlineRenderer;
 
 	@Inject
 	BronzemanTcgOverlay(Client client, BronzemanTcgConfig config,
-		TrackedMonsterCatalog monsterCatalog, TcgCollectionReader collectionReader)
+		TrackedMonsterCatalog monsterCatalog, TcgCollectionReader collectionReader,
+		ModelOutlineRenderer modelOutlineRenderer)
 	{
 		this.client = client;
 		this.config = config;
 		this.monsterCatalog = monsterCatalog;
 		this.collectionReader = collectionReader;
+		this.modelOutlineRenderer = modelOutlineRenderer;
 		setPosition(OverlayPosition.DYNAMIC);
 		setLayer(OverlayLayer.ABOVE_SCENE);
 	}
@@ -45,25 +51,20 @@ class BronzemanTcgOverlay extends Overlay
 	@Override
 	public Dimension render(Graphics2D graphics)
 	{
-		// Hidden entities never render, so tinting them would just paint over scenery.
+		// Hidden entities never render, so outlining them would just draw over scenery.
 		if (!config.tintLockedNpcs() || config.hideLockedEntities())
 		{
 			return null;
 		}
 
 		Set<String> owned = collectionReader.getOwnedCardNamesLowerCase();
-		graphics.setColor(LOCKED_TINT);
 		for (NPC npc : client.getNpcs())
 		{
 			if (npc == null || !isLocked(npc, owned))
 			{
 				continue;
 			}
-			Shape hull = npc.getConvexHull();
-			if (hull != null)
-			{
-				graphics.fill(hull);
-			}
+			modelOutlineRenderer.drawOutline(npc, OUTLINE_WIDTH, LOCKED_OUTLINE, OUTLINE_FEATHER);
 		}
 		return null;
 	}
