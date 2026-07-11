@@ -169,12 +169,12 @@ docs/sailing_nodes_report.md):
    prefer the dev client only for testing - play on the hub build.
 
 ## Post-launch backlog (agreed with owner)
-- **PvM content readiness panels (AFTER quests ship — owner explicitly
-  deferred the research)**: same concept as the quest section but for
-  instanced content — Fight Caves, Inferno, Chambers of Xeric, ToB?, ToA?,
-  Fortis Colosseum: the monster cards needed to complete each piece of
-  content, with progress bars and click-to-expand checklists. Data pass =
-  per-content monster rosters resolved through the monster snapshot.
+- **Card browser in the side panel (NEXT after PvM content — owner spec
+  in progress, "we'll work on it as we go")**: grouped view of available
+  cards for easier discovery — resources grouped by skill/type, e.g. all
+  logs under "Logs" since every skill uses them, but Construction shows
+  planks and not logs. Grouping taxonomy is the owner's design call;
+  expect iteration.
 - **Collection backup + regression detection**: periodically (and via a
   side-panel button) export the DECODED collection as plain JSON to
   .runelite/bronzeman-tcg/collection-backup.json (timestamped; card names

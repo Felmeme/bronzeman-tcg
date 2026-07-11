@@ -47,6 +47,7 @@ class BronzemanTcgPanel extends PluginPanel
 	private final TrackedItemCatalog itemCatalog;
 	private final ResourceNodeCatalog nodeCatalog;
 	private final QuestCatalog questCatalog;
+	private final ContentCatalog contentCatalog;
 	private final TcgCollectionReader collectionReader;
 
 	private final IconTextField searchBar = new IconTextField();
@@ -57,14 +58,20 @@ class BronzemanTcgPanel extends PluginPanel
 	private final JLabel questsHeader = sectionHeader("Quests ▸");
 	private boolean questsExpanded;
 	private final Set<String> expandedQuests = new HashSet<>();
+	private final JPanel contentList = sectionBody();
+	private final JLabel contentHeader = sectionHeader("PvM Content ▸");
+	private boolean contentExpanded;
+	private final Set<String> expandedContents = new HashSet<>();
 
 	BronzemanTcgPanel(TrackedMonsterCatalog monsterCatalog, TrackedItemCatalog itemCatalog,
-		ResourceNodeCatalog nodeCatalog, QuestCatalog questCatalog, TcgCollectionReader collectionReader)
+		ResourceNodeCatalog nodeCatalog, QuestCatalog questCatalog, ContentCatalog contentCatalog,
+		TcgCollectionReader collectionReader)
 	{
 		this.monsterCatalog = monsterCatalog;
 		this.itemCatalog = itemCatalog;
 		this.nodeCatalog = nodeCatalog;
 		this.questCatalog = questCatalog;
+		this.contentCatalog = contentCatalog;
 		this.collectionReader = collectionReader;
 
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
@@ -101,80 +108,112 @@ class BronzemanTcgPanel extends PluginPanel
 		add(nearbyList);
 		add(sectionHeader("Progress"));
 		add(progressList);
-		questsHeader.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		questsHeader.addMouseListener(new MouseAdapter()
+		wireChecklistHeader(questsHeader, () ->
+		{
+			questsExpanded = !questsExpanded;
+			refreshQuests();
+		});
+		add(questsHeader);
+		add(questList);
+		wireChecklistHeader(contentHeader, () ->
+		{
+			contentExpanded = !contentExpanded;
+			refreshContent();
+		});
+		add(contentHeader);
+		add(contentList);
+
+		refreshProgress();
+		refreshQuests();
+		refreshContent();
+	}
+
+	// ------------------------------------------------------------------ checklists (quests + PvM content)
+
+	private static void wireChecklistHeader(JLabel header, Runnable toggle)
+	{
+		header.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		header.addMouseListener(new MouseAdapter()
 		{
 			@Override
 			public void mouseClicked(MouseEvent e)
 			{
-				questsExpanded = !questsExpanded;
-				refreshQuests();
+				toggle.run();
 			}
 		});
-		add(questsHeader);
-		add(questList);
-
-		refreshProgress();
-		refreshQuests();
 	}
-
-	// ------------------------------------------------------------------ quests
 
 	private void refreshQuests()
 	{
-		questList.removeAll();
-		List<QuestCatalog.QuestEntry> quests = questCatalog.getQuests();
+		refreshChecklist(questList, questsHeader, "Quests", questsExpanded,
+			questCatalog.getQuests(), expandedQuests, this::refreshQuests, "No quest data bundled");
+	}
+
+	private void refreshContent()
+	{
+		refreshChecklist(contentList, contentHeader, "PvM Content", contentExpanded,
+			contentCatalog.getContents(), expandedContents, this::refreshContent, "No content data bundled");
+	}
+
+	private void refreshChecklist(JPanel container, JLabel header, String title, boolean expanded,
+		List<QuestCatalog.QuestEntry> entries, Set<String> expandedNames, Runnable refresh, String emptyText)
+	{
+		container.removeAll();
 		Set<String> owned = collectionReader.getOwnedCardNamesLowerCase();
 
 		int completable = 0;
-		for (QuestCatalog.QuestEntry quest : quests)
+		for (QuestCatalog.QuestEntry entry : entries)
 		{
-			if (quest.satisfiedCount(owned) == quest.requirements.size())
+			if (entry.satisfiedCount(owned) == entry.requirements.size())
 			{
 				completable++;
 			}
 		}
-		questsHeader.setText(String.format("Quests %s  %d/%d completable",
-			questsExpanded ? "▾" : "▸", completable, quests.size()));
+		header.setText(String.format("%s %s  %d/%d completable",
+			title, expanded ? "▾" : "▸", completable, entries.size()));
 
-		if (questsExpanded)
+		if (expanded)
 		{
-			if (quests.isEmpty())
+			if (entries.isEmpty())
 			{
-				questList.add(mutedRow("No quest data bundled"));
+				container.add(mutedRow(emptyText));
 			}
 			// Completable first, then fewest missing, then alphabetical.
-			List<QuestCatalog.QuestEntry> sorted = new ArrayList<>(quests);
+			List<QuestCatalog.QuestEntry> sorted = new ArrayList<>(entries);
 			sorted.sort(Comparator
 				.comparingInt((QuestCatalog.QuestEntry q) -> q.requirements.size() - q.satisfiedCount(owned))
 				.thenComparing(q -> q.name, String.CASE_INSENSITIVE_ORDER));
-			for (QuestCatalog.QuestEntry quest : sorted)
+			for (QuestCatalog.QuestEntry entry : sorted)
 			{
-				questList.add(questRow(quest, owned));
-				if (expandedQuests.contains(quest.name))
+				container.add(checklistRow(entry, owned, expandedNames, refresh));
+				if (expandedNames.contains(entry.name))
 				{
-					for (QuestCatalog.Requirement requirement : quest.requirements)
+					for (QuestCatalog.Requirement requirement : entry.requirements)
 					{
-						boolean have = requirement.isSatisfied(owned);
-						questList.add(requirementRow(requirement, have));
+						container.add(requirementRow(requirement, requirement.isSatisfied(owned)));
 					}
-					if (quest.requirements.isEmpty())
+					if (entry.requirements.isEmpty())
 					{
-						questList.add(mutedRow("  No card-backed requirements"));
+						container.add(mutedRow("  No card-backed requirements"));
 					}
 				}
 			}
 		}
-		questList.revalidate();
-		questList.repaint();
+		container.revalidate();
+		container.repaint();
 	}
 
-	private JPanel questRow(QuestCatalog.QuestEntry quest, Set<String> owned)
+	private JPanel checklistRow(QuestCatalog.QuestEntry entry, Set<String> owned,
+		Set<String> expandedNames, Runnable refresh)
 	{
-		int have = quest.satisfiedCount(owned);
-		int total = quest.requirements.size();
-		JPanel row = progressRow(quest.name + (quest.miniquest ? " (mini)" : ""), have, Math.max(total, 0));
-		if (total == 0)
+		int have = entry.satisfiedCount(owned);
+		int total = entry.requirements.size();
+		JPanel row = progressRow(entry.name + (entry.miniquest ? " (mini)" : ""), have, Math.max(total, 0));
+		if (!entry.notes.isEmpty())
+		{
+			row.setToolTipText(entry.notes);
+		}
+		else if (total == 0)
 		{
 			row.setToolTipText("No card-backed requirements - always completable");
 		}
@@ -184,11 +223,11 @@ class BronzemanTcgPanel extends PluginPanel
 			@Override
 			public void mouseClicked(MouseEvent e)
 			{
-				if (!expandedQuests.remove(quest.name))
+				if (!expandedNames.remove(entry.name))
 				{
-					expandedQuests.add(quest.name);
+					expandedNames.add(entry.name);
 				}
-				refreshQuests();
+				refresh.run();
 			}
 		});
 		return row;
@@ -270,6 +309,10 @@ class BronzemanTcgPanel extends PluginPanel
 		if (questsExpanded)
 		{
 			refreshQuests();
+		}
+		if (contentExpanded)
+		{
+			refreshContent();
 		}
 		nearbyList.removeAll();
 		Set<String> owned = collectionReader.getOwnedCardNamesLowerCase();

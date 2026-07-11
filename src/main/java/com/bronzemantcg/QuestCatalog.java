@@ -110,12 +110,19 @@ public class QuestCatalog
 		public final String name;
 		public final boolean miniquest;
 		public final List<Requirement> requirements;
+		public final String notes;
 
 		QuestEntry(String name, boolean miniquest, List<Requirement> requirements)
+		{
+			this(name, miniquest, requirements, "");
+		}
+
+		QuestEntry(String name, boolean miniquest, List<Requirement> requirements, String notes)
 		{
 			this.name = name;
 			this.miniquest = miniquest;
 			this.requirements = Collections.unmodifiableList(requirements);
+			this.notes = notes;
 		}
 
 		public int satisfiedCount(Set<String> ownedLowerCase)
