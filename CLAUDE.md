@@ -160,12 +160,13 @@ docs/sailing_nodes_report.md):
    cards/cosmetic/double-gating): masts, helms, cannons, cargo holds,
    chum, nets, port tasks, charting, crew, paints, dragon schematics.
    See docs/sailing_nodes_report.md.
-7. Hub submission: **submitted 2026-07-12** — repo public at
-   github.com/Felmeme/bronzeman-tcg, plugin-hub PR open with CI green
-   (pinned commit 802e7c9; first CI run failed on a missing
-   build=standard in runelite-plugin.properties, restored). Awaiting
-   manual review; reviewer feedback lands as PR comments, fixes ship by
-   pushing here and bumping the PR's commit= line.
+7. Hub submission: **APPROVED — LIVE ON THE PLUGIN HUB** (2026-07-11).
+   Repo public at github.com/Felmeme/bronzeman-tcg. Release flow for all
+   future updates: commit+push here, then PR to runelite/plugin-hub
+   bumping plugins/bronzeman-tcg's commit= line to the new hash. The
+   plugin now has real users: keep config keyNames stable (renames wipe
+   players' settings), keep the fail-safe defaults conservative, and
+   prefer the dev client only for testing - play on the hub build.
 
 ## Post-launch backlog (agreed with owner)
 - **Collection backup + regression detection**: periodically (and via a
