@@ -123,21 +123,20 @@ only, no automation).
    (search / nearby / progress; upside-down bronze med helm icon).
    **Panel needs design iteration** — owner wants to revisit its layout
    and content later; ask what's wrong with it before restyling.
-6. **Sailing (NEXT UP — owner-approved design, 2026-07-11)**: restrict only
-   card-backed content. (a) Boat upgrades: mode dropdown Off / Parts /
-   Parts+Materials / Everything — Parts = the tier's part card (Oak hull
-   parts); +Materials adds the underlying material card (Oak logs, Bronze
-   bar); Everything also adds the Large part variant. Hull (7 wood tiers)
-   and keel (Bronze->Dragon) only — masts/helms/cannons/cargo have no part
-   cards, never restricted. (b) Salvaging: shipwreck tier -> its salvage
-   card, 1:1 (Small/Fishy/Barracuda/Large/Plundered/Martial/Fremennik/
-   Opulent map to the L15-L87 wreck tiers). (c) Harpoonfish folds into the
-   existing fishing union (verify whether deep-sea spots share "Fishing
-   spot"+"Harpoon" or have their own name). (d) Sea monsters already
-   covered by the attack restriction. Skipped (no cards / cosmetic /
-   double-gating): masts, helms, cannons, cargo holds, chum, nets, port
-   tasks, charting, crew, paints, dragon schematics. Data pass needed for
-   exact shipwreck/shipwright object names + options (usual Opus wiki job).
+6. **Sailing**: implemented (2026-07-12), needs manual test pass. Boat
+   upgrades: mode dropdown Off/Parts/Parts+Materials/Everything; material
+   = plank card, log card only in Everything (owner's chain ruling); keels
+   have no Everything-extra (bar-from-ore is smelting's job); each tier
+   keyed under install name (guessed: "Oak hull") AND workbench part
+   products (verified == card names). Salvaging: 8 wreck tiers -> salvage
+   cards (mapping wiki-verified). Raw harpoonfish joined the Harpoon
+   fishing union (Tempoross Cove shares the spot identity); Crystallised
+   excluded. To verify in-game: install-side product strings, the wreck
+   "Salvage" option text (infobox only lists Inspect — may be item-on-
+   object with the hook), and Boat schematics "Modify" flow. Skipped (no
+   cards/cosmetic/double-gating): masts, helms, cannons, cargo holds,
+   chum, nets, port tasks, charting, crew, paints, dragon schematics.
+   See docs/sailing_nodes_report.md.
 7. Hub submission.
 
 ## Maintenance contracts with upstream osrs-tcg
