@@ -74,6 +74,15 @@ public class ResourceNodeCatalog
 		return rules.size();
 	}
 
+	/**
+	 * Unmodifiable view of all rules keyed "kind|name|option" (all lowercased), for the
+	 * side panel's progress meters. The same Rule instance appears once per option.
+	 */
+	public Map<String, Rule> getRuleEntries()
+	{
+		return rules;
+	}
+
 	private static String key(String kind, String nameLower, String optionLower)
 	{
 		return kind + '|' + nameLower + '|' + optionLower;

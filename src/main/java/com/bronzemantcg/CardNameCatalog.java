@@ -75,6 +75,12 @@ abstract class CardNameCatalog
 		return entityToCardsLowerCase.size();
 	}
 
+	/** Unmodifiable view of every tracked entity (lowercased name -> variant cards), for the side panel. */
+	public Map<String, Set<String>> getEntityToCards()
+	{
+		return entityToCardsLowerCase;
+	}
+
 	private void load(Gson gson, String resourcePath, String logLabel)
 	{
 		try (InputStream stream = getClass().getResourceAsStream(resourcePath))

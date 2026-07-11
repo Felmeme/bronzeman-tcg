@@ -1,14 +1,22 @@
 package com.bronzemantcg;
 
 import com.google.inject.Provides;
+import java.awt.Color;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Set;
 import javax.inject.Inject;
+import javax.swing.SwingUtilities;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.ChatMessageType;
 import net.runelite.api.Client;
@@ -17,6 +25,9 @@ import net.runelite.api.MenuAction;
 import net.runelite.api.MenuEntry;
 import net.runelite.api.NPC;
 import net.runelite.api.NPCComposition;
+import net.runelite.api.Player;
+import net.runelite.api.coords.WorldPoint;
+import net.runelite.api.events.GameTick;
 import net.runelite.api.events.MenuOpened;
 import net.runelite.api.events.MenuOptionClicked;
 import net.runelite.api.gameval.InterfaceID;
@@ -28,6 +39,8 @@ import net.runelite.client.events.RuneScapeProfileChanged;
 import net.runelite.client.game.ItemManager;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
+import net.runelite.client.ui.ClientToolbar;
+import net.runelite.client.ui.NavigationButton;
 import net.runelite.client.util.Text;
 
 /**
@@ -94,12 +107,28 @@ public class BronzemanTcgPlugin extends Plugin
 	@Inject
 	private RecipeCatalog recipeCatalog;
 
+	@Inject
+	private ClientToolbar clientToolbar;
+
 	private long lastBlockMessageMs;
+	private BronzemanTcgPanel panel;
+	private NavigationButton navButton;
+	private int tickCounter;
 
 	@Override
 	protected void startUp()
 	{
 		collectionReader.invalidate();
+
+		panel = new BronzemanTcgPanel(monsterCatalog, itemCatalog, nodeCatalog, collectionReader);
+		navButton = NavigationButton.builder()
+			.tooltip("Bronzeman TCG")
+			.icon(drawCardIcon())
+			.priority(7)
+			.panel(panel)
+			.build();
+		clientToolbar.addNavigation(navButton);
+
 		log.info("Bronzeman TCG started. Tracking {} TCG-linked NPCs, {} items, {} node rules, {} recipe rules.",
 			monsterCatalog.size(), itemCatalog.size(), nodeCatalog.size(), recipeCatalog.size());
 	}
@@ -107,7 +136,74 @@ public class BronzemanTcgPlugin extends Plugin
 	@Override
 	protected void shutDown()
 	{
+		clientToolbar.removeNavigation(navButton);
+		navButton = null;
+		panel = null;
 		log.info("Bronzeman TCG stopped.");
+	}
+
+	/** Simple bronze card icon drawn at runtime so no binary resource is needed. */
+	private static BufferedImage drawCardIcon()
+	{
+		BufferedImage image = new BufferedImage(24, 24, BufferedImage.TYPE_INT_ARGB);
+		Graphics2D g = image.createGraphics();
+		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+		g.setColor(new Color(0x8d, 0x5a, 0x2b));
+		g.fillRoundRect(5, 2, 14, 20, 4, 4);
+		g.setColor(new Color(0xd9, 0xa3, 0x5c));
+		g.drawRoundRect(5, 2, 14, 20, 4, 4);
+		g.drawRect(8, 6, 8, 8);
+		g.dispose();
+		return image;
+	}
+
+	/**
+	 * Gathers the nearby tracked-NPC snapshot on the client thread every few ticks and
+	 * hands it to the panel on the Swing EDT (game state must not be read from Swing).
+	 */
+	@Subscribe
+	public void onGameTick(GameTick event)
+	{
+		if (panel == null || ++tickCounter % 5 != 0)
+		{
+			return;
+		}
+		Player player = client.getLocalPlayer();
+		if (player == null)
+		{
+			return;
+		}
+		WorldPoint playerLocation = player.getWorldLocation();
+		Map<String, Integer> nearest = new HashMap<>();
+		for (NPC npc : client.getNpcs())
+		{
+			if (npc == null)
+			{
+				continue;
+			}
+			String name = resolveNpcName(npc);
+			if (name == null || name.isEmpty() || !monsterCatalog.isTracked(name))
+			{
+				continue;
+			}
+			int distance = npc.getWorldLocation().distanceTo(playerLocation);
+			nearest.merge(name, distance, Math::min);
+		}
+		List<BronzemanTcgPanel.NearbyEntry> entries = new ArrayList<>(nearest.size());
+		for (Map.Entry<String, Integer> e : nearest.entrySet())
+		{
+			entries.add(new BronzemanTcgPanel.NearbyEntry(e.getKey(), e.getValue()));
+		}
+		entries.sort(Comparator.comparingInt(e -> e.distance));
+
+		BronzemanTcgPanel target = panel;
+		SwingUtilities.invokeLater(() ->
+		{
+			if (target.isShowing())
+			{
+				target.updateNearby(entries);
+			}
+		});
 	}
 
 	@Subscribe
