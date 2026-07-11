@@ -1,18 +1,15 @@
 # Bronzeman TCG — RuneLite plugin
 
 ## HANDOFF NOTES (2026-07-12, written for the next assistant taking over)
-- **IN FLIGHT**: a research agent was building the PvM content rosters
-  (Fight Caves/Inferno/Colosseum/CoX/ToA/Corrupted Gauntlet/ToB → monster
-  cards). Its deliverables (content_cards.json + content_cards_report.md)
-  land in the ORIGINATING SESSION's scratchpad:
-  `C:\Users\ocari\AppData\Local\Temp\claude\D--ClaudeFolder\7ce6b1e2-8f99-4e53-b8e5-25eebd1548d5\scratchpad\`
-  — check there first. Integration = validate every card string against
-  Card.json exactly, copy content_cards.json to src/main/resources/, report
-  to docs/, build, relaunch for owner test, commit, push. The panel section
-  and ContentCatalog already ship and tolerate missing data. If the files
-  never appeared, re-run the research (prompt pattern: enumerate each
-  content's NPC roster from its wiki page, resolve through
-  tracked_monster_names.json, ~7-12 fetches).
+- **PvM content data: INTEGRATED** (was in flight at handoff time; the agent
+  completed and the data shipped — 7 contents, 80 roster cards, see
+  docs/content_cards_report.md). Owner still needs to eyeball the panel
+  section in the dev client. Notable: CoX resolves to only 2 cards (Great
+  Olm, Lizardman shaman — most of its roster has no cards, which per the
+  untracked-never-restricted rule means those rooms are freely fightable);
+  Fortis "Passionate Supporter" has a card but is a non-combat spectator,
+  deliberately excluded. Next agreed feature: the card browser grouped by
+  skill/type (see backlog).
 - **Operational knowledge the hard way**:
   - Build: `export JAVA_HOME="/c/Program Files/Eclipse Adoptium/jdk-11.0.31.11-hotspot" && ./gradlew build --no-daemon`;
     dev client via `./gradlew run` or the owner's local launch-client.bat
