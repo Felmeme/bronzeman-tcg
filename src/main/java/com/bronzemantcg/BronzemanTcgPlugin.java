@@ -1,7 +1,6 @@
 package com.bronzemantcg;
 
 import com.google.inject.Provides;
-import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
@@ -29,7 +28,6 @@ import net.runelite.api.Player;
 import net.runelite.api.Renderable;
 import net.runelite.api.coords.WorldPoint;
 import net.runelite.api.events.GameTick;
-import net.runelite.api.events.MenuOpened;
 import net.runelite.api.events.MenuOptionClicked;
 import net.runelite.api.gameval.InterfaceID;
 import net.runelite.api.gameval.ItemID;
@@ -130,6 +128,8 @@ public class BronzemanTcgPlugin extends Plugin
 	private BronzemanTcgPanel panel;
 	private NavigationButton navButton;
 	private int tickCounter;
+	private String lootExemptRaw;
+	private Set<String> lootExemptSet = Collections.emptySet();
 
 	@Override
 	protected void startUp()
@@ -532,54 +532,6 @@ public class BronzemanTcgPlugin extends Plugin
 		}
 	}
 
-	/**
-	 * Forced drop, presentation half: locked items' menus only offer the allowed options.
-	 * The click-consume path in {@link #handleInventoryOp} stays as the backstop for
-	 * left-click defaults, which never open a menu.
-	 */
-	@Subscribe
-	public void onMenuOpened(MenuOpened event)
-	{
-		if (config.forcedDropMode() == ForcedDropMode.OFF)
-		{
-			return;
-		}
-		MenuEntry[] entries = event.getMenuEntries();
-		List<MenuEntry> kept = new ArrayList<>(entries.length);
-		for (MenuEntry entry : entries)
-		{
-			if (!isForcedDropHiddenEntry(entry))
-			{
-				kept.add(entry);
-			}
-		}
-		if (kept.size() != entries.length)
-		{
-			event.setMenuEntries(kept.toArray(new MenuEntry[0]));
-		}
-	}
-
-	private boolean isForcedDropHiddenEntry(MenuEntry entry)
-	{
-		boolean inventoryUse = entry.getType() == MenuAction.WIDGET_TARGET;
-		if (!entry.isItemOp() && !inventoryUse)
-		{
-			return false;
-		}
-		if (WidgetUtil.componentToInterface(entry.getParam1()) != InterfaceID.INVENTORY)
-		{
-			return false;
-		}
-		String option = Text.removeTags(entry.getOption()).trim().toLowerCase(Locale.ROOT);
-		if (FORCED_DROP_ALLOWED.contains(option))
-		{
-			return false;
-		}
-		String itemName = entry.getItemId() > 0
-			? itemManager.getItemComposition(entry.getItemId()).getName()
-			: Text.removeTags(entry.getTarget()).trim();
-		return itemName != null && !itemName.isEmpty() && !isUnlocked(itemCatalog, itemName);
-	}
 
 	private void handleInventoryOp(MenuOptionClicked event, MenuEntry entry, String option,
 		String optionLower)
@@ -1062,13 +1014,18 @@ public class BronzemanTcgPlugin extends Plugin
 
 	private boolean isLootExempt(String itemName)
 	{
-		String needle = itemName.trim().toLowerCase(Locale.ROOT);
-		Set<String> exempt = new HashSet<>();
-		for (String entry : config.lootExemptNames().split(","))
+		String raw = config.lootExemptNames();
+		if (!raw.equals(lootExemptRaw))
 		{
-			exempt.add(entry.trim().toLowerCase(Locale.ROOT));
+			Set<String> exempt = new HashSet<>();
+			for (String entry : raw.split(","))
+			{
+				exempt.add(entry.trim().toLowerCase(Locale.ROOT));
+			}
+			lootExemptSet = exempt;
+			lootExemptRaw = raw;
 		}
-		return exempt.contains(needle);
+		return lootExemptSet.contains(itemName.trim().toLowerCase(Locale.ROOT));
 	}
 
 	private List<String> missingCards(List<String> requiredCards)

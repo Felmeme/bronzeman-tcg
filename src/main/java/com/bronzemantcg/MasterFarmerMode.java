@@ -6,21 +6,20 @@ package com.bronzemantcg;
  */
 public enum MasterFarmerMode
 {
-	OFF,
-	COINS_POUCH,
-	INSANITY;
+	OFF("Off"),
+	COINS_POUCH("Coins+Pouch"),
+	INSANITY("Insanity");
+
+	private final String label;
+
+	MasterFarmerMode(String label)
+	{
+		this.label = label;
+	}
 
 	@Override
 	public String toString()
 	{
-		switch (this)
-		{
-			case COINS_POUCH:
-				return "Coins+Pouch";
-			case INSANITY:
-				return "Insanity";
-			default:
-				return "Off";
-		}
+		return label;
 	}
 }

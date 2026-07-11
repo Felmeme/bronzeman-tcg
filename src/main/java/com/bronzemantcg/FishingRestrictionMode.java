@@ -7,21 +7,20 @@ package com.bronzemantcg;
  */
 public enum FishingRestrictionMode
 {
-	OFF,
-	ANY_OF,
-	REQUIRE_ALL;
+	OFF("Off"),
+	ANY_OF("Any of"),
+	REQUIRE_ALL("Require ALL");
+
+	private final String label;
+
+	FishingRestrictionMode(String label)
+	{
+		this.label = label;
+	}
 
 	@Override
 	public String toString()
 	{
-		switch (this)
-		{
-			case ANY_OF:
-				return "Any of";
-			case REQUIRE_ALL:
-				return "Require ALL";
-			default:
-				return "Off";
-		}
+		return label;
 	}
 }
