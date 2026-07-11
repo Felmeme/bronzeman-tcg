@@ -155,3 +155,19 @@ add a duplicate `Fishing spot`/`harpoon` node.
 3. **Salvage menu option** — confirm `Salvage` vs `Inspect` vs item-on-object with the salvaging hook.
 4. **Crystallised harpoonfish** in the union — keep or drop?
 5. **Non-gating station marker nodes** (empty `requiredCardGroups`) — confirm the plugin loader tolerates zero groups; if not, drop them and keep the product-name docs here.
+
+---
+
+## Implementation notes (2026-07-12, owner rulings applied)
+
+- Hull material for Parts+Materials mode = the **plank** card (what the game
+  consumes); the **log** card was moved to role "extra", enforced only in the
+  Everything mode (owner's chain ruling: logs -> sawmill -> planks).
+- Keels ship no Everything-extra: bar-from-ore is already gated by the
+  smelting restriction, and double-gating the same step was rejected.
+- `Raw harpoonfish` only joined the Harpoon union; `Crystallised harpoonfish`
+  was excluded by owner ruling.
+- Each tier's rule was keyed under the install-side build name (guessed) AND
+  both Shipwrights' Workbench part products (verified = card names), so one
+  interception path per tier is guaranteed. The in-game verification steps
+  live in CLAUDE.md's deferred Sailing test-pass checklist.

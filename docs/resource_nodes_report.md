@@ -132,3 +132,20 @@ is boulder stages with ambiguous names and mixed yields; revisit if wanted.
 **Elves added (53)**: 4 Lletya (Arvel, Goreu, Kelyn, Mawrth) + 49 Prifddinas
 named elves from the wiki's pickpocketable list. Crystal shard has NO card,
 so they use the Coins+Coin pouch convention like other pickpocket targets.
+
+---
+
+## Addendum 2 (2026-07-12, post-implementation corrections)
+
+Changes made after in-game testing that supersede parts of this report:
+- **Tree names confirmed "Oak tree" style** — the six bare-name fallback nodes
+  (Oak/Willow/Teak/Mahogany/Yew/Redwood) shipped for the naming uncertainty
+  were pruned. Plain "Tree" remains (genuinely the in-game name).
+- **Master Farmer left the generic pickpocket rules** — he has a dedicated
+  config mode (Off / Coins+Pouch / Insanity) implemented as a code path with
+  his 45-seed table shipped as `masterFarmerSeedCards`; see Addendum 1.
+- **Fishing requireAll became a config mode** (Any of / Require ALL), and the
+  Harpoon union later gained `Raw harpoonfish` (Tempoross Cove deep-sea spots
+  share the spot identity; see docs/sailing_nodes_report.md).
+- Substantial later additions (hunter, slayer, runecrafting, farming, sailing
+  rules) are covered by their own reports and the git history, not this file.
