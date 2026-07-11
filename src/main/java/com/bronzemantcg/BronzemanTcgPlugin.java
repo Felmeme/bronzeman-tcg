@@ -27,7 +27,6 @@ import net.runelite.api.NPC;
 import net.runelite.api.NPCComposition;
 import net.runelite.api.Player;
 import net.runelite.api.Renderable;
-import net.runelite.api.TileItem;
 import net.runelite.api.coords.WorldPoint;
 import net.runelite.api.events.GameTick;
 import net.runelite.api.events.MenuOpened;
@@ -165,26 +164,18 @@ public class BronzemanTcgPlugin extends Plugin
 
 	/**
 	 * Renderable draw hook (same mechanism as the built-in Entity Hider): returning false
-	 * skips drawing. Runs per renderable per frame on the client thread, so the checks
-	 * stay to map lookups. Loot-exempt items (Coins) are never hidden.
+	 * skips drawing. NPCs only - ground items don't route through this hook (verified
+	 * in-game), so they stay visible and rely on the Take-blocking instead. Runs per
+	 * renderable per frame on the client thread, so the check stays to map lookups.
 	 */
 	private boolean shouldDraw(Renderable renderable, boolean drawingUi)
 	{
-		if (!config.hideLockedEntities())
+		if (!config.hideLockedEntities() || !(renderable instanceof NPC))
 		{
 			return true;
 		}
-		if (renderable instanceof NPC)
-		{
-			String name = resolveNpcName((NPC) renderable);
-			return name == null || name.isEmpty() || isUnlocked(monsterCatalog, name);
-		}
-		if (renderable instanceof TileItem)
-		{
-			String name = itemManager.getItemComposition(((TileItem) renderable).getId()).getName();
-			return name == null || isLootExempt(name) || isUnlocked(itemCatalog, name);
-		}
-		return true;
+		String name = resolveNpcName((NPC) renderable);
+		return name == null || name.isEmpty() || isUnlocked(monsterCatalog, name);
 	}
 
 	/**

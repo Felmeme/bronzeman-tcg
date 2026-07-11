@@ -490,9 +490,10 @@ public interface BronzemanTcgConfig extends Config
 
 	@ConfigItem(
 		keyName = "hideLockedEntities",
-		name = "Hide locked NPCs & items",
-		description = "Completely hides NPCs and ground items whose card you have not collected. "
-			+ "Overrides the grey outline. Loot-exempt items (e.g. Coins) stay visible.",
+		name = "Hide locked NPCs",
+		description = "Completely hides NPCs whose card you have not collected. Overrides the "
+			+ "grey outline. (Ground items can't be hidden by the client hook; locked loot is "
+			+ "still blocked from pickup.)",
 		section = visualsSection,
 		position = 4
 	)

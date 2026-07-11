@@ -116,8 +116,13 @@ only, no automation).
    per-patch harvest + compost-type discrimination (read its ConfigManager
    state like we do osrs-tcg's); Krystilia difficulty revisit; upstream
    card gaps (Onyx ring; larupia/kyatt/kebbits/moths/Herbiboar creatures).
-5. Overlay/UI: visual indicator on locked NPCs; maybe a side panel of
-   nearest unlocks.
+5. Overlay/UI: implemented and in-game tested (2026-07-11) — grey model
+   outline on locked NPCs (colour/width/feather configurable, Visuals
+   section), hide-locked-NPCs option (ground items can't be hidden by the
+   renderable draw hook — verified in-game, removed), sidebar panel
+   (search / nearby / progress; upside-down bronze med helm icon).
+   **Panel needs design iteration** — owner wants to revisit its layout
+   and content later; ask what's wrong with it before restyling.
 6. Hub submission.
 
 ## Maintenance contracts with upstream osrs-tcg
