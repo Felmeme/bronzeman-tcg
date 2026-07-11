@@ -427,6 +427,34 @@ public interface BronzemanTcgConfig extends Config
 		return false;
 	}
 
+	@ConfigItem(
+		keyName = "sailingUpgradeMode",
+		name = "Sailing: boat upgrades",
+		description = "Installing a hull or keel tier requires cards. 'Parts': the tier's part card "
+			+ "(e.g. Oak hull parts). 'Parts + Materials': also the underlying material card (Oak "
+			+ "logs, Bronze bar). 'Everything': additionally the Large part variant's card. Masts, "
+			+ "helms, cannons and cargo holds have no part cards and are never restricted.",
+		section = gatheringSection,
+		position = 6
+	)
+	default SailingUpgradeMode sailingUpgradeMode()
+	{
+		return SailingUpgradeMode.PARTS;
+	}
+
+	@ConfigItem(
+		keyName = "restrictSalvaging",
+		name = "Sailing: salvaging",
+		description = "Salvaging a shipwreck requires the card of the salvage type that wreck tier "
+			+ "yields (e.g. Barracuda shipwrecks need the Barracuda salvage card).",
+		section = gatheringSection,
+		position = 7
+	)
+	default boolean restrictSalvaging()
+	{
+		return true;
+	}
+
 	// ------------------------------------------------------------------ visuals
 
 	@ConfigSection(

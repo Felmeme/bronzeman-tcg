@@ -1876,10 +1876,11 @@
 			"requiredCards": [
 				"Raw tuna",
 				"Raw swordfish",
-				"Raw shark"
+				"Raw shark",
+				"Raw harpoonfish"
 			],
 			"requireAll": false,
-			"notes": "Fishing spots yield different fish by location; we list the UNION and use requireAll=false so owning ANY yielded fish unlocks the spot (cannot distinguish location)."
+			"notes": "Fishing spots yield different fish by location; we list the UNION and use requireAll=false so owning ANY yielded fish unlocks the spot (cannot distinguish location). Raw harpoonfish added (Tempoross Cove deep-sea spots share this identity)."
 		},
 		{
 			"category": "fishing",
@@ -4624,6 +4625,1326 @@
 			],
 			"requireAll": true,
 			"notes": "Requires pure (or daeyalt) essence; rune essence cannot craft this rune."
+		},
+		{
+			"category": "sailing-salvage",
+			"kind": "object",
+			"name": "Barracuda shipwreck",
+			"options": [
+				"salvage"
+			],
+			"requiredCardGroups": [
+				[
+					"Barracuda salvage"
+				]
+			],
+			"groupRoles": [
+				"salvage"
+			],
+			"requireAll": true,
+			"notes": "Sailing L35. Salvaging hook yields 'Barracuda salvage' from this wreck. Object name via Salvage table (Scenery/object kind). Static infobox lists only 'Inspect'; active-wreck gather option modelled as 'Salvage' - verify exact menu-option string in client."
+		},
+		{
+			"category": "sailing-salvage",
+			"kind": "object",
+			"name": "Fisherman's shipwreck",
+			"options": [
+				"salvage"
+			],
+			"requiredCardGroups": [
+				[
+					"Fishy salvage"
+				]
+			],
+			"groupRoles": [
+				"salvage"
+			],
+			"requireAll": true,
+			"notes": "Sailing L26. Salvaging hook yields 'Fishy salvage' from this wreck. Object name via Salvage table (Scenery/object kind). Static infobox lists only 'Inspect'; active-wreck gather option modelled as 'Salvage' - verify exact menu-option string in client."
+		},
+		{
+			"category": "sailing-salvage",
+			"kind": "object",
+			"name": "Fremennik shipwreck",
+			"options": [
+				"salvage"
+			],
+			"requiredCardGroups": [
+				[
+					"Fremennik salvage"
+				]
+			],
+			"groupRoles": [
+				"salvage"
+			],
+			"requireAll": true,
+			"notes": "Sailing L80. Salvaging hook yields 'Fremennik salvage' from this wreck. Object name via Salvage table (Scenery/object kind). Static infobox lists only 'Inspect'; active-wreck gather option modelled as 'Salvage' - verify exact menu-option string in client."
+		},
+		{
+			"category": "sailing-salvage",
+			"kind": "object",
+			"name": "Large shipwreck",
+			"options": [
+				"salvage"
+			],
+			"requiredCardGroups": [
+				[
+					"Large salvage"
+				]
+			],
+			"groupRoles": [
+				"salvage"
+			],
+			"requireAll": true,
+			"notes": "Sailing L53. Salvaging hook yields 'Large salvage' from this wreck. Object name via verified object page (Scenery/object kind). Static infobox lists only 'Inspect'; active-wreck gather option modelled as 'Salvage' - verify exact menu-option string in client."
+		},
+		{
+			"category": "sailing-salvage",
+			"kind": "object",
+			"name": "Mercenary shipwreck",
+			"options": [
+				"salvage"
+			],
+			"requiredCardGroups": [
+				[
+					"Martial salvage"
+				]
+			],
+			"groupRoles": [
+				"salvage"
+			],
+			"requireAll": true,
+			"notes": "Sailing L73. Salvaging hook yields 'Martial salvage' from this wreck. Object name via Salvage table (Scenery/object kind). Static infobox lists only 'Inspect'; active-wreck gather option modelled as 'Salvage' - verify exact menu-option string in client."
+		},
+		{
+			"category": "sailing-salvage",
+			"kind": "object",
+			"name": "Merchant shipwreck",
+			"options": [
+				"salvage"
+			],
+			"requiredCardGroups": [
+				[
+					"Opulent salvage"
+				]
+			],
+			"groupRoles": [
+				"salvage"
+			],
+			"requireAll": true,
+			"notes": "Sailing L87. Salvaging hook yields 'Opulent salvage' from this wreck. Object name via Salvage table (Scenery/object kind). Static infobox lists only 'Inspect'; active-wreck gather option modelled as 'Salvage' - verify exact menu-option string in client."
+		},
+		{
+			"category": "sailing-salvage",
+			"kind": "object",
+			"name": "Pirate shipwreck",
+			"options": [
+				"salvage"
+			],
+			"requiredCardGroups": [
+				[
+					"Plundered salvage"
+				]
+			],
+			"groupRoles": [
+				"salvage"
+			],
+			"requireAll": true,
+			"notes": "Sailing L64. Salvaging hook yields 'Plundered salvage' from this wreck. Object name via Salvage table (Scenery/object kind). Static infobox lists only 'Inspect'; active-wreck gather option modelled as 'Salvage' - verify exact menu-option string in client."
+		},
+		{
+			"category": "sailing-salvage",
+			"kind": "object",
+			"name": "Small shipwreck",
+			"options": [
+				"salvage"
+			],
+			"requiredCardGroups": [
+				[
+					"Small salvage"
+				]
+			],
+			"groupRoles": [
+				"salvage"
+			],
+			"requireAll": true,
+			"notes": "Sailing L15. Salvaging hook yields 'Small salvage' from this wreck. Object name via verified object page (Scenery/object kind). Static infobox lists only 'Inspect'; active-wreck gather option modelled as 'Salvage' - verify exact menu-option string in client."
+		},
+		{
+			"category": "sailing-upgrades",
+			"kind": "interface",
+			"name": "Adamant keel",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Adamant keel parts"
+				],
+				[
+					"Adamantite bar"
+				],
+				[
+					"Large adamant keel parts"
+				]
+			],
+			"groupRoles": [
+				"part",
+				"material",
+				"large"
+			],
+			"requireAll": true,
+			"notes": "Adamant keel tier; keyed on install name (guessed) and workbench part products (verified) so one path always intercepts."
+		},
+		{
+			"category": "sailing-upgrades",
+			"kind": "interface",
+			"name": "Adamant keel parts",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Adamant keel parts"
+				],
+				[
+					"Adamantite bar"
+				],
+				[
+					"Large adamant keel parts"
+				]
+			],
+			"groupRoles": [
+				"part",
+				"material",
+				"large"
+			],
+			"requireAll": true,
+			"notes": "Adamant keel tier; keyed on install name (guessed) and workbench part products (verified) so one path always intercepts."
+		},
+		{
+			"category": "sailing-upgrades",
+			"kind": "interface",
+			"name": "Bronze keel",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Bronze keel parts"
+				],
+				[
+					"Bronze bar"
+				],
+				[
+					"Large bronze keel parts"
+				]
+			],
+			"groupRoles": [
+				"part",
+				"material",
+				"large"
+			],
+			"requireAll": true,
+			"notes": "Bronze keel tier; keyed on install name (guessed) and workbench part products (verified) so one path always intercepts."
+		},
+		{
+			"category": "sailing-upgrades",
+			"kind": "interface",
+			"name": "Bronze keel parts",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Bronze keel parts"
+				],
+				[
+					"Bronze bar"
+				],
+				[
+					"Large bronze keel parts"
+				]
+			],
+			"groupRoles": [
+				"part",
+				"material",
+				"large"
+			],
+			"requireAll": true,
+			"notes": "Bronze keel tier; keyed on install name (guessed) and workbench part products (verified) so one path always intercepts."
+		},
+		{
+			"category": "sailing-upgrades",
+			"kind": "interface",
+			"name": "Camphor hull",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Camphor hull parts"
+				],
+				[
+					"Camphor plank"
+				],
+				[
+					"Camphor logs"
+				],
+				[
+					"Large camphor hull parts"
+				]
+			],
+			"groupRoles": [
+				"part",
+				"material",
+				"extra",
+				"large"
+			],
+			"requireAll": true,
+			"notes": "Camphor hull tier; keyed on install name (guessed) and workbench part products (verified) so one path always intercepts."
+		},
+		{
+			"category": "sailing-upgrades",
+			"kind": "interface",
+			"name": "Camphor hull parts",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Camphor hull parts"
+				],
+				[
+					"Camphor plank"
+				],
+				[
+					"Camphor logs"
+				],
+				[
+					"Large camphor hull parts"
+				]
+			],
+			"groupRoles": [
+				"part",
+				"material",
+				"extra",
+				"large"
+			],
+			"requireAll": true,
+			"notes": "Camphor hull tier; keyed on install name (guessed) and workbench part products (verified) so one path always intercepts."
+		},
+		{
+			"category": "sailing-upgrades",
+			"kind": "interface",
+			"name": "Dragon keel",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Dragon keel parts"
+				],
+				[
+					"Dragon metal sheet"
+				],
+				[
+					"Large dragon keel parts"
+				]
+			],
+			"groupRoles": [
+				"part",
+				"material",
+				"large"
+			],
+			"requireAll": true,
+			"notes": "Dragon keel tier; keyed on install name (guessed) and workbench part products (verified) so one path always intercepts."
+		},
+		{
+			"category": "sailing-upgrades",
+			"kind": "interface",
+			"name": "Dragon keel parts",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Dragon keel parts"
+				],
+				[
+					"Dragon metal sheet"
+				],
+				[
+					"Large dragon keel parts"
+				]
+			],
+			"groupRoles": [
+				"part",
+				"material",
+				"large"
+			],
+			"requireAll": true,
+			"notes": "Dragon keel tier; keyed on install name (guessed) and workbench part products (verified) so one path always intercepts."
+		},
+		{
+			"category": "sailing-upgrades",
+			"kind": "interface",
+			"name": "Iron keel",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Iron keel parts"
+				],
+				[
+					"Iron bar"
+				],
+				[
+					"Large iron keel parts"
+				]
+			],
+			"groupRoles": [
+				"part",
+				"material",
+				"large"
+			],
+			"requireAll": true,
+			"notes": "Iron keel tier; keyed on install name (guessed) and workbench part products (verified) so one path always intercepts."
+		},
+		{
+			"category": "sailing-upgrades",
+			"kind": "interface",
+			"name": "Iron keel parts",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Iron keel parts"
+				],
+				[
+					"Iron bar"
+				],
+				[
+					"Large iron keel parts"
+				]
+			],
+			"groupRoles": [
+				"part",
+				"material",
+				"large"
+			],
+			"requireAll": true,
+			"notes": "Iron keel tier; keyed on install name (guessed) and workbench part products (verified) so one path always intercepts."
+		},
+		{
+			"category": "sailing-upgrades",
+			"kind": "interface",
+			"name": "Ironwood hull",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Ironwood hull parts"
+				],
+				[
+					"Ironwood plank"
+				],
+				[
+					"Ironwood logs"
+				],
+				[
+					"Large ironwood hull parts"
+				]
+			],
+			"groupRoles": [
+				"part",
+				"material",
+				"extra",
+				"large"
+			],
+			"requireAll": true,
+			"notes": "Ironwood hull tier; keyed on install name (guessed) and workbench part products (verified) so one path always intercepts."
+		},
+		{
+			"category": "sailing-upgrades",
+			"kind": "interface",
+			"name": "Ironwood hull parts",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Ironwood hull parts"
+				],
+				[
+					"Ironwood plank"
+				],
+				[
+					"Ironwood logs"
+				],
+				[
+					"Large ironwood hull parts"
+				]
+			],
+			"groupRoles": [
+				"part",
+				"material",
+				"extra",
+				"large"
+			],
+			"requireAll": true,
+			"notes": "Ironwood hull tier; keyed on install name (guessed) and workbench part products (verified) so one path always intercepts."
+		},
+		{
+			"category": "sailing-upgrades",
+			"kind": "interface",
+			"name": "Large adamant keel parts",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Adamant keel parts"
+				],
+				[
+					"Adamantite bar"
+				],
+				[
+					"Large adamant keel parts"
+				]
+			],
+			"groupRoles": [
+				"part",
+				"material",
+				"large"
+			],
+			"requireAll": true,
+			"notes": "Adamant keel tier; keyed on install name (guessed) and workbench part products (verified) so one path always intercepts."
+		},
+		{
+			"category": "sailing-upgrades",
+			"kind": "interface",
+			"name": "Large bronze keel parts",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Bronze keel parts"
+				],
+				[
+					"Bronze bar"
+				],
+				[
+					"Large bronze keel parts"
+				]
+			],
+			"groupRoles": [
+				"part",
+				"material",
+				"large"
+			],
+			"requireAll": true,
+			"notes": "Bronze keel tier; keyed on install name (guessed) and workbench part products (verified) so one path always intercepts."
+		},
+		{
+			"category": "sailing-upgrades",
+			"kind": "interface",
+			"name": "Large camphor hull parts",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Camphor hull parts"
+				],
+				[
+					"Camphor plank"
+				],
+				[
+					"Camphor logs"
+				],
+				[
+					"Large camphor hull parts"
+				]
+			],
+			"groupRoles": [
+				"part",
+				"material",
+				"extra",
+				"large"
+			],
+			"requireAll": true,
+			"notes": "Camphor hull tier; keyed on install name (guessed) and workbench part products (verified) so one path always intercepts."
+		},
+		{
+			"category": "sailing-upgrades",
+			"kind": "interface",
+			"name": "Large dragon keel parts",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Dragon keel parts"
+				],
+				[
+					"Dragon metal sheet"
+				],
+				[
+					"Large dragon keel parts"
+				]
+			],
+			"groupRoles": [
+				"part",
+				"material",
+				"large"
+			],
+			"requireAll": true,
+			"notes": "Dragon keel tier; keyed on install name (guessed) and workbench part products (verified) so one path always intercepts."
+		},
+		{
+			"category": "sailing-upgrades",
+			"kind": "interface",
+			"name": "Large iron keel parts",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Iron keel parts"
+				],
+				[
+					"Iron bar"
+				],
+				[
+					"Large iron keel parts"
+				]
+			],
+			"groupRoles": [
+				"part",
+				"material",
+				"large"
+			],
+			"requireAll": true,
+			"notes": "Iron keel tier; keyed on install name (guessed) and workbench part products (verified) so one path always intercepts."
+		},
+		{
+			"category": "sailing-upgrades",
+			"kind": "interface",
+			"name": "Large ironwood hull parts",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Ironwood hull parts"
+				],
+				[
+					"Ironwood plank"
+				],
+				[
+					"Ironwood logs"
+				],
+				[
+					"Large ironwood hull parts"
+				]
+			],
+			"groupRoles": [
+				"part",
+				"material",
+				"extra",
+				"large"
+			],
+			"requireAll": true,
+			"notes": "Ironwood hull tier; keyed on install name (guessed) and workbench part products (verified) so one path always intercepts."
+		},
+		{
+			"category": "sailing-upgrades",
+			"kind": "interface",
+			"name": "Large mahogany hull parts",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Mahogany hull parts"
+				],
+				[
+					"Mahogany plank"
+				],
+				[
+					"Mahogany logs"
+				],
+				[
+					"Large mahogany hull parts"
+				]
+			],
+			"groupRoles": [
+				"part",
+				"material",
+				"extra",
+				"large"
+			],
+			"requireAll": true,
+			"notes": "Mahogany hull tier; keyed on install name (guessed) and workbench part products (verified) so one path always intercepts."
+		},
+		{
+			"category": "sailing-upgrades",
+			"kind": "interface",
+			"name": "Large mithril keel parts",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Mithril keel parts"
+				],
+				[
+					"Mithril bar"
+				],
+				[
+					"Large mithril keel parts"
+				]
+			],
+			"groupRoles": [
+				"part",
+				"material",
+				"large"
+			],
+			"requireAll": true,
+			"notes": "Mithril keel tier; keyed on install name (guessed) and workbench part products (verified) so one path always intercepts."
+		},
+		{
+			"category": "sailing-upgrades",
+			"kind": "interface",
+			"name": "Large oak hull parts",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Oak hull parts"
+				],
+				[
+					"Oak plank"
+				],
+				[
+					"Oak logs"
+				],
+				[
+					"Large oak hull parts"
+				]
+			],
+			"groupRoles": [
+				"part",
+				"material",
+				"extra",
+				"large"
+			],
+			"requireAll": true,
+			"notes": "Oak hull tier; keyed on install name (guessed) and workbench part products (verified) so one path always intercepts."
+		},
+		{
+			"category": "sailing-upgrades",
+			"kind": "interface",
+			"name": "Large rosewood hull parts",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Rosewood hull parts"
+				],
+				[
+					"Rosewood plank"
+				],
+				[
+					"Rosewood logs"
+				],
+				[
+					"Large rosewood hull parts"
+				]
+			],
+			"groupRoles": [
+				"part",
+				"material",
+				"extra",
+				"large"
+			],
+			"requireAll": true,
+			"notes": "Rosewood hull tier; keyed on install name (guessed) and workbench part products (verified) so one path always intercepts."
+		},
+		{
+			"category": "sailing-upgrades",
+			"kind": "interface",
+			"name": "Large rune keel parts",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Rune keel parts"
+				],
+				[
+					"Runite bar"
+				],
+				[
+					"Large rune keel parts"
+				]
+			],
+			"groupRoles": [
+				"part",
+				"material",
+				"large"
+			],
+			"requireAll": true,
+			"notes": "Rune keel tier; keyed on install name (guessed) and workbench part products (verified) so one path always intercepts."
+		},
+		{
+			"category": "sailing-upgrades",
+			"kind": "interface",
+			"name": "Large steel keel parts",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Steel keel parts"
+				],
+				[
+					"Steel bar"
+				],
+				[
+					"Large steel keel parts"
+				]
+			],
+			"groupRoles": [
+				"part",
+				"material",
+				"large"
+			],
+			"requireAll": true,
+			"notes": "Steel keel tier; keyed on install name (guessed) and workbench part products (verified) so one path always intercepts."
+		},
+		{
+			"category": "sailing-upgrades",
+			"kind": "interface",
+			"name": "Large teak hull parts",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Teak hull parts"
+				],
+				[
+					"Teak plank"
+				],
+				[
+					"Teak logs"
+				],
+				[
+					"Large teak hull parts"
+				]
+			],
+			"groupRoles": [
+				"part",
+				"material",
+				"extra",
+				"large"
+			],
+			"requireAll": true,
+			"notes": "Teak hull tier; keyed on install name (guessed) and workbench part products (verified) so one path always intercepts."
+		},
+		{
+			"category": "sailing-upgrades",
+			"kind": "interface",
+			"name": "Large wooden hull parts",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Wooden hull parts"
+				],
+				[
+					"Plank"
+				],
+				[
+					"Logs"
+				],
+				[
+					"Large wooden hull parts"
+				]
+			],
+			"groupRoles": [
+				"part",
+				"material",
+				"extra",
+				"large"
+			],
+			"requireAll": true,
+			"notes": "Wooden hull tier; keyed on install name (guessed) and workbench part products (verified) so one path always intercepts."
+		},
+		{
+			"category": "sailing-upgrades",
+			"kind": "interface",
+			"name": "Mahogany hull",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Mahogany hull parts"
+				],
+				[
+					"Mahogany plank"
+				],
+				[
+					"Mahogany logs"
+				],
+				[
+					"Large mahogany hull parts"
+				]
+			],
+			"groupRoles": [
+				"part",
+				"material",
+				"extra",
+				"large"
+			],
+			"requireAll": true,
+			"notes": "Mahogany hull tier; keyed on install name (guessed) and workbench part products (verified) so one path always intercepts."
+		},
+		{
+			"category": "sailing-upgrades",
+			"kind": "interface",
+			"name": "Mahogany hull parts",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Mahogany hull parts"
+				],
+				[
+					"Mahogany plank"
+				],
+				[
+					"Mahogany logs"
+				],
+				[
+					"Large mahogany hull parts"
+				]
+			],
+			"groupRoles": [
+				"part",
+				"material",
+				"extra",
+				"large"
+			],
+			"requireAll": true,
+			"notes": "Mahogany hull tier; keyed on install name (guessed) and workbench part products (verified) so one path always intercepts."
+		},
+		{
+			"category": "sailing-upgrades",
+			"kind": "interface",
+			"name": "Mithril keel",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Mithril keel parts"
+				],
+				[
+					"Mithril bar"
+				],
+				[
+					"Large mithril keel parts"
+				]
+			],
+			"groupRoles": [
+				"part",
+				"material",
+				"large"
+			],
+			"requireAll": true,
+			"notes": "Mithril keel tier; keyed on install name (guessed) and workbench part products (verified) so one path always intercepts."
+		},
+		{
+			"category": "sailing-upgrades",
+			"kind": "interface",
+			"name": "Mithril keel parts",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Mithril keel parts"
+				],
+				[
+					"Mithril bar"
+				],
+				[
+					"Large mithril keel parts"
+				]
+			],
+			"groupRoles": [
+				"part",
+				"material",
+				"large"
+			],
+			"requireAll": true,
+			"notes": "Mithril keel tier; keyed on install name (guessed) and workbench part products (verified) so one path always intercepts."
+		},
+		{
+			"category": "sailing-upgrades",
+			"kind": "interface",
+			"name": "Oak hull",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Oak hull parts"
+				],
+				[
+					"Oak plank"
+				],
+				[
+					"Oak logs"
+				],
+				[
+					"Large oak hull parts"
+				]
+			],
+			"groupRoles": [
+				"part",
+				"material",
+				"extra",
+				"large"
+			],
+			"requireAll": true,
+			"notes": "Oak hull tier; keyed on install name (guessed) and workbench part products (verified) so one path always intercepts."
+		},
+		{
+			"category": "sailing-upgrades",
+			"kind": "interface",
+			"name": "Oak hull parts",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Oak hull parts"
+				],
+				[
+					"Oak plank"
+				],
+				[
+					"Oak logs"
+				],
+				[
+					"Large oak hull parts"
+				]
+			],
+			"groupRoles": [
+				"part",
+				"material",
+				"extra",
+				"large"
+			],
+			"requireAll": true,
+			"notes": "Oak hull tier; keyed on install name (guessed) and workbench part products (verified) so one path always intercepts."
+		},
+		{
+			"category": "sailing-upgrades",
+			"kind": "interface",
+			"name": "Rosewood hull",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Rosewood hull parts"
+				],
+				[
+					"Rosewood plank"
+				],
+				[
+					"Rosewood logs"
+				],
+				[
+					"Large rosewood hull parts"
+				]
+			],
+			"groupRoles": [
+				"part",
+				"material",
+				"extra",
+				"large"
+			],
+			"requireAll": true,
+			"notes": "Rosewood hull tier; keyed on install name (guessed) and workbench part products (verified) so one path always intercepts."
+		},
+		{
+			"category": "sailing-upgrades",
+			"kind": "interface",
+			"name": "Rosewood hull parts",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Rosewood hull parts"
+				],
+				[
+					"Rosewood plank"
+				],
+				[
+					"Rosewood logs"
+				],
+				[
+					"Large rosewood hull parts"
+				]
+			],
+			"groupRoles": [
+				"part",
+				"material",
+				"extra",
+				"large"
+			],
+			"requireAll": true,
+			"notes": "Rosewood hull tier; keyed on install name (guessed) and workbench part products (verified) so one path always intercepts."
+		},
+		{
+			"category": "sailing-upgrades",
+			"kind": "interface",
+			"name": "Rune keel",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Rune keel parts"
+				],
+				[
+					"Runite bar"
+				],
+				[
+					"Large rune keel parts"
+				]
+			],
+			"groupRoles": [
+				"part",
+				"material",
+				"large"
+			],
+			"requireAll": true,
+			"notes": "Rune keel tier; keyed on install name (guessed) and workbench part products (verified) so one path always intercepts."
+		},
+		{
+			"category": "sailing-upgrades",
+			"kind": "interface",
+			"name": "Rune keel parts",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Rune keel parts"
+				],
+				[
+					"Runite bar"
+				],
+				[
+					"Large rune keel parts"
+				]
+			],
+			"groupRoles": [
+				"part",
+				"material",
+				"large"
+			],
+			"requireAll": true,
+			"notes": "Rune keel tier; keyed on install name (guessed) and workbench part products (verified) so one path always intercepts."
+		},
+		{
+			"category": "sailing-upgrades",
+			"kind": "interface",
+			"name": "Steel keel",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Steel keel parts"
+				],
+				[
+					"Steel bar"
+				],
+				[
+					"Large steel keel parts"
+				]
+			],
+			"groupRoles": [
+				"part",
+				"material",
+				"large"
+			],
+			"requireAll": true,
+			"notes": "Steel keel tier; keyed on install name (guessed) and workbench part products (verified) so one path always intercepts."
+		},
+		{
+			"category": "sailing-upgrades",
+			"kind": "interface",
+			"name": "Steel keel parts",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Steel keel parts"
+				],
+				[
+					"Steel bar"
+				],
+				[
+					"Large steel keel parts"
+				]
+			],
+			"groupRoles": [
+				"part",
+				"material",
+				"large"
+			],
+			"requireAll": true,
+			"notes": "Steel keel tier; keyed on install name (guessed) and workbench part products (verified) so one path always intercepts."
+		},
+		{
+			"category": "sailing-upgrades",
+			"kind": "interface",
+			"name": "Teak hull",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Teak hull parts"
+				],
+				[
+					"Teak plank"
+				],
+				[
+					"Teak logs"
+				],
+				[
+					"Large teak hull parts"
+				]
+			],
+			"groupRoles": [
+				"part",
+				"material",
+				"extra",
+				"large"
+			],
+			"requireAll": true,
+			"notes": "Teak hull tier; keyed on install name (guessed) and workbench part products (verified) so one path always intercepts."
+		},
+		{
+			"category": "sailing-upgrades",
+			"kind": "interface",
+			"name": "Teak hull parts",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Teak hull parts"
+				],
+				[
+					"Teak plank"
+				],
+				[
+					"Teak logs"
+				],
+				[
+					"Large teak hull parts"
+				]
+			],
+			"groupRoles": [
+				"part",
+				"material",
+				"extra",
+				"large"
+			],
+			"requireAll": true,
+			"notes": "Teak hull tier; keyed on install name (guessed) and workbench part products (verified) so one path always intercepts."
+		},
+		{
+			"category": "sailing-upgrades",
+			"kind": "interface",
+			"name": "Wooden hull",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Wooden hull parts"
+				],
+				[
+					"Plank"
+				],
+				[
+					"Logs"
+				],
+				[
+					"Large wooden hull parts"
+				]
+			],
+			"groupRoles": [
+				"part",
+				"material",
+				"extra",
+				"large"
+			],
+			"requireAll": true,
+			"notes": "Wooden hull tier; keyed on install name (guessed) and workbench part products (verified) so one path always intercepts."
+		},
+		{
+			"category": "sailing-upgrades",
+			"kind": "interface",
+			"name": "Wooden hull parts",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Wooden hull parts"
+				],
+				[
+					"Plank"
+				],
+				[
+					"Logs"
+				],
+				[
+					"Large wooden hull parts"
+				]
+			],
+			"groupRoles": [
+				"part",
+				"material",
+				"extra",
+				"large"
+			],
+			"requireAll": true,
+			"notes": "Wooden hull tier; keyed on install name (guessed) and workbench part products (verified) so one path always intercepts."
 		},
 		{
 			"category": "slayer",

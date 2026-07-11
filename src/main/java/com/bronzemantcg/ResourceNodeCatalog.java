@@ -42,6 +42,9 @@ public class ResourceNodeCatalog
 	public static final String KIND_NPC = "npc";
 	public static final String KIND_ITEM_ON_OBJECT = "item-on-object";
 	public static final String KIND_INVENTORY = "inventory";
+	/** Make-interface product clicks; nodes use options ["*"] since only the product name is known. */
+	public static final String KIND_INTERFACE = "interface";
+	public static final String ANY_OPTION = "*";
 
 	private Map<String, Rule> rules = Collections.emptyMap();
 	private List<String> masterFarmerSeedCards = Collections.emptyList();

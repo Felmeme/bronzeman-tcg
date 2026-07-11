@@ -516,13 +516,16 @@ public class BronzemanTcgPlugin extends Plugin
 			}
 		}
 
-		// Production interfaces outside the groups matched above (e.g. furnace smelting):
-		// a make-verb click still names its product in the menu target. Prefix match so
-		// quantity variants ("Smelt-1", "Make-5", "Cook-all") are covered too.
+		// Production interfaces outside the groups matched above (e.g. furnace smelting,
+		// the shipwright's upgrade menu): a make-verb click still names its product in the
+		// menu target. Prefix match so quantity variants ("Smelt-1", "Make-5") are covered.
+		// Node rules get first refusal (they carry role-based modes, e.g. sailing upgrades).
 		if (isMakeVerb(optionLower))
 		{
 			String product = Text.removeTags(event.getMenuTarget()).trim();
-			if (!product.isEmpty())
+			if (!product.isEmpty()
+				&& !checkNodeRule(event, ResourceNodeCatalog.KIND_INTERFACE, product,
+					ResourceNodeCatalog.ANY_OPTION))
 			{
 				checkRecipe(event, RecipeCatalog.KIND_INTERFACE, product, null);
 			}
@@ -799,6 +802,20 @@ public class BronzemanTcgPlugin extends Plugin
 					default:
 						return null;
 				}
+			case "sailing-upgrades":
+				switch (config.sailingUpgradeMode())
+				{
+					case PARTS:
+						return Set.of("material", "large");
+					case PARTS_MATERIALS:
+						return Set.of("large");
+					case EVERYTHING:
+						return Collections.emptySet();
+					default:
+						return null;
+				}
+			case "sailing-salvage":
+				return config.restrictSalvaging() ? Collections.emptySet() : null;
 			case "slayer":
 			{
 				Set<String> excluded = new HashSet<>();
