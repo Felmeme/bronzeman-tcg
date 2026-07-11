@@ -87,6 +87,29 @@ only, no automation).
 4. Cast a spell on an uncollected tracked NPC → blocked when the toggle is on.
 5. Toggle config options off → restrictions lift.
 
+## DEFERRED: Sailing test pass (owner lacks quick access to sailing content)
+Implemented 2026-07-12, entirely untested in-game. When the owner can get on a
+boat, run these and fix data accordingly (resource_nodes.json is hand-editable;
+sailing rules were merged by scripts/merge_sailing_data.py from the audit in
+docs/sailing_nodes_report.md):
+1. **Workbench parts** (HIGH confidence): at a Shipwrights' Workbench, make
+   "Oak hull parts" without owning that card -> expect blocked. Product names
+   here are verified identical to card names; if this does NOT block, the
+   workbench isn't using make-verb options — capture the exact menu option
+   text and add it to MAKE_VERBS in BronzemanTcgPlugin.
+2. **Install/Modify** (GUESSED strings): Boat schematics -> Modify -> install
+   a hull/keel tier. The rules are keyed on names like "Oak hull"; if
+   installing is NOT blocked, note the exact product string the menu target
+   shows and rename the kind:"interface" node keys to match.
+3. **Salvaging** (option string unverified): salvage a wreck without its
+   salvage card -> expect blocked. Wiki infobox only lists "Inspect"; if the
+   real option isn't "Salvage" (or it's hook-item-on-wreck), update the 8
+   sailing-salvage nodes' options (or re-kind them to item-on-object).
+4. **Modes**: walk the Sailing boat-upgrades dropdown: Parts (part card only),
+   Parts+Materials (adds plank/bar), Everything (adds logs + Large part).
+5. **Harpoonfish**: Tempoross Cove harpoon spot obeys the fishing mode with
+   Raw harpoonfish now in the Harpoon union.
+
 ## Roadmap (agreed with owner)
 1. **This phase**: compile, run, fix API drift, manual test pass.
 2. **Loot restriction**: implemented (2026-07-10) — blocks Take/telegrab on
