@@ -24,10 +24,6 @@ import net.runelite.client.util.Text;
 @Singleton
 class BronzemanTcgOverlay extends Overlay
 {
-	private static final Color LOCKED_OUTLINE = new Color(60, 60, 60, 200);
-	private static final int OUTLINE_WIDTH = 2;
-	private static final int OUTLINE_FEATHER = 2;
-
 	private final Client client;
 	private final BronzemanTcgConfig config;
 	private final TrackedMonsterCatalog monsterCatalog;
@@ -58,13 +54,16 @@ class BronzemanTcgOverlay extends Overlay
 		}
 
 		Set<String> owned = collectionReader.getOwnedCardNamesLowerCase();
+		Color color = config.lockedOutlineColor();
+		int width = config.lockedOutlineWidth();
+		int feather = config.lockedOutlineFeather();
 		for (NPC npc : client.getNpcs())
 		{
 			if (npc == null || !isLocked(npc, owned))
 			{
 				continue;
 			}
-			modelOutlineRenderer.drawOutline(npc, OUTLINE_WIDTH, LOCKED_OUTLINE, OUTLINE_FEATHER);
+			modelOutlineRenderer.drawOutline(npc, width, color, feather);
 		}
 		return null;
 	}

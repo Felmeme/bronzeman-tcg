@@ -1,9 +1,12 @@
 package com.bronzemantcg;
 
+import java.awt.Color;
+import net.runelite.client.config.Alpha;
 import net.runelite.client.config.Config;
 import net.runelite.client.config.ConfigGroup;
 import net.runelite.client.config.ConfigItem;
 import net.runelite.client.config.ConfigSection;
+import net.runelite.client.config.Range;
 
 @ConfigGroup(BronzemanTcgConfig.GROUP)
 public interface BronzemanTcgConfig extends Config
@@ -446,13 +449,52 @@ public interface BronzemanTcgConfig extends Config
 		return true;
 	}
 
+	@Alpha
+	@ConfigItem(
+		keyName = "lockedOutlineColor",
+		name = "Outline colour",
+		description = "Colour (and opacity) of the locked-NPC outline.",
+		section = visualsSection,
+		position = 1
+	)
+	default Color lockedOutlineColor()
+	{
+		return new Color(60, 60, 60, 200);
+	}
+
+	@Range(min = 1, max = 10)
+	@ConfigItem(
+		keyName = "lockedOutlineWidth",
+		name = "Outline width",
+		description = "Thickness of the locked-NPC outline in pixels.",
+		section = visualsSection,
+		position = 2
+	)
+	default int lockedOutlineWidth()
+	{
+		return 2;
+	}
+
+	@Range(min = 0, max = 6)
+	@ConfigItem(
+		keyName = "lockedOutlineFeather",
+		name = "Outline feather",
+		description = "How softly the outline fades at its edge (0 = hard line).",
+		section = visualsSection,
+		position = 3
+	)
+	default int lockedOutlineFeather()
+	{
+		return 2;
+	}
+
 	@ConfigItem(
 		keyName = "hideLockedEntities",
 		name = "Hide locked NPCs & items",
 		description = "Completely hides NPCs and ground items whose card you have not collected. "
-			+ "Overrides the grey tint. Loot-exempt items (e.g. Coins) stay visible.",
+			+ "Overrides the grey outline. Loot-exempt items (e.g. Coins) stay visible.",
 		section = visualsSection,
-		position = 1
+		position = 4
 	)
 	default boolean hideLockedEntities()
 	{
