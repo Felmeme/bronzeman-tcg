@@ -31,6 +31,7 @@ import net.runelite.api.events.GameTick;
 import net.runelite.api.events.MenuOpened;
 import net.runelite.api.events.MenuOptionClicked;
 import net.runelite.api.gameval.InterfaceID;
+import net.runelite.api.gameval.ItemID;
 import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetUtil;
 import net.runelite.client.config.ConfigManager;
@@ -41,6 +42,7 @@ import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
 import net.runelite.client.ui.ClientToolbar;
 import net.runelite.client.ui.NavigationButton;
+import net.runelite.client.util.AsyncBufferedImage;
 import net.runelite.client.util.Text;
 
 /**
@@ -123,7 +125,7 @@ public class BronzemanTcgPlugin extends Plugin
 		panel = new BronzemanTcgPanel(monsterCatalog, itemCatalog, nodeCatalog, collectionReader);
 		navButton = NavigationButton.builder()
 			.tooltip("Bronzeman TCG")
-			.icon(drawCardIcon())
+			.icon(drawPanelIcon())
 			.priority(7)
 			.panel(panel)
 			.build();
@@ -142,19 +144,28 @@ public class BronzemanTcgPlugin extends Plugin
 		log.info("Bronzeman TCG stopped.");
 	}
 
-	/** Simple bronze card icon drawn at runtime so no binary resource is needed. */
-	private static BufferedImage drawCardIcon()
+	/**
+	 * Upside-down bronze med helm - the bronzeman emblem. The real item sprite is pulled
+	 * from the game cache and rotated 180°; it loads asynchronously, so we hand the nav
+	 * button a buffer now and paint the sprite into it whenever it arrives.
+	 */
+	private BufferedImage drawPanelIcon()
 	{
-		BufferedImage image = new BufferedImage(24, 24, BufferedImage.TYPE_INT_ARGB);
-		Graphics2D g = image.createGraphics();
-		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-		g.setColor(new Color(0x8d, 0x5a, 0x2b));
-		g.fillRoundRect(5, 2, 14, 20, 4, 4);
-		g.setColor(new Color(0xd9, 0xa3, 0x5c));
-		g.drawRoundRect(5, 2, 14, 20, 4, 4);
-		g.drawRect(8, 6, 8, 8);
-		g.dispose();
-		return image;
+		BufferedImage icon = new BufferedImage(24, 24, BufferedImage.TYPE_INT_ARGB);
+		AsyncBufferedImage helm = itemManager.getImage(ItemID.BRONZE_MED_HELM);
+		Runnable paint = () ->
+		{
+			Graphics2D g = icon.createGraphics();
+			g.setRenderingHint(RenderingHints.KEY_INTERPOLATION,
+				RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+			g.rotate(Math.PI, 12, 12);
+			// Item sprites are 36x32; scale preserving aspect, centred vertically.
+			g.drawImage(helm, 0, 2, 24, 21, null);
+			g.dispose();
+		};
+		helm.onLoaded(paint);
+		paint.run();
+		return icon;
 	}
 
 	/**
