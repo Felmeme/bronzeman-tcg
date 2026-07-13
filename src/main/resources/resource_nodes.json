@@ -3551,7 +3551,15 @@
 				"Coin pouch"
 			],
 			"requireAll": true,
-			"notes": "Also drops seeds; simplified to Coins+pouch."
+			"notes": "Also drops seeds; simplified to Coins+pouch.",
+			"requiredCardGroups": [
+				[
+					"Farmer"
+				]
+			],
+			"groupRoles": [
+				"npc"
+			]
 		},
 		{
 			"category": "pickpocketing",
@@ -3691,7 +3699,15 @@
 				"Coin pouch"
 			],
 			"requireAll": true,
-			"notes": ""
+			"notes": "",
+			"requiredCardGroups": [
+				[
+					"Guard"
+				]
+			],
+			"groupRoles": [
+				"npc"
+			]
 		},
 		{
 			"category": "pickpocketing",
@@ -3747,7 +3763,15 @@
 				"Coin pouch"
 			],
 			"requireAll": true,
-			"notes": "Also drops gems/blood runes; simplified."
+			"notes": "Also drops gems/blood runes; simplified.",
+			"requiredCardGroups": [
+				[
+					"Hero"
+				]
+			],
+			"groupRoles": [
+				"npc"
+			]
 		},
 		{
 			"category": "pickpocketing",
@@ -3859,7 +3883,15 @@
 				"Coin pouch"
 			],
 			"requireAll": true,
-			"notes": ""
+			"notes": "",
+			"requiredCardGroups": [
+				[
+					"Knight of Ardougne"
+				]
+			],
+			"groupRoles": [
+				"npc"
+			]
 		},
 		{
 			"category": "pickpocketing",
@@ -3929,7 +3961,15 @@
 				"Coin pouch"
 			],
 			"requireAll": true,
-			"notes": ""
+			"notes": "",
+			"requiredCardGroups": [
+				[
+					"Man"
+				]
+			],
+			"groupRoles": [
+				"npc"
+			]
 		},
 		{
 			"category": "pickpocketing",
@@ -4055,7 +4095,15 @@
 				"Coin pouch"
 			],
 			"requireAll": true,
-			"notes": "Also drops chaos runes/coins; simplified."
+			"notes": "Also drops chaos runes/coins; simplified.",
+			"requiredCardGroups": [
+				[
+					"Paladin"
+				]
+			],
+			"groupRoles": [
+				"npc"
+			]
 		},
 		{
 			"category": "pickpocketing",
@@ -4069,7 +4117,15 @@
 				"Coin pouch"
 			],
 			"requireAll": true,
-			"notes": "Also drops rogue equipment; simplified."
+			"notes": "Also drops rogue equipment; simplified.",
+			"requiredCardGroups": [
+				[
+					"Rogue"
+				]
+			],
+			"groupRoles": [
+				"npc"
+			]
 		},
 		{
 			"category": "pickpocketing",
@@ -4167,7 +4223,15 @@
 				"Coin pouch"
 			],
 			"requireAll": true,
-			"notes": "Actually yields Blood shard/coins; simplified to Coins+pouch."
+			"notes": "Actually yields Blood shard/coins; simplified to Coins+pouch.",
+			"requiredCardGroups": [
+				[
+					"Vyrewatch Sentinel"
+				]
+			],
+			"groupRoles": [
+				"npc"
+			]
 		},
 		{
 			"category": "pickpocketing",
@@ -4195,7 +4259,15 @@
 				"Coin pouch"
 			],
 			"requireAll": true,
-			"notes": ""
+			"notes": "",
+			"requiredCardGroups": [
+				[
+					"Woman"
+				]
+			],
+			"groupRoles": [
+				"npc"
+			]
 		},
 		{
 			"category": "runecrafting",

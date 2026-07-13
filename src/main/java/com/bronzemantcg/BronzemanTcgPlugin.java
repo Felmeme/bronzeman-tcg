@@ -35,6 +35,8 @@ import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetUtil;
 import net.runelite.client.callback.RenderCallback;
 import net.runelite.client.callback.RenderCallbackManager;
+import net.runelite.client.chat.ChatMessageManager;
+import net.runelite.client.chat.QueuedMessage;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.events.RuneScapeProfileChanged;
@@ -89,6 +91,9 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 
 	@Inject
 	private Client client;
+
+	@Inject
+	private ChatMessageManager chatMessageManager;
 
 	@Inject
 	private ItemManager itemManager;
@@ -721,7 +726,15 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 			case "mining":
 				return config.restrictMining() ? Collections.emptySet() : null;
 			case "pickpocketing":
-				return config.restrictPickpocketing() ? Collections.emptySet() : null;
+				switch (config.thievingMode())
+				{
+					case COINS_POUCH:
+						return Set.of("npc");
+					case NPC_AND_LOOT:
+						return Collections.emptySet();
+					default:
+						return null;
+				}
 			case "cooking":
 				return config.restrictCooking() ? Collections.emptySet() : null;
 			case "farming-compost":
@@ -1074,10 +1087,21 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 			return;
 		}
 		lastBlockMessageMs = now;
-		client.addChatMessage(ChatMessageType.GAMEMESSAGE, "",
-			String.format(Locale.US,
-				"[Bronzeman TCG] You haven't collected the %s card yet - open more packs!", entityName),
-			null);
+		queueChat(String.format(Locale.US,
+			"[Bronzeman TCG] You haven't collected the %s card yet - open more packs!", entityName));
+	}
+
+	/**
+	 * CONSOLE type via the chat manager: raw GAMEMESSAGEs from addChatMessage get hidden
+	 * when the player's Game chat tab is set to "Filter" (why feedback looked dead on a
+	 * standard client but fine in dev testing).
+	 */
+	private void queueChat(String message)
+	{
+		chatMessageManager.queue(QueuedMessage.builder()
+			.type(ChatMessageType.CONSOLE)
+			.runeLiteFormattedMessage(message)
+			.build());
 	}
 
 	private void sendBlockedCardsMessage(List<String> missingCards)
@@ -1105,10 +1129,8 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 			listed += String.format(Locale.US, " and %d more",
 				missingCards.size() - MAX_LISTED_MISSING_CARDS);
 		}
-		client.addChatMessage(ChatMessageType.GAMEMESSAGE, "",
-			String.format(Locale.US,
-				"[Bronzeman TCG] You haven't collected these cards yet: %s - open more packs!", listed),
-			null);
+		queueChat(String.format(Locale.US,
+			"[Bronzeman TCG] You haven't collected these cards yet: %s - open more packs!", listed));
 	}
 
 	@Provides

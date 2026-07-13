@@ -587,16 +587,19 @@ public interface BronzemanTcgConfig extends Config
 	//Thieving
 	//----------------
 	@ConfigItem(
-		keyName = "restrictPickpocketing",
+		keyName = "thievingMode",
 		name = "Restrict pickpocketing",
-		description = "Block pickpocketing NPCs until the cards of their loot are collected."
-			+ "<br>e.g. Coins and Coin pouch.",
+		description = "'Coins + Pouch': pickpocketing an NPC requires the cards of its loot "
+			+ "(Coins and Coin pouch)."
+			+ "<br>'NPC + Loot': additionally requires the card of the NPC being pickpocketed "
+			+ "(e.g. the Man card to pickpocket a Man)."
+			+ "<br>Master Farmer keeps his own dial below.",
 		section = thievingSection,
 		position = 0
 	)
-	default boolean restrictPickpocketing()
+	default ThievingMode thievingMode()
 	{
-		return true;
+		return ThievingMode.COINS_POUCH;
 	}
 
 	@ConfigItem(

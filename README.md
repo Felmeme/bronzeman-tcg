@@ -1,7 +1,7 @@
 # Bronzeman TCG
 
 A card-collection challenge mode for RuneLite, driven by the
-[OSRS TCG](https://github.com/Azderi/osrs-tcg) plugin's gacha collection:
+[OSRS TCG](https://runelite.net/plugin-hub/show/osrs-tcg) plugin's gacha collection:
 **almost everything you do is locked until you pull the matching card.**
 
 Install both plugins from the Plugin Hub; this one reads the TCG collection

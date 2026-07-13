@@ -95,3 +95,14 @@ Two classes:
   emitted with empty arrays — the panel shows them always-completable.
 - Dragon Slayer I `Law rune`/`Air rune` are emitted as separate required items; on the wiki they're
   part of a "telegrab OR 10,000 coins" alternative that is too nested to model as a clean group.
+
+---
+
+## Addendum (post-release): hidden quest interactions
+
+The data pass covers the wiki infobox's "Items required" and "kills" fields.
+Quest-critical interactions that appear only in walkthrough prose (e.g.
+Children of the Sun's guard-marking, an item-on-NPC interaction on locked
+"Guard" NPCs) are NOT captured automatically. Such cases are patched into
+quest_cards.json individually as players report them (CotS was the first).
+A systematic walkthrough-mining pass is on the CLAUDE.md backlog.

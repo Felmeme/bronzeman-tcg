@@ -203,6 +203,12 @@ docs/sailing_nodes_report.md):
    prefer the dev client only for testing - play on the hub build.
 
 ## Post-launch backlog (agreed with owner)
+- **Quest walkthrough-mining pass**: the quest data only captures infobox
+  "Items required" + "kills"; interactions hidden in walkthrough prose
+  (CotS guard-marking) get patched case-by-case as reported. A systematic
+  pass = parse quest walkthrough sections for item-on-NPC / marked-NPC
+  steps against tracked names. Until then, treat player reports as data
+  bugs: patch quest_cards.json + note in docs/quest_cards_report.md.
 - **Card browser in the side panel (NEXT after PvM content — owner spec
   in progress, "we'll work on it as we go")**: grouped view of available
   cards for easier discovery — resources grouped by skill/type, e.g. all

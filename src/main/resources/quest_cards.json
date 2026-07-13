@@ -1,5609 +1,5615 @@
 {
- "quests": [
-  {
-   "name": "A Kingdom Divided",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Defence potion"
-    ],
-    [
-     "Volcanic sulphur"
-    ],
-    [
-     "Molten glass"
-    ],
-    [
-     "Dark essence block"
-    ],
-    [
-     "Chisel"
-    ]
-   ],
-   "groupLabels": [
-    "Defence potion",
-    "Volcanic sulphur",
-    "Molten glass",
-    "Dark essence block",
-    "Chisel"
-   ],
-   "monsterCards": [
-    "Judge of Yama",
-    "Assassin",
-    "Lizardman brute",
-    "Xamphur",
-    "Barbarian Warlord"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "A Night at the Theatre",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Saw"
-    ]
-   ],
-   "groupLabels": [
-    "Saw"
-   ],
-   "monsterCards": [
-    "Vyrewatch",
-    "Araxyte",
-    "Hespori",
-    "The Maiden of Sugadinti",
-    "Nylocas Matomenos",
-    "Pestilent Bloat",
-    "Nylocas Toxobolos",
-    "Nylocas Hagios",
-    "Nylocas Ischyros",
-    "Nylocas Vasilias",
-    "Sotetseg",
-    "Xarpus",
-    "Verzik Vitur",
-    "Nylocas Athanatos"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "A Porcine of Interest",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Rope"
-    ],
-    [
-     "Knife"
-    ]
-   ],
-   "groupLabels": [
-    "Rope",
-    "Knife"
-   ],
-   "monsterCards": [
-    "Sourhog"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "A Soul's Bane",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Rope"
-    ]
-   ],
-   "groupLabels": [
-    "Rope"
-   ],
-   "monsterCards": [
-    "Angry unicorn",
-    "Angry bear",
-    "Angry giant rat",
-    "Angry goblin",
-    "Fear reaper",
-    "Confusion beast",
-    "Hopeless creature",
-    "Tolna"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "A Tail of Two Cats",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Cat",
-     "Kitten"
-    ],
-    [
-     "Death rune"
-    ],
-    [
-     "Chocolate cake"
-    ],
-    [
-     "Logs"
-    ],
-    [
-     "Tinderbox"
-    ],
-    [
-     "Bucket of milk"
-    ],
-    [
-     "Shears"
-    ],
-    [
-     "Potato seed"
-    ],
-    [
-     "Rake"
-    ],
-    [
-     "Seed dibber"
-    ],
-    [
-     "Vial of water"
-    ],
-    [
-     "Desert shirt",
-     "Druid's robe top"
-    ],
-    [
-     "Desert robe",
-     "Druid's robe"
-    ]
-   ],
-   "groupLabels": [
-    "Cat / Kitten",
-    "Death rune",
-    "Chocolate cake",
-    "Logs",
-    "Tinderbox",
-    "Bucket of milk",
-    "Shears",
-    "Potato seed",
-    "Rake",
-    "Seed dibber",
-    "Vial of water",
-    "Desert shirt / Druid's robe top",
-    "Any robe"
-   ],
-   "monsterCards": [],
-   "notes": ""
-  },
-  {
-   "name": "A Taste of Hope",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Coins"
-    ],
-    [
-     "Knife"
-    ],
-    [
-     "Emerald"
-    ],
-    [
-     "Chisel"
-    ],
-    [
-     "Pestle and mortar"
-    ],
-    [
-     "Vial of water"
-    ]
-   ],
-   "groupLabels": [
-    "Coins",
-    "Knife",
-    "Emerald",
-    "Chisel",
-    "Pestle and mortar",
-    "Vial of water"
-   ],
-   "monsterCards": [
-    "Abomination",
-    "Ranis Drakan",
-    "Vyrewatch"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Alfred Grimhand's Barcrawl",
-   "miniquest": true,
-   "cardGroups": [
-    [
-     "Coins"
-    ]
-   ],
-   "groupLabels": [
-    "Coins"
-   ],
-   "monsterCards": [],
-   "notes": ""
-  },
-  {
-   "name": "Animal Magnetism",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Mithril axe"
-    ],
-    [
-     "Iron bar"
-    ],
-    [
-     "Ecto-token"
-    ],
-    [
-     "Hammer"
-    ],
-    [
-     "Hard leather"
-    ]
-   ],
-   "groupLabels": [
-    "Mithril axe",
-    "Iron bar",
-    "Ecto-token",
-    "Hammer",
-    "Hard leather"
-   ],
-   "monsterCards": [],
-   "notes": ""
-  },
-  {
-   "name": "Another Slice of H.A.M.",
-   "miniquest": false,
-   "cardGroups": [],
-   "groupLabels": [],
-   "monsterCards": [
-    "H.A.M. Archer",
-    "H.A.M. Mage",
-    "Sigmund"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Architectural Alliance",
-   "miniquest": true,
-   "cardGroups": [],
-   "groupLabels": [],
-   "monsterCards": [],
-   "notes": ""
-  },
-  {
-   "name": "At First Light",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Needle",
-     "Costume needle"
-    ],
-    [
-     "Hammer",
-     "Imcando hammer"
-    ],
-    [
-     "Jerboa tail"
-    ]
-   ],
-   "groupLabels": [
-    "Any needle",
-    "Any hammer",
-    "Jerboa tail"
-   ],
-   "monsterCards": [],
-   "notes": ""
-  },
-  {
-   "name": "Barbarian Training",
-   "miniquest": true,
-   "cardGroups": [],
-   "groupLabels": [],
-   "monsterCards": [
-    "Mithril dragon"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Bear Your Soul",
-   "miniquest": true,
-   "cardGroups": [
-    [
-     "Spade"
-    ],
-    [
-     "Dusty key"
-    ],
-    [
-     "Key master teleport"
-    ]
-   ],
-   "groupLabels": [
-    "Spade",
-    "Dusty key",
-    "Key master teleport"
-   ],
-   "monsterCards": [],
-   "notes": ""
-  },
-  {
-   "name": "Below Ice Mountain",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Cooked meat"
-    ],
-    [
-     "Bread"
-    ],
-    [
-     "Knife"
-    ],
-    [
-     "Beer"
-    ]
-   ],
-   "groupLabels": [
-    "Cooked meat",
-    "Bread",
-    "Knife",
-    "Beer"
-   ],
-   "monsterCards": [
-    "Ancient Guardian"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Beneath Cursed Sands",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Coal"
-    ],
-    [
-     "Iron bar"
-    ],
-    [
-     "Tinderbox"
-    ],
-    [
-     "Spade"
-    ]
-   ],
-   "groupLabels": [
-    "Coal",
-    "Iron bar",
-    "Tinderbox",
-    "Spade"
-   ],
-   "monsterCards": [
-    "Head Menaphite Guard",
-    "Scarab Mage",
-    "Champion of Scabaras",
-    "Menaphite Akh"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Between a Rock...",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Gold bar"
-    ],
-    [
-     "Hammer"
-    ],
-    [
-     "Double ammo mould"
-    ],
-    [
-     "Coins"
-    ]
-   ],
-   "groupLabels": [
-    "Gold bar",
-    "Hammer",
-    "Double ammo mould",
-    "Coins"
-   ],
-   "monsterCards": [
-    "Scorpion",
-    "Arzinian Being of Bordanzan"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Big Chompy Bird Hunting",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Feather"
-    ],
-    [
-     "Knife"
-    ],
-    [
-     "Chisel"
-    ],
-    [
-     "Wolf bones"
-    ],
-    [
-     "Cabbage"
-    ],
-    [
-     "Tomato"
-    ],
-    [
-     "Onion"
-    ],
-    [
-     "Potato"
-    ],
-    [
-     "Equa leaves"
-    ]
-   ],
-   "groupLabels": [
-    "Feather",
-    "Knife",
-    "Chisel",
-    "Wolf bones",
-    "Cabbage",
-    "Tomato",
-    "Onion",
-    "Potato",
-    "Equa leaves"
-   ],
-   "monsterCards": [
-    "Chompy bird",
-    "Wolf"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Biohazard",
-   "miniquest": false,
-   "cardGroups": [],
-   "groupLabels": [],
-   "monsterCards": [
-    "Mourner"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Black Knights' Fortress",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Cabbage"
-    ],
-    [
-     "Iron chainbody"
-    ],
-    [
-     "Bronze med helm"
-    ]
-   ],
-   "groupLabels": [
-    "Cabbage",
-    "Iron chainbody",
-    "Bronze med helm"
-   ],
-   "monsterCards": [],
-   "notes": ""
-  },
-  {
-   "name": "Bone Voyage",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Vodka"
-    ]
-   ],
-   "groupLabels": [
-    "Vodka"
-   ],
-   "monsterCards": [],
-   "notes": ""
-  },
-  {
-   "name": "Cabin Fever",
-   "miniquest": false,
-   "cardGroups": [],
-   "groupLabels": [],
-   "monsterCards": [
-    "Pirate"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Children of the Sun",
-   "miniquest": false,
-   "cardGroups": [],
-   "groupLabels": [],
-   "monsterCards": [],
-   "notes": ""
-  },
-  {
-   "name": "Client of Kourend",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Feather"
-    ]
-   ],
-   "groupLabels": [
-    "Feather"
-   ],
-   "monsterCards": [],
-   "notes": ""
-  },
-  {
-   "name": "Clock Tower",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Bucket of water"
-    ]
-   ],
-   "groupLabels": [
-    "Bucket of water"
-   ],
-   "monsterCards": [],
-   "notes": ""
-  },
-  {
-   "name": "Cold War",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Oak plank"
-    ],
-    [
-     "Steel nails"
-    ],
-    [
-     "Hammer"
-    ],
-    [
-     "Spade"
-    ],
-    [
-     "Clockwork"
-    ],
-    [
-     "Steel bar"
-    ],
-    [
-     "Plank"
-    ],
-    [
-     "Silk"
-    ],
-    [
-     "Raw cod"
-    ],
-    [
-     "Swamp tar"
-    ],
-    [
-     "Feather"
-    ],
-    [
-     "Mahogany plank"
-    ],
-    [
-     "Leather"
-    ]
-   ],
-   "groupLabels": [
-    "Oak plank",
-    "Steel nails",
-    "Hammer",
-    "Spade",
-    "Clockwork",
-    "Steel bar",
-    "Plank",
-    "Silk",
-    "Raw cod",
-    "Swamp tar",
-    "Feather",
-    "Mahogany plank",
-    "Leather"
-   ],
-   "monsterCards": [
-    "Icelord"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Contact!",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Coins"
-    ],
-    [
-     "Tinderbox"
-    ]
-   ],
-   "groupLabels": [
-    "Coins",
-    "Tinderbox"
-   ],
-   "monsterCards": [
-    "Giant Scarab",
-    "Locust rider",
-    "Scarab Mage"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Cook's Assistant",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Egg"
-    ],
-    [
-     "Bucket of milk"
-    ],
-    [
-     "Pot of flour"
-    ]
-   ],
-   "groupLabels": [
-    "Egg",
-    "Bucket of milk",
-    "Pot of flour"
-   ],
-   "monsterCards": [],
-   "notes": ""
-  },
-  {
-   "name": "Creature of Fenkenstrain",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Silver bar"
-    ],
-    [
-     "Bronze wire"
-    ],
-    [
-     "Needle"
-    ],
-    [
-     "Thread"
-    ],
-    [
-     "Spade"
-    ],
-    [
-     "Coins"
-    ],
-    [
-     "Law rune"
-    ],
-    [
-     "Air rune"
-    ]
-   ],
-   "groupLabels": [
-    "Silver bar",
-    "Bronze wire",
-    "Needle",
-    "Thread",
-    "Spade",
-    "Coins",
-    "Law rune",
-    "Air rune"
-   ],
-   "monsterCards": [
-    "Experiment"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Current Affairs",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Coins"
-    ]
-   ],
-   "groupLabels": [
-    "Coins"
-   ],
-   "monsterCards": [],
-   "notes": ""
-  },
-  {
-   "name": "Curse of the Empty Lord",
-   "miniquest": true,
-   "cardGroups": [
-    [
-     "Knife"
-    ]
-   ],
-   "groupLabels": [
-    "Knife"
-   ],
-   "monsterCards": [],
-   "notes": ""
-  },
-  {
-   "name": "Daddy's Home",
-   "miniquest": true,
-   "cardGroups": [
-    [
-     "Plank"
-    ],
-    [
-     "Steel nails"
-    ],
-    [
-     "Hammer"
-    ],
-    [
-     "Saw"
-    ]
-   ],
-   "groupLabels": [
-    "Plank",
-    "Steel nails",
-    "Hammer",
-    "Saw"
-   ],
-   "monsterCards": [],
-   "notes": ""
-  },
-  {
-   "name": "Darkness of Hallowvale",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Plank"
-    ],
-    [
-     "Hammer"
-    ],
-    [
-     "Knife"
-    ]
-   ],
-   "groupLabels": [
-    "Plank",
-    "Hammer",
-    "Knife"
-   ],
-   "monsterCards": [
-    "Vanstrom Klause"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Death Plateau",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Coins"
-    ],
-    [
-     "Bread"
-    ],
-    [
-     "Trout"
-    ],
-    [
-     "Iron bar"
-    ],
-    [
-     "Asgarnian ale"
-    ]
-   ],
-   "groupLabels": [
-    "Coins",
-    "Bread",
-    "Trout",
-    "Iron bar",
-    "Asgarnian ale"
-   ],
-   "monsterCards": [],
-   "notes": ""
-  },
-  {
-   "name": "Death on the Isle",
-   "miniquest": false,
-   "cardGroups": [],
-   "groupLabels": [],
-   "monsterCards": [],
-   "notes": ""
-  },
-  {
-   "name": "Death to the Dorgeshuun",
-   "miniquest": false,
-   "cardGroups": [],
-   "groupLabels": [],
-   "monsterCards": [
-    "Sigmund",
-    "H.A.M. Guard"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Defender of Varrock",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Chaos core"
-    ]
-   ],
-   "groupLabels": [
-    "Chaos core"
-   ],
-   "monsterCards": [
-    "Armoured zombie (Defender of Varrock)",
-    "Armoured zombie (The Curse of Arrav)",
-    "Armoured zombie (Zemouregal's Fort)",
-    "Chaos Golem"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Demon Slayer",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Bucket of water"
-    ],
-    [
-     "Bones"
-    ]
-   ],
-   "groupLabels": [
-    "Bucket of water",
-    "Bones"
-   ],
-   "monsterCards": [
-    "Delrith"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Desert Treasure I",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Coins"
-    ],
-    [
-     "Magic logs"
-    ],
-    [
-     "Steel bar"
-    ],
-    [
-     "Molten glass"
-    ],
-    [
-     "Ashes"
-    ],
-    [
-     "Blood rune"
-    ],
-    [
-     "Bones"
-    ],
-    [
-     "Silver bar"
-    ],
-    [
-     "Spice"
-    ],
-    [
-     "Chocolate bar",
-     "Cooking apple",
-     "Pineapple pizza"
-    ],
-    [
-     "Facemask",
-     "Slayer helmet"
-    ],
-    [
-     "Tinderbox"
-    ],
-    [
-     "Lockpick"
-    ]
-   ],
-   "groupLabels": [
-    "Coins",
-    "Magic logs",
-    "Steel bar",
-    "Molten glass",
-    "Ashes",
-    "Blood rune",
-    "Bones",
-    "Silver bar",
-    "Spice",
-    "Chocolate bar / Cooking apple / Pineapple pizza",
-    "Facemask / Slayer helmet",
-    "Tinderbox",
-    "Lockpick"
-   ],
-   "monsterCards": [
-    "Dessous",
-    "Ice troll",
-    "Kamil",
-    "Fareed",
-    "Damis"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Desert Treasure II - The Fallen Empire",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Tinderbox"
-    ],
-    [
-     "Pestle and mortar"
-    ],
-    [
-     "Facemask"
-    ]
-   ],
-   "groupLabels": [
-    "Tinderbox",
-    "Pestle and mortar",
-    "Facemask"
-   ],
-   "monsterCards": [
-    "Ancient Guardian",
-    "Vardorvis",
-    "Kasonde",
-    "The Leviathan",
-    "Jhallan",
-    "Duke Sucellus",
-    "The Whisperer",
-    "Mysterious Figure",
-    "The Forsaken Assassin",
-    "Ketla the Unworthy",
-    "Kasonde the Craven",
-    "Persten the Deceitful"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Devious Minds",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Mithril 2h sword"
-    ],
-    [
-     "Bow string"
-    ],
-    [
-     "Large pouch",
-     "Colossal pouch"
-    ]
-   ],
-   "groupLabels": [
-    "Mithril 2h sword",
-    "Bow string",
-    "Any pouch"
-   ],
-   "monsterCards": [],
-   "notes": ""
-  },
-  {
-   "name": "Doric's Quest",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Clay"
-    ],
-    [
-     "Copper ore"
-    ],
-    [
-     "Iron ore"
-    ]
-   ],
-   "groupLabels": [
-    "Clay",
-    "Copper ore",
-    "Iron ore"
-   ],
-   "monsterCards": [],
-   "notes": ""
-  },
-  {
-   "name": "Dragon Slayer I",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Unfired bowl"
-    ],
-    [
-     "Wizard's mind bomb"
-    ],
-    [
-     "Lobster pot"
-    ],
-    [
-     "Silk"
-    ],
-    [
-     "Law rune"
-    ],
-    [
-     "Air rune"
-    ],
-    [
-     "Hammer"
-    ],
-    [
-     "Steel nails"
-    ],
-    [
-     "Plank"
-    ],
-    [
-     "Coins"
-    ]
-   ],
-   "groupLabels": [
-    "Unfired bowl",
-    "Wizard's mind bomb",
-    "Lobster pot",
-    "Silk",
-    "Law rune",
-    "Air rune",
-    "Hammer",
-    "Steel nails",
-    "Plank",
-    "Coins"
-   ],
-   "monsterCards": [
-    "Zombie rat",
-    "Ghost",
-    "Skeleton",
-    "Zombie",
-    "Melzar the Mad",
-    "Lesser demon",
-    "Wormbrain",
-    "Elvarg"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Dragon Slayer II",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Oak plank"
-    ],
-    [
-     "Swamp paste"
-    ],
-    [
-     "Hammer"
-    ],
-    [
-     "Machete"
-    ],
-    [
-     "Saw"
-    ],
-    [
-     "Dragonstone"
-    ],
-    [
-     "Molten glass"
-    ],
-    [
-     "Glassblowing pipe"
-    ],
-    [
-     "Spade"
-    ],
-    [
-     "Astral rune"
-    ],
-    [
-     "Tinderbox"
-    ],
-    [
-     "Pestle and mortar"
-    ]
-   ],
-   "groupLabels": [
-    "Oak plank",
-    "Swamp paste",
-    "Hammer",
-    "Machete",
-    "Saw",
-    "Dragonstone",
-    "Molten glass",
-    "Glassblowing pipe",
-    "Spade",
-    "Astral rune",
-    "Tinderbox",
-    "Pestle and mortar"
-   ],
-   "monsterCards": [
-    "Vorkath",
-    "Spawn",
-    "Robert the Strong",
-    "Green dragon",
-    "Blue dragon",
-    "Red dragon",
-    "Iron dragon",
-    "Brutal green dragon",
-    "Black dragon",
-    "Steel dragon",
-    "Brutal red dragon",
-    "Mithril dragon",
-    "Adamant dragon",
-    "Rune dragon",
-    "Galvek"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Dream Mentor",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Astral rune"
-    ],
-    [
-     "Tinderbox"
-    ],
-    [
-     "Hammer"
-    ],
-    [
-     "Pestle and mortar"
-    ],
-    [
-     "Shark"
-    ]
-   ],
-   "groupLabels": [
-    "Astral rune",
-    "Tinderbox",
-    "Hammer",
-    "Pestle and mortar",
-    "Shark"
-   ],
-   "monsterCards": [
-    "The Inadequacy",
-    "The Everlasting",
-    "The Untouchable",
-    "The Illusive"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Druidic Ritual",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Raw bear meat"
-    ],
-    [
-     "Raw rat meat"
-    ],
-    [
-     "Raw beef"
-    ],
-    [
-     "Raw chicken"
-    ]
-   ],
-   "groupLabels": [
-    "Raw bear meat",
-    "Raw rat meat",
-    "Raw beef",
-    "Raw chicken"
-   ],
-   "monsterCards": [
-    "Suit of armour"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Dwarf Cannon",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Hammer"
-    ]
-   ],
-   "groupLabels": [
-    "Hammer"
-   ],
-   "monsterCards": [],
-   "notes": ""
-  },
-  {
-   "name": "Eadgar's Ruse",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Vodka"
-    ],
-    [
-     "Pineapple chunks"
-    ],
-    [
-     "Logs"
-    ],
-    [
-     "Grain"
-    ],
-    [
-     "Raw chicken"
-    ],
-    [
-     "Pestle and mortar"
-    ]
-   ],
-   "groupLabels": [
-    "Vodka",
-    "Pineapple chunks",
-    "Logs",
-    "Grain",
-    "Raw chicken",
-    "Pestle and mortar"
-   ],
-   "monsterCards": [],
-   "notes": ""
-  },
-  {
-   "name": "Eagles' Peak",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Yellow dye"
-    ],
-    [
-     "Swamp tar"
-    ],
-    [
-     "Coins"
-    ]
-   ],
-   "groupLabels": [
-    "Yellow dye",
-    "Swamp tar",
-    "Coins"
-   ],
-   "monsterCards": [
-    "Kebbit (Eagles' Peak)"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Elemental Workshop I",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Knife"
-    ],
-    [
-     "Needle"
-    ],
-    [
-     "Thread"
-    ],
-    [
-     "Leather"
-    ],
-    [
-     "Hammer"
-    ],
-    [
-     "Coal"
-    ]
-   ],
-   "groupLabels": [
-    "Knife",
-    "Needle",
-    "Thread",
-    "Leather",
-    "Hammer",
-    "Coal"
-   ],
-   "monsterCards": [
-    "Earth elemental"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Elemental Workshop II",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Hammer"
-    ]
-   ],
-   "groupLabels": [
-    "Hammer"
-   ],
-   "monsterCards": [
-    "Earth elemental"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Enakhra's Lament",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Chisel"
-    ],
-    [
-     "Bread"
-    ],
-    [
-     "Cake",
-     "Chocolate cake"
-    ],
-    [
-     "Baked potato"
-    ],
-    [
-     "Tinderbox"
-    ],
-    [
-     "Candle"
-    ],
-    [
-     "Logs"
-    ],
-    [
-     "Oak logs"
-    ],
-    [
-     "Willow logs"
-    ],
-    [
-     "Maple logs"
-    ],
-    [
-     "Soft clay"
-    ],
-    [
-     "Coal"
-    ],
-    [
-     "Sandstone"
-    ]
-   ],
-   "groupLabels": [
-    "Chisel",
-    "Bread",
-    "Any cake",
-    "Baked potato",
-    "Tinderbox",
-    "Candle",
-    "Logs",
-    "Oak logs",
-    "Willow logs",
-    "Maple logs",
-    "Soft clay",
-    "Coal",
-    "Sandstone"
-   ],
-   "monsterCards": [],
-   "notes": ""
-  },
-  {
-   "name": "Enlightened Journey",
-   "miniquest": false,
-   "cardGroups": [],
-   "groupLabels": [],
-   "monsterCards": [],
-   "notes": ""
-  },
-  {
-   "name": "Enter the Abyss",
-   "miniquest": true,
-   "cardGroups": [],
-   "groupLabels": [],
-   "monsterCards": [],
-   "notes": ""
-  },
-  {
-   "name": "Ernest the Chicken",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Spade"
-    ]
-   ],
-   "groupLabels": [
-    "Spade"
-   ],
-   "monsterCards": [],
-   "notes": ""
-  },
-  {
-   "name": "Ethically Acquired Antiquities",
-   "miniquest": false,
-   "cardGroups": [],
-   "groupLabels": [],
-   "monsterCards": [],
-   "notes": ""
-  },
-  {
-   "name": "Fairytale I - Growing Pains",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Secateurs"
-    ],
-    [
-     "Spade"
-    ]
-   ],
-   "groupLabels": [
-    "Secateurs",
-    "Spade"
-   ],
-   "monsterCards": [
-    "Tanglefoot"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Fairytale II - Cure a Queen",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Vial of water"
-    ],
-    [
-     "Pestle and mortar"
-    ]
-   ],
-   "groupLabels": [
-    "Vial of water",
-    "Pestle and mortar"
-   ],
-   "monsterCards": [
-    "Gorak"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Fallen From Grace",
-   "miniquest": false,
-   "cardGroups": [],
-   "groupLabels": [],
-   "monsterCards": [],
-   "notes": ""
-  },
-  {
-   "name": "Family Crest",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Shrimps"
-    ],
-    [
-     "Salmon"
-    ],
-    [
-     "Tuna"
-    ],
-    [
-     "Bass"
-    ],
-    [
-     "Swordfish"
-    ],
-    [
-     "Adamant pickaxe",
-     "Rune pickaxe"
-    ],
-    [
-     "Ruby"
-    ],
-    [
-     "Ring mould"
-    ],
-    [
-     "Necklace mould"
-    ]
-   ],
-   "groupLabels": [
-    "Shrimps",
-    "Salmon",
-    "Tuna",
-    "Bass",
-    "Swordfish",
-    "Any pickaxe",
-    "Ruby",
-    "Ring mould",
-    "Necklace mould"
-   ],
-   "monsterCards": [
-    "Chronozon"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Family Pest",
-   "miniquest": true,
-   "cardGroups": [],
-   "groupLabels": [],
-   "monsterCards": [],
-   "notes": ""
-  },
-  {
-   "name": "Fight Arena",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Coins"
-    ]
-   ],
-   "groupLabels": [
-    "Coins"
-   ],
-   "monsterCards": [
-    "Khazard Scorpion",
-    "Khazard Ogre",
-    "Bouncer",
-    "General Khazard"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Fishing Contest",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Spade"
-    ],
-    [
-     "Coins"
-    ],
-    [
-     "Garlic"
-    ],
-    [
-     "Fishing rod",
-     "Pearl fishing rod"
-    ]
-   ],
-   "groupLabels": [
-    "Spade",
-    "Coins",
-    "Garlic",
-    "Any fishing rod"
-   ],
-   "monsterCards": [],
-   "notes": ""
-  },
-  {
-   "name": "Forgettable Tale...",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Coins"
-    ],
-    [
-     "Barley malt"
-    ],
-    [
-     "Seed dibber"
-    ],
-    [
-     "Rake"
-    ],
-    [
-     "Kebab"
-    ],
-    [
-     "Beer"
-    ],
-    [
-     "Beer glass"
-    ]
-   ],
-   "groupLabels": [
-    "Coins",
-    "Barley malt",
-    "Seed dibber",
-    "Rake",
-    "Kebab",
-    "Beer",
-    "Beer glass"
-   ],
-   "monsterCards": [],
-   "notes": ""
-  },
-  {
-   "name": "Garden of Tranquillity",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Plant cure"
-    ],
-    [
-     "Marigold seed"
-    ],
-    [
-     "Cabbage seed"
-    ],
-    [
-     "Onion seed"
-    ],
-    [
-     "Hammer"
-    ],
-    [
-     "Rune essence",
-     "Pure essence"
-    ],
-    [
-     "Pestle and mortar"
-    ],
-    [
-     "Filled plant pot"
-    ],
-    [
-     "Ultracompost",
-     "Supercompost",
-     "Compost"
-    ]
-   ],
-   "groupLabels": [
-    "Plant cure",
-    "Marigold seed",
-    "Cabbage seed",
-    "Onion seed",
-    "Hammer",
-    "Any essence",
-    "Pestle and mortar",
-    "Filled plant pot",
-    "Ultracompost / Supercompost / Compost"
-   ],
-   "monsterCards": [],
-   "notes": ""
-  },
-  {
-   "name": "Gertrude's Cat",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Bucket of milk"
-    ],
-    [
-     "Coins"
-    ]
-   ],
-   "groupLabels": [
-    "Bucket of milk",
-    "Coins"
-   ],
-   "monsterCards": [],
-   "notes": ""
-  },
-  {
-   "name": "Getting Ahead",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Bear fur",
-     "Grey wolf fur",
-     "Fur"
-    ],
-    [
-     "Soft clay"
-    ],
-    [
-     "Hammer",
-     "Imcando hammer"
-    ],
-    [
-     "Saw",
-     "Amy's saw"
-    ],
-    [
-     "Plank"
-    ],
-    [
-     "Knife"
-    ],
-    [
-     "Red dye"
-    ],
-    [
-     "Pot of flour"
-    ],
-    [
-     "Needle",
-     "Costume needle"
-    ],
-    [
-     "Thread"
-    ],
-    [
-     "Costume needle"
-    ]
-   ],
-   "groupLabels": [
-    "Any fur",
-    "Soft clay",
-    "Any hammer",
-    "Any saw",
-    "Plank",
-    "Knife",
-    "Red dye",
-    "Pot of flour",
-    "Any needle",
-    "Thread",
-    "Costume needle"
-   ],
-   "monsterCards": [
-    "Headless Beast"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Ghosts Ahoy",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Ecto-token"
-    ],
-    [
-     "Coins"
-    ],
-    [
-     "Bucket of milk"
-    ],
-    [
-     "Silk"
-    ],
-    [
-     "Spade"
-    ],
-    [
-     "Oak longbow"
-    ],
-    [
-     "Knife"
-    ],
-    [
-     "Needle"
-    ],
-    [
-     "Thread"
-    ],
-    [
-     "Costume needle"
-    ],
-    [
-     "Bucket of slime"
-    ]
-   ],
-   "groupLabels": [
-    "Ecto-token",
-    "Coins",
-    "Bucket of milk",
-    "Silk",
-    "Spade",
-    "Oak longbow",
-    "Knife",
-    "Needle",
-    "Thread",
-    "Costume needle",
-    "Bucket of slime"
-   ],
-   "monsterCards": [
-    "Giant lobster"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Goblin Diplomacy",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Goblin mail"
-    ],
-    [
-     "Blue dye"
-    ],
-    [
-     "Red dye"
-    ],
-    [
-     "Yellow dye"
-    ]
-   ],
-   "groupLabels": [
-    "Goblin mail",
-    "Blue dye",
-    "Red dye",
-    "Yellow dye"
-   ],
-   "monsterCards": [],
-   "notes": ""
-  },
-  {
-   "name": "Grim Tales",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Tarromin"
-    ],
-    [
-     "Seed dibber"
-    ],
-    [
-     "Watering can"
-    ],
-    [
-     "Leather gloves"
-    ]
-   ],
-   "groupLabels": [
-    "Tarromin",
-    "Seed dibber",
-    "Watering can",
-    "Leather gloves"
-   ],
-   "monsterCards": [
-    "Glod"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Haunted Mine",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Chisel"
-    ]
-   ],
-   "groupLabels": [
-    "Chisel"
-   ],
-   "monsterCards": [
-    "Treus Dayth"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Hazeel Cult",
-   "miniquest": false,
-   "cardGroups": [],
-   "groupLabels": [],
-   "monsterCards": [],
-   "notes": ""
-  },
-  {
-   "name": "Heroes' Quest",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Fishing rod"
-    ],
-    [
-     "Fishing bait"
-    ],
-    [
-     "Dusty key"
-    ],
-    [
-     "Knife"
-    ],
-    [
-     "Black full helm"
-    ],
-    [
-     "Black platebody"
-    ],
-    [
-     "Black platelegs"
-    ]
-   ],
-   "groupLabels": [
-    "Fishing rod",
-    "Fishing bait",
-    "Dusty key",
-    "Knife",
-    "Black full helm",
-    "Black platebody",
-    "Black platelegs"
-   ],
-   "monsterCards": [
-    "Ice Queen",
-    "Entrana firebird",
-    "Jailer",
-    "Grip"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "His Faithful Servants",
-   "miniquest": true,
-   "cardGroups": [
-    [
-     "Spade"
-    ]
-   ],
-   "groupLabels": [
-    "Spade"
-   ],
-   "monsterCards": [
-    "Verac the Defiled",
-    "Dharok the Wretched",
-    "Ahrim the Blighted",
-    "Torag the Corrupted",
-    "Karil the Tainted",
-    "Guthan the Infested"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Holy Grail",
-   "miniquest": false,
-   "cardGroups": [],
-   "groupLabels": [],
-   "monsterCards": [
-    "Black Knight Titan"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Hopespear's Will",
-   "miniquest": true,
-   "cardGroups": [
-    [
-     "Morytania legs 2"
-    ]
-   ],
-   "groupLabels": [
-    "Morytania legs 2"
-   ],
-   "monsterCards": [
-    "Snothead",
-    "Snailfeet",
-    "Mosschin",
-    "Redeyes",
-    "Strongbones"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Horror from the Deep",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Fire rune"
-    ],
-    [
-     "Air rune"
-    ],
-    [
-     "Water rune"
-    ],
-    [
-     "Earth rune"
-    ],
-    [
-     "Molten glass"
-    ],
-    [
-     "Tinderbox"
-    ],
-    [
-     "Hammer"
-    ],
-    [
-     "Steel nails"
-    ],
-    [
-     "Plank"
-    ],
-    [
-     "Swamp tar"
-    ]
-   ],
-   "groupLabels": [
-    "Fire rune",
-    "Air rune",
-    "Water rune",
-    "Earth rune",
-    "Molten glass",
-    "Tinderbox",
-    "Hammer",
-    "Steel nails",
-    "Plank",
-    "Swamp tar"
-   ],
-   "monsterCards": [
-    "Dagannoth",
-    "Dagannoth mother"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Icthlarin's Little Helper",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Cat",
-     "Overgrown cat",
-     "Hellcat",
-     "Kitten"
-    ],
-    [
-     "Tinderbox"
-    ],
-    [
-     "Bag of salt"
-    ],
-    [
-     "Bucket"
-    ],
-    [
-     "Waterskin"
-    ],
-    [
-     "Pharaoh's sceptre"
-    ]
-   ],
-   "groupLabels": [
-    "Cat / Overgrown cat / Hellcat / Kitten",
-    "Tinderbox",
-    "Bag of salt",
-    "Bucket",
-    "Waterskin",
-    "Pharaoh's sceptre"
-   ],
-   "monsterCards": [
-    "Possessed Priest",
-    "Apparition"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Imp Catcher",
-   "miniquest": false,
-   "cardGroups": [],
-   "groupLabels": [],
-   "monsterCards": [
-    "Imp"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "In Aid of the Myreque",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Spade"
-    ],
-    [
-     "Bucket"
-    ],
-    [
-     "Hammer"
-    ],
-    [
-     "Plank"
-    ],
-    [
-     "Swamp paste"
-    ],
-    [
-     "Raw mackerel"
-    ],
-    [
-     "Bronze axe"
-    ],
-    [
-     "Tinderbox"
-    ],
-    [
-     "Steel bar"
-    ],
-    [
-     "Coal"
-    ],
-    [
-     "Soft clay"
-    ],
-    [
-     "Rope"
-    ],
-    [
-     "Silver bar"
-    ],
-    [
-     "Mithril bar"
-    ],
-    [
-     "Sapphire"
-    ]
-   ],
-   "groupLabels": [
-    "Spade",
-    "Bucket",
-    "Hammer",
-    "Plank",
-    "Swamp paste",
-    "Raw mackerel",
-    "Bronze axe",
-    "Tinderbox",
-    "Steel bar",
-    "Coal",
-    "Soft clay",
-    "Rope",
-    "Silver bar",
-    "Mithril bar",
-    "Sapphire"
-   ],
-   "monsterCards": [
-    "Gadderanks",
-    "Vampyre Juvinate"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "In Search of Knowledge",
-   "miniquest": true,
-   "cardGroups": [
-    [
-     "Knife"
-    ]
-   ],
-   "groupLabels": [
-    "Knife"
-   ],
-   "monsterCards": [],
-   "notes": ""
-  },
-  {
-   "name": "In Search of the Myreque",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Steel longsword"
-    ],
-    [
-     "Steel sword"
-    ],
-    [
-     "Steel mace"
-    ],
-    [
-     "Steel warhammer"
-    ],
-    [
-     "Steel dagger"
-    ],
-    [
-     "Steel nails"
-    ],
-    [
-     "Hammer",
-     "Imcando hammer"
-    ],
-    [
-     "Plank"
-    ],
-    [
-     "Coins"
-    ]
-   ],
-   "groupLabels": [
-    "Steel longsword",
-    "Steel sword",
-    "Steel mace",
-    "Steel warhammer",
-    "Steel dagger",
-    "Steel nails",
-    "Any hammer",
-    "Plank",
-    "Coins"
-   ],
-   "monsterCards": [
-    "Skeleton Hellhound"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Into the Tombs",
-   "miniquest": true,
-   "cardGroups": [],
-   "groupLabels": [],
-   "monsterCards": [
-    "Akkha",
-    "Ba-Ba",
-    "Kephri",
-    "Zebak",
-    "Tumeken's Warden",
-    "Elidinis' Warden"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Jungle Potion",
-   "miniquest": false,
-   "cardGroups": [],
-   "groupLabels": [],
-   "monsterCards": [],
-   "notes": ""
-  },
-  {
-   "name": "King's Ransom",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Granite"
-    ],
-    [
-     "Bronze med helm"
-    ],
-    [
-     "Iron chainbody"
-    ]
-   ],
-   "groupLabels": [
-    "Granite",
-    "Bronze med helm",
-    "Iron chainbody"
-   ],
-   "monsterCards": [],
-   "notes": ""
-  },
-  {
-   "name": "Lair of Tarn Razorlor",
-   "miniquest": true,
-   "cardGroups": [
-    [
-     "Coins"
-    ]
-   ],
-   "groupLabels": [
-    "Coins"
-   ],
-   "monsterCards": [
-    "Tarn"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Land of the Goblins",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Goblin mail"
-    ],
-    [
-     "Yellow dye"
-    ],
-    [
-     "Blue dye"
-    ],
-    [
-     "Purple dye"
-    ],
-    [
-     "Fishing rod"
-    ],
-    [
-     "Raw slimy eel"
-    ],
-    [
-     "Coins"
-    ]
-   ],
-   "groupLabels": [
-    "Goblin mail",
-    "Yellow dye",
-    "Blue dye",
-    "Purple dye",
-    "Fishing rod",
-    "Raw slimy eel",
-    "Coins"
-   ],
-   "monsterCards": [
-    "Snothead",
-    "Snailfeet",
-    "Mosschin",
-    "Redeyes",
-    "Strongbones"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Learning the Ropes",
-   "miniquest": false,
-   "cardGroups": [],
-   "groupLabels": [],
-   "monsterCards": [
-    "Giant rat"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Legends' Quest",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Gold bar"
-    ],
-    [
-     "Hammer",
-     "Imcando hammer"
-    ],
-    [
-     "Rope"
-    ],
-    [
-     "Rune axe",
-     "Dragon axe",
-     "Infernal axe"
-    ],
-    [
-     "Lockpick"
-    ],
-    [
-     "Vial of water"
-    ],
-    [
-     "Soul rune"
-    ],
-    [
-     "Mind rune"
-    ],
-    [
-     "Law rune"
-    ],
-    [
-     "Earth rune"
-    ],
-    [
-     "Unpowered orb"
-    ],
-    [
-     "Papyrus"
-    ]
-   ],
-   "groupLabels": [
-    "Gold bar",
-    "Any hammer",
-    "Rope",
-    "Any axe",
-    "Lockpick",
-    "Vial of water",
-    "Soul rune",
-    "Mind rune",
-    "Law rune",
-    "Earth rune",
-    "Unpowered orb",
-    "Papyrus"
-   ],
-   "monsterCards": [
-    "Ranalph Devere",
-    "Irvig Senay",
-    "San Tojalon",
-    "Nezikchened"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Lost City",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Knife"
-    ]
-   ],
-   "groupLabels": [
-    "Knife"
-   ],
-   "monsterCards": [
-    "Tree spirit",
-    "Zombie"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Lost Lover",
-   "miniquest": true,
-   "cardGroups": [],
-   "groupLabels": [],
-   "monsterCards": [],
-   "notes": ""
-  },
-  {
-   "name": "Lunar Diplomacy",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Tinderbox"
-    ],
-    [
-     "Coins"
-    ],
-    [
-     "Guam leaf"
-    ],
-    [
-     "Marrentill"
-    ],
-    [
-     "Pestle and mortar"
-    ],
-    [
-     "Hammer"
-    ],
-    [
-     "Needle"
-    ],
-    [
-     "Thread"
-    ],
-    [
-     "Spade"
-    ],
-    [
-     "Bullseye lantern"
-    ],
-    [
-     "Swamp tar"
-    ]
-   ],
-   "groupLabels": [
-    "Tinderbox",
-    "Coins",
-    "Guam leaf",
-    "Marrentill",
-    "Pestle and mortar",
-    "Hammer",
-    "Needle",
-    "Thread",
-    "Spade",
-    "Bullseye lantern",
-    "Swamp tar"
-   ],
-   "monsterCards": [
-    "Suqah",
-    "Me"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Mage Arena I",
-   "miniquest": true,
-   "cardGroups": [],
-   "groupLabels": [],
-   "monsterCards": [
-    "Black demon"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Mage Arena II",
-   "miniquest": true,
-   "cardGroups": [],
-   "groupLabels": [],
-   "monsterCards": [
-    "Porazdir",
-    "Justiciar Zachariah",
-    "Derwen"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Making Friends with My Arm",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Saw"
-    ],
-    [
-     "Bolt of cloth"
-    ],
-    [
-     "Mahogany plank"
-    ],
-    [
-     "Bucket of water"
-    ],
-    [
-     "Rope"
-    ],
-    [
-     "Hammer"
-    ]
-   ],
-   "groupLabels": [
-    "Saw",
-    "Bolt of cloth",
-    "Mahogany plank",
-    "Bucket of water",
-    "Rope",
-    "Hammer"
-   ],
-   "monsterCards": [
-    "Don't Know What",
-    "Mother"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Making History",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Spade"
-    ],
-    [
-     "Sapphire amulet"
-    ],
-    [
-     "Morytania legs 2"
-    ]
-   ],
-   "groupLabels": [
-    "Spade",
-    "Sapphire amulet",
-    "Morytania legs 2"
-   ],
-   "monsterCards": [],
-   "notes": ""
-  },
-  {
-   "name": "Meat and Greet",
-   "miniquest": false,
-   "cardGroups": [],
-   "groupLabels": [],
-   "monsterCards": [
-    "Dire Wolf Alpha",
-    "Minotaur"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Merlin's Crystal",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Bread"
-    ],
-    [
-     "Tinderbox"
-    ],
-    [
-     "Bat bones"
-    ]
-   ],
-   "groupLabels": [
-    "Bread",
-    "Tinderbox",
-    "Bat bones"
-   ],
-   "monsterCards": [
-    "Sir Mordred",
-    "Giant bat"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Misthalin Mystery",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Bucket"
-    ],
-    [
-     "Tinderbox"
-    ],
-    [
-     "Knife"
-    ]
-   ],
-   "groupLabels": [
-    "Bucket",
-    "Tinderbox",
-    "Knife"
-   ],
-   "monsterCards": [],
-   "notes": ""
-  },
-  {
-   "name": "Monk's Friend",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Jug of water"
-    ],
-    [
-     "Logs"
-    ],
-    [
-     "Plank"
-    ]
-   ],
-   "groupLabels": [
-    "Jug of water",
-    "Logs",
-    "Plank"
-   ],
-   "monsterCards": [],
-   "notes": ""
-  },
-  {
-   "name": "Monkey Madness I",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Gold bar"
-    ],
-    [
-     "Ball of wool"
-    ],
-    [
-     "Monkey bones"
-    ],
-    [
-     "Banana"
-    ]
-   ],
-   "groupLabels": [
-    "Gold bar",
-    "Ball of wool",
-    "Monkey bones",
-    "Banana"
-   ],
-   "monsterCards": [
-    "Jungle Demon"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Monkey Madness II",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Lemon"
-    ],
-    [
-     "Grapes"
-    ],
-    [
-     "Pestle and mortar"
-    ],
-    [
-     "Logs"
-    ],
-    [
-     "Hammer"
-    ],
-    [
-     "Chisel"
-    ]
-   ],
-   "groupLabels": [
-    "Lemon",
-    "Grapes",
-    "Pestle and mortar",
-    "Logs",
-    "Hammer",
-    "Chisel"
-   ],
-   "monsterCards": [
-    "Kruk",
-    "Keef",
-    "Kob",
-    "Tortured gorilla",
-    "Demonic gorilla",
-    "Glough"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Mountain Daughter",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Rope"
-    ],
-    [
-     "Plank"
-    ],
-    [
-     "Staff"
-    ]
-   ],
-   "groupLabels": [
-    "Rope",
-    "Plank",
-    "Staff"
-   ],
-   "monsterCards": [
-    "The Kendal"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Mourning's End Part I",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Bear fur"
-    ],
-    [
-     "Silk"
-    ],
-    [
-     "Red dye"
-    ],
-    [
-     "Yellow dye"
-    ],
-    [
-     "Green dye"
-    ],
-    [
-     "Blue dye"
-    ],
-    [
-     "Bucket of water"
-    ],
-    [
-     "Feather"
-    ],
-    [
-     "Toad crunchies",
-     "Premade t'd crunch"
-    ],
-    [
-     "Magic logs"
-    ],
-    [
-     "Leather"
-    ],
-    [
-     "Coal"
-    ]
-   ],
-   "groupLabels": [
-    "Bear fur",
-    "Silk",
-    "Red dye",
-    "Yellow dye",
-    "Green dye",
-    "Blue dye",
-    "Bucket of water",
-    "Feather",
-    "Toad crunchies / Premade t'd crunch",
-    "Magic logs",
-    "Leather",
-    "Coal"
-   ],
-   "monsterCards": [
-    "Mourner"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Mourning's End Part II",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Chisel"
-    ],
-    [
-     "Death tiara",
-     "Catalytic talisman",
-     "Catalytic tiara"
-    ],
-    [
-     "Rope"
-    ]
-   ],
-   "groupLabels": [
-    "Chisel",
-    "Death tiara / Catalytic talisman / Catalytic tiara",
-    "Rope"
-   ],
-   "monsterCards": [
-    "Shadow (Temple of Light)"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Murder Mystery",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Pot"
-    ]
-   ],
-   "groupLabels": [
-    "Pot"
-   ],
-   "monsterCards": [],
-   "notes": ""
-  },
-  {
-   "name": "My Arm's Big Adventure",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Bucket"
-    ]
-   ],
-   "groupLabels": [
-    "Bucket"
-   ],
-   "monsterCards": [
-    "Baby Roc",
-    "Giant Roc"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Nature Spirit",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Silver sickle"
-    ]
-   ],
-   "groupLabels": [
-    "Silver sickle"
-   ],
-   "monsterCards": [
-    "Ghast"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Observatory Quest",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Plank"
-    ],
-    [
-     "Bronze bar"
-    ],
-    [
-     "Molten glass"
-    ]
-   ],
-   "groupLabels": [
-    "Plank",
-    "Bronze bar",
-    "Molten glass"
-   ],
-   "monsterCards": [
-    "Goblin guard"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Olaf's Quest",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Tinderbox"
-    ],
-    [
-     "Spade"
-    ],
-    [
-     "Rope"
-    ]
-   ],
-   "groupLabels": [
-    "Tinderbox",
-    "Spade",
-    "Rope"
-   ],
-   "monsterCards": [
-    "Skeleton fremennik",
-    "Ulfric"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "One Small Favour",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Steel bar"
-    ],
-    [
-     "Bronze bar"
-    ],
-    [
-     "Iron bar"
-    ],
-    [
-     "Hammer",
-     "Imcando hammer"
-    ],
-    [
-     "Pot"
-    ],
-    [
-     "Soft clay"
-    ],
-    [
-     "Chisel"
-    ]
-   ],
-   "groupLabels": [
-    "Steel bar",
-    "Bronze bar",
-    "Iron bar",
-    "Any hammer",
-    "Pot",
-    "Soft clay",
-    "Chisel"
-   ],
-   "monsterCards": [
-    "Slagilith",
-    "Dwarf gang member"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Pandemonium",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Hammer"
-    ],
-    [
-     "Saw"
-    ]
-   ],
-   "groupLabels": [
-    "Hammer",
-    "Saw"
-   ],
-   "monsterCards": [],
-   "notes": ""
-  },
-  {
-   "name": "Perilous Moons",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Knife"
-    ],
-    [
-     "Big fishing net"
-    ],
-    [
-     "Rope"
-    ],
-    [
-     "Pestle and mortar"
-    ]
-   ],
-   "groupLabels": [
-    "Knife",
-    "Big fishing net",
-    "Rope",
-    "Pestle and mortar"
-   ],
-   "monsterCards": [
-    "Sulphur Nagua",
-    "Blue Moon",
-    "Blood Moon",
-    "Eclipse Moon"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Pirate's Treasure",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "White apron"
-    ],
-    [
-     "Coins"
-    ],
-    [
-     "Banana"
-    ],
-    [
-     "Spade"
-    ]
-   ],
-   "groupLabels": [
-    "White apron",
-    "Coins",
-    "Banana",
-    "Spade"
-   ],
-   "monsterCards": [
-    "Gardener"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Plague City",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Rope"
-    ],
-    [
-     "Spade"
-    ],
-    [
-     "Bucket of water"
-    ]
-   ],
-   "groupLabels": [
-    "Rope",
-    "Spade",
-    "Bucket of water"
-   ],
-   "monsterCards": [],
-   "notes": ""
-  },
-  {
-   "name": "Priest in Peril",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Rune essence",
-     "Pure essence"
-    ],
-    [
-     "Bucket"
-    ]
-   ],
-   "groupLabels": [
-    "Any essence",
-    "Bucket"
-   ],
-   "monsterCards": [
-    "Temple Guardian",
-    "Monk of Zamorak"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Prince Ali Rescue",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Soft clay"
-    ],
-    [
-     "Yellow dye",
-     "Onion"
-    ],
-    [
-     "Coins"
-    ],
-    [
-     "Redberries"
-    ],
-    [
-     "Ashes"
-    ],
-    [
-     "Bucket of water",
-     "Jug of water"
-    ],
-    [
-     "Pot of flour"
-    ],
-    [
-     "Bronze bar"
-    ],
-    [
-     "Pink skirt"
-    ],
-    [
-     "Beer"
-    ],
-    [
-     "Rope"
-    ]
-   ],
-   "groupLabels": [
-    "Soft clay",
-    "Yellow dye / Onion",
-    "Coins",
-    "Redberries",
-    "Ashes",
-    "Bucket of water / Jug of water",
-    "Pot of flour",
-    "Bronze bar",
-    "Pink skirt",
-    "Beer",
-    "Rope"
-   ],
-   "monsterCards": [
-    "Jail guard"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Prying Times",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Hammer",
-     "Imcando hammer"
-    ],
-    [
-     "Steel bar"
-    ],
-    [
-     "Redberry pie"
-    ],
-    [
-     "Captain's log"
-    ]
-   ],
-   "groupLabels": [
-    "Any hammer",
-    "Steel bar",
-    "Redberry pie",
-    "Captain's log"
-   ],
-   "monsterCards": [
-    "Drink troll"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Rag and Bone Man I",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Coins"
-    ],
-    [
-     "Pot"
-    ],
-    [
-     "Logs"
-    ],
-    [
-     "Tinderbox"
-    ]
-   ],
-   "groupLabels": [
-    "Coins",
-    "Pot",
-    "Logs",
-    "Tinderbox"
-   ],
-   "monsterCards": [],
-   "notes": ""
-  },
-  {
-   "name": "Rag and Bone Man II",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Pot"
-    ],
-    [
-     "Logs"
-    ],
-    [
-     "Tinderbox"
-    ],
-    [
-     "Dusty key"
-    ],
-    [
-     "Rope"
-    ],
-    [
-     "Ice cooler"
-    ],
-    [
-     "Fishing explosive"
-    ],
-    [
-     "Mirror shield"
-    ]
-   ],
-   "groupLabels": [
-    "Pot",
-    "Logs",
-    "Tinderbox",
-    "Dusty key",
-    "Rope",
-    "Ice cooler",
-    "Fishing explosive",
-    "Mirror shield"
-   ],
-   "monsterCards": [],
-   "notes": ""
-  },
-  {
-   "name": "Ratcatchers",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Cat",
-     "Hellcat"
-    ],
-    [
-     "Cheese"
-    ],
-    [
-     "Marrentill"
-    ],
-    [
-     "Unicorn horn dust"
-    ],
-    [
-     "Bucket of milk",
-     "Bottomless milk bucket"
-    ],
-    [
-     "Tinderbox"
-    ],
-    [
-     "Coins"
-    ]
-   ],
-   "groupLabels": [
-    "Cat / Hellcat",
-    "Cheese",
-    "Marrentill",
-    "Unicorn horn dust",
-    "Bucket of milk / Bottomless milk bucket",
-    "Tinderbox",
-    "Coins"
-   ],
-   "monsterCards": [],
-   "notes": ""
-  },
-  {
-   "name": "Recipe for Disaster",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Eye of newt"
-    ],
-    [
-     "Rotten tomato"
-    ],
-    [
-     "Fruit blast"
-    ],
-    [
-     "Premade fr' blast"
-    ],
-    [
-     "Ashes"
-    ],
-    [
-     "Coins"
-    ],
-    [
-     "Bowl of water"
-    ],
-    [
-     "Bucket of water"
-    ],
-    [
-     "Egg"
-    ],
-    [
-     "Orange"
-    ],
-    [
-     "Banana"
-    ],
-    [
-     "Spice",
-     "Gnome spice"
-    ],
-    [
-     "Fishing bait"
-    ],
-    [
-     "Fishbowl"
-    ],
-    [
-     "Bread"
-    ],
-    [
-     "Pestle and mortar"
-    ],
-    [
-     "Needle"
-    ],
-    [
-     "Bronze wire"
-    ],
-    [
-     "Cake tin"
-    ],
-    [
-     "Asgarnian ale"
-    ],
-    [
-     "Cat"
-    ],
-    [
-     "Overgrown cat"
-    ],
-    [
-     "Stew"
-    ],
-    [
-     "Raw chompy"
-    ],
-    [
-     "Raw chicken"
-    ],
-    [
-     "Raw cod"
-    ],
-    [
-     "Iron spit"
-    ],
-    [
-     "Logs"
-    ],
-    [
-     "Tinderbox"
-    ],
-    [
-     "Ball of wool"
-    ],
-    [
-     "Pot of cream"
-    ],
-    [
-     "Machete"
-    ],
-    [
-     "Knife"
-    ],
-    [
-     "Gorilla greegree"
-    ],
-    [
-     "Rope"
-    ]
-   ],
-   "groupLabels": [
-    "Eye of newt",
-    "Rotten tomato",
-    "Fruit blast",
-    "Premade fr' blast",
-    "Ashes",
-    "Coins",
-    "Bowl of water",
-    "Bucket of water",
-    "Egg",
-    "Orange",
-    "Banana",
-    "Any spice",
-    "Fishing bait",
-    "Fishbowl",
-    "Bread",
-    "Pestle and mortar",
-    "Needle",
-    "Bronze wire",
-    "Cake tin",
-    "Asgarnian ale",
-    "Cat",
-    "Overgrown cat",
-    "Stew",
-    "Raw chompy",
-    "Raw chicken",
-    "Raw cod",
-    "Iron spit",
-    "Logs",
-    "Tinderbox",
-    "Ball of wool",
-    "Pot of cream",
-    "Machete",
-    "Knife",
-    "Gorilla greegree",
-    "Rope"
-   ],
-   "monsterCards": [
-    "Icefiend",
-    "Mudskipper",
-    "Crab",
-    "Evil Chicken",
-    "Black dragon",
-    "Big Snake",
-    "Monkey Guard",
-    "Agrith-Na-Na",
-    "Flambeed",
-    "Karamel",
-    "Dessourt",
-    "Gelatinnoth Mother",
-    "Culinaromancer"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Recruitment Drive",
-   "miniquest": false,
-   "cardGroups": [],
-   "groupLabels": [],
-   "monsterCards": [
-    "Sir Leye"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Regicide",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Coal"
-    ],
-    [
-     "Rope"
-    ],
-    [
-     "Spade"
-    ],
-    [
-     "Limestone"
-    ],
-    [
-     "Limestone brick"
-    ],
-    [
-     "Tinderbox"
-    ],
-    [
-     "Strip of cloth"
-    ],
-    [
-     "Pestle and mortar"
-    ],
-    [
-     "Pot"
-    ],
-    [
-     "Cooked rabbit",
-     "Roast rabbit"
-    ]
-   ],
-   "groupLabels": [
-    "Coal",
-    "Rope",
-    "Spade",
-    "Limestone",
-    "Limestone brick",
-    "Tinderbox",
-    "Strip of cloth",
-    "Pestle and mortar",
-    "Pot",
-    "Any rabbit"
-   ],
-   "monsterCards": [
-    "Tyras guard"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Rogue Trader",
-   "miniquest": true,
-   "cardGroups": [
-    [
-     "Cowhide",
-     "Grey wolf fur",
-     "Snakeskin",
-     "Bear fur",
-     "Wool"
-    ]
-   ],
-   "groupLabels": [
-    "Cowhide / Grey wolf fur / Snakeskin / Bear fur / Wool"
-   ],
-   "monsterCards": [],
-   "notes": ""
-  },
-  {
-   "name": "Romeo & Juliet",
-   "miniquest": false,
-   "cardGroups": [],
-   "groupLabels": [],
-   "monsterCards": [],
-   "notes": ""
-  },
-  {
-   "name": "Roving Elves",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Spade"
-    ],
-    [
-     "Rope"
-    ]
-   ],
-   "groupLabels": [
-    "Spade",
-    "Rope"
-   ],
-   "monsterCards": [
-    "Moss Guardian"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Royal Trouble",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Coal"
-    ],
-    [
-     "Rope"
-    ],
-    [
-     "Plank"
-    ]
-   ],
-   "groupLabels": [
-    "Coal",
-    "Rope",
-    "Plank"
-   ],
-   "monsterCards": [
-    "Giant Sea Snake"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Rum Deal",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Rake"
-    ],
-    [
-     "Seed dibber"
-    ],
-    [
-     "Bucket"
-    ]
-   ],
-   "groupLabels": [
-    "Rake",
-    "Seed dibber",
-    "Bucket"
-   ],
-   "monsterCards": [
-    "Evil spirit",
-    "Fever spider"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Rune Mysteries",
-   "miniquest": false,
-   "cardGroups": [],
-   "groupLabels": [],
-   "monsterCards": [],
-   "notes": ""
-  },
-  {
-   "name": "Scorpion Catcher",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Dusty key"
-    ]
-   ],
-   "groupLabels": [
-    "Dusty key"
-   ],
-   "monsterCards": [
-    "Jailer"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Scrambled!",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Bowl of water"
-    ],
-    [
-     "Plank"
-    ],
-    [
-     "Saw"
-    ],
-    [
-     "Hammer"
-    ]
-   ],
-   "groupLabels": [
-    "Bowl of water",
-    "Plank",
-    "Saw",
-    "Hammer"
-   ],
-   "monsterCards": [
-    "Large chicken",
-    "Black jaguar",
-    "Red dragon"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Sea Slug",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Swamp paste"
-    ]
-   ],
-   "groupLabels": [
-    "Swamp paste"
-   ],
-   "monsterCards": [],
-   "notes": ""
-  },
-  {
-   "name": "Secrets of the North",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Coins"
-    ],
-    [
-     "Lockpick"
-    ],
-    [
-     "Tinderbox"
-    ]
-   ],
-   "groupLabels": [
-    "Coins",
-    "Lockpick",
-    "Tinderbox"
-   ],
-   "monsterCards": [
-    "Evelot",
-    "Assassin",
-    "Strange Creature",
-    "Strange creature (Shadows of Custodia)"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Shades of Mort'ton",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Coins"
-    ],
-    [
-     "Tarromin"
-    ],
-    [
-     "Ashes"
-    ],
-    [
-     "Tinderbox"
-    ],
-    [
-     "Logs"
-    ],
-    [
-     "Hammer"
-    ]
-   ],
-   "groupLabels": [
-    "Coins",
-    "Tarromin",
-    "Ashes",
-    "Tinderbox",
-    "Logs",
-    "Hammer"
-   ],
-   "monsterCards": [
-    "Loar Shade"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Shadow of the Storm",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Silver bar"
-    ],
-    [
-     "Desert amulet 2"
-    ],
-    [
-     "Pharaoh's sceptre"
-    ]
-   ],
-   "groupLabels": [
-    "Silver bar",
-    "Desert amulet 2",
-    "Pharaoh's sceptre"
-   ],
-   "monsterCards": [
-    "Agrith Naar"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Shadows of Custodia",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Willow longbow"
-    ],
-    [
-     "Maple logs"
-    ],
-    [
-     "Fishing rod"
-    ],
-    [
-     "Hammer"
-    ]
-   ],
-   "groupLabels": [
-    "Willow longbow",
-    "Maple logs",
-    "Fishing rod",
-    "Hammer"
-   ],
-   "monsterCards": [
-    "Strange Creature",
-    "Strange creature (Shadows of Custodia)"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Sheep Herder",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Coins"
-    ]
-   ],
-   "groupLabels": [
-    "Coins"
-   ],
-   "monsterCards": [],
-   "notes": ""
-  },
-  {
-   "name": "Sheep Shearer",
-   "miniquest": false,
-   "cardGroups": [],
-   "groupLabels": [],
-   "monsterCards": [],
-   "notes": ""
-  },
-  {
-   "name": "Shield of Arrav",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Coins"
-    ]
-   ],
-   "groupLabels": [
-    "Coins"
-   ],
-   "monsterCards": [
-    "Weaponsmaster",
-    "Jonny the Beard"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Shilo Village",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Spade"
-    ],
-    [
-     "Torch",
-     "Candle"
-    ],
-    [
-     "Rope"
-    ],
-    [
-     "Bronze wire"
-    ],
-    [
-     "Chisel"
-    ],
-    [
-     "Bones"
-    ]
-   ],
-   "groupLabels": [
-    "Spade",
-    "Torch / Candle",
-    "Rope",
-    "Bronze wire",
-    "Chisel",
-    "Bones"
-   ],
-   "monsterCards": [
-    "Nazastarool"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Sins of the Father",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Ruby"
-    ],
-    [
-     "Knife"
-    ],
-    [
-     "Chisel"
-    ],
-    [
-     "Enchant ruby or topaz"
-    ]
-   ],
-   "groupLabels": [
-    "Ruby",
-    "Knife",
-    "Chisel",
-    "Enchant ruby or topaz"
-   ],
-   "monsterCards": [
-    "Kroy",
-    "Nail beast",
-    "Vampyre Juvinate",
-    "Mutated Bloodveld",
-    "Damien Leucurte",
-    "Vampyre Juvenile",
-    "Vanstrom Klause"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Skippy and the Mogres",
-   "miniquest": true,
-   "cardGroups": [
-    [
-     "Bucket of water"
-    ]
-   ],
-   "groupLabels": [
-    "Bucket of water"
-   ],
-   "monsterCards": [],
-   "notes": ""
-  },
-  {
-   "name": "Sleeping Giants",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Oak logs"
-    ],
-    [
-     "Wool"
-    ],
-    [
-     "Hammer",
-     "Imcando hammer"
-    ],
-    [
-     "Chisel"
-    ],
-    [
-     "Bucket of water"
-    ]
-   ],
-   "groupLabels": [
-    "Oak logs",
-    "Wool",
-    "Any hammer",
-    "Chisel",
-    "Bucket of water"
-   ],
-   "monsterCards": [],
-   "notes": ""
-  },
-  {
-   "name": "Song of the Elves",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Steel full helm"
-    ],
-    [
-     "Steel platebody"
-    ],
-    [
-     "Steel platelegs"
-    ],
-    [
-     "Red dye"
-    ],
-    [
-     "Purple dye"
-    ],
-    [
-     "Silk"
-    ],
-    [
-     "Runite bar"
-    ],
-    [
-     "Limestone brick"
-    ],
-    [
-     "Tinderbox"
-    ],
-    [
-     "Rope"
-    ],
-    [
-     "Nature rune"
-    ],
-    [
-     "Mithril seeds",
-     "Adamant seeds"
-    ],
-    [
-     "Irit leaf"
-    ],
-    [
-     "Adamant chainbody"
-    ],
-    [
-     "Wine of zamorak"
-    ],
-    [
-     "Zamorak brew"
-    ],
-    [
-     "Cabbage"
-    ],
-    [
-     "Black knife"
-    ],
-    [
-     "Black dagger"
-    ],
-    [
-     "Cadantine seed"
-    ],
-    [
-     "Seed dibber"
-    ],
-    [
-     "Vial of water"
-    ],
-    [
-     "Pestle and mortar"
-    ],
-    [
-     "Hammer"
-    ],
-    [
-     "Saw"
-    ],
-    [
-     "Spade"
-    ]
-   ],
-   "groupLabels": [
-    "Steel full helm",
-    "Steel platebody",
-    "Steel platelegs",
-    "Red dye",
-    "Purple dye",
-    "Silk",
-    "Runite bar",
-    "Limestone brick",
-    "Tinderbox",
-    "Rope",
-    "Nature rune",
-    "Any seeds",
-    "Irit leaf",
-    "Adamant chainbody",
-    "Wine of zamorak",
-    "Zamorak brew",
-    "Cabbage",
-    "Black knife",
-    "Black dagger",
-    "Cadantine seed",
-    "Seed dibber",
-    "Vial of water",
-    "Pestle and mortar",
-    "Hammer",
-    "Saw",
-    "Spade"
-   ],
-   "monsterCards": [
-    "Mourner",
-    "Paladin",
-    "Knight of Ardougne",
-    "Iorwerth Archer",
-    "Iorwerth Warrior",
-    "Arianwyn",
-    "Essyllt",
-    "Fragment of Seren"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Spirit of Adventure",
-   "miniquest": true,
-   "cardGroups": [
-    [
-     "Logs"
-    ],
-    [
-     "Tinderbox"
-    ]
-   ],
-   "groupLabels": [
-    "Logs",
-    "Tinderbox"
-   ],
-   "monsterCards": [],
-   "notes": ""
-  },
-  {
-   "name": "Spirits of the Elid",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Needle"
-    ],
-    [
-     "Thread"
-    ],
-    [
-     "Knife"
-    ],
-    [
-     "Rope"
-    ]
-   ],
-   "groupLabels": [
-    "Needle",
-    "Thread",
-    "Knife",
-    "Rope"
-   ],
-   "monsterCards": [
-    "Black golem",
-    "Grey golem",
-    "White golem"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Swan Song",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Mist rune"
-    ],
-    [
-     "Lava rune"
-    ],
-    [
-     "Blood rune"
-    ],
-    [
-     "Bones"
-    ],
-    [
-     "Pot"
-    ],
-    [
-     "Iron bar"
-    ],
-    [
-     "Logs"
-    ],
-    [
-     "Tinderbox"
-    ],
-    [
-     "Hammer"
-    ],
-    [
-     "Small fishing net"
-    ],
-    [
-     "Brown apron"
-    ]
-   ],
-   "groupLabels": [
-    "Mist rune",
-    "Lava rune",
-    "Blood rune",
-    "Bones",
-    "Pot",
-    "Iron bar",
-    "Logs",
-    "Tinderbox",
-    "Hammer",
-    "Small fishing net",
-    "Brown apron"
-   ],
-   "monsterCards": [
-    "Sea troll",
-    "Sea Troll Queen"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Tai Bwo Wannai Trio",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Knife"
-    ],
-    [
-     "Sliced banana"
-    ],
-    [
-     "Small fishing net"
-    ],
-    [
-     "Pestle and mortar"
-    ],
-    [
-     "Logs"
-    ],
-    [
-     "Poison karambwan"
-    ],
-    [
-     "Iron spear",
-     "Steel spear",
-     "Mithril spear",
-     "Adamant spear",
-     "Rune spear",
-     "Dragon spear"
-    ],
-    [
-     "Agility potion"
-    ],
-    [
-     "Tinderbox"
-    ],
-    [
-     "Jogre bones"
-    ],
-    [
-     "Seaweed"
-    ]
-   ],
-   "groupLabels": [
-    "Knife",
-    "Sliced banana",
-    "Small fishing net",
-    "Pestle and mortar",
-    "Logs",
-    "Poison karambwan",
-    "Any spear",
-    "Agility potion",
-    "Tinderbox",
-    "Jogre bones",
-    "Seaweed"
-   ],
-   "monsterCards": [
-    "Monkey (monster)"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Tale of the Righteous",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Rope"
-    ]
-   ],
-   "groupLabels": [
-    "Rope"
-   ],
-   "monsterCards": [
-    "Corrupt Lizardman"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Tears of Guthix",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Chisel"
-    ],
-    [
-     "Rope"
-    ]
-   ],
-   "groupLabels": [
-    "Chisel",
-    "Rope"
-   ],
-   "monsterCards": [],
-   "notes": ""
-  },
-  {
-   "name": "Temple of Ikov",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Limpwurt root"
-    ]
-   ],
-   "groupLabels": [
-    "Limpwurt root"
-   ],
-   "monsterCards": [
-    "Fire Warrior of Lesarkus",
-    "Guardian of Armadyl",
-    "Lucien"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Temple of the Eye",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Bucket of water"
-    ],
-    [
-     "Chisel"
-    ]
-   ],
-   "groupLabels": [
-    "Bucket of water",
-    "Chisel"
-   ],
-   "monsterCards": [],
-   "notes": ""
-  },
-  {
-   "name": "The Ascent of Arceuus",
-   "miniquest": false,
-   "cardGroups": [],
-   "groupLabels": [],
-   "monsterCards": [
-    "Tormented Soul",
-    "Trapped Soul"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "The Blood Moon Rises",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Coins"
-    ],
-    [
-     "Tinderbox"
-    ],
-    [
-     "Hammer"
-    ],
-    [
-     "Knife"
-    ],
-    [
-     "Chisel"
-    ]
-   ],
-   "groupLabels": [
-    "Coins",
-    "Tinderbox",
-    "Hammer",
-    "Knife",
-    "Chisel"
-   ],
-   "monsterCards": [
-    "Vyrewatch",
-    "Vyrewatch Sentinel",
-    "Monk of Zamorak",
-    "The Maiden of Sugadinti",
-    "Nylocas Vasilias",
-    "Lowerniel Drakan"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "The Corsair Curse",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Spade"
-    ],
-    [
-     "Tinderbox"
-    ]
-   ],
-   "groupLabels": [
-    "Spade",
-    "Tinderbox"
-   ],
-   "monsterCards": [
-    "Ithoi the Navigator"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "The Curse of Arrav",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Ring of life"
-    ],
-    [
-     "Mith grapple"
-    ],
-    [
-     "Insulated boots"
-    ]
-   ],
-   "groupLabels": [
-    "Ring of life",
-    "Mith grapple",
-    "Insulated boots"
-   ],
-   "monsterCards": [
-    "Golem guard",
-    "Arrav"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "The Depths of Despair",
-   "miniquest": false,
-   "cardGroups": [],
-   "groupLabels": [],
-   "monsterCards": [
-    "Sand Snake"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "The Dig Site",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Pestle and mortar"
-    ],
-    [
-     "Vial"
-    ],
-    [
-     "Tinderbox"
-    ],
-    [
-     "Cup of tea"
-    ],
-    [
-     "Rope"
-    ],
-    [
-     "Opal"
-    ]
-   ],
-   "groupLabels": [
-    "Pestle and mortar",
-    "Vial",
-    "Tinderbox",
-    "Cup of tea",
-    "Rope",
-    "Opal"
-   ],
-   "monsterCards": [],
-   "notes": ""
-  },
-  {
-   "name": "The Enchanted Key",
-   "miniquest": true,
-   "cardGroups": [
-    [
-     "Spade"
-    ]
-   ],
-   "groupLabels": [
-    "Spade"
-   ],
-   "monsterCards": [],
-   "notes": ""
-  },
-  {
-   "name": "The Eyes of Glouphrie",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Bucket"
-    ],
-    [
-     "Mud rune"
-    ],
-    [
-     "Maple logs"
-    ],
-    [
-     "Oak logs"
-    ],
-    [
-     "Hammer"
-    ],
-    [
-     "Saw"
-    ],
-    [
-     "Pestle and mortar"
-    ]
-   ],
-   "groupLabels": [
-    "Bucket",
-    "Mud rune",
-    "Maple logs",
-    "Oak logs",
-    "Hammer",
-    "Saw",
-    "Pestle and mortar"
-   ],
-   "monsterCards": [
-    "Evil Creature"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "The Feud",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Coins"
-    ],
-    [
-     "Barrows gloves"
-    ],
-    [
-     "Slayer gloves"
-    ],
-    [
-     "Kharidian headpiece"
-    ],
-    [
-     "Beer"
-    ],
-    [
-     "Bucket"
-    ]
-   ],
-   "groupLabels": [
-    "Coins",
-    "Barrows gloves",
-    "Slayer gloves",
-    "Kharidian headpiece",
-    "Beer",
-    "Bucket"
-   ],
-   "monsterCards": [
-    "Bandit champion",
-    "Tough Guy"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "The Final Dawn",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Bones",
-     "Cooked meat"
-    ],
-    [
-     "Knife"
-    ],
-    [
-     "Beer"
-    ]
-   ],
-   "groupLabels": [
-    "Bones / Cooked meat",
-    "Knife",
-    "Beer"
-   ],
-   "monsterCards": [
-    "Emissary Enforcer",
-    "Chimalli",
-    "Lucius",
-    "Ennius Tullus"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "The Forsaken Tower",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Tinderbox"
-    ]
-   ],
-   "groupLabels": [
-    "Tinderbox"
-   ],
-   "monsterCards": [],
-   "notes": ""
-  },
-  {
-   "name": "The Fremennik Exiles",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Mirror shield"
-    ],
-    [
-     "Molten glass"
-    ],
-    [
-     "Astral rune"
-    ],
-    [
-     "Fishing rod",
-     "Fly fishing rod"
-    ],
-    [
-     "Fremennik shield"
-    ],
-    [
-     "Hammer"
-    ],
-    [
-     "Glassblowing pipe"
-    ]
-   ],
-   "groupLabels": [
-    "Mirror shield",
-    "Molten glass",
-    "Astral rune",
-    "Any fishing rod",
-    "Fremennik shield",
-    "Hammer",
-    "Glassblowing pipe"
-   ],
-   "monsterCards": [
-    "Basilisk Youngling",
-    "Basilisk",
-    "Monstrous Basilisk (The Fremennik Exiles)",
-    "Monstrous basilisk",
-    "Typhor",
-    "The Jormungand"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "The Fremennik Isles",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Raw tuna"
-    ],
-    [
-     "Tin ore"
-    ],
-    [
-     "Coal",
-     "Mithril ore"
-    ],
-    [
-     "Rope"
-    ],
-    [
-     "Knife"
-    ],
-    [
-     "Neitiznot shield"
-    ],
-    [
-     "Coins"
-    ]
-   ],
-   "groupLabels": [
-    "Raw tuna",
-    "Tin ore",
-    "Coal / Mithril ore",
-    "Rope",
-    "Knife",
-    "Neitiznot shield",
-    "Coins"
-   ],
-   "monsterCards": [
-    "Ice troll",
-    "Ice Troll King"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "The Fremennik Trials",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Coins"
-    ],
-    [
-     "Beer"
-    ],
-    [
-     "Tinderbox"
-    ],
-    [
-     "Raw shark",
-     "Raw manta ray",
-     "Raw sea turtle"
-    ]
-   ],
-   "groupLabels": [
-    "Coins",
-    "Beer",
-    "Tinderbox",
-    "Raw shark / Raw manta ray / Raw sea turtle"
-   ],
-   "monsterCards": [
-    "Lanzig",
-    "Borrokar",
-    "Lensa",
-    "Freidir"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "The Frozen Door",
-   "miniquest": true,
-   "cardGroups": [
-    [
-     "Mith grapple"
-    ],
-    [
-     "Rope"
-    ],
-    [
-     "Hammer",
-     "Dragon warhammer"
-    ]
-   ],
-   "groupLabels": [
-    "Mith grapple",
-    "Rope",
-    "Hammer / Dragon warhammer"
-   ],
-   "monsterCards": [
-    "Kree'arra",
-    "General Graardor",
-    "Commander Zilyana",
-    "K'ril Tsutsaroth",
-    "Flight Kilisa",
-    "Wingman Skree",
-    "Flockleader Geerin",
-    "Sergeant Strongstack",
-    "Sergeant Steelwill",
-    "Sergeant Grimspike",
-    "Bree",
-    "Starlight",
-    "Growler",
-    "Tstanon Karlak",
-    "Zakl'n Gritch",
-    "Balfrug Kreeyath"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "The Garden of Death",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Secateurs"
-    ]
-   ],
-   "groupLabels": [
-    "Secateurs"
-   ],
-   "monsterCards": [],
-   "notes": ""
-  },
-  {
-   "name": "The General's Shadow",
-   "miniquest": true,
-   "cardGroups": [],
-   "groupLabels": [],
-   "monsterCards": [
-    "Bouncer"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "The Giant Dwarf",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Coins"
-    ],
-    [
-     "Logs"
-    ],
-    [
-     "Tinderbox"
-    ],
-    [
-     "Coal"
-    ],
-    [
-     "Iron bar"
-    ],
-    [
-     "Sapphire"
-    ],
-    [
-     "Redberry pie"
-    ]
-   ],
-   "groupLabels": [
-    "Coins",
-    "Logs",
-    "Tinderbox",
-    "Coal",
-    "Iron bar",
-    "Sapphire",
-    "Redberry pie"
-   ],
-   "monsterCards": [],
-   "notes": ""
-  },
-  {
-   "name": "The Golem",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Vial"
-    ],
-    [
-     "Pestle and mortar"
-    ],
-    [
-     "Papyrus"
-    ],
-    [
-     "Soft clay"
-    ],
-    [
-     "Pharaoh's sceptre"
-    ]
-   ],
-   "groupLabels": [
-    "Vial",
-    "Pestle and mortar",
-    "Papyrus",
-    "Soft clay",
-    "Pharaoh's sceptre"
-   ],
-   "monsterCards": [],
-   "notes": ""
-  },
-  {
-   "name": "The Grand Tree",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Coins"
-    ]
-   ],
-   "groupLabels": [
-    "Coins"
-   ],
-   "monsterCards": [
-    "Black demon"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "The Graveyard",
-   "miniquest": false,
-   "cardGroups": [],
-   "groupLabels": [],
-   "monsterCards": [],
-   "notes": ""
-  },
-  {
-   "name": "The Great Brain Robbery",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Hammer"
-    ],
-    [
-     "Plank"
-    ]
-   ],
-   "groupLabels": [
-    "Hammer",
-    "Plank"
-   ],
-   "monsterCards": [
-    "Barrelchest",
-    "Sorebones"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "The Hand in the Sand",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Beer"
-    ],
-    [
-     "Coins"
-    ],
-    [
-     "Vial"
-    ],
-    [
-     "Redberries"
-    ],
-    [
-     "White berries"
-    ],
-    [
-     "Lantern lens"
-    ],
-    [
-     "Earth rune"
-    ],
-    [
-     "Bucket of sand"
-    ]
-   ],
-   "groupLabels": [
-    "Beer",
-    "Coins",
-    "Vial",
-    "Redberries",
-    "White berries",
-    "Lantern lens",
-    "Earth rune",
-    "Bucket of sand"
-   ],
-   "monsterCards": [],
-   "notes": ""
-  },
-  {
-   "name": "The Heart of Darkness",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Coins"
-    ]
-   ],
-   "groupLabels": [
-    "Coins"
-   ],
-   "monsterCards": [
-    "Emissary Brawler",
-    "Emissary Conjurer",
-    "Prince Itzla Arkan",
-    "Amoxliatl"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "The Ides of Milk",
-   "miniquest": false,
-   "cardGroups": [],
-   "groupLabels": [],
-   "monsterCards": [
-    "Brutus"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "The Knight's Sword",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Redberry pie"
-    ],
-    [
-     "Iron bar"
-    ]
-   ],
-   "groupLabels": [
-    "Redberry pie",
-    "Iron bar"
-   ],
-   "monsterCards": [],
-   "notes": ""
-  },
-  {
-   "name": "The Lost Tribe",
-   "miniquest": false,
-   "cardGroups": [],
-   "groupLabels": [],
-   "monsterCards": [],
-   "notes": ""
-  },
-  {
-   "name": "The Path of Glouphrie",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Mith grapple"
-    ]
-   ],
-   "groupLabels": [
-    "Mith grapple"
-   ],
-   "monsterCards": [
-    "Warped Terrorbird",
-    "Evil Creature"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "The Queen of Thieves",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Stew"
-    ]
-   ],
-   "groupLabels": [
-    "Stew"
-   ],
-   "monsterCards": [],
-   "notes": ""
-  },
-  {
-   "name": "The Red Reef",
-   "miniquest": false,
-   "cardGroups": [],
-   "groupLabels": [],
-   "monsterCards": [
-    "Pirate",
-    "Black Eye Bethel",
-    "Giant lobster"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "The Restless Ghost",
-   "miniquest": false,
-   "cardGroups": [],
-   "groupLabels": [],
-   "monsterCards": [
-    "Skeleton"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "The Ribbiting Tale of a Lily Pad Labour Dispute",
-   "miniquest": false,
-   "cardGroups": [],
-   "groupLabels": [],
-   "monsterCards": [],
-   "notes": ""
-  },
-  {
-   "name": "The Slug Menace",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Swamp paste"
-    ],
-    [
-     "Rune essence",
-     "Pure essence"
-    ],
-    [
-     "Chisel"
-    ]
-   ],
-   "groupLabels": [
-    "Swamp paste",
-    "Any essence",
-    "Chisel"
-   ],
-   "monsterCards": [
-    "Slug Prince"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "The Tourist Trap",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Desert shirt"
-    ],
-    [
-     "Desert robe"
-    ],
-    [
-     "Desert boots"
-    ],
-    [
-     "Hammer"
-    ],
-    [
-     "Bronze bar"
-    ],
-    [
-     "Feather"
-    ],
-    [
-     "Desert amulet 2"
-    ],
-    [
-     "Pharaoh's sceptre"
-    ]
-   ],
-   "groupLabels": [
-    "Desert shirt",
-    "Desert robe",
-    "Desert boots",
-    "Hammer",
-    "Bronze bar",
-    "Feather",
-    "Desert amulet 2",
-    "Pharaoh's sceptre"
-   ],
-   "monsterCards": [
-    "Mercenary Captain"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Throne of Miscellania",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Iron bar"
-    ],
-    [
-     "Logs"
-    ]
-   ],
-   "groupLabels": [
-    "Iron bar",
-    "Logs"
-   ],
-   "monsterCards": [],
-   "notes": ""
-  },
-  {
-   "name": "Tower of Life",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Hammer"
-    ],
-    [
-     "Saw"
-    ],
-    [
-     "Beer"
-    ]
-   ],
-   "groupLabels": [
-    "Hammer",
-    "Saw",
-    "Beer"
-   ],
-   "monsterCards": [],
-   "notes": ""
-  },
-  {
-   "name": "Tree Gnome Village",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Logs"
-    ]
-   ],
-   "groupLabels": [
-    "Logs"
-   ],
-   "monsterCards": [
-    "Khazard warlord"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Tribal Totem",
-   "miniquest": false,
-   "cardGroups": [],
-   "groupLabels": [],
-   "monsterCards": [],
-   "notes": ""
-  },
-  {
-   "name": "Troll Romance",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Iron bar"
-    ],
-    [
-     "Maple logs",
-     "Yew logs"
-    ],
-    [
-     "Rope"
-    ]
-   ],
-   "groupLabels": [
-    "Iron bar",
-    "Any logs",
-    "Rope"
-   ],
-   "monsterCards": [
-    "Arrg"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Troll Stronghold",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Coins"
-    ]
-   ],
-   "groupLabels": [
-    "Coins"
-   ],
-   "monsterCards": [
-    "Dad",
-    "Troll general",
-    "Berry",
-    "Twig"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Troubled Tortugans",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Hammer",
-     "Imcando hammer"
-    ],
-    [
-     "Saw",
-     "Amy's saw"
-    ]
-   ],
-   "groupLabels": [
-    "Any hammer",
-    "Any saw"
-   ],
-   "monsterCards": [
-    "Gryphon",
-    "Shellbane gryphon"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Twilight's Promise",
-   "miniquest": false,
-   "cardGroups": [],
-   "groupLabels": [],
-   "monsterCards": [
-    "Knight of Varlamore",
-    "Cultist"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Underground Pass",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Rope"
-    ],
-    [
-     "Spade"
-    ],
-    [
-     "Bucket"
-    ],
-    [
-     "Tinderbox"
-    ]
-   ],
-   "groupLabels": [
-    "Rope",
-    "Spade",
-    "Bucket",
-    "Tinderbox"
-   ],
-   "monsterCards": [
-    "Doomion",
-    "Othainian",
-    "Holthion",
-    "Paladin",
-    "Kalrag",
-    "Disciple of Iban"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Vale Totems (miniquest)",
-   "miniquest": true,
-   "cardGroups": [
-    [
-     "Oak logs"
-    ],
-    [
-     "Knife"
-    ],
-    [
-     "Oak shield"
-    ]
-   ],
-   "groupLabels": [
-    "Oak logs",
-    "Knife",
-    "Oak shield"
-   ],
-   "monsterCards": [],
-   "notes": ""
-  },
-  {
-   "name": "Vampyre Slayer",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Hammer"
-    ],
-    [
-     "Beer"
-    ]
-   ],
-   "groupLabels": [
-    "Hammer",
-    "Beer"
-   ],
-   "monsterCards": [
-    "Count Draynor"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Wanted!",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Coins"
-    ],
-    [
-     "Rune essence",
-     "Pure essence"
-    ]
-   ],
-   "groupLabels": [
-    "Coins",
-    "Any essence"
-   ],
-   "monsterCards": [
-    "Black Knight",
-    "Black knight (Port Sarim jail)"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Watchtower",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Coins"
-    ],
-    [
-     "Gold bar"
-    ],
-    [
-     "Tinderbox"
-    ],
-    [
-     "Death rune"
-    ],
-    [
-     "Dragon bones"
-    ],
-    [
-     "Rope"
-    ],
-    [
-     "Pestle and mortar"
-    ],
-    [
-     "Bat bones"
-    ],
-    [
-     "Jangerberries"
-    ]
-   ],
-   "groupLabels": [
-    "Coins",
-    "Gold bar",
-    "Tinderbox",
-    "Death rune",
-    "Dragon bones",
-    "Rope",
-    "Pestle and mortar",
-    "Bat bones",
-    "Jangerberries"
-   ],
-   "monsterCards": [
-    "Gorad",
-    "Giant bat"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Waterfall Quest",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Air rune"
-    ],
-    [
-     "Earth rune"
-    ],
-    [
-     "Water rune"
-    ],
-    [
-     "Rope"
-    ]
-   ],
-   "groupLabels": [
-    "Air rune",
-    "Earth rune",
-    "Water rune",
-    "Rope"
-   ],
-   "monsterCards": [],
-   "notes": ""
-  },
-  {
-   "name": "What Lies Below",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Chaos rune"
-    ]
-   ],
-   "groupLabels": [
-    "Chaos rune"
-   ],
-   "monsterCards": [
-    "Outlaw",
-    "King Roald"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "While Guthix Sleeps",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Knife"
-    ],
-    [
-     "Seed dibber"
-    ],
-    [
-     "Lantern lens"
-    ],
-    [
-     "Unpowered orb"
-    ],
-    [
-     "Bronze med helm"
-    ],
-    [
-     "Iron chainbody"
-    ],
-    [
-     "Mort myre fungus"
-    ],
-    [
-     "Snapdragon seed"
-    ],
-    [
-     "Papyrus"
-    ],
-    [
-     "Restore potion"
-    ],
-    [
-     "Air rune"
-    ],
-    [
-     "Water rune"
-    ],
-    [
-     "Earth rune"
-    ],
-    [
-     "Fire rune"
-    ],
-    [
-     "Mind rune"
-    ],
-    [
-     "Law rune"
-    ],
-    [
-     "Death rune"
-    ]
-   ],
-   "groupLabels": [
-    "Knife",
-    "Seed dibber",
-    "Lantern lens",
-    "Unpowered orb",
-    "Bronze med helm",
-    "Iron chainbody",
-    "Mort myre fungus",
-    "Snapdragon seed",
-    "Papyrus",
-    "Restore potion",
-    "Air rune",
-    "Water rune",
-    "Earth rune",
-    "Fire rune",
-    "Mind rune",
-    "Law rune",
-    "Death rune"
-   ],
-   "monsterCards": [
-    "Assassin",
-    "Mercenary axeman",
-    "Mercenary mage",
-    "Elite Black Knight",
-    "Surok Magis",
-    "Balance Elemental",
-    "Tormented Demon"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Witch's House",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Cheese"
-    ],
-    [
-     "Leather gloves"
-    ]
-   ],
-   "groupLabels": [
-    "Cheese",
-    "Leather gloves"
-   ],
-   "monsterCards": [
-    "Witch's experiment"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "Witch's Potion",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Burnt meat"
-    ],
-    [
-     "Eye of newt"
-    ],
-    [
-     "Onion"
-    ]
-   ],
-   "groupLabels": [
-    "Burnt meat",
-    "Eye of newt",
-    "Onion"
-   ],
-   "monsterCards": [
-    "Rat"
-   ],
-   "notes": ""
-  },
-  {
-   "name": "X Marks the Spot",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Spade"
-    ]
-   ],
-   "groupLabels": [
-    "Spade"
-   ],
-   "monsterCards": [],
-   "notes": ""
-  },
-  {
-   "name": "Zogre Flesh Eaters",
-   "miniquest": false,
-   "cardGroups": [
-    [
-     "Knife"
-    ],
-    [
-     "Comp ogre bow"
-    ]
-   ],
-   "groupLabels": [
-    "Knife",
-    "Comp ogre bow"
-   ],
-   "monsterCards": [
-    "Slash Bash",
-    "Zombie"
-   ],
-   "notes": ""
-  }
- ]
+	"quests": [
+		{
+			"name": "A Kingdom Divided",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Defence potion"
+				],
+				[
+					"Volcanic sulphur"
+				],
+				[
+					"Molten glass"
+				],
+				[
+					"Dark essence block"
+				],
+				[
+					"Chisel"
+				]
+			],
+			"groupLabels": [
+				"Defence potion",
+				"Volcanic sulphur",
+				"Molten glass",
+				"Dark essence block",
+				"Chisel"
+			],
+			"monsterCards": [
+				"Judge of Yama",
+				"Assassin",
+				"Lizardman brute",
+				"Xamphur",
+				"Barbarian Warlord"
+			],
+			"notes": ""
+		},
+		{
+			"name": "A Night at the Theatre",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Saw"
+				]
+			],
+			"groupLabels": [
+				"Saw"
+			],
+			"monsterCards": [
+				"Vyrewatch",
+				"Araxyte",
+				"Hespori",
+				"The Maiden of Sugadinti",
+				"Nylocas Matomenos",
+				"Pestilent Bloat",
+				"Nylocas Toxobolos",
+				"Nylocas Hagios",
+				"Nylocas Ischyros",
+				"Nylocas Vasilias",
+				"Sotetseg",
+				"Xarpus",
+				"Verzik Vitur",
+				"Nylocas Athanatos"
+			],
+			"notes": ""
+		},
+		{
+			"name": "A Porcine of Interest",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Rope"
+				],
+				[
+					"Knife"
+				]
+			],
+			"groupLabels": [
+				"Rope",
+				"Knife"
+			],
+			"monsterCards": [
+				"Sourhog"
+			],
+			"notes": ""
+		},
+		{
+			"name": "A Soul's Bane",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Rope"
+				]
+			],
+			"groupLabels": [
+				"Rope"
+			],
+			"monsterCards": [
+				"Angry unicorn",
+				"Angry bear",
+				"Angry giant rat",
+				"Angry goblin",
+				"Fear reaper",
+				"Confusion beast",
+				"Hopeless creature",
+				"Tolna"
+			],
+			"notes": ""
+		},
+		{
+			"name": "A Tail of Two Cats",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Cat",
+					"Kitten"
+				],
+				[
+					"Death rune"
+				],
+				[
+					"Chocolate cake"
+				],
+				[
+					"Logs"
+				],
+				[
+					"Tinderbox"
+				],
+				[
+					"Bucket of milk"
+				],
+				[
+					"Shears"
+				],
+				[
+					"Potato seed"
+				],
+				[
+					"Rake"
+				],
+				[
+					"Seed dibber"
+				],
+				[
+					"Vial of water"
+				],
+				[
+					"Desert shirt",
+					"Druid's robe top"
+				],
+				[
+					"Desert robe",
+					"Druid's robe"
+				]
+			],
+			"groupLabels": [
+				"Cat / Kitten",
+				"Death rune",
+				"Chocolate cake",
+				"Logs",
+				"Tinderbox",
+				"Bucket of milk",
+				"Shears",
+				"Potato seed",
+				"Rake",
+				"Seed dibber",
+				"Vial of water",
+				"Desert shirt / Druid's robe top",
+				"Any robe"
+			],
+			"monsterCards": [],
+			"notes": ""
+		},
+		{
+			"name": "A Taste of Hope",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Coins"
+				],
+				[
+					"Knife"
+				],
+				[
+					"Emerald"
+				],
+				[
+					"Chisel"
+				],
+				[
+					"Pestle and mortar"
+				],
+				[
+					"Vial of water"
+				]
+			],
+			"groupLabels": [
+				"Coins",
+				"Knife",
+				"Emerald",
+				"Chisel",
+				"Pestle and mortar",
+				"Vial of water"
+			],
+			"monsterCards": [
+				"Abomination",
+				"Ranis Drakan",
+				"Vyrewatch"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Alfred Grimhand's Barcrawl",
+			"miniquest": true,
+			"cardGroups": [
+				[
+					"Coins"
+				]
+			],
+			"groupLabels": [
+				"Coins"
+			],
+			"monsterCards": [],
+			"notes": ""
+		},
+		{
+			"name": "Animal Magnetism",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Mithril axe"
+				],
+				[
+					"Iron bar"
+				],
+				[
+					"Ecto-token"
+				],
+				[
+					"Hammer"
+				],
+				[
+					"Hard leather"
+				]
+			],
+			"groupLabels": [
+				"Mithril axe",
+				"Iron bar",
+				"Ecto-token",
+				"Hammer",
+				"Hard leather"
+			],
+			"monsterCards": [],
+			"notes": ""
+		},
+		{
+			"name": "Another Slice of H.A.M.",
+			"miniquest": false,
+			"cardGroups": [],
+			"groupLabels": [],
+			"monsterCards": [
+				"H.A.M. Archer",
+				"H.A.M. Mage",
+				"Sigmund"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Architectural Alliance",
+			"miniquest": true,
+			"cardGroups": [],
+			"groupLabels": [],
+			"monsterCards": [],
+			"notes": ""
+		},
+		{
+			"name": "At First Light",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Needle",
+					"Costume needle"
+				],
+				[
+					"Hammer",
+					"Imcando hammer"
+				],
+				[
+					"Jerboa tail"
+				]
+			],
+			"groupLabels": [
+				"Any needle",
+				"Any hammer",
+				"Jerboa tail"
+			],
+			"monsterCards": [],
+			"notes": ""
+		},
+		{
+			"name": "Barbarian Training",
+			"miniquest": true,
+			"cardGroups": [],
+			"groupLabels": [],
+			"monsterCards": [
+				"Mithril dragon"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Bear Your Soul",
+			"miniquest": true,
+			"cardGroups": [
+				[
+					"Spade"
+				],
+				[
+					"Dusty key"
+				],
+				[
+					"Key master teleport"
+				]
+			],
+			"groupLabels": [
+				"Spade",
+				"Dusty key",
+				"Key master teleport"
+			],
+			"monsterCards": [],
+			"notes": ""
+		},
+		{
+			"name": "Below Ice Mountain",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Cooked meat"
+				],
+				[
+					"Bread"
+				],
+				[
+					"Knife"
+				],
+				[
+					"Beer"
+				]
+			],
+			"groupLabels": [
+				"Cooked meat",
+				"Bread",
+				"Knife",
+				"Beer"
+			],
+			"monsterCards": [
+				"Ancient Guardian"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Beneath Cursed Sands",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Coal"
+				],
+				[
+					"Iron bar"
+				],
+				[
+					"Tinderbox"
+				],
+				[
+					"Spade"
+				]
+			],
+			"groupLabels": [
+				"Coal",
+				"Iron bar",
+				"Tinderbox",
+				"Spade"
+			],
+			"monsterCards": [
+				"Head Menaphite Guard",
+				"Scarab Mage",
+				"Champion of Scabaras",
+				"Menaphite Akh"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Between a Rock...",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Gold bar"
+				],
+				[
+					"Hammer"
+				],
+				[
+					"Double ammo mould"
+				],
+				[
+					"Coins"
+				]
+			],
+			"groupLabels": [
+				"Gold bar",
+				"Hammer",
+				"Double ammo mould",
+				"Coins"
+			],
+			"monsterCards": [
+				"Scorpion",
+				"Arzinian Being of Bordanzan"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Big Chompy Bird Hunting",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Feather"
+				],
+				[
+					"Knife"
+				],
+				[
+					"Chisel"
+				],
+				[
+					"Wolf bones"
+				],
+				[
+					"Cabbage"
+				],
+				[
+					"Tomato"
+				],
+				[
+					"Onion"
+				],
+				[
+					"Potato"
+				],
+				[
+					"Equa leaves"
+				]
+			],
+			"groupLabels": [
+				"Feather",
+				"Knife",
+				"Chisel",
+				"Wolf bones",
+				"Cabbage",
+				"Tomato",
+				"Onion",
+				"Potato",
+				"Equa leaves"
+			],
+			"monsterCards": [
+				"Chompy bird",
+				"Wolf"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Biohazard",
+			"miniquest": false,
+			"cardGroups": [],
+			"groupLabels": [],
+			"monsterCards": [
+				"Mourner"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Black Knights' Fortress",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Cabbage"
+				],
+				[
+					"Iron chainbody"
+				],
+				[
+					"Bronze med helm"
+				]
+			],
+			"groupLabels": [
+				"Cabbage",
+				"Iron chainbody",
+				"Bronze med helm"
+			],
+			"monsterCards": [],
+			"notes": ""
+		},
+		{
+			"name": "Bone Voyage",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Vodka"
+				]
+			],
+			"groupLabels": [
+				"Vodka"
+			],
+			"monsterCards": [],
+			"notes": ""
+		},
+		{
+			"name": "Cabin Fever",
+			"miniquest": false,
+			"cardGroups": [],
+			"groupLabels": [],
+			"monsterCards": [
+				"Pirate"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Children of the Sun",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Guard"
+				]
+			],
+			"groupLabels": [
+				"Guard (marked during the quest)"
+			],
+			"monsterCards": [],
+			"notes": "Marking the patrolling guards is an item-on-NPC interaction on \"Guard\" NPCs, blocked while the Guard card is locked."
+		},
+		{
+			"name": "Client of Kourend",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Feather"
+				]
+			],
+			"groupLabels": [
+				"Feather"
+			],
+			"monsterCards": [],
+			"notes": ""
+		},
+		{
+			"name": "Clock Tower",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Bucket of water"
+				]
+			],
+			"groupLabels": [
+				"Bucket of water"
+			],
+			"monsterCards": [],
+			"notes": ""
+		},
+		{
+			"name": "Cold War",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Oak plank"
+				],
+				[
+					"Steel nails"
+				],
+				[
+					"Hammer"
+				],
+				[
+					"Spade"
+				],
+				[
+					"Clockwork"
+				],
+				[
+					"Steel bar"
+				],
+				[
+					"Plank"
+				],
+				[
+					"Silk"
+				],
+				[
+					"Raw cod"
+				],
+				[
+					"Swamp tar"
+				],
+				[
+					"Feather"
+				],
+				[
+					"Mahogany plank"
+				],
+				[
+					"Leather"
+				]
+			],
+			"groupLabels": [
+				"Oak plank",
+				"Steel nails",
+				"Hammer",
+				"Spade",
+				"Clockwork",
+				"Steel bar",
+				"Plank",
+				"Silk",
+				"Raw cod",
+				"Swamp tar",
+				"Feather",
+				"Mahogany plank",
+				"Leather"
+			],
+			"monsterCards": [
+				"Icelord"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Contact!",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Coins"
+				],
+				[
+					"Tinderbox"
+				]
+			],
+			"groupLabels": [
+				"Coins",
+				"Tinderbox"
+			],
+			"monsterCards": [
+				"Giant Scarab",
+				"Locust rider",
+				"Scarab Mage"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Cook's Assistant",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Egg"
+				],
+				[
+					"Bucket of milk"
+				],
+				[
+					"Pot of flour"
+				]
+			],
+			"groupLabels": [
+				"Egg",
+				"Bucket of milk",
+				"Pot of flour"
+			],
+			"monsterCards": [],
+			"notes": ""
+		},
+		{
+			"name": "Creature of Fenkenstrain",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Silver bar"
+				],
+				[
+					"Bronze wire"
+				],
+				[
+					"Needle"
+				],
+				[
+					"Thread"
+				],
+				[
+					"Spade"
+				],
+				[
+					"Coins"
+				],
+				[
+					"Law rune"
+				],
+				[
+					"Air rune"
+				]
+			],
+			"groupLabels": [
+				"Silver bar",
+				"Bronze wire",
+				"Needle",
+				"Thread",
+				"Spade",
+				"Coins",
+				"Law rune",
+				"Air rune"
+			],
+			"monsterCards": [
+				"Experiment"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Current Affairs",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Coins"
+				]
+			],
+			"groupLabels": [
+				"Coins"
+			],
+			"monsterCards": [],
+			"notes": ""
+		},
+		{
+			"name": "Curse of the Empty Lord",
+			"miniquest": true,
+			"cardGroups": [
+				[
+					"Knife"
+				]
+			],
+			"groupLabels": [
+				"Knife"
+			],
+			"monsterCards": [],
+			"notes": ""
+		},
+		{
+			"name": "Daddy's Home",
+			"miniquest": true,
+			"cardGroups": [
+				[
+					"Plank"
+				],
+				[
+					"Steel nails"
+				],
+				[
+					"Hammer"
+				],
+				[
+					"Saw"
+				]
+			],
+			"groupLabels": [
+				"Plank",
+				"Steel nails",
+				"Hammer",
+				"Saw"
+			],
+			"monsterCards": [],
+			"notes": ""
+		},
+		{
+			"name": "Darkness of Hallowvale",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Plank"
+				],
+				[
+					"Hammer"
+				],
+				[
+					"Knife"
+				]
+			],
+			"groupLabels": [
+				"Plank",
+				"Hammer",
+				"Knife"
+			],
+			"monsterCards": [
+				"Vanstrom Klause"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Death Plateau",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Coins"
+				],
+				[
+					"Bread"
+				],
+				[
+					"Trout"
+				],
+				[
+					"Iron bar"
+				],
+				[
+					"Asgarnian ale"
+				]
+			],
+			"groupLabels": [
+				"Coins",
+				"Bread",
+				"Trout",
+				"Iron bar",
+				"Asgarnian ale"
+			],
+			"monsterCards": [],
+			"notes": ""
+		},
+		{
+			"name": "Death on the Isle",
+			"miniquest": false,
+			"cardGroups": [],
+			"groupLabels": [],
+			"monsterCards": [],
+			"notes": ""
+		},
+		{
+			"name": "Death to the Dorgeshuun",
+			"miniquest": false,
+			"cardGroups": [],
+			"groupLabels": [],
+			"monsterCards": [
+				"Sigmund",
+				"H.A.M. Guard"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Defender of Varrock",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Chaos core"
+				]
+			],
+			"groupLabels": [
+				"Chaos core"
+			],
+			"monsterCards": [
+				"Armoured zombie (Defender of Varrock)",
+				"Armoured zombie (The Curse of Arrav)",
+				"Armoured zombie (Zemouregal's Fort)",
+				"Chaos Golem"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Demon Slayer",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Bucket of water"
+				],
+				[
+					"Bones"
+				]
+			],
+			"groupLabels": [
+				"Bucket of water",
+				"Bones"
+			],
+			"monsterCards": [
+				"Delrith"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Desert Treasure I",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Coins"
+				],
+				[
+					"Magic logs"
+				],
+				[
+					"Steel bar"
+				],
+				[
+					"Molten glass"
+				],
+				[
+					"Ashes"
+				],
+				[
+					"Blood rune"
+				],
+				[
+					"Bones"
+				],
+				[
+					"Silver bar"
+				],
+				[
+					"Spice"
+				],
+				[
+					"Chocolate bar",
+					"Cooking apple",
+					"Pineapple pizza"
+				],
+				[
+					"Facemask",
+					"Slayer helmet"
+				],
+				[
+					"Tinderbox"
+				],
+				[
+					"Lockpick"
+				]
+			],
+			"groupLabels": [
+				"Coins",
+				"Magic logs",
+				"Steel bar",
+				"Molten glass",
+				"Ashes",
+				"Blood rune",
+				"Bones",
+				"Silver bar",
+				"Spice",
+				"Chocolate bar / Cooking apple / Pineapple pizza",
+				"Facemask / Slayer helmet",
+				"Tinderbox",
+				"Lockpick"
+			],
+			"monsterCards": [
+				"Dessous",
+				"Ice troll",
+				"Kamil",
+				"Fareed",
+				"Damis"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Desert Treasure II - The Fallen Empire",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Tinderbox"
+				],
+				[
+					"Pestle and mortar"
+				],
+				[
+					"Facemask"
+				]
+			],
+			"groupLabels": [
+				"Tinderbox",
+				"Pestle and mortar",
+				"Facemask"
+			],
+			"monsterCards": [
+				"Ancient Guardian",
+				"Vardorvis",
+				"Kasonde",
+				"The Leviathan",
+				"Jhallan",
+				"Duke Sucellus",
+				"The Whisperer",
+				"Mysterious Figure",
+				"The Forsaken Assassin",
+				"Ketla the Unworthy",
+				"Kasonde the Craven",
+				"Persten the Deceitful"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Devious Minds",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Mithril 2h sword"
+				],
+				[
+					"Bow string"
+				],
+				[
+					"Large pouch",
+					"Colossal pouch"
+				]
+			],
+			"groupLabels": [
+				"Mithril 2h sword",
+				"Bow string",
+				"Any pouch"
+			],
+			"monsterCards": [],
+			"notes": ""
+		},
+		{
+			"name": "Doric's Quest",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Clay"
+				],
+				[
+					"Copper ore"
+				],
+				[
+					"Iron ore"
+				]
+			],
+			"groupLabels": [
+				"Clay",
+				"Copper ore",
+				"Iron ore"
+			],
+			"monsterCards": [],
+			"notes": ""
+		},
+		{
+			"name": "Dragon Slayer I",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Unfired bowl"
+				],
+				[
+					"Wizard's mind bomb"
+				],
+				[
+					"Lobster pot"
+				],
+				[
+					"Silk"
+				],
+				[
+					"Law rune"
+				],
+				[
+					"Air rune"
+				],
+				[
+					"Hammer"
+				],
+				[
+					"Steel nails"
+				],
+				[
+					"Plank"
+				],
+				[
+					"Coins"
+				]
+			],
+			"groupLabels": [
+				"Unfired bowl",
+				"Wizard's mind bomb",
+				"Lobster pot",
+				"Silk",
+				"Law rune",
+				"Air rune",
+				"Hammer",
+				"Steel nails",
+				"Plank",
+				"Coins"
+			],
+			"monsterCards": [
+				"Zombie rat",
+				"Ghost",
+				"Skeleton",
+				"Zombie",
+				"Melzar the Mad",
+				"Lesser demon",
+				"Wormbrain",
+				"Elvarg"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Dragon Slayer II",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Oak plank"
+				],
+				[
+					"Swamp paste"
+				],
+				[
+					"Hammer"
+				],
+				[
+					"Machete"
+				],
+				[
+					"Saw"
+				],
+				[
+					"Dragonstone"
+				],
+				[
+					"Molten glass"
+				],
+				[
+					"Glassblowing pipe"
+				],
+				[
+					"Spade"
+				],
+				[
+					"Astral rune"
+				],
+				[
+					"Tinderbox"
+				],
+				[
+					"Pestle and mortar"
+				]
+			],
+			"groupLabels": [
+				"Oak plank",
+				"Swamp paste",
+				"Hammer",
+				"Machete",
+				"Saw",
+				"Dragonstone",
+				"Molten glass",
+				"Glassblowing pipe",
+				"Spade",
+				"Astral rune",
+				"Tinderbox",
+				"Pestle and mortar"
+			],
+			"monsterCards": [
+				"Vorkath",
+				"Spawn",
+				"Robert the Strong",
+				"Green dragon",
+				"Blue dragon",
+				"Red dragon",
+				"Iron dragon",
+				"Brutal green dragon",
+				"Black dragon",
+				"Steel dragon",
+				"Brutal red dragon",
+				"Mithril dragon",
+				"Adamant dragon",
+				"Rune dragon",
+				"Galvek"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Dream Mentor",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Astral rune"
+				],
+				[
+					"Tinderbox"
+				],
+				[
+					"Hammer"
+				],
+				[
+					"Pestle and mortar"
+				],
+				[
+					"Shark"
+				]
+			],
+			"groupLabels": [
+				"Astral rune",
+				"Tinderbox",
+				"Hammer",
+				"Pestle and mortar",
+				"Shark"
+			],
+			"monsterCards": [
+				"The Inadequacy",
+				"The Everlasting",
+				"The Untouchable",
+				"The Illusive"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Druidic Ritual",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Raw bear meat"
+				],
+				[
+					"Raw rat meat"
+				],
+				[
+					"Raw beef"
+				],
+				[
+					"Raw chicken"
+				]
+			],
+			"groupLabels": [
+				"Raw bear meat",
+				"Raw rat meat",
+				"Raw beef",
+				"Raw chicken"
+			],
+			"monsterCards": [
+				"Suit of armour"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Dwarf Cannon",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Hammer"
+				]
+			],
+			"groupLabels": [
+				"Hammer"
+			],
+			"monsterCards": [],
+			"notes": ""
+		},
+		{
+			"name": "Eadgar's Ruse",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Vodka"
+				],
+				[
+					"Pineapple chunks"
+				],
+				[
+					"Logs"
+				],
+				[
+					"Grain"
+				],
+				[
+					"Raw chicken"
+				],
+				[
+					"Pestle and mortar"
+				]
+			],
+			"groupLabels": [
+				"Vodka",
+				"Pineapple chunks",
+				"Logs",
+				"Grain",
+				"Raw chicken",
+				"Pestle and mortar"
+			],
+			"monsterCards": [],
+			"notes": ""
+		},
+		{
+			"name": "Eagles' Peak",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Yellow dye"
+				],
+				[
+					"Swamp tar"
+				],
+				[
+					"Coins"
+				]
+			],
+			"groupLabels": [
+				"Yellow dye",
+				"Swamp tar",
+				"Coins"
+			],
+			"monsterCards": [
+				"Kebbit (Eagles' Peak)"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Elemental Workshop I",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Knife"
+				],
+				[
+					"Needle"
+				],
+				[
+					"Thread"
+				],
+				[
+					"Leather"
+				],
+				[
+					"Hammer"
+				],
+				[
+					"Coal"
+				]
+			],
+			"groupLabels": [
+				"Knife",
+				"Needle",
+				"Thread",
+				"Leather",
+				"Hammer",
+				"Coal"
+			],
+			"monsterCards": [
+				"Earth elemental"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Elemental Workshop II",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Hammer"
+				]
+			],
+			"groupLabels": [
+				"Hammer"
+			],
+			"monsterCards": [
+				"Earth elemental"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Enakhra's Lament",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Chisel"
+				],
+				[
+					"Bread"
+				],
+				[
+					"Cake",
+					"Chocolate cake"
+				],
+				[
+					"Baked potato"
+				],
+				[
+					"Tinderbox"
+				],
+				[
+					"Candle"
+				],
+				[
+					"Logs"
+				],
+				[
+					"Oak logs"
+				],
+				[
+					"Willow logs"
+				],
+				[
+					"Maple logs"
+				],
+				[
+					"Soft clay"
+				],
+				[
+					"Coal"
+				],
+				[
+					"Sandstone"
+				]
+			],
+			"groupLabels": [
+				"Chisel",
+				"Bread",
+				"Any cake",
+				"Baked potato",
+				"Tinderbox",
+				"Candle",
+				"Logs",
+				"Oak logs",
+				"Willow logs",
+				"Maple logs",
+				"Soft clay",
+				"Coal",
+				"Sandstone"
+			],
+			"monsterCards": [],
+			"notes": ""
+		},
+		{
+			"name": "Enlightened Journey",
+			"miniquest": false,
+			"cardGroups": [],
+			"groupLabels": [],
+			"monsterCards": [],
+			"notes": ""
+		},
+		{
+			"name": "Enter the Abyss",
+			"miniquest": true,
+			"cardGroups": [],
+			"groupLabels": [],
+			"monsterCards": [],
+			"notes": ""
+		},
+		{
+			"name": "Ernest the Chicken",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Spade"
+				]
+			],
+			"groupLabels": [
+				"Spade"
+			],
+			"monsterCards": [],
+			"notes": ""
+		},
+		{
+			"name": "Ethically Acquired Antiquities",
+			"miniquest": false,
+			"cardGroups": [],
+			"groupLabels": [],
+			"monsterCards": [],
+			"notes": ""
+		},
+		{
+			"name": "Fairytale I - Growing Pains",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Secateurs"
+				],
+				[
+					"Spade"
+				]
+			],
+			"groupLabels": [
+				"Secateurs",
+				"Spade"
+			],
+			"monsterCards": [
+				"Tanglefoot"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Fairytale II - Cure a Queen",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Vial of water"
+				],
+				[
+					"Pestle and mortar"
+				]
+			],
+			"groupLabels": [
+				"Vial of water",
+				"Pestle and mortar"
+			],
+			"monsterCards": [
+				"Gorak"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Fallen From Grace",
+			"miniquest": false,
+			"cardGroups": [],
+			"groupLabels": [],
+			"monsterCards": [],
+			"notes": ""
+		},
+		{
+			"name": "Family Crest",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Shrimps"
+				],
+				[
+					"Salmon"
+				],
+				[
+					"Tuna"
+				],
+				[
+					"Bass"
+				],
+				[
+					"Swordfish"
+				],
+				[
+					"Adamant pickaxe",
+					"Rune pickaxe"
+				],
+				[
+					"Ruby"
+				],
+				[
+					"Ring mould"
+				],
+				[
+					"Necklace mould"
+				]
+			],
+			"groupLabels": [
+				"Shrimps",
+				"Salmon",
+				"Tuna",
+				"Bass",
+				"Swordfish",
+				"Any pickaxe",
+				"Ruby",
+				"Ring mould",
+				"Necklace mould"
+			],
+			"monsterCards": [
+				"Chronozon"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Family Pest",
+			"miniquest": true,
+			"cardGroups": [],
+			"groupLabels": [],
+			"monsterCards": [],
+			"notes": ""
+		},
+		{
+			"name": "Fight Arena",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Coins"
+				]
+			],
+			"groupLabels": [
+				"Coins"
+			],
+			"monsterCards": [
+				"Khazard Scorpion",
+				"Khazard Ogre",
+				"Bouncer",
+				"General Khazard"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Fishing Contest",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Spade"
+				],
+				[
+					"Coins"
+				],
+				[
+					"Garlic"
+				],
+				[
+					"Fishing rod",
+					"Pearl fishing rod"
+				]
+			],
+			"groupLabels": [
+				"Spade",
+				"Coins",
+				"Garlic",
+				"Any fishing rod"
+			],
+			"monsterCards": [],
+			"notes": ""
+		},
+		{
+			"name": "Forgettable Tale...",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Coins"
+				],
+				[
+					"Barley malt"
+				],
+				[
+					"Seed dibber"
+				],
+				[
+					"Rake"
+				],
+				[
+					"Kebab"
+				],
+				[
+					"Beer"
+				],
+				[
+					"Beer glass"
+				]
+			],
+			"groupLabels": [
+				"Coins",
+				"Barley malt",
+				"Seed dibber",
+				"Rake",
+				"Kebab",
+				"Beer",
+				"Beer glass"
+			],
+			"monsterCards": [],
+			"notes": ""
+		},
+		{
+			"name": "Garden of Tranquillity",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Plant cure"
+				],
+				[
+					"Marigold seed"
+				],
+				[
+					"Cabbage seed"
+				],
+				[
+					"Onion seed"
+				],
+				[
+					"Hammer"
+				],
+				[
+					"Rune essence",
+					"Pure essence"
+				],
+				[
+					"Pestle and mortar"
+				],
+				[
+					"Filled plant pot"
+				],
+				[
+					"Ultracompost",
+					"Supercompost",
+					"Compost"
+				]
+			],
+			"groupLabels": [
+				"Plant cure",
+				"Marigold seed",
+				"Cabbage seed",
+				"Onion seed",
+				"Hammer",
+				"Any essence",
+				"Pestle and mortar",
+				"Filled plant pot",
+				"Ultracompost / Supercompost / Compost"
+			],
+			"monsterCards": [],
+			"notes": ""
+		},
+		{
+			"name": "Gertrude's Cat",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Bucket of milk"
+				],
+				[
+					"Coins"
+				]
+			],
+			"groupLabels": [
+				"Bucket of milk",
+				"Coins"
+			],
+			"monsterCards": [],
+			"notes": ""
+		},
+		{
+			"name": "Getting Ahead",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Bear fur",
+					"Grey wolf fur",
+					"Fur"
+				],
+				[
+					"Soft clay"
+				],
+				[
+					"Hammer",
+					"Imcando hammer"
+				],
+				[
+					"Saw",
+					"Amy's saw"
+				],
+				[
+					"Plank"
+				],
+				[
+					"Knife"
+				],
+				[
+					"Red dye"
+				],
+				[
+					"Pot of flour"
+				],
+				[
+					"Needle",
+					"Costume needle"
+				],
+				[
+					"Thread"
+				],
+				[
+					"Costume needle"
+				]
+			],
+			"groupLabels": [
+				"Any fur",
+				"Soft clay",
+				"Any hammer",
+				"Any saw",
+				"Plank",
+				"Knife",
+				"Red dye",
+				"Pot of flour",
+				"Any needle",
+				"Thread",
+				"Costume needle"
+			],
+			"monsterCards": [
+				"Headless Beast"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Ghosts Ahoy",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Ecto-token"
+				],
+				[
+					"Coins"
+				],
+				[
+					"Bucket of milk"
+				],
+				[
+					"Silk"
+				],
+				[
+					"Spade"
+				],
+				[
+					"Oak longbow"
+				],
+				[
+					"Knife"
+				],
+				[
+					"Needle"
+				],
+				[
+					"Thread"
+				],
+				[
+					"Costume needle"
+				],
+				[
+					"Bucket of slime"
+				]
+			],
+			"groupLabels": [
+				"Ecto-token",
+				"Coins",
+				"Bucket of milk",
+				"Silk",
+				"Spade",
+				"Oak longbow",
+				"Knife",
+				"Needle",
+				"Thread",
+				"Costume needle",
+				"Bucket of slime"
+			],
+			"monsterCards": [
+				"Giant lobster"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Goblin Diplomacy",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Goblin mail"
+				],
+				[
+					"Blue dye"
+				],
+				[
+					"Red dye"
+				],
+				[
+					"Yellow dye"
+				]
+			],
+			"groupLabels": [
+				"Goblin mail",
+				"Blue dye",
+				"Red dye",
+				"Yellow dye"
+			],
+			"monsterCards": [],
+			"notes": ""
+		},
+		{
+			"name": "Grim Tales",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Tarromin"
+				],
+				[
+					"Seed dibber"
+				],
+				[
+					"Watering can"
+				],
+				[
+					"Leather gloves"
+				]
+			],
+			"groupLabels": [
+				"Tarromin",
+				"Seed dibber",
+				"Watering can",
+				"Leather gloves"
+			],
+			"monsterCards": [
+				"Glod"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Haunted Mine",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Chisel"
+				]
+			],
+			"groupLabels": [
+				"Chisel"
+			],
+			"monsterCards": [
+				"Treus Dayth"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Hazeel Cult",
+			"miniquest": false,
+			"cardGroups": [],
+			"groupLabels": [],
+			"monsterCards": [],
+			"notes": ""
+		},
+		{
+			"name": "Heroes' Quest",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Fishing rod"
+				],
+				[
+					"Fishing bait"
+				],
+				[
+					"Dusty key"
+				],
+				[
+					"Knife"
+				],
+				[
+					"Black full helm"
+				],
+				[
+					"Black platebody"
+				],
+				[
+					"Black platelegs"
+				]
+			],
+			"groupLabels": [
+				"Fishing rod",
+				"Fishing bait",
+				"Dusty key",
+				"Knife",
+				"Black full helm",
+				"Black platebody",
+				"Black platelegs"
+			],
+			"monsterCards": [
+				"Ice Queen",
+				"Entrana firebird",
+				"Jailer",
+				"Grip"
+			],
+			"notes": ""
+		},
+		{
+			"name": "His Faithful Servants",
+			"miniquest": true,
+			"cardGroups": [
+				[
+					"Spade"
+				]
+			],
+			"groupLabels": [
+				"Spade"
+			],
+			"monsterCards": [
+				"Verac the Defiled",
+				"Dharok the Wretched",
+				"Ahrim the Blighted",
+				"Torag the Corrupted",
+				"Karil the Tainted",
+				"Guthan the Infested"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Holy Grail",
+			"miniquest": false,
+			"cardGroups": [],
+			"groupLabels": [],
+			"monsterCards": [
+				"Black Knight Titan"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Hopespear's Will",
+			"miniquest": true,
+			"cardGroups": [
+				[
+					"Morytania legs 2"
+				]
+			],
+			"groupLabels": [
+				"Morytania legs 2"
+			],
+			"monsterCards": [
+				"Snothead",
+				"Snailfeet",
+				"Mosschin",
+				"Redeyes",
+				"Strongbones"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Horror from the Deep",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Fire rune"
+				],
+				[
+					"Air rune"
+				],
+				[
+					"Water rune"
+				],
+				[
+					"Earth rune"
+				],
+				[
+					"Molten glass"
+				],
+				[
+					"Tinderbox"
+				],
+				[
+					"Hammer"
+				],
+				[
+					"Steel nails"
+				],
+				[
+					"Plank"
+				],
+				[
+					"Swamp tar"
+				]
+			],
+			"groupLabels": [
+				"Fire rune",
+				"Air rune",
+				"Water rune",
+				"Earth rune",
+				"Molten glass",
+				"Tinderbox",
+				"Hammer",
+				"Steel nails",
+				"Plank",
+				"Swamp tar"
+			],
+			"monsterCards": [
+				"Dagannoth",
+				"Dagannoth mother"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Icthlarin's Little Helper",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Cat",
+					"Overgrown cat",
+					"Hellcat",
+					"Kitten"
+				],
+				[
+					"Tinderbox"
+				],
+				[
+					"Bag of salt"
+				],
+				[
+					"Bucket"
+				],
+				[
+					"Waterskin"
+				],
+				[
+					"Pharaoh's sceptre"
+				]
+			],
+			"groupLabels": [
+				"Cat / Overgrown cat / Hellcat / Kitten",
+				"Tinderbox",
+				"Bag of salt",
+				"Bucket",
+				"Waterskin",
+				"Pharaoh's sceptre"
+			],
+			"monsterCards": [
+				"Possessed Priest",
+				"Apparition"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Imp Catcher",
+			"miniquest": false,
+			"cardGroups": [],
+			"groupLabels": [],
+			"monsterCards": [
+				"Imp"
+			],
+			"notes": ""
+		},
+		{
+			"name": "In Aid of the Myreque",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Spade"
+				],
+				[
+					"Bucket"
+				],
+				[
+					"Hammer"
+				],
+				[
+					"Plank"
+				],
+				[
+					"Swamp paste"
+				],
+				[
+					"Raw mackerel"
+				],
+				[
+					"Bronze axe"
+				],
+				[
+					"Tinderbox"
+				],
+				[
+					"Steel bar"
+				],
+				[
+					"Coal"
+				],
+				[
+					"Soft clay"
+				],
+				[
+					"Rope"
+				],
+				[
+					"Silver bar"
+				],
+				[
+					"Mithril bar"
+				],
+				[
+					"Sapphire"
+				]
+			],
+			"groupLabels": [
+				"Spade",
+				"Bucket",
+				"Hammer",
+				"Plank",
+				"Swamp paste",
+				"Raw mackerel",
+				"Bronze axe",
+				"Tinderbox",
+				"Steel bar",
+				"Coal",
+				"Soft clay",
+				"Rope",
+				"Silver bar",
+				"Mithril bar",
+				"Sapphire"
+			],
+			"monsterCards": [
+				"Gadderanks",
+				"Vampyre Juvinate"
+			],
+			"notes": ""
+		},
+		{
+			"name": "In Search of Knowledge",
+			"miniquest": true,
+			"cardGroups": [
+				[
+					"Knife"
+				]
+			],
+			"groupLabels": [
+				"Knife"
+			],
+			"monsterCards": [],
+			"notes": ""
+		},
+		{
+			"name": "In Search of the Myreque",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Steel longsword"
+				],
+				[
+					"Steel sword"
+				],
+				[
+					"Steel mace"
+				],
+				[
+					"Steel warhammer"
+				],
+				[
+					"Steel dagger"
+				],
+				[
+					"Steel nails"
+				],
+				[
+					"Hammer",
+					"Imcando hammer"
+				],
+				[
+					"Plank"
+				],
+				[
+					"Coins"
+				]
+			],
+			"groupLabels": [
+				"Steel longsword",
+				"Steel sword",
+				"Steel mace",
+				"Steel warhammer",
+				"Steel dagger",
+				"Steel nails",
+				"Any hammer",
+				"Plank",
+				"Coins"
+			],
+			"monsterCards": [
+				"Skeleton Hellhound"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Into the Tombs",
+			"miniquest": true,
+			"cardGroups": [],
+			"groupLabels": [],
+			"monsterCards": [
+				"Akkha",
+				"Ba-Ba",
+				"Kephri",
+				"Zebak",
+				"Tumeken's Warden",
+				"Elidinis' Warden"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Jungle Potion",
+			"miniquest": false,
+			"cardGroups": [],
+			"groupLabels": [],
+			"monsterCards": [],
+			"notes": ""
+		},
+		{
+			"name": "King's Ransom",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Granite"
+				],
+				[
+					"Bronze med helm"
+				],
+				[
+					"Iron chainbody"
+				]
+			],
+			"groupLabels": [
+				"Granite",
+				"Bronze med helm",
+				"Iron chainbody"
+			],
+			"monsterCards": [],
+			"notes": ""
+		},
+		{
+			"name": "Lair of Tarn Razorlor",
+			"miniquest": true,
+			"cardGroups": [
+				[
+					"Coins"
+				]
+			],
+			"groupLabels": [
+				"Coins"
+			],
+			"monsterCards": [
+				"Tarn"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Land of the Goblins",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Goblin mail"
+				],
+				[
+					"Yellow dye"
+				],
+				[
+					"Blue dye"
+				],
+				[
+					"Purple dye"
+				],
+				[
+					"Fishing rod"
+				],
+				[
+					"Raw slimy eel"
+				],
+				[
+					"Coins"
+				]
+			],
+			"groupLabels": [
+				"Goblin mail",
+				"Yellow dye",
+				"Blue dye",
+				"Purple dye",
+				"Fishing rod",
+				"Raw slimy eel",
+				"Coins"
+			],
+			"monsterCards": [
+				"Snothead",
+				"Snailfeet",
+				"Mosschin",
+				"Redeyes",
+				"Strongbones"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Learning the Ropes",
+			"miniquest": false,
+			"cardGroups": [],
+			"groupLabels": [],
+			"monsterCards": [
+				"Giant rat"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Legends' Quest",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Gold bar"
+				],
+				[
+					"Hammer",
+					"Imcando hammer"
+				],
+				[
+					"Rope"
+				],
+				[
+					"Rune axe",
+					"Dragon axe",
+					"Infernal axe"
+				],
+				[
+					"Lockpick"
+				],
+				[
+					"Vial of water"
+				],
+				[
+					"Soul rune"
+				],
+				[
+					"Mind rune"
+				],
+				[
+					"Law rune"
+				],
+				[
+					"Earth rune"
+				],
+				[
+					"Unpowered orb"
+				],
+				[
+					"Papyrus"
+				]
+			],
+			"groupLabels": [
+				"Gold bar",
+				"Any hammer",
+				"Rope",
+				"Any axe",
+				"Lockpick",
+				"Vial of water",
+				"Soul rune",
+				"Mind rune",
+				"Law rune",
+				"Earth rune",
+				"Unpowered orb",
+				"Papyrus"
+			],
+			"monsterCards": [
+				"Ranalph Devere",
+				"Irvig Senay",
+				"San Tojalon",
+				"Nezikchened"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Lost City",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Knife"
+				]
+			],
+			"groupLabels": [
+				"Knife"
+			],
+			"monsterCards": [
+				"Tree spirit",
+				"Zombie"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Lost Lover",
+			"miniquest": true,
+			"cardGroups": [],
+			"groupLabels": [],
+			"monsterCards": [],
+			"notes": ""
+		},
+		{
+			"name": "Lunar Diplomacy",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Tinderbox"
+				],
+				[
+					"Coins"
+				],
+				[
+					"Guam leaf"
+				],
+				[
+					"Marrentill"
+				],
+				[
+					"Pestle and mortar"
+				],
+				[
+					"Hammer"
+				],
+				[
+					"Needle"
+				],
+				[
+					"Thread"
+				],
+				[
+					"Spade"
+				],
+				[
+					"Bullseye lantern"
+				],
+				[
+					"Swamp tar"
+				]
+			],
+			"groupLabels": [
+				"Tinderbox",
+				"Coins",
+				"Guam leaf",
+				"Marrentill",
+				"Pestle and mortar",
+				"Hammer",
+				"Needle",
+				"Thread",
+				"Spade",
+				"Bullseye lantern",
+				"Swamp tar"
+			],
+			"monsterCards": [
+				"Suqah",
+				"Me"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Mage Arena I",
+			"miniquest": true,
+			"cardGroups": [],
+			"groupLabels": [],
+			"monsterCards": [
+				"Black demon"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Mage Arena II",
+			"miniquest": true,
+			"cardGroups": [],
+			"groupLabels": [],
+			"monsterCards": [
+				"Porazdir",
+				"Justiciar Zachariah",
+				"Derwen"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Making Friends with My Arm",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Saw"
+				],
+				[
+					"Bolt of cloth"
+				],
+				[
+					"Mahogany plank"
+				],
+				[
+					"Bucket of water"
+				],
+				[
+					"Rope"
+				],
+				[
+					"Hammer"
+				]
+			],
+			"groupLabels": [
+				"Saw",
+				"Bolt of cloth",
+				"Mahogany plank",
+				"Bucket of water",
+				"Rope",
+				"Hammer"
+			],
+			"monsterCards": [
+				"Don't Know What",
+				"Mother"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Making History",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Spade"
+				],
+				[
+					"Sapphire amulet"
+				],
+				[
+					"Morytania legs 2"
+				]
+			],
+			"groupLabels": [
+				"Spade",
+				"Sapphire amulet",
+				"Morytania legs 2"
+			],
+			"monsterCards": [],
+			"notes": ""
+		},
+		{
+			"name": "Meat and Greet",
+			"miniquest": false,
+			"cardGroups": [],
+			"groupLabels": [],
+			"monsterCards": [
+				"Dire Wolf Alpha",
+				"Minotaur"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Merlin's Crystal",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Bread"
+				],
+				[
+					"Tinderbox"
+				],
+				[
+					"Bat bones"
+				]
+			],
+			"groupLabels": [
+				"Bread",
+				"Tinderbox",
+				"Bat bones"
+			],
+			"monsterCards": [
+				"Sir Mordred",
+				"Giant bat"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Misthalin Mystery",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Bucket"
+				],
+				[
+					"Tinderbox"
+				],
+				[
+					"Knife"
+				]
+			],
+			"groupLabels": [
+				"Bucket",
+				"Tinderbox",
+				"Knife"
+			],
+			"monsterCards": [],
+			"notes": ""
+		},
+		{
+			"name": "Monk's Friend",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Jug of water"
+				],
+				[
+					"Logs"
+				],
+				[
+					"Plank"
+				]
+			],
+			"groupLabels": [
+				"Jug of water",
+				"Logs",
+				"Plank"
+			],
+			"monsterCards": [],
+			"notes": ""
+		},
+		{
+			"name": "Monkey Madness I",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Gold bar"
+				],
+				[
+					"Ball of wool"
+				],
+				[
+					"Monkey bones"
+				],
+				[
+					"Banana"
+				]
+			],
+			"groupLabels": [
+				"Gold bar",
+				"Ball of wool",
+				"Monkey bones",
+				"Banana"
+			],
+			"monsterCards": [
+				"Jungle Demon"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Monkey Madness II",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Lemon"
+				],
+				[
+					"Grapes"
+				],
+				[
+					"Pestle and mortar"
+				],
+				[
+					"Logs"
+				],
+				[
+					"Hammer"
+				],
+				[
+					"Chisel"
+				]
+			],
+			"groupLabels": [
+				"Lemon",
+				"Grapes",
+				"Pestle and mortar",
+				"Logs",
+				"Hammer",
+				"Chisel"
+			],
+			"monsterCards": [
+				"Kruk",
+				"Keef",
+				"Kob",
+				"Tortured gorilla",
+				"Demonic gorilla",
+				"Glough"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Mountain Daughter",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Rope"
+				],
+				[
+					"Plank"
+				],
+				[
+					"Staff"
+				]
+			],
+			"groupLabels": [
+				"Rope",
+				"Plank",
+				"Staff"
+			],
+			"monsterCards": [
+				"The Kendal"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Mourning's End Part I",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Bear fur"
+				],
+				[
+					"Silk"
+				],
+				[
+					"Red dye"
+				],
+				[
+					"Yellow dye"
+				],
+				[
+					"Green dye"
+				],
+				[
+					"Blue dye"
+				],
+				[
+					"Bucket of water"
+				],
+				[
+					"Feather"
+				],
+				[
+					"Toad crunchies",
+					"Premade t'd crunch"
+				],
+				[
+					"Magic logs"
+				],
+				[
+					"Leather"
+				],
+				[
+					"Coal"
+				]
+			],
+			"groupLabels": [
+				"Bear fur",
+				"Silk",
+				"Red dye",
+				"Yellow dye",
+				"Green dye",
+				"Blue dye",
+				"Bucket of water",
+				"Feather",
+				"Toad crunchies / Premade t'd crunch",
+				"Magic logs",
+				"Leather",
+				"Coal"
+			],
+			"monsterCards": [
+				"Mourner"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Mourning's End Part II",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Chisel"
+				],
+				[
+					"Death tiara",
+					"Catalytic talisman",
+					"Catalytic tiara"
+				],
+				[
+					"Rope"
+				]
+			],
+			"groupLabels": [
+				"Chisel",
+				"Death tiara / Catalytic talisman / Catalytic tiara",
+				"Rope"
+			],
+			"monsterCards": [
+				"Shadow (Temple of Light)"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Murder Mystery",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Pot"
+				]
+			],
+			"groupLabels": [
+				"Pot"
+			],
+			"monsterCards": [],
+			"notes": ""
+		},
+		{
+			"name": "My Arm's Big Adventure",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Bucket"
+				]
+			],
+			"groupLabels": [
+				"Bucket"
+			],
+			"monsterCards": [
+				"Baby Roc",
+				"Giant Roc"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Nature Spirit",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Silver sickle"
+				]
+			],
+			"groupLabels": [
+				"Silver sickle"
+			],
+			"monsterCards": [
+				"Ghast"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Observatory Quest",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Plank"
+				],
+				[
+					"Bronze bar"
+				],
+				[
+					"Molten glass"
+				]
+			],
+			"groupLabels": [
+				"Plank",
+				"Bronze bar",
+				"Molten glass"
+			],
+			"monsterCards": [
+				"Goblin guard"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Olaf's Quest",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Tinderbox"
+				],
+				[
+					"Spade"
+				],
+				[
+					"Rope"
+				]
+			],
+			"groupLabels": [
+				"Tinderbox",
+				"Spade",
+				"Rope"
+			],
+			"monsterCards": [
+				"Skeleton fremennik",
+				"Ulfric"
+			],
+			"notes": ""
+		},
+		{
+			"name": "One Small Favour",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Steel bar"
+				],
+				[
+					"Bronze bar"
+				],
+				[
+					"Iron bar"
+				],
+				[
+					"Hammer",
+					"Imcando hammer"
+				],
+				[
+					"Pot"
+				],
+				[
+					"Soft clay"
+				],
+				[
+					"Chisel"
+				]
+			],
+			"groupLabels": [
+				"Steel bar",
+				"Bronze bar",
+				"Iron bar",
+				"Any hammer",
+				"Pot",
+				"Soft clay",
+				"Chisel"
+			],
+			"monsterCards": [
+				"Slagilith",
+				"Dwarf gang member"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Pandemonium",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Hammer"
+				],
+				[
+					"Saw"
+				]
+			],
+			"groupLabels": [
+				"Hammer",
+				"Saw"
+			],
+			"monsterCards": [],
+			"notes": ""
+		},
+		{
+			"name": "Perilous Moons",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Knife"
+				],
+				[
+					"Big fishing net"
+				],
+				[
+					"Rope"
+				],
+				[
+					"Pestle and mortar"
+				]
+			],
+			"groupLabels": [
+				"Knife",
+				"Big fishing net",
+				"Rope",
+				"Pestle and mortar"
+			],
+			"monsterCards": [
+				"Sulphur Nagua",
+				"Blue Moon",
+				"Blood Moon",
+				"Eclipse Moon"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Pirate's Treasure",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"White apron"
+				],
+				[
+					"Coins"
+				],
+				[
+					"Banana"
+				],
+				[
+					"Spade"
+				]
+			],
+			"groupLabels": [
+				"White apron",
+				"Coins",
+				"Banana",
+				"Spade"
+			],
+			"monsterCards": [
+				"Gardener"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Plague City",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Rope"
+				],
+				[
+					"Spade"
+				],
+				[
+					"Bucket of water"
+				]
+			],
+			"groupLabels": [
+				"Rope",
+				"Spade",
+				"Bucket of water"
+			],
+			"monsterCards": [],
+			"notes": ""
+		},
+		{
+			"name": "Priest in Peril",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Rune essence",
+					"Pure essence"
+				],
+				[
+					"Bucket"
+				]
+			],
+			"groupLabels": [
+				"Any essence",
+				"Bucket"
+			],
+			"monsterCards": [
+				"Temple Guardian",
+				"Monk of Zamorak"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Prince Ali Rescue",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Soft clay"
+				],
+				[
+					"Yellow dye",
+					"Onion"
+				],
+				[
+					"Coins"
+				],
+				[
+					"Redberries"
+				],
+				[
+					"Ashes"
+				],
+				[
+					"Bucket of water",
+					"Jug of water"
+				],
+				[
+					"Pot of flour"
+				],
+				[
+					"Bronze bar"
+				],
+				[
+					"Pink skirt"
+				],
+				[
+					"Beer"
+				],
+				[
+					"Rope"
+				]
+			],
+			"groupLabels": [
+				"Soft clay",
+				"Yellow dye / Onion",
+				"Coins",
+				"Redberries",
+				"Ashes",
+				"Bucket of water / Jug of water",
+				"Pot of flour",
+				"Bronze bar",
+				"Pink skirt",
+				"Beer",
+				"Rope"
+			],
+			"monsterCards": [
+				"Jail guard"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Prying Times",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Hammer",
+					"Imcando hammer"
+				],
+				[
+					"Steel bar"
+				],
+				[
+					"Redberry pie"
+				],
+				[
+					"Captain's log"
+				]
+			],
+			"groupLabels": [
+				"Any hammer",
+				"Steel bar",
+				"Redberry pie",
+				"Captain's log"
+			],
+			"monsterCards": [
+				"Drink troll"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Rag and Bone Man I",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Coins"
+				],
+				[
+					"Pot"
+				],
+				[
+					"Logs"
+				],
+				[
+					"Tinderbox"
+				]
+			],
+			"groupLabels": [
+				"Coins",
+				"Pot",
+				"Logs",
+				"Tinderbox"
+			],
+			"monsterCards": [],
+			"notes": ""
+		},
+		{
+			"name": "Rag and Bone Man II",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Pot"
+				],
+				[
+					"Logs"
+				],
+				[
+					"Tinderbox"
+				],
+				[
+					"Dusty key"
+				],
+				[
+					"Rope"
+				],
+				[
+					"Ice cooler"
+				],
+				[
+					"Fishing explosive"
+				],
+				[
+					"Mirror shield"
+				]
+			],
+			"groupLabels": [
+				"Pot",
+				"Logs",
+				"Tinderbox",
+				"Dusty key",
+				"Rope",
+				"Ice cooler",
+				"Fishing explosive",
+				"Mirror shield"
+			],
+			"monsterCards": [],
+			"notes": ""
+		},
+		{
+			"name": "Ratcatchers",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Cat",
+					"Hellcat"
+				],
+				[
+					"Cheese"
+				],
+				[
+					"Marrentill"
+				],
+				[
+					"Unicorn horn dust"
+				],
+				[
+					"Bucket of milk",
+					"Bottomless milk bucket"
+				],
+				[
+					"Tinderbox"
+				],
+				[
+					"Coins"
+				]
+			],
+			"groupLabels": [
+				"Cat / Hellcat",
+				"Cheese",
+				"Marrentill",
+				"Unicorn horn dust",
+				"Bucket of milk / Bottomless milk bucket",
+				"Tinderbox",
+				"Coins"
+			],
+			"monsterCards": [],
+			"notes": ""
+		},
+		{
+			"name": "Recipe for Disaster",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Eye of newt"
+				],
+				[
+					"Rotten tomato"
+				],
+				[
+					"Fruit blast"
+				],
+				[
+					"Premade fr' blast"
+				],
+				[
+					"Ashes"
+				],
+				[
+					"Coins"
+				],
+				[
+					"Bowl of water"
+				],
+				[
+					"Bucket of water"
+				],
+				[
+					"Egg"
+				],
+				[
+					"Orange"
+				],
+				[
+					"Banana"
+				],
+				[
+					"Spice",
+					"Gnome spice"
+				],
+				[
+					"Fishing bait"
+				],
+				[
+					"Fishbowl"
+				],
+				[
+					"Bread"
+				],
+				[
+					"Pestle and mortar"
+				],
+				[
+					"Needle"
+				],
+				[
+					"Bronze wire"
+				],
+				[
+					"Cake tin"
+				],
+				[
+					"Asgarnian ale"
+				],
+				[
+					"Cat"
+				],
+				[
+					"Overgrown cat"
+				],
+				[
+					"Stew"
+				],
+				[
+					"Raw chompy"
+				],
+				[
+					"Raw chicken"
+				],
+				[
+					"Raw cod"
+				],
+				[
+					"Iron spit"
+				],
+				[
+					"Logs"
+				],
+				[
+					"Tinderbox"
+				],
+				[
+					"Ball of wool"
+				],
+				[
+					"Pot of cream"
+				],
+				[
+					"Machete"
+				],
+				[
+					"Knife"
+				],
+				[
+					"Gorilla greegree"
+				],
+				[
+					"Rope"
+				]
+			],
+			"groupLabels": [
+				"Eye of newt",
+				"Rotten tomato",
+				"Fruit blast",
+				"Premade fr' blast",
+				"Ashes",
+				"Coins",
+				"Bowl of water",
+				"Bucket of water",
+				"Egg",
+				"Orange",
+				"Banana",
+				"Any spice",
+				"Fishing bait",
+				"Fishbowl",
+				"Bread",
+				"Pestle and mortar",
+				"Needle",
+				"Bronze wire",
+				"Cake tin",
+				"Asgarnian ale",
+				"Cat",
+				"Overgrown cat",
+				"Stew",
+				"Raw chompy",
+				"Raw chicken",
+				"Raw cod",
+				"Iron spit",
+				"Logs",
+				"Tinderbox",
+				"Ball of wool",
+				"Pot of cream",
+				"Machete",
+				"Knife",
+				"Gorilla greegree",
+				"Rope"
+			],
+			"monsterCards": [
+				"Icefiend",
+				"Mudskipper",
+				"Crab",
+				"Evil Chicken",
+				"Black dragon",
+				"Big Snake",
+				"Monkey Guard",
+				"Agrith-Na-Na",
+				"Flambeed",
+				"Karamel",
+				"Dessourt",
+				"Gelatinnoth Mother",
+				"Culinaromancer"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Recruitment Drive",
+			"miniquest": false,
+			"cardGroups": [],
+			"groupLabels": [],
+			"monsterCards": [
+				"Sir Leye"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Regicide",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Coal"
+				],
+				[
+					"Rope"
+				],
+				[
+					"Spade"
+				],
+				[
+					"Limestone"
+				],
+				[
+					"Limestone brick"
+				],
+				[
+					"Tinderbox"
+				],
+				[
+					"Strip of cloth"
+				],
+				[
+					"Pestle and mortar"
+				],
+				[
+					"Pot"
+				],
+				[
+					"Cooked rabbit",
+					"Roast rabbit"
+				]
+			],
+			"groupLabels": [
+				"Coal",
+				"Rope",
+				"Spade",
+				"Limestone",
+				"Limestone brick",
+				"Tinderbox",
+				"Strip of cloth",
+				"Pestle and mortar",
+				"Pot",
+				"Any rabbit"
+			],
+			"monsterCards": [
+				"Tyras guard"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Rogue Trader",
+			"miniquest": true,
+			"cardGroups": [
+				[
+					"Cowhide",
+					"Grey wolf fur",
+					"Snakeskin",
+					"Bear fur",
+					"Wool"
+				]
+			],
+			"groupLabels": [
+				"Cowhide / Grey wolf fur / Snakeskin / Bear fur / Wool"
+			],
+			"monsterCards": [],
+			"notes": ""
+		},
+		{
+			"name": "Romeo & Juliet",
+			"miniquest": false,
+			"cardGroups": [],
+			"groupLabels": [],
+			"monsterCards": [],
+			"notes": ""
+		},
+		{
+			"name": "Roving Elves",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Spade"
+				],
+				[
+					"Rope"
+				]
+			],
+			"groupLabels": [
+				"Spade",
+				"Rope"
+			],
+			"monsterCards": [
+				"Moss Guardian"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Royal Trouble",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Coal"
+				],
+				[
+					"Rope"
+				],
+				[
+					"Plank"
+				]
+			],
+			"groupLabels": [
+				"Coal",
+				"Rope",
+				"Plank"
+			],
+			"monsterCards": [
+				"Giant Sea Snake"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Rum Deal",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Rake"
+				],
+				[
+					"Seed dibber"
+				],
+				[
+					"Bucket"
+				]
+			],
+			"groupLabels": [
+				"Rake",
+				"Seed dibber",
+				"Bucket"
+			],
+			"monsterCards": [
+				"Evil spirit",
+				"Fever spider"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Rune Mysteries",
+			"miniquest": false,
+			"cardGroups": [],
+			"groupLabels": [],
+			"monsterCards": [],
+			"notes": ""
+		},
+		{
+			"name": "Scorpion Catcher",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Dusty key"
+				]
+			],
+			"groupLabels": [
+				"Dusty key"
+			],
+			"monsterCards": [
+				"Jailer"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Scrambled!",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Bowl of water"
+				],
+				[
+					"Plank"
+				],
+				[
+					"Saw"
+				],
+				[
+					"Hammer"
+				]
+			],
+			"groupLabels": [
+				"Bowl of water",
+				"Plank",
+				"Saw",
+				"Hammer"
+			],
+			"monsterCards": [
+				"Large chicken",
+				"Black jaguar",
+				"Red dragon"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Sea Slug",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Swamp paste"
+				]
+			],
+			"groupLabels": [
+				"Swamp paste"
+			],
+			"monsterCards": [],
+			"notes": ""
+		},
+		{
+			"name": "Secrets of the North",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Coins"
+				],
+				[
+					"Lockpick"
+				],
+				[
+					"Tinderbox"
+				]
+			],
+			"groupLabels": [
+				"Coins",
+				"Lockpick",
+				"Tinderbox"
+			],
+			"monsterCards": [
+				"Evelot",
+				"Assassin",
+				"Strange Creature",
+				"Strange creature (Shadows of Custodia)"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Shades of Mort'ton",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Coins"
+				],
+				[
+					"Tarromin"
+				],
+				[
+					"Ashes"
+				],
+				[
+					"Tinderbox"
+				],
+				[
+					"Logs"
+				],
+				[
+					"Hammer"
+				]
+			],
+			"groupLabels": [
+				"Coins",
+				"Tarromin",
+				"Ashes",
+				"Tinderbox",
+				"Logs",
+				"Hammer"
+			],
+			"monsterCards": [
+				"Loar Shade"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Shadow of the Storm",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Silver bar"
+				],
+				[
+					"Desert amulet 2"
+				],
+				[
+					"Pharaoh's sceptre"
+				]
+			],
+			"groupLabels": [
+				"Silver bar",
+				"Desert amulet 2",
+				"Pharaoh's sceptre"
+			],
+			"monsterCards": [
+				"Agrith Naar"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Shadows of Custodia",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Willow longbow"
+				],
+				[
+					"Maple logs"
+				],
+				[
+					"Fishing rod"
+				],
+				[
+					"Hammer"
+				]
+			],
+			"groupLabels": [
+				"Willow longbow",
+				"Maple logs",
+				"Fishing rod",
+				"Hammer"
+			],
+			"monsterCards": [
+				"Strange Creature",
+				"Strange creature (Shadows of Custodia)"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Sheep Herder",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Coins"
+				]
+			],
+			"groupLabels": [
+				"Coins"
+			],
+			"monsterCards": [],
+			"notes": ""
+		},
+		{
+			"name": "Sheep Shearer",
+			"miniquest": false,
+			"cardGroups": [],
+			"groupLabels": [],
+			"monsterCards": [],
+			"notes": ""
+		},
+		{
+			"name": "Shield of Arrav",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Coins"
+				]
+			],
+			"groupLabels": [
+				"Coins"
+			],
+			"monsterCards": [
+				"Weaponsmaster",
+				"Jonny the Beard"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Shilo Village",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Spade"
+				],
+				[
+					"Torch",
+					"Candle"
+				],
+				[
+					"Rope"
+				],
+				[
+					"Bronze wire"
+				],
+				[
+					"Chisel"
+				],
+				[
+					"Bones"
+				]
+			],
+			"groupLabels": [
+				"Spade",
+				"Torch / Candle",
+				"Rope",
+				"Bronze wire",
+				"Chisel",
+				"Bones"
+			],
+			"monsterCards": [
+				"Nazastarool"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Sins of the Father",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Ruby"
+				],
+				[
+					"Knife"
+				],
+				[
+					"Chisel"
+				],
+				[
+					"Enchant ruby or topaz"
+				]
+			],
+			"groupLabels": [
+				"Ruby",
+				"Knife",
+				"Chisel",
+				"Enchant ruby or topaz"
+			],
+			"monsterCards": [
+				"Kroy",
+				"Nail beast",
+				"Vampyre Juvinate",
+				"Mutated Bloodveld",
+				"Damien Leucurte",
+				"Vampyre Juvenile",
+				"Vanstrom Klause"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Skippy and the Mogres",
+			"miniquest": true,
+			"cardGroups": [
+				[
+					"Bucket of water"
+				]
+			],
+			"groupLabels": [
+				"Bucket of water"
+			],
+			"monsterCards": [],
+			"notes": ""
+		},
+		{
+			"name": "Sleeping Giants",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Oak logs"
+				],
+				[
+					"Wool"
+				],
+				[
+					"Hammer",
+					"Imcando hammer"
+				],
+				[
+					"Chisel"
+				],
+				[
+					"Bucket of water"
+				]
+			],
+			"groupLabels": [
+				"Oak logs",
+				"Wool",
+				"Any hammer",
+				"Chisel",
+				"Bucket of water"
+			],
+			"monsterCards": [],
+			"notes": ""
+		},
+		{
+			"name": "Song of the Elves",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Steel full helm"
+				],
+				[
+					"Steel platebody"
+				],
+				[
+					"Steel platelegs"
+				],
+				[
+					"Red dye"
+				],
+				[
+					"Purple dye"
+				],
+				[
+					"Silk"
+				],
+				[
+					"Runite bar"
+				],
+				[
+					"Limestone brick"
+				],
+				[
+					"Tinderbox"
+				],
+				[
+					"Rope"
+				],
+				[
+					"Nature rune"
+				],
+				[
+					"Mithril seeds",
+					"Adamant seeds"
+				],
+				[
+					"Irit leaf"
+				],
+				[
+					"Adamant chainbody"
+				],
+				[
+					"Wine of zamorak"
+				],
+				[
+					"Zamorak brew"
+				],
+				[
+					"Cabbage"
+				],
+				[
+					"Black knife"
+				],
+				[
+					"Black dagger"
+				],
+				[
+					"Cadantine seed"
+				],
+				[
+					"Seed dibber"
+				],
+				[
+					"Vial of water"
+				],
+				[
+					"Pestle and mortar"
+				],
+				[
+					"Hammer"
+				],
+				[
+					"Saw"
+				],
+				[
+					"Spade"
+				]
+			],
+			"groupLabels": [
+				"Steel full helm",
+				"Steel platebody",
+				"Steel platelegs",
+				"Red dye",
+				"Purple dye",
+				"Silk",
+				"Runite bar",
+				"Limestone brick",
+				"Tinderbox",
+				"Rope",
+				"Nature rune",
+				"Any seeds",
+				"Irit leaf",
+				"Adamant chainbody",
+				"Wine of zamorak",
+				"Zamorak brew",
+				"Cabbage",
+				"Black knife",
+				"Black dagger",
+				"Cadantine seed",
+				"Seed dibber",
+				"Vial of water",
+				"Pestle and mortar",
+				"Hammer",
+				"Saw",
+				"Spade"
+			],
+			"monsterCards": [
+				"Mourner",
+				"Paladin",
+				"Knight of Ardougne",
+				"Iorwerth Archer",
+				"Iorwerth Warrior",
+				"Arianwyn",
+				"Essyllt",
+				"Fragment of Seren"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Spirit of Adventure",
+			"miniquest": true,
+			"cardGroups": [
+				[
+					"Logs"
+				],
+				[
+					"Tinderbox"
+				]
+			],
+			"groupLabels": [
+				"Logs",
+				"Tinderbox"
+			],
+			"monsterCards": [],
+			"notes": ""
+		},
+		{
+			"name": "Spirits of the Elid",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Needle"
+				],
+				[
+					"Thread"
+				],
+				[
+					"Knife"
+				],
+				[
+					"Rope"
+				]
+			],
+			"groupLabels": [
+				"Needle",
+				"Thread",
+				"Knife",
+				"Rope"
+			],
+			"monsterCards": [
+				"Black golem",
+				"Grey golem",
+				"White golem"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Swan Song",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Mist rune"
+				],
+				[
+					"Lava rune"
+				],
+				[
+					"Blood rune"
+				],
+				[
+					"Bones"
+				],
+				[
+					"Pot"
+				],
+				[
+					"Iron bar"
+				],
+				[
+					"Logs"
+				],
+				[
+					"Tinderbox"
+				],
+				[
+					"Hammer"
+				],
+				[
+					"Small fishing net"
+				],
+				[
+					"Brown apron"
+				]
+			],
+			"groupLabels": [
+				"Mist rune",
+				"Lava rune",
+				"Blood rune",
+				"Bones",
+				"Pot",
+				"Iron bar",
+				"Logs",
+				"Tinderbox",
+				"Hammer",
+				"Small fishing net",
+				"Brown apron"
+			],
+			"monsterCards": [
+				"Sea troll",
+				"Sea Troll Queen"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Tai Bwo Wannai Trio",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Knife"
+				],
+				[
+					"Sliced banana"
+				],
+				[
+					"Small fishing net"
+				],
+				[
+					"Pestle and mortar"
+				],
+				[
+					"Logs"
+				],
+				[
+					"Poison karambwan"
+				],
+				[
+					"Iron spear",
+					"Steel spear",
+					"Mithril spear",
+					"Adamant spear",
+					"Rune spear",
+					"Dragon spear"
+				],
+				[
+					"Agility potion"
+				],
+				[
+					"Tinderbox"
+				],
+				[
+					"Jogre bones"
+				],
+				[
+					"Seaweed"
+				]
+			],
+			"groupLabels": [
+				"Knife",
+				"Sliced banana",
+				"Small fishing net",
+				"Pestle and mortar",
+				"Logs",
+				"Poison karambwan",
+				"Any spear",
+				"Agility potion",
+				"Tinderbox",
+				"Jogre bones",
+				"Seaweed"
+			],
+			"monsterCards": [
+				"Monkey (monster)"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Tale of the Righteous",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Rope"
+				]
+			],
+			"groupLabels": [
+				"Rope"
+			],
+			"monsterCards": [
+				"Corrupt Lizardman"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Tears of Guthix",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Chisel"
+				],
+				[
+					"Rope"
+				]
+			],
+			"groupLabels": [
+				"Chisel",
+				"Rope"
+			],
+			"monsterCards": [],
+			"notes": ""
+		},
+		{
+			"name": "Temple of Ikov",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Limpwurt root"
+				]
+			],
+			"groupLabels": [
+				"Limpwurt root"
+			],
+			"monsterCards": [
+				"Fire Warrior of Lesarkus",
+				"Guardian of Armadyl",
+				"Lucien"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Temple of the Eye",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Bucket of water"
+				],
+				[
+					"Chisel"
+				]
+			],
+			"groupLabels": [
+				"Bucket of water",
+				"Chisel"
+			],
+			"monsterCards": [],
+			"notes": ""
+		},
+		{
+			"name": "The Ascent of Arceuus",
+			"miniquest": false,
+			"cardGroups": [],
+			"groupLabels": [],
+			"monsterCards": [
+				"Tormented Soul",
+				"Trapped Soul"
+			],
+			"notes": ""
+		},
+		{
+			"name": "The Blood Moon Rises",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Coins"
+				],
+				[
+					"Tinderbox"
+				],
+				[
+					"Hammer"
+				],
+				[
+					"Knife"
+				],
+				[
+					"Chisel"
+				]
+			],
+			"groupLabels": [
+				"Coins",
+				"Tinderbox",
+				"Hammer",
+				"Knife",
+				"Chisel"
+			],
+			"monsterCards": [
+				"Vyrewatch",
+				"Vyrewatch Sentinel",
+				"Monk of Zamorak",
+				"The Maiden of Sugadinti",
+				"Nylocas Vasilias",
+				"Lowerniel Drakan"
+			],
+			"notes": ""
+		},
+		{
+			"name": "The Corsair Curse",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Spade"
+				],
+				[
+					"Tinderbox"
+				]
+			],
+			"groupLabels": [
+				"Spade",
+				"Tinderbox"
+			],
+			"monsterCards": [
+				"Ithoi the Navigator"
+			],
+			"notes": ""
+		},
+		{
+			"name": "The Curse of Arrav",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Ring of life"
+				],
+				[
+					"Mith grapple"
+				],
+				[
+					"Insulated boots"
+				]
+			],
+			"groupLabels": [
+				"Ring of life",
+				"Mith grapple",
+				"Insulated boots"
+			],
+			"monsterCards": [
+				"Golem guard",
+				"Arrav"
+			],
+			"notes": ""
+		},
+		{
+			"name": "The Depths of Despair",
+			"miniquest": false,
+			"cardGroups": [],
+			"groupLabels": [],
+			"monsterCards": [
+				"Sand Snake"
+			],
+			"notes": ""
+		},
+		{
+			"name": "The Dig Site",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Pestle and mortar"
+				],
+				[
+					"Vial"
+				],
+				[
+					"Tinderbox"
+				],
+				[
+					"Cup of tea"
+				],
+				[
+					"Rope"
+				],
+				[
+					"Opal"
+				]
+			],
+			"groupLabels": [
+				"Pestle and mortar",
+				"Vial",
+				"Tinderbox",
+				"Cup of tea",
+				"Rope",
+				"Opal"
+			],
+			"monsterCards": [],
+			"notes": ""
+		},
+		{
+			"name": "The Enchanted Key",
+			"miniquest": true,
+			"cardGroups": [
+				[
+					"Spade"
+				]
+			],
+			"groupLabels": [
+				"Spade"
+			],
+			"monsterCards": [],
+			"notes": ""
+		},
+		{
+			"name": "The Eyes of Glouphrie",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Bucket"
+				],
+				[
+					"Mud rune"
+				],
+				[
+					"Maple logs"
+				],
+				[
+					"Oak logs"
+				],
+				[
+					"Hammer"
+				],
+				[
+					"Saw"
+				],
+				[
+					"Pestle and mortar"
+				]
+			],
+			"groupLabels": [
+				"Bucket",
+				"Mud rune",
+				"Maple logs",
+				"Oak logs",
+				"Hammer",
+				"Saw",
+				"Pestle and mortar"
+			],
+			"monsterCards": [
+				"Evil Creature"
+			],
+			"notes": ""
+		},
+		{
+			"name": "The Feud",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Coins"
+				],
+				[
+					"Barrows gloves"
+				],
+				[
+					"Slayer gloves"
+				],
+				[
+					"Kharidian headpiece"
+				],
+				[
+					"Beer"
+				],
+				[
+					"Bucket"
+				]
+			],
+			"groupLabels": [
+				"Coins",
+				"Barrows gloves",
+				"Slayer gloves",
+				"Kharidian headpiece",
+				"Beer",
+				"Bucket"
+			],
+			"monsterCards": [
+				"Bandit champion",
+				"Tough Guy"
+			],
+			"notes": ""
+		},
+		{
+			"name": "The Final Dawn",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Bones",
+					"Cooked meat"
+				],
+				[
+					"Knife"
+				],
+				[
+					"Beer"
+				]
+			],
+			"groupLabels": [
+				"Bones / Cooked meat",
+				"Knife",
+				"Beer"
+			],
+			"monsterCards": [
+				"Emissary Enforcer",
+				"Chimalli",
+				"Lucius",
+				"Ennius Tullus"
+			],
+			"notes": ""
+		},
+		{
+			"name": "The Forsaken Tower",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Tinderbox"
+				]
+			],
+			"groupLabels": [
+				"Tinderbox"
+			],
+			"monsterCards": [],
+			"notes": ""
+		},
+		{
+			"name": "The Fremennik Exiles",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Mirror shield"
+				],
+				[
+					"Molten glass"
+				],
+				[
+					"Astral rune"
+				],
+				[
+					"Fishing rod",
+					"Fly fishing rod"
+				],
+				[
+					"Fremennik shield"
+				],
+				[
+					"Hammer"
+				],
+				[
+					"Glassblowing pipe"
+				]
+			],
+			"groupLabels": [
+				"Mirror shield",
+				"Molten glass",
+				"Astral rune",
+				"Any fishing rod",
+				"Fremennik shield",
+				"Hammer",
+				"Glassblowing pipe"
+			],
+			"monsterCards": [
+				"Basilisk Youngling",
+				"Basilisk",
+				"Monstrous Basilisk (The Fremennik Exiles)",
+				"Monstrous basilisk",
+				"Typhor",
+				"The Jormungand"
+			],
+			"notes": ""
+		},
+		{
+			"name": "The Fremennik Isles",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Raw tuna"
+				],
+				[
+					"Tin ore"
+				],
+				[
+					"Coal",
+					"Mithril ore"
+				],
+				[
+					"Rope"
+				],
+				[
+					"Knife"
+				],
+				[
+					"Neitiznot shield"
+				],
+				[
+					"Coins"
+				]
+			],
+			"groupLabels": [
+				"Raw tuna",
+				"Tin ore",
+				"Coal / Mithril ore",
+				"Rope",
+				"Knife",
+				"Neitiznot shield",
+				"Coins"
+			],
+			"monsterCards": [
+				"Ice troll",
+				"Ice Troll King"
+			],
+			"notes": ""
+		},
+		{
+			"name": "The Fremennik Trials",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Coins"
+				],
+				[
+					"Beer"
+				],
+				[
+					"Tinderbox"
+				],
+				[
+					"Raw shark",
+					"Raw manta ray",
+					"Raw sea turtle"
+				]
+			],
+			"groupLabels": [
+				"Coins",
+				"Beer",
+				"Tinderbox",
+				"Raw shark / Raw manta ray / Raw sea turtle"
+			],
+			"monsterCards": [
+				"Lanzig",
+				"Borrokar",
+				"Lensa",
+				"Freidir"
+			],
+			"notes": ""
+		},
+		{
+			"name": "The Frozen Door",
+			"miniquest": true,
+			"cardGroups": [
+				[
+					"Mith grapple"
+				],
+				[
+					"Rope"
+				],
+				[
+					"Hammer",
+					"Dragon warhammer"
+				]
+			],
+			"groupLabels": [
+				"Mith grapple",
+				"Rope",
+				"Hammer / Dragon warhammer"
+			],
+			"monsterCards": [
+				"Kree'arra",
+				"General Graardor",
+				"Commander Zilyana",
+				"K'ril Tsutsaroth",
+				"Flight Kilisa",
+				"Wingman Skree",
+				"Flockleader Geerin",
+				"Sergeant Strongstack",
+				"Sergeant Steelwill",
+				"Sergeant Grimspike",
+				"Bree",
+				"Starlight",
+				"Growler",
+				"Tstanon Karlak",
+				"Zakl'n Gritch",
+				"Balfrug Kreeyath"
+			],
+			"notes": ""
+		},
+		{
+			"name": "The Garden of Death",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Secateurs"
+				]
+			],
+			"groupLabels": [
+				"Secateurs"
+			],
+			"monsterCards": [],
+			"notes": ""
+		},
+		{
+			"name": "The General's Shadow",
+			"miniquest": true,
+			"cardGroups": [],
+			"groupLabels": [],
+			"monsterCards": [
+				"Bouncer"
+			],
+			"notes": ""
+		},
+		{
+			"name": "The Giant Dwarf",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Coins"
+				],
+				[
+					"Logs"
+				],
+				[
+					"Tinderbox"
+				],
+				[
+					"Coal"
+				],
+				[
+					"Iron bar"
+				],
+				[
+					"Sapphire"
+				],
+				[
+					"Redberry pie"
+				]
+			],
+			"groupLabels": [
+				"Coins",
+				"Logs",
+				"Tinderbox",
+				"Coal",
+				"Iron bar",
+				"Sapphire",
+				"Redberry pie"
+			],
+			"monsterCards": [],
+			"notes": ""
+		},
+		{
+			"name": "The Golem",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Vial"
+				],
+				[
+					"Pestle and mortar"
+				],
+				[
+					"Papyrus"
+				],
+				[
+					"Soft clay"
+				],
+				[
+					"Pharaoh's sceptre"
+				]
+			],
+			"groupLabels": [
+				"Vial",
+				"Pestle and mortar",
+				"Papyrus",
+				"Soft clay",
+				"Pharaoh's sceptre"
+			],
+			"monsterCards": [],
+			"notes": ""
+		},
+		{
+			"name": "The Grand Tree",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Coins"
+				]
+			],
+			"groupLabels": [
+				"Coins"
+			],
+			"monsterCards": [
+				"Black demon"
+			],
+			"notes": ""
+		},
+		{
+			"name": "The Graveyard",
+			"miniquest": false,
+			"cardGroups": [],
+			"groupLabels": [],
+			"monsterCards": [],
+			"notes": ""
+		},
+		{
+			"name": "The Great Brain Robbery",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Hammer"
+				],
+				[
+					"Plank"
+				]
+			],
+			"groupLabels": [
+				"Hammer",
+				"Plank"
+			],
+			"monsterCards": [
+				"Barrelchest",
+				"Sorebones"
+			],
+			"notes": ""
+		},
+		{
+			"name": "The Hand in the Sand",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Beer"
+				],
+				[
+					"Coins"
+				],
+				[
+					"Vial"
+				],
+				[
+					"Redberries"
+				],
+				[
+					"White berries"
+				],
+				[
+					"Lantern lens"
+				],
+				[
+					"Earth rune"
+				],
+				[
+					"Bucket of sand"
+				]
+			],
+			"groupLabels": [
+				"Beer",
+				"Coins",
+				"Vial",
+				"Redberries",
+				"White berries",
+				"Lantern lens",
+				"Earth rune",
+				"Bucket of sand"
+			],
+			"monsterCards": [],
+			"notes": ""
+		},
+		{
+			"name": "The Heart of Darkness",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Coins"
+				]
+			],
+			"groupLabels": [
+				"Coins"
+			],
+			"monsterCards": [
+				"Emissary Brawler",
+				"Emissary Conjurer",
+				"Prince Itzla Arkan",
+				"Amoxliatl"
+			],
+			"notes": ""
+		},
+		{
+			"name": "The Ides of Milk",
+			"miniquest": false,
+			"cardGroups": [],
+			"groupLabels": [],
+			"monsterCards": [
+				"Brutus"
+			],
+			"notes": ""
+		},
+		{
+			"name": "The Knight's Sword",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Redberry pie"
+				],
+				[
+					"Iron bar"
+				]
+			],
+			"groupLabels": [
+				"Redberry pie",
+				"Iron bar"
+			],
+			"monsterCards": [],
+			"notes": ""
+		},
+		{
+			"name": "The Lost Tribe",
+			"miniquest": false,
+			"cardGroups": [],
+			"groupLabels": [],
+			"monsterCards": [],
+			"notes": ""
+		},
+		{
+			"name": "The Path of Glouphrie",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Mith grapple"
+				]
+			],
+			"groupLabels": [
+				"Mith grapple"
+			],
+			"monsterCards": [
+				"Warped Terrorbird",
+				"Evil Creature"
+			],
+			"notes": ""
+		},
+		{
+			"name": "The Queen of Thieves",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Stew"
+				]
+			],
+			"groupLabels": [
+				"Stew"
+			],
+			"monsterCards": [],
+			"notes": ""
+		},
+		{
+			"name": "The Red Reef",
+			"miniquest": false,
+			"cardGroups": [],
+			"groupLabels": [],
+			"monsterCards": [
+				"Pirate",
+				"Black Eye Bethel",
+				"Giant lobster"
+			],
+			"notes": ""
+		},
+		{
+			"name": "The Restless Ghost",
+			"miniquest": false,
+			"cardGroups": [],
+			"groupLabels": [],
+			"monsterCards": [
+				"Skeleton"
+			],
+			"notes": ""
+		},
+		{
+			"name": "The Ribbiting Tale of a Lily Pad Labour Dispute",
+			"miniquest": false,
+			"cardGroups": [],
+			"groupLabels": [],
+			"monsterCards": [],
+			"notes": ""
+		},
+		{
+			"name": "The Slug Menace",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Swamp paste"
+				],
+				[
+					"Rune essence",
+					"Pure essence"
+				],
+				[
+					"Chisel"
+				]
+			],
+			"groupLabels": [
+				"Swamp paste",
+				"Any essence",
+				"Chisel"
+			],
+			"monsterCards": [
+				"Slug Prince"
+			],
+			"notes": ""
+		},
+		{
+			"name": "The Tourist Trap",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Desert shirt"
+				],
+				[
+					"Desert robe"
+				],
+				[
+					"Desert boots"
+				],
+				[
+					"Hammer"
+				],
+				[
+					"Bronze bar"
+				],
+				[
+					"Feather"
+				],
+				[
+					"Desert amulet 2"
+				],
+				[
+					"Pharaoh's sceptre"
+				]
+			],
+			"groupLabels": [
+				"Desert shirt",
+				"Desert robe",
+				"Desert boots",
+				"Hammer",
+				"Bronze bar",
+				"Feather",
+				"Desert amulet 2",
+				"Pharaoh's sceptre"
+			],
+			"monsterCards": [
+				"Mercenary Captain"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Throne of Miscellania",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Iron bar"
+				],
+				[
+					"Logs"
+				]
+			],
+			"groupLabels": [
+				"Iron bar",
+				"Logs"
+			],
+			"monsterCards": [],
+			"notes": ""
+		},
+		{
+			"name": "Tower of Life",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Hammer"
+				],
+				[
+					"Saw"
+				],
+				[
+					"Beer"
+				]
+			],
+			"groupLabels": [
+				"Hammer",
+				"Saw",
+				"Beer"
+			],
+			"monsterCards": [],
+			"notes": ""
+		},
+		{
+			"name": "Tree Gnome Village",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Logs"
+				]
+			],
+			"groupLabels": [
+				"Logs"
+			],
+			"monsterCards": [
+				"Khazard warlord"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Tribal Totem",
+			"miniquest": false,
+			"cardGroups": [],
+			"groupLabels": [],
+			"monsterCards": [],
+			"notes": ""
+		},
+		{
+			"name": "Troll Romance",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Iron bar"
+				],
+				[
+					"Maple logs",
+					"Yew logs"
+				],
+				[
+					"Rope"
+				]
+			],
+			"groupLabels": [
+				"Iron bar",
+				"Any logs",
+				"Rope"
+			],
+			"monsterCards": [
+				"Arrg"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Troll Stronghold",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Coins"
+				]
+			],
+			"groupLabels": [
+				"Coins"
+			],
+			"monsterCards": [
+				"Dad",
+				"Troll general",
+				"Berry",
+				"Twig"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Troubled Tortugans",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Hammer",
+					"Imcando hammer"
+				],
+				[
+					"Saw",
+					"Amy's saw"
+				]
+			],
+			"groupLabels": [
+				"Any hammer",
+				"Any saw"
+			],
+			"monsterCards": [
+				"Gryphon",
+				"Shellbane gryphon"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Twilight's Promise",
+			"miniquest": false,
+			"cardGroups": [],
+			"groupLabels": [],
+			"monsterCards": [
+				"Knight of Varlamore",
+				"Cultist"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Underground Pass",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Rope"
+				],
+				[
+					"Spade"
+				],
+				[
+					"Bucket"
+				],
+				[
+					"Tinderbox"
+				]
+			],
+			"groupLabels": [
+				"Rope",
+				"Spade",
+				"Bucket",
+				"Tinderbox"
+			],
+			"monsterCards": [
+				"Doomion",
+				"Othainian",
+				"Holthion",
+				"Paladin",
+				"Kalrag",
+				"Disciple of Iban"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Vale Totems (miniquest)",
+			"miniquest": true,
+			"cardGroups": [
+				[
+					"Oak logs"
+				],
+				[
+					"Knife"
+				],
+				[
+					"Oak shield"
+				]
+			],
+			"groupLabels": [
+				"Oak logs",
+				"Knife",
+				"Oak shield"
+			],
+			"monsterCards": [],
+			"notes": ""
+		},
+		{
+			"name": "Vampyre Slayer",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Hammer"
+				],
+				[
+					"Beer"
+				]
+			],
+			"groupLabels": [
+				"Hammer",
+				"Beer"
+			],
+			"monsterCards": [
+				"Count Draynor"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Wanted!",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Coins"
+				],
+				[
+					"Rune essence",
+					"Pure essence"
+				]
+			],
+			"groupLabels": [
+				"Coins",
+				"Any essence"
+			],
+			"monsterCards": [
+				"Black Knight",
+				"Black knight (Port Sarim jail)"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Watchtower",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Coins"
+				],
+				[
+					"Gold bar"
+				],
+				[
+					"Tinderbox"
+				],
+				[
+					"Death rune"
+				],
+				[
+					"Dragon bones"
+				],
+				[
+					"Rope"
+				],
+				[
+					"Pestle and mortar"
+				],
+				[
+					"Bat bones"
+				],
+				[
+					"Jangerberries"
+				]
+			],
+			"groupLabels": [
+				"Coins",
+				"Gold bar",
+				"Tinderbox",
+				"Death rune",
+				"Dragon bones",
+				"Rope",
+				"Pestle and mortar",
+				"Bat bones",
+				"Jangerberries"
+			],
+			"monsterCards": [
+				"Gorad",
+				"Giant bat"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Waterfall Quest",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Air rune"
+				],
+				[
+					"Earth rune"
+				],
+				[
+					"Water rune"
+				],
+				[
+					"Rope"
+				]
+			],
+			"groupLabels": [
+				"Air rune",
+				"Earth rune",
+				"Water rune",
+				"Rope"
+			],
+			"monsterCards": [],
+			"notes": ""
+		},
+		{
+			"name": "What Lies Below",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Chaos rune"
+				]
+			],
+			"groupLabels": [
+				"Chaos rune"
+			],
+			"monsterCards": [
+				"Outlaw",
+				"King Roald"
+			],
+			"notes": ""
+		},
+		{
+			"name": "While Guthix Sleeps",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Knife"
+				],
+				[
+					"Seed dibber"
+				],
+				[
+					"Lantern lens"
+				],
+				[
+					"Unpowered orb"
+				],
+				[
+					"Bronze med helm"
+				],
+				[
+					"Iron chainbody"
+				],
+				[
+					"Mort myre fungus"
+				],
+				[
+					"Snapdragon seed"
+				],
+				[
+					"Papyrus"
+				],
+				[
+					"Restore potion"
+				],
+				[
+					"Air rune"
+				],
+				[
+					"Water rune"
+				],
+				[
+					"Earth rune"
+				],
+				[
+					"Fire rune"
+				],
+				[
+					"Mind rune"
+				],
+				[
+					"Law rune"
+				],
+				[
+					"Death rune"
+				]
+			],
+			"groupLabels": [
+				"Knife",
+				"Seed dibber",
+				"Lantern lens",
+				"Unpowered orb",
+				"Bronze med helm",
+				"Iron chainbody",
+				"Mort myre fungus",
+				"Snapdragon seed",
+				"Papyrus",
+				"Restore potion",
+				"Air rune",
+				"Water rune",
+				"Earth rune",
+				"Fire rune",
+				"Mind rune",
+				"Law rune",
+				"Death rune"
+			],
+			"monsterCards": [
+				"Assassin",
+				"Mercenary axeman",
+				"Mercenary mage",
+				"Elite Black Knight",
+				"Surok Magis",
+				"Balance Elemental",
+				"Tormented Demon"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Witch's House",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Cheese"
+				],
+				[
+					"Leather gloves"
+				]
+			],
+			"groupLabels": [
+				"Cheese",
+				"Leather gloves"
+			],
+			"monsterCards": [
+				"Witch's experiment"
+			],
+			"notes": ""
+		},
+		{
+			"name": "Witch's Potion",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Burnt meat"
+				],
+				[
+					"Eye of newt"
+				],
+				[
+					"Onion"
+				]
+			],
+			"groupLabels": [
+				"Burnt meat",
+				"Eye of newt",
+				"Onion"
+			],
+			"monsterCards": [
+				"Rat"
+			],
+			"notes": ""
+		},
+		{
+			"name": "X Marks the Spot",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Spade"
+				]
+			],
+			"groupLabels": [
+				"Spade"
+			],
+			"monsterCards": [],
+			"notes": ""
+		},
+		{
+			"name": "Zogre Flesh Eaters",
+			"miniquest": false,
+			"cardGroups": [
+				[
+					"Knife"
+				],
+				[
+					"Comp ogre bow"
+				]
+			],
+			"groupLabels": [
+				"Knife",
+				"Comp ogre bow"
+			],
+			"monsterCards": [
+				"Slash Bash",
+				"Zombie"
+			],
+			"notes": ""
+		}
+	]
 }
