@@ -75,11 +75,13 @@ only, no automation).
     exact case-insensitive match.
   - `GAME_OBJECT_FIRST..FIFTH_OPTION`, NPC options, and
     `WIDGET_TARGET_ON_GAME_OBJECT` are checked against `ResourceNodeCatalog`
-    (resources/resource_nodes.json, 89 hand-curated rules): trees need their
-    logs card, rocks their ore, fishing spots fish they can yield,
-    pickpocketing needs Coins+Coin pouch (`requireAll=true`), and using raw
-    food on a fire/range needs the cooked card (parsed from the
-    "item -> object" menu target). Config in a "Resource nodes" section:
+    (resources/resource_nodes.json — hand-curated, 400+ (kind|name|option)
+    keys spanning gathering, hunter, slayer, runecrafting, farming, thieving
+    and sailing): trees need their logs card, rocks their ore, fishing spots
+    fish they can yield, pickpocketing needs the loot cards (Coins + Coin
+    pouch; the target's own card too in NPC+Loot mode via role "npc"
+    groups), and using raw food on a fire/range needs the cooked card
+    (parsed from the "item -> object" menu target). Config in a "Resource nodes" section:
     toggles for woodcutting/mining/pickpocketing/cooking, a three-way
     fishing mode (Off / Any of / Require ALL — spot locations are
     indistinguishable so rules hold the union per menu option and the mode

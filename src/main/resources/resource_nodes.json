@@ -3546,18 +3546,22 @@
 			"options": [
 				"pickpocket"
 			],
-			"requiredCards": [
-				"Coins",
-				"Coin pouch"
-			],
 			"requireAll": true,
 			"notes": "Also drops seeds; simplified to Coins+pouch.",
 			"requiredCardGroups": [
+				[
+					"Coins"
+				],
+				[
+					"Coin pouch"
+				],
 				[
 					"Farmer"
 				]
 			],
 			"groupRoles": [
+				"",
+				"",
 				"npc"
 			]
 		},
@@ -3694,18 +3698,22 @@
 			"options": [
 				"pickpocket"
 			],
-			"requiredCards": [
-				"Coins",
-				"Coin pouch"
-			],
 			"requireAll": true,
 			"notes": "",
 			"requiredCardGroups": [
+				[
+					"Coins"
+				],
+				[
+					"Coin pouch"
+				],
 				[
 					"Guard"
 				]
 			],
 			"groupRoles": [
+				"",
+				"",
 				"npc"
 			]
 		},
@@ -3758,18 +3766,22 @@
 			"options": [
 				"pickpocket"
 			],
-			"requiredCards": [
-				"Coins",
-				"Coin pouch"
-			],
 			"requireAll": true,
 			"notes": "Also drops gems/blood runes; simplified.",
 			"requiredCardGroups": [
+				[
+					"Coins"
+				],
+				[
+					"Coin pouch"
+				],
 				[
 					"Hero"
 				]
 			],
 			"groupRoles": [
+				"",
+				"",
 				"npc"
 			]
 		},
@@ -3878,18 +3890,22 @@
 			"options": [
 				"pickpocket"
 			],
-			"requiredCards": [
-				"Coins",
-				"Coin pouch"
-			],
 			"requireAll": true,
 			"notes": "",
 			"requiredCardGroups": [
+				[
+					"Coins"
+				],
+				[
+					"Coin pouch"
+				],
 				[
 					"Knight of Ardougne"
 				]
 			],
 			"groupRoles": [
+				"",
+				"",
 				"npc"
 			]
 		},
@@ -3956,18 +3972,22 @@
 			"options": [
 				"pickpocket"
 			],
-			"requiredCards": [
-				"Coins",
-				"Coin pouch"
-			],
 			"requireAll": true,
 			"notes": "",
 			"requiredCardGroups": [
+				[
+					"Coins"
+				],
+				[
+					"Coin pouch"
+				],
 				[
 					"Man"
 				]
 			],
 			"groupRoles": [
+				"",
+				"",
 				"npc"
 			]
 		},
@@ -4090,18 +4110,22 @@
 			"options": [
 				"pickpocket"
 			],
-			"requiredCards": [
-				"Coins",
-				"Coin pouch"
-			],
 			"requireAll": true,
 			"notes": "Also drops chaos runes/coins; simplified.",
 			"requiredCardGroups": [
+				[
+					"Coins"
+				],
+				[
+					"Coin pouch"
+				],
 				[
 					"Paladin"
 				]
 			],
 			"groupRoles": [
+				"",
+				"",
 				"npc"
 			]
 		},
@@ -4112,18 +4136,22 @@
 			"options": [
 				"pickpocket"
 			],
-			"requiredCards": [
-				"Coins",
-				"Coin pouch"
-			],
 			"requireAll": true,
 			"notes": "Also drops rogue equipment; simplified.",
 			"requiredCardGroups": [
+				[
+					"Coins"
+				],
+				[
+					"Coin pouch"
+				],
 				[
 					"Rogue"
 				]
 			],
 			"groupRoles": [
+				"",
+				"",
 				"npc"
 			]
 		},
@@ -4218,18 +4246,22 @@
 			"options": [
 				"pickpocket"
 			],
-			"requiredCards": [
-				"Coins",
-				"Coin pouch"
-			],
 			"requireAll": true,
 			"notes": "Actually yields Blood shard/coins; simplified to Coins+pouch.",
 			"requiredCardGroups": [
+				[
+					"Coins"
+				],
+				[
+					"Coin pouch"
+				],
 				[
 					"Vyrewatch Sentinel"
 				]
 			],
 			"groupRoles": [
+				"",
+				"",
 				"npc"
 			]
 		},
@@ -4254,18 +4286,22 @@
 			"options": [
 				"pickpocket"
 			],
-			"requiredCards": [
-				"Coins",
-				"Coin pouch"
-			],
 			"requireAll": true,
 			"notes": "",
 			"requiredCardGroups": [
+				[
+					"Coins"
+				],
+				[
+					"Coin pouch"
+				],
 				[
 					"Woman"
 				]
 			],
 			"groupRoles": [
+				"",
+				"",
 				"npc"
 			]
 		},
