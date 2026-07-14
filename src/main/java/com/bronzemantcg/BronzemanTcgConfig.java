@@ -583,6 +583,23 @@ public interface BronzemanTcgConfig extends Config
 		return false;
 	}
 
+	@ConfigItem(
+		keyName = "restrictSlayerSuperiors",
+		name = "Include superiors",
+		description = "'Require monsters' additionally demands each master's superior variant cards "
+			+ "(Abhorrent spectre, King kurask...)."
+			+ "<br>Superiors only spawn after unlocking Bigger and Badder with slayer points, so "
+			+ "anyone this affects has already opted into the grind."
+			+ "<br>No effect while 'Require monsters' is off. Superiors are always separately "
+			+ "combat-locked by their own cards regardless of this setting.",
+		section = slayerSection,
+		position = 2
+	)
+	default boolean restrictSlayerSuperiors()
+	{
+		return false;
+	}
+
 	//----------------
 	//Thieving
 	//----------------

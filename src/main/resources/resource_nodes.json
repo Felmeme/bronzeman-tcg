@@ -6118,6 +6118,15 @@
 				],
 				[
 					"Zombie"
+				],
+				[
+					"Chasm Crawler"
+				],
+				[
+					"Crushing hand"
+				],
+				[
+					"Screaming banshee"
 				]
 			],
 			"groupRoles": [
@@ -6150,7 +6159,10 @@
 				"monsters",
 				"monsters",
 				"monsters",
-				"monsters"
+				"monsters",
+				"superiors",
+				"superiors",
+				"superiors"
 			],
 			"requireAll": true,
 			"notes": "master card + 29 assignable-monster cards; toggles include/exclude roles"
@@ -6342,6 +6354,57 @@
 				],
 				[
 					"Zygomite"
+				],
+				[
+					"Abhorrent spectre"
+				],
+				[
+					"Ancient Custodian"
+				],
+				[
+					"Cave abomination"
+				],
+				[
+					"Choke devil"
+				],
+				[
+					"Dire gryphon"
+				],
+				[
+					"Greater abyssal demon"
+				],
+				[
+					"Insatiable Bloodveld"
+				],
+				[
+					"King kurask"
+				],
+				[
+					"Marble gargoyle"
+				],
+				[
+					"Monstrous Basilisk (The Fremennik Exiles)"
+				],
+				[
+					"Monstrous basilisk"
+				],
+				[
+					"Mutated Terrorbird"
+				],
+				[
+					"Mutated Tortoise"
+				],
+				[
+					"Nechryarch"
+				],
+				[
+					"Shadow Wyrm"
+				],
+				[
+					"Spiked Turoth"
+				],
+				[
+					"Vitreous Jelly"
 				]
 			],
 			"groupRoles": [
@@ -6403,7 +6466,24 @@
 				"monsters",
 				"monsters",
 				"monsters",
-				"monsters"
+				"monsters",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors"
 			],
 			"requireAll": true,
 			"notes": "master card + 58 assignable-monster cards; toggles include/exclude roles"
@@ -6595,6 +6675,63 @@
 				],
 				[
 					"Zygomite"
+				],
+				[
+					"Abhorrent spectre"
+				],
+				[
+					"Cave abomination"
+				],
+				[
+					"Choke devil"
+				],
+				[
+					"Dire gryphon"
+				],
+				[
+					"Dreadborn Araxyte"
+				],
+				[
+					"Elder aquanite"
+				],
+				[
+					"Greater abyssal demon"
+				],
+				[
+					"Guardian Drake"
+				],
+				[
+					"Insatiable Bloodveld"
+				],
+				[
+					"King kurask"
+				],
+				[
+					"Marble gargoyle"
+				],
+				[
+					"Monstrous Basilisk (The Fremennik Exiles)"
+				],
+				[
+					"Monstrous basilisk"
+				],
+				[
+					"Mutated Terrorbird"
+				],
+				[
+					"Mutated Tortoise"
+				],
+				[
+					"Nechryarch"
+				],
+				[
+					"Night beast"
+				],
+				[
+					"Nuclear smoke devil"
+				],
+				[
+					"Shadow Wyrm"
 				]
 			],
 			"groupRoles": [
@@ -6656,7 +6793,26 @@
 				"monsters",
 				"monsters",
 				"monsters",
-				"monsters"
+				"monsters",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors"
 			],
 			"requireAll": true,
 			"notes": "master card + 58 assignable-monster cards; toggles include/exclude roles"
@@ -6824,6 +6980,60 @@
 				],
 				[
 					"Zygomite"
+				],
+				[
+					"Abhorrent spectre"
+				],
+				[
+					"Choke devil"
+				],
+				[
+					"Colossal Hydra"
+				],
+				[
+					"Greater abyssal demon"
+				],
+				[
+					"Guardian Drake"
+				],
+				[
+					"Insatiable Bloodveld"
+				],
+				[
+					"King kurask"
+				],
+				[
+					"Marble gargoyle"
+				],
+				[
+					"Monstrous Basilisk (The Fremennik Exiles)"
+				],
+				[
+					"Monstrous basilisk"
+				],
+				[
+					"Mutated Terrorbird"
+				],
+				[
+					"Mutated Tortoise"
+				],
+				[
+					"Nechryarch"
+				],
+				[
+					"Night beast"
+				],
+				[
+					"Nuclear smoke devil"
+				],
+				[
+					"Shadow Wyrm"
+				],
+				[
+					"Spiked Turoth"
+				],
+				[
+					"Vitreous Jelly"
 				]
 			],
 			"groupRoles": [
@@ -6877,7 +7087,25 @@
 				"monsters",
 				"monsters",
 				"monsters",
-				"monsters"
+				"monsters",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors"
 			],
 			"requireAll": true,
 			"notes": "master card + 50 assignable-monster cards; toggles include/exclude roles"
@@ -7030,6 +7258,21 @@
 				],
 				[
 					"Zombie"
+				],
+				[
+					"Choke devil"
+				],
+				[
+					"Greater abyssal demon"
+				],
+				[
+					"Insatiable Bloodveld"
+				],
+				[
+					"Nechryarch"
+				],
+				[
+					"Vitreous Jelly"
 				]
 			],
 			"groupRoles": [
@@ -7078,7 +7321,12 @@
 				"monsters",
 				"monsters",
 				"monsters",
-				"monsters"
+				"monsters",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors"
 			],
 			"requireAll": true,
 			"notes": "master card + 45 assignable-monster cards; toggles include/exclude roles"
@@ -7204,6 +7452,24 @@
 				],
 				[
 					"Zombie"
+				],
+				[
+					"Chasm Crawler"
+				],
+				[
+					"Cockathrice"
+				],
+				[
+					"Crushing hand"
+				],
+				[
+					"Flaming pyrelord"
+				],
+				[
+					"Giant rockslug"
+				],
+				[
+					"Screaming banshee"
 				]
 			],
 			"groupRoles": [
@@ -7243,7 +7509,13 @@
 				"monsters",
 				"monsters",
 				"monsters",
-				"monsters"
+				"monsters",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors"
 			],
 			"requireAll": true,
 			"notes": "master card + 36 assignable-monster cards; toggles include/exclude roles"
@@ -7453,6 +7725,69 @@
 				],
 				[
 					"Zygomite"
+				],
+				[
+					"Abhorrent spectre"
+				],
+				[
+					"Ancient Custodian"
+				],
+				[
+					"Cave abomination"
+				],
+				[
+					"Choke devil"
+				],
+				[
+					"Dire gryphon"
+				],
+				[
+					"Dreadborn Araxyte"
+				],
+				[
+					"Elder aquanite"
+				],
+				[
+					"Greater abyssal demon"
+				],
+				[
+					"Guardian Drake"
+				],
+				[
+					"Insatiable Bloodveld"
+				],
+				[
+					"King kurask"
+				],
+				[
+					"Marble gargoyle"
+				],
+				[
+					"Monstrous Basilisk (The Fremennik Exiles)"
+				],
+				[
+					"Monstrous basilisk"
+				],
+				[
+					"Mutated Terrorbird"
+				],
+				[
+					"Mutated Tortoise"
+				],
+				[
+					"Nechryarch"
+				],
+				[
+					"Night beast"
+				],
+				[
+					"Nuclear smoke devil"
+				],
+				[
+					"Shadow Wyrm"
+				],
+				[
+					"Spiked Turoth"
 				]
 			],
 			"groupRoles": [
@@ -7520,7 +7855,28 @@
 				"monsters",
 				"monsters",
 				"monsters",
-				"monsters"
+				"monsters",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors"
 			],
 			"requireAll": true,
 			"notes": "master card + 64 assignable-monster cards; toggles include/exclude roles"
@@ -7628,6 +7984,15 @@
 				],
 				[
 					"Zombie"
+				],
+				[
+					"Chasm Crawler"
+				],
+				[
+					"Crushing hand"
+				],
+				[
+					"Screaming banshee"
 				]
 			],
 			"groupRoles": [
@@ -7661,7 +8026,10 @@
 				"monsters",
 				"monsters",
 				"monsters",
-				"monsters"
+				"monsters",
+				"superiors",
+				"superiors",
+				"superiors"
 			],
 			"requireAll": true,
 			"notes": "master card + 30 assignable-monster cards; toggles include/exclude roles"
@@ -7868,6 +8236,66 @@
 				],
 				[
 					"Zygomite"
+				],
+				[
+					"Abhorrent spectre"
+				],
+				[
+					"Ancient Custodian"
+				],
+				[
+					"Cave abomination"
+				],
+				[
+					"Choke devil"
+				],
+				[
+					"Dire gryphon"
+				],
+				[
+					"Dreadborn Araxyte"
+				],
+				[
+					"Elder aquanite"
+				],
+				[
+					"Greater abyssal demon"
+				],
+				[
+					"Guardian Drake"
+				],
+				[
+					"King kurask"
+				],
+				[
+					"Marble gargoyle"
+				],
+				[
+					"Monstrous Basilisk (The Fremennik Exiles)"
+				],
+				[
+					"Monstrous basilisk"
+				],
+				[
+					"Mutated Terrorbird"
+				],
+				[
+					"Mutated Tortoise"
+				],
+				[
+					"Nechryarch"
+				],
+				[
+					"Night beast"
+				],
+				[
+					"Nuclear smoke devil"
+				],
+				[
+					"Shadow Wyrm"
+				],
+				[
+					"Spiked Turoth"
 				]
 			],
 			"groupRoles": [
@@ -7934,7 +8362,27 @@
 				"monsters",
 				"monsters",
 				"monsters",
-				"monsters"
+				"monsters",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors"
 			],
 			"requireAll": true,
 			"notes": "master card + 63 assignable-monster cards; toggles include/exclude roles"
@@ -8039,6 +8487,15 @@
 				],
 				[
 					"Zombie"
+				],
+				[
+					"Chasm Crawler"
+				],
+				[
+					"Crushing hand"
+				],
+				[
+					"Screaming banshee"
 				]
 			],
 			"groupRoles": [
@@ -8071,7 +8528,10 @@
 				"monsters",
 				"monsters",
 				"monsters",
-				"monsters"
+				"monsters",
+				"superiors",
+				"superiors",
+				"superiors"
 			],
 			"requireAll": true,
 			"notes": "master card + 29 assignable-monster cards; toggles include/exclude roles"
@@ -8251,6 +8711,51 @@
 				],
 				[
 					"Werewolf"
+				],
+				[
+					"Abhorrent spectre"
+				],
+				[
+					"Choke devil"
+				],
+				[
+					"Cockathrice"
+				],
+				[
+					"Dire gryphon"
+				],
+				[
+					"Flaming pyrelord"
+				],
+				[
+					"Greater abyssal demon"
+				],
+				[
+					"Insatiable Bloodveld"
+				],
+				[
+					"King kurask"
+				],
+				[
+					"Malevolent Mage"
+				],
+				[
+					"Marble gargoyle"
+				],
+				[
+					"Monstrous Basilisk (The Fremennik Exiles)"
+				],
+				[
+					"Monstrous basilisk"
+				],
+				[
+					"Nechryarch"
+				],
+				[
+					"Spiked Turoth"
+				],
+				[
+					"Vitreous Jelly"
 				]
 			],
 			"groupRoles": [
@@ -8308,7 +8813,22 @@
 				"monsters",
 				"monsters",
 				"monsters",
-				"monsters"
+				"monsters",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors"
 			],
 			"requireAll": true,
 			"notes": "master card + 54 assignable-monster cards; toggles include/exclude roles"

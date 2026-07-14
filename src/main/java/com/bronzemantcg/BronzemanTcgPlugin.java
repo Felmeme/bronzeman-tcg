@@ -800,7 +800,12 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 				{
 					excluded.add("monsters");
 				}
-				return excluded.size() == 2 ? null : excluded;
+				// Superiors ride on top of Require-monsters; the checkbox alone does nothing.
+				if (!config.restrictSlayerMonsters() || !config.restrictSlayerSuperiors())
+				{
+					excluded.add("superiors");
+				}
+				return excluded.contains("master") && excluded.contains("monsters") ? null : excluded;
 			}
 			case "hunter-birds":
 			case "hunter-butterflies":
