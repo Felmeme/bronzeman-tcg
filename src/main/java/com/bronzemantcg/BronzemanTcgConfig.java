@@ -734,4 +734,19 @@ public interface BronzemanTcgConfig extends Config
 	{
 		return false;
 	}
+
+	@ConfigItem(
+		keyName = "showTcgStatsOverlay",
+		name = "TCG stats overlay",
+		description = "Plain-text overlay showing your OSRS TCG credits and distinct cards "
+			+ "collected, read from the TCG plugin's saved state (displayed with its creator's "
+			+ "blessing)."
+			+ "<br>Shows nothing until the TCG plugin has data. Alt+drag to reposition.",
+		section = visualsSection,
+		position = 5
+	)
+	default boolean showTcgStatsOverlay()
+	{
+		return false;
+	}
 }

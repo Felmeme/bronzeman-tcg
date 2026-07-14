@@ -132,6 +132,9 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	private BronzemanTcgOverlay overlay;
 
 	@Inject
+	private TcgStatsOverlay statsOverlay;
+
+	@Inject
 	private RenderCallbackManager renderCallbackManager;
 
 	private long lastBlockMessageMs;
@@ -156,6 +159,7 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 			.build();
 		clientToolbar.addNavigation(navButton);
 		overlayManager.add(overlay);
+		overlayManager.add(statsOverlay);
 		renderCallbackManager.register(this);
 
 		log.info("Bronzeman TCG started. Tracking {} TCG-linked NPCs, {} items, {} node rules, {} recipe rules.",
@@ -167,6 +171,7 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	{
 		renderCallbackManager.unregister(this);
 		overlayManager.remove(overlay);
+		overlayManager.remove(statsOverlay);
 		clientToolbar.removeNavigation(navButton);
 		navButton = null;
 		panel = null;

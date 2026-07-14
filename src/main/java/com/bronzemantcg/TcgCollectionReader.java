@@ -33,6 +33,8 @@ public class TcgCollectionReader
 	private final Gson gson;
 
 	private Set<String> cachedOwnedLowerCaseNames = Collections.emptySet();
+	private long cachedCredits;
+	private boolean stateAvailable;
 	private long lastRefreshMs = 0L;
 
 	@Inject
@@ -48,13 +50,37 @@ public class TcgCollectionReader
 	 */
 	public synchronized Set<String> getOwnedCardNamesLowerCase()
 	{
-		long now = System.currentTimeMillis();
-		if (now - lastRefreshMs < CACHE_MILLIS)
-		{
-			return cachedOwnedLowerCaseNames;
-		}
-		refresh();
+		ensureFresh();
 		return cachedOwnedLowerCaseNames;
+	}
+
+	/** TCG pack currency from the decoded state; only meaningful while {@link #isStateAvailable()}. */
+	public synchronized long getCredits()
+	{
+		ensureFresh();
+		return cachedCredits;
+	}
+
+	/** Distinct card names owned (normal/foil folded), for the stats overlay. */
+	public synchronized int getOwnedCardCount()
+	{
+		ensureFresh();
+		return cachedOwnedLowerCaseNames.size();
+	}
+
+	/** False when osrs-tcg has no readable state (not installed, no data yet, or decode failure). */
+	public synchronized boolean isStateAvailable()
+	{
+		ensureFresh();
+		return stateAvailable;
+	}
+
+	private void ensureFresh()
+	{
+		if (System.currentTimeMillis() - lastRefreshMs >= CACHE_MILLIS)
+		{
+			refresh();
+		}
 	}
 
 	/** Call after profile switches / logins so a stale cache from a different account never lingers. */
@@ -73,6 +99,8 @@ public class TcgCollectionReader
 			if (json.isEmpty())
 			{
 				cachedOwnedLowerCaseNames = Collections.emptySet();
+				cachedCredits = 0L;
+				stateAvailable = false;
 				return;
 			}
 
@@ -80,8 +108,12 @@ public class TcgCollectionReader
 			if (dto == null || dto.cardInstances == null)
 			{
 				cachedOwnedLowerCaseNames = Collections.emptySet();
+				cachedCredits = 0L;
+				stateAvailable = false;
 				return;
 			}
+			cachedCredits = dto.credits;
+			stateAvailable = true;
 
 			Set<String> names = new HashSet<>();
 			for (TcgStateDto.OwnedCardInstanceDto instance : dto.cardInstances)
@@ -99,6 +131,8 @@ public class TcgCollectionReader
 			// Fail safe to "own nothing known" rather than crash the client.
 			log.debug("Could not read osrs-tcg collection state", ex);
 			cachedOwnedLowerCaseNames = Collections.emptySet();
+			cachedCredits = 0L;
+			stateAvailable = false;
 		}
 	}
 }
