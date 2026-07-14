@@ -49,6 +49,7 @@ class BronzemanTcgPanel extends PluginPanel
 	private final QuestCatalog questCatalog;
 	private final ContentCatalog contentCatalog;
 	private final TcgCollectionReader collectionReader;
+	private final BronzemanTcgConfig config;
 
 	private final IconTextField searchBar = new IconTextField();
 	private final JPanel searchResults = sectionBody();
@@ -65,7 +66,7 @@ class BronzemanTcgPanel extends PluginPanel
 
 	BronzemanTcgPanel(TrackedMonsterCatalog monsterCatalog, TrackedItemCatalog itemCatalog,
 		ResourceNodeCatalog nodeCatalog, QuestCatalog questCatalog, ContentCatalog contentCatalog,
-		TcgCollectionReader collectionReader)
+		TcgCollectionReader collectionReader, BronzemanTcgConfig config)
 	{
 		this.monsterCatalog = monsterCatalog;
 		this.itemCatalog = itemCatalog;
@@ -73,6 +74,7 @@ class BronzemanTcgPanel extends PluginPanel
 		this.questCatalog = questCatalog;
 		this.contentCatalog = contentCatalog;
 		this.collectionReader = collectionReader;
+		this.config = config;
 
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		setBorder(BorderFactory.createEmptyBorder(8, 8, 8, 8));
@@ -364,13 +366,16 @@ class BronzemanTcgPanel extends PluginPanel
 		}
 
 		progressList.add(sectionHeader("Slayer masters"));
+		// Bars mirror the active config: superiors count only when the checkbox stacks
+		// them onto Require-monsters.
+		boolean countSuperiors = config.restrictSlayerMonsters() && config.restrictSlayerSuperiors();
 		for (Map.Entry<String, ResourceNodeCatalog.Rule> e : distinctRules("slayer").entrySet())
 		{
 			int total = 0;
 			int have = 0;
 			for (ResourceNodeCatalog.CardGroup group : e.getValue().groups)
 			{
-				if ("monsters".equals(group.role))
+				if ("monsters".equals(group.role) || (countSuperiors && "superiors".equals(group.role)))
 				{
 					total++;
 					if (group.isSatisfied(owned))

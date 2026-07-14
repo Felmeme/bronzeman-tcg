@@ -147,7 +147,7 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 		collectionReader.invalidate();
 
 		panel = new BronzemanTcgPanel(monsterCatalog, itemCatalog, nodeCatalog, questCatalog,
-			contentCatalog, collectionReader);
+			contentCatalog, collectionReader, config);
 		navButton = NavigationButton.builder()
 			.tooltip("Bronzeman TCG")
 			.icon(drawPanelIcon())
