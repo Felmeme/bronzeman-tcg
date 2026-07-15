@@ -3660,7 +3660,8 @@
 					"uncut opal"
 				]
 			},
-			"notes": "Cut gem with a chisel."
+			"notes": "Cut gem with a chisel.",
+			"crushable": true
 		},
 		{
 			"category": "crafting",
@@ -3680,7 +3681,8 @@
 					"uncut jade"
 				]
 			},
-			"notes": "Cut gem with a chisel."
+			"notes": "Cut gem with a chisel.",
+			"crushable": true
 		},
 		{
 			"category": "crafting",
@@ -3700,7 +3702,8 @@
 					"uncut red topaz"
 				]
 			},
-			"notes": "Cut gem with a chisel."
+			"notes": "Cut gem with a chisel.",
+			"crushable": true
 		},
 		{
 			"category": "crafting",

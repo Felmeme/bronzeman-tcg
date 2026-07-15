@@ -77,6 +77,8 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	private static final String MASTER_FARMER_NAME = "master farmer";
 	private static final String USED_ON_SEPARATOR = " -> ";
 	private static final String CAST_PREFIX = "Cast ";
+	private static final String CRUSHED_GEM_CARD = "Crushed gem";
+	private static final String CRUSHED_GEM_CARD_LOWER = "crushed gem";
 	private static final long CHAT_THROTTLE_MS = 1_200L;
 	private static final int MAX_LISTED_MISSING_CARDS = 4;
 
@@ -762,7 +764,12 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 						return null;
 				}
 			case "cooking":
-				return config.restrictCooking() ? Collections.emptySet() : null;
+				if (!config.restrictCooking())
+				{
+					return null;
+				}
+				// Burnt cards ride on top of the cooked requirement, like slayer's superiors.
+				return config.restrictBurntFood() ? Collections.emptySet() : Set.of("burnt");
 			case "farming-compost":
 				return config.restrictCompost() ? Collections.emptySet() : null;
 			case "hunter-chins":
@@ -978,6 +985,12 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 					it.remove();
 				}
 			}
+		}
+		// Crushed gem rides on top of the crafting requirement, for gems that can shatter.
+		if (recipe.crushable && config.requireCrushedGem()
+			&& !collectionReader.getOwnedCardNamesLowerCase().contains(CRUSHED_GEM_CARD_LOWER))
+		{
+			missing.add(CRUSHED_GEM_CARD);
 		}
 		if (missing.isEmpty())
 		{

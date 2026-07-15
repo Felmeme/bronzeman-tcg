@@ -17,11 +17,20 @@
 				"range",
 				"stove"
 			],
-			"requiredCards": [
-				"Bread"
-			],
 			"requireAll": true,
-			"notes": "Range-only (cannot cook on open fire)."
+			"notes": "Range-only (cannot cook on open fire).",
+			"requiredCardGroups": [
+				[
+					"Bread"
+				],
+				[
+					"Burnt bread"
+				]
+			],
+			"groupRoles": [
+				"",
+				"burnt"
+			]
 		},
 		{
 			"category": "cooking",
@@ -33,11 +42,20 @@
 				"range",
 				"stove"
 			],
-			"requiredCards": [
-				"Pitta bread"
-			],
 			"requireAll": true,
-			"notes": "Range-only."
+			"notes": "Range-only.",
+			"requiredCardGroups": [
+				[
+					"Pitta bread"
+				],
+				[
+					"Burnt pitta bread"
+				]
+			],
+			"groupRoles": [
+				"",
+				"burnt"
+			]
 		},
 		{
 			"category": "cooking",
@@ -50,11 +68,20 @@
 				"range",
 				"stove"
 			],
-			"requiredCards": [
-				"Baked potato"
-			],
 			"requireAll": true,
-			"notes": "Raw potato baked on fire/range."
+			"notes": "Raw potato baked on fire/range.",
+			"requiredCardGroups": [
+				[
+					"Baked potato"
+				],
+				[
+					"Burnt potato"
+				]
+			],
+			"groupRoles": [
+				"",
+				"burnt"
+			]
 		},
 		{
 			"category": "cooking",
@@ -84,11 +111,20 @@
 				"range",
 				"stove"
 			],
-			"requiredCards": [
-				"Anglerfish"
-			],
 			"requireAll": true,
-			"notes": ""
+			"notes": "",
+			"requiredCardGroups": [
+				[
+					"Anglerfish"
+				],
+				[
+					"Burnt anglerfish"
+				]
+			],
+			"groupRoles": [
+				"",
+				"burnt"
+			]
 		},
 		{
 			"category": "cooking",
@@ -118,11 +154,20 @@
 				"range",
 				"stove"
 			],
-			"requiredCards": [
-				"Cooked meat"
-			],
 			"requireAll": true,
-			"notes": "Cooks to 'Cooked meat'."
+			"notes": "Cooks to 'Cooked meat'.",
+			"requiredCardGroups": [
+				[
+					"Cooked meat"
+				],
+				[
+					"Burnt meat"
+				]
+			],
+			"groupRoles": [
+				"",
+				"burnt"
+			]
 		},
 		{
 			"category": "cooking",
@@ -135,11 +180,20 @@
 				"range",
 				"stove"
 			],
-			"requiredCards": [
-				"Cooked meat"
-			],
 			"requireAll": true,
-			"notes": "Cooks to 'Cooked meat'."
+			"notes": "Cooks to 'Cooked meat'.",
+			"requiredCardGroups": [
+				[
+					"Cooked meat"
+				],
+				[
+					"Burnt meat"
+				]
+			],
+			"groupRoles": [
+				"",
+				"burnt"
+			]
 		},
 		{
 			"category": "cooking",
@@ -152,11 +206,20 @@
 				"range",
 				"stove"
 			],
-			"requiredCards": [
-				"Cave eel"
-			],
 			"requireAll": true,
-			"notes": ""
+			"notes": "",
+			"requiredCardGroups": [
+				[
+					"Cave eel"
+				],
+				[
+					"Burnt cave eel"
+				]
+			],
+			"groupRoles": [
+				"",
+				"burnt"
+			]
 		},
 		{
 			"category": "cooking",
@@ -186,11 +249,20 @@
 				"range",
 				"stove"
 			],
-			"requiredCards": [
-				"Cooked chicken"
-			],
 			"requireAll": true,
-			"notes": ""
+			"notes": "",
+			"requiredCardGroups": [
+				[
+					"Cooked chicken"
+				],
+				[
+					"Burnt chicken"
+				]
+			],
+			"groupRoles": [
+				"",
+				"burnt"
+			]
 		},
 		{
 			"category": "cooking",
@@ -220,11 +292,20 @@
 				"range",
 				"stove"
 			],
-			"requiredCards": [
-				"Dark crab"
-			],
 			"requireAll": true,
-			"notes": ""
+			"notes": "",
+			"requiredCardGroups": [
+				[
+					"Dark crab"
+				],
+				[
+					"Burnt dark crab"
+				]
+			],
+			"groupRoles": [
+				"",
+				"burnt"
+			]
 		},
 		{
 			"category": "cooking",
@@ -254,11 +335,20 @@
 				"range",
 				"stove"
 			],
-			"requiredCards": [
-				"Cooked karambwan"
-			],
 			"requireAll": true,
-			"notes": "Requires Cooking Guild/thoroughly cooking to avoid poison; still item-on-object."
+			"notes": "Requires Cooking Guild/thoroughly cooking to avoid poison; still item-on-object.",
+			"requiredCardGroups": [
+				[
+					"Cooked karambwan"
+				],
+				[
+					"Burnt karambwan"
+				]
+			],
+			"groupRoles": [
+				"",
+				"burnt"
+			]
 		},
 		{
 			"category": "cooking",
@@ -271,11 +361,20 @@
 				"range",
 				"stove"
 			],
-			"requiredCards": [
-				"Lobster"
-			],
 			"requireAll": true,
-			"notes": ""
+			"notes": "",
+			"requiredCardGroups": [
+				[
+					"Lobster"
+				],
+				[
+					"Burnt lobster"
+				]
+			],
+			"groupRoles": [
+				"",
+				"burnt"
+			]
 		},
 		{
 			"category": "cooking",
@@ -305,11 +404,20 @@
 				"range",
 				"stove"
 			],
-			"requiredCards": [
-				"Monkfish"
-			],
 			"requireAll": true,
-			"notes": ""
+			"notes": "",
+			"requiredCardGroups": [
+				[
+					"Monkfish"
+				],
+				[
+					"Burnt monkfish"
+				]
+			],
+			"groupRoles": [
+				"",
+				"burnt"
+			]
 		},
 		{
 			"category": "cooking",
@@ -339,11 +447,20 @@
 				"range",
 				"stove"
 			],
-			"requiredCards": [
-				"Cooked meat"
-			],
 			"requireAll": true,
-			"notes": "Cooks to 'Cooked meat'."
+			"notes": "Cooks to 'Cooked meat'.",
+			"requiredCardGroups": [
+				[
+					"Cooked meat"
+				],
+				[
+					"Burnt meat"
+				]
+			],
+			"groupRoles": [
+				"",
+				"burnt"
+			]
 		},
 		{
 			"category": "cooking",
@@ -390,11 +507,20 @@
 				"range",
 				"stove"
 			],
-			"requiredCards": [
-				"Shark"
-			],
 			"requireAll": true,
-			"notes": ""
+			"notes": "",
+			"requiredCardGroups": [
+				[
+					"Shark"
+				],
+				[
+					"Burnt shark"
+				]
+			],
+			"groupRoles": [
+				"",
+				"burnt"
+			]
 		},
 		{
 			"category": "cooking",
@@ -407,11 +533,20 @@
 				"range",
 				"stove"
 			],
-			"requiredCards": [
-				"Shrimps"
-			],
 			"requireAll": true,
-			"notes": ""
+			"notes": "",
+			"requiredCardGroups": [
+				[
+					"Shrimps"
+				],
+				[
+					"Burnt shrimp"
+				]
+			],
+			"groupRoles": [
+				"",
+				"burnt"
+			]
 		},
 		{
 			"category": "cooking",
@@ -424,11 +559,20 @@
 				"range",
 				"stove"
 			],
-			"requiredCards": [
-				"Cooked slimy eel"
-			],
 			"requireAll": true,
-			"notes": ""
+			"notes": "",
+			"requiredCardGroups": [
+				[
+					"Cooked slimy eel"
+				],
+				[
+					"Burnt eel"
+				]
+			],
+			"groupRoles": [
+				"",
+				"burnt"
+			]
 		},
 		{
 			"category": "cooking",
@@ -441,11 +585,20 @@
 				"range",
 				"stove"
 			],
-			"requiredCards": [
-				"Swordfish"
-			],
 			"requireAll": true,
-			"notes": ""
+			"notes": "",
+			"requiredCardGroups": [
+				[
+					"Swordfish"
+				],
+				[
+					"Burnt swordfish"
+				]
+			],
+			"groupRoles": [
+				"",
+				"burnt"
+			]
 		},
 		{
 			"category": "cooking",
@@ -492,11 +645,20 @@
 				"range",
 				"stove"
 			],
-			"requiredCards": [
-				"Ugthanki meat"
-			],
 			"requireAll": true,
-			"notes": "Cooked on range."
+			"notes": "Cooked on range.",
+			"requiredCardGroups": [
+				[
+					"Ugthanki meat"
+				],
+				[
+					"Burnt meat"
+				]
+			],
+			"groupRoles": [
+				"",
+				"burnt"
+			]
 		},
 		{
 			"category": "cooking",
@@ -509,11 +671,20 @@
 				"range",
 				"stove"
 			],
-			"requiredCards": [
-				"Cooked sweetcorn"
-			],
 			"requireAll": true,
-			"notes": "Raw sweetcorn ('Sweetcorn') cooked to 'Cooked sweetcorn'."
+			"notes": "Raw sweetcorn ('Sweetcorn') cooked to 'Cooked sweetcorn'.",
+			"requiredCardGroups": [
+				[
+					"Cooked sweetcorn"
+				],
+				[
+					"Burnt sweetcorn"
+				]
+			],
+			"groupRoles": [
+				"",
+				"burnt"
+			]
 		},
 		{
 			"category": "farming-compost",

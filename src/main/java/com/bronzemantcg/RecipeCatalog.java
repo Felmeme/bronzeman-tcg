@@ -124,7 +124,7 @@ public class RecipeCatalog
 				{
 					String targetKey = target == null ? ANY_TARGET : target.trim().toLowerCase(Locale.ROOT);
 					boolean eventLog = "firemaking".equals(dto.category) && EVENT_LOGS.contains(targetKey);
-					Recipe recipe = new Recipe(dto.category, inputs, dto.output, eventLog);
+					Recipe recipe = new Recipe(dto.category, inputs, dto.output, eventLog, dto.crushable);
 					map.put(key(kind, name, targetKey), recipe);
 					if (KIND_SPELL_ON_ITEM.equals(kind))
 					{
@@ -156,14 +156,17 @@ public class RecipeCatalog
 		/** Exact output card name, or null (e.g. firemaking produces no item). */
 		public final String output;
 		public final boolean eventLog;
+		/** Gem-cutting recipes whose gem can shatter into a Crushed gem; config-gated extra. */
+		public final boolean crushable;
 
 		Recipe(String category, List<ResourceNodeCatalog.CardGroup> inputGroups, String output,
-			boolean eventLog)
+			boolean eventLog, boolean crushable)
 		{
 			this.category = category.trim().toLowerCase(Locale.ROOT);
 			this.inputGroups = Collections.unmodifiableList(inputGroups);
 			this.output = output;
 			this.eventLog = eventLog;
+			this.crushable = crushable;
 		}
 
 		/** Display strings for unmet requirements under the given enforcement, empty = allowed. */
@@ -200,6 +203,7 @@ public class RecipeCatalog
 		String category;
 		List<List<String>> inputs;
 		String output;
+		boolean crushable;
 		TriggerDto trigger;
 	}
 

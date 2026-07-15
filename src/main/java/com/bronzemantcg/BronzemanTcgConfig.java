@@ -38,21 +38,28 @@ public interface BronzemanTcgConfig extends Config
 	@ConfigSection(
 			name = "Firemaking",
 			description = "Lighting fires requires the log (and optionally Tinderbox) cards.",
-			position = 6
+			position = 7
 	)
 	String firemakingSection = "firemakingSection";
 
 	@ConfigSection(
 			name = "Smithing",
 			description = "Smelting bars and smithing items require ore, bar and product cards.",
-			position = 8
+			position = 9
 	)
 	String smithingSection = "smithingSection";
 
 	@ConfigSection(
+			name = "Cooking",
+			description = "Cooking raw food requires the cooked (and optionally burnt) item cards.",
+			position = 4
+	)
+	String cookingSection = "cookingSection";
+
+	@ConfigSection(
 			name = "Crafting",
 			description = "Crafting and enchanting require the input and output item cards.",
-			position = 4
+			position = 5
 	)
 	String craftingSection = "craftingSection";
 
@@ -66,35 +73,35 @@ public interface BronzemanTcgConfig extends Config
 	@ConfigSection(
 			name = "Hunter",
 			description = "Hunting requires the gear cards (and optionally the creature cards) for each method.",
-			position = 7
+			position = 8
 	)
 	String hunterSection = "hunterSection";
 
 	@ConfigSection(
 			name = "Farming",
 			description = "Patch and compost restrictions.",
-			position = 5
+			position = 6
 	)
 	String farmingSection = "farmingSection";
 
 	@ConfigSection(
 			name = "Slayer",
 			description = "Slayer master restrictions.",
-			position = 9
+			position = 10
 	)
 	String slayerSection = "slayerSection";
 
 	@ConfigSection(
 			name = "Thieving",
 			description = "Pickpocketing restrictions.",
-			position = 11
+			position = 12
 	)
 	String thievingSection = "thievingSection";
 
 	@ConfigSection(
 			name = "Sailing",
 			description = "Boat upgrade and salvaging restrictions.",
-			position = 10
+			position = 11
 	)
 	String sailingSection = "sailingSection";
 
@@ -292,16 +299,33 @@ public interface BronzemanTcgConfig extends Config
 		return FishingRestrictionMode.ANY_OF;
 	}
 
+	//----------------
+	//Cooking
+	//----------------
 	@ConfigItem(
 		keyName = "restrictCooking",
 		name = "Restrict cooking",
 		description = "Block using raw food on fires/ranges until the cooked version's card is collected.",
-		section = resourceNodesSection,
-		position = 3
+		section = cookingSection,
+		position = 0
 	)
 	default boolean restrictCooking()
 	{
 		return true;
+	}
+
+	@ConfigItem(
+		keyName = "restrictBurntFood",
+		name = "Require burnt food",
+		description = "Also require the burnt version's card to cook something."
+			+ "<br>Food that burns into the generic 'Burnt fish' has no card, so it is never affected."
+			+ "<br>No effect while 'Restrict cooking' is off.",
+		section = cookingSection,
+		position = 1
+	)
+	default boolean restrictBurntFood()
+	{
+		return false;
 	}
 
 	//----------------
@@ -390,6 +414,20 @@ public interface BronzemanTcgConfig extends Config
 	default boolean restrictEnchanting()
 	{
 		return true;
+	}
+
+	@ConfigItem(
+		keyName = "requireCrushedGem",
+		name = "Require crushed gem",
+		description = "Also require the Crushed gem card to cut gems that can shatter."
+			+ "<br>Only applies to the gems that can actually be crushed; the rest are unaffected."
+			+ "<br>No effect while 'Restrict crafting' is off.",
+		section = craftingSection,
+		position = 2
+	)
+	default boolean requireCrushedGem()
+	{
+		return false;
 	}
 
 	//----------------
