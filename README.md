@@ -82,9 +82,9 @@ plain-language walkthrough of the whole architecture, from the collection
 decode chain to the life of a blocked click. The other files in `docs/` are
 the data-audit reports behind the bundled catalogs.
 
-## Dev
 
-```
-./gradlew build          # requires network for RuneLite deps
-./gradlew run            # RuneLite developer mode with the plugin loaded
-```
+## Support
+
+If you would like to support then please firstly support the OSRS TCG Devs through their [Patreon](https://www.patreon.com/Azderi).
+
+If you would like to support the Bronzeman TCG plugin you can donate through [Ko-fi](https://ko-fi.com/felmeme)

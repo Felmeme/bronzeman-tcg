@@ -38,70 +38,70 @@ public interface BronzemanTcgConfig extends Config
 	@ConfigSection(
 			name = "Firemaking",
 			description = "Lighting fires requires the log (and optionally Tinderbox) cards.",
-			position = 5
+			position = 6
 	)
 	String firemakingSection = "firemakingSection";
 
 	@ConfigSection(
 			name = "Smithing",
 			description = "Smelting bars and smithing items require ore, bar and product cards.",
-			position = 7
+			position = 8
 	)
 	String smithingSection = "smithingSection";
 
 	@ConfigSection(
 			name = "Crafting",
 			description = "Crafting and enchanting require the input and output item cards.",
-			position = 3
+			position = 4
 	)
 	String craftingSection = "craftingSection";
 
 	@ConfigSection(
 			name = "Skill Options",
 			description = "Recipe restrictions for the remaining skills: making things requires the cards of what goes in and/or what comes out.",
-			position = 2
+			position = 3
 	)
 	String skillOptionsSection = "skillOptionsSection";
 
 	@ConfigSection(
 			name = "Hunter",
 			description = "Hunting requires the gear cards (and optionally the creature cards) for each method.",
-			position = 6
+			position = 7
 	)
 	String hunterSection = "hunterSection";
 
 	@ConfigSection(
 			name = "Farming",
 			description = "Patch and compost restrictions.",
-			position = 4
+			position = 5
 	)
 	String farmingSection = "farmingSection";
 
 	@ConfigSection(
 			name = "Slayer",
 			description = "Slayer master restrictions.",
-			position = 8
+			position = 9
 	)
 	String slayerSection = "slayerSection";
 
 	@ConfigSection(
 			name = "Thieving",
 			description = "Pickpocketing restrictions.",
-			position = 10
+			position = 11
 	)
 	String thievingSection = "thievingSection";
 
 	@ConfigSection(
 			name = "Sailing",
 			description = "Boat upgrade and salvaging restrictions.",
-			position = 9
+			position = 10
 	)
 	String sailingSection = "sailingSection";
 
 	@ConfigSection(
 			name = "Visuals",
 			description = "How locked NPCs and items are shown in the game world.",
-			position = 11
+			position = 2
 	)
 	String visualsSection = "visualsSection";
 
@@ -704,7 +704,7 @@ public interface BronzemanTcgConfig extends Config
 		description = "NPCs whose card you have not collected are greyed out in the world, "
 			+ "so you can see at a glance what you can't fight yet.",
 		section = visualsSection,
-		position = 0
+		position = 3
 	)
 	default boolean tintLockedNpcs()
 	{
@@ -717,7 +717,7 @@ public interface BronzemanTcgConfig extends Config
 		name = "Outline colour",
 		description = "Colour (and opacity) of the locked-NPC outline.",
 		section = visualsSection,
-		position = 1
+		position = 4
 	)
 	default Color lockedOutlineColor()
 	{
@@ -730,7 +730,7 @@ public interface BronzemanTcgConfig extends Config
 		name = "Outline width",
 		description = "Thickness of the locked-NPC outline in pixels.",
 		section = visualsSection,
-		position = 2
+		position = 5
 	)
 	default int lockedOutlineWidth()
 	{
@@ -743,7 +743,7 @@ public interface BronzemanTcgConfig extends Config
 		name = "Outline feather",
 		description = "How softly the outline fades at its edge (0 = hard line).",
 		section = visualsSection,
-		position = 3
+		position = 6
 	)
 	default int lockedOutlineFeather()
 	{
@@ -757,7 +757,7 @@ public interface BronzemanTcgConfig extends Config
 			+ "<br>Ground items can't be hidden by the client hook; locked loot is still blocked "
 			+ "from pickup.",
 		section = visualsSection,
-		position = 4
+		position = 2
 	)
 	default boolean hideLockedEntities()
 	{
@@ -772,7 +772,7 @@ public interface BronzemanTcgConfig extends Config
 			+ "blessing)."
 			+ "<br>Shows nothing until the TCG plugin has data. Alt+drag to reposition.",
 		section = visualsSection,
-		position = 5
+		position = 1
 	)
 	default boolean showTcgStatsOverlay()
 	{
