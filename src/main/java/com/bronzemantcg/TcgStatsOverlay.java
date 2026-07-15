@@ -20,7 +20,9 @@ import net.runelite.client.ui.overlay.components.LineComponent;
 class TcgStatsOverlay extends OverlayPanel
 {
 	private static final NumberFormat FORMAT = NumberFormat.getIntegerInstance(Locale.UK);
-
+	// Total cards in the OSRS TCG catalog; matches the TCG plugin's own total.
+	// Update by hand if osrs-tcg ever grows its Card.json.
+	private static final int TOTAL_CARDS = 6376;
 	private final BronzemanTcgConfig config;
 	private final TcgCollectionReader collectionReader;
 
@@ -41,12 +43,12 @@ class TcgStatsOverlay extends OverlayPanel
 		}
 		panelComponent.getChildren().clear();
 		panelComponent.getChildren().add(LineComponent.builder()
-			.left("Credits")
+			.left("Credits:")
 			.right(FORMAT.format(collectionReader.getCredits()))
 			.build());
 		panelComponent.getChildren().add(LineComponent.builder()
-			.left("Cards")
-			.right(FORMAT.format(collectionReader.getOwnedCardCount()))
+			.left("Cards Collected:")
+			.right(FORMAT.format(collectionReader.getOwnedCardCount()) + "/" + FORMAT.format(TOTAL_CARDS))
 			.build());
 		return super.render(graphics);
 	}
