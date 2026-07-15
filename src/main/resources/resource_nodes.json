@@ -8870,6 +8870,599 @@
 			"notes": "master card + 54 assignable-monster cards; toggles include/exclude roles"
 		},
 		{
+			"category": "thieving-stalls",
+			"kind": "object",
+			"name": "Baker's stall",
+			"options": [
+				"steal-from"
+			],
+			"requiredCardGroups": [
+				[
+					"Bread",
+					"Cake"
+				]
+			],
+			"groupRoles": [
+				""
+			],
+			"requireAll": false,
+			"notes": "Baker's / Bakery stall (Ardougne, Keldagrim, Kourend, Varlamore). Any-of: player must own >=1 of these cards to steal. Loot with no card excluded: Chocolate slice."
+		},
+		{
+			"category": "thieving-stalls",
+			"kind": "object",
+			"name": "Baker's Stall",
+			"options": [
+				"steal-from"
+			],
+			"requiredCardGroups": [
+				[
+					"Bread",
+					"Cake"
+				]
+			],
+			"groupRoles": [
+				""
+			],
+			"requireAll": false,
+			"notes": "Baker's / Bakery stall (Ardougne, Keldagrim, Kourend, Varlamore). Any-of: player must own >=1 of these cards to steal. Loot with no card excluded: Chocolate slice."
+		},
+		{
+			"category": "thieving-stalls",
+			"kind": "object",
+			"name": "Bakery stall",
+			"options": [
+				"steal-from"
+			],
+			"requiredCardGroups": [
+				[
+					"Bread",
+					"Cake"
+				]
+			],
+			"groupRoles": [
+				""
+			],
+			"requireAll": false,
+			"notes": "Baker's / Bakery stall (Ardougne, Keldagrim, Kourend, Varlamore). Any-of: player must own >=1 of these cards to steal. Loot with no card excluded: Chocolate slice."
+		},
+		{
+			"category": "thieving-stalls",
+			"kind": "object",
+			"name": "Cannonball stall",
+			"options": [
+				"steal-from"
+			],
+			"requiredCardGroups": [
+				[
+					"Bronze cannonball",
+					"Iron cannonball",
+					"Steel cannonball",
+					"Mithril cannonball",
+					"Adamant cannonball",
+					"Rune cannonball",
+					"Dragon cannonball"
+				]
+			],
+			"groupRoles": [
+				""
+			],
+			"requireAll": false,
+			"notes": "Cannonball stall (Port Roberts). Any-of: player must own >=1 of these cards to steal. Loot with no card excluded: none."
+		},
+		{
+			"category": "thieving-stalls",
+			"kind": "object",
+			"name": "Cannonball Stall",
+			"options": [
+				"steal-from"
+			],
+			"requiredCardGroups": [
+				[
+					"Bronze cannonball",
+					"Iron cannonball",
+					"Steel cannonball",
+					"Mithril cannonball",
+					"Adamant cannonball",
+					"Rune cannonball",
+					"Dragon cannonball"
+				]
+			],
+			"groupRoles": [
+				""
+			],
+			"requireAll": false,
+			"notes": "Cannonball stall (Port Roberts). Any-of: player must own >=1 of these cards to steal. Loot with no card excluded: none."
+		},
+		{
+			"category": "thieving-stalls",
+			"kind": "object",
+			"name": "Crafting Stall",
+			"options": [
+				"steal-from",
+				"steal from"
+			],
+			"requiredCardGroups": [
+				[
+					"Chisel",
+					"Ring mould",
+					"Necklace mould",
+					"Amulet mould",
+					"Bracelet mould",
+					"Gold bar"
+				]
+			],
+			"groupRoles": [
+				""
+			],
+			"requireAll": false,
+			"notes": "Crafting stall (Ape Atoll, Keldagrim). Any-of: player must own >=1 of these cards to steal. Loot with no card excluded: none."
+		},
+		{
+			"category": "thieving-stalls",
+			"kind": "object",
+			"name": "Crafting stall",
+			"options": [
+				"steal-from",
+				"steal from"
+			],
+			"requiredCardGroups": [
+				[
+					"Chisel",
+					"Ring mould",
+					"Necklace mould",
+					"Amulet mould",
+					"Bracelet mould",
+					"Gold bar"
+				]
+			],
+			"groupRoles": [
+				""
+			],
+			"requireAll": false,
+			"notes": "Crafting stall (Ape Atoll, Keldagrim). Any-of: player must own >=1 of these cards to steal. Loot with no card excluded: none."
+		},
+		{
+			"category": "thieving-stalls",
+			"kind": "object",
+			"name": "Crossbow stall",
+			"options": [
+				"steal-from"
+			],
+			"requiredCardGroups": [
+				[
+					"Bronze bolts",
+					"Bronze limbs",
+					"Mithril bolts",
+					"Mithril limbs",
+					"Wooden stock"
+				]
+			],
+			"groupRoles": [
+				""
+			],
+			"requireAll": false,
+			"notes": "Crossbow stall (Keldagrim). Any-of: player must own >=1 of these cards to steal. Loot with no card excluded: none."
+		},
+		{
+			"category": "thieving-stalls",
+			"kind": "object",
+			"name": "Fish stall",
+			"options": [
+				"steal-from"
+			],
+			"requiredCardGroups": [
+				[
+					"Raw salmon",
+					"Raw tuna",
+					"Raw lobster",
+					"Raw swordtip squid",
+					"Raw giant krill",
+					"Raw haddock"
+				]
+			],
+			"groupRoles": [
+				""
+			],
+			"requireAll": false,
+			"notes": "Fish stall (Miscellania/Etceteria/Rellekka/Warrens/Port Roberts). Any-of: player must own >=1 of these cards to steal. Loot with no card excluded: none."
+		},
+		{
+			"category": "thieving-stalls",
+			"kind": "object",
+			"name": "Food Stall",
+			"options": [
+				"steal-from",
+				"steal from"
+			],
+			"requiredCardGroups": [
+				[
+					"Banana"
+				]
+			],
+			"groupRoles": [
+				""
+			],
+			"requireAll": false,
+			"notes": "Monkey food stall (Ape Atoll). Any-of: player must own >=1 of these cards to steal. Loot with no card excluded: none."
+		},
+		{
+			"category": "thieving-stalls",
+			"kind": "object",
+			"name": "Fruit Stall",
+			"options": [
+				"steal-from"
+			],
+			"requiredCardGroups": [
+				[
+					"Cooking apple",
+					"Banana",
+					"Strawberry",
+					"Redberries",
+					"Jangerberries",
+					"Strange fruit",
+					"Lime",
+					"Lemon",
+					"Pineapple",
+					"Papaya fruit",
+					"Golovanova fruit top"
+				]
+			],
+			"groupRoles": [
+				""
+			],
+			"requireAll": false,
+			"notes": "Fruit stall (Kourend). Any-of: player must own >=1 of these cards to steal. Loot with no card excluded: none."
+		},
+		{
+			"category": "thieving-stalls",
+			"kind": "object",
+			"name": "Fur stall",
+			"options": [
+				"steal-from"
+			],
+			"requiredCardGroups": [
+				[
+					"Fur",
+					"Grey wolf fur",
+					"Bear fur"
+				]
+			],
+			"groupRoles": [
+				""
+			],
+			"requireAll": false,
+			"notes": "Fur stall (Ardougne, Rellekka, Varlamore, Port Roberts). Any-of: player must own >=1 of these cards to steal. Loot with no card excluded: none."
+		},
+		{
+			"category": "thieving-stalls",
+			"kind": "object",
+			"name": "Gem stall",
+			"options": [
+				"steal-from"
+			],
+			"requiredCardGroups": [
+				[
+					"Uncut sapphire",
+					"Uncut emerald",
+					"Uncut ruby",
+					"Uncut diamond",
+					"Sapphire",
+					"Emerald",
+					"Ruby",
+					"Diamond"
+				]
+			],
+			"groupRoles": [
+				""
+			],
+			"requireAll": false,
+			"notes": "Gem stall (Ardougne, Keldagrim, Kourend, Prifddinas, Varlamore, Port Roberts). Any-of: player must own >=1 of these cards to steal. Loot with no card excluded: none."
+		},
+		{
+			"category": "thieving-stalls",
+			"kind": "object",
+			"name": "Gem Stall",
+			"options": [
+				"steal-from"
+			],
+			"requiredCardGroups": [
+				[
+					"Uncut sapphire",
+					"Uncut emerald",
+					"Uncut ruby",
+					"Uncut diamond",
+					"Sapphire",
+					"Emerald",
+					"Ruby",
+					"Diamond"
+				]
+			],
+			"groupRoles": [
+				""
+			],
+			"requireAll": false,
+			"notes": "Gem stall (Ardougne, Keldagrim, Kourend, Prifddinas, Varlamore, Port Roberts). Any-of: player must own >=1 of these cards to steal. Loot with no card excluded: none."
+		},
+		{
+			"category": "thieving-stalls",
+			"kind": "object",
+			"name": "General Stall",
+			"options": [
+				"steal-from",
+				"steal from"
+			],
+			"requiredCardGroups": [
+				[
+					"Pot",
+					"Hammer",
+					"Tinderbox"
+				]
+			],
+			"groupRoles": [
+				""
+			],
+			"requireAll": false,
+			"notes": "Monkey general stall (Ape Atoll). Any-of: player must own >=1 of these cards to steal. Loot with no card excluded: none."
+		},
+		{
+			"category": "thieving-stalls",
+			"kind": "object",
+			"name": "Magic Stall",
+			"options": [
+				"steal-from",
+				"steal from"
+			],
+			"requiredCardGroups": [
+				[
+					"Air rune",
+					"Earth rune",
+					"Fire rune",
+					"Nature rune",
+					"Law rune"
+				]
+			],
+			"groupRoles": [
+				""
+			],
+			"requireAll": false,
+			"notes": "Magic stall (Ape Atoll). Any-of: player must own >=1 of these cards to steal. Loot with no card excluded: none."
+		},
+		{
+			"category": "thieving-stalls",
+			"kind": "object",
+			"name": "Market stall",
+			"options": [
+				"steal-from"
+			],
+			"requiredCardGroups": [
+				[
+					"Grapes",
+					"Jug",
+					"Jug of water",
+					"Jug of wine"
+				]
+			],
+			"groupRoles": [
+				""
+			],
+			"requireAll": false,
+			"notes": "Wine stall (Draynor). Any-of: player must own >=1 of these cards to steal. Loot with no card excluded: Bottle of wine."
+		},
+		{
+			"category": "thieving-stalls",
+			"kind": "object",
+			"name": "Ore stall",
+			"options": [
+				"steal-from"
+			],
+			"requiredCardGroups": [
+				[
+					"Coal",
+					"Iron ore",
+					"Silver ore",
+					"Gold ore",
+					"Mithril ore",
+					"Adamantite ore",
+					"Runite ore"
+				]
+			],
+			"groupRoles": [
+				""
+			],
+			"requireAll": false,
+			"notes": "Ore stall (Port Roberts). Any-of: player must own >=1 of these cards to steal. Loot with no card excluded: none."
+		},
+		{
+			"category": "thieving-stalls",
+			"kind": "object",
+			"name": "Scimitar Stall",
+			"options": [
+				"steal-from",
+				"steal from"
+			],
+			"requiredCardGroups": [
+				[
+					"Iron scimitar",
+					"Steel scimitar",
+					"Mithril scimitar",
+					"Adamant scimitar"
+				]
+			],
+			"groupRoles": [
+				""
+			],
+			"requireAll": false,
+			"notes": "Scimitar stall (Ape Atoll). Any-of: player must own >=1 of these cards to steal. Loot with no card excluded: none."
+		},
+		{
+			"category": "thieving-stalls",
+			"kind": "object",
+			"name": "Seed Stall",
+			"options": [
+				"steal-from",
+				"steal from"
+			],
+			"requiredCardGroups": [
+				[
+					"Hammerstone seed",
+					"Potato seed",
+					"Marigold seed",
+					"Barley seed",
+					"Onion seed",
+					"Asgarnian seed",
+					"Cabbage seed",
+					"Yanillian seed",
+					"Rosemary seed",
+					"Nasturtium seed",
+					"Tomato seed",
+					"Jute seed",
+					"Sweetcorn seed",
+					"Krandorian seed",
+					"Strawberry seed",
+					"Wildblood seed",
+					"Watermelon seed"
+				]
+			],
+			"groupRoles": [
+				""
+			],
+			"requireAll": false,
+			"notes": "Seed stall (Draynor). Any-of: player must own >=1 of these cards to steal. Loot with no card excluded: none."
+		},
+		{
+			"category": "thieving-stalls",
+			"kind": "object",
+			"name": "Shop Counter",
+			"options": [
+				"steal-from"
+			],
+			"requiredCardGroups": [
+				[
+					"Uncut sapphire",
+					"Uncut emerald",
+					"Uncut ruby",
+					"Uncut diamond",
+					"Uncut dragonstone",
+					"Uncut onyx",
+					"Sapphire",
+					"Emerald",
+					"Ruby",
+					"Diamond",
+					"Dragonstone",
+					"Onyx",
+					"Iron ore",
+					"Coal",
+					"Silver ore",
+					"Gold ore",
+					"Mithril ore",
+					"Adamantite ore",
+					"Runite ore"
+				]
+			],
+			"groupRoles": [
+				""
+			],
+			"requireAll": false,
+			"notes": "Gem + Ore stall (Mor Ul Rek / TzHaar) - both objects share name 'Shop Counter'. Any-of: player must own >=1 of these cards to steal. Loot with no card excluded: none."
+		},
+		{
+			"category": "thieving-stalls",
+			"kind": "object",
+			"name": "Silk stall",
+			"options": [
+				"steal-from"
+			],
+			"requiredCardGroups": [
+				[
+					"Silk"
+				]
+			],
+			"groupRoles": [
+				""
+			],
+			"requireAll": false,
+			"notes": "Silk stall (Ardougne, Kourend, Prifddinas, Varlamore, Port Roberts). Any-of: player must own >=1 of these cards to steal. Loot with no card excluded: none."
+		},
+		{
+			"category": "thieving-stalls",
+			"kind": "object",
+			"name": "Silver stall",
+			"options": [
+				"steal-from"
+			],
+			"requiredCardGroups": [
+				[
+					"Silver ore",
+					"Silver bar",
+					"Tiara"
+				]
+			],
+			"groupRoles": [
+				""
+			],
+			"requireAll": false,
+			"notes": "Silver stall (Ardougne, Keldagrim, Kourend, Prifddinas, Port Roberts). Any-of: player must own >=1 of these cards to steal. Loot with no card excluded: none."
+		},
+		{
+			"category": "thieving-stalls",
+			"kind": "object",
+			"name": "Spice stall",
+			"options": [
+				"steal-from"
+			],
+			"requiredCardGroups": [
+				[
+					"Spice"
+				]
+			],
+			"groupRoles": [
+				""
+			],
+			"requireAll": false,
+			"notes": "Spice stall (Ardougne, Prifddinas, Varlamore, Port Roberts). Any-of: player must own >=1 of these cards to steal. Loot with no card excluded: none."
+		},
+		{
+			"category": "thieving-stalls",
+			"kind": "object",
+			"name": "Tea stall",
+			"options": [
+				"steal-from"
+			],
+			"requiredCardGroups": [
+				[
+					"Cup of tea"
+				]
+			],
+			"groupRoles": [
+				""
+			],
+			"requireAll": false,
+			"notes": "Tea stall (Varrock, Kourend). Any-of: player must own >=1 of these cards to steal. Loot with no card excluded: none."
+		},
+		{
+			"category": "thieving-stalls",
+			"kind": "object",
+			"name": "Veg stall",
+			"options": [
+				"steal-from"
+			],
+			"requiredCardGroups": [
+				[
+					"Potato",
+					"Cabbage",
+					"Onion",
+					"Tomato",
+					"Garlic"
+				]
+			],
+			"groupRoles": [
+				""
+			],
+			"requireAll": false,
+			"notes": "Vegetable stall (Miscellania/Etceteria/Port Roberts). Any-of: player must own >=1 of these cards to steal. Loot with no card excluded: none."
+		},
+		{
 			"category": "woodcutting",
 			"kind": "object",
 			"name": "Dead tree",

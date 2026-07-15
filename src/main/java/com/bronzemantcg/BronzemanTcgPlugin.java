@@ -31,6 +31,7 @@ import net.runelite.api.events.GameTick;
 import net.runelite.api.events.MenuOptionClicked;
 import net.runelite.api.gameval.InterfaceID;
 import net.runelite.api.gameval.ItemID;
+import net.runelite.api.gameval.VarbitID;
 import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetUtil;
 import net.runelite.client.callback.RenderCallback;
@@ -88,6 +89,11 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	private static final Set<String> MAKE_VERBS = new HashSet<>(List.of(
 		"smelt", "make", "make-x", "make-all", "make sets", "craft", "smith",
 		"string", "mix", "cook", "bake", "fletch", "spin", "fire"));
+	// LMS island map regions, copied verbatim from RuneLite core's LootTrackerPlugin; a lenient
+	// fallback so restrictions stay lifted even if a client update shifts the BR_INGAME timing.
+	private static final Set<Integer> LMS_REGIONS = new HashSet<>(List.of(
+		13658, 13659, 13660, 13914, 13915, 13916, 13918, 13919, 13920,
+		14174, 14175, 14176, 14430, 14431, 14432));
 
 	@Inject
 	private Client client;
@@ -188,7 +194,7 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	@Override
 	public boolean addEntity(Renderable renderable, boolean ui)
 	{
-		if (!config.hideLockedEntities() || !(renderable instanceof NPC))
+		if (!config.hideLockedEntities() || !(renderable instanceof NPC) || isLmsBypassed())
 		{
 			return true;
 		}
@@ -279,6 +285,10 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	@Subscribe
 	public void onMenuOptionClicked(MenuOptionClicked event)
 	{
+		if (isLmsBypassed())
+		{
+			return;
+		}
 		NPC npc = event.getMenuEntry().getNpc();
 		if (npc != null)
 		{
@@ -695,6 +705,17 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 			forceAllInGroups = mode == FishingRestrictionMode.REQUIRE_ALL;
 			excludedRoles = Collections.emptySet();
 		}
+		else if ("thieving-stalls".equals(rule.category))
+		{
+			// Stalls carry one any-of loot group; the mode dial forces all-of for "All items".
+			StallThievingMode mode = config.stallThievingMode();
+			if (mode == StallThievingMode.OFF)
+			{
+				return false;
+			}
+			forceAllInGroups = mode == StallThievingMode.REQUIRE_ALL;
+			excludedRoles = Collections.emptySet();
+		}
 		else
 		{
 			excludedRoles = excludedRolesFor(rule.category);
@@ -990,6 +1011,34 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 		event.consume();
 		sendBlockedMessage(itemName);
 		return true;
+	}
+
+	/**
+	 * True while the local player is in a live Last Man Standing match, so every restriction
+	 * lifts (LMS hands out temporary gear and supplies the player doesn't own). Primary signal
+	 * is the client's own BR_INGAME varbit (RuneLite also names it Varbits.IN_LMS); OR'd with
+	 * the LMS island map regions as a lenient fallback should a client update shift the varbit's
+	 * timing. Both reads are client-thread only, which every caller here already is. The Ferox
+	 * Enclave lobby reads 0 / a different region, so it is unaffected.
+	 */
+	private boolean isLmsBypassed()
+	{
+		if (!config.allowInLms())
+		{
+			return false;
+		}
+		if (client.getVarbitValue(VarbitID.BR_INGAME) == 1)
+		{
+			return true;
+		}
+		for (int region : client.getMapRegions())
+		{
+			if (LMS_REGIONS.contains(region))
+			{
+				return true;
+			}
+		}
+		return false;
 	}
 
 	private boolean isUnlocked(CardNameCatalog catalog, String entityName)

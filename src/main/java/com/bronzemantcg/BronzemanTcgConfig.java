@@ -231,6 +231,20 @@ public interface BronzemanTcgConfig extends Config
 		return true;
 	}
 
+	@ConfigItem(
+		keyName = "allowInLms",
+		name = "Allow Last Man Standing",
+		description = "Lift all restrictions while inside a Last Man Standing match, since LMS hands "
+			+ "you temporary gear and supplies you don't own."
+			+ "<br>Detected via the client's own in-game flag; the Ferox Enclave lobby is not affected.",
+		section = generalSettings,
+		position = 10
+	)
+	default boolean allowInLms()
+	{
+		return true;
+	}
+
 	//----------------
 	//Resource nodes
 	//----------------
@@ -632,6 +646,21 @@ public interface BronzemanTcgConfig extends Config
 	default MasterFarmerMode masterFarmerMode()
 	{
 		return MasterFarmerMode.COINS_POUCH;
+	}
+
+	@ConfigItem(
+		keyName = "stallThievingMode",
+		name = "Restrict stalls",
+		description = "Stealing from a market stall requires cards from its loot table."
+			+ "<br>'Any of': owning any one loot card unlocks the stall."
+			+ "<br>'All items': the stall stays locked until you own every card-backed loot item."
+			+ "<br>'Off': no stall restriction. Stalls with no card-backed loot are never restricted.",
+		section = thievingSection,
+		position = 2
+	)
+	default StallThievingMode stallThievingMode()
+	{
+		return StallThievingMode.ANY_OF;
 	}
 
 	//----------------

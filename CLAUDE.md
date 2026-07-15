@@ -1,6 +1,17 @@
 # Bronzeman TCG — RuneLite plugin
 
 ## HANDOFF NOTES (2026-07-12, written for the next assistant taking over)
+- **Stall thieving + LMS bypass: BUILT (2026-07-15), need in-game verify.**
+  Stalls: 26 nodes (category "thieving-stalls") + StallThievingMode dropdown
+  (Off/Any of/All items, default Any of) in the Thieving section — mirrors
+  fishing's mode handling in checkNodeRule. Verify the "steal-from" vs
+  "steal from" (space) option strings in-client (data carries both); TzHaar
+  gem+ore stalls unavoidably merge into one generic "Shop Counter" node.
+  See docs/stall_nodes_report.md. LMS: "Allow Last Man Standing" toggle
+  (General Settings, default ON) lifts ALL restrictions via isLmsBypassed()
+  = BR_INGAME varbit (5314) OR the 15 LMS map regions. Owner MUST confirm
+  in a real match that restrictions lift on entry and (harmlessly) that
+  they don't linger-off. See docs/lms_detection_research.md.
 - **PvM content data: INTEGRATED** (was in flight at handoff time; the agent
   completed and the data shipped — 7 contents, 80 roster cards, see
   docs/content_cards_report.md). Owner still needs to eyeball the panel
