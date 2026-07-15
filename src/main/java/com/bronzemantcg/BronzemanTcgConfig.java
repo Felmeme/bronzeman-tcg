@@ -31,7 +31,7 @@ public interface BronzemanTcgConfig extends Config
 	@ConfigSection(
 			name = "Resource nodes",
 			description = "Block gathering from skill resource nodes until the card of the item they yield is collected.",
-			position = 1
+			position = 2
 	)
 	String resourceNodesSection = "resourceNodesSection";
 
@@ -101,7 +101,7 @@ public interface BronzemanTcgConfig extends Config
 	@ConfigSection(
 			name = "Visuals",
 			description = "How locked NPCs and items are shown in the game world.",
-			position = 2
+			position = 1
 	)
 	String visualsSection = "visualsSection";
 
