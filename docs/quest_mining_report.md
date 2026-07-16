@@ -112,3 +112,20 @@ NPC isn't strictly forced — owner should decide the canonical required set:
   a Card.json *item* but the Mayor NPC is not in the monster snapshot) — these were rejected because
   the plugin only gates NPCs present in the snapshot.
 - The 17 "zero candidate" quests and the fallback-slice list are programmatic; treat as directional.
+
+---
+
+## Owner rulings on the UNCERTAIN cases (2026-07-16)
+
+- **SHIPPED**: At First Light (Toy mouse) and Song of the Elves (Ode to
+  eternity) — mid-quest given items DO gate under forced drop (obtaining an
+  item is not card ownership); labels use the owner's wording "Card
+  required: Item is used mid-quest". Desert Treasure II (Scarred imp).
+  Witch's Potion as an any-of Giant rat / Cow group. Rag and Bone Man II
+  via a dedicated wiki pass: all 27 bones -> 26 monster kills resolved
+  (troll bone mapped to Mountain troll; the snapshot's bare "troll" is the
+  POH Construction pet) plus a Rabbit / Bunny any-of group.
+- **SKIPPED**: Zogre Flesh Eaters (generic zogre kills not clearly forced;
+  the fight is Slash Bash) and Shilo Village (the Zombie/Skeleton/Ghost
+  forms belong to the boss NPC Nazastarool, whose name won't match generic
+  cards).

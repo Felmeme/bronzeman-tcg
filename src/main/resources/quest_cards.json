@@ -289,12 +289,16 @@
 				],
 				[
 					"Jerboa tail"
+				],
+				[
+					"Toy mouse"
 				]
 			],
 			"groupLabels": [
 				"Any needle",
 				"Any hammer",
-				"Jerboa tail"
+				"Jerboa tail",
+				"Toy mouse — Card required: Item is used mid-quest"
 			],
 			"monsterCards": [],
 			"notes": ""
@@ -986,7 +990,8 @@
 				"The Forsaken Assassin",
 				"Ketla the Unworthy",
 				"Kasonde the Craven",
-				"Persten the Deceitful"
+				"Persten the Deceitful",
+				"Scarred imp"
 			],
 			"notes": ""
 		},
@@ -3256,6 +3261,10 @@
 				],
 				[
 					"Mirror shield"
+				],
+				[
+					"Rabbit",
+					"Bunny"
 				]
 			],
 			"groupLabels": [
@@ -3266,10 +3275,38 @@
 				"Rope",
 				"Ice cooler",
 				"Fishing explosive",
-				"Mirror shield"
+				"Mirror shield",
+				"Rabbit / Bunny (rabbit bone)"
 			],
-			"monsterCards": [],
-			"notes": ""
+			"monsterCards": [
+				"Wolf",
+				"Bat",
+				"Rat",
+				"Baby blue dragon",
+				"Ogre",
+				"Jogre",
+				"Zogre",
+				"Mogre",
+				"Dagannoth",
+				"Snake",
+				"Zombie",
+				"Werewolf",
+				"Moss Giant (Iorwerth Dungeon)",
+				"Fire giant",
+				"Ice giant",
+				"Terrorbird",
+				"Ghoul",
+				"Mountain troll",
+				"Seagull",
+				"Undead cow",
+				"Experiment",
+				"Basilisk",
+				"Lizard",
+				"Cave goblin (monster)",
+				"Vulture",
+				"Jackal"
+			],
+			"notes": "Walkthrough-mining ruling: 26 bone-source kills + rabbit alternatives; troll bone mapped to Mountain troll."
 		},
 		{
 			"name": "Ratcatchers",
@@ -4055,6 +4092,9 @@
 				],
 				[
 					"Spade"
+				],
+				[
+					"Ode to eternity"
 				]
 			],
 			"groupLabels": [
@@ -4083,7 +4123,8 @@
 				"Pestle and mortar",
 				"Hammer",
 				"Saw",
-				"Spade"
+				"Spade",
+				"Ode to eternity — Card required: Item is used mid-quest"
 			],
 			"monsterCards": [
 				"Mourner",
@@ -5585,12 +5626,17 @@
 				],
 				[
 					"Onion"
+				],
+				[
+					"Giant rat",
+					"Cow"
 				]
 			],
 			"groupLabels": [
 				"Burnt meat",
 				"Eye of newt",
-				"Onion"
+				"Onion",
+				"Giant rat / Cow (raw meat source)"
 			],
 			"monsterCards": [
 				"Rat"
