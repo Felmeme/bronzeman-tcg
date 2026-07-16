@@ -216,6 +216,20 @@ docs/sailing_nodes_report.md):
    prefer the dev client only for testing - play on the hub build.
 
 ## Post-launch backlog (agreed with owner)
+- **Firemaking: game-object "Light" gap (owner-reported, confirmed in code)**:
+  the firemaking gate only catches the INVENTORY "Light" item-op and
+  Tinderbox-on-logs (item-on-item). Permanently-spawning log OBJECTS with
+  their own "Light" option (e.g. at Lumbridge castle) route through
+  handleGameObjectInteraction, which only consults node rules — no such
+  rule exists, so they are unrestricted. Fix = add object node(s) keyed
+  (object name, "light") requiring the Tinderbox + Logs cards, reusing the
+  existing firemaking rules; NO new toggles (owner's call). Needs the exact
+  in-game object name(s) verified first — check whether they're literally
+  "Logs" and whether other locations have the same setup. Note the
+  firemaking category currently lives in RecipeCatalog, not
+  ResourceNodeCatalog, so decide whether to add a node rule (simplest, but
+  the FiremakingMode Just-logs/Both dial lives in checkRecipe) or extend the
+  object path to consult recipes.
 - **Quest walkthrough-mining pass**: the quest data only captures infobox
   "Items required" + "kills"; interactions hidden in walkthrough prose
   (CotS guard-marking) get patched case-by-case as reported. A systematic
