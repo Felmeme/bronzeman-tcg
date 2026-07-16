@@ -216,6 +216,21 @@ docs/sailing_nodes_report.md):
    prefer the dev client only for testing - play on the hub build.
 
 ## Post-launch backlog (agreed with owner)
+- **Raw cavefish / Camdozaal (open owner decision, from the 2026-07-16 burnt
+  research)**: Raw cavefish is prepared with a KNIFE at a Preparation Table
+  (Cooking 20), not on a fire/range — so the existing cooking node for it
+  ("item-on-object" onto fire/range) probably never fires and needs
+  verifying. Its failure item is `Ruined cavefish` (card EXISTS), not a
+  burnt item, so it is excluded from burntMapping. Options: (a) leave
+  unrestricted, (b) fix the gate to intercept knife-on-cavefish and have the
+  burnt toggle require Ruined cavefish, (c) fix the gate but only require
+  the cooked card. Check whether other Camdozaal prep-table foods share this
+  shape. See docs/burnt_and_crushed_report.md.
+- **Burnt food coverage ceiling (informational)**: only 19 of 30 cooking
+  rules can ever gain a burnt requirement — the other 11 (trout, salmon,
+  tuna, cod, bass, pike, herring, sardine, anchovies, mackerel) all burn
+  into the generic `Burnt fish`, which has NO card. If osrs-tcg ever adds
+  one, revisit. Beef/bear/rat/ugthanki all share one `Burnt meat` card.
 - **Firemaking: game-object "Light" gap (owner-reported, confirmed in code)**:
   the firemaking gate only catches the INVENTORY "Light" item-op and
   Tinderbox-on-logs (item-on-item). Permanently-spawning log OBJECTS with

@@ -688,6 +688,13 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	private boolean checkNodeRule(MenuOptionClicked event, String kind, String name, String option)
 	{
 		ResourceNodeCatalog.Rule rule = nodeCatalog.find(kind, name, option);
+		// Data-string mismatches (an option or name that differs from the wiki-sourced value)
+		// fail silently and look exactly like "the restriction is ignored", so log the lookup.
+		if (log.isDebugEnabled())
+		{
+			log.debug("node lookup kind={} name='{}' option='{}' -> {}",
+				kind, name, option, rule == null ? "NO RULE" : "rule[" + rule.category + "]");
+		}
 		if (rule == null)
 		{
 			return false;

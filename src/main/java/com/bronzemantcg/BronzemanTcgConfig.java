@@ -242,8 +242,7 @@ public interface BronzemanTcgConfig extends Config
 		keyName = "allowInLms",
 		name = "Allow Last Man Standing",
 		description = "Lift all restrictions while inside a Last Man Standing match, since LMS hands "
-			+ "you temporary gear and supplies you don't own."
-			+ "<br>Detected via the client's own in-game flag; the Ferox Enclave lobby is not affected.",
+			+ "you temporary gear and supplies you don't own.",
 		section = generalSettings,
 		position = 10
 	)
@@ -581,9 +580,7 @@ public interface BronzemanTcgConfig extends Config
 		keyName = "farmingPlantMode",
 		name = "Planting",
 		description = "Planting a seed requires the tool card."
-			+ "<br>'Tools + Seeds' adds the seed's card. 'All' also requires the harvested produce's card."
-			+ "<br>Harvesting itself is not intercepted (a patch object doesn't reveal its crop), "
-			+ "so produce enforcement happens at plant time.",
+			+ "<br>'Tools + Seeds' adds the seed's card. 'All' also requires the harvested produce's card.",
 		section = farmingSection,
 		position = 1
 	)
@@ -595,8 +592,7 @@ public interface BronzemanTcgConfig extends Config
 	@ConfigItem(
 		keyName = "restrictCompost",
 		name = "Compost bins",
-		description = "Collecting compost from a bin requires any compost card."
-			+ "<br>Bin contents aren't distinguishable by object name.",
+		description = "Collecting compost from a bin requires any compost card.",
 		section = farmingSection,
 		position = 2
 	)
