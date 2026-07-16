@@ -214,9 +214,10 @@ public interface BronzemanTcgConfig extends Config
 
 	@ConfigItem(
 		keyName = "lootExemptNames",
-		name = "Loot exempt list",
-		description = "Comma-separated item names that are always lootable even without their card, "
-			+ "e.g. universal drops that would make the early game unplayable."
+		name = "Item exempt list",
+		description = "Comma-separated item names that are never restricted even without their card - "
+			+ "looting, forced drop, banking, equipping and buying all skip them."
+			+ "<br>For universal items that would otherwise make the game unplayable."
 			+ "<br>Case-insensitive. Remove coins for a true challenge.",
 		section = generalSettings,
 		position = 8

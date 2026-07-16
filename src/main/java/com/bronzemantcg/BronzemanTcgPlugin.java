@@ -542,7 +542,8 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 		if (config.restrictBuying() && group == InterfaceID.CHATBOX && isGrandExchangeOpen())
 		{
 			String targetName = Text.removeTags(event.getMenuTarget()).trim();
-			if (!targetName.isEmpty() && !isUnlocked(itemCatalog, targetName))
+			if (!targetName.isEmpty() && !isLootExempt(targetName)
+				&& !isUnlocked(itemCatalog, targetName))
 			{
 				event.consume();
 				sendBlockedMessage(targetName);
@@ -1028,7 +1029,10 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	/** @return true when the item is tracked-but-unowned and the event was consumed. */
 	private boolean blockIfLockedItem(MenuOptionClicked event, String itemName)
 	{
-		if (itemName == null || itemName.isEmpty() || isUnlocked(itemCatalog, itemName))
+		// The exempt list applies to EVERY item block (forced drop, withdraw, equip, buy...),
+		// not just loot pickup - exempt items exist so universal items never brick gameplay.
+		if (itemName == null || itemName.isEmpty() || isLootExempt(itemName)
+			|| isUnlocked(itemCatalog, itemName))
 		{
 			return false;
 		}
