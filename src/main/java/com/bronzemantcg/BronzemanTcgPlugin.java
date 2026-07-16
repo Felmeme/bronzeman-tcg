@@ -519,8 +519,12 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 		{
 			// Make-X product click: only the product name is reliable. Mouse-only block;
 			// keyboard defaults bypass the menu pipeline (owner-accepted limitation).
+			// Node rules get first refusal, same as the make-verb fallback below - cooking
+			// lives there, and this interface is how range-click "Cook" flows arrive.
 			String product = Text.removeTags(event.getMenuTarget()).trim();
-			if (!product.isEmpty())
+			if (!product.isEmpty()
+				&& !checkNodeRule(event, ResourceNodeCatalog.KIND_INTERFACE, product,
+					ResourceNodeCatalog.ANY_OPTION))
 			{
 				checkRecipe(event, RecipeCatalog.KIND_INTERFACE, product, null);
 			}

@@ -9,6 +9,108 @@
 	"nodes": [
 		{
 			"category": "cooking",
+			"kind": "interface",
+			"name": "Anchovies",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Anchovies"
+				]
+			],
+			"groupRoles": [
+				""
+			],
+			"requireAll": true,
+			"notes": "Interface twin of the Raw anchovies cooking rule: catches the range-click \"Cook\" make-interface flow, which bypassed the item-on-object gate. Registered under both raw and cooked names since the interface product string is unverified."
+		},
+		{
+			"category": "cooking",
+			"kind": "interface",
+			"name": "Anglerfish",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Anglerfish"
+				],
+				[
+					"Burnt anglerfish"
+				]
+			],
+			"groupRoles": [
+				"",
+				"burnt"
+			],
+			"requireAll": true,
+			"notes": "Interface twin of the Raw anglerfish cooking rule: catches the range-click \"Cook\" make-interface flow, which bypassed the item-on-object gate. Registered under both raw and cooked names since the interface product string is unverified."
+		},
+		{
+			"category": "cooking",
+			"kind": "interface",
+			"name": "Baked potato",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Baked potato"
+				],
+				[
+					"Burnt potato"
+				]
+			],
+			"groupRoles": [
+				"",
+				"burnt"
+			],
+			"requireAll": true,
+			"notes": "Interface twin of the Potato cooking rule: catches the range-click \"Cook\" make-interface flow, which bypassed the item-on-object gate. Registered under both raw and cooked names since the interface product string is unverified."
+		},
+		{
+			"category": "cooking",
+			"kind": "interface",
+			"name": "Bass",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Bass"
+				]
+			],
+			"groupRoles": [
+				""
+			],
+			"requireAll": true,
+			"notes": "Interface twin of the Raw bass cooking rule: catches the range-click \"Cook\" make-interface flow, which bypassed the item-on-object gate. Registered under both raw and cooked names since the interface product string is unverified."
+		},
+		{
+			"category": "cooking",
+			"kind": "interface",
+			"name": "Bread",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Bread"
+				],
+				[
+					"Burnt bread"
+				]
+			],
+			"groupRoles": [
+				"",
+				"burnt"
+			],
+			"requireAll": true,
+			"notes": "Interface twin of the Bread dough cooking rule: catches the range-click \"Cook\" make-interface flow, which bypassed the item-on-object gate. Registered under both raw and cooked names since the interface product string is unverified."
+		},
+		{
+			"category": "cooking",
 			"kind": "item-on-object",
 			"name": "Bread dough",
 			"options": [
@@ -34,6 +136,338 @@
 		},
 		{
 			"category": "cooking",
+			"kind": "interface",
+			"name": "Bread dough",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Bread"
+				],
+				[
+					"Burnt bread"
+				]
+			],
+			"groupRoles": [
+				"",
+				"burnt"
+			],
+			"requireAll": true,
+			"notes": "Interface twin of the Bread dough cooking rule: catches the range-click \"Cook\" make-interface flow, which bypassed the item-on-object gate. Registered under both raw and cooked names since the interface product string is unverified."
+		},
+		{
+			"category": "cooking",
+			"kind": "interface",
+			"name": "Cave eel",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Cave eel"
+				],
+				[
+					"Burnt cave eel"
+				]
+			],
+			"groupRoles": [
+				"",
+				"burnt"
+			],
+			"requireAll": true,
+			"notes": "Interface twin of the Raw cave eel cooking rule: catches the range-click \"Cook\" make-interface flow, which bypassed the item-on-object gate. Registered under both raw and cooked names since the interface product string is unverified."
+		},
+		{
+			"category": "cooking",
+			"kind": "interface",
+			"name": "Cavefish",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Cavefish"
+				]
+			],
+			"groupRoles": [
+				""
+			],
+			"requireAll": true,
+			"notes": "Interface twin of the Raw cavefish cooking rule: catches the range-click \"Cook\" make-interface flow, which bypassed the item-on-object gate. Registered under both raw and cooked names since the interface product string is unverified."
+		},
+		{
+			"category": "cooking",
+			"kind": "interface",
+			"name": "Cod",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Cod"
+				]
+			],
+			"groupRoles": [
+				""
+			],
+			"requireAll": true,
+			"notes": "Interface twin of the Raw cod cooking rule: catches the range-click \"Cook\" make-interface flow, which bypassed the item-on-object gate. Registered under both raw and cooked names since the interface product string is unverified."
+		},
+		{
+			"category": "cooking",
+			"kind": "interface",
+			"name": "Cooked chicken",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Cooked chicken"
+				],
+				[
+					"Burnt chicken"
+				]
+			],
+			"groupRoles": [
+				"",
+				"burnt"
+			],
+			"requireAll": true,
+			"notes": "Interface twin of the Raw chicken cooking rule: catches the range-click \"Cook\" make-interface flow, which bypassed the item-on-object gate. Registered under both raw and cooked names since the interface product string is unverified."
+		},
+		{
+			"category": "cooking",
+			"kind": "interface",
+			"name": "Cooked karambwan",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Cooked karambwan"
+				],
+				[
+					"Burnt karambwan"
+				]
+			],
+			"groupRoles": [
+				"",
+				"burnt"
+			],
+			"requireAll": true,
+			"notes": "Interface twin of the Raw karambwan cooking rule: catches the range-click \"Cook\" make-interface flow, which bypassed the item-on-object gate. Registered under both raw and cooked names since the interface product string is unverified."
+		},
+		{
+			"category": "cooking",
+			"kind": "interface",
+			"name": "Cooked meat",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Cooked meat"
+				],
+				[
+					"Burnt meat"
+				]
+			],
+			"groupRoles": [
+				"",
+				"burnt"
+			],
+			"requireAll": true,
+			"notes": "Interface twin of the Raw bear meat cooking rule: catches the range-click \"Cook\" make-interface flow, which bypassed the item-on-object gate. Registered under both raw and cooked names since the interface product string is unverified."
+		},
+		{
+			"category": "cooking",
+			"kind": "interface",
+			"name": "Cooked slimy eel",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Cooked slimy eel"
+				],
+				[
+					"Burnt eel"
+				]
+			],
+			"groupRoles": [
+				"",
+				"burnt"
+			],
+			"requireAll": true,
+			"notes": "Interface twin of the Raw slimy eel cooking rule: catches the range-click \"Cook\" make-interface flow, which bypassed the item-on-object gate. Registered under both raw and cooked names since the interface product string is unverified."
+		},
+		{
+			"category": "cooking",
+			"kind": "interface",
+			"name": "Cooked sweetcorn",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Cooked sweetcorn"
+				],
+				[
+					"Burnt sweetcorn"
+				]
+			],
+			"groupRoles": [
+				"",
+				"burnt"
+			],
+			"requireAll": true,
+			"notes": "Interface twin of the Sweetcorn cooking rule: catches the range-click \"Cook\" make-interface flow, which bypassed the item-on-object gate. Registered under both raw and cooked names since the interface product string is unverified."
+		},
+		{
+			"category": "cooking",
+			"kind": "interface",
+			"name": "Dark crab",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Dark crab"
+				],
+				[
+					"Burnt dark crab"
+				]
+			],
+			"groupRoles": [
+				"",
+				"burnt"
+			],
+			"requireAll": true,
+			"notes": "Interface twin of the Raw dark crab cooking rule: catches the range-click \"Cook\" make-interface flow, which bypassed the item-on-object gate. Registered under both raw and cooked names since the interface product string is unverified."
+		},
+		{
+			"category": "cooking",
+			"kind": "interface",
+			"name": "Herring",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Herring"
+				]
+			],
+			"groupRoles": [
+				""
+			],
+			"requireAll": true,
+			"notes": "Interface twin of the Raw herring cooking rule: catches the range-click \"Cook\" make-interface flow, which bypassed the item-on-object gate. Registered under both raw and cooked names since the interface product string is unverified."
+		},
+		{
+			"category": "cooking",
+			"kind": "interface",
+			"name": "Lobster",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Lobster"
+				],
+				[
+					"Burnt lobster"
+				]
+			],
+			"groupRoles": [
+				"",
+				"burnt"
+			],
+			"requireAll": true,
+			"notes": "Interface twin of the Raw lobster cooking rule: catches the range-click \"Cook\" make-interface flow, which bypassed the item-on-object gate. Registered under both raw and cooked names since the interface product string is unverified."
+		},
+		{
+			"category": "cooking",
+			"kind": "interface",
+			"name": "Mackerel",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Mackerel"
+				]
+			],
+			"groupRoles": [
+				""
+			],
+			"requireAll": true,
+			"notes": "Interface twin of the Raw mackerel cooking rule: catches the range-click \"Cook\" make-interface flow, which bypassed the item-on-object gate. Registered under both raw and cooked names since the interface product string is unverified."
+		},
+		{
+			"category": "cooking",
+			"kind": "interface",
+			"name": "Monkfish",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Monkfish"
+				],
+				[
+					"Burnt monkfish"
+				]
+			],
+			"groupRoles": [
+				"",
+				"burnt"
+			],
+			"requireAll": true,
+			"notes": "Interface twin of the Raw monkfish cooking rule: catches the range-click \"Cook\" make-interface flow, which bypassed the item-on-object gate. Registered under both raw and cooked names since the interface product string is unverified."
+		},
+		{
+			"category": "cooking",
+			"kind": "interface",
+			"name": "Pike",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Pike"
+				]
+			],
+			"groupRoles": [
+				""
+			],
+			"requireAll": true,
+			"notes": "Interface twin of the Raw pike cooking rule: catches the range-click \"Cook\" make-interface flow, which bypassed the item-on-object gate. Registered under both raw and cooked names since the interface product string is unverified."
+		},
+		{
+			"category": "cooking",
+			"kind": "interface",
+			"name": "Pitta bread",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Pitta bread"
+				],
+				[
+					"Burnt pitta bread"
+				]
+			],
+			"groupRoles": [
+				"",
+				"burnt"
+			],
+			"requireAll": true,
+			"notes": "Interface twin of the Pitta dough cooking rule: catches the range-click \"Cook\" make-interface flow, which bypassed the item-on-object gate. Registered under both raw and cooked names since the interface product string is unverified."
+		},
+		{
+			"category": "cooking",
 			"kind": "item-on-object",
 			"name": "Pitta dough",
 			"options": [
@@ -56,6 +490,28 @@
 				"",
 				"burnt"
 			]
+		},
+		{
+			"category": "cooking",
+			"kind": "interface",
+			"name": "Pitta dough",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Pitta bread"
+				],
+				[
+					"Burnt pitta bread"
+				]
+			],
+			"groupRoles": [
+				"",
+				"burnt"
+			],
+			"requireAll": true,
+			"notes": "Interface twin of the Pitta dough cooking rule: catches the range-click \"Cook\" make-interface flow, which bypassed the item-on-object gate. Registered under both raw and cooked names since the interface product string is unverified."
 		},
 		{
 			"category": "cooking",
@@ -85,6 +541,28 @@
 		},
 		{
 			"category": "cooking",
+			"kind": "interface",
+			"name": "Potato",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Baked potato"
+				],
+				[
+					"Burnt potato"
+				]
+			],
+			"groupRoles": [
+				"",
+				"burnt"
+			],
+			"requireAll": true,
+			"notes": "Interface twin of the Potato cooking rule: catches the range-click \"Cook\" make-interface flow, which bypassed the item-on-object gate. Registered under both raw and cooked names since the interface product string is unverified."
+		},
+		{
+			"category": "cooking",
 			"kind": "item-on-object",
 			"name": "Raw anchovies",
 			"options": [
@@ -99,6 +577,24 @@
 			],
 			"requireAll": true,
 			"notes": ""
+		},
+		{
+			"category": "cooking",
+			"kind": "interface",
+			"name": "Raw anchovies",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Anchovies"
+				]
+			],
+			"groupRoles": [
+				""
+			],
+			"requireAll": true,
+			"notes": "Interface twin of the Raw anchovies cooking rule: catches the range-click \"Cook\" make-interface flow, which bypassed the item-on-object gate. Registered under both raw and cooked names since the interface product string is unverified."
 		},
 		{
 			"category": "cooking",
@@ -128,6 +624,28 @@
 		},
 		{
 			"category": "cooking",
+			"kind": "interface",
+			"name": "Raw anglerfish",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Anglerfish"
+				],
+				[
+					"Burnt anglerfish"
+				]
+			],
+			"groupRoles": [
+				"",
+				"burnt"
+			],
+			"requireAll": true,
+			"notes": "Interface twin of the Raw anglerfish cooking rule: catches the range-click \"Cook\" make-interface flow, which bypassed the item-on-object gate. Registered under both raw and cooked names since the interface product string is unverified."
+		},
+		{
+			"category": "cooking",
 			"kind": "item-on-object",
 			"name": "Raw bass",
 			"options": [
@@ -142,6 +660,24 @@
 			],
 			"requireAll": true,
 			"notes": ""
+		},
+		{
+			"category": "cooking",
+			"kind": "interface",
+			"name": "Raw bass",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Bass"
+				]
+			],
+			"groupRoles": [
+				""
+			],
+			"requireAll": true,
+			"notes": "Interface twin of the Raw bass cooking rule: catches the range-click \"Cook\" make-interface flow, which bypassed the item-on-object gate. Registered under both raw and cooked names since the interface product string is unverified."
 		},
 		{
 			"category": "cooking",
@@ -171,6 +707,28 @@
 		},
 		{
 			"category": "cooking",
+			"kind": "interface",
+			"name": "Raw bear meat",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Cooked meat"
+				],
+				[
+					"Burnt meat"
+				]
+			],
+			"groupRoles": [
+				"",
+				"burnt"
+			],
+			"requireAll": true,
+			"notes": "Interface twin of the Raw bear meat cooking rule: catches the range-click \"Cook\" make-interface flow, which bypassed the item-on-object gate. Registered under both raw and cooked names since the interface product string is unverified."
+		},
+		{
+			"category": "cooking",
 			"kind": "item-on-object",
 			"name": "Raw beef",
 			"options": [
@@ -194,6 +752,28 @@
 				"",
 				"burnt"
 			]
+		},
+		{
+			"category": "cooking",
+			"kind": "interface",
+			"name": "Raw beef",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Cooked meat"
+				],
+				[
+					"Burnt meat"
+				]
+			],
+			"groupRoles": [
+				"",
+				"burnt"
+			],
+			"requireAll": true,
+			"notes": "Interface twin of the Raw beef cooking rule: catches the range-click \"Cook\" make-interface flow, which bypassed the item-on-object gate. Registered under both raw and cooked names since the interface product string is unverified."
 		},
 		{
 			"category": "cooking",
@@ -223,6 +803,28 @@
 		},
 		{
 			"category": "cooking",
+			"kind": "interface",
+			"name": "Raw cave eel",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Cave eel"
+				],
+				[
+					"Burnt cave eel"
+				]
+			],
+			"groupRoles": [
+				"",
+				"burnt"
+			],
+			"requireAll": true,
+			"notes": "Interface twin of the Raw cave eel cooking rule: catches the range-click \"Cook\" make-interface flow, which bypassed the item-on-object gate. Registered under both raw and cooked names since the interface product string is unverified."
+		},
+		{
+			"category": "cooking",
 			"kind": "item-on-object",
 			"name": "Raw cavefish",
 			"options": [
@@ -237,6 +839,24 @@
 			],
 			"requireAll": true,
 			"notes": ""
+		},
+		{
+			"category": "cooking",
+			"kind": "interface",
+			"name": "Raw cavefish",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Cavefish"
+				]
+			],
+			"groupRoles": [
+				""
+			],
+			"requireAll": true,
+			"notes": "Interface twin of the Raw cavefish cooking rule: catches the range-click \"Cook\" make-interface flow, which bypassed the item-on-object gate. Registered under both raw and cooked names since the interface product string is unverified."
 		},
 		{
 			"category": "cooking",
@@ -266,6 +886,28 @@
 		},
 		{
 			"category": "cooking",
+			"kind": "interface",
+			"name": "Raw chicken",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Cooked chicken"
+				],
+				[
+					"Burnt chicken"
+				]
+			],
+			"groupRoles": [
+				"",
+				"burnt"
+			],
+			"requireAll": true,
+			"notes": "Interface twin of the Raw chicken cooking rule: catches the range-click \"Cook\" make-interface flow, which bypassed the item-on-object gate. Registered under both raw and cooked names since the interface product string is unverified."
+		},
+		{
+			"category": "cooking",
 			"kind": "item-on-object",
 			"name": "Raw cod",
 			"options": [
@@ -280,6 +922,24 @@
 			],
 			"requireAll": true,
 			"notes": ""
+		},
+		{
+			"category": "cooking",
+			"kind": "interface",
+			"name": "Raw cod",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Cod"
+				]
+			],
+			"groupRoles": [
+				""
+			],
+			"requireAll": true,
+			"notes": "Interface twin of the Raw cod cooking rule: catches the range-click \"Cook\" make-interface flow, which bypassed the item-on-object gate. Registered under both raw and cooked names since the interface product string is unverified."
 		},
 		{
 			"category": "cooking",
@@ -309,6 +969,28 @@
 		},
 		{
 			"category": "cooking",
+			"kind": "interface",
+			"name": "Raw dark crab",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Dark crab"
+				],
+				[
+					"Burnt dark crab"
+				]
+			],
+			"groupRoles": [
+				"",
+				"burnt"
+			],
+			"requireAll": true,
+			"notes": "Interface twin of the Raw dark crab cooking rule: catches the range-click \"Cook\" make-interface flow, which bypassed the item-on-object gate. Registered under both raw and cooked names since the interface product string is unverified."
+		},
+		{
+			"category": "cooking",
 			"kind": "item-on-object",
 			"name": "Raw herring",
 			"options": [
@@ -323,6 +1005,24 @@
 			],
 			"requireAll": true,
 			"notes": ""
+		},
+		{
+			"category": "cooking",
+			"kind": "interface",
+			"name": "Raw herring",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Herring"
+				]
+			],
+			"groupRoles": [
+				""
+			],
+			"requireAll": true,
+			"notes": "Interface twin of the Raw herring cooking rule: catches the range-click \"Cook\" make-interface flow, which bypassed the item-on-object gate. Registered under both raw and cooked names since the interface product string is unverified."
 		},
 		{
 			"category": "cooking",
@@ -352,6 +1052,28 @@
 		},
 		{
 			"category": "cooking",
+			"kind": "interface",
+			"name": "Raw karambwan",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Cooked karambwan"
+				],
+				[
+					"Burnt karambwan"
+				]
+			],
+			"groupRoles": [
+				"",
+				"burnt"
+			],
+			"requireAll": true,
+			"notes": "Interface twin of the Raw karambwan cooking rule: catches the range-click \"Cook\" make-interface flow, which bypassed the item-on-object gate. Registered under both raw and cooked names since the interface product string is unverified."
+		},
+		{
+			"category": "cooking",
 			"kind": "item-on-object",
 			"name": "Raw lobster",
 			"options": [
@@ -378,6 +1100,28 @@
 		},
 		{
 			"category": "cooking",
+			"kind": "interface",
+			"name": "Raw lobster",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Lobster"
+				],
+				[
+					"Burnt lobster"
+				]
+			],
+			"groupRoles": [
+				"",
+				"burnt"
+			],
+			"requireAll": true,
+			"notes": "Interface twin of the Raw lobster cooking rule: catches the range-click \"Cook\" make-interface flow, which bypassed the item-on-object gate. Registered under both raw and cooked names since the interface product string is unverified."
+		},
+		{
+			"category": "cooking",
 			"kind": "item-on-object",
 			"name": "Raw mackerel",
 			"options": [
@@ -392,6 +1136,24 @@
 			],
 			"requireAll": true,
 			"notes": ""
+		},
+		{
+			"category": "cooking",
+			"kind": "interface",
+			"name": "Raw mackerel",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Mackerel"
+				]
+			],
+			"groupRoles": [
+				""
+			],
+			"requireAll": true,
+			"notes": "Interface twin of the Raw mackerel cooking rule: catches the range-click \"Cook\" make-interface flow, which bypassed the item-on-object gate. Registered under both raw and cooked names since the interface product string is unverified."
 		},
 		{
 			"category": "cooking",
@@ -421,6 +1183,28 @@
 		},
 		{
 			"category": "cooking",
+			"kind": "interface",
+			"name": "Raw monkfish",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Monkfish"
+				],
+				[
+					"Burnt monkfish"
+				]
+			],
+			"groupRoles": [
+				"",
+				"burnt"
+			],
+			"requireAll": true,
+			"notes": "Interface twin of the Raw monkfish cooking rule: catches the range-click \"Cook\" make-interface flow, which bypassed the item-on-object gate. Registered under both raw and cooked names since the interface product string is unverified."
+		},
+		{
+			"category": "cooking",
 			"kind": "item-on-object",
 			"name": "Raw pike",
 			"options": [
@@ -435,6 +1219,24 @@
 			],
 			"requireAll": true,
 			"notes": ""
+		},
+		{
+			"category": "cooking",
+			"kind": "interface",
+			"name": "Raw pike",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Pike"
+				]
+			],
+			"groupRoles": [
+				""
+			],
+			"requireAll": true,
+			"notes": "Interface twin of the Raw pike cooking rule: catches the range-click \"Cook\" make-interface flow, which bypassed the item-on-object gate. Registered under both raw and cooked names since the interface product string is unverified."
 		},
 		{
 			"category": "cooking",
@@ -464,6 +1266,28 @@
 		},
 		{
 			"category": "cooking",
+			"kind": "interface",
+			"name": "Raw rat meat",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Cooked meat"
+				],
+				[
+					"Burnt meat"
+				]
+			],
+			"groupRoles": [
+				"",
+				"burnt"
+			],
+			"requireAll": true,
+			"notes": "Interface twin of the Raw rat meat cooking rule: catches the range-click \"Cook\" make-interface flow, which bypassed the item-on-object gate. Registered under both raw and cooked names since the interface product string is unverified."
+		},
+		{
+			"category": "cooking",
 			"kind": "item-on-object",
 			"name": "Raw salmon",
 			"options": [
@@ -481,6 +1305,24 @@
 		},
 		{
 			"category": "cooking",
+			"kind": "interface",
+			"name": "Raw salmon",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Salmon"
+				]
+			],
+			"groupRoles": [
+				""
+			],
+			"requireAll": true,
+			"notes": "Interface twin of the Raw salmon cooking rule: catches the range-click \"Cook\" make-interface flow, which bypassed the item-on-object gate. Registered under both raw and cooked names since the interface product string is unverified."
+		},
+		{
+			"category": "cooking",
 			"kind": "item-on-object",
 			"name": "Raw sardine",
 			"options": [
@@ -495,6 +1337,24 @@
 			],
 			"requireAll": true,
 			"notes": ""
+		},
+		{
+			"category": "cooking",
+			"kind": "interface",
+			"name": "Raw sardine",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Sardine"
+				]
+			],
+			"groupRoles": [
+				""
+			],
+			"requireAll": true,
+			"notes": "Interface twin of the Raw sardine cooking rule: catches the range-click \"Cook\" make-interface flow, which bypassed the item-on-object gate. Registered under both raw and cooked names since the interface product string is unverified."
 		},
 		{
 			"category": "cooking",
@@ -524,6 +1384,28 @@
 		},
 		{
 			"category": "cooking",
+			"kind": "interface",
+			"name": "Raw shark",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Shark"
+				],
+				[
+					"Burnt shark"
+				]
+			],
+			"groupRoles": [
+				"",
+				"burnt"
+			],
+			"requireAll": true,
+			"notes": "Interface twin of the Raw shark cooking rule: catches the range-click \"Cook\" make-interface flow, which bypassed the item-on-object gate. Registered under both raw and cooked names since the interface product string is unverified."
+		},
+		{
+			"category": "cooking",
 			"kind": "item-on-object",
 			"name": "Raw shrimps",
 			"options": [
@@ -547,6 +1429,28 @@
 				"",
 				"burnt"
 			]
+		},
+		{
+			"category": "cooking",
+			"kind": "interface",
+			"name": "Raw shrimps",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Shrimps"
+				],
+				[
+					"Burnt shrimp"
+				]
+			],
+			"groupRoles": [
+				"",
+				"burnt"
+			],
+			"requireAll": true,
+			"notes": "Interface twin of the Raw shrimps cooking rule: catches the range-click \"Cook\" make-interface flow, which bypassed the item-on-object gate. Registered under both raw and cooked names since the interface product string is unverified."
 		},
 		{
 			"category": "cooking",
@@ -576,6 +1480,28 @@
 		},
 		{
 			"category": "cooking",
+			"kind": "interface",
+			"name": "Raw slimy eel",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Cooked slimy eel"
+				],
+				[
+					"Burnt eel"
+				]
+			],
+			"groupRoles": [
+				"",
+				"burnt"
+			],
+			"requireAll": true,
+			"notes": "Interface twin of the Raw slimy eel cooking rule: catches the range-click \"Cook\" make-interface flow, which bypassed the item-on-object gate. Registered under both raw and cooked names since the interface product string is unverified."
+		},
+		{
+			"category": "cooking",
 			"kind": "item-on-object",
 			"name": "Raw swordfish",
 			"options": [
@@ -602,6 +1528,28 @@
 		},
 		{
 			"category": "cooking",
+			"kind": "interface",
+			"name": "Raw swordfish",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Swordfish"
+				],
+				[
+					"Burnt swordfish"
+				]
+			],
+			"groupRoles": [
+				"",
+				"burnt"
+			],
+			"requireAll": true,
+			"notes": "Interface twin of the Raw swordfish cooking rule: catches the range-click \"Cook\" make-interface flow, which bypassed the item-on-object gate. Registered under both raw and cooked names since the interface product string is unverified."
+		},
+		{
+			"category": "cooking",
 			"kind": "item-on-object",
 			"name": "Raw trout",
 			"options": [
@@ -619,6 +1567,24 @@
 		},
 		{
 			"category": "cooking",
+			"kind": "interface",
+			"name": "Raw trout",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Trout"
+				]
+			],
+			"groupRoles": [
+				""
+			],
+			"requireAll": true,
+			"notes": "Interface twin of the Raw trout cooking rule: catches the range-click \"Cook\" make-interface flow, which bypassed the item-on-object gate. Registered under both raw and cooked names since the interface product string is unverified."
+		},
+		{
+			"category": "cooking",
 			"kind": "item-on-object",
 			"name": "Raw tuna",
 			"options": [
@@ -633,6 +1599,24 @@
 			],
 			"requireAll": true,
 			"notes": ""
+		},
+		{
+			"category": "cooking",
+			"kind": "interface",
+			"name": "Raw tuna",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Tuna"
+				]
+			],
+			"groupRoles": [
+				""
+			],
+			"requireAll": true,
+			"notes": "Interface twin of the Raw tuna cooking rule: catches the range-click \"Cook\" make-interface flow, which bypassed the item-on-object gate. Registered under both raw and cooked names since the interface product string is unverified."
 		},
 		{
 			"category": "cooking",
@@ -662,6 +1646,108 @@
 		},
 		{
 			"category": "cooking",
+			"kind": "interface",
+			"name": "Raw ugthanki meat",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Ugthanki meat"
+				],
+				[
+					"Burnt meat"
+				]
+			],
+			"groupRoles": [
+				"",
+				"burnt"
+			],
+			"requireAll": true,
+			"notes": "Interface twin of the Raw ugthanki meat cooking rule: catches the range-click \"Cook\" make-interface flow, which bypassed the item-on-object gate. Registered under both raw and cooked names since the interface product string is unverified."
+		},
+		{
+			"category": "cooking",
+			"kind": "interface",
+			"name": "Salmon",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Salmon"
+				]
+			],
+			"groupRoles": [
+				""
+			],
+			"requireAll": true,
+			"notes": "Interface twin of the Raw salmon cooking rule: catches the range-click \"Cook\" make-interface flow, which bypassed the item-on-object gate. Registered under both raw and cooked names since the interface product string is unverified."
+		},
+		{
+			"category": "cooking",
+			"kind": "interface",
+			"name": "Sardine",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Sardine"
+				]
+			],
+			"groupRoles": [
+				""
+			],
+			"requireAll": true,
+			"notes": "Interface twin of the Raw sardine cooking rule: catches the range-click \"Cook\" make-interface flow, which bypassed the item-on-object gate. Registered under both raw and cooked names since the interface product string is unverified."
+		},
+		{
+			"category": "cooking",
+			"kind": "interface",
+			"name": "Shark",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Shark"
+				],
+				[
+					"Burnt shark"
+				]
+			],
+			"groupRoles": [
+				"",
+				"burnt"
+			],
+			"requireAll": true,
+			"notes": "Interface twin of the Raw shark cooking rule: catches the range-click \"Cook\" make-interface flow, which bypassed the item-on-object gate. Registered under both raw and cooked names since the interface product string is unverified."
+		},
+		{
+			"category": "cooking",
+			"kind": "interface",
+			"name": "Shrimps",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Shrimps"
+				],
+				[
+					"Burnt shrimp"
+				]
+			],
+			"groupRoles": [
+				"",
+				"burnt"
+			],
+			"requireAll": true,
+			"notes": "Interface twin of the Raw shrimps cooking rule: catches the range-click \"Cook\" make-interface flow, which bypassed the item-on-object gate. Registered under both raw and cooked names since the interface product string is unverified."
+		},
+		{
+			"category": "cooking",
 			"kind": "item-on-object",
 			"name": "Sweetcorn",
 			"options": [
@@ -685,6 +1771,108 @@
 				"",
 				"burnt"
 			]
+		},
+		{
+			"category": "cooking",
+			"kind": "interface",
+			"name": "Sweetcorn",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Cooked sweetcorn"
+				],
+				[
+					"Burnt sweetcorn"
+				]
+			],
+			"groupRoles": [
+				"",
+				"burnt"
+			],
+			"requireAll": true,
+			"notes": "Interface twin of the Sweetcorn cooking rule: catches the range-click \"Cook\" make-interface flow, which bypassed the item-on-object gate. Registered under both raw and cooked names since the interface product string is unverified."
+		},
+		{
+			"category": "cooking",
+			"kind": "interface",
+			"name": "Swordfish",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Swordfish"
+				],
+				[
+					"Burnt swordfish"
+				]
+			],
+			"groupRoles": [
+				"",
+				"burnt"
+			],
+			"requireAll": true,
+			"notes": "Interface twin of the Raw swordfish cooking rule: catches the range-click \"Cook\" make-interface flow, which bypassed the item-on-object gate. Registered under both raw and cooked names since the interface product string is unverified."
+		},
+		{
+			"category": "cooking",
+			"kind": "interface",
+			"name": "Trout",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Trout"
+				]
+			],
+			"groupRoles": [
+				""
+			],
+			"requireAll": true,
+			"notes": "Interface twin of the Raw trout cooking rule: catches the range-click \"Cook\" make-interface flow, which bypassed the item-on-object gate. Registered under both raw and cooked names since the interface product string is unverified."
+		},
+		{
+			"category": "cooking",
+			"kind": "interface",
+			"name": "Tuna",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Tuna"
+				]
+			],
+			"groupRoles": [
+				""
+			],
+			"requireAll": true,
+			"notes": "Interface twin of the Raw tuna cooking rule: catches the range-click \"Cook\" make-interface flow, which bypassed the item-on-object gate. Registered under both raw and cooked names since the interface product string is unverified."
+		},
+		{
+			"category": "cooking",
+			"kind": "interface",
+			"name": "Ugthanki meat",
+			"options": [
+				"*"
+			],
+			"requiredCardGroups": [
+				[
+					"Ugthanki meat"
+				],
+				[
+					"Burnt meat"
+				]
+			],
+			"groupRoles": [
+				"",
+				"burnt"
+			],
+			"requireAll": true,
+			"notes": "Interface twin of the Raw ugthanki meat cooking rule: catches the range-click \"Cook\" make-interface flow, which bypassed the item-on-object gate. Registered under both raw and cooked names since the interface product string is unverified."
 		},
 		{
 			"category": "farming-compost",
