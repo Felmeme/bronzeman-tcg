@@ -216,6 +216,17 @@ docs/sailing_nodes_report.md):
    prefer the dev client only for testing - play on the hub build.
 
 ## Post-launch backlog (agreed with owner)
+- **Cooking via range-click "Cook" bypasses the restriction (found in the
+  2026-07-16 debug logs)**: clicking "Cook" on a range object (kind=object
+  'Cooking range' option 'Cook' -> NO RULE) opens the cooking interface, and
+  the subsequent make-click isn't covered either — cooking rules live in
+  ResourceNodeCatalog as item-on-object, not in RecipeCatalog, so the
+  make-verb interface fallback finds nothing. Only the use-food-on-range
+  path blocks. Fix needs the exact product string the cooking interface's
+  menu target carries (ask the owner to click through the range->interface
+  flow once with debug logging on — the "node lookup kind=interface" line
+  captures it), then either register interface-kind cooking nodes keyed on
+  that string or mirror the cooking rules into RecipeCatalog.
 - **Raw cavefish / Camdozaal (open owner decision, from the 2026-07-16 burnt
   research)**: Raw cavefish is prepared with a KNIFE at a Preparation Table
   (Cooking 20), not on a fire/range — so the existing cooking node for it

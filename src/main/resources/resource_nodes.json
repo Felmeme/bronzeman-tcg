@@ -6228,6 +6228,195 @@
 		{
 			"category": "slayer",
 			"kind": "npc",
+			"name": "Achtryn",
+			"options": [
+				"talk-to",
+				"assignment",
+				"trade",
+				"rewards"
+			],
+			"requiredCardGroups": [
+				[
+					"Achtryn"
+				],
+				[
+					"Banshee"
+				],
+				[
+					"Bat"
+				],
+				[
+					"Black bear"
+				],
+				[
+					"Catablepon"
+				],
+				[
+					"Cave bug"
+				],
+				[
+					"Cave crawler"
+				],
+				[
+					"Cave slime"
+				],
+				[
+					"Cockatrice"
+				],
+				[
+					"Crab"
+				],
+				[
+					"Crawling Hand"
+				],
+				[
+					"Feral Vampyre"
+				],
+				[
+					"Flesh Crawler"
+				],
+				[
+					"Ghost"
+				],
+				[
+					"Ghoul"
+				],
+				[
+					"Grizzly bear"
+				],
+				[
+					"Guard dog"
+				],
+				[
+					"Hill Giant"
+				],
+				[
+					"Hobgoblin"
+				],
+				[
+					"Ice warrior"
+				],
+				[
+					"Jackal"
+				],
+				[
+					"Kalphite Guardian"
+				],
+				[
+					"Kalphite Soldier"
+				],
+				[
+					"Kalphite Worker"
+				],
+				[
+					"Killerwatt"
+				],
+				[
+					"Lizard"
+				],
+				[
+					"Mogre"
+				],
+				[
+					"Pyrefiend"
+				],
+				[
+					"Rockslug"
+				],
+				[
+					"Scorpion"
+				],
+				[
+					"Shade"
+				],
+				[
+					"Skeleton"
+				],
+				[
+					"Vampyre Juvinate"
+				],
+				[
+					"Wall beast"
+				],
+				[
+					"Wild dog"
+				],
+				[
+					"Wolf"
+				],
+				[
+					"Zombie"
+				],
+				[
+					"Chasm Crawler"
+				],
+				[
+					"Cockathrice"
+				],
+				[
+					"Crushing hand"
+				],
+				[
+					"Flaming pyrelord"
+				],
+				[
+					"Giant rockslug"
+				],
+				[
+					"Screaming banshee"
+				]
+			],
+			"groupRoles": [
+				"master",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors"
+			],
+			"requireAll": true,
+			"notes": "Achtryn replaces Mazchna after While Guthix Sleeps (2024); identical assignment table per the wiki, so the monster/superior groups are cloned from Mazchna with only the master card swapped."
+		},
+		{
+			"category": "slayer",
+			"kind": "npc",
 			"name": "Aya",
 			"options": [
 				"talk-to",
@@ -7537,6 +7726,335 @@
 			],
 			"requireAll": true,
 			"notes": "master card + 45 assignable-monster cards; toggles include/exclude roles"
+		},
+		{
+			"category": "slayer",
+			"kind": "npc",
+			"name": "Kuradal",
+			"options": [
+				"talk-to",
+				"assignment",
+				"trade",
+				"rewards"
+			],
+			"requiredCardGroups": [
+				[
+					"Kuradal"
+				],
+				[
+					"Aberrant spectre"
+				],
+				[
+					"Abyssal demon"
+				],
+				[
+					"Ancient Wyvern"
+				],
+				[
+					"Ancient Zygomite"
+				],
+				[
+					"Ankou"
+				],
+				[
+					"Aquanite"
+				],
+				[
+					"Araxyte"
+				],
+				[
+					"Aviansie"
+				],
+				[
+					"Basilisk"
+				],
+				[
+					"Black demon"
+				],
+				[
+					"Black dragon"
+				],
+				[
+					"Bloodveld"
+				],
+				[
+					"Blue dragon"
+				],
+				[
+					"Bronze dragon"
+				],
+				[
+					"Cave horror"
+				],
+				[
+					"Cave kraken"
+				],
+				[
+					"Dagannoth"
+				],
+				[
+					"Dark beast"
+				],
+				[
+					"Drake"
+				],
+				[
+					"Dust devil"
+				],
+				[
+					"Elf Archer"
+				],
+				[
+					"Elf Warrior"
+				],
+				[
+					"Feral Vampyre"
+				],
+				[
+					"Fire giant"
+				],
+				[
+					"Frost dragon"
+				],
+				[
+					"Gargoyle"
+				],
+				[
+					"Greater demon"
+				],
+				[
+					"Gryphon"
+				],
+				[
+					"Hellhound"
+				],
+				[
+					"Iron dragon"
+				],
+				[
+					"Kalphite Guardian"
+				],
+				[
+					"Kalphite Soldier"
+				],
+				[
+					"Kalphite Worker"
+				],
+				[
+					"Kurask"
+				],
+				[
+					"Lizardman"
+				],
+				[
+					"Long-tailed Wyvern"
+				],
+				[
+					"Mountain troll"
+				],
+				[
+					"Nechryael"
+				],
+				[
+					"Red dragon"
+				],
+				[
+					"Skeletal Wyvern"
+				],
+				[
+					"Smoke devil"
+				],
+				[
+					"Spiritual mage"
+				],
+				[
+					"Spiritual ranger"
+				],
+				[
+					"Spiritual warrior"
+				],
+				[
+					"Spitting Wyvern"
+				],
+				[
+					"Steel dragon"
+				],
+				[
+					"Suqah"
+				],
+				[
+					"Taloned Wyvern"
+				],
+				[
+					"TzHaar-Hur"
+				],
+				[
+					"TzHaar-Ket"
+				],
+				[
+					"TzHaar-Mej"
+				],
+				[
+					"TzHaar-Xil"
+				],
+				[
+					"Vampyre Juvinate"
+				],
+				[
+					"Warped Terrorbird"
+				],
+				[
+					"Warped Tortoise"
+				],
+				[
+					"Waterfiend"
+				],
+				[
+					"Wyrm"
+				],
+				[
+					"Zygomite"
+				],
+				[
+					"Abhorrent spectre"
+				],
+				[
+					"Cave abomination"
+				],
+				[
+					"Choke devil"
+				],
+				[
+					"Dire gryphon"
+				],
+				[
+					"Dreadborn Araxyte"
+				],
+				[
+					"Elder aquanite"
+				],
+				[
+					"Greater abyssal demon"
+				],
+				[
+					"Guardian Drake"
+				],
+				[
+					"Insatiable Bloodveld"
+				],
+				[
+					"King kurask"
+				],
+				[
+					"Marble gargoyle"
+				],
+				[
+					"Monstrous Basilisk (The Fremennik Exiles)"
+				],
+				[
+					"Monstrous basilisk"
+				],
+				[
+					"Mutated Terrorbird"
+				],
+				[
+					"Mutated Tortoise"
+				],
+				[
+					"Nechryarch"
+				],
+				[
+					"Night beast"
+				],
+				[
+					"Nuclear smoke devil"
+				],
+				[
+					"Shadow Wyrm"
+				]
+			],
+			"groupRoles": [
+				"master",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors"
+			],
+			"requireAll": true,
+			"notes": "Kuradal replaces Duradel after While Guthix Sleeps (2024); identical assignment table per the wiki, so the monster/superior groups are cloned from Duradel with only the master card swapped."
 		},
 		{
 			"category": "slayer",
