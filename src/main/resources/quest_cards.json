@@ -2397,6 +2397,9 @@
 				],
 				[
 					"Papyrus"
+				],
+				[
+					"Ungadulu"
 				]
 			],
 			"groupLabels": [
@@ -2411,7 +2414,8 @@
 				"Law rune",
 				"Earth rune",
 				"Unpowered orb",
-				"Papyrus"
+				"Papyrus",
+				"Ungadulu (use the binding book on him to release the demon Nezikchened)"
 			],
 			"monsterCards": [
 				"Ranalph Devere",
@@ -2419,7 +2423,7 @@
 				"San Tojalon",
 				"Nezikchened"
 			],
-			"notes": ""
+			"notes": "Walkthrough-mining pass additions: Then, use your binding book on Ungadulu to release the demon, Nezikchened."
 		},
 		{
 			"name": "Lost City",
@@ -3213,8 +3217,17 @@
 				"Logs",
 				"Tinderbox"
 			],
-			"monsterCards": [],
-			"notes": ""
+			"monsterCards": [
+				"Giant rat",
+				"Unicorn",
+				"Black bear",
+				"Ram",
+				"Goblin",
+				"Big frog",
+				"Giant bat",
+				"Monkey (monster)"
+			],
+			"notes": "Walkthrough-mining pass additions: kill a Giant rat ... picking up the giant rat bone; kill a unicorn and black bear ...; kill a ram to get a ram skull; ki"
 		},
 		{
 			"name": "Rag and Bone Man II",
@@ -5384,6 +5397,12 @@
 				],
 				[
 					"Jangerberries"
+				],
+				[
+					"Ogre shaman"
+				],
+				[
+					"Enclave guard"
 				]
 			],
 			"groupLabels": [
@@ -5395,13 +5414,15 @@
 				"Rope",
 				"Pestle and mortar",
 				"Bat bones",
-				"Jangerberries"
+				"Jangerberries",
+				"Ogre shaman (use magic ogre potion on each of the six shamans)",
+				"Enclave guard (distract with cave nightshade to enter the Ogre Enclave)"
 			],
 			"monsterCards": [
 				"Gorad",
 				"Giant bat"
 			],
-			"notes": ""
+			"notes": "Walkthrough-mining pass additions: Run around the cave and use the magic ogre potion on each of the six ogre shamans ...; Now use one of your nightshades o"
 		},
 		{
 			"name": "Waterfall Quest",
