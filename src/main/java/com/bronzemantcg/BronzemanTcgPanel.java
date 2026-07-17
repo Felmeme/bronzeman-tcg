@@ -72,6 +72,7 @@ class BronzemanTcgPanel extends PluginPanel
 	private final JLabel skillsHeader = sectionHeader("Skills ▸");
 	private boolean skillsExpanded;
 	private final Set<String> expandedSkills = new HashSet<>();
+	private final javax.swing.JCheckBox showLockedMethods = new javax.swing.JCheckBox("Show locked methods");
 	private final javax.swing.JCheckBox unlockedOnly = new javax.swing.JCheckBox("Unlocked only");
 
 	BronzemanTcgPanel(TrackedMonsterCatalog monsterCatalog, TrackedItemCatalog itemCatalog,
@@ -118,6 +119,10 @@ class BronzemanTcgPanel extends PluginPanel
 		unlockedOnly.setForeground(ColorScheme.LIGHT_GRAY_COLOR);
 		unlockedOnly.setToolTipText("Filter search to cards you own; with an empty search, browse everything you've unlocked");
 		unlockedOnly.addActionListener(e -> refreshSearch());
+
+		showLockedMethods.setBackground(ColorScheme.DARK_GRAY_COLOR);
+		showLockedMethods.setForeground(ColorScheme.LIGHT_GRAY_COLOR);
+		showLockedMethods.addActionListener(e -> refreshSkills());
 
 		add(searchBar);
 		add(unlockedOnly);
@@ -436,6 +441,16 @@ class BronzemanTcgPanel extends PluginPanel
 
 		if (skillsExpanded)
 		{
+			JLabel hint = new JLabel("<html>Credits: 100 per 1,000 non-combat XP, level-up"
+				+ " bonuses, and each kill pays its combat level. Combat XP itself pays"
+				+ " nothing.</html>");
+			hint.setFont(hint.getFont().deriveFont(11f));
+			hint.setForeground(ColorScheme.LIGHT_GRAY_COLOR);
+			hint.setBorder(BorderFactory.createEmptyBorder(2, 6, 4, 6));
+			skillsList.add(hint);
+			skillsList.add(showLockedMethods);
+
+			boolean showLocked = showLockedMethods.isSelected();
 			for (Map.Entry<String, List<Method>> e : skills.entrySet())
 			{
 				List<Method> methods = e.getValue();
@@ -471,19 +486,45 @@ class BronzemanTcgPanel extends PluginPanel
 					sorted.sort(Comparator
 						.comparingInt((Method m) -> m.missing.size())
 						.thenComparing(m -> m.name, String.CASE_INSENSITIVE_ORDER));
-					int shown = 0;
+
+					List<Method> usable = new ArrayList<>();
+					List<Method> locked = new ArrayList<>();
 					for (Method method : sorted)
+					{
+						(method.unlocked() ? usable : locked).add(method);
+					}
+
+					// Trainable-now first and foremost; locked rows only on request,
+					// except a "closest unlocks" teaser when nothing is usable yet.
+					List<Method> toShow = new ArrayList<>(usable);
+					if (showLocked)
+					{
+						toShow.addAll(locked);
+					}
+					else if (usable.isEmpty() && !locked.isEmpty())
+					{
+						skillsList.add(mutedRow("  Nothing usable yet - closest unlocks:"));
+						toShow.addAll(locked.subList(0, Math.min(3, locked.size())));
+					}
+
+					int shown = 0;
+					for (Method method : toShow)
 					{
 						if (++shown > MAX_METHOD_ROWS)
 						{
-							skillsList.add(mutedRow("  ...and " + (sorted.size() - MAX_METHOD_ROWS)
-								+ " more locked"));
+							skillsList.add(mutedRow("  ...and " + (toShow.size() - MAX_METHOD_ROWS)
+								+ " more"));
 							break;
 						}
 						JPanel methodRow = statusRow("  " + method.name, method.unlocked(),
 							method.unlocked() ? null : String.join(", ", method.missing));
 						methodRow.setBackground(ColorScheme.DARK_GRAY_COLOR);
 						skillsList.add(methodRow);
+					}
+					if (!showLocked && !usable.isEmpty() && !locked.isEmpty())
+					{
+						skillsList.add(mutedRow("  +" + locked.size()
+							+ " locked (tick 'Show locked methods')"));
 					}
 				}
 			}
