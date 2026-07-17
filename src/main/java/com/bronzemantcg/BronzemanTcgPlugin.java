@@ -66,8 +66,8 @@ import net.runelite.client.util.Text;
  */
 @Slf4j
 @PluginDescriptor(
-	name = "TCG Locked Official",
-	description = "Account restriction settings to work alongside the OSRS TCG Plugin. Formerly Bronzeman TCG",
+	name = "Bronzeman TCG",
+	description = "Account restriction settings to work alongside the OSRS TCG Plugin.",
 	tags = {"bronzeman", "tcg", "restriction", "ironman", "challenge"}
 )
 public class BronzemanTcgPlugin extends Plugin implements RenderCallback
