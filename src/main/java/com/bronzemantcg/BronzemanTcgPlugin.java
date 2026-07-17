@@ -66,8 +66,8 @@ import net.runelite.client.util.Text;
  */
 @Slf4j
 @PluginDescriptor(
-	name = "Bronzeman TCG",
-	description = "Restricts attacking, looting, equipping, buying, gathering and crafting until you've collected the card in the OSRS TCG plugin",
+	name = "TCG Locked Official",
+	description = "Account restriction settings to work alongside the OSRS TCG Plugin. Formerly Bronzeman TCG",
 	tags = {"bronzeman", "tcg", "restriction", "ironman", "challenge"}
 )
 public class BronzemanTcgPlugin extends Plugin implements RenderCallback

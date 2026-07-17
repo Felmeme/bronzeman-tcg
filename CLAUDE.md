@@ -37,6 +37,10 @@
   - The shell-permission service occasionally drops for a few minutes
     ("temporarily unavailable... classifier"); Write/Edit still work — route
     file changes through them and commit when it recovers.
+- **Owner commits himself (2026-07-16 onward)**: the assistant edits files
+  and build-verifies, then hands over the changed-file list + a suggested
+  commit message; the owner stages, commits and pushes in IntelliJ. Do not
+  run git add/commit/push for repo changes unless explicitly asked.
 - **Owner working style**: see the memory files (Opus agents for wiki/data
   research with exact-match validation against Card.json; every difficulty
   knob is a config dropdown; owner decides design calls from concise

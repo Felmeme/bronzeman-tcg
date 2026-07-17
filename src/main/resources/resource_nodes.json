@@ -249,6 +249,9 @@
 				],
 				[
 					"Burnt karambwan"
+				],
+				[
+					"Poison karambwan"
 				]
 			],
 			"groupRoles": [
@@ -3193,7 +3196,8 @@
 			"requiredCards": [
 				"Raw mackerel",
 				"Raw cod",
-				"Raw bass"
+				"Raw bass",
+				"Big fishing net"
 			],
 			"requireAll": false,
 			"notes": "Fishing spots yield different fish by location; we list the UNION and use requireAll=false so owning ANY yielded fish unlocks the spot (cannot distinguish location)."
@@ -3207,10 +3211,10 @@
 			],
 			"requiredCards": [
 				"Raw lobster",
-				"Raw dark crab"
+				"Lobster pot"
 			],
 			"requireAll": false,
-			"notes": "Fishing spots yield different fish by location; we list the UNION and use requireAll=false so owning ANY yielded fish unlocks the spot (cannot distinguish location)."
+			"notes": "Fishing spots yield different fish by location; we list the UNION and use requireAll=false so owning ANY yielded fish unlocks the spot. Dark Crabs need to be added and change lobster spots to IDs instead"
 		},
 		{
 			"category": "fishing",
@@ -10806,7 +10810,8 @@
 			"requiredCardGroups": [
 				[
 					"Bread",
-					"Cake"
+					"Cake",
+					"Chocolate cake"
 				]
 			],
 			"groupRoles": [
@@ -10825,7 +10830,8 @@
 			"requiredCardGroups": [
 				[
 					"Bread",
-					"Cake"
+					"Cake",
+					"Chocolate cake"
 				]
 			],
 			"groupRoles": [
