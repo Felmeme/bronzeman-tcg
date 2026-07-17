@@ -835,8 +835,10 @@
 			"miniquest": false,
 			"cardGroups": [],
 			"groupLabels": [],
-			"monsterCards": [],
-			"notes": ""
+			"monsterCards": [
+				"Adala"
+			],
+			"notes": "Enemy re-derivation: Adala added (required combat NPC named only in prose/kills=)."
 		},
 		{
 			"name": "Death to the Dorgeshuun",
@@ -4761,9 +4763,10 @@
 				"Lanzig",
 				"Borrokar",
 				"Lensa",
-				"Freidir"
+				"Freidir",
+				"The Draugen"
 			],
-			"notes": ""
+			"notes": "Enemy re-derivation: The Draugen added (required combat NPC named only in prose/kills=)."
 		},
 		{
 			"name": "The Frozen Door",

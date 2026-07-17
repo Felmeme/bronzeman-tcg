@@ -294,8 +294,18 @@ docs/sailing_nodes_report.md):
   (same pattern as the osrs-tcg interop).
 - Krystilia require-all difficulty revisit (wilderness bosses).
 - Sailing test pass (see DEFERRED section above).
+- **Quest enemy variant-name aliases (held from the 2026-07-16 re-derivation)**:
+  Cuthbert (Ribbiting Tale, fought as "Cuthbert, Lord of Dread") and Metzli
+  (The Final Dawn, fought as "Augur Metzli") have cards but the fought NPC's
+  right-click name differs from the card/snapshot key, so adding them would
+  gate nothing. To ship: capture the exact menu name in-game (node-lookup
+  log), add a snapshot alias (fought name -> card), then add the quest
+  monsterCards. Same class as the Kuradal/troll naming traps. See
+  docs/quest_enemy_rederivation_report.md.
 - Upstream card-gap report to osrs-tcg: Onyx ring; larupia/kyatt/kebbits/
-  moths/Herbiboar hunter creatures; blurite/barronite ores.
+  moths/Herbiboar hunter creatures; blurite/barronite ores; and required
+  quest kills with no card (Naiatli, Solus Dellagar, Koschei, the five
+  Blood Moon Rises bosses, Red Reef pirate captains).
 
 ## Maintenance contracts with upstream osrs-tcg
 - If its `Card.json` changes: regenerate both snapshot resources with
