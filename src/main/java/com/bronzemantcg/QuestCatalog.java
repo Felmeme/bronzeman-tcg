@@ -93,7 +93,14 @@ public class QuestCatalog
 						}
 					}
 				}
-				loaded.add(new QuestEntry(dto.name.trim(), dto.miniquest, requirements));
+				if (dto.miniquest)
+				{
+					// Owner ruling 2026-07-16: miniquests stay in the data (23 entries,
+					// future-proofing) but are hidden from the panel's quest list.
+					continue;
+				}
+				loaded.add(new QuestEntry(dto.name.trim(), false, requirements,
+					dto.notes == null ? "" : dto.notes.trim()));
 			}
 			loaded.sort((a, b) -> a.name.compareToIgnoreCase(b.name));
 			quests = Collections.unmodifiableList(loaded);
@@ -188,5 +195,6 @@ public class QuestCatalog
 		List<List<String>> cardGroups;
 		List<String> groupLabels;
 		List<String> monsterCards;
+		String notes;
 	}
 }
