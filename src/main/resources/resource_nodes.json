@@ -4558,6 +4558,19 @@
 		{
 			"category": "mining",
 			"kind": "object",
+			"name": "Ore Vein",
+			"options": [
+				"mine"
+			],
+			"requiredCards": [
+				"Pay-dirt"
+			],
+			"requireAll": true,
+			"notes": ""
+		},
+		{
+			"category": "mining",
+			"kind": "object",
 			"name": "Rune Essence",
 			"options": [
 				"mine"
@@ -5665,6 +5678,24 @@
 			]
 		},
 		{
+			"category": "quest-cots",
+			"kind": "npc",
+			"name": "Guard",
+			"options": [
+				"mark"
+			],
+			"requiredCardGroups": [
+				[
+					"Guard"
+				]
+			],
+			"groupRoles": [
+				""
+			],
+			"requireAll": true,
+			"notes": "Children of the Sun: marking the patrolling guards is a direct 'Mark' NPC option (not item-on-NPC as first assumed). Gated behind the Guard card by default; the 'Allow CotS guard marking' toggle disables this rule AND unhides Guards from hide-locked-NPCs so the quest stays completable without the card."
+		},
+		{
 			"category": "runecrafting",
 			"kind": "object",
 			"name": "Air altar",
@@ -6222,9 +6253,9 @@
 		{
 			"category": "sailing-salvage",
 			"kind": "object",
-			"name": "Small shipwreck",
+			"name": "Steel salvaging hook",
 			"options": [
-				"salvage"
+				"deploy"
 			],
 			"requiredCardGroups": [
 				[

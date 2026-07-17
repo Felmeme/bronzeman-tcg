@@ -28,80 +28,80 @@ public interface BronzemanTcgConfig extends Config
 //	)
 //	String itemsSection = "itemsSection";
 
-	@ConfigSection(
-			name = "Resource nodes",
-			description = "Block gathering from skill resource nodes until the card of the item they yield is collected.",
-			position = 2
-	)
-	String resourceNodesSection = "resourceNodesSection";
+//	@ConfigSection(
+//			name = "Resource nodes",
+//			description = "Block gathering from skill resource nodes until the card of the item they yield is collected.",
+//			position = 2
+//	)
+//	String resourceNodesSection = "resourceNodesSection";
 
 	@ConfigSection(
 			name = "Firemaking",
 			description = "Lighting fires requires the log (and optionally Tinderbox) cards.",
-			position = 7
+			position = 6
 	)
 	String firemakingSection = "firemakingSection";
 
 	@ConfigSection(
 			name = "Smithing",
 			description = "Smelting bars and smithing items require ore, bar and product cards.",
-			position = 9
+			position = 8
 	)
 	String smithingSection = "smithingSection";
 
 	@ConfigSection(
 			name = "Cooking",
 			description = "Cooking raw food requires the cooked (and optionally burnt) item cards.",
-			position = 4
+			position = 3
 	)
 	String cookingSection = "cookingSection";
 
 	@ConfigSection(
 			name = "Crafting",
 			description = "Crafting and enchanting require the input and output item cards.",
-			position = 5
+			position = 4
 	)
 	String craftingSection = "craftingSection";
 
-	@ConfigSection(
-			name = "Skill Options",
-			description = "Recipe restrictions for the remaining skills: making things requires the cards of what goes in and/or what comes out.",
-			position = 3
-	)
-	String skillOptionsSection = "skillOptionsSection";
+//	@ConfigSection(
+//			name = "Skill Options",
+//			description = "Recipe restrictions for the remaining skills: making things requires the cards of what goes in and/or what comes out.",
+//			position = 2
+//	)
+//	String skillOptionsSection = "skillOptionsSection";
 
 	@ConfigSection(
 			name = "Hunter",
 			description = "Hunting requires the gear cards (and optionally the creature cards) for each method.",
-			position = 8
+			position = 7
 	)
 	String hunterSection = "hunterSection";
 
 	@ConfigSection(
 			name = "Farming",
 			description = "Patch and compost restrictions.",
-			position = 6
+			position = 5
 	)
 	String farmingSection = "farmingSection";
 
 	@ConfigSection(
 			name = "Slayer",
 			description = "Slayer master restrictions.",
-			position = 10
+			position = 9
 	)
 	String slayerSection = "slayerSection";
 
 	@ConfigSection(
 			name = "Thieving",
 			description = "Pickpocketing restrictions.",
-			position = 12
+			position = 11
 	)
 	String thievingSection = "thievingSection";
 
 	@ConfigSection(
 			name = "Sailing",
 			description = "Boat upgrade and salvaging restrictions.",
-			position = 11
+			position = 10
 	)
 	String sailingSection = "sailingSection";
 
@@ -111,6 +111,63 @@ public interface BronzemanTcgConfig extends Config
 			position = 1
 	)
 	String visualsSection = "visualsSection";
+
+	@ConfigSection(
+			name = "Mining",
+			description = "Mining restrictions.",
+			position = 13
+	)
+	String miningSection = "miningSection";
+
+	@ConfigSection(
+			name = "Woodcutting",
+			description = "Woodcutting restrictions.",
+			position = 12
+	)
+	String woodcuttingSection = "woodcuttingSection";
+
+	@ConfigSection(
+			name = "Fishing",
+			description = "Fishing restrictions.",
+			position = 14
+	)
+	String fishingSection = "fishingSection";
+
+	@ConfigSection(
+			name = "Fletching",
+			description = "Fletching restrictions.",
+			position = 15
+	)
+	String fletchingSection = "fletchingSection";
+
+	@ConfigSection(
+			name = "Herblore",
+			description = "Herblore restrictions.",
+			position = 16
+	)
+	String herbloreSection = "herbloreSection";
+
+	@ConfigSection(
+			name = "Runecrafting",
+			description = "Runecrafting restrictions.",
+			position = 17
+	)
+	String runecraftingSection = "runecraftingSection";
+
+
+//	@ConfigSection(
+//			name = "Construction",
+//			description = "Construction restrictions.",
+//			position = #
+//	)
+//	String constructionSection = "constructionSection";
+
+//	@ConfigSection(
+//			name = "Agility",
+//			description = "Agility restrictions.",
+//			position = #
+//	)
+//	String agilitySection = "agilitySection";
 
 	//----------------
 	//General Settings
@@ -252,6 +309,37 @@ public interface BronzemanTcgConfig extends Config
 		return true;
 	}
 
+	@ConfigItem(
+		keyName = "hideLockedOptions",
+		name = "Hide locked menu options",
+		description = "Remove blocked options from menus entirely instead of just cancelling the "
+			+ "click - a locked tree loses Chop down, a locked ground item loses Take (Walk here "
+			+ "becomes the default), a locked NPC loses Attack."
+			+ "<br>Covers NPCs, ground items, objects and inventory items; only the options the "
+			+ "plugin would block are hidden. The chat warning remains as the final guard.",
+		section = generalSettings,
+		position = 11
+	)
+	default boolean hideLockedOptions()
+	{
+		return true;
+	}
+
+	@ConfigItem(
+		keyName = "allowCotsGuards",
+		name = "Allow CotS guard marking",
+		description = "Children of the Sun requires marking patrolling Guards, which is gated behind "
+			+ "the Guard card by default."
+			+ "<br>Enable to complete the quest without the card: marking is allowed and Guards stay "
+			+ "visible even with 'Hide locked NPCs' on.",
+		section = generalSettings,
+		position = 12
+	)
+	default boolean allowCotsGuards()
+	{
+		return false;
+	}
+
 	//----------------
 	//Resource nodes
 	//----------------
@@ -260,7 +348,7 @@ public interface BronzemanTcgConfig extends Config
 		name = "Restrict woodcutting",
 		description = "Block chopping trees until the respective logs card is collected."
 			+ "<br>e.g. Oak tree needs Oak logs.",
-		section = resourceNodesSection,
+		section = woodcuttingSection,
 		position = 0
 	)
 	default boolean restrictWoodcutting()
@@ -273,8 +361,8 @@ public interface BronzemanTcgConfig extends Config
 		name = "Restrict mining",
 		description = "Block mining rocks until the respective ore card is collected."
 			+ "<br>e.g. Copper rocks need Copper ore.",
-		section = resourceNodesSection,
-		position = 1
+		section = miningSection,
+		position = 0
 	)
 	default boolean restrictMining()
 	{
@@ -291,8 +379,8 @@ public interface BronzemanTcgConfig extends Config
 			+ "<br>'Require ALL': the spot type stays locked until you own every fish it can yield "
 			+ "(e.g. Harpoon needs Raw tuna, Raw swordfish AND Raw shark)."
 			+ "<br>'Off': no fishing restriction.",
-		section = resourceNodesSection,
-		position = 2
+		section = fishingSection,
+		position = 0
 	)
 	default FishingRestrictionMode fishingMode()
 	{
@@ -438,7 +526,7 @@ public interface BronzemanTcgConfig extends Config
 		name = "Restrict fletching",
 		description = "Fletching requires the input and output item cards where input cards exist."
 			+ "<br>Arrowtips and most dart tips have no cards, so those recipes enforce the output.",
-		section = skillOptionsSection,
+		section = fletchingSection,
 		position = 0
 	)
 	default boolean restrictFletching()
@@ -452,7 +540,7 @@ public interface BronzemanTcgConfig extends Config
 		description = "Making potions requires the input cards (herb/unfinished/secondary) and the "
 			+ "output potion card."
 			+ "<br>Card names are dose-less, so any dose matches the one card.",
-		section = skillOptionsSection,
+		section = herbloreSection,
 		position = 1
 	)
 	default boolean restrictHerblore()
@@ -466,7 +554,7 @@ public interface BronzemanTcgConfig extends Config
 		description = "Crafting at an altar requires essence + talisman (tiara counts) cards."
 			+ "<br>'Talisman and Runes' additionally requires the crafted rune's card."
 			+ "<br>Altars with no talisman (Astral/Blood/Soul) skip that part.",
-		section = skillOptionsSection,
+		section = runecraftingSection,
 		position = 2
 	)
 	default RunecraftingMode runecraftingMode()

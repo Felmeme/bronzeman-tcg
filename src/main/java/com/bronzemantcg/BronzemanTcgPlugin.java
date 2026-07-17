@@ -28,6 +28,7 @@ import net.runelite.api.Player;
 import net.runelite.api.Renderable;
 import net.runelite.api.coords.WorldPoint;
 import net.runelite.api.events.GameTick;
+import net.runelite.api.events.MenuEntryAdded;
 import net.runelite.api.events.MenuOptionClicked;
 import net.runelite.api.gameval.InterfaceID;
 import net.runelite.api.gameval.ItemID;
@@ -201,7 +202,144 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 			return true;
 		}
 		String name = resolveNpcName((NPC) renderable);
-		return name == null || name.isEmpty() || isUnlocked(monsterCatalog, name);
+		if (name == null || name.isEmpty())
+		{
+			return true;
+		}
+		// CotS override: with guard marking allowed, Guards must stay visible even while
+		// locked, or hide-locked-NPCs silently bricks the quest.
+		if (config.allowCotsGuards() && "guard".equals(name.toLowerCase(Locale.ROOT)))
+		{
+			return true;
+		}
+		return isUnlocked(monsterCatalog, name);
+	}
+
+	/**
+	 * Menu-entry hiding: blocked options are removed from menus as they assemble, so a
+	 * locked tree simply has no Chop down and a locked ground item's left-click falls
+	 * through to Walk here. Decisions come from the same evaluate* helpers as the
+	 * click-consuming path (which stays as the final guard for keyboard flows and
+	 * anything this pass misses), so the hidden set and the blocked set cannot drift.
+	 * Interface/bank/shop/item-on-item menus stay consume-only by design. Fires many
+	 * times per frame while menus assemble; every check must stay a map lookup.
+	 */
+	@Subscribe
+	public void onMenuEntryAdded(MenuEntryAdded event)
+	{
+		if (!config.hideLockedOptions() || isLmsBypassed())
+		{
+			return;
+		}
+		MenuEntry entry = event.getMenuEntry();
+		if (shouldHideEntry(entry))
+		{
+			client.getMenu().removeMenuEntry(entry);
+		}
+	}
+
+	private boolean shouldHideEntry(MenuEntry entry)
+	{
+		MenuAction type = entry.getType();
+		String option = Text.removeTags(entry.getOption()).trim();
+		if (option.isEmpty())
+		{
+			return false;
+		}
+		String optionLower = option.toLowerCase(Locale.ROOT);
+
+		switch (type)
+		{
+			case NPC_FIRST_OPTION:
+			case NPC_SECOND_OPTION:
+			case NPC_THIRD_OPTION:
+			case NPC_FOURTH_OPTION:
+			case NPC_FIFTH_OPTION:
+			{
+				NPC npc = entry.getNpc();
+				if (npc == null)
+				{
+					return false;
+				}
+				String name = resolveNpcName(npc);
+				if (name == null || name.isEmpty())
+				{
+					return false;
+				}
+				if (ATTACK_OPTION.equals(optionLower) && config.restrictAttacks()
+					&& !isUnlocked(monsterCatalog, name))
+				{
+					return true;
+				}
+				if (MASTER_FARMER_NAME.equals(name.toLowerCase(Locale.ROOT))
+					&& PICKPOCKET_OPTION.equals(optionLower))
+				{
+					List<String> missing = masterFarmerMissing();
+					return missing != null && !missing.isEmpty();
+				}
+				return evaluateNodeRule(ResourceNodeCatalog.KIND_NPC, name, option) != null;
+			}
+			case GROUND_ITEM_FIRST_OPTION:
+			case GROUND_ITEM_SECOND_OPTION:
+			case GROUND_ITEM_THIRD_OPTION:
+			case GROUND_ITEM_FOURTH_OPTION:
+			case GROUND_ITEM_FIFTH_OPTION:
+			{
+				if (!config.restrictLoot() || !TAKE_OPTION.equals(optionLower))
+				{
+					return false;
+				}
+				String itemName = itemManager.getItemComposition(entry.getIdentifier()).getName();
+				return itemName != null && !itemName.isEmpty() && !isLootExempt(itemName)
+					&& !isUnlocked(itemCatalog, itemName);
+			}
+			case GAME_OBJECT_FIRST_OPTION:
+			case GAME_OBJECT_SECOND_OPTION:
+			case GAME_OBJECT_THIRD_OPTION:
+			case GAME_OBJECT_FOURTH_OPTION:
+			case GAME_OBJECT_FIFTH_OPTION:
+			{
+				String objectName = Text.removeTags(entry.getTarget()).trim();
+				return !objectName.isEmpty()
+					&& evaluateNodeRule(ResourceNodeCatalog.KIND_OBJECT, objectName, option) != null;
+			}
+			case CC_OP:
+			case CC_OP_LOW_PRIORITY:
+			{
+				// Inventory item ops only; bank/shop/interface menus stay consume-only.
+				if (!entry.isItemOp() || entry.getItemId() <= 0
+					|| WidgetUtil.componentToInterface(entry.getParam1()) != InterfaceID.INVENTORY)
+				{
+					return false;
+				}
+				String itemName = itemManager.getItemComposition(entry.getItemId()).getName();
+				if (itemName == null || itemName.isEmpty())
+				{
+					return false;
+				}
+				// Activity gates (trap laying) apply even to exempt items, mirroring the click path.
+				if (evaluateNodeRule(ResourceNodeCatalog.KIND_INVENTORY, itemName, option) != null)
+				{
+					return true;
+				}
+				if (isLootExempt(itemName) || isUnlocked(itemCatalog, itemName))
+				{
+					return false;
+				}
+				if (config.restrictEquipping() && EQUIP_VERBS.contains(optionLower))
+				{
+					return true;
+				}
+				if (config.restrictPotionDrinking() && "drink".equals(optionLower))
+				{
+					return true;
+				}
+				return config.forcedDropMode() != ForcedDropMode.OFF
+					&& !FORCED_DROP_ALLOWED.contains(optionLower);
+			}
+			default:
+				return false;
+		}
 	}
 
 	/**
@@ -382,6 +520,18 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 
 	private void checkMasterFarmer(MenuOptionClicked event)
 	{
+		List<String> missing = masterFarmerMissing();
+		if (missing == null || missing.isEmpty())
+		{
+			return;
+		}
+		event.consume();
+		sendBlockedCardsMessage(missing);
+	}
+
+	/** Missing cards for Master Farmer's own dial; null when the mode is Off. */
+	private List<String> masterFarmerMissing()
+	{
 		MasterFarmerMode mode = config.masterFarmerMode();
 		List<String> required;
 		switch (mode)
@@ -393,7 +543,7 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 				required = nodeCatalog.getMasterFarmerSeedCards();
 				break;
 			default:
-				return;
+				return null;
 		}
 		if (required.isEmpty())
 		{
@@ -401,14 +551,7 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 			// pickpocketable would silently disable the mode, so fall back to Coins+Pouch.
 			required = List.of("Coins", "Coin pouch");
 		}
-
-		List<String> missing = missingCards(required);
-		if (missing.isEmpty())
-		{
-			return;
-		}
-		event.consume();
-		sendBlockedCardsMessage(missing);
+		return missingCards(required);
 	}
 
 	// ------------------------------------------------------------------ ground items
@@ -692,17 +835,38 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	/** @return true when the event was consumed (blocked). */
 	private boolean checkNodeRule(MenuOptionClicked event, String kind, String name, String option)
 	{
-		ResourceNodeCatalog.Rule rule = nodeCatalog.find(kind, name, option);
 		// Data-string mismatches (an option or name that differs from the wiki-sourced value)
 		// fail silently and look exactly like "the restriction is ignored", so log the lookup.
+		// Click path only: the hide path calls evaluateNodeRule many times per frame.
 		if (log.isDebugEnabled())
 		{
+			ResourceNodeCatalog.Rule rule = nodeCatalog.find(kind, name, option);
 			log.debug("node lookup kind={} name='{}' option='{}' -> {}",
 				kind, name, option, rule == null ? "NO RULE" : "rule[" + rule.category + "]");
 		}
-		if (rule == null)
+		List<String> missing = evaluateNodeRule(kind, name, option);
+		if (missing == null)
 		{
 			return false;
+		}
+		event.consume();
+		sendBlockedCardsMessage(missing);
+		return true;
+	}
+
+	/**
+	 * The shared restriction decision, used by both the click-consuming path and the
+	 * menu-entry hiding path so the hidden set and the blocked set can never drift apart.
+	 *
+	 * @return the missing card display strings when this interaction is restricted,
+	 *         or null when allowed (no rule, category off, or requirements met).
+	 */
+	private List<String> evaluateNodeRule(String kind, String name, String option)
+	{
+		ResourceNodeCatalog.Rule rule = nodeCatalog.find(kind, name, option);
+		if (rule == null)
+		{
+			return null;
 		}
 
 		boolean forceAllInGroups = false;
@@ -714,7 +878,7 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 			FishingRestrictionMode mode = config.fishingMode();
 			if (mode == FishingRestrictionMode.OFF)
 			{
-				return false;
+				return null;
 			}
 			forceAllInGroups = mode == FishingRestrictionMode.REQUIRE_ALL;
 			excludedRoles = Collections.emptySet();
@@ -725,7 +889,7 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 			StallThievingMode mode = config.stallThievingMode();
 			if (mode == StallThievingMode.OFF)
 			{
-				return false;
+				return null;
 			}
 			forceAllInGroups = mode == StallThievingMode.REQUIRE_ALL;
 			excludedRoles = Collections.emptySet();
@@ -735,20 +899,13 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 			excludedRoles = excludedRolesFor(rule.category);
 			if (excludedRoles == null)
 			{
-				return false;
+				return null;
 			}
 		}
 
 		List<String> missing = rule.missingRequirements(
 			collectionReader.getOwnedCardNamesLowerCase(), excludedRoles, forceAllInGroups);
-		if (missing.isEmpty())
-		{
-			return false;
-		}
-
-		event.consume();
-		sendBlockedCardsMessage(missing);
-		return true;
+		return missing.isEmpty() ? null : missing;
 	}
 
 	/**
@@ -788,6 +945,9 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 				return config.restrictChins() ? Collections.emptySet() : null;
 			case "hunter-rumours":
 				return config.restrictHunterRumours() ? Collections.emptySet() : null;
+			case "quest-cots":
+				// CotS guard marking; the toggle makes the quest completable without the card.
+				return config.allowCotsGuards() ? null : Collections.emptySet();
 			case "runecrafting":
 				switch (config.runecraftingMode())
 				{
