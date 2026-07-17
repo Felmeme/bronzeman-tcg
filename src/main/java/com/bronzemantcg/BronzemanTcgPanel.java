@@ -8,7 +8,9 @@ import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -40,12 +42,15 @@ class BronzemanTcgPanel extends PluginPanel
 {
 	private static final int MAX_SEARCH_RESULTS = 20;
 	private static final int MAX_NEARBY_ROWS = 15;
+	private static final int MAX_METHOD_ROWS = 60;
+	private static final int MAX_UNLOCKED_BROWSE_ROWS = 50;
 	private static final Color UNLOCKED = ColorScheme.PROGRESS_COMPLETE_COLOR;
 	private static final Color LOCKED = ColorScheme.PROGRESS_ERROR_COLOR;
 
 	private final TrackedMonsterCatalog monsterCatalog;
 	private final TrackedItemCatalog itemCatalog;
 	private final ResourceNodeCatalog nodeCatalog;
+	private final RecipeCatalog recipeCatalog;
 	private final QuestCatalog questCatalog;
 	private final ContentCatalog contentCatalog;
 	private final TcgCollectionReader collectionReader;
@@ -63,14 +68,20 @@ class BronzemanTcgPanel extends PluginPanel
 	private final JLabel contentHeader = sectionHeader("PvM Content ▸");
 	private boolean contentExpanded;
 	private final Set<String> expandedContents = new HashSet<>();
+	private final JPanel skillsList = sectionBody();
+	private final JLabel skillsHeader = sectionHeader("Skills ▸");
+	private boolean skillsExpanded;
+	private final Set<String> expandedSkills = new HashSet<>();
+	private final javax.swing.JCheckBox unlockedOnly = new javax.swing.JCheckBox("Unlocked only");
 
 	BronzemanTcgPanel(TrackedMonsterCatalog monsterCatalog, TrackedItemCatalog itemCatalog,
-		ResourceNodeCatalog nodeCatalog, QuestCatalog questCatalog, ContentCatalog contentCatalog,
-		TcgCollectionReader collectionReader, BronzemanTcgConfig config)
+		ResourceNodeCatalog nodeCatalog, RecipeCatalog recipeCatalog, QuestCatalog questCatalog,
+		ContentCatalog contentCatalog, TcgCollectionReader collectionReader, BronzemanTcgConfig config)
 	{
 		this.monsterCatalog = monsterCatalog;
 		this.itemCatalog = itemCatalog;
 		this.nodeCatalog = nodeCatalog;
+		this.recipeCatalog = recipeCatalog;
 		this.questCatalog = questCatalog;
 		this.contentCatalog = contentCatalog;
 		this.collectionReader = collectionReader;
@@ -103,13 +114,26 @@ class BronzemanTcgPanel extends PluginPanel
 			}
 		});
 
+		unlockedOnly.setBackground(getBackground());
+		unlockedOnly.setForeground(ColorScheme.LIGHT_GRAY_COLOR);
+		unlockedOnly.setToolTipText("Filter search to cards you own; with an empty search, browse everything you've unlocked");
+		unlockedOnly.addActionListener(e -> refreshSearch());
+
 		add(searchBar);
+		add(unlockedOnly);
 		add(Box.createVerticalStrut(4));
 		add(searchResults);
 		add(sectionHeader("Nearby"));
 		add(nearbyList);
 		add(sectionHeader("Progress"));
 		add(progressList);
+		wireChecklistHeader(skillsHeader, () ->
+		{
+			skillsExpanded = !skillsExpanded;
+			refreshSkills();
+		});
+		add(skillsHeader);
+		add(skillsList);
 		wireChecklistHeader(questsHeader, () ->
 		{
 			questsExpanded = !questsExpanded;
@@ -126,6 +150,7 @@ class BronzemanTcgPanel extends PluginPanel
 		add(contentList);
 
 		refreshProgress();
+		refreshSkills();
 		refreshQuests();
 		refreshContent();
 	}
@@ -245,16 +270,240 @@ class BronzemanTcgPanel extends PluginPanel
 		return row;
 	}
 
+	// ------------------------------------------------------------------ skills guide
+
+	/**
+	 * A single training method: a gathering node ("Oak tree") or a processing recipe
+	 * ("Bronze bar"), with the card requirements still missing (empty = usable now).
+	 */
+	private static class Method
+	{
+		final String name;
+		final List<String> missing;
+
+		Method(String name, List<String> missing)
+		{
+			this.name = name;
+			this.missing = missing;
+		}
+
+		boolean unlocked()
+		{
+			return missing.isEmpty();
+		}
+	}
+
+	/** Maps a rule/recipe category to the skill it trains, or null for categories shown elsewhere. */
+	private static String skillFor(String category)
+	{
+		switch (category)
+		{
+			case "woodcutting":
+				return "Woodcutting";
+			case "mining":
+				return "Mining";
+			case "fishing":
+				return "Fishing";
+			case "cooking":
+				return "Cooking";
+			case "runecrafting":
+				return "Runecrafting";
+			case "pickpocketing":
+			case "thieving-stalls":
+				return "Thieving";
+			case "firemaking":
+				return "Firemaking";
+			case "crafting":
+				return "Crafting";
+			case "fletching":
+				return "Fletching";
+			case "herblore":
+				return "Herblore";
+			case "enchanting":
+				return "Magic (enchanting)";
+			case "smithing-smelt":
+			case "smithing-forge":
+				return "Smithing";
+			case "hunter-rumours":
+				return null; // covered by the Progress section's rumour master bars
+			default:
+				if (category.startsWith("farming"))
+				{
+					return "Farming";
+				}
+				if (category.startsWith("hunter"))
+				{
+					return "Hunter";
+				}
+				if (category.startsWith("sailing"))
+				{
+					return "Sailing";
+				}
+				return null; // slayer: covered by the Progress section
+		}
+	}
+
+	/**
+	 * Skill -> training methods, derived from the same rule catalogs the restriction
+	 * engine enforces. Gathering nodes with the same name but different rules (fishing
+	 * spots) are disambiguated by their menu option; recipes with inputs enforced only,
+	 * since output enforcement is a config-mode extra.
+	 */
+	private Map<String, List<Method>> buildSkillMethods(Set<String> owned)
+	{
+		// skill -> dedupe key -> method; ruleIds spot name collisions needing the option suffix
+		Map<String, Map<String, Method>> collected = new TreeMap<>();
+		Map<String, Set<ResourceNodeCatalog.Rule>> rulesByName = new HashMap<>();
+
+		for (Map.Entry<String, ResourceNodeCatalog.Rule> e : nodeCatalog.getRuleEntries().entrySet())
+		{
+			String skill = skillFor(e.getValue().category);
+			if (skill == null)
+			{
+				continue;
+			}
+			String[] parts = e.getKey().split("\\|", 3);
+			String name = parts.length > 1 ? parts[1] : e.getKey();
+			rulesByName.computeIfAbsent(skill + '|' + name, k -> new HashSet<>()).add(e.getValue());
+		}
+
+		for (Map.Entry<String, ResourceNodeCatalog.Rule> e : nodeCatalog.getRuleEntries().entrySet())
+		{
+			ResourceNodeCatalog.Rule rule = e.getValue();
+			String skill = skillFor(rule.category);
+			if (skill == null)
+			{
+				continue;
+			}
+			String[] parts = e.getKey().split("\\|", 3);
+			String name = parts.length > 1 ? parts[1] : e.getKey();
+			String option = parts.length > 2 ? parts[2] : "";
+			boolean ambiguous = rulesByName.get(skill + '|' + name).size() > 1;
+			String label = display(name) + (ambiguous && !option.isEmpty() ? " (" + option + ")" : "");
+			List<String> missing = rule.missingRequirements(owned, Collections.emptySet(), false);
+			collected.computeIfAbsent(skill, k -> new TreeMap<>(String.CASE_INSENSITIVE_ORDER))
+				.putIfAbsent(label, new Method(label, missing));
+		}
+
+		for (Map.Entry<String, RecipeCatalog.Recipe> e : recipeCatalog.getRecipeEntries().entrySet())
+		{
+			RecipeCatalog.Recipe recipe = e.getValue();
+			String skill = skillFor(recipe.category);
+			if (skill == null)
+			{
+				continue;
+			}
+			String[] parts = e.getKey().split("\\|", 3);
+			// Output card names the method best ("Bronze bar"); outputless recipes
+			// (firemaking) read best as their target ("Oak logs").
+			String label = recipe.output != null ? recipe.output
+				: display(!RecipeCatalog.ANY_TARGET.equals(parts.length > 2 ? parts[2] : "")
+					? parts[2] : parts[1]);
+			List<String> missing = recipe.missingRequirements(owned, true, false);
+			collected.computeIfAbsent(skill, k -> new TreeMap<>(String.CASE_INSENSITIVE_ORDER))
+				.putIfAbsent(label, new Method(label, missing));
+		}
+
+		Map<String, List<Method>> result = new TreeMap<>();
+		for (Map.Entry<String, Map<String, Method>> e : collected.entrySet())
+		{
+			result.put(e.getKey(), new ArrayList<>(e.getValue().values()));
+		}
+		return result;
+	}
+
+	private void refreshSkills()
+	{
+		skillsList.removeAll();
+		Set<String> owned = collectionReader.getOwnedCardNamesLowerCase();
+		Map<String, List<Method>> skills = buildSkillMethods(owned);
+
+		int unlockedTotal = 0;
+		int total = 0;
+		for (List<Method> methods : skills.values())
+		{
+			for (Method method : methods)
+			{
+				total++;
+				if (method.unlocked())
+				{
+					unlockedTotal++;
+				}
+			}
+		}
+		skillsHeader.setText(String.format("Skills %s  %d/%d methods unlocked",
+			skillsExpanded ? "▾" : "▸", unlockedTotal, total));
+
+		if (skillsExpanded)
+		{
+			for (Map.Entry<String, List<Method>> e : skills.entrySet())
+			{
+				List<Method> methods = e.getValue();
+				int have = 0;
+				for (Method method : methods)
+				{
+					if (method.unlocked())
+					{
+						have++;
+					}
+				}
+				JPanel row = progressRow(e.getKey(), have, methods.size());
+				row.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+				String skillName = e.getKey();
+				row.addMouseListener(new MouseAdapter()
+				{
+					@Override
+					public void mouseClicked(MouseEvent event)
+					{
+						if (!expandedSkills.remove(skillName))
+						{
+							expandedSkills.add(skillName);
+						}
+						refreshSkills();
+					}
+				});
+				skillsList.add(row);
+
+				if (expandedSkills.contains(skillName))
+				{
+					// Usable methods first, then locked ones closest to unlocking.
+					List<Method> sorted = new ArrayList<>(methods);
+					sorted.sort(Comparator
+						.comparingInt((Method m) -> m.missing.size())
+						.thenComparing(m -> m.name, String.CASE_INSENSITIVE_ORDER));
+					int shown = 0;
+					for (Method method : sorted)
+					{
+						if (++shown > MAX_METHOD_ROWS)
+						{
+							skillsList.add(mutedRow("  ...and " + (sorted.size() - MAX_METHOD_ROWS)
+								+ " more locked"));
+							break;
+						}
+						JPanel methodRow = statusRow("  " + method.name, method.unlocked(),
+							method.unlocked() ? null : String.join(", ", method.missing));
+						methodRow.setBackground(ColorScheme.DARK_GRAY_COLOR);
+						skillsList.add(methodRow);
+					}
+				}
+			}
+		}
+		skillsList.revalidate();
+		skillsList.repaint();
+	}
+
 	// ------------------------------------------------------------------ search
 
 	private void refreshSearch()
 	{
 		searchResults.removeAll();
 		String query = searchBar.getText() == null ? "" : searchBar.getText().trim().toLowerCase(Locale.ROOT);
-		if (query.length() >= 2)
+		boolean browseUnlocked = unlockedOnly.isSelected();
+		if (query.length() >= 2 || browseUnlocked)
 		{
 			Set<String> owned = collectionReader.getOwnedCardNamesLowerCase();
 			int shown = 0;
+			int cap = query.length() >= 2 ? MAX_SEARCH_RESULTS : MAX_UNLOCKED_BROWSE_ROWS;
 			// NPCs first, then items; TreeMap for stable alphabetical results.
 			Map<String, Set<String>> matches = new LinkedHashMap<>();
 			for (Map.Entry<String, Set<String>> e : new TreeMap<>(monsterCatalog.getEntityToCards()).entrySet())
@@ -271,11 +520,15 @@ class BronzemanTcgPanel extends PluginPanel
 					matches.put(e.getKey(), e.getValue());
 				}
 			}
+			if (browseUnlocked)
+			{
+				matches.entrySet().removeIf(e -> !ownsAny(owned, e.getValue()));
+			}
 			for (Map.Entry<String, Set<String>> e : matches.entrySet())
 			{
-				if (++shown > MAX_SEARCH_RESULTS)
+				if (++shown > cap)
 				{
-					searchResults.add(mutedRow("...and " + (matches.size() - MAX_SEARCH_RESULTS) + " more"));
+					searchResults.add(mutedRow("...and " + (matches.size() - cap) + " more"));
 					break;
 				}
 				boolean unlocked = ownsAny(owned, e.getValue());
@@ -284,7 +537,8 @@ class BronzemanTcgPanel extends PluginPanel
 			}
 			if (matches.isEmpty())
 			{
-				searchResults.add(mutedRow("No tracked NPC or item matches"));
+				searchResults.add(mutedRow(browseUnlocked && query.length() < 2
+					? "Nothing unlocked yet" : "No tracked NPC or item matches"));
 			}
 		}
 		searchResults.revalidate();
@@ -316,6 +570,7 @@ class BronzemanTcgPanel extends PluginPanel
 		{
 			refreshContent();
 		}
+		refreshSkills();
 		nearbyList.removeAll();
 		Set<String> owned = collectionReader.getOwnedCardNamesLowerCase();
 		int shown = 0;

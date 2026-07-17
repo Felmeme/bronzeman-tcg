@@ -75,6 +75,15 @@ public class RecipeCatalog
 		return recipes.size();
 	}
 
+	/**
+	 * Unmodifiable view of all recipes keyed "kind|name|target" (lowercased), for the side
+	 * panel's skills guide. The same Recipe instance appears under multiple lookup keys.
+	 */
+	public Map<String, Recipe> getRecipeEntries()
+	{
+		return recipes;
+	}
+
 	private static String key(String kind, String nameLower, String targetLower)
 	{
 		return kind + '|' + nameLower + '|' + targetLower;

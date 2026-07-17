@@ -57,6 +57,14 @@ quests' required item and enemy cards, completable-first with click-to-expand
 checklists) and **PvM Content** (Fight Caves, Inferno, Fortis Colosseum, CoX,
 ToA, Corrupted Gauntlet, ToB monster rosters).
 
+A **Skills** section turns the same rule catalogs the restrictions enforce
+into a per-skill training guide: one progress bar per skill (methods
+unlocked / total), click-to-expand into every gathering node and recipe with
+the exact cards still missing - usable methods first, then locked ones
+closest to unlocking. An **Unlocked only** checkbox under the search bar
+filters lookups to cards you own, and with an empty search browses your
+whole unlocked collection.
+
 ## Design principles
 
 - **No card = no restriction.** Anything absent from the TCG catalog can
