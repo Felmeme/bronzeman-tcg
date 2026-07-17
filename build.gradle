@@ -37,5 +37,10 @@ tasks.register('run', JavaExec) {
 	mainClass = 'com.bronzemantcg.BronzemanTcgPluginTest'
 
 	jvmArgs "-ea"
+	if (System.getProperty('os.name').toLowerCase().contains('mac'))
+	{
+		// RuneLite's OSX fullscreen adapter needs this on JDK 11+
+		jvmArgs '--add-exports', 'java.desktop/com.apple.eawt=ALL-UNNAMED'
+	}
 	args "--developer-mode", "--debug"
 }
