@@ -387,15 +387,20 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 			+ "you turn it back on.");
 	}
 
-	/** True when a plugin with this display name is installed and currently enabled. */
+	/**
+	 * True when any plugin with this display name is installed and currently enabled.
+	 * Several instances can share a name (a disabled hub copy alongside a sideloaded dev
+	 * build), so every match is checked rather than trusting the first one found.
+	 */
 	private boolean isPluginEnabled(String displayName)
 	{
 		for (Plugin plugin : pluginManager.getPlugins())
 		{
 			PluginDescriptor descriptor = plugin.getClass().getAnnotation(PluginDescriptor.class);
-			if (descriptor != null && displayName.equals(descriptor.name()))
+			if (descriptor != null && displayName.equals(descriptor.name())
+				&& pluginManager.isPluginEnabled(plugin))
 			{
-				return pluginManager.isPluginEnabled(plugin);
+				return true;
 			}
 		}
 		return false;
@@ -414,9 +419,9 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 		}
 		for (String name : activeConflictingPlugins())
 		{
-			queueChat("[Bronzeman TCG] - Plugin Conflict! Please note, '" + name + "' is also "
-				+ "enabled. Double check your settings on both plugins or consider running just "
-				+ "one! Disable this message in Bronzeman TCG Settings.");
+			queueChat("[Bronzeman TCG] - Plugin Conflict! Please note, '" + name + "' is also enabled. "
+				+ "Items without cards may be locked. Double check your settings on both plugins or "
+				+ "consider running just one! Disable this message in Bronzeman TCG Settings.");
 		}
 	}
 
