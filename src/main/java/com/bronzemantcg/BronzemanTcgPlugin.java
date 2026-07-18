@@ -4,6 +4,7 @@ import com.google.inject.Provides;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -22,14 +23,17 @@ import net.runelite.api.MenuEntry;
 import net.runelite.api.NPC;
 import net.runelite.api.NPCComposition;
 import net.runelite.api.Renderable;
+import net.runelite.api.ScriptID;
 import net.runelite.api.events.GameStateChanged;
 import net.runelite.api.events.GameTick;
 import net.runelite.api.events.MenuEntryAdded;
 import net.runelite.api.events.MenuOptionClicked;
+import net.runelite.api.events.ScriptPostFired;
 import net.runelite.api.gameval.InterfaceID;
 import net.runelite.api.gameval.VarbitID;
 import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetUtil;
+import net.runelite.client.callback.ClientThread;
 import net.runelite.client.callback.RenderCallback;
 import net.runelite.client.callback.RenderCallbackManager;
 import net.runelite.client.chat.ChatMessageManager;
@@ -113,6 +117,14 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	private static final Set<Integer> LMS_REGIONS = new HashSet<>(List.of(
 		13658, 13659, 13660, 13914, 13915, 13916, 13918, 13919, 13920,
 		14174, 14175, 14176, 14430, 14431, 14432));
+	// Locked-item marking (Alch Blocker's technique): widget opacity runs 0 (solid)
+	// to 255 (invisible); 140 reads as "faded but identifiable". The exact value used
+	// also serves as our signature when restoring, so we never clobber another
+	// plugin's opacity.
+	private static final int LOCKED_ITEM_OPACITY = 140;
+	// Containers that get the fade: main inventory, bank items, bank-side inventory.
+	private static final int[] LOCKED_MARK_CONTAINERS = {
+		InterfaceID.Inventory.ITEMS, InterfaceID.Bankmain.ITEMS, InterfaceID.Bankside.ITEMS};
 
 	@Inject
 	private Client client;
@@ -168,6 +180,12 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	@Inject
 	private PluginManager pluginManager;
 
+	@Inject
+	private ClientThread clientThread;
+
+	@Inject
+	private LockedItemIconOverlay lockedItemIconOverlay;
+
 	private long lastBlockMessageMs;
 	private boolean welcomeShown;
 	// Countdowns in game ticks; negative means idle.
@@ -183,6 +201,11 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	private Set<String> effectiveOwnedBase;
 	private Set<String> effectiveOwnedExempt;
 	private boolean effectiveOwnedCoins;
+	// Locked-mark lookup cache, keyed by item id; dropped whenever the owned set changes.
+	private final Map<Integer, Boolean> lockedItemCache = new HashMap<>();
+	private Set<String> lockedItemCacheOwned;
+	private boolean markRefreshQueued;
+	private int markTickCounter;
 
 	@Override
 	protected void startUp()
@@ -205,6 +228,7 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 		clientToolbar.addNavigation(navButton);
 		overlayManager.add(overlay);
 		overlayManager.add(statsOverlay);
+		overlayManager.add(lockedItemIconOverlay);
 		renderCallbackManager.register(this);
 
 		log.info("Bronzeman TCG started. Tracking {} TCG-linked NPCs, {} items, {} node rules, {} recipe rules.",
@@ -220,6 +244,9 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 		renderCallbackManager.unregister(this);
 		overlayManager.remove(overlay);
 		overlayManager.remove(statsOverlay);
+		overlayManager.remove(lockedItemIconOverlay);
+		// Widget opacity outlives the plugin, so faded items must be restored by hand.
+		clientThread.invoke(this::clearLockedItemMarks);
 		clientToolbar.removeNavigation(navButton);
 		navButton = null;
 		panel = null;
@@ -265,6 +292,12 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	 */
 	private void tickWelcomeTimers()
 	{
+		// Every ~3s: catches unlocks and config changes that happen without an
+		// inventory redraw (the ScriptPostFired hook covers redraws immediately).
+		if (++markTickCounter % 5 == 0)
+		{
+			scheduleLockedItemMarks();
+		}
 		if (welcomeDelayTicks >= 0 && --welcomeDelayTicks < 0)
 		{
 			// The greeting posts every notice itself, so nothing else runs this tick.
@@ -1440,6 +1473,114 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 			}
 		}
 		return false;
+	}
+
+	@Subscribe
+	public void onScriptPostFired(ScriptPostFired event)
+	{
+		// Redraw scripts reset widget opacity, so re-fade as soon as they finish.
+		if (event.getScriptId() == ScriptID.INVENTORY_DRAWITEM
+			|| event.getScriptId() == ScriptID.BANKMAIN_BUILD)
+		{
+			scheduleLockedItemMarks();
+		}
+	}
+
+	/** Coalesces the many per-slot INVENTORY_DRAWITEM firings into one pass per tick. */
+	private void scheduleLockedItemMarks()
+	{
+		if (markRefreshQueued)
+		{
+			return;
+		}
+		markRefreshQueued = true;
+		clientThread.invokeAtTickEnd(() ->
+		{
+			markRefreshQueued = false;
+			applyLockedItemMarks();
+		});
+	}
+
+	/**
+	 * Fade locked items in the inventory and bank via widget opacity (Alch Blocker's
+	 * technique). Runs on the client thread; every check below is a map lookup after
+	 * the first sighting of an item id.
+	 */
+	private void applyLockedItemMarks()
+	{
+		boolean marking = config.lockedItemMarkMode() != LockedItemMarkMode.OFF
+			&& !isEnforcementBypassed();
+		for (int componentId : LOCKED_MARK_CONTAINERS)
+		{
+			Widget container = client.getWidget(componentId);
+			Widget[] children = container == null ? null : container.getChildren();
+			if (children == null)
+			{
+				continue;
+			}
+			for (Widget child : children)
+			{
+				if (child == null || child.getItemId() <= 0)
+				{
+					continue;
+				}
+				if (marking && isItemMarkedLocked(child.getItemId()))
+				{
+					child.setOpacity(LOCKED_ITEM_OPACITY);
+				}
+				else if (child.getOpacity() == LOCKED_ITEM_OPACITY)
+				{
+					child.setOpacity(0);
+				}
+			}
+		}
+	}
+
+	/** Restore every fade we applied; used on shutdown. Client thread only. */
+	private void clearLockedItemMarks()
+	{
+		for (int componentId : LOCKED_MARK_CONTAINERS)
+		{
+			Widget container = client.getWidget(componentId);
+			Widget[] children = container == null ? null : container.getChildren();
+			if (children == null)
+			{
+				continue;
+			}
+			for (Widget child : children)
+			{
+				if (child != null && child.getOpacity() == LOCKED_ITEM_OPACITY)
+				{
+					child.setOpacity(0);
+				}
+			}
+		}
+	}
+
+	/** The icon overlay's entry point: lock state plus the shared stand-down check. */
+	boolean shouldMarkLocked(int itemId)
+	{
+		return !isEnforcementBypassed() && isItemMarkedLocked(itemId);
+	}
+
+	private boolean isItemMarkedLocked(int itemId)
+	{
+		Set<String> owned = effectiveOwnedCards();
+		if (owned != lockedItemCacheOwned)
+		{
+			lockedItemCache.clear();
+			lockedItemCacheOwned = owned;
+		}
+		Boolean cached = lockedItemCache.get(itemId);
+		if (cached != null)
+		{
+			return cached;
+		}
+		String name = itemManager.getItemComposition(itemId).getName();
+		// Dose suffixes fold away so "Attack potion(3)" matches its card, same as drinking.
+		boolean locked = name != null && !isUnlocked(itemCatalog, CardNames.stripDoseSuffix(name));
+		lockedItemCache.put(itemId, locked);
+		return locked;
 	}
 
 	private boolean isUnlocked(CardNameCatalog catalog, String entityName)

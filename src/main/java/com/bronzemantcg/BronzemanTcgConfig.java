@@ -863,6 +863,21 @@ public interface BronzemanTcgConfig extends Config
 	//Visuals
 	//----------------
 	@ConfigItem(
+		keyName = "lockedItemMarkMode",
+		name = "Mark locked items",
+		description = "Fade items in your inventory and bank while their card is uncollected, "
+			+ "so locked items are obvious at a glance."
+			+ "<br>Transparent + icon adds a small bank-filler badge on top of the faded sprite. "
+			+ "Uses the same rules as blocking, so exempt items are never marked.",
+		section = visualsSection,
+		position = 7
+	)
+	default LockedItemMarkMode lockedItemMarkMode()
+	{
+		return LockedItemMarkMode.TRANSPARENT;
+	}
+
+	@ConfigItem(
 		keyName = "tintLockedNpcs",
 		name = "Tint locked NPCs grey",
 		description = "NPCs whose card you have not collected are greyed out in the world, "
