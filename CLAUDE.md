@@ -218,6 +218,21 @@ docs/sailing_nodes_report.md):
    plugin now has real users: keep config keyNames stable (renames wipe
    players' settings), keep the fail-safe defaults conservative, and
    prefer the dev client only for testing - play on the hub build.
+   **NEVER rename a keyName that holds user-entered data**; display
+   names/descriptions are safe to change, keyNames are not.
+   **RuneLite config gotcha (learned the hard way, 2026-07-18):** RuneLite
+   RE-INJECTS a @ConfigItem's non-empty `default` whenever the stored
+   value is cleared/unset (and auto-unsets values equal to the default).
+   So a user-editable field must NOT have a non-empty default the user
+   might want to remove - that is why `lootExemptNames` kept re-adding
+   "Coins" after updates (real player bug). Fix: list default is now `""`
+   (nothing to re-inject); Coins exemption moved to its own `exemptCoins`
+   toggle (default true; a boolean set to false != default, so it
+   persists). One-time `migrateExemptList()` (guarded by hidden
+   `exemptListMigrated`) reads the raw stored list and turns exemptCoins
+   off for players whose list didn't already contain Coins, preserving
+   their effective behaviour. Never reintroduce a non-empty default on
+   any editable list field.
 
 ## Post-launch backlog (agreed with owner)
 - **Cooking via range-click "Cook": FIXED 2026-07-16, needs re-test** — the

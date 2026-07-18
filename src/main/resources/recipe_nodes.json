@@ -1,6 +1,26 @@
 {
 	"recipes": [
 		{
+			"category": "cooking",
+			"inputs": [
+				[
+					"Knife"
+				],
+				[
+					"Banana"
+				]
+			],
+			"output": "Sliced banana",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Knife",
+				"targets": [
+					"banana"
+				]
+			},
+			"notes": "Sliced bananas"
+		},
+		{
 			"category": "firemaking",
 			"inputs": [
 				[
@@ -6123,6 +6143,26 @@
 				]
 			},
 			"notes": "Cast Lvl-7 Enchant on Zenyte amulet."
+		},
+		{
+			"category": "feltching",
+			"inputs": [
+				[
+					"Knife"
+				],
+				[
+					"Logs"
+				]
+			],
+			"output": "Arrow Shafts",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Earth orb",
+				"targets": [
+					"battlestaff"
+				]
+			},
+			"notes": "Craft elemental battlestaff by using an orb on a battlestaff."
 		},
 		{
 			"category": "fletching",

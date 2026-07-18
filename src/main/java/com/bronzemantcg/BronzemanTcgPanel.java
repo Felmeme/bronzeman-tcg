@@ -29,17 +29,17 @@ import net.runelite.client.ui.PluginPanel;
 import net.runelite.client.ui.components.IconTextField;
 
 /**
- * Sidebar panel: card lookup, nearby NPC lock states, and collection progress meters.
+ * Sidebar panel: card search, collection progress, and collapsible readiness checklists
+ * for quests, slayer masters, PvM content and hunter rumour masters.
  *
  * Threading contract: everything here runs on the Swing EDT. The catalogs are immutable
  * after load and TcgCollectionReader is synchronized, so reading them from the EDT is
- * safe; the one thing that must NOT happen here is touching live game state - the nearby
- * list is gathered on the client thread by the plugin and handed over as a snapshot.
+ * safe; live game state is never touched here. {@link #refresh()} is called periodically
+ * from the plugin (via SwingUtilities.invokeLater) so unlocks show without reopening.
  */
 class BronzemanTcgPanel extends PluginPanel
 {
 	private static final int MAX_SEARCH_RESULTS = 20;
-	private static final int MAX_NEARBY_ROWS = 15;
 	private static final Color UNLOCKED = ColorScheme.PROGRESS_COMPLETE_COLOR;
 	private static final Color LOCKED = ColorScheme.PROGRESS_ERROR_COLOR;
 
@@ -53,16 +53,27 @@ class BronzemanTcgPanel extends PluginPanel
 
 	private final IconTextField searchBar = new IconTextField();
 	private final JPanel searchResults = sectionBody();
-	private final JPanel nearbyList = sectionBody();
 	private final JPanel progressList = sectionBody();
+
 	private final JPanel questList = sectionBody();
 	private final JLabel questsHeader = sectionHeader("Quests ▸");
 	private boolean questsExpanded;
 	private final Set<String> expandedQuests = new HashSet<>();
+
+	private final JPanel slayerList = sectionBody();
+	private final JLabel slayerHeader = sectionHeader("Slayer Masters ▸");
+	private boolean slayerExpanded;
+	private final Set<String> expandedSlayer = new HashSet<>();
+
 	private final JPanel contentList = sectionBody();
 	private final JLabel contentHeader = sectionHeader("PvM Content ▸");
 	private boolean contentExpanded;
 	private final Set<String> expandedContents = new HashSet<>();
+
+	private final JPanel rumoursList = sectionBody();
+	private final JLabel rumoursHeader = sectionHeader("Hunter Rumours ▸");
+	private boolean rumoursExpanded;
+	private final Set<String> expandedRumours = new HashSet<>();
 
 	BronzemanTcgPanel(TrackedMonsterCatalog monsterCatalog, TrackedItemCatalog itemCatalog,
 		ResourceNodeCatalog nodeCatalog, QuestCatalog questCatalog, ContentCatalog contentCatalog,
@@ -106,10 +117,10 @@ class BronzemanTcgPanel extends PluginPanel
 		add(searchBar);
 		add(Box.createVerticalStrut(4));
 		add(searchResults);
-		add(sectionHeader("Nearby"));
-		add(nearbyList);
+
 		add(sectionHeader("Progress"));
 		add(progressList);
+
 		wireChecklistHeader(questsHeader, () ->
 		{
 			questsExpanded = !questsExpanded;
@@ -117,6 +128,15 @@ class BronzemanTcgPanel extends PluginPanel
 		});
 		add(questsHeader);
 		add(questList);
+
+		wireChecklistHeader(slayerHeader, () ->
+		{
+			slayerExpanded = !slayerExpanded;
+			refreshSlayer();
+		});
+		add(slayerHeader);
+		add(slayerList);
+
 		wireChecklistHeader(contentHeader, () ->
 		{
 			contentExpanded = !contentExpanded;
@@ -125,12 +145,28 @@ class BronzemanTcgPanel extends PluginPanel
 		add(contentHeader);
 		add(contentList);
 
-		refreshProgress();
-		refreshQuests();
-		refreshContent();
+		wireChecklistHeader(rumoursHeader, () ->
+		{
+			rumoursExpanded = !rumoursExpanded;
+			refreshRumours();
+		});
+		add(rumoursHeader);
+		add(rumoursList);
+
+		refresh();
 	}
 
-	// ------------------------------------------------------------------ checklists (quests + PvM content)
+	/** Periodic re-render so newly unlocked cards show in every section and count. */
+	void refresh()
+	{
+		refreshProgress();
+		refreshQuests();
+		refreshSlayer();
+		refreshContent();
+		refreshRumours();
+	}
+
+	// ------------------------------------------------------------------ collapsible checklists
 
 	private static void wireChecklistHeader(JLabel header, Runnable toggle)
 	{
@@ -155,6 +191,47 @@ class BronzemanTcgPanel extends PluginPanel
 	{
 		refreshChecklist(contentList, contentHeader, "PvM Content", contentExpanded,
 			contentCatalog.getContents(), expandedContents, this::refreshContent, "No content data bundled");
+	}
+
+	private void refreshSlayer()
+	{
+		refreshChecklist(slayerList, slayerHeader, "Slayer Masters", slayerExpanded,
+			buildMasterEntries("slayer"), expandedSlayer, this::refreshSlayer, "No slayer data bundled");
+	}
+
+	private void refreshRumours()
+	{
+		refreshChecklist(rumoursList, rumoursHeader, "Hunter Rumours", rumoursExpanded,
+			buildMasterEntries("hunter-rumours"), expandedRumours, this::refreshRumours, "No rumour data bundled");
+	}
+
+	/**
+	 * Adapts slayer / rumour master rules into the same QuestEntry shape the checklist
+	 * renders. Slayer masters show their assignable-monster cards (plus superiors when the
+	 * config stacks them on, mirroring the restriction); rumour masters show every creature.
+	 */
+	private List<QuestCatalog.QuestEntry> buildMasterEntries(String category)
+	{
+		boolean slayer = "slayer".equals(category);
+		boolean countSuperiors = slayer
+			&& config.restrictSlayerMonsters() && config.restrictSlayerSuperiors();
+		List<QuestCatalog.QuestEntry> entries = new ArrayList<>();
+		for (Map.Entry<String, ResourceNodeCatalog.Rule> e : distinctRules(category).entrySet())
+		{
+			List<QuestCatalog.Requirement> reqs = new ArrayList<>();
+			for (ResourceNodeCatalog.CardGroup group : e.getValue().groups)
+			{
+				boolean include = slayer
+					? "monsters".equals(group.role) || (countSuperiors && "superiors".equals(group.role))
+					: true;
+				if (include && !group.displayCards.isEmpty())
+				{
+					reqs.add(new QuestCatalog.Requirement(group.displayCards.get(0), group.displayCards));
+				}
+			}
+			entries.add(new QuestCatalog.QuestEntry(display(e.getKey()), false, reqs, ""));
+		}
+		return entries;
 	}
 
 	private void refreshChecklist(JPanel container, JLabel header, String title, boolean expanded,
@@ -291,54 +368,6 @@ class BronzemanTcgPanel extends PluginPanel
 		searchResults.repaint();
 	}
 
-	// ------------------------------------------------------------------ nearby
-
-	static class NearbyEntry
-	{
-		final String name;
-		final int distance;
-
-		NearbyEntry(String name, int distance)
-		{
-			this.name = name;
-			this.distance = distance;
-		}
-	}
-
-	/** Called on the EDT with a snapshot the plugin gathered on the client thread. */
-	void updateNearby(List<NearbyEntry> entries)
-	{
-		if (questsExpanded)
-		{
-			refreshQuests();
-		}
-		if (contentExpanded)
-		{
-			refreshContent();
-		}
-		nearbyList.removeAll();
-		Set<String> owned = collectionReader.getOwnedCardNamesLowerCase();
-		int shown = 0;
-		for (NearbyEntry entry : entries)
-		{
-			if (++shown > MAX_NEARBY_ROWS)
-			{
-				break;
-			}
-			Set<String> variants = monsterCatalog.getCardVariantsLowerCase(entry.name);
-			boolean unlocked = ownsAny(owned, variants);
-			nearbyList.add(statusRow(entry.name + "  (" + entry.distance + ")", unlocked,
-				unlocked ? null : String.join(" / ", variants)));
-		}
-		if (entries.isEmpty())
-		{
-			nearbyList.add(mutedRow("No tracked NPCs loaded nearby"));
-		}
-		nearbyList.revalidate();
-		nearbyList.repaint();
-		refreshProgress();
-	}
-
 	// ------------------------------------------------------------------ progress
 
 	private void refreshProgress()
@@ -363,43 +392,6 @@ class BronzemanTcgPanel extends PluginPanel
 				}
 			}
 			progressList.add(progressRow("Master Farmer seeds", have, seeds.size()));
-		}
-
-		progressList.add(sectionHeader("Slayer masters"));
-		// Bars mirror the active config: superiors count only when the checkbox stacks
-		// them onto Require-monsters.
-		boolean countSuperiors = config.restrictSlayerMonsters() && config.restrictSlayerSuperiors();
-		for (Map.Entry<String, ResourceNodeCatalog.Rule> e : distinctRules("slayer").entrySet())
-		{
-			int total = 0;
-			int have = 0;
-			for (ResourceNodeCatalog.CardGroup group : e.getValue().groups)
-			{
-				if ("monsters".equals(group.role) || (countSuperiors && "superiors".equals(group.role)))
-				{
-					total++;
-					if (group.isSatisfied(owned))
-					{
-						have++;
-					}
-				}
-			}
-			progressList.add(progressRow(display(e.getKey()), have, total));
-		}
-
-		progressList.add(sectionHeader("Rumour masters"));
-		for (Map.Entry<String, ResourceNodeCatalog.Rule> e : distinctRules("hunter-rumours").entrySet())
-		{
-			int total = e.getValue().groups.size();
-			int have = 0;
-			for (ResourceNodeCatalog.CardGroup group : e.getValue().groups)
-			{
-				if (group.isSatisfied(owned))
-				{
-					have++;
-				}
-			}
-			progressList.add(progressRow(display(e.getKey()), have, total));
 		}
 
 		progressList.revalidate();

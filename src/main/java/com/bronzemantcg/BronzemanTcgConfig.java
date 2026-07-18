@@ -257,7 +257,7 @@ public interface BronzemanTcgConfig extends Config
 			keyName = "forcedDropMode",
 			name = "Forced drop",
 			description = "Items in your inventory whose card is locked (e.g. quest rewards) can only be "
-					+ "Dropped, Examined or Destroyed. Use option is disabled."
+					+ "Dropped or Destroyed; every other option is disabled."
 					+ "<br>'Allow banking' additionally permits depositing them "
 					+ "(the bank becomes a holding pen - withdrawing stays blocked until the card unlocks). "
 					+ "<br>Once the card is unlocked the item works normally.",
@@ -270,18 +270,45 @@ public interface BronzemanTcgConfig extends Config
 	}
 
 	@ConfigItem(
+		keyName = "exemptCoins",
+		name = "Always allow Coins",
+		description = "Coins are never restricted (looting, buying, banking, etc.), regardless of "
+			+ "the exempt list below."
+			+ "<br>Turn off for a true challenge where even coin drops need the card.",
+		section = generalSettings,
+		position = 8
+	)
+	default boolean exemptCoins()
+	{
+		return true;
+	}
+
+	@ConfigItem(
+		keyName = "exemptListMigrated",
+		name = "",
+		description = "",
+		hidden = true,
+		section = generalSettings,
+		position = 99
+	)
+	default boolean exemptListMigrated()
+	{
+		return false;
+	}
+
+	@ConfigItem(
 		keyName = "lootExemptNames",
 		name = "Item exempt list",
 		description = "Comma-separated item names that are never restricted even without their card - "
 			+ "looting, forced drop, banking, equipping and buying all skip them."
 			+ "<br>For universal items that would otherwise make the game unplayable."
-			+ "<br>Case-insensitive. Remove coins for a true challenge.",
+			+ "<br>Case-insensitive. (Coins have their own toggle above.)",
 		section = generalSettings,
-		position = 8
+		position = 9
 	)
 	default String lootExemptNames()
 	{
-		return "Coins";
+		return "";
 	}
 
 	@ConfigItem(
@@ -289,7 +316,7 @@ public interface BronzemanTcgConfig extends Config
 		name = "Chat feedback",
 		description = "Send a game chat message explaining why an action was blocked.",
 		section = generalSettings,
-		position = 9
+		position = 10
 	)
 	default boolean chatFeedback()
 	{
@@ -302,7 +329,7 @@ public interface BronzemanTcgConfig extends Config
 		description = "Lift all restrictions while inside a Last Man Standing match, since LMS hands "
 			+ "you temporary gear and supplies you don't own.",
 		section = generalSettings,
-		position = 10
+		position = 11
 	)
 	default boolean allowInLms()
 	{
@@ -318,7 +345,7 @@ public interface BronzemanTcgConfig extends Config
 			+ "<br>Covers NPCs, ground items, objects and inventory items; only the options the "
 			+ "plugin would block are hidden. The chat warning remains as the final guard.",
 		section = generalSettings,
-		position = 11
+		position = 12
 	)
 	default boolean hideLockedOptions()
 	{
@@ -333,7 +360,7 @@ public interface BronzemanTcgConfig extends Config
 			+ "<br>Enable to complete the quest without the card: marking is allowed and Guards stay "
 			+ "visible even with 'Hide locked NPCs' on.",
 		section = generalSettings,
-		position = 12
+		position = 13
 	)
 	default boolean allowCotsGuards()
 	{

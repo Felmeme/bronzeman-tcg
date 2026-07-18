@@ -1,13 +1,9 @@
 package com.bronzemantcg;
 
 import com.google.inject.Provides;
-import java.awt.Graphics2D;
-import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -24,14 +20,11 @@ import net.runelite.api.MenuAction;
 import net.runelite.api.MenuEntry;
 import net.runelite.api.NPC;
 import net.runelite.api.NPCComposition;
-import net.runelite.api.Player;
 import net.runelite.api.Renderable;
-import net.runelite.api.coords.WorldPoint;
 import net.runelite.api.events.GameTick;
 import net.runelite.api.events.MenuEntryAdded;
 import net.runelite.api.events.MenuOptionClicked;
 import net.runelite.api.gameval.InterfaceID;
-import net.runelite.api.gameval.ItemID;
 import net.runelite.api.gameval.VarbitID;
 import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetUtil;
@@ -48,7 +41,7 @@ import net.runelite.client.plugins.PluginDescriptor;
 import net.runelite.client.ui.ClientToolbar;
 import net.runelite.client.ui.NavigationButton;
 import net.runelite.client.ui.overlay.OverlayManager;
-import net.runelite.client.util.AsyncBufferedImage;
+import net.runelite.client.util.ImageUtil;
 import net.runelite.client.util.Text;
 
 /**
@@ -84,8 +77,10 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	private static final int MAX_LISTED_MISSING_CARDS = 4;
 
 	private static final Set<String> EQUIP_VERBS = new HashSet<>(List.of("wear", "wield", "equip"));
+	// Forced drop leaves a locked item only its two disposal options; everything else
+	// (including Examine and Release) is blocked and, with option hiding on, removed.
 	private static final Set<String> FORCED_DROP_ALLOWED = new HashSet<>(List.of(
-		"drop", "examine", "destroy", "release"));
+		"drop", "destroy"));
 	// Production-interface verbs: the furnace smelting screen (and possibly other stations)
 	// uses a different widget group than the SKILLMULTI/SMITHING ones we match directly, so
 	// any interface click with one of these options gets a recipe lookup by product name.
@@ -109,6 +104,9 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 
 	@Inject
 	private BronzemanTcgConfig config;
+
+	@Inject
+	private ConfigManager configManager;
 
 	@Inject
 	private TcgCollectionReader collectionReader;
@@ -157,12 +155,13 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	protected void startUp()
 	{
 		collectionReader.invalidate();
+		migrateExemptList();
 
 		panel = new BronzemanTcgPanel(monsterCatalog, itemCatalog, nodeCatalog, questCatalog,
 			contentCatalog, collectionReader, config);
 		navButton = NavigationButton.builder()
 			.tooltip("Bronzeman TCG")
-			.icon(drawPanelIcon())
+			.icon(loadPanelIcon())
 			.priority(7)
 			.panel(panel)
 			.build();
@@ -213,6 +212,17 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 			return true;
 		}
 		return isUnlocked(monsterCatalog, name);
+	}
+
+	/**
+	 * Panel nav-button icon: the bundled card sprite (same art as the Plugin Hub icon),
+	 * loaded synchronously from the classpath. The previous approach pulled the med-helm
+	 * item sprite from the game cache asynchronously, which frequently wasn't ready when
+	 * the toolbar first painted - leaving a blank button.
+	 */
+	private BufferedImage loadPanelIcon()
+	{
+		return ImageUtil.loadImageResource(BronzemanTcgPlugin.class, "/panel_icon.png");
 	}
 
 	/**
@@ -303,6 +313,20 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 				return !objectName.isEmpty()
 					&& evaluateNodeRule(ResourceNodeCatalog.KIND_OBJECT, objectName, option) != null;
 			}
+			case WIDGET_TARGET:
+			{
+				// "Use" on an inventory item (WIDGET_TARGET, not a CC_OP item op). The click
+				// path blocks it under forced drop via handleUseSelected, so mirror that here
+				// or the option stays visible while its click is silently cancelled.
+				if (config.forcedDropMode() == ForcedDropMode.OFF
+					|| WidgetUtil.componentToInterface(entry.getParam1()) != InterfaceID.INVENTORY)
+				{
+					return false;
+				}
+				String usedItem = Text.removeTags(entry.getTarget()).trim();
+				return !usedItem.isEmpty() && !isLootExempt(usedItem)
+					&& !isUnlocked(itemCatalog, usedItem);
+			}
 			case CC_OP:
 			case CC_OP_LOW_PRIORITY:
 			{
@@ -343,74 +367,24 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	}
 
 	/**
-	 * Upside-down bronze med helm - the bronzeman emblem. The real item sprite is pulled
-	 * from the game cache and rotated 180°; it loads asynchronously, so we hand the nav
-	 * button a buffer now and paint the sprite into it whenever it arrives.
-	 */
-	private BufferedImage drawPanelIcon()
-	{
-		BufferedImage icon = new BufferedImage(24, 24, BufferedImage.TYPE_INT_ARGB);
-		AsyncBufferedImage helm = itemManager.getImage(ItemID.BRONZE_MED_HELM);
-		Runnable paint = () ->
-		{
-			Graphics2D g = icon.createGraphics();
-			g.setRenderingHint(RenderingHints.KEY_INTERPOLATION,
-				RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-			g.rotate(Math.PI, 12, 12);
-			// Item sprites are 36x32; scale preserving aspect, centred vertically.
-			g.drawImage(helm, 0, 2, 24, 21, null);
-			g.dispose();
-		};
-		helm.onLoaded(paint);
-		paint.run();
-		return icon;
-	}
-
-	/**
 	 * Gathers the nearby tracked-NPC snapshot on the client thread every few ticks and
 	 * hands it to the panel on the Swing EDT (game state must not be read from Swing).
 	 */
 	@Subscribe
 	public void onGameTick(GameTick event)
 	{
+		// Periodically re-render the panel so unlocks show without reopening it. Cheap and
+		// only when visible; nothing here reads live scene state.
 		if (panel == null || ++tickCounter % 5 != 0)
 		{
 			return;
 		}
-		Player player = client.getLocalPlayer();
-		if (player == null)
-		{
-			return;
-		}
-		WorldPoint playerLocation = player.getWorldLocation();
-		Map<String, Integer> nearest = new HashMap<>();
-		for (NPC npc : client.getNpcs())
-		{
-			if (npc == null)
-			{
-				continue;
-			}
-			String name = resolveNpcName(npc);
-			if (name == null || name.isEmpty() || !monsterCatalog.isTracked(name))
-			{
-				continue;
-			}
-			int distance = npc.getWorldLocation().distanceTo(playerLocation);
-			nearest.merge(name, distance, Math::min);
-		}
-		List<BronzemanTcgPanel.NearbyEntry> entries = new ArrayList<>(nearest.size());
-		for (Map.Entry<String, Integer> e : nearest.entrySet())
-		{
-			entries.add(new BronzemanTcgPanel.NearbyEntry(e.getKey(), e.getValue()));
-		}
-		entries.sort(Comparator.comparingInt(e -> e.distance));
-
 		BronzemanTcgPanel target = panel;
 		SwingUtilities.invokeLater(() ->
 		{
 			if (target.isShowing())
 			{
-				target.updateNearby(entries);
+				target.refresh();
 			}
 		});
 	}
@@ -1109,6 +1083,14 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 				enforceOutput = mode == SmithingMode.ITEMS || mode == SmithingMode.BOTH;
 				break;
 			}
+			case "cooking":
+				if (!config.restrictCooking())
+				{
+					return false;
+				}
+				enforceInputs = true;
+				enforceOutput = true;
+				break;
 			case "crafting":
 				if (!config.restrictCrafting())
 				{
@@ -1282,6 +1264,13 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 
 	private boolean isLootExempt(String itemName)
 	{
+		String needle = itemName.trim().toLowerCase(Locale.ROOT);
+		// Coins have their own toggle; the free-text list default is empty so RuneLite never
+		// re-injects a value the player has cleared (which used to re-add "Coins" on update).
+		if (config.exemptCoins() && "coins".equals(needle))
+		{
+			return true;
+		}
 		String raw = config.lootExemptNames();
 		if (!raw.equals(lootExemptRaw))
 		{
@@ -1293,7 +1282,53 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 			lootExemptSet = exempt;
 			lootExemptRaw = raw;
 		}
-		return lootExemptSet.contains(itemName.trim().toLowerCase(Locale.ROOT));
+		return lootExemptSet.contains(needle);
+	}
+
+	/**
+	 * One-time migration to the split Coins toggle. RuneLite re-injects a config item's
+	 * non-empty default whenever the stored value is cleared or unset, which used to re-add
+	 * "Coins" to the exempt list after every update (a real player-reported bug). The list
+	 * default is now empty and Coins exemption lives in its own toggle; this preserves each
+	 * existing player's current Coins behaviour by turning that toggle off for anyone whose
+	 * stored list did not already exempt Coins.
+	 */
+	private void migrateExemptList()
+	{
+		if (config.exemptListMigrated())
+		{
+			return;
+		}
+		// Mark migrated up front: this is a strict one-shot, so a crash mid-way can never
+		// re-run against a half-updated list (which could mis-set the Coins toggle). Worst
+		// case on a mid-way crash is Coins harmlessly lingering in the list - no data loss.
+		configManager.setConfiguration(BronzemanTcgConfig.GROUP, "exemptListMigrated", true);
+
+		String raw = configManager.getConfiguration(BronzemanTcgConfig.GROUP, "lootExemptNames");
+		if (raw == null)
+		{
+			return;
+		}
+		// Move Coins out of the free-text list into its dedicated toggle so it lives in exactly
+		// one place: drop only exact "Coins" (and blank) entries, set the toggle to whether the
+		// list exempted them, and keep EVERY other item verbatim.
+		boolean hadCoins = false;
+		List<String> kept = new ArrayList<>();
+		for (String entry : raw.split(","))
+		{
+			String trimmed = entry.trim();
+			if ("coins".equalsIgnoreCase(trimmed))
+			{
+				hadCoins = true;
+			}
+			else if (!trimmed.isEmpty())
+			{
+				kept.add(trimmed);
+			}
+		}
+		configManager.setConfiguration(BronzemanTcgConfig.GROUP, "exemptCoins", hadCoins);
+		configManager.setConfiguration(BronzemanTcgConfig.GROUP, "lootExemptNames",
+			String.join(", ", kept));
 	}
 
 	private List<String> missingCards(List<String> requiredCards)
