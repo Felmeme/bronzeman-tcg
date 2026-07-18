@@ -367,6 +367,20 @@ public interface BronzemanTcgConfig extends Config
 		return false;
 	}
 
+	@ConfigItem(
+		keyName = "showConflictMessage",
+		name = "Conflict plugins message",
+		description = "Warn in chat when another plugin that restricts the same actions is "
+			+ "enabled alongside this one, repeating every 30 minutes while both stay on."
+			+ "<br>Turn off if you're deliberately running both and don't need the reminder.",
+		section = generalSettings,
+		position = 14
+	)
+	default boolean showConflictMessage()
+	{
+		return true;
+	}
+
 	//----------------
 	//Resource nodes
 	//----------------
