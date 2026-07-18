@@ -3,6 +3,7 @@ package com.bronzemantcg;
 import com.google.gson.Gson;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Locale;
 import java.util.Set;
 import javax.inject.Inject;
@@ -11,15 +12,23 @@ import lombok.extern.slf4j.Slf4j;
 import net.runelite.client.config.ConfigManager;
 
 /**
- * Reads osrs-tcg's persisted collection directly out of ConfigManager. No compile-time
- * dependency on the osrs-tcg plugin - just its published config group/key names, which are
- * effectively its public interop surface (this is the standard "Option 2" pattern for
- * unrelated RuneLite Hub plugins to interoperate).
+ * Single source of truth for the player's osrs-tcg collection, with two ways in:
  *
- * Cached and refreshed lazily rather than decoded on every menu click, since gzip decode
- * on every single click would be wasteful. A short cache window is fine here: worst case
- * you can attack something you *just* unlocked for a few seconds longer than necessary,
- * which is a harmless direction to be stale in.
+ * 1. Preferred: osrs-tcg's PluginMessage API. The plugin forwards "owned-names" /
+ *    "owned-names-changed" payloads here via {@link #onApiOwnedNames}, giving an
+ *    already-decoded, push-updated list with no polling.
+ * 2. Fallback: decoding osrs-tcg's persisted ConfigManager state, for hub versions
+ *    that predate the API. No compile-time dependency either way - just published
+ *    config group/key names (the standard pattern for unrelated Hub plugins).
+ *
+ * Once any API payload arrives, it wins until {@link #invalidate()} (profile switch),
+ * after which we fall back to config until the next payload. Credits aren't in the API,
+ * so they always come from the config path.
+ *
+ * The fallback is cached and refreshed lazily rather than decoded on every menu click,
+ * since gzip decode on every single click would be wasteful. A short cache window is
+ * fine here: worst case you can attack something you *just* unlocked for a few seconds
+ * longer than necessary, which is a harmless direction to be stale in.
  */
 @Slf4j
 @Singleton
@@ -36,6 +45,8 @@ public class TcgCollectionReader
 	private long cachedCredits;
 	private boolean stateAvailable;
 	private long lastRefreshMs = 0L;
+	// Null until the first API payload lands; non-null means the API path is live.
+	private Set<String> apiOwnedLowerCaseNames;
 
 	@Inject
 	public TcgCollectionReader(ConfigManager configManager, Gson gson)
@@ -50,6 +61,10 @@ public class TcgCollectionReader
 	 */
 	public synchronized Set<String> getOwnedCardNamesLowerCase()
 	{
+		if (apiOwnedLowerCaseNames != null)
+		{
+			return apiOwnedLowerCaseNames;
+		}
 		ensureFresh();
 		return cachedOwnedLowerCaseNames;
 	}
@@ -64,15 +79,46 @@ public class TcgCollectionReader
 	/** Distinct card names owned (normal/foil folded), for the stats overlay. */
 	public synchronized int getOwnedCardCount()
 	{
-		ensureFresh();
-		return cachedOwnedLowerCaseNames.size();
+		return getOwnedCardNamesLowerCase().size();
 	}
 
 	/** False when osrs-tcg has no readable state (not installed, no data yet, or decode failure). */
 	public synchronized boolean isStateAvailable()
 	{
+		if (apiOwnedLowerCaseNames != null)
+		{
+			return true;
+		}
 		ensureFresh();
 		return stateAvailable;
+	}
+
+	/** True once an API payload has arrived; the plugin stops re-querying at that point. */
+	public synchronized boolean hasApiData()
+	{
+		return apiOwnedLowerCaseNames != null;
+	}
+
+	/**
+	 * Feed in an "ownedNames" payload from osrs-tcg's PluginMessage API. Elements are
+	 * validated individually rather than trusting the cast - the data map is untyped, and
+	 * a malformed payload should degrade to the config fallback, not throw on a click.
+	 */
+	public synchronized void onApiOwnedNames(List<?> names)
+	{
+		if (names == null)
+		{
+			return;
+		}
+		Set<String> normalized = new HashSet<>();
+		for (Object name : names)
+		{
+			if (name instanceof String && !((String) name).trim().isEmpty())
+			{
+				normalized.add(((String) name).trim().toLowerCase(Locale.ROOT));
+			}
+		}
+		apiOwnedLowerCaseNames = Collections.unmodifiableSet(normalized);
 	}
 
 	private void ensureFresh()
@@ -83,10 +129,15 @@ public class TcgCollectionReader
 		}
 	}
 
-	/** Call after profile switches / logins so a stale cache from a different account never lingers. */
+	/**
+	 * Call after profile switches / logins so a stale cache from a different account never
+	 * lingers. Drops API data too - it described the previous profile's collection - so we
+	 * serve the config fallback until the re-query for the new profile is answered.
+	 */
 	public synchronized void invalidate()
 	{
 		lastRefreshMs = 0L;
+		apiOwnedLowerCaseNames = null;
 	}
 
 	private void refresh()

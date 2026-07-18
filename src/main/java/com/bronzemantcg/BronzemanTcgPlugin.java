@@ -35,7 +35,9 @@ import net.runelite.client.callback.RenderCallbackManager;
 import net.runelite.client.chat.ChatMessageManager;
 import net.runelite.client.chat.QueuedMessage;
 import net.runelite.client.config.ConfigManager;
+import net.runelite.client.eventbus.EventBus;
 import net.runelite.client.eventbus.Subscribe;
+import net.runelite.client.events.PluginMessage;
 import net.runelite.client.events.RuneScapeProfileChanged;
 import net.runelite.client.game.ItemManager;
 import net.runelite.client.plugins.Plugin;
@@ -52,9 +54,10 @@ import net.runelite.client.util.Text;
  * attacking NPCs, looting, equipping, buying, gathering and processing are
  * gated behind owning the matching card(s).
  *
- * Interop is read-only via osrs-tcg's persisted ConfigManager state
- * (see {@link TcgCollectionReader}); there is no compile-time dependency,
- * so both plugins can be installed independently from the Plugin Hub.
+ * Interop is read-only via osrs-tcg's PluginMessage API, falling back to
+ * decoding its persisted ConfigManager state on hub versions that predate
+ * the API (see {@link TcgCollectionReader}); there is no compile-time
+ * dependency, so both plugins install independently from the Plugin Hub.
  *
  * Everything works by consuming MenuOptionClicked. Known limitation
  * (documented, owner-accepted): keyboard-driven interface defaults
@@ -94,6 +97,19 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	// Checked via PluginManager rather than through its stored data, so this stays
 	// valid whichever way we end up reading the collection.
 	private static final String REQUIRED_PLUGIN = "OSRS TCG";
+	// osrs-tcg's PluginMessage API (its OwnedCardNamesApiService). We query, it replies
+	// with "owned-names" and pushes "owned-names-changed" after every collection change.
+	// Hub versions without the API simply never answer; the config-decode fallback in
+	// TcgCollectionReader carries those users.
+	private static final String TCG_API_NAMESPACE = "osrstcg";
+	private static final String TCG_API_QUERY = "query-owned-names";
+	private static final String TCG_API_REPLY = "owned-names";
+	private static final String TCG_API_CHANGED = "owned-names-changed";
+	private static final String TCG_API_NAMES_KEY = "ownedNames";
+	// ~60s between query retries while unanswered - osrs-tcg may start after us, or be
+	// a hub version without the API (in which case we retry forever, cheaply, on the
+	// config fallback).
+	private static final int API_QUERY_RETRY_TICKS = 100;
 	// Game ticks are 600ms. ~9s clears the login chat burst; ~30min between reminders
 	// is often enough to notice, rare enough not to nag.
 	private static final int WELCOME_DELAY_TICKS = 15;
@@ -168,12 +184,16 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	@Inject
 	private PluginManager pluginManager;
 
+	@Inject
+	private EventBus eventBus;
+
 	private long lastBlockMessageMs;
 	private boolean welcomeShown;
 	// Countdowns in game ticks; negative means idle.
 	private int welcomeDelayTicks = -1;
 	private int reminderTicks = -1;
 	private int requiredPluginTicks = -1;
+	private int apiQueryTicks = -1;
 	private BronzemanTcgPanel panel;
 	private NavigationButton navButton;
 	private int tickCounter;
@@ -193,6 +213,10 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 		welcomeDelayTicks = -1;
 		reminderTicks = -1;
 		requiredPluginTicks = -1;
+		// Query on the first tick, not here: RuneLite registers our @Subscribe methods
+		// only after startUp returns, and EventBus.post is synchronous, so a reply to a
+		// query posted from startUp would arrive before we can hear it.
+		apiQueryTicks = 0;
 
 		panel = new BronzemanTcgPanel(monsterCatalog, itemCatalog, nodeCatalog, questCatalog,
 			contentCatalog, collectionReader, config);
@@ -265,6 +289,16 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	 */
 	private void tickWelcomeTimers()
 	{
+		if (apiQueryTicks >= 0 && --apiQueryTicks < 0)
+		{
+			if (!collectionReader.hasApiData())
+			{
+				eventBus.post(new PluginMessage(TCG_API_NAMESPACE, TCG_API_QUERY));
+			}
+			// EventBus.post is synchronous, so an answered query flips hasApiData before
+			// this line. Once answered, pushes keep us current - no more polling.
+			apiQueryTicks = collectionReader.hasApiData() ? -1 : API_QUERY_RETRY_TICKS;
+		}
 		if (welcomeDelayTicks >= 0 && --welcomeDelayTicks < 0)
 		{
 			// The greeting posts every notice itself, so nothing else runs this tick.
@@ -442,7 +476,6 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	{
 		return ImageUtil.loadImageResource(BronzemanTcgPlugin.class, "/panel_icon.png");
 	}
-
 	/**
 	 * Menu-entry hiding: blocked options are removed from menus as they assemble, so a
 	 * locked tree simply has no Chop down and a locked ground item's left-click falls
@@ -614,8 +647,36 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	@Subscribe
 	public void onRuneScapeProfileChanged(RuneScapeProfileChanged event)
 	{
-		// New account/profile: never let a previous profile's collection linger.
+		// New account/profile: never let a previous profile's collection linger. This
+		// drops any API-provided data too, so re-arm the query for the new profile.
 		collectionReader.invalidate();
+		apiQueryTicks = 0;
+	}
+
+	/**
+	 * osrs-tcg's PluginMessage API: both the reply to our query and unsolicited pushes
+	 * after collection changes carry the same owned-names payload, so they share a path.
+	 */
+	@Subscribe
+	public void onPluginMessage(PluginMessage event)
+	{
+		if (!TCG_API_NAMESPACE.equals(event.getNamespace())
+			|| (!TCG_API_REPLY.equals(event.getName()) && !TCG_API_CHANGED.equals(event.getName())))
+		{
+			return;
+		}
+		Map<String, Object> data = event.getData();
+		Object names = data == null ? null : data.get(TCG_API_NAMES_KEY);
+		if (!(names instanceof List))
+		{
+			return;
+		}
+		boolean firstPayload = !collectionReader.hasApiData();
+		collectionReader.onApiOwnedNames((List<?>) names);
+		if (firstPayload && collectionReader.hasApiData())
+		{
+			log.info("osrs-tcg PluginMessage API active; collection now push-updated.");
+		}
 	}
 
 	@Subscribe
