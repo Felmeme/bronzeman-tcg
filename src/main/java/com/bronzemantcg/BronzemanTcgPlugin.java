@@ -32,6 +32,7 @@ import net.runelite.api.events.GameTick;
 import net.runelite.api.events.MenuEntryAdded;
 import net.runelite.api.events.MenuOptionClicked;
 import net.runelite.api.events.ScriptPostFired;
+import net.runelite.api.events.WidgetLoaded;
 import net.runelite.api.gameval.InterfaceID;
 import net.runelite.api.gameval.VarbitID;
 import net.runelite.api.widgets.Widget;
@@ -127,9 +128,11 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	// also serves as our signature when restoring, so we never clobber another
 	// plugin's opacity.
 	private static final int LOCKED_ITEM_OPACITY = 140;
-	// Containers that get the fade: main inventory, bank items, bank-side inventory.
+	// Containers that get the fade: main inventory, bank items, bank-side inventory,
+	// shop stock and shop-side inventory.
 	private static final int[] LOCKED_MARK_CONTAINERS = {
-		InterfaceID.Inventory.ITEMS, InterfaceID.Bankmain.ITEMS, InterfaceID.Bankside.ITEMS};
+		InterfaceID.Inventory.ITEMS, InterfaceID.Bankmain.ITEMS, InterfaceID.Bankside.ITEMS,
+		InterfaceID.Shopmain.ITEMS, InterfaceID.Shopside.ITEMS};
 
 	@Inject
 	private Client client;
@@ -192,6 +195,9 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	private QuestNpcIndex questNpcIndex;
 
 	@Inject
+	private ConsumablesCatalog consumablesCatalog;
+
+	@Inject
 	private LockedItemIconOverlay lockedItemIconOverlay;
 
 	private long lastBlockMessageMs;
@@ -209,6 +215,7 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	private Set<String> effectiveOwnedBase;
 	private Set<String> effectiveOwnedExempt;
 	private boolean effectiveOwnedCoins;
+	private FoodSettingsMode effectiveOwnedFoodMode;
 	// Locked-mark lookup cache, keyed by item id; dropped whenever the owned set changes.
 	private final Map<Integer, Boolean> lockedItemCache = new HashMap<>();
 	private Set<String> lockedItemCacheOwned;
@@ -607,9 +614,25 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 			case CC_OP:
 			case CC_OP_LOW_PRIORITY:
 			{
-				// Inventory item ops only; bank/shop/interface menus stay consume-only.
+				int menuGroup = WidgetUtil.componentToInterface(entry.getParam1());
+				// Shop menus mirror the click blocks exactly: Buy needs unlocked Coins and
+				// the item's card; Sell only needs Coins (selling is disposal, item-free).
+				if (menuGroup == InterfaceID.SHOPMAIN && optionLower.startsWith("buy"))
+				{
+					if (isBlockedItemName("Coins"))
+					{
+						return true;
+					}
+					return entry.getItemId() > 0
+						&& isBlockedItemName(itemManager.getItemComposition(entry.getItemId()).getName());
+				}
+				if (menuGroup == InterfaceID.SHOPSIDE && optionLower.startsWith("sell"))
+				{
+					return isBlockedItemName("Coins");
+				}
+				// Otherwise inventory item ops only; bank/interface menus stay consume-only.
 				if (!entry.isItemOp() || entry.getItemId() <= 0
-					|| WidgetUtil.componentToInterface(entry.getParam1()) != InterfaceID.INVENTORY)
+					|| menuGroup != InterfaceID.INVENTORY)
 				{
 					return false;
 				}
@@ -1471,6 +1494,13 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	}
 
 	/** @return true when the item is tracked-but-unowned and the event was consumed. */
+	/** blockIfLockedItem's decision without the consume - for menu hiding. */
+	private boolean isBlockedItemName(String itemName)
+	{
+		return itemName != null && !itemName.isEmpty() && !isLootExempt(itemName)
+			&& !isUnlocked(itemCatalog, itemName);
+	}
+
 	private boolean blockIfLockedItem(MenuOptionClicked event, String itemName)
 	{
 		// The exempt list applies to EVERY item block (forced drop, withdraw, equip, buy...),
@@ -1528,6 +1558,17 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 		// Redraw scripts reset widget opacity, so re-fade as soon as they finish.
 		if (event.getScriptId() == ScriptID.INVENTORY_DRAWITEM
 			|| event.getScriptId() == ScriptID.BANKMAIN_BUILD)
+		{
+			scheduleLockedItemMarks();
+		}
+	}
+
+	@Subscribe
+	public void onWidgetLoaded(WidgetLoaded event)
+	{
+		// Shops build their stock on open; fade it immediately rather than waiting for
+		// the periodic sweep.
+		if (event.getGroupId() == InterfaceID.SHOPMAIN || event.getGroupId() == InterfaceID.SHOPSIDE)
 		{
 			scheduleLockedItemMarks();
 		}
@@ -1748,12 +1789,16 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 		Set<String> owned = collectionReader.getOwnedCardNamesLowerCase();
 		Set<String> exempt = exemptSet();
 		boolean coins = config.coinMode() == LockState.UNLOCKED;
-		if (exempt.isEmpty() && !coins)
+		// Food Settings works exactly like the exempt list: an allowed class's names
+		// merge into the effective-owned set, so every lock check in the plugin
+		// (usage, pickup, shops, GE, marking, recipes) honours it in one place.
+		FoodSettingsMode foodMode = config.foodSettingsMode();
+		if (exempt.isEmpty() && !coins && foodMode == FoodSettingsMode.LOCKED)
 		{
 			return owned;
 		}
 		if (owned != effectiveOwnedBase || exempt != effectiveOwnedExempt
-			|| coins != effectiveOwnedCoins)
+			|| coins != effectiveOwnedCoins || foodMode != effectiveOwnedFoodMode)
 		{
 			Set<String> combined = new HashSet<>(owned);
 			combined.addAll(exempt);
@@ -1761,10 +1806,19 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 			{
 				combined.add("coins");
 			}
+			if (foodMode.foodUsable())
+			{
+				combined.addAll(consumablesCatalog.getFoodNamesLower());
+			}
+			if (foodMode.potionsUsable())
+			{
+				combined.addAll(consumablesCatalog.getPotionNamesLower());
+			}
 			effectiveOwned = combined;
 			effectiveOwnedBase = owned;
 			effectiveOwnedExempt = exempt;
 			effectiveOwnedCoins = coins;
+			effectiveOwnedFoodMode = foodMode;
 		}
 		return effectiveOwned;
 	}

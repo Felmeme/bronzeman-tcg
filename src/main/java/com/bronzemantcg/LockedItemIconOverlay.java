@@ -33,6 +33,9 @@ class LockedItemIconOverlay extends WidgetItemOverlay
 		this.itemManager = itemManager;
 		showOnInventory();
 		showOnBank();
+		showOnInterfaces(
+			net.runelite.api.gameval.InterfaceID.SHOPMAIN,
+			net.runelite.api.gameval.InterfaceID.SHOPSIDE);
 	}
 
 	@Override

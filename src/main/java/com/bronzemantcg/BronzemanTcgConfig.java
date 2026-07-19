@@ -231,6 +231,21 @@ public interface BronzemanTcgConfig extends Config
 	}
 
 	@ConfigItem(
+			keyName = "foodSettingsMode",
+			name = "Food Settings",
+			description = "Whether locked consumables are usable without their card. Works like "
+					+ "the exempt list: an allowed class is treated as owned everywhere."
+					+ "<br>'Pots Only': potions usable. 'Food Only': food usable (wines, beers "
+					+ "and teas count as food). 'Unlocked': both.",
+			section = generalSettings,
+			position = 5
+	)
+	default FoodSettingsMode foodSettingsMode()
+	{
+		return FoodSettingsMode.LOCKED;
+	}
+
+	@ConfigItem(
 			keyName = "bankingMode",
 			name = "Banking",
 			description = "How locked inventory items interact with the bank while Item Usage is "
@@ -239,7 +254,7 @@ public interface BronzemanTcgConfig extends Config
 					+ "<br> 'Deposit Only': Deposits work, withdrawals stay blocked until the card unlocks."
 					+ "<br> 'Full Banking': Deposit and Withrdrawls allowed without needing card.",
 			section = generalSettings,
-			position = 5
+			position = 6
 	)
 	default BankingMode bankingMode()
 	{
@@ -253,7 +268,7 @@ public interface BronzemanTcgConfig extends Config
 					+ "the Grand Exchange search."
 					+ "<br>Items with no card can always be bought.",
 			section = generalSettings,
-			position = 6
+			position = 7
 	)
 	default LockState grandExchangeMode()
 	{
