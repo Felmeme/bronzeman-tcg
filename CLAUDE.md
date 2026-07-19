@@ -29,14 +29,25 @@
     deliverable files BEFORE their final message; if one dies, its
     generation scripts/raw fetches usually survive in the scratchpad and
     can be finished locally.
-  - Bulk wiki data: use the MediaWiki API (api.php?action=parse / batch
-    revisions, 50 titles per request), never per-page fetches.
+  - Bulk wiki data (corrected per wiki staff, github issue #1, 2026-07-18):
+    request plain page URLs with NO query params - those hit the wiki's
+    edge cache, which is what their infrastructure optimizes for. NEVER
+    api.php?action=parse (forces an uncached server-side parse each call).
+    Parse the returned HTML locally. Always send a descriptive User-Agent
+    naming this project, pace at ~1 req/sec, and cache every raw fetch in
+    the repo/scratchpad so re-runs hit the wiki zero times. The shipped
+    plugin makes no wiki requests at runtime - this governs dev-time data
+    generation only.
   - Hub releases: push here, then PR to runelite/plugin-hub bumping
     plugins/bronzeman-tcg `commit=`. runelite-plugin.properties MUST keep
     `build=standard`. Config keyNames are a public contract now.
   - The shell-permission service occasionally drops for a few minutes
     ("temporarily unavailable... classifier"); Write/Edit still work — route
     file changes through them and commit when it recovers.
+- **Plan first (2026-07-18 onward)**: for any feature request, write a plan
+  grounded in the existing codebase (files/methods touched, reuse vs new,
+  config impact) and discuss with the owner BEFORE implementing. He wants
+  less settings bloat and no spaghetti; consolidation refactors are welcome.
 - **Owner commits himself (2026-07-16 onward)**: the assistant edits files
   and build-verifies, then hands over the changed-file list + a suggested
   commit message; the owner stages, commits and pushes in IntelliJ. Do not
@@ -67,9 +78,22 @@ only, no automation).
 - `TcgStateDto` declares only the JSON fields we read:
   `collectionState.instances[].cardName` (+ `foil`). Gson ignores the rest.
 - `TcgCollectionReader` caches the owned-name set for 5s; invalidated on
-  `RuneScapeProfileChanged`. **Fails closed** on decode failure (empty
-  collection → all tracked NPCs blocked). This is deliberate: breakage should
-  be loud for a challenge-mode plugin. Discuss before changing to fail-open.
+  `RuneScapeProfileChanged`. On decode failure it reports state UNAVAILABLE
+  and **enforcement stands down entirely** (isEnforcementBypassed) with a
+  repeating chat warning — changed 2026-07-18 from the old fail-closed
+  behaviour, which would have locked every user out of the game on any
+  upstream format change. New-player-with-zero-cards still restricts
+  normally (state present but empty = available).
+- **PluginMessage API (BUILT, waiting on upstream release — branch
+  `feature/osrstcg-api`, 2 commits, pushed):** osrs-tcg commit 977f2ae adds
+  an event-bus API: post `PluginMessage("osrstcg", "query-owned-names")`,
+  receive "owned-names" reply + "owned-names-changed" pushes carrying
+  `data.ownedNames` (List<String>, foil folded). Our branch feeds this into
+  TcgCollectionReader as the preferred source (instant unlocks, no polling);
+  the config-decode path stays as fallback for pre-API versions, so ANY
+  combination of upgrade timing is safe. Credits are not in the API payload
+  (still decoded from config). Tested both directions in-game 2026-07-18.
+  When Az's update is live on the hub: merge per docs/api_merge_checklist.md.
 - `CardNameCatalog` (abstract) loads a `{entityToCards: {name -> [cards]}}`
   snapshot resource; `TrackedMonsterCatalog` (1,198 NPCs <- 1,225 Monster
   cards) and `TrackedItemCatalog` (5,149 items <- 5,149 Resource cards, 1:1)
@@ -235,7 +259,14 @@ docs/sailing_nodes_report.md):
    any editable list field.
 
 ## Post-launch backlog (agreed with owner)
-- **Cooking via range-click "Cook": FIXED 2026-07-16, needs re-test** — the
+- **Locked-item marking: SHIPPED + VERIFIED 2026-07-18** — Visuals dropdown
+  "Mark locked items" (Off/Transparent/Transparent + icon, default
+  Transparent). Widget-opacity fade (140) on inventory/bank/bank-side
+  containers re-applied on INVENTORY_DRAWITEM + BANKMAIN_BUILD scripts and a
+  5-tick sweep; bank-filler badge at 60% via LockedItemIconOverlay
+  (WidgetItemOverlay). Same lock rule as blocking incl. exempt list and
+  dose folding; stands down with LMS/unreadable state.
+- **Cooking via range-click "Cook": FIXED 2026-07-16, VERIFIED in-game 2026-07-18** — the
   SKILLMULTI/SMITHING interface branch now consults node rules first (it
   previously went recipe-only AND didn't log, which is why the owner's
   interface click produced no "kind=interface" line), and every cooking
@@ -308,6 +339,12 @@ docs/sailing_nodes_report.md):
   compost-type discrimination by reading its persisted config state
   (same pattern as the osrs-tcg interop).
 - Krystilia require-all difficulty revisit (wilderness bosses).
+- **Fishing gear-card edits (owner hand-edit 2026-07-17, incomplete)**: the
+  cage "Fishing spot" union is now [Raw lobster, Lobster pot] — Raw dark
+  crab was REMOVED pending the owner's plan to split lobster vs dark-crab
+  spots by NPC ID (his note in the node). Until then dark-crab spots
+  unlock via lobster cards. Big-net union gained "Big fishing net" as a
+  gear alternative. Re-add dark crabs when doing the ID split.
 - Sailing test pass (see DEFERRED section above).
 - **Quest enemy variant-name aliases (held from the 2026-07-16 re-derivation)**:
   Cuthbert (Ribbiting Tale, fought as "Cuthbert, Lord of Dread") and Metzli

@@ -256,6 +256,7 @@
 			],
 			"groupRoles": [
 				"",
+				"burnt",
 				"burnt"
 			],
 			"requireAll": true,
@@ -1046,10 +1047,14 @@
 				],
 				[
 					"Burnt karambwan"
+				],
+				[
+					"Poison karambwan"
 				]
 			],
 			"groupRoles": [
 				"",
+				"burnt",
 				"burnt"
 			]
 		},
@@ -1066,10 +1071,14 @@
 				],
 				[
 					"Burnt karambwan"
+				],
+				[
+					"Poison karambwan"
 				]
 			],
 			"groupRoles": [
 				"",
+				"burnt",
 				"burnt"
 			],
 			"requireAll": true,
@@ -4684,12 +4693,52 @@
 			"options": [
 				"pickpocket"
 			],
-			"requiredCards": [
-				"Coins",
-				"Coin pouch"
-			],
 			"requireAll": true,
-			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention.",
+			"requiredCardGroups": [
+				[
+					"Coins"
+				],
+				[
+					"Coin pouch"
+				],
+				[
+					"Death rune"
+				],
+				[
+					"Nature rune"
+				],
+				[
+					"Jug of wine"
+				],
+				[
+					"Diamond"
+				],
+				[
+					"Fire orb"
+				],
+				[
+					"Gold ore"
+				],
+				[
+					"Crystal shards"
+				],
+				[
+					"Enhanced crystal teleport seed"
+				]
+			],
+			"groupRoles": [
+				"",
+				"",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot-elf"
+			]
 		},
 		{
 			"category": "pickpocketing",
@@ -4698,12 +4747,52 @@
 			"options": [
 				"pickpocket"
 			],
-			"requiredCards": [
-				"Coins",
-				"Coin pouch"
-			],
 			"requireAll": true,
-			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention.",
+			"requiredCardGroups": [
+				[
+					"Coins"
+				],
+				[
+					"Coin pouch"
+				],
+				[
+					"Death rune"
+				],
+				[
+					"Nature rune"
+				],
+				[
+					"Jug of wine"
+				],
+				[
+					"Diamond"
+				],
+				[
+					"Fire orb"
+				],
+				[
+					"Gold ore"
+				],
+				[
+					"Crystal shards"
+				],
+				[
+					"Enhanced crystal teleport seed"
+				]
+			],
+			"groupRoles": [
+				"",
+				"",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot-elf"
+			]
 		},
 		{
 			"category": "pickpocketing",
@@ -4712,12 +4801,52 @@
 			"options": [
 				"pickpocket"
 			],
-			"requiredCards": [
-				"Coins",
-				"Coin pouch"
-			],
 			"requireAll": true,
-			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention.",
+			"requiredCardGroups": [
+				[
+					"Coins"
+				],
+				[
+					"Coin pouch"
+				],
+				[
+					"Death rune"
+				],
+				[
+					"Nature rune"
+				],
+				[
+					"Jug of wine"
+				],
+				[
+					"Diamond"
+				],
+				[
+					"Fire orb"
+				],
+				[
+					"Gold ore"
+				],
+				[
+					"Crystal shards"
+				],
+				[
+					"Enhanced crystal teleport seed"
+				]
+			],
+			"groupRoles": [
+				"",
+				"",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot-elf"
+			]
 		},
 		{
 			"category": "pickpocketing",
@@ -4726,12 +4855,52 @@
 			"options": [
 				"pickpocket"
 			],
-			"requiredCards": [
-				"Coins",
-				"Coin pouch"
-			],
 			"requireAll": true,
-			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention.",
+			"requiredCardGroups": [
+				[
+					"Coins"
+				],
+				[
+					"Coin pouch"
+				],
+				[
+					"Death rune"
+				],
+				[
+					"Nature rune"
+				],
+				[
+					"Jug of wine"
+				],
+				[
+					"Diamond"
+				],
+				[
+					"Fire orb"
+				],
+				[
+					"Gold ore"
+				],
+				[
+					"Crystal shards"
+				],
+				[
+					"Enhanced crystal teleport seed"
+				]
+			],
+			"groupRoles": [
+				"",
+				"",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot-elf"
+			]
 		},
 		{
 			"category": "pickpocketing",
@@ -4740,12 +4909,52 @@
 			"options": [
 				"pickpocket"
 			],
-			"requiredCards": [
-				"Coins",
-				"Coin pouch"
-			],
 			"requireAll": true,
-			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention.",
+			"requiredCardGroups": [
+				[
+					"Coins"
+				],
+				[
+					"Coin pouch"
+				],
+				[
+					"Death rune"
+				],
+				[
+					"Nature rune"
+				],
+				[
+					"Jug of wine"
+				],
+				[
+					"Diamond"
+				],
+				[
+					"Fire orb"
+				],
+				[
+					"Gold ore"
+				],
+				[
+					"Crystal shards"
+				],
+				[
+					"Enhanced crystal teleport seed"
+				]
+			],
+			"groupRoles": [
+				"",
+				"",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot-elf"
+			]
 		},
 		{
 			"category": "pickpocketing",
@@ -4754,12 +4963,52 @@
 			"options": [
 				"pickpocket"
 			],
-			"requiredCards": [
-				"Coins",
-				"Coin pouch"
-			],
 			"requireAll": true,
-			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention.",
+			"requiredCardGroups": [
+				[
+					"Coins"
+				],
+				[
+					"Coin pouch"
+				],
+				[
+					"Death rune"
+				],
+				[
+					"Nature rune"
+				],
+				[
+					"Jug of wine"
+				],
+				[
+					"Diamond"
+				],
+				[
+					"Fire orb"
+				],
+				[
+					"Gold ore"
+				],
+				[
+					"Crystal shards"
+				],
+				[
+					"Enhanced crystal teleport seed"
+				]
+			],
+			"groupRoles": [
+				"",
+				"",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot-elf"
+			]
 		},
 		{
 			"category": "pickpocketing",
@@ -4768,12 +5017,52 @@
 			"options": [
 				"pickpocket"
 			],
-			"requiredCards": [
-				"Coins",
-				"Coin pouch"
-			],
 			"requireAll": true,
-			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention.",
+			"requiredCardGroups": [
+				[
+					"Coins"
+				],
+				[
+					"Coin pouch"
+				],
+				[
+					"Death rune"
+				],
+				[
+					"Nature rune"
+				],
+				[
+					"Jug of wine"
+				],
+				[
+					"Diamond"
+				],
+				[
+					"Fire orb"
+				],
+				[
+					"Gold ore"
+				],
+				[
+					"Crystal shards"
+				],
+				[
+					"Enhanced crystal teleport seed"
+				]
+			],
+			"groupRoles": [
+				"",
+				"",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot-elf"
+			]
 		},
 		{
 			"category": "pickpocketing",
@@ -4782,12 +5071,52 @@
 			"options": [
 				"pickpocket"
 			],
-			"requiredCards": [
-				"Coins",
-				"Coin pouch"
-			],
 			"requireAll": true,
-			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention.",
+			"requiredCardGroups": [
+				[
+					"Coins"
+				],
+				[
+					"Coin pouch"
+				],
+				[
+					"Death rune"
+				],
+				[
+					"Nature rune"
+				],
+				[
+					"Jug of wine"
+				],
+				[
+					"Diamond"
+				],
+				[
+					"Fire orb"
+				],
+				[
+					"Gold ore"
+				],
+				[
+					"Crystal shards"
+				],
+				[
+					"Enhanced crystal teleport seed"
+				]
+			],
+			"groupRoles": [
+				"",
+				"",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot-elf"
+			]
 		},
 		{
 			"category": "pickpocketing",
@@ -4796,12 +5125,52 @@
 			"options": [
 				"pickpocket"
 			],
-			"requiredCards": [
-				"Coins",
-				"Coin pouch"
-			],
 			"requireAll": true,
-			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention.",
+			"requiredCardGroups": [
+				[
+					"Coins"
+				],
+				[
+					"Coin pouch"
+				],
+				[
+					"Death rune"
+				],
+				[
+					"Nature rune"
+				],
+				[
+					"Jug of wine"
+				],
+				[
+					"Diamond"
+				],
+				[
+					"Fire orb"
+				],
+				[
+					"Gold ore"
+				],
+				[
+					"Crystal shards"
+				],
+				[
+					"Enhanced crystal teleport seed"
+				]
+			],
+			"groupRoles": [
+				"",
+				"",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot-elf"
+			]
 		},
 		{
 			"category": "pickpocketing",
@@ -4810,12 +5179,52 @@
 			"options": [
 				"pickpocket"
 			],
-			"requiredCards": [
-				"Coins",
-				"Coin pouch"
-			],
 			"requireAll": true,
-			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention.",
+			"requiredCardGroups": [
+				[
+					"Coins"
+				],
+				[
+					"Coin pouch"
+				],
+				[
+					"Death rune"
+				],
+				[
+					"Nature rune"
+				],
+				[
+					"Jug of wine"
+				],
+				[
+					"Diamond"
+				],
+				[
+					"Fire orb"
+				],
+				[
+					"Gold ore"
+				],
+				[
+					"Crystal shards"
+				],
+				[
+					"Enhanced crystal teleport seed"
+				]
+			],
+			"groupRoles": [
+				"",
+				"",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot-elf"
+			]
 		},
 		{
 			"category": "pickpocketing",
@@ -4824,12 +5233,52 @@
 			"options": [
 				"pickpocket"
 			],
-			"requiredCards": [
-				"Coins",
-				"Coin pouch"
-			],
 			"requireAll": true,
-			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention.",
+			"requiredCardGroups": [
+				[
+					"Coins"
+				],
+				[
+					"Coin pouch"
+				],
+				[
+					"Death rune"
+				],
+				[
+					"Nature rune"
+				],
+				[
+					"Jug of wine"
+				],
+				[
+					"Diamond"
+				],
+				[
+					"Fire orb"
+				],
+				[
+					"Gold ore"
+				],
+				[
+					"Crystal shards"
+				],
+				[
+					"Enhanced crystal teleport seed"
+				]
+			],
+			"groupRoles": [
+				"",
+				"",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot-elf"
+			]
 		},
 		{
 			"category": "pickpocketing",
@@ -4838,12 +5287,52 @@
 			"options": [
 				"pickpocket"
 			],
-			"requiredCards": [
-				"Coins",
-				"Coin pouch"
-			],
 			"requireAll": true,
-			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention.",
+			"requiredCardGroups": [
+				[
+					"Coins"
+				],
+				[
+					"Coin pouch"
+				],
+				[
+					"Death rune"
+				],
+				[
+					"Nature rune"
+				],
+				[
+					"Jug of wine"
+				],
+				[
+					"Diamond"
+				],
+				[
+					"Fire orb"
+				],
+				[
+					"Gold ore"
+				],
+				[
+					"Crystal shards"
+				],
+				[
+					"Enhanced crystal teleport seed"
+				]
+			],
+			"groupRoles": [
+				"",
+				"",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot-elf"
+			]
 		},
 		{
 			"category": "pickpocketing",
@@ -4852,12 +5341,52 @@
 			"options": [
 				"pickpocket"
 			],
-			"requiredCards": [
-				"Coins",
-				"Coin pouch"
-			],
 			"requireAll": true,
-			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention.",
+			"requiredCardGroups": [
+				[
+					"Coins"
+				],
+				[
+					"Coin pouch"
+				],
+				[
+					"Death rune"
+				],
+				[
+					"Nature rune"
+				],
+				[
+					"Jug of wine"
+				],
+				[
+					"Diamond"
+				],
+				[
+					"Fire orb"
+				],
+				[
+					"Gold ore"
+				],
+				[
+					"Crystal shards"
+				],
+				[
+					"Enhanced crystal teleport seed"
+				]
+			],
+			"groupRoles": [
+				"",
+				"",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot-elf"
+			]
 		},
 		{
 			"category": "pickpocketing",
@@ -4866,12 +5395,52 @@
 			"options": [
 				"pickpocket"
 			],
-			"requiredCards": [
-				"Coins",
-				"Coin pouch"
-			],
 			"requireAll": true,
-			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention.",
+			"requiredCardGroups": [
+				[
+					"Coins"
+				],
+				[
+					"Coin pouch"
+				],
+				[
+					"Death rune"
+				],
+				[
+					"Nature rune"
+				],
+				[
+					"Jug of wine"
+				],
+				[
+					"Diamond"
+				],
+				[
+					"Fire orb"
+				],
+				[
+					"Gold ore"
+				],
+				[
+					"Crystal shards"
+				],
+				[
+					"Enhanced crystal teleport seed"
+				]
+			],
+			"groupRoles": [
+				"",
+				"",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot-elf"
+			]
 		},
 		{
 			"category": "pickpocketing",
@@ -4880,12 +5449,52 @@
 			"options": [
 				"pickpocket"
 			],
-			"requiredCards": [
-				"Coins",
-				"Coin pouch"
-			],
 			"requireAll": true,
-			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention.",
+			"requiredCardGroups": [
+				[
+					"Coins"
+				],
+				[
+					"Coin pouch"
+				],
+				[
+					"Death rune"
+				],
+				[
+					"Nature rune"
+				],
+				[
+					"Jug of wine"
+				],
+				[
+					"Diamond"
+				],
+				[
+					"Fire orb"
+				],
+				[
+					"Gold ore"
+				],
+				[
+					"Crystal shards"
+				],
+				[
+					"Enhanced crystal teleport seed"
+				]
+			],
+			"groupRoles": [
+				"",
+				"",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot-elf"
+			]
 		},
 		{
 			"category": "pickpocketing",
@@ -4894,12 +5503,52 @@
 			"options": [
 				"pickpocket"
 			],
-			"requiredCards": [
-				"Coins",
-				"Coin pouch"
-			],
 			"requireAll": true,
-			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention.",
+			"requiredCardGroups": [
+				[
+					"Coins"
+				],
+				[
+					"Coin pouch"
+				],
+				[
+					"Death rune"
+				],
+				[
+					"Nature rune"
+				],
+				[
+					"Jug of wine"
+				],
+				[
+					"Diamond"
+				],
+				[
+					"Fire orb"
+				],
+				[
+					"Gold ore"
+				],
+				[
+					"Crystal shards"
+				],
+				[
+					"Enhanced crystal teleport seed"
+				]
+			],
+			"groupRoles": [
+				"",
+				"",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot-elf"
+			]
 		},
 		{
 			"category": "pickpocketing",
@@ -4908,12 +5557,52 @@
 			"options": [
 				"pickpocket"
 			],
-			"requiredCards": [
-				"Coins",
-				"Coin pouch"
-			],
 			"requireAll": true,
-			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention.",
+			"requiredCardGroups": [
+				[
+					"Coins"
+				],
+				[
+					"Coin pouch"
+				],
+				[
+					"Death rune"
+				],
+				[
+					"Nature rune"
+				],
+				[
+					"Jug of wine"
+				],
+				[
+					"Diamond"
+				],
+				[
+					"Fire orb"
+				],
+				[
+					"Gold ore"
+				],
+				[
+					"Crystal shards"
+				],
+				[
+					"Enhanced crystal teleport seed"
+				]
+			],
+			"groupRoles": [
+				"",
+				"",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot-elf"
+			]
 		},
 		{
 			"category": "pickpocketing",
@@ -4933,12 +5622,16 @@
 				],
 				[
 					"Farmer"
+				],
+				[
+					"Potato seed"
 				]
 			],
 			"groupRoles": [
 				"",
 				"",
-				"npc"
+				"npc",
+				"loot"
 			]
 		},
 		{
@@ -4948,12 +5641,52 @@
 			"options": [
 				"pickpocket"
 			],
-			"requiredCards": [
-				"Coins",
-				"Coin pouch"
-			],
 			"requireAll": true,
-			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention.",
+			"requiredCardGroups": [
+				[
+					"Coins"
+				],
+				[
+					"Coin pouch"
+				],
+				[
+					"Death rune"
+				],
+				[
+					"Nature rune"
+				],
+				[
+					"Jug of wine"
+				],
+				[
+					"Diamond"
+				],
+				[
+					"Fire orb"
+				],
+				[
+					"Gold ore"
+				],
+				[
+					"Crystal shards"
+				],
+				[
+					"Enhanced crystal teleport seed"
+				]
+			],
+			"groupRoles": [
+				"",
+				"",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot-elf"
+			]
 		},
 		{
 			"category": "pickpocketing",
@@ -4962,12 +5695,52 @@
 			"options": [
 				"pickpocket"
 			],
-			"requiredCards": [
-				"Coins",
-				"Coin pouch"
-			],
 			"requireAll": true,
-			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention.",
+			"requiredCardGroups": [
+				[
+					"Coins"
+				],
+				[
+					"Coin pouch"
+				],
+				[
+					"Death rune"
+				],
+				[
+					"Nature rune"
+				],
+				[
+					"Jug of wine"
+				],
+				[
+					"Diamond"
+				],
+				[
+					"Fire orb"
+				],
+				[
+					"Gold ore"
+				],
+				[
+					"Crystal shards"
+				],
+				[
+					"Enhanced crystal teleport seed"
+				]
+			],
+			"groupRoles": [
+				"",
+				"",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot-elf"
+			]
 		},
 		{
 			"category": "pickpocketing",
@@ -4976,12 +5749,52 @@
 			"options": [
 				"pickpocket"
 			],
-			"requiredCards": [
-				"Coins",
-				"Coin pouch"
-			],
 			"requireAll": true,
-			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention.",
+			"requiredCardGroups": [
+				[
+					"Coins"
+				],
+				[
+					"Coin pouch"
+				],
+				[
+					"Death rune"
+				],
+				[
+					"Nature rune"
+				],
+				[
+					"Jug of wine"
+				],
+				[
+					"Diamond"
+				],
+				[
+					"Fire orb"
+				],
+				[
+					"Gold ore"
+				],
+				[
+					"Crystal shards"
+				],
+				[
+					"Enhanced crystal teleport seed"
+				]
+			],
+			"groupRoles": [
+				"",
+				"",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot-elf"
+			]
 		},
 		{
 			"category": "pickpocketing",
@@ -4990,12 +5803,52 @@
 			"options": [
 				"pickpocket"
 			],
-			"requiredCards": [
-				"Coins",
-				"Coin pouch"
-			],
 			"requireAll": true,
-			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention.",
+			"requiredCardGroups": [
+				[
+					"Coins"
+				],
+				[
+					"Coin pouch"
+				],
+				[
+					"Death rune"
+				],
+				[
+					"Nature rune"
+				],
+				[
+					"Jug of wine"
+				],
+				[
+					"Diamond"
+				],
+				[
+					"Fire orb"
+				],
+				[
+					"Gold ore"
+				],
+				[
+					"Crystal shards"
+				],
+				[
+					"Enhanced crystal teleport seed"
+				]
+			],
+			"groupRoles": [
+				"",
+				"",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot-elf"
+			]
 		},
 		{
 			"category": "pickpocketing",
@@ -5004,12 +5857,52 @@
 			"options": [
 				"pickpocket"
 			],
-			"requiredCards": [
-				"Coins",
-				"Coin pouch"
-			],
 			"requireAll": true,
-			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention.",
+			"requiredCardGroups": [
+				[
+					"Coins"
+				],
+				[
+					"Coin pouch"
+				],
+				[
+					"Death rune"
+				],
+				[
+					"Nature rune"
+				],
+				[
+					"Jug of wine"
+				],
+				[
+					"Diamond"
+				],
+				[
+					"Fire orb"
+				],
+				[
+					"Gold ore"
+				],
+				[
+					"Crystal shards"
+				],
+				[
+					"Enhanced crystal teleport seed"
+				]
+			],
+			"groupRoles": [
+				"",
+				"",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot-elf"
+			]
 		},
 		{
 			"category": "pickpocketing",
@@ -5018,12 +5911,52 @@
 			"options": [
 				"pickpocket"
 			],
-			"requiredCards": [
-				"Coins",
-				"Coin pouch"
-			],
 			"requireAll": true,
-			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention.",
+			"requiredCardGroups": [
+				[
+					"Coins"
+				],
+				[
+					"Coin pouch"
+				],
+				[
+					"Death rune"
+				],
+				[
+					"Nature rune"
+				],
+				[
+					"Jug of wine"
+				],
+				[
+					"Diamond"
+				],
+				[
+					"Fire orb"
+				],
+				[
+					"Gold ore"
+				],
+				[
+					"Crystal shards"
+				],
+				[
+					"Enhanced crystal teleport seed"
+				]
+			],
+			"groupRoles": [
+				"",
+				"",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot-elf"
+			]
 		},
 		{
 			"category": "pickpocketing",
@@ -5032,12 +5965,52 @@
 			"options": [
 				"pickpocket"
 			],
-			"requiredCards": [
-				"Coins",
-				"Coin pouch"
-			],
 			"requireAll": true,
-			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention.",
+			"requiredCardGroups": [
+				[
+					"Coins"
+				],
+				[
+					"Coin pouch"
+				],
+				[
+					"Death rune"
+				],
+				[
+					"Nature rune"
+				],
+				[
+					"Jug of wine"
+				],
+				[
+					"Diamond"
+				],
+				[
+					"Fire orb"
+				],
+				[
+					"Gold ore"
+				],
+				[
+					"Crystal shards"
+				],
+				[
+					"Enhanced crystal teleport seed"
+				]
+			],
+			"groupRoles": [
+				"",
+				"",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot-elf"
+			]
 		},
 		{
 			"category": "pickpocketing",
@@ -5046,12 +6019,52 @@
 			"options": [
 				"pickpocket"
 			],
-			"requiredCards": [
-				"Coins",
-				"Coin pouch"
-			],
 			"requireAll": true,
-			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention.",
+			"requiredCardGroups": [
+				[
+					"Coins"
+				],
+				[
+					"Coin pouch"
+				],
+				[
+					"Death rune"
+				],
+				[
+					"Nature rune"
+				],
+				[
+					"Jug of wine"
+				],
+				[
+					"Diamond"
+				],
+				[
+					"Fire orb"
+				],
+				[
+					"Gold ore"
+				],
+				[
+					"Crystal shards"
+				],
+				[
+					"Enhanced crystal teleport seed"
+				]
+			],
+			"groupRoles": [
+				"",
+				"",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot-elf"
+			]
 		},
 		{
 			"category": "pickpocketing",
@@ -5060,12 +6073,52 @@
 			"options": [
 				"pickpocket"
 			],
-			"requiredCards": [
-				"Coins",
-				"Coin pouch"
-			],
 			"requireAll": true,
-			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention.",
+			"requiredCardGroups": [
+				[
+					"Coins"
+				],
+				[
+					"Coin pouch"
+				],
+				[
+					"Death rune"
+				],
+				[
+					"Nature rune"
+				],
+				[
+					"Jug of wine"
+				],
+				[
+					"Diamond"
+				],
+				[
+					"Fire orb"
+				],
+				[
+					"Gold ore"
+				],
+				[
+					"Crystal shards"
+				],
+				[
+					"Enhanced crystal teleport seed"
+				]
+			],
+			"groupRoles": [
+				"",
+				"",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot-elf"
+			]
 		},
 		{
 			"category": "pickpocketing",
@@ -5100,12 +6153,52 @@
 			"options": [
 				"pickpocket"
 			],
-			"requiredCards": [
-				"Coins",
-				"Coin pouch"
-			],
 			"requireAll": true,
-			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention.",
+			"requiredCardGroups": [
+				[
+					"Coins"
+				],
+				[
+					"Coin pouch"
+				],
+				[
+					"Death rune"
+				],
+				[
+					"Nature rune"
+				],
+				[
+					"Jug of wine"
+				],
+				[
+					"Diamond"
+				],
+				[
+					"Fire orb"
+				],
+				[
+					"Gold ore"
+				],
+				[
+					"Crystal shards"
+				],
+				[
+					"Enhanced crystal teleport seed"
+				]
+			],
+			"groupRoles": [
+				"",
+				"",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot-elf"
+			]
 		},
 		{
 			"category": "pickpocketing",
@@ -5114,12 +6207,168 @@
 			"options": [
 				"pickpocket"
 			],
-			"requiredCards": [
-				"Coins",
-				"Coin pouch"
-			],
 			"requireAll": true,
-			"notes": "Verify exact name/casing ('H.A.M. Member')."
+			"notes": "Verify exact name/casing ('H.A.M. Member').",
+			"requiredCardGroups": [
+				[
+					"Coins"
+				],
+				[
+					"Coin pouch"
+				],
+				[
+					"Ham boots"
+				],
+				[
+					"Ham cloak"
+				],
+				[
+					"Ham gloves"
+				],
+				[
+					"Ham hood"
+				],
+				[
+					"Ham logo"
+				],
+				[
+					"Ham robe"
+				],
+				[
+					"Ham shirt"
+				],
+				[
+					"Bronze arrow"
+				],
+				[
+					"Bronze axe"
+				],
+				[
+					"Bronze dagger"
+				],
+				[
+					"Bronze pickaxe"
+				],
+				[
+					"Coal"
+				],
+				[
+					"Cowhide"
+				],
+				[
+					"Damaged armour"
+				],
+				[
+					"Feather"
+				],
+				[
+					"Grimy guam leaf"
+				],
+				[
+					"Grimy marrentill"
+				],
+				[
+					"Grimy tarromin"
+				],
+				[
+					"Iron axe"
+				],
+				[
+					"Iron dagger"
+				],
+				[
+					"Iron ore"
+				],
+				[
+					"Iron pickaxe"
+				],
+				[
+					"Knife"
+				],
+				[
+					"Leather body"
+				],
+				[
+					"Logs"
+				],
+				[
+					"Needle"
+				],
+				[
+					"Raw anchovies"
+				],
+				[
+					"Raw chicken"
+				],
+				[
+					"Rusty sword"
+				],
+				[
+					"Steel arrow"
+				],
+				[
+					"Steel axe"
+				],
+				[
+					"Steel dagger"
+				],
+				[
+					"Steel pickaxe"
+				],
+				[
+					"Thread"
+				],
+				[
+					"Tinderbox"
+				],
+				[
+					"Uncut jade"
+				],
+				[
+					"Uncut opal"
+				]
+			],
+			"groupRoles": [
+				"",
+				"",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot-ham",
+				"loot-ham",
+				"loot-ham",
+				"loot-ham",
+				"loot-ham",
+				"loot-ham",
+				"loot-ham",
+				"loot-ham",
+				"loot-ham",
+				"loot-ham",
+				"loot-ham",
+				"loot-ham",
+				"loot-ham",
+				"loot-ham",
+				"loot-ham",
+				"loot-ham",
+				"loot-ham",
+				"loot-ham",
+				"loot-ham",
+				"loot-ham",
+				"loot-ham",
+				"loot-ham",
+				"loot-ham",
+				"loot-ham",
+				"loot-ham",
+				"loot-ham",
+				"loot-ham",
+				"loot-ham",
+				"loot-ham",
+				"loot-ham"
+			]
 		},
 		{
 			"category": "pickpocketing",
@@ -5128,12 +6377,52 @@
 			"options": [
 				"pickpocket"
 			],
-			"requiredCards": [
-				"Coins",
-				"Coin pouch"
-			],
 			"requireAll": true,
-			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention.",
+			"requiredCardGroups": [
+				[
+					"Coins"
+				],
+				[
+					"Coin pouch"
+				],
+				[
+					"Death rune"
+				],
+				[
+					"Nature rune"
+				],
+				[
+					"Jug of wine"
+				],
+				[
+					"Diamond"
+				],
+				[
+					"Fire orb"
+				],
+				[
+					"Gold ore"
+				],
+				[
+					"Crystal shards"
+				],
+				[
+					"Enhanced crystal teleport seed"
+				]
+			],
+			"groupRoles": [
+				"",
+				"",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot-elf"
+			]
 		},
 		{
 			"category": "pickpocketing",
@@ -5153,12 +6442,36 @@
 				],
 				[
 					"Hero"
+				],
+				[
+					"Death rune"
+				],
+				[
+					"Jug of wine"
+				],
+				[
+					"Blood rune"
+				],
+				[
+					"Diamond"
+				],
+				[
+					"Fire orb"
+				],
+				[
+					"Gold ore"
 				]
 			],
 			"groupRoles": [
 				"",
 				"",
-				"npc"
+				"npc",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot"
 			]
 		},
 		{
@@ -5168,12 +6481,52 @@
 			"options": [
 				"pickpocket"
 			],
-			"requiredCards": [
-				"Coins",
-				"Coin pouch"
-			],
 			"requireAll": true,
-			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention.",
+			"requiredCardGroups": [
+				[
+					"Coins"
+				],
+				[
+					"Coin pouch"
+				],
+				[
+					"Death rune"
+				],
+				[
+					"Nature rune"
+				],
+				[
+					"Jug of wine"
+				],
+				[
+					"Diamond"
+				],
+				[
+					"Fire orb"
+				],
+				[
+					"Gold ore"
+				],
+				[
+					"Crystal shards"
+				],
+				[
+					"Enhanced crystal teleport seed"
+				]
+			],
+			"groupRoles": [
+				"",
+				"",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot-elf"
+			]
 		},
 		{
 			"category": "pickpocketing",
@@ -5182,12 +6535,52 @@
 			"options": [
 				"pickpocket"
 			],
-			"requiredCards": [
-				"Coins",
-				"Coin pouch"
-			],
 			"requireAll": true,
-			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention.",
+			"requiredCardGroups": [
+				[
+					"Coins"
+				],
+				[
+					"Coin pouch"
+				],
+				[
+					"Death rune"
+				],
+				[
+					"Nature rune"
+				],
+				[
+					"Jug of wine"
+				],
+				[
+					"Diamond"
+				],
+				[
+					"Fire orb"
+				],
+				[
+					"Gold ore"
+				],
+				[
+					"Crystal shards"
+				],
+				[
+					"Enhanced crystal teleport seed"
+				]
+			],
+			"groupRoles": [
+				"",
+				"",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot-elf"
+			]
 		},
 		{
 			"category": "pickpocketing",
@@ -5196,12 +6589,52 @@
 			"options": [
 				"pickpocket"
 			],
-			"requiredCards": [
-				"Coins",
-				"Coin pouch"
-			],
 			"requireAll": true,
-			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention.",
+			"requiredCardGroups": [
+				[
+					"Coins"
+				],
+				[
+					"Coin pouch"
+				],
+				[
+					"Death rune"
+				],
+				[
+					"Nature rune"
+				],
+				[
+					"Jug of wine"
+				],
+				[
+					"Diamond"
+				],
+				[
+					"Fire orb"
+				],
+				[
+					"Gold ore"
+				],
+				[
+					"Crystal shards"
+				],
+				[
+					"Enhanced crystal teleport seed"
+				]
+			],
+			"groupRoles": [
+				"",
+				"",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot-elf"
+			]
 		},
 		{
 			"category": "pickpocketing",
@@ -5210,12 +6643,52 @@
 			"options": [
 				"pickpocket"
 			],
-			"requiredCards": [
-				"Coins",
-				"Coin pouch"
-			],
 			"requireAll": true,
-			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention.",
+			"requiredCardGroups": [
+				[
+					"Coins"
+				],
+				[
+					"Coin pouch"
+				],
+				[
+					"Death rune"
+				],
+				[
+					"Nature rune"
+				],
+				[
+					"Jug of wine"
+				],
+				[
+					"Diamond"
+				],
+				[
+					"Fire orb"
+				],
+				[
+					"Gold ore"
+				],
+				[
+					"Crystal shards"
+				],
+				[
+					"Enhanced crystal teleport seed"
+				]
+			],
+			"groupRoles": [
+				"",
+				"",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot-elf"
+			]
 		},
 		{
 			"category": "pickpocketing",
@@ -5224,12 +6697,52 @@
 			"options": [
 				"pickpocket"
 			],
-			"requiredCards": [
-				"Coins",
-				"Coin pouch"
-			],
 			"requireAll": true,
-			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention.",
+			"requiredCardGroups": [
+				[
+					"Coins"
+				],
+				[
+					"Coin pouch"
+				],
+				[
+					"Death rune"
+				],
+				[
+					"Nature rune"
+				],
+				[
+					"Jug of wine"
+				],
+				[
+					"Diamond"
+				],
+				[
+					"Fire orb"
+				],
+				[
+					"Gold ore"
+				],
+				[
+					"Crystal shards"
+				],
+				[
+					"Enhanced crystal teleport seed"
+				]
+			],
+			"groupRoles": [
+				"",
+				"",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot-elf"
+			]
 		},
 		{
 			"category": "pickpocketing",
@@ -5238,12 +6751,52 @@
 			"options": [
 				"pickpocket"
 			],
-			"requiredCards": [
-				"Coins",
-				"Coin pouch"
-			],
 			"requireAll": true,
-			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention.",
+			"requiredCardGroups": [
+				[
+					"Coins"
+				],
+				[
+					"Coin pouch"
+				],
+				[
+					"Death rune"
+				],
+				[
+					"Nature rune"
+				],
+				[
+					"Jug of wine"
+				],
+				[
+					"Diamond"
+				],
+				[
+					"Fire orb"
+				],
+				[
+					"Gold ore"
+				],
+				[
+					"Crystal shards"
+				],
+				[
+					"Enhanced crystal teleport seed"
+				]
+			],
+			"groupRoles": [
+				"",
+				"",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot-elf"
+			]
 		},
 		{
 			"category": "pickpocketing",
@@ -5252,12 +6805,52 @@
 			"options": [
 				"pickpocket"
 			],
-			"requiredCards": [
-				"Coins",
-				"Coin pouch"
-			],
 			"requireAll": true,
-			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention.",
+			"requiredCardGroups": [
+				[
+					"Coins"
+				],
+				[
+					"Coin pouch"
+				],
+				[
+					"Death rune"
+				],
+				[
+					"Nature rune"
+				],
+				[
+					"Jug of wine"
+				],
+				[
+					"Diamond"
+				],
+				[
+					"Fire orb"
+				],
+				[
+					"Gold ore"
+				],
+				[
+					"Crystal shards"
+				],
+				[
+					"Enhanced crystal teleport seed"
+				]
+			],
+			"groupRoles": [
+				"",
+				"",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot-elf"
+			]
 		},
 		{
 			"category": "pickpocketing",
@@ -5292,12 +6885,52 @@
 			"options": [
 				"pickpocket"
 			],
-			"requiredCards": [
-				"Coins",
-				"Coin pouch"
-			],
 			"requireAll": true,
-			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention.",
+			"requiredCardGroups": [
+				[
+					"Coins"
+				],
+				[
+					"Coin pouch"
+				],
+				[
+					"Death rune"
+				],
+				[
+					"Nature rune"
+				],
+				[
+					"Jug of wine"
+				],
+				[
+					"Diamond"
+				],
+				[
+					"Fire orb"
+				],
+				[
+					"Gold ore"
+				],
+				[
+					"Crystal shards"
+				],
+				[
+					"Enhanced crystal teleport seed"
+				]
+			],
+			"groupRoles": [
+				"",
+				"",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot-elf"
+			]
 		},
 		{
 			"category": "pickpocketing",
@@ -5306,12 +6939,52 @@
 			"options": [
 				"pickpocket"
 			],
-			"requiredCards": [
-				"Coins",
-				"Coin pouch"
-			],
 			"requireAll": true,
-			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention.",
+			"requiredCardGroups": [
+				[
+					"Coins"
+				],
+				[
+					"Coin pouch"
+				],
+				[
+					"Death rune"
+				],
+				[
+					"Nature rune"
+				],
+				[
+					"Jug of wine"
+				],
+				[
+					"Diamond"
+				],
+				[
+					"Fire orb"
+				],
+				[
+					"Gold ore"
+				],
+				[
+					"Crystal shards"
+				],
+				[
+					"Enhanced crystal teleport seed"
+				]
+			],
+			"groupRoles": [
+				"",
+				"",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot-elf"
+			]
 		},
 		{
 			"category": "pickpocketing",
@@ -5320,12 +6993,52 @@
 			"options": [
 				"pickpocket"
 			],
-			"requiredCards": [
-				"Coins",
-				"Coin pouch"
-			],
 			"requireAll": true,
-			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention.",
+			"requiredCardGroups": [
+				[
+					"Coins"
+				],
+				[
+					"Coin pouch"
+				],
+				[
+					"Death rune"
+				],
+				[
+					"Nature rune"
+				],
+				[
+					"Jug of wine"
+				],
+				[
+					"Diamond"
+				],
+				[
+					"Fire orb"
+				],
+				[
+					"Gold ore"
+				],
+				[
+					"Crystal shards"
+				],
+				[
+					"Enhanced crystal teleport seed"
+				]
+			],
+			"groupRoles": [
+				"",
+				"",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot-elf"
+			]
 		},
 		{
 			"category": "pickpocketing",
@@ -5334,12 +7047,52 @@
 			"options": [
 				"pickpocket"
 			],
-			"requiredCards": [
-				"Coins",
-				"Coin pouch"
-			],
 			"requireAll": true,
-			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention.",
+			"requiredCardGroups": [
+				[
+					"Coins"
+				],
+				[
+					"Coin pouch"
+				],
+				[
+					"Death rune"
+				],
+				[
+					"Nature rune"
+				],
+				[
+					"Jug of wine"
+				],
+				[
+					"Diamond"
+				],
+				[
+					"Fire orb"
+				],
+				[
+					"Gold ore"
+				],
+				[
+					"Crystal shards"
+				],
+				[
+					"Enhanced crystal teleport seed"
+				]
+			],
+			"groupRoles": [
+				"",
+				"",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot-elf"
+			]
 		},
 		{
 			"category": "pickpocketing",
@@ -5374,12 +7127,52 @@
 			"options": [
 				"pickpocket"
 			],
-			"requiredCards": [
-				"Coins",
-				"Coin pouch"
-			],
 			"requireAll": true,
-			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention.",
+			"requiredCardGroups": [
+				[
+					"Coins"
+				],
+				[
+					"Coin pouch"
+				],
+				[
+					"Death rune"
+				],
+				[
+					"Nature rune"
+				],
+				[
+					"Jug of wine"
+				],
+				[
+					"Diamond"
+				],
+				[
+					"Fire orb"
+				],
+				[
+					"Gold ore"
+				],
+				[
+					"Crystal shards"
+				],
+				[
+					"Enhanced crystal teleport seed"
+				]
+			],
+			"groupRoles": [
+				"",
+				"",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot-elf"
+			]
 		},
 		{
 			"category": "pickpocketing",
@@ -5388,12 +7181,52 @@
 			"options": [
 				"pickpocket"
 			],
-			"requiredCards": [
-				"Coins",
-				"Coin pouch"
-			],
 			"requireAll": true,
-			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention.",
+			"requiredCardGroups": [
+				[
+					"Coins"
+				],
+				[
+					"Coin pouch"
+				],
+				[
+					"Death rune"
+				],
+				[
+					"Nature rune"
+				],
+				[
+					"Jug of wine"
+				],
+				[
+					"Diamond"
+				],
+				[
+					"Fire orb"
+				],
+				[
+					"Gold ore"
+				],
+				[
+					"Crystal shards"
+				],
+				[
+					"Enhanced crystal teleport seed"
+				]
+			],
+			"groupRoles": [
+				"",
+				"",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot-elf"
+			]
 		},
 		{
 			"category": "pickpocketing",
@@ -5402,12 +7235,52 @@
 			"options": [
 				"pickpocket"
 			],
-			"requiredCards": [
-				"Coins",
-				"Coin pouch"
-			],
 			"requireAll": true,
-			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention.",
+			"requiredCardGroups": [
+				[
+					"Coins"
+				],
+				[
+					"Coin pouch"
+				],
+				[
+					"Death rune"
+				],
+				[
+					"Nature rune"
+				],
+				[
+					"Jug of wine"
+				],
+				[
+					"Diamond"
+				],
+				[
+					"Fire orb"
+				],
+				[
+					"Gold ore"
+				],
+				[
+					"Crystal shards"
+				],
+				[
+					"Enhanced crystal teleport seed"
+				]
+			],
+			"groupRoles": [
+				"",
+				"",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot-elf"
+			]
 		},
 		{
 			"category": "pickpocketing",
@@ -5416,12 +7289,52 @@
 			"options": [
 				"pickpocket"
 			],
-			"requiredCards": [
-				"Coins",
-				"Coin pouch"
-			],
 			"requireAll": true,
-			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention.",
+			"requiredCardGroups": [
+				[
+					"Coins"
+				],
+				[
+					"Coin pouch"
+				],
+				[
+					"Death rune"
+				],
+				[
+					"Nature rune"
+				],
+				[
+					"Jug of wine"
+				],
+				[
+					"Diamond"
+				],
+				[
+					"Fire orb"
+				],
+				[
+					"Gold ore"
+				],
+				[
+					"Crystal shards"
+				],
+				[
+					"Enhanced crystal teleport seed"
+				]
+			],
+			"groupRoles": [
+				"",
+				"",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot-elf"
+			]
 		},
 		{
 			"category": "pickpocketing",
@@ -5430,12 +7343,52 @@
 			"options": [
 				"pickpocket"
 			],
-			"requiredCards": [
-				"Coins",
-				"Coin pouch"
-			],
 			"requireAll": true,
-			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention.",
+			"requiredCardGroups": [
+				[
+					"Coins"
+				],
+				[
+					"Coin pouch"
+				],
+				[
+					"Death rune"
+				],
+				[
+					"Nature rune"
+				],
+				[
+					"Jug of wine"
+				],
+				[
+					"Diamond"
+				],
+				[
+					"Fire orb"
+				],
+				[
+					"Gold ore"
+				],
+				[
+					"Crystal shards"
+				],
+				[
+					"Enhanced crystal teleport seed"
+				]
+			],
+			"groupRoles": [
+				"",
+				"",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot-elf"
+			]
 		},
 		{
 			"category": "pickpocketing",
@@ -5444,12 +7397,52 @@
 			"options": [
 				"pickpocket"
 			],
-			"requiredCards": [
-				"Coins",
-				"Coin pouch"
-			],
 			"requireAll": true,
-			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention.",
+			"requiredCardGroups": [
+				[
+					"Coins"
+				],
+				[
+					"Coin pouch"
+				],
+				[
+					"Death rune"
+				],
+				[
+					"Nature rune"
+				],
+				[
+					"Jug of wine"
+				],
+				[
+					"Diamond"
+				],
+				[
+					"Fire orb"
+				],
+				[
+					"Gold ore"
+				],
+				[
+					"Crystal shards"
+				],
+				[
+					"Enhanced crystal teleport seed"
+				]
+			],
+			"groupRoles": [
+				"",
+				"",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot-elf"
+			]
 		},
 		{
 			"category": "pickpocketing",
@@ -5458,12 +7451,52 @@
 			"options": [
 				"pickpocket"
 			],
-			"requiredCards": [
-				"Coins",
-				"Coin pouch"
-			],
 			"requireAll": true,
-			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention.",
+			"requiredCardGroups": [
+				[
+					"Coins"
+				],
+				[
+					"Coin pouch"
+				],
+				[
+					"Death rune"
+				],
+				[
+					"Nature rune"
+				],
+				[
+					"Jug of wine"
+				],
+				[
+					"Diamond"
+				],
+				[
+					"Fire orb"
+				],
+				[
+					"Gold ore"
+				],
+				[
+					"Crystal shards"
+				],
+				[
+					"Enhanced crystal teleport seed"
+				]
+			],
+			"groupRoles": [
+				"",
+				"",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot-elf"
+			]
 		},
 		{
 			"category": "pickpocketing",
@@ -5472,12 +7505,52 @@
 			"options": [
 				"pickpocket"
 			],
-			"requiredCards": [
-				"Coins",
-				"Coin pouch"
-			],
 			"requireAll": true,
-			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention.",
+			"requiredCardGroups": [
+				[
+					"Coins"
+				],
+				[
+					"Coin pouch"
+				],
+				[
+					"Death rune"
+				],
+				[
+					"Nature rune"
+				],
+				[
+					"Jug of wine"
+				],
+				[
+					"Diamond"
+				],
+				[
+					"Fire orb"
+				],
+				[
+					"Gold ore"
+				],
+				[
+					"Crystal shards"
+				],
+				[
+					"Enhanced crystal teleport seed"
+				]
+			],
+			"groupRoles": [
+				"",
+				"",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot-elf"
+			]
 		},
 		{
 			"category": "pickpocketing",
@@ -5497,12 +7570,16 @@
 				],
 				[
 					"Paladin"
+				],
+				[
+					"Chaos rune"
 				]
 			],
 			"groupRoles": [
 				"",
 				"",
-				"npc"
+				"npc",
+				"loot"
 			]
 		},
 		{
@@ -5523,12 +7600,24 @@
 				],
 				[
 					"Rogue"
+				],
+				[
+					"Air rune"
+				],
+				[
+					"Jug of wine"
+				],
+				[
+					"Lockpick"
 				]
 			],
 			"groupRoles": [
 				"",
 				"",
-				"npc"
+				"npc",
+				"loot",
+				"loot",
+				"loot"
 			]
 		},
 		{
@@ -5538,12 +7627,52 @@
 			"options": [
 				"pickpocket"
 			],
-			"requiredCards": [
-				"Coins",
-				"Coin pouch"
-			],
 			"requireAll": true,
-			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention.",
+			"requiredCardGroups": [
+				[
+					"Coins"
+				],
+				[
+					"Coin pouch"
+				],
+				[
+					"Death rune"
+				],
+				[
+					"Nature rune"
+				],
+				[
+					"Jug of wine"
+				],
+				[
+					"Diamond"
+				],
+				[
+					"Fire orb"
+				],
+				[
+					"Gold ore"
+				],
+				[
+					"Crystal shards"
+				],
+				[
+					"Enhanced crystal teleport seed"
+				]
+			],
+			"groupRoles": [
+				"",
+				"",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot-elf"
+			]
 		},
 		{
 			"category": "pickpocketing",
@@ -5552,12 +7681,52 @@
 			"options": [
 				"pickpocket"
 			],
-			"requiredCards": [
-				"Coins",
-				"Coin pouch"
-			],
 			"requireAll": true,
-			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention.",
+			"requiredCardGroups": [
+				[
+					"Coins"
+				],
+				[
+					"Coin pouch"
+				],
+				[
+					"Death rune"
+				],
+				[
+					"Nature rune"
+				],
+				[
+					"Jug of wine"
+				],
+				[
+					"Diamond"
+				],
+				[
+					"Fire orb"
+				],
+				[
+					"Gold ore"
+				],
+				[
+					"Crystal shards"
+				],
+				[
+					"Enhanced crystal teleport seed"
+				]
+			],
+			"groupRoles": [
+				"",
+				"",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot-elf"
+			]
 		},
 		{
 			"category": "pickpocketing",
@@ -5566,12 +7735,52 @@
 			"options": [
 				"pickpocket"
 			],
-			"requiredCards": [
-				"Coins",
-				"Coin pouch"
-			],
 			"requireAll": true,
-			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention.",
+			"requiredCardGroups": [
+				[
+					"Coins"
+				],
+				[
+					"Coin pouch"
+				],
+				[
+					"Death rune"
+				],
+				[
+					"Nature rune"
+				],
+				[
+					"Jug of wine"
+				],
+				[
+					"Diamond"
+				],
+				[
+					"Fire orb"
+				],
+				[
+					"Gold ore"
+				],
+				[
+					"Crystal shards"
+				],
+				[
+					"Enhanced crystal teleport seed"
+				]
+			],
+			"groupRoles": [
+				"",
+				"",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot-elf"
+			]
 		},
 		{
 			"category": "pickpocketing",
@@ -5580,12 +7789,52 @@
 			"options": [
 				"pickpocket"
 			],
-			"requiredCards": [
-				"Coins",
-				"Coin pouch"
-			],
 			"requireAll": true,
-			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention.",
+			"requiredCardGroups": [
+				[
+					"Coins"
+				],
+				[
+					"Coin pouch"
+				],
+				[
+					"Death rune"
+				],
+				[
+					"Nature rune"
+				],
+				[
+					"Jug of wine"
+				],
+				[
+					"Diamond"
+				],
+				[
+					"Fire orb"
+				],
+				[
+					"Gold ore"
+				],
+				[
+					"Crystal shards"
+				],
+				[
+					"Enhanced crystal teleport seed"
+				]
+			],
+			"groupRoles": [
+				"",
+				"",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot-elf"
+			]
 		},
 		{
 			"category": "pickpocketing",
@@ -5594,12 +7843,52 @@
 			"options": [
 				"pickpocket"
 			],
-			"requiredCards": [
-				"Coins",
-				"Coin pouch"
-			],
 			"requireAll": true,
-			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention.",
+			"requiredCardGroups": [
+				[
+					"Coins"
+				],
+				[
+					"Coin pouch"
+				],
+				[
+					"Death rune"
+				],
+				[
+					"Nature rune"
+				],
+				[
+					"Jug of wine"
+				],
+				[
+					"Diamond"
+				],
+				[
+					"Fire orb"
+				],
+				[
+					"Gold ore"
+				],
+				[
+					"Crystal shards"
+				],
+				[
+					"Enhanced crystal teleport seed"
+				]
+			],
+			"groupRoles": [
+				"",
+				"",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot-elf"
+			]
 		},
 		{
 			"category": "pickpocketing",
@@ -5608,12 +7897,52 @@
 			"options": [
 				"pickpocket"
 			],
-			"requiredCards": [
-				"Coins",
-				"Coin pouch"
-			],
 			"requireAll": true,
-			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention."
+			"notes": "Lletya/Prifddinas elf. Crystal shard has no card, so Coins+pouch convention.",
+			"requiredCardGroups": [
+				[
+					"Coins"
+				],
+				[
+					"Coin pouch"
+				],
+				[
+					"Death rune"
+				],
+				[
+					"Nature rune"
+				],
+				[
+					"Jug of wine"
+				],
+				[
+					"Diamond"
+				],
+				[
+					"Fire orb"
+				],
+				[
+					"Gold ore"
+				],
+				[
+					"Crystal shards"
+				],
+				[
+					"Enhanced crystal teleport seed"
+				]
+			],
+			"groupRoles": [
+				"",
+				"",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot-elf"
+			]
 		},
 		{
 			"category": "pickpocketing",
@@ -5633,12 +7962,40 @@
 				],
 				[
 					"Vyrewatch Sentinel"
+				],
+				[
+					"Death rune"
+				],
+				[
+					"Blood rune"
+				],
+				[
+					"Blood pint"
+				],
+				[
+					"Uncut ruby"
+				],
+				[
+					"Diamond"
+				],
+				[
+					"Cooked mystery meat"
+				],
+				[
+					"Blood shard"
 				]
 			],
 			"groupRoles": [
 				"",
 				"",
-				"npc"
+				"npc",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot"
 			]
 		},
 		{
@@ -5648,12 +8005,20 @@
 			"options": [
 				"pickpocket"
 			],
-			"requiredCards": [
-				"Coins",
-				"Coin pouch"
-			],
 			"requireAll": true,
-			"notes": ""
+			"notes": "",
+			"requiredCardGroups": [
+				[
+					"Coins"
+				],
+				[
+					"Coin pouch"
+				]
+			],
+			"groupRoles": [
+				"",
+				""
+			]
 		},
 		{
 			"category": "pickpocketing",
@@ -11388,6 +13753,19 @@
 			],
 			"requireAll": true,
 			"notes": "Regular logs. Draynor/desert dead trees."
+		},
+		{
+			"category": "woodcutting",
+			"kind": "object",
+			"name": "Dying tree",
+			"options": [
+				"chop down"
+			],
+			"requiredCards": [
+				"Logs"
+			],
+			"requireAll": true,
+			"notes": "Dying trees in Varrock next to Agi course."
 		},
 		{
 			"category": "woodcutting",

@@ -4,8 +4,8 @@ package com.bronzemantcg;
 public enum LockedItemMarkMode
 {
 	OFF("Off"),
-	TRANSPARENT("Transparent"),
-	TRANSPARENT_ICON("Transparent + icon");
+	TRANSPARENT("Fade"),
+	TRANSPARENT_ICON("Fade + Icon");
 
 	private final String label;
 

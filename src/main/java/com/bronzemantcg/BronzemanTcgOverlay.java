@@ -48,7 +48,7 @@ class BronzemanTcgOverlay extends Overlay
 	public Dimension render(Graphics2D graphics)
 	{
 		// Hidden entities never render, so outlining them would just draw over scenery.
-		if (!config.tintLockedNpcs() || config.hideLockedEntities())
+		if (!config.tintLockedNpcs() || config.npcVisibilityMode() == NpcVisibilityMode.HIDE)
 		{
 			return null;
 		}

@@ -8,6 +8,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -47,6 +48,9 @@ public class ResourceNodeCatalog
 
 	private Map<String, Rule> rules = Collections.emptyMap();
 	private List<String> masterFarmerSeedCards = Collections.emptyList();
+	// Lowercased names of NPCs carrying "slayer"-category rules (the masters). The NPC
+	// visibility sweep exempts them: their interactions answer only to the Slayer section.
+	private Set<String> slayerNpcNamesLower = Collections.emptySet();
 
 	@Inject
 	public ResourceNodeCatalog(Gson gson)
@@ -58,6 +62,12 @@ public class ResourceNodeCatalog
 	public List<String> getMasterFarmerSeedCards()
 	{
 		return masterFarmerSeedCards;
+	}
+
+	/** True when this NPC has any slayer-category rule (i.e. it's a slayer master). */
+	public boolean isSlayerNpc(String name)
+	{
+		return name != null && slayerNpcNamesLower.contains(name.trim().toLowerCase(Locale.ROOT));
 	}
 
 	/** @return the rule for this interaction, or null if the node is unrestricted. */
@@ -106,6 +116,7 @@ public class ResourceNodeCatalog
 				return;
 			}
 			Map<String, Rule> map = new HashMap<>();
+			Set<String> slayerNames = new HashSet<>();
 			for (NodeDto node : snapshot.nodes)
 			{
 				if (node == null || node.kind == null || node.name == null || node.options == null)
@@ -119,6 +130,11 @@ public class ResourceNodeCatalog
 				}
 				Rule rule = new Rule(node.category, groups);
 				String nameLower = node.name.trim().toLowerCase(Locale.ROOT);
+				if ("slayer".equals(node.category)
+					&& KIND_NPC.equals(node.kind.trim().toLowerCase(Locale.ROOT)))
+				{
+					slayerNames.add(nameLower);
+				}
 				for (String option : node.options)
 				{
 					if (option != null && !option.trim().isEmpty())
@@ -129,6 +145,7 @@ public class ResourceNodeCatalog
 				}
 			}
 			rules = Collections.unmodifiableMap(map);
+			slayerNpcNamesLower = Collections.unmodifiableSet(slayerNames);
 			if (snapshot.masterFarmerSeedCards != null)
 			{
 				masterFarmerSeedCards = Collections.unmodifiableList(snapshot.masterFarmerSeedCards);

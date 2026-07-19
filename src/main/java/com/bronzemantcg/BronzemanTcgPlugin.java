@@ -212,6 +212,7 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	{
 		collectionReader.invalidate();
 		migrateExemptList();
+		migrateNpcVisibility();
 		welcomeShown = false;
 		welcomeDelayTicks = -1;
 		reminderTicks = -1;
@@ -447,7 +448,8 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	@Override
 	public boolean addEntity(Renderable renderable, boolean ui)
 	{
-		if (!config.hideLockedEntities() || !(renderable instanceof NPC) || isEnforcementBypassed())
+		if (config.npcVisibilityMode() != NpcVisibilityMode.HIDE || !(renderable instanceof NPC)
+			|| isEnforcementBypassed())
 		{
 			return true;
 		}
@@ -488,7 +490,9 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	@Subscribe
 	public void onMenuEntryAdded(MenuEntryAdded event)
 	{
-		if (!config.hideLockedOptions() || isEnforcementBypassed())
+		// NPC stripping is inherent to the visibility dropdown; only the non-NPC branches
+		// of shouldHideEntry consult the hideLockedOptions toggle.
+		if (isEnforcementBypassed())
 		{
 			return;
 		}
@@ -527,8 +531,18 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 				{
 					return false;
 				}
-				if (ATTACK_OPTION.equals(optionLower) && config.restrictAttacks()
+				NpcVisibilityMode mode = config.npcVisibilityMode();
+				if (mode != NpcVisibilityMode.OFF && ATTACK_OPTION.equals(optionLower)
 					&& !isUnlocked(monsterCatalog, name))
+				{
+					return true;
+				}
+				// Prevent Interaction strips every option (Examine is a different MenuAction, so it
+				// survives untouched). Slayer masters answer only to the Slayer section, and
+				// the CotS override keeps Guards markable mid-quest.
+				if (mode.strictOptions() && !isUnlocked(monsterCatalog, name)
+					&& !nodeCatalog.isSlayerNpc(name)
+					&& !(config.allowCotsGuards() && "guard".equalsIgnoreCase(name)))
 				{
 					return true;
 				}
@@ -546,7 +560,8 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 			case GROUND_ITEM_FOURTH_OPTION:
 			case GROUND_ITEM_FIFTH_OPTION:
 			{
-				if (!config.restrictLoot() || !TAKE_OPTION.equals(optionLower))
+				if (!config.hideLockedOptions() || !config.restrictLoot()
+					|| !TAKE_OPTION.equals(optionLower))
 				{
 					return false;
 				}
@@ -561,7 +576,7 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 			case GAME_OBJECT_FIFTH_OPTION:
 			{
 				String objectName = Text.removeTags(entry.getTarget()).trim();
-				return !objectName.isEmpty()
+				return config.hideLockedOptions() && !objectName.isEmpty()
 					&& evaluateNodeRule(ResourceNodeCatalog.KIND_OBJECT, objectName, option) != null;
 			}
 			case WIDGET_TARGET:
@@ -569,7 +584,7 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 				// "Use" on an inventory item (WIDGET_TARGET, not a CC_OP item op). The click
 				// path blocks it under forced drop via handleUseSelected, so mirror that here
 				// or the option stays visible while its click is silently cancelled.
-				if (config.forcedDropMode() == ForcedDropMode.OFF
+				if (!config.hideLockedOptions() || config.forcedDropMode() == ForcedDropMode.OFF
 					|| WidgetUtil.componentToInterface(entry.getParam1()) != InterfaceID.INVENTORY)
 				{
 					return false;
@@ -582,7 +597,7 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 			case CC_OP_LOW_PRIORITY:
 			{
 				// Inventory item ops only; bank/shop/interface menus stay consume-only.
-				if (!entry.isItemOp() || entry.getItemId() <= 0
+				if (!config.hideLockedOptions() || !entry.isItemOp() || entry.getItemId() <= 0
 					|| WidgetUtil.componentToInterface(entry.getParam1()) != InterfaceID.INVENTORY)
 				{
 					return false;
@@ -601,11 +616,11 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 				{
 					return false;
 				}
-				if (config.restrictEquipping() && EQUIP_VERBS.contains(optionLower))
+				if (config.restrictItemUsage() && EQUIP_VERBS.contains(optionLower))
 				{
 					return true;
 				}
-				if (config.restrictPotionDrinking() && "drink".equals(optionLower))
+				if (config.restrictItemUsage() && "drink".equals(optionLower))
 				{
 					return true;
 				}
@@ -719,7 +734,7 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 		// Owning any variant card (normal or foil) -> allowed. Cards with wiki-style
 		// disambiguation suffixes ("Soldier (Yanille)") all unlock the plain NPC name,
 		// since that's the only name RuneLite exposes at attack time.
-		if (isRestrictedNpcInteraction(event) && !isUnlocked(monsterCatalog, npcName))
+		if (isRestrictedNpcInteraction(event, npcName) && !isUnlocked(monsterCatalog, npcName))
 		{
 			event.consume();
 			sendBlockedMessage(npcName);
@@ -761,24 +776,24 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	/** Missing cards for Master Farmer's own dial; null when the mode is Off. */
 	private List<String> masterFarmerMissing()
 	{
-		MasterFarmerMode mode = config.masterFarmerMode();
-		List<String> required;
-		switch (mode)
+		// He follows the thieving dropdown like every other target - no "Master Farmer"
+		// card exists, so below All the requirement is just Coins + Coin pouch. The
+		// Insanity toggle only bites in All mode, mirroring H.A.M.
+		ThievingMode mode = config.thievingMode();
+		if (mode == ThievingMode.OFF)
 		{
-			case COINS_POUCH:
-				required = List.of("Coins", "Coin pouch");
-				break;
-			case INSANITY:
-				required = nodeCatalog.getMasterFarmerSeedCards();
-				break;
-			default:
-				return null;
+			return null;
 		}
-		if (required.isEmpty())
+		List<String> required = List.of("Coins", "Coin pouch");
+		if (mode == ThievingMode.NPC_AND_LOOT && config.masterFarmerInsanity())
 		{
-			// Insanity selected but the seed list is missing from the data file: leaving him
-			// pickpocketable would silently disable the mode, so fall back to Coins+Pouch.
-			required = List.of("Coins", "Coin pouch");
+			List<String> seeds = nodeCatalog.getMasterFarmerSeedCards();
+			if (!seeds.isEmpty())
+			{
+				// Seed list missing from the data file would silently disable Insanity,
+				// so the Coins+Pouch base is the fallback.
+				required = seeds;
+			}
 		}
 		return missingCards(required);
 	}
@@ -962,13 +977,13 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 			return;
 		}
 
-		if (config.restrictEquipping() && EQUIP_VERBS.contains(optionLower)
+		if (config.restrictItemUsage() && EQUIP_VERBS.contains(optionLower)
 			&& blockIfLockedItem(event, itemName))
 		{
 			return;
 		}
 
-		if (config.restrictPotionDrinking() && "drink".equals(optionLower)
+		if (config.restrictItemUsage() && "drink".equals(optionLower)
 			&& blockIfLockedItem(event, itemName))
 		{
 			return;
@@ -1155,9 +1170,13 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 				switch (config.thievingMode())
 				{
 					case COINS_POUCH:
-						return Set.of("npc");
+						return Set.of("npc", "loot", "loot-ham", "loot-elf");
+					case NPC_ONLY:
+						return Set.of("loot", "loot-ham", "loot-elf");
 					case NPC_AND_LOOT:
-						return Collections.emptySet();
+						return config.hamFullLoot()
+								? Collections.emptySet()
+								: Set.of("loot-ham");
 					default:
 						return null;
 				}
@@ -1602,10 +1621,11 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 		return false;
 	}
 
-	private boolean isRestrictedNpcInteraction(MenuOptionClicked event)
+	private boolean isRestrictedNpcInteraction(MenuOptionClicked event, String npcName)
 	{
 		MenuAction action = event.getMenuAction();
-		if (action == null)
+		NpcVisibilityMode mode = config.npcVisibilityMode();
+		if (action == null || mode == NpcVisibilityMode.OFF)
 		{
 			return false;
 		}
@@ -1618,17 +1638,34 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 			case NPC_FOURTH_OPTION:
 			case NPC_FIFTH_OPTION:
 			{
-				if (!config.restrictAttacks())
-				{
-					return false;
-				}
 				String option = event.getMenuOption();
-				return option != null
-					&& ATTACK_OPTION.equals(Text.removeTags(option).trim().toLowerCase(Locale.ROOT));
+				if (option != null
+					&& ATTACK_OPTION.equals(Text.removeTags(option).trim().toLowerCase(Locale.ROOT)))
+				{
+					return true;
+				}
+				// Prevent Interaction: every option is gated (Examine routes through a different
+				// MenuAction and stays free). Slayer masters and CotS-override Guards keep
+				// their own rules - matches the menu-hiding path exactly.
+				return mode.strictOptions()
+					&& !nodeCatalog.isSlayerNpc(npcName)
+					&& !(config.allowCotsGuards() && "guard".equalsIgnoreCase(npcName));
 			}
 			case WIDGET_TARGET_ON_NPC:
-				// Spell cast on NPC, or item used on NPC.
-				return config.restrictSpellCasts();
+			{
+				// Spell cast on NPC, or item used on NPC. Prevent Combat blocks only the
+				// spell (closing the mage bypass) while item-on-NPC stays free for quest
+				// interactions; Prevent Interaction blocks both.
+				if (mode.strictOptions())
+				{
+					return !nodeCatalog.isSlayerNpc(npcName);
+				}
+				String option = event.getMenuOption();
+				boolean spell = (option != null
+					&& "cast".equals(Text.removeTags(option).trim().toLowerCase(Locale.ROOT)))
+					|| isSelectedWidgetSpell();
+				return spell;
+			}
 			default:
 				return false;
 		}
@@ -1709,6 +1746,64 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	 * existing player's current Coins behaviour by turning that toggle off for anyone whose
 	 * stored list did not already exempt Coins.
 	 */
+	/**
+	 * One-time mapping of the three retired NPC toggles onto the visibility dropdown,
+	 * preserving each player's effective behaviour. Same strict one-shot pattern as
+	 * migrateExemptList: flag first, so a mid-way crash can never re-run it.
+	 */
+	private void migrateNpcVisibility()
+	{
+		if (config.npcVisibilityMigrated())
+		{
+			return;
+		}
+		configManager.setConfiguration(BronzemanTcgConfig.GROUP, "npcVisibilityMigrated", true);
+
+		String hide = configManager.getConfiguration(BronzemanTcgConfig.GROUP, "hideLockedEntities");
+		String attacks = configManager.getConfiguration(BronzemanTcgConfig.GROUP, "restrictAttacks");
+		NpcVisibilityMode mode;
+		if (Boolean.parseBoolean(hide))
+		{
+			mode = NpcVisibilityMode.HIDE;
+		}
+		else if ("false".equals(attacks))
+		{
+			mode = NpcVisibilityMode.OFF;
+		}
+		else
+		{
+			// Today's default; nothing maps to PREVENT_INTERACTION - it's a new severity.
+			mode = NpcVisibilityMode.PREVENT_COMBAT;
+		}
+		// Stored as the enum constant's name (never the display label), matching how
+		// RuneLite persists dropdown choices.
+		configManager.setConfiguration(BronzemanTcgConfig.GROUP, "npcVisibilityMode", mode.name());
+
+		configManager.unsetConfiguration(BronzemanTcgConfig.GROUP, "restrictAttacks");
+		configManager.unsetConfiguration(BronzemanTcgConfig.GROUP, "restrictSpellCasts");
+		configManager.unsetConfiguration(BronzemanTcgConfig.GROUP, "hideLockedEntities");
+
+		// Master Farmer's dial became the Insanity toggle in the same release. Only the
+		// INSANITY choice carries over; his old Off/Coins+Pouch are now expressed by the
+		// thieving dropdown itself.
+		if ("INSANITY".equals(configManager.getConfiguration(BronzemanTcgConfig.GROUP, "masterFarmerMode")))
+		{
+			configManager.setConfiguration(BronzemanTcgConfig.GROUP, "masterFarmerInsanity", true);
+		}
+		configManager.unsetConfiguration(BronzemanTcgConfig.GROUP, "masterFarmerMode");
+
+		// Equip + potion-drink toggles merged into restrictItemUsage. Off wins: forcing a
+		// restriction back on that a player deliberately disabled could brick their
+		// gameplay, while under-restricting is one click to fix.
+		if ("false".equals(configManager.getConfiguration(BronzemanTcgConfig.GROUP, "restrictEquipping"))
+			|| "false".equals(configManager.getConfiguration(BronzemanTcgConfig.GROUP, "restrictPotionDrinking")))
+		{
+			configManager.setConfiguration(BronzemanTcgConfig.GROUP, "restrictItemUsage", false);
+		}
+		configManager.unsetConfiguration(BronzemanTcgConfig.GROUP, "restrictEquipping");
+		configManager.unsetConfiguration(BronzemanTcgConfig.GROUP, "restrictPotionDrinking");
+	}
+
 	private void migrateExemptList()
 	{
 		if (config.exemptListMigrated())

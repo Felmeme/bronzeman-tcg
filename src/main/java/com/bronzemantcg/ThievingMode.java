@@ -5,7 +5,8 @@ public enum ThievingMode
 {
 	OFF("Off"),
 	COINS_POUCH("Coins + Pouch"),
-	NPC_AND_LOOT("NPC + Loot");
+	NPC_ONLY("Coins + Pouch + NPC"),
+	NPC_AND_LOOT("All");
 
 	private final String label;
 

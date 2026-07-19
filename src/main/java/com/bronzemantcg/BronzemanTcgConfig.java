@@ -173,29 +173,35 @@ public interface BronzemanTcgConfig extends Config
 	//General Settings
 	//----------------
 	@ConfigItem(
-		keyName = "restrictAttacks",
-		name = "Restrict Combat",
-		description = "Block attacking any NPC whose card you have not yet collected in the OSRS TCG plugin. "
-			+ "<br>NPCs with no card in the TCG catalog are never restricted.",
+		keyName = "npcVisibilityMode",
+		name = "NPC restriction",
+		description = "How NPCs whose card you have not collected are restricted. NPCs with no "
+			+ "card in the TCG catalog are never restricted."
+			+ "<br>'Prevent Combat': the Attack option is hidden and offensive spells are blocked; "
+			+ "talking and using items on the NPC still work (keeps quests completable)."
+			+ "<br>'Prevent Interaction': every menu option except Examine is removed, and items "
+			+ "can't be used on the NPC."
+			+ "<br>'Hide NPCs': locked NPCs are invisible."
+			+ "<br>Slayer masters always follow the Slayer section's own rules instead.",
 		section = generalSettings,
 		position = 1
 	)
-	default boolean restrictAttacks()
+	default NpcVisibilityMode npcVisibilityMode()
 	{
-		return true;
+		return NpcVisibilityMode.PREVENT_COMBAT;
 	}
 
 	@ConfigItem(
-		keyName = "restrictSpellCasts",
-		name = "Restrict Using Items on NPCs",
-		description = "Also block casting spells on, or using items on, uncollected NPCs. "
-			+ "<br>Prevents bypassing the restriction with magic or ranged.",
+		keyName = "npcVisibilityMigrated",
+		name = "",
+		description = "",
+		hidden = true,
 		section = generalSettings,
-		position = 2
+		position = 98
 	)
-	default boolean restrictSpellCasts()
+	default boolean npcVisibilityMigrated()
 	{
-		return true;
+		return false;
 	}
 
 	@ConfigItem(
@@ -213,14 +219,16 @@ public interface BronzemanTcgConfig extends Config
 	}
 
 	@ConfigItem(
-			keyName = "restrictEquipping",
-			name = "Restrict equipping",
-			description = "Block Wear/Wield/Equip on any inventory item whose card you have not collected. "
+			keyName = "restrictItemUsage",
+			name = "Restrict item usage",
+			description = "Block equipping (Wear/Wield/Equip) and drinking any inventory item "
+					+ "whose card you have not collected. All four potion dose types map to the "
+					+ "one card."
 					+ "<br>Items with no card are never restricted.",
 			section = generalSettings,
 			position = 4
 	)
-	default boolean restrictEquipping()
+	default boolean restrictItemUsage()
 	{
 		return true;
 	}
@@ -235,20 +243,6 @@ public interface BronzemanTcgConfig extends Config
 			position = 5
 	)
 	default boolean restrictBuying()
-	{
-		return true;
-	}
-
-	@ConfigItem(
-			keyName = "restrictPotionDrinking",
-			name = "Restrict potion drinking",
-			description = "Block drinking any potion whose card is locked."
-					+ "<br>All four dose types map to the "
-					+ "one card, unlocking the card unlocks every dose.",
-			section = generalSettings,
-			position = 6
-	)
-	default boolean restrictPotionDrinking()
 	{
 		return true;
 	}
@@ -341,9 +335,9 @@ public interface BronzemanTcgConfig extends Config
 		name = "Hide locked menu options",
 		description = "Remove blocked options from menus entirely instead of just cancelling the "
 			+ "click - a locked tree loses Chop down, a locked ground item loses Take (Walk here "
-			+ "becomes the default), a locked NPC loses Attack."
-			+ "<br>Covers NPCs, ground items, objects and inventory items; only the options the "
-			+ "plugin would block are hidden. The chat warning remains as the final guard.",
+			+ "becomes the default)."
+			+ "<br>Covers ground items, objects and inventory items; NPCs follow the NPC "
+			+ "restriction dropdown instead. The chat warning remains as the final guard.",
 		section = generalSettings,
 		position = 12
 	)
@@ -783,12 +777,11 @@ public interface BronzemanTcgConfig extends Config
 	//----------------
 	@ConfigItem(
 		keyName = "thievingMode",
-		name = "Restrict pickpocketing",
-		description = "'Coins + Pouch': pickpocketing an NPC requires the cards of its loot "
-			+ "(Coins and Coin pouch)."
-			+ "<br>'NPC + Loot': additionally requires the card of the NPC being pickpocketed "
-			+ "(e.g. the Man card to pickpocket a Man)."
-			+ "<br>Master Farmer keeps his own dial below.",
+		name = "Pickpocketing",
+		description = "'Coins + Pouch': pickpocketing an NPC requires Coins and Coin pouch. "
+			+ "<br>'Coins, Pouch and NPC Card': additionally requires the card of the NPC being pickpocketed."
+			+ "<br> 'All': requires all loot from NPCs loot table and NPC Card of the NPC being pickpocketed."
+			+ "<br> Insanity H.A.M. Members and Master Farmers are not included in All.",
 		section = thievingSection,
 		position = 0
 	)
@@ -798,29 +791,37 @@ public interface BronzemanTcgConfig extends Config
 	}
 
 	@ConfigItem(
-		keyName = "masterFarmerMode",
-		name = "Master Farmer",
-		description = "Master Farmers give seeds, not coin pouches, so they get their own dial."
-			+ "<br>'Coins+Pouch': same simple rule as other pickpocket targets."
-			+ "<br>'Insanity': locked until you own EVERY seed card on his drop table."
-			+ "<br>'Off': never restricted. Independent of the pickpocketing toggle above.",
-		section = thievingSection,
-		position = 1
+			keyName = "hamFullLoot",
+			name = "H.A.M. Insanity",
+			description = "With All mode, require all 37 pickpocket items instead of the Ham Outfit pieces.",
+			section = thievingSection,
+			position = 2
 	)
-	default MasterFarmerMode masterFarmerMode()
+	default boolean hamFullLoot()
 	{
-		return MasterFarmerMode.COINS_POUCH;
+		return false;
+	}
+
+	@ConfigItem(
+			keyName = "masterFarmerInsanity",
+			name = "Master Farmer",
+			description = "With All mode, require all 45 Master Farmer seeds.",
+			section = thievingSection,
+			position = 3
+	)
+	default boolean masterFarmerInsanity()
+	{
+		return false;
 	}
 
 	@ConfigItem(
 		keyName = "stallThievingMode",
-		name = "Restrict stalls",
-		description = "Stealing from a market stall requires cards from its loot table."
+		name = "Stalls",
+		description = "'Off': no stall restriction. Stalls with no card-backed loot are never restricted."
 			+ "<br>'Any of': owning any one loot card unlocks the stall."
-			+ "<br>'All items': the stall stays locked until you own every card-backed loot item."
-			+ "<br>'Off': no stall restriction. Stalls with no card-backed loot are never restricted.",
+			+ "<br>'All items': the stall stays locked until you own every card-backed loot item.",
 		section = thievingSection,
-		position = 2
+		position = 1
 	)
 	default StallThievingMode stallThievingMode()
 	{
@@ -864,17 +865,17 @@ public interface BronzemanTcgConfig extends Config
 	//----------------
 	@ConfigItem(
 		keyName = "lockedItemMarkMode",
-		name = "Mark locked items",
+		name = "Item Marking",
 		description = "Fade items in your inventory and bank while their card is uncollected, "
 			+ "so locked items are obvious at a glance."
-			+ "<br>Transparent + icon adds a small bank-filler badge on top of the faded sprite. "
+			+ "<br>Fade + Icon adds a small bank-filler badge on top of the faded sprite. "
 			+ "Uses the same rules as blocking, so exempt items are never marked.",
 		section = visualsSection,
-		position = 7
+		position = 0
 	)
 	default LockedItemMarkMode lockedItemMarkMode()
 	{
-		return LockedItemMarkMode.TRANSPARENT;
+		return LockedItemMarkMode.TRANSPARENT_ICON;
 	}
 
 	@ConfigItem(
@@ -927,20 +928,6 @@ public interface BronzemanTcgConfig extends Config
 	default int lockedOutlineFeather()
 	{
 		return 2;
-	}
-
-	@ConfigItem(
-		keyName = "hideLockedEntities",
-		name = "Hide locked NPCs",
-		description = "Completely hides NPCs whose card you have not collected. Overrides the grey outline."
-			+ "<br>Ground items can't be hidden by the client hook; locked loot is still blocked "
-			+ "from pickup.",
-		section = visualsSection,
-		position = 2
-	)
-	default boolean hideLockedEntities()
-	{
-		return false;
 	}
 
 	@ConfigItem(
