@@ -84,8 +84,9 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	private static final int MAX_LISTED_MISSING_CARDS = 4;
 
 	private static final Set<String> EQUIP_VERBS = new HashSet<>(List.of("wear", "wield", "equip"));
-	// Forced drop leaves a locked item only its two disposal options; everything else
-	// (including Examine and Release) is blocked and, with option hiding on, removed.
+	// Locked item usage leaves an item only its disposal options; everything else
+	// (equip, drink, use, Release...) is blocked and removed from the menu. Examine
+	// survives because it routes through a different MenuAction entirely.
 	private static final Set<String> FORCED_DROP_ALLOWED = new HashSet<>(List.of(
 		"drop", "destroy"));
 	// Other Hub plugins that also gate actions on the OSRS TCG collection. Running one
@@ -560,7 +561,7 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 			case GROUND_ITEM_FOURTH_OPTION:
 			case GROUND_ITEM_FIFTH_OPTION:
 			{
-				if (!config.hideLockedOptions() || !config.restrictLoot()
+				if (config.groundItemsMode() != LockState.LOCKED
 					|| !TAKE_OPTION.equals(optionLower))
 				{
 					return false;
@@ -576,7 +577,7 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 			case GAME_OBJECT_FIFTH_OPTION:
 			{
 				String objectName = Text.removeTags(entry.getTarget()).trim();
-				return config.hideLockedOptions() && !objectName.isEmpty()
+				return !objectName.isEmpty()
 					&& evaluateNodeRule(ResourceNodeCatalog.KIND_OBJECT, objectName, option) != null;
 			}
 			case WIDGET_TARGET:
@@ -584,7 +585,7 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 				// "Use" on an inventory item (WIDGET_TARGET, not a CC_OP item op). The click
 				// path blocks it under forced drop via handleUseSelected, so mirror that here
 				// or the option stays visible while its click is silently cancelled.
-				if (!config.hideLockedOptions() || config.forcedDropMode() == ForcedDropMode.OFF
+				if (config.itemUsageMode() != LockState.LOCKED
 					|| WidgetUtil.componentToInterface(entry.getParam1()) != InterfaceID.INVENTORY)
 				{
 					return false;
@@ -597,7 +598,7 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 			case CC_OP_LOW_PRIORITY:
 			{
 				// Inventory item ops only; bank/shop/interface menus stay consume-only.
-				if (!config.hideLockedOptions() || !entry.isItemOp() || entry.getItemId() <= 0
+				if (!entry.isItemOp() || entry.getItemId() <= 0
 					|| WidgetUtil.componentToInterface(entry.getParam1()) != InterfaceID.INVENTORY)
 				{
 					return false;
@@ -616,15 +617,9 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 				{
 					return false;
 				}
-				if (config.restrictItemUsage() && EQUIP_VERBS.contains(optionLower))
-				{
-					return true;
-				}
-				if (config.restrictItemUsage() && "drink".equals(optionLower))
-				{
-					return true;
-				}
-				return config.forcedDropMode() != ForcedDropMode.OFF
+				// Locked usage means the item keeps only its disposal options; equip, drink,
+				// use and everything else fall under the same rule.
+				return config.itemUsageMode() == LockState.LOCKED
 					&& !FORCED_DROP_ALLOWED.contains(optionLower);
 			}
 			default:
@@ -802,7 +797,7 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 
 	private void handleGroundItemInteraction(MenuOptionClicked event, MenuAction action)
 	{
-		if (!config.restrictLoot())
+		if (config.groundItemsMode() != LockState.LOCKED)
 		{
 			return;
 		}
@@ -877,7 +872,9 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 		// Bank: discriminate on option text (the bank-side panels are not the inventory group).
 		if (optionLower.startsWith("withdraw"))
 		{
-			if (config.forcedDropMode() != ForcedDropMode.OFF)
+			// Deposit Only keeps the bank a holding pen; only Full Banking releases items.
+			if (config.itemUsageMode() == LockState.LOCKED
+				&& config.bankingMode() != BankingMode.FULL)
 			{
 				blockIfLockedItem(event, itemOpName(event, entry));
 			}
@@ -885,8 +882,8 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 		}
 		if (optionLower.startsWith("deposit"))
 		{
-			// Allow-banking mode: the bank is the holding pen, deposits always allowed.
-			if (config.forcedDropMode() == ForcedDropMode.DROP)
+			if (config.itemUsageMode() == LockState.LOCKED
+				&& config.bankingMode() == BankingMode.OFF)
 			{
 				blockIfLockedItem(event, itemOpName(event, entry));
 			}
@@ -895,7 +892,8 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 
 		if (group == InterfaceID.SHOPMAIN)
 		{
-			if (config.restrictBuying() && optionLower.startsWith("buy"))
+			// Shops refuse locked items unconditionally; the exempt list is the escape hatch.
+			if (optionLower.startsWith("buy"))
 			{
 				blockIfLockedItem(event, itemOpName(event, entry));
 			}
@@ -926,7 +924,8 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 
 		// Grand Exchange search results live in the chatbox; consuming the selection is
 		// the best preventive hook available (best-effort - keyboard flows may bypass).
-		if (config.restrictBuying() && group == InterfaceID.CHATBOX && isGrandExchangeOpen())
+		if (config.grandExchangeMode() == LockState.LOCKED
+			&& group == InterfaceID.CHATBOX && isGrandExchangeOpen())
 		{
 			String targetName = Text.removeTags(event.getMenuTarget()).trim();
 			if (!targetName.isEmpty() && !isLootExempt(targetName)
@@ -977,28 +976,17 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 			return;
 		}
 
-		if (config.restrictItemUsage() && EQUIP_VERBS.contains(optionLower)
-			&& blockIfLockedItem(event, itemName))
-		{
-			return;
-		}
-
-		if (config.restrictItemUsage() && "drink".equals(optionLower)
-			&& blockIfLockedItem(event, itemName))
-		{
-			return;
-		}
-
-		if (config.forcedDropMode() != ForcedDropMode.OFF && !FORCED_DROP_ALLOWED.contains(optionLower))
+		// Locked usage: only the disposal options survive; equip/drink/use all fall here.
+		if (config.itemUsageMode() == LockState.LOCKED && !FORCED_DROP_ALLOWED.contains(optionLower))
 		{
 			blockIfLockedItem(event, itemName);
 		}
 	}
 
-	/** "Use" with an inventory item selected: in forced-drop mode a locked item can't be used. */
+	/** "Use" with an inventory item selected: a locked item can't be used on anything. */
 	private void handleUseSelected(MenuOptionClicked event)
 	{
-		if (config.forcedDropMode() == ForcedDropMode.OFF)
+		if (config.itemUsageMode() != LockState.LOCKED)
 		{
 			return;
 		}
@@ -1033,8 +1021,8 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 			return;
 		}
 
-		// Forced drop: a locked item can't be used on anything (or be used upon).
-		if (config.forcedDropMode() != ForcedDropMode.OFF
+		// Locked usage: a locked item can't be used on anything (or be used upon).
+		if (config.itemUsageMode() == LockState.LOCKED
 			&& (blockIfLockedItem(event, source) || blockIfLockedItem(event, destination)))
 		{
 			return;
@@ -1678,7 +1666,7 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 		String needle = CardNames.stripDoseSuffix(itemName.trim().toLowerCase(Locale.ROOT));
 		// Coins have their own toggle; the free-text list default is empty so RuneLite never
 		// re-injects a value the player has cleared (which used to re-add "Coins" on update).
-		if (config.exemptCoins() && "coins".equals(needle))
+		if (config.coinMode() == LockState.UNLOCKED && "coins".equals(needle))
 		{
 			return true;
 		}
@@ -1716,7 +1704,7 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	{
 		Set<String> owned = collectionReader.getOwnedCardNamesLowerCase();
 		Set<String> exempt = exemptSet();
-		boolean coins = config.exemptCoins();
+		boolean coins = config.coinMode() == LockState.UNLOCKED;
 		if (exempt.isEmpty() && !coins)
 		{
 			return owned;
@@ -1792,16 +1780,47 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 		}
 		configManager.unsetConfiguration(BronzemanTcgConfig.GROUP, "masterFarmerMode");
 
-		// Equip + potion-drink toggles merged into restrictItemUsage. Off wins: forcing a
-		// restriction back on that a player deliberately disabled could brick their
-		// gameplay, while under-restricting is one click to fix.
+		// Item settings pass: every old boolean/mode becomes a dropdown. RuneLite only
+		// stores non-default values, so the rule is simple - an explicitly lenient old
+		// choice maps to the lenient new value; everyone else follows the new (stricter)
+		// defaults. Forcing a restriction back on that a player deliberately disabled
+		// could brick their gameplay; under-restricting is one click to fix.
+		if ("false".equals(configManager.getConfiguration(BronzemanTcgConfig.GROUP, "restrictLoot")))
+		{
+			configManager.setConfiguration(BronzemanTcgConfig.GROUP, "groundItemsMode",
+				LockState.UNLOCKED.name());
+		}
 		if ("false".equals(configManager.getConfiguration(BronzemanTcgConfig.GROUP, "restrictEquipping"))
 			|| "false".equals(configManager.getConfiguration(BronzemanTcgConfig.GROUP, "restrictPotionDrinking")))
 		{
-			configManager.setConfiguration(BronzemanTcgConfig.GROUP, "restrictItemUsage", false);
+			configManager.setConfiguration(BronzemanTcgConfig.GROUP, "itemUsageMode",
+				LockState.UNLOCKED.name());
 		}
+		if ("false".equals(configManager.getConfiguration(BronzemanTcgConfig.GROUP, "restrictBuying")))
+		{
+			configManager.setConfiguration(BronzemanTcgConfig.GROUP, "grandExchangeMode",
+				LockState.UNLOCKED.name());
+		}
+		if ("false".equals(configManager.getConfiguration(BronzemanTcgConfig.GROUP, "exemptCoins")))
+		{
+			configManager.setConfiguration(BronzemanTcgConfig.GROUP, "coinMode",
+				LockState.LOCKED.name());
+		}
+		// Old DROP mode forbade banking entirely; ALLOW_BANKING matches the new
+		// Deposit Only default, so it needs no write.
+		if ("DROP".equals(configManager.getConfiguration(BronzemanTcgConfig.GROUP, "forcedDropMode")))
+		{
+			configManager.setConfiguration(BronzemanTcgConfig.GROUP, "bankingMode",
+				BankingMode.OFF.name());
+		}
+		configManager.unsetConfiguration(BronzemanTcgConfig.GROUP, "restrictLoot");
 		configManager.unsetConfiguration(BronzemanTcgConfig.GROUP, "restrictEquipping");
 		configManager.unsetConfiguration(BronzemanTcgConfig.GROUP, "restrictPotionDrinking");
+		configManager.unsetConfiguration(BronzemanTcgConfig.GROUP, "restrictItemUsage");
+		configManager.unsetConfiguration(BronzemanTcgConfig.GROUP, "restrictBuying");
+		configManager.unsetConfiguration(BronzemanTcgConfig.GROUP, "forcedDropMode");
+		configManager.unsetConfiguration(BronzemanTcgConfig.GROUP, "exemptCoins");
+		configManager.unsetConfiguration(BronzemanTcgConfig.GROUP, "hideLockedOptions");
 	}
 
 	private void migrateExemptList()

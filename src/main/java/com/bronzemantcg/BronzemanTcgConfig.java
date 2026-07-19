@@ -205,76 +205,76 @@ public interface BronzemanTcgConfig extends Config
 	}
 
 	@ConfigItem(
-		keyName = "restrictLoot",
-		name = "Restrict loot pickup",
-		description = "Block picking up (or telegrabbing) ground items whose card you have not yet "
-			+ "collected in the OSRS TCG plugin."
+		keyName = "groundItemsMode",
+		name = "Ground Items",
+		description = "Locked: picking up (or telegrabbing) ground items whose card you have not "
+			+ "collected is blocked, and Take is removed from their menu."
 			+ "<br>Items with no card in the TCG catalog are never restricted.",
 		section = generalSettings,
 		position = 3
 	)
-	default boolean restrictLoot()
+	default LockState groundItemsMode()
 	{
-		return true;
+		return LockState.LOCKED;
 	}
 
 	@ConfigItem(
-			keyName = "restrictItemUsage",
-			name = "Restrict item usage",
-			description = "Block equipping (Wear/Wield/Equip) and drinking any inventory item "
-					+ "whose card you have not collected. All four potion dose types map to the "
-					+ "one card."
-					+ "<br>Items with no card are never restricted.",
+			keyName = "itemUsageMode",
+			name = "Item Usage",
+			description = "Locked: inventory items whose card you have not collected keep only "
+					+ "Drop, Destroy and Examine - equipping, drinking, using and every other "
+					+ "option is removed. No card, no permit."
+					+ "<br>Shops always refuse to sell locked items; the exempt list overrides.",
 			section = generalSettings,
 			position = 4
 	)
-	default boolean restrictItemUsage()
+	default LockState itemUsageMode()
 	{
-		return true;
+		return LockState.LOCKED;
 	}
 
 	@ConfigItem(
-			keyName = "restrictBuying",
-			name = "Restrict shop/GE buying",
-			description = "Block buying items whose card is locked from shops, and block selecting them in "
-					+ "the Grand Exchange search."
-					+ "<br>Items with no card can always be bought.",
+			keyName = "bankingMode",
+			name = "Banking",
+			description = "How locked inventory items interact with the bank while Item Usage is "
+					+ "Locked."
+					+ "<br>'Off': they can't be banked at all. 'Deposit Only': the bank is a "
+					+ "holding pen - deposits work, withdrawals stay blocked until the card "
+					+ "unlocks. 'Full Banking': both directions work.",
 			section = generalSettings,
 			position = 5
 	)
-	default boolean restrictBuying()
+	default BankingMode bankingMode()
 	{
-		return true;
+		return BankingMode.DEPOSIT_ONLY;
 	}
 
 	@ConfigItem(
-			keyName = "forcedDropMode",
-			name = "Forced drop",
-			description = "Items in your inventory whose card is locked (e.g. quest rewards) can only be "
-					+ "Dropped or Destroyed; every other option is disabled."
-					+ "<br>'Allow banking' additionally permits depositing them "
-					+ "(the bank becomes a holding pen - withdrawing stays blocked until the card unlocks). "
-					+ "<br>Once the card is unlocked the item works normally.",
+			keyName = "grandExchangeMode",
+			name = "Grand Exchange",
+			description = "Locked: items whose card you have not collected can't be selected in "
+					+ "the Grand Exchange search (best-effort - keyboard flows may bypass)."
+					+ "<br>Items with no card can always be bought.",
 			section = generalSettings,
-			position = 7
+			position = 6
 	)
-	default ForcedDropMode forcedDropMode()
+	default LockState grandExchangeMode()
 	{
-		return ForcedDropMode.OFF;
+		return LockState.LOCKED;
 	}
 
 	@ConfigItem(
-		keyName = "exemptCoins",
-		name = "Always allow Coins",
-		description = "Coins are never restricted (looting, buying, banking, etc.), regardless of "
-			+ "the exempt list below."
-			+ "<br>Turn off for a true challenge where even coin drops need the card.",
+		keyName = "coinMode",
+		name = "Coin Settings",
+		description = "Unlocked: Coins are never restricted (looting, buying, banking, etc.), "
+			+ "regardless of the exempt list below."
+			+ "<br>Locked: a true challenge - even coin drops need the card.",
 		section = generalSettings,
 		position = 8
 	)
-	default boolean exemptCoins()
+	default LockState coinMode()
 	{
-		return true;
+		return LockState.UNLOCKED;
 	}
 
 	@ConfigItem(
@@ -326,22 +326,6 @@ public interface BronzemanTcgConfig extends Config
 		position = 11
 	)
 	default boolean allowInLms()
-	{
-		return true;
-	}
-
-	@ConfigItem(
-		keyName = "hideLockedOptions",
-		name = "Hide locked menu options",
-		description = "Remove blocked options from menus entirely instead of just cancelling the "
-			+ "click - a locked tree loses Chop down, a locked ground item loses Take (Walk here "
-			+ "becomes the default)."
-			+ "<br>Covers ground items, objects and inventory items; NPCs follow the NPC "
-			+ "restriction dropdown instead. The chat warning remains as the final guard.",
-		section = generalSettings,
-		position = 12
-	)
-	default boolean hideLockedOptions()
 	{
 		return true;
 	}

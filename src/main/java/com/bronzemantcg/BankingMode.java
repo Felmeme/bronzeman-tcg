@@ -1,15 +1,15 @@
 package com.bronzemantcg;
 
 /** Config dropdown; see BronzemanTcgConfig for the behaviour of each mode. */
-public enum ForcedDropMode
+public enum BankingMode
 {
 	OFF("Off"),
-	DROP("Drop only"),
-	ALLOW_BANKING("Allow banking");
+	DEPOSIT_ONLY("Deposit Only"),
+	FULL("Full Banking");
 
 	private final String label;
 
-	ForcedDropMode(String label)
+	BankingMode(String label)
 	{
 		this.label = label;
 	}
