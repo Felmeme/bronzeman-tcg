@@ -312,10 +312,7 @@ public interface BronzemanTcgConfig extends Config
 		section = generalSettings,
 		position = 10
 	)
-	default boolean chatFeedback()
-	{
-		return true;
-	}
+	default boolean chatFeedback() { return true; }
 
 	@ConfigItem(
 		keyName = "allowInLms",
@@ -416,10 +413,7 @@ public interface BronzemanTcgConfig extends Config
 		section = cookingSection,
 		position = 0
 	)
-	default boolean restrictCooking()
-	{
-		return true;
-	}
+	default boolean restrictCooking() {	return true; }
 
 	@ConfigItem(
 		keyName = "restrictBurntFood",
