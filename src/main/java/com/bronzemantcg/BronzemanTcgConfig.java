@@ -175,7 +175,8 @@ public interface BronzemanTcgConfig extends Config
 	@ConfigItem(
 		keyName = "npcVisibilityMode",
 		name = "NPC Locks",
-		description = "'Prevent Combat': the Attack option is hidden and offensive spells are blocked; "
+		description = "NPCs with no card in the TCG catalog are never restricted."
+			+ "<br>'Prevent Combat': the Attack option is hidden and offensive spells are blocked; "
 			+ "talking and using items on the NPC still work."
 			+ "<br>'Prevent Interaction': every menu option except Examine is removed, and items "
 			+ "can't be used on the NPC."
@@ -206,8 +207,9 @@ public interface BronzemanTcgConfig extends Config
 	@ConfigItem(
 		keyName = "groundItemsMode",
 		name = "Ground Items",
-		description = "'Require Card': hides options for picking up Ground Items"
-			+ "<br>'No Card Needed': Ground items do not require their card to unlock.",
+		description = "Locked: picking up (or telegrabbing) ground items whose card you have not "
+			+ "collected is blocked."
+			+ "<br>Items with no card in the TCG catalog are never restricted.",
 		section = generalSettings,
 		position = 3
 	)
@@ -219,8 +221,7 @@ public interface BronzemanTcgConfig extends Config
 	@ConfigItem(
 			keyName = "itemUsageMode",
 			name = "Item Usage",
-			description = "'Require Card': Items require their Card. Hides everything other than Drop/Destroy"
-				+ "<br> No Card Needed: You can freely use items without their card.",
+			description = "Locked: Items will only show Drop, Destroy and Examine until you have the card.",
 			section = generalSettings,
 			position = 4
 	)
