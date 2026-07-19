@@ -180,7 +180,9 @@ public interface BronzemanTcgConfig extends Config
 			+ "talking and using items on the NPC still work."
 			+ "<br>'Prevent Interaction': every menu option except Examine is removed, and items "
 			+ "can't be used on the NPC."
-			+ "<br>'Hide NPCs': locked NPCs are invisible.",
+			+ "<br>'Hide NPCs': locked NPCs are invisible."
+			+ "<br>NPCs of quests you have started are always shown and talkable (Attack still "
+			+ "needs the card); slayer masters follow the Slayer section's own rules.",
 		section = generalSettings,
 		position = 1
 	)
@@ -320,21 +322,6 @@ public interface BronzemanTcgConfig extends Config
 	default boolean allowInLms()
 	{
 		return true;
-	}
-
-	@ConfigItem(
-		keyName = "allowCotsGuards",
-		name = "Allow CotS guard marking",
-		description = "Children of the Sun requires marking patrolling Guards, which is gated behind "
-			+ "the Guard card by default."
-			+ "<br>Enable to complete the quest without the card: marking is allowed and Guards stay "
-			+ "visible even with 'Hide locked NPCs' on.",
-		section = generalSettings,
-		position = 13
-	)
-	default boolean allowCotsGuards()
-	{
-		return false;
 	}
 
 	@ConfigItem(

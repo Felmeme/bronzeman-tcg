@@ -186,6 +186,9 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	private ClientThread clientThread;
 
 	@Inject
+	private QuestNpcIndex questNpcIndex;
+
+	@Inject
 	private LockedItemIconOverlay lockedItemIconOverlay;
 
 	private long lastBlockMessageMs;
@@ -297,9 +300,12 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	{
 		// Every ~3s: catches unlocks and config changes that happen without an
 		// inventory redraw (the ScriptPostFired hook covers redraws immediately).
+		// Quest states change even more rarely; the same cadence keeps the quest-NPC
+		// override current without touching the render path.
 		if (++markTickCounter % 5 == 0)
 		{
 			scheduleLockedItemMarks();
+			questNpcIndex.refresh(client);
 		}
 		if (welcomeDelayTicks >= 0 && --welcomeDelayTicks < 0)
 		{
@@ -460,9 +466,9 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 		{
 			return true;
 		}
-		// CotS override: with guard marking allowed, Guards must stay visible even while
-		// locked, or hide-locked-NPCs silently bricks the quest.
-		if (config.allowCotsGuards() && "guard".equals(name.toLowerCase(Locale.ROOT)))
+		// Quest override: an NPC of any started quest stays visible - hiding it would
+		// silently brick the quest. Quest progression is the permit; no toggle.
+		if (questNpcIndex.isShownQuestNpc(name))
 		{
 			return true;
 		}
@@ -541,10 +547,10 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 				}
 				// Prevent Interaction strips every option (Examine is a different MenuAction, so it
 				// survives untouched). Slayer masters answer only to the Slayer section, and
-				// the CotS override keeps Guards markable mid-quest.
+				// started-quest NPCs keep Prevent Combat treatment so quests never brick.
 				if (mode.strictOptions() && !isUnlocked(monsterCatalog, name)
 					&& !nodeCatalog.isSlayerNpc(name)
-					&& !(config.allowCotsGuards() && "guard".equalsIgnoreCase(name)))
+					&& !questNpcIndex.isShownQuestNpc(name))
 				{
 					return true;
 				}
@@ -1198,8 +1204,9 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 			case "hunter-rumours":
 				return config.restrictHunterRumours() ? Collections.emptySet() : null;
 			case "quest-cots":
-				// CotS guard marking; the toggle makes the quest completable without the card.
-				return config.allowCotsGuards() ? null : Collections.emptySet();
+				// CotS guard marking waives itself while the quest is actually running -
+				// quest progression is the permit, no toggle.
+				return questNpcIndex.isCotsInProgress() ? null : Collections.emptySet();
 			case "runecrafting":
 				switch (config.runecraftingMode())
 				{
@@ -1649,20 +1656,23 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 					return true;
 				}
 				// Prevent Interaction: every option is gated (Examine routes through a different
-				// MenuAction and stays free). Slayer masters and CotS-override Guards keep
-				// their own rules - matches the menu-hiding path exactly.
+				// MenuAction and stays free). Slayer masters keep their own rules, and
+				// started-quest NPCs drop to Prevent Combat treatment - matches the
+				// menu-hiding path exactly.
 				return mode.strictOptions()
 					&& !nodeCatalog.isSlayerNpc(npcName)
-					&& !(config.allowCotsGuards() && "guard".equalsIgnoreCase(npcName));
+					&& !questNpcIndex.isShownQuestNpc(npcName);
 			}
 			case WIDGET_TARGET_ON_NPC:
 			{
 				// Spell cast on NPC, or item used on NPC. Prevent Combat blocks only the
 				// spell (closing the mage bypass) while item-on-NPC stays free for quest
-				// interactions; Prevent Interaction blocks both.
-				if (mode.strictOptions())
+				// interactions; Prevent Interaction blocks both - except for slayer
+				// masters and started-quest NPCs, who get the Prevent Combat treatment.
+				if (mode.strictOptions() && !nodeCatalog.isSlayerNpc(npcName)
+					&& !questNpcIndex.isShownQuestNpc(npcName))
 				{
-					return !nodeCatalog.isSlayerNpc(npcName);
+					return true;
 				}
 				String option = event.getMenuOption();
 				boolean spell = (option != null
@@ -1837,6 +1847,8 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 		configManager.unsetConfiguration(BronzemanTcgConfig.GROUP, "forcedDropMode");
 		configManager.unsetConfiguration(BronzemanTcgConfig.GROUP, "exemptCoins");
 		configManager.unsetConfiguration(BronzemanTcgConfig.GROUP, "hideLockedOptions");
+		// The CotS toggle is replaced by automatic quest-state awareness.
+		configManager.unsetConfiguration(BronzemanTcgConfig.GROUP, "allowCotsGuards");
 	}
 
 	private void migrateExemptList()

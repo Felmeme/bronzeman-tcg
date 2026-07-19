@@ -3,3 +3,6 @@ build
 bin/
 launch-client.bat
 .idea/
+
+# Local working notes - not for the repo
+docs/api_merge_checklist.md
