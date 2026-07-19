@@ -38,9 +38,18 @@
     the repo/scratchpad so re-runs hit the wiki zero times. The shipped
     plugin makes no wiki requests at runtime - this governs dev-time data
     generation only.
-  - Hub releases: push here, then PR to runelite/plugin-hub bumping
+  - Hub releases (versioned since 0.2.1, 2026-07-19): EVERY release commit
+    bumps the `version=` line in runelite-plugin.properties (0.MINOR.PATCH -
+    MINOR features, PATCH fixes) AND adds a CHANGELOG.md entry. That line is
+    the SINGLE source of truth: the hub displays it directly, and
+    build.gradle reads it in (jar name + processResources-stamped
+    version.txt that the welcome message prints - never hardcode a version
+    anywhere else). Then: push, take the hash
+    from `git log -1 --format=%H` AFTER the final push (never earlier -
+    amends invalidate hashes), PR to runelite/plugin-hub bumping
     plugins/bronzeman-tcg `commit=`. runelite-plugin.properties MUST keep
-    `build=standard`. Config keyNames are a public contract now.
+    `build=standard`. Config keyNames are a public contract now. Assistant
+    handovers for release-bound work must state the suggested next version.
   - The shell-permission service occasionally drops for a few minutes
     ("temporarily unavailable... classifier"); Write/Edit still work — route
     file changes through them and commit when it recovers.

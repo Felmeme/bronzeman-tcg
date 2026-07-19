@@ -25,7 +25,21 @@ dependencies {
 }
 
 group = 'com.bronzemantcg'
-version = '0.2.0'
+
+// Single source of truth: runelite-plugin.properties' version line - the Plugin
+// Hub reads it from there, and everything else (jar name, welcome message via
+// version.txt) follows. Bump ONLY that line per release.
+def pluginProps = new Properties()
+file('runelite-plugin.properties').withInputStream { pluginProps.load(it) }
+version = pluginProps.getProperty('version', 'unversioned')
+
+// Stamp the version into a bundled resource so the plugin (welcome message)
+// always reports the same number the hub displays - no constant to drift.
+processResources {
+	filesMatching('version.txt') {
+		expand('version': project.version)
+	}
+}
 
 tasks.withType(JavaCompile).configureEach {
 	options.encoding = 'UTF-8'

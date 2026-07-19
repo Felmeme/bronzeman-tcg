@@ -2,6 +2,9 @@ package com.bronzemantcg;
 
 import com.google.inject.Provides;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -337,8 +340,8 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 		if (collectionReader.isStateAvailable())
 		{
 			queueChat(String.format(Locale.UK,
-				"[Bronzeman TCG] Active - %,d/%,d cards collected. Good luck on the pulls!",
-				collectionReader.getOwnedCardCount(), CardNames.TOTAL_CARDS));
+				"[Bronzeman TCG] v%s Active - %,d/%,d cards collected. Good luck on the pulls!",
+				pluginVersion(), collectionReader.getOwnedCardCount(), CardNames.TOTAL_CARDS));
 		}
 		else
 		{
@@ -915,9 +918,23 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 		if (group == InterfaceID.SHOPMAIN)
 		{
 			// Shops refuse locked items unconditionally; the exempt list is the escape hatch.
-			if (optionLower.startsWith("buy"))
+			// Buying also spends Coins, so locked Coins (Coin Settings) block the purchase
+			// too - blockIfLockedItem short-circuits through the same exemption logic.
+			if (optionLower.startsWith("buy")
+				&& !blockIfLockedItem(event, "Coins"))
 			{
 				blockIfLockedItem(event, itemOpName(event, entry));
+			}
+			return;
+		}
+
+		if (group == InterfaceID.SHOPSIDE)
+		{
+			// Selling yields Coins, so locked Coins block sales; the sold item itself is
+			// never gated (disposing of items is always allowed).
+			if (optionLower.startsWith("sell"))
+			{
+				blockIfLockedItem(event, "Coins");
 			}
 			return;
 		}
@@ -1936,6 +1953,22 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	 * when the player's Game chat tab is set to "Filter" (why feedback looked dead on a
 	 * standard client but fine in dev testing).
 	 */
+	/** Version stamped into version.txt by the build from build.gradle's `version`. */
+	private String pluginVersion()
+	{
+		try (InputStream stream = BronzemanTcgPlugin.class.getResourceAsStream("/version.txt"))
+		{
+			if (stream != null)
+			{
+				return new String(stream.readAllBytes(), StandardCharsets.UTF_8).trim();
+			}
+		}
+		catch (IOException ignored)
+		{
+		}
+		return "?";
+	}
+
 	private void queueChat(String message)
 	{
 		chatMessageManager.queue(QueuedMessage.builder()

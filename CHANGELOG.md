@@ -1,5 +1,33 @@
 # Changelog
 
+Versioning: 0.MINOR.PATCH — MINOR for new behaviour, PATCH for fixes only.
+The build.gradle version is bumped in the same commit as each release.
+
+## v0.2.1 — 2026-07-19
+
+### Fixes
+- Coin Settings (Locked) now blocks shop buying and selling — both
+  transactions handle Coins, so both require the Coins card (or an
+  exemption). Shops only; the Grand Exchange is unchanged for now.
+
+### Interface
+- The plugin version now shows on the Plugin Hub and in the login greeting.
+
+## Unversioned updates — 2026-07-16 to 2026-07-19 (shipped as 0.2.0)
+- Welcome, plugin-conflict and collection-unreadable chat messages;
+  enforcement stands down loudly when the TCG state can't be read.
+- Locked-item marking: fade + bank-filler icon in inventory and bank.
+- Exempt-list update-safety fix (Coins moved to its own setting).
+- Settings overhaul: NPC Locks, Ground Items, Item Usage, Banking, Grand
+  Exchange and Coin Settings dropdowns; option hiding made inherent; shops
+  always refuse locked items; stricter defaults (no card, no permit).
+- Thieving tiers (Coins+Pouch / +NPC card / All) with H.A.M. and Master
+  Farmer Insanity toggles; full pickpocket loot data (479 loot groups).
+- Quest-state NPC override: NPCs of started quests stay visible and
+  talkable in every mode; CotS guard marking waives itself mid-quest; the
+  CotS toggle retired.
+- One-time settings migration preserving deliberate lenient choices.
+
 ## v0.2.0 — 2026-07-16
 
 ### New restrictions & options
