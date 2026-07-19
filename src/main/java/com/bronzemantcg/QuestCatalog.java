@@ -7,7 +7,9 @@ import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Locale;
 import java.util.Set;
 import javax.inject.Inject;
@@ -26,6 +28,9 @@ import lombok.extern.slf4j.Slf4j;
 public class QuestCatalog
 {
 	private List<QuestEntry> quests = Collections.emptyList();
+	// Quest name -> kill-required monster CARD names, miniquests included (unlike the
+	// panel list, which hides them). Feeds QuestNpcIndex's quest-state override.
+	private Map<String, List<String>> questMonsterCards = Collections.emptyMap();
 
 	@Inject
 	public QuestCatalog(Gson gson)
@@ -36,6 +41,11 @@ public class QuestCatalog
 	public List<QuestEntry> getQuests()
 	{
 		return quests;
+	}
+
+	public Map<String, List<String>> getQuestMonsterCards()
+	{
+		return questMonsterCards;
 	}
 
 	public int size()
@@ -59,11 +69,17 @@ public class QuestCatalog
 				return;
 			}
 			List<QuestEntry> loaded = new ArrayList<>();
+			Map<String, List<String>> monsterMap = new HashMap<>();
 			for (QuestDto dto : snapshot.quests)
 			{
 				if (dto == null || dto.name == null || dto.name.trim().isEmpty())
 				{
 					continue;
+				}
+				if (dto.monsterCards != null && !dto.monsterCards.isEmpty())
+				{
+					monsterMap.put(dto.name.trim(), Collections.unmodifiableList(
+						new ArrayList<>(dto.monsterCards)));
 				}
 				List<Requirement> requirements = new ArrayList<>();
 				if (dto.cardGroups != null)
@@ -104,6 +120,7 @@ public class QuestCatalog
 			}
 			loaded.sort((a, b) -> a.name.compareToIgnoreCase(b.name));
 			quests = Collections.unmodifiableList(loaded);
+			questMonsterCards = Collections.unmodifiableMap(monsterMap);
 			log.info("Loaded {} quests from card-requirement snapshot", quests.size());
 		}
 		catch (IOException ex)
