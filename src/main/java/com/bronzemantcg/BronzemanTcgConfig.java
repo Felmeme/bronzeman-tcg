@@ -175,8 +175,7 @@ public interface BronzemanTcgConfig extends Config
 	@ConfigItem(
 		keyName = "npcVisibilityMode",
 		name = "NPC Locks",
-		description = "NPCs with no card in the TCG catalog are never restricted."
-			+ "<br>'Prevent Combat': the Attack option is hidden and offensive spells are blocked; "
+		description = "'Prevent Combat': the Attack option is hidden and offensive spells are blocked; "
 			+ "talking and using items on the NPC still work."
 			+ "<br>'Prevent Interaction': every menu option except Examine is removed, and items "
 			+ "can't be used on the NPC."
@@ -207,9 +206,8 @@ public interface BronzemanTcgConfig extends Config
 	@ConfigItem(
 		keyName = "groundItemsMode",
 		name = "Ground Items",
-		description = "Locked: picking up (or telegrabbing) ground items whose card you have not "
-			+ "collected is blocked."
-			+ "<br>Items with no card in the TCG catalog are never restricted.",
+		description = "'Require Card': hides options for picking up Ground Items"
+			+ "<br>'No Card Needed': Ground items do not require their card to unlock.",
 		section = generalSettings,
 		position = 3
 	)
@@ -221,13 +219,29 @@ public interface BronzemanTcgConfig extends Config
 	@ConfigItem(
 			keyName = "itemUsageMode",
 			name = "Item Usage",
-			description = "Locked: Items will only show Drop, Destroy and Examine until you have the card.",
+			description = "'Require Card': Items require their Card. Hides everything other than Drop/Destroy"
+				+ "<br> No Card Needed: You can freely use items without their card.",
 			section = generalSettings,
 			position = 4
 	)
 	default LockState itemUsageMode()
 	{
 		return LockState.LOCKED;
+	}
+
+	@ConfigItem(
+			keyName = "foodSettingsMode",
+			name = "Food Settings",
+			description = "'Require Card': Consumables are not usable without their card."
+					+ "<br>'Pots Only': potions are usable without Cards. "
+					+ "<br>'Food Only': food usable without Cards."
+					+ "<br>'No Card Needed': both are usable without cards.",
+			section = generalSettings,
+			position = 5
+	)
+	default FoodSettingsMode foodSettingsMode()
+	{
+		return FoodSettingsMode.LOCKED;
 	}
 
 	@ConfigItem(
@@ -239,7 +253,7 @@ public interface BronzemanTcgConfig extends Config
 					+ "<br> 'Deposit Only': Deposits work, withdrawals stay blocked until the card unlocks."
 					+ "<br> 'Full Banking': Deposit and Withrdrawls allowed without needing card.",
 			section = generalSettings,
-			position = 5
+			position = 6
 	)
 	default BankingMode bankingMode()
 	{
@@ -253,7 +267,7 @@ public interface BronzemanTcgConfig extends Config
 					+ "the Grand Exchange search."
 					+ "<br>Items with no card can always be bought.",
 			section = generalSettings,
-			position = 6
+			position = 7
 	)
 	default LockState grandExchangeMode()
 	{
@@ -289,11 +303,11 @@ public interface BronzemanTcgConfig extends Config
 
 	@ConfigItem(
 		keyName = "lootExemptNames",
-		name = "Item exempt list",
-		description = "Comma-separated item names that are never restricted even without their card - "
-			+ "looting, forced drop, banking, equipping and buying all skip them."
+		name = "Exempt List",
+		description = "Comma-separated, case-insensitive."
+			+ "<br>Items and NPC names added to the list are never restricted even without their card."
 			+ "<br>For universal items that would otherwise make the game unplayable."
-			+ "<br>Case-insensitive. (Coins have their own toggle above.)",
+			+ "<br>Use this list to add exceptions based on things like Foil Card Rules.",
 		section = generalSettings,
 		position = 9
 	)
@@ -517,16 +531,20 @@ public interface BronzemanTcgConfig extends Config
 	//Skill Options
 	//----------------
 	@ConfigItem(
-		keyName = "restrictFletching",
-		name = "Restrict fletching",
-		description = "Fletching requires the input and output item cards where input cards exist."
-			+ "<br>Arrowtips and most dart tips have no cards, so those recipes enforce the output.",
+		keyName = "fletchingMode",
+		name = "Fletching",
+		description = "Blocked at the fletching interface's product click; using a knife on logs "
+			+ "opens the menu freely."
+			+ "<br>'Product': each step needs the finished item's card (unstrung bows count as "
+			+ "their strung bow). 'Product + Materials': also needs the carded inputs - logs, "
+			+ "bow string, arrow shafts, feathers. Arrowtips and dart tips have no cards and "
+			+ "never gate anything.",
 		section = fletchingSection,
 		position = 0
 	)
-	default boolean restrictFletching()
+	default FletchingMode fletchingMode()
 	{
-		return true;
+		return FletchingMode.PRODUCT_AND_MATERIALS;
 	}
 
 	@ConfigItem(

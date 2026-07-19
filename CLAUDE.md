@@ -40,7 +40,9 @@
     generation only.
   - Hub releases (versioned since 0.2.1, 2026-07-19): EVERY release commit
     bumps the `version=` line in runelite-plugin.properties (0.MINOR.PATCH -
-    MINOR features, PATCH fixes) AND adds a CHANGELOG.md entry. That line is
+    MINOR features, PATCH fixes; OWNER RULING 2026-07-19: stay on 0.2.x
+    patches until the full skills sweep is complete, then 0.3.0) AND adds a
+    CHANGELOG.md entry. That line is
     the SINGLE source of truth: the hub displays it directly, and
     build.gradle reads it in (jar name + processResources-stamped
     version.txt that the welcome message prints - never hardcode a version
@@ -267,6 +269,35 @@ docs/sailing_nodes_report.md):
    their effective behaviour. Never reintroduce a non-empty default on
    any editable list field.
 
+## ACTIVE: Skills sweep to 0.3.0 (2026-07-19 onward)
+**Session 1 (Fletching) IN FLIGHT, code half DONE 2026-07-19:** FletchingMode
+dropdown (Off/Product/Product+Materials, default P+M) replaces
+restrictFletching (migrated), checkRecipe wired. REMAINING: rebuild the 35
+fletching recipes from item-on-item knife triggers to interface product
+rules - knife-on-logs must open the menu freely; block at the product
+click. Owner's requirement chains: shaft = Arrow shaft+Logs; headless =
+Headless arrow+Arrow shaft+Feather; tipped arrows = arrow+Headless arrow
+(tips have no cards, never gate); bows keyed under BOTH plain and "(u)"
+names until in-game menu strings verified; darts stay item-on-item keyed
+on the tip, requiring dart+Feather. The interface-vs-instant matrix is in
+docs/fletching_actions.json + docs/fletching_report.md (52 actions). Key
+verdicts: knife-on-logs and stringing = INTERFACE (owner-verified); darts =
+instant by default (2023 note; opt-in Make-X toggle exists - honor-system
+edge); bolt feathering = Make-X INTERFACE since a 31 Jul 2024 change note
+(needs interface twins like the cooking fix; default-vs-toggle unverified);
+arrows/headless/javelins/crossbows/ogre = UNVERIFIED-lean-instant, verify
+in owner test. MISSING families to add: javelins, crossbows, gem-tipped
+bolts, ogre/brutal arrows, broad ammo, Varlamore atlatl darts (all final
+products carded). "Ogre arrow" itself has NO card (freely makeable;
+card-gap report). Rebuild data in one scripted pass from the matrix, then
+owner test pass, ship as 0.2.3.
+docs/plan_skills_sweep.md is the governing roadmap: broken skills first
+(Fishing -> Sailing -> Fletching), then missing rules (Varlamore thieving,
+Agility, Construction, Farming-harvest), then owner test passes. Assistant
+implements everything this sweep; owed lessons resume after 0.3.0. Standing
+card-gap policy: requirements fall back to nearest CARDED items. Each
+session: mini-plan + quiz first, 0.2.x release after owner test.
+
 ## Post-launch backlog (agreed with owner)
 - **Locked-item marking: SHIPPED + VERIFIED 2026-07-18** — Visuals dropdown
   "Mark locked items" (Off/Transparent/Transparent + icon, default
@@ -355,6 +386,11 @@ docs/sailing_nodes_report.md):
   unlock via lobster cards. Big-net union gained "Big fishing net" as a
   gear alternative. Re-add dark crabs when doing the ID split.
 - Sailing test pass (see DEFERRED section above).
+- **Tracked-name encoding defect (found 2026-07-19)**: four tracked names
+  (rosé wines, "grubs à la mode") carry a literal U+FFFD replacement char
+  from the snapshot generator; consumables.json preserves them byte-for-byte
+  so matching holds. Real fix belongs in scripts/generate_tracked_monsters.py
+  encoding handling; regenerate both snapshots + consumables when fixed.
 - **Quest enemy variant-name aliases (held from the 2026-07-16 re-derivation)**:
   Cuthbert (Ribbiting Tale, fought as "Cuthbert, Lord of Dread") and Metzli
   (The Final Dawn, fought as "Augur Metzli") have cards but the fought NPC's

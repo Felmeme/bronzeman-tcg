@@ -1,0 +1,574 @@
+[
+  {
+    "action": "Knife on logs -> arrow shafts",
+    "inputs": [
+      "Logs (any tier)",
+      "Knife"
+    ],
+    "product": "Arrow shaft",
+    "interface": true,
+    "productCard": true,
+    "notes": "Owner-verified: knife-on-logs opens the make-menu (multiple products: shafts / shortbow(u) / longbow(u) / crossbow stock by tier). Must key as interface at product click for per-product granularity. CURRENT recipe_nodes keys this item-on-item (Knife/targets=logs) - MIS-KEYED."
+  },
+  {
+    "action": "Knife on logs -> unstrung shortbow",
+    "inputs": [
+      "Logs (tier)",
+      "Knife"
+    ],
+    "product": "Shortbow (u)",
+    "interface": true,
+    "productCard": false,
+    "notes": "knife-on-logs interface. Produces UNSTRUNG bow, not the strung Shortbow. The 35 collapse strung Shortbow onto this step - conflates two actions. Shortbow(u) has NO card."
+  },
+  {
+    "action": "Knife on logs -> unstrung longbow",
+    "inputs": [
+      "Logs (tier)",
+      "Knife"
+    ],
+    "product": "Longbow (u)",
+    "interface": true,
+    "productCard": false,
+    "notes": "knife-on-logs interface. Unstrung. Longbow(u) has NO card."
+  },
+  {
+    "action": "Knife on logs -> crossbow stock",
+    "inputs": [
+      "Logs (tier)",
+      "Knife"
+    ],
+    "product": "Wooden/Oak/.../Mahogany stock",
+    "interface": true,
+    "productCard": true,
+    "notes": "knife-on-logs interface; higher log tiers offer crossbow stock as a product. Stock items ARE carded (wooden/oak/teak/maple/yew/mahogany stock). Not present in the 35."
+  },
+  {
+    "action": "Knife on Achey tree logs -> ogre arrow shaft",
+    "inputs": [
+      "Achey tree logs",
+      "Knife"
+    ],
+    "product": "Ogre arrow shaft",
+    "interface": true,
+    "productCard": true,
+    "notes": "knife-on-logs family -> interface (generalises owner-verified). Ogre arrow shaft IS carded. Not present in the 35."
+  },
+  {
+    "action": "Bow string on unstrung shortbow",
+    "inputs": [
+      "Shortbow (u)",
+      "Bow string"
+    ],
+    "product": "Shortbow",
+    "interface": true,
+    "productCard": true,
+    "notes": "Owner-verified: stringing opens interface. Separate action from knife-on-logs. The 35 fold this into the knife step. Applies to every bow tier (short & long, normal->magic)."
+  },
+  {
+    "action": "Bow string on unstrung longbow",
+    "inputs": [
+      "Longbow (u)",
+      "Bow string"
+    ],
+    "product": "Longbow",
+    "interface": true,
+    "productCard": true,
+    "notes": "Owner-verified interface. Per tier (normal/oak/willow/maple/yew/magic)."
+  },
+  {
+    "action": "Feather on dart tip -> darts",
+    "inputs": [
+      "Dart tip (bronze..dragon/amethyst)",
+      "Feather"
+    ],
+    "product": "Dart (matching tier)",
+    "interface": false,
+    "productCard": true,
+    "notes": "Owner-verified INSTANT (no interface) by DEFAULT. Wiki (5 Apr 2023): players can OPT-IN toggle a Make-x interface for darts. Default = instant -> key item-on-item (CURRENT keying correct). CAVEAT: if a player enables the toggle, dart creation routes through the interface. Dart tips have NO card; dart products ARE carded."
+  },
+  {
+    "action": "Feather on unfinished metal bolts -> bolts",
+    "inputs": [
+      "X bolts (unf)",
+      "Feather"
+    ],
+    "product": "X bolts (bronze..runite)",
+    "interface": true,
+    "productCard": true,
+    "notes": "Wiki (31 Jul 2024): 'There is now a Make-X option when fletching bolts.' -> feathering bolts opens the make interface. CURRENT 35 key these item-on-item -> likely need interface twins (cf. the cooking interface-twin fix). UNVERIFIED whether make-X is always-on or an opt-in toggle like darts - owner verify. bolts(unf) NO card; bolt products carded."
+  },
+  {
+    "action": "Feather on arrow shaft -> headless arrow",
+    "inputs": [
+      "Arrow shaft",
+      "Feather"
+    ],
+    "product": "Headless arrow",
+    "interface": false,
+    "productCard": true,
+    "notes": "UNVERIFIED. No Make-X change note on wiki (unlike darts/bolts). Lean INSTANT (item-on-item) - current keying likely correct. Recommend in-game verify. Headless arrow IS carded."
+  },
+  {
+    "action": "Bronze arrowtips on headless arrow -> bronze arrow",
+    "inputs": [
+      "Headless arrow",
+      "Bronze arrowtips"
+    ],
+    "product": "Bronze arrow",
+    "interface": false,
+    "productCard": true,
+    "notes": "UNVERIFIED (lean instant). No Make-X note; attaching heads historically makes 15-set instantly. Current keying item-on-item likely correct. Arrowtips NO card; arrow product carded."
+  },
+  {
+    "action": "Iron arrowtips on headless arrow -> iron arrow",
+    "inputs": [
+      "Headless arrow",
+      "Iron arrowtips"
+    ],
+    "product": "Iron arrow",
+    "interface": false,
+    "productCard": true,
+    "notes": "UNVERIFIED (lean instant). No Make-X note; attaching heads historically makes 15-set instantly. Current keying item-on-item likely correct. Arrowtips NO card; arrow product carded."
+  },
+  {
+    "action": "Steel arrowtips on headless arrow -> steel arrow",
+    "inputs": [
+      "Headless arrow",
+      "Steel arrowtips"
+    ],
+    "product": "Steel arrow",
+    "interface": false,
+    "productCard": true,
+    "notes": "UNVERIFIED (lean instant). No Make-X note; attaching heads historically makes 15-set instantly. Current keying item-on-item likely correct. Arrowtips NO card; arrow product carded."
+  },
+  {
+    "action": "Mithril arrowtips on headless arrow -> mithril arrow",
+    "inputs": [
+      "Headless arrow",
+      "Mithril arrowtips"
+    ],
+    "product": "Mithril arrow",
+    "interface": false,
+    "productCard": true,
+    "notes": "UNVERIFIED (lean instant). No Make-X note; attaching heads historically makes 15-set instantly. Current keying item-on-item likely correct. Arrowtips NO card; arrow product carded."
+  },
+  {
+    "action": "Adamant arrowtips on headless arrow -> adamant arrow",
+    "inputs": [
+      "Headless arrow",
+      "Adamant arrowtips"
+    ],
+    "product": "Adamant arrow",
+    "interface": false,
+    "productCard": true,
+    "notes": "UNVERIFIED (lean instant). No Make-X note; attaching heads historically makes 15-set instantly. Current keying item-on-item likely correct. Arrowtips NO card; arrow product carded."
+  },
+  {
+    "action": "Rune arrowtips on headless arrow -> rune arrow",
+    "inputs": [
+      "Headless arrow",
+      "Rune arrowtips"
+    ],
+    "product": "Rune arrow",
+    "interface": false,
+    "productCard": true,
+    "notes": "UNVERIFIED (lean instant). No Make-X note; attaching heads historically makes 15-set instantly. Current keying item-on-item likely correct. Arrowtips NO card; arrow product carded."
+  },
+  {
+    "action": "Amethyst arrowtips on headless arrow -> amethyst arrow",
+    "inputs": [
+      "Headless arrow",
+      "Amethyst arrowtips"
+    ],
+    "product": "Amethyst arrow",
+    "interface": false,
+    "productCard": true,
+    "notes": "UNVERIFIED (lean instant). No Make-X note; attaching heads historically makes 15-set instantly. Current keying item-on-item likely correct. Arrowtips NO card; arrow product carded."
+  },
+  {
+    "action": "Dragon arrowtips on headless arrow -> dragon arrow",
+    "inputs": [
+      "Headless arrow",
+      "Dragon arrowtips"
+    ],
+    "product": "Dragon arrow",
+    "interface": false,
+    "productCard": true,
+    "notes": "UNVERIFIED (lean instant). No Make-X note; attaching heads historically makes 15-set instantly. Current keying item-on-item likely correct. Arrowtips NO card; arrow product carded."
+  },
+  {
+    "action": "Bronze javelin heads on javelin shaft -> bronze javelin",
+    "inputs": [
+      "Javelin shaft",
+      "Bronze javelin heads"
+    ],
+    "product": "Bronze javelin",
+    "interface": false,
+    "productCard": true,
+    "notes": "UNVERIFIED (lean instant). No Make-X note. MISSING FAMILY (not in the 35). Javelin shaft carded, javelin heads NOT carded, javelin products carded."
+  },
+  {
+    "action": "Iron javelin heads on javelin shaft -> iron javelin",
+    "inputs": [
+      "Javelin shaft",
+      "Iron javelin heads"
+    ],
+    "product": "Iron javelin",
+    "interface": false,
+    "productCard": true,
+    "notes": "UNVERIFIED (lean instant). No Make-X note. MISSING FAMILY (not in the 35). Javelin shaft carded, javelin heads NOT carded, javelin products carded."
+  },
+  {
+    "action": "Steel javelin heads on javelin shaft -> steel javelin",
+    "inputs": [
+      "Javelin shaft",
+      "Steel javelin heads"
+    ],
+    "product": "Steel javelin",
+    "interface": false,
+    "productCard": true,
+    "notes": "UNVERIFIED (lean instant). No Make-X note. MISSING FAMILY (not in the 35). Javelin shaft carded, javelin heads NOT carded, javelin products carded."
+  },
+  {
+    "action": "Mithril javelin heads on javelin shaft -> mithril javelin",
+    "inputs": [
+      "Javelin shaft",
+      "Mithril javelin heads"
+    ],
+    "product": "Mithril javelin",
+    "interface": false,
+    "productCard": true,
+    "notes": "UNVERIFIED (lean instant). No Make-X note. MISSING FAMILY (not in the 35). Javelin shaft carded, javelin heads NOT carded, javelin products carded."
+  },
+  {
+    "action": "Adamant javelin heads on javelin shaft -> adamant javelin",
+    "inputs": [
+      "Javelin shaft",
+      "Adamant javelin heads"
+    ],
+    "product": "Adamant javelin",
+    "interface": false,
+    "productCard": true,
+    "notes": "UNVERIFIED (lean instant). No Make-X note. MISSING FAMILY (not in the 35). Javelin shaft carded, javelin heads NOT carded, javelin products carded."
+  },
+  {
+    "action": "Rune javelin heads on javelin shaft -> rune javelin",
+    "inputs": [
+      "Javelin shaft",
+      "Rune javelin heads"
+    ],
+    "product": "Rune javelin",
+    "interface": false,
+    "productCard": true,
+    "notes": "UNVERIFIED (lean instant). No Make-X note. MISSING FAMILY (not in the 35). Javelin shaft carded, javelin heads NOT carded, javelin products carded."
+  },
+  {
+    "action": "Dragon javelin heads on javelin shaft -> dragon javelin",
+    "inputs": [
+      "Javelin shaft",
+      "Dragon javelin heads"
+    ],
+    "product": "Dragon javelin",
+    "interface": false,
+    "productCard": true,
+    "notes": "UNVERIFIED (lean instant). No Make-X note. MISSING FAMILY (not in the 35). Javelin shaft carded, javelin heads NOT carded, javelin products carded."
+  },
+  {
+    "action": "Amethyst javelin heads on javelin shaft -> amethyst javelin",
+    "inputs": [
+      "Javelin shaft",
+      "Amethyst javelin heads"
+    ],
+    "product": "Amethyst javelin",
+    "interface": false,
+    "productCard": true,
+    "notes": "UNVERIFIED (lean instant). No Make-X note. MISSING FAMILY (not in the 35). Javelin shaft carded, javelin heads NOT carded, javelin products carded."
+  },
+  {
+    "action": "Opal bolt tips on bolts -> opal bolts",
+    "inputs": [
+      "Bolts (metal base)",
+      "Opal bolt tips"
+    ],
+    "product": "Opal bolts",
+    "interface": false,
+    "productCard": true,
+    "notes": "UNVERIFIED (lean instant; but 2024 bolt Make-X note MAY cover tipping too). MISSING FAMILY. Bolt tips NO card; gem bolt products carded. Also dragon variants (e.g. Dragonstone dragon bolts) analogous."
+  },
+  {
+    "action": "Jade bolt tips on bolts -> jade bolts",
+    "inputs": [
+      "Bolts (metal base)",
+      "Jade bolt tips"
+    ],
+    "product": "Jade bolts",
+    "interface": false,
+    "productCard": true,
+    "notes": "UNVERIFIED (lean instant; but 2024 bolt Make-X note MAY cover tipping too). MISSING FAMILY. Bolt tips NO card; gem bolt products carded. Also dragon variants (e.g. Dragonstone dragon bolts) analogous."
+  },
+  {
+    "action": "Pearl bolt tips on bolts -> pearl bolts",
+    "inputs": [
+      "Bolts (metal base)",
+      "Pearl bolt tips"
+    ],
+    "product": "Pearl bolts",
+    "interface": false,
+    "productCard": true,
+    "notes": "UNVERIFIED (lean instant; but 2024 bolt Make-X note MAY cover tipping too). MISSING FAMILY. Bolt tips NO card; gem bolt products carded. Also dragon variants (e.g. Dragonstone dragon bolts) analogous."
+  },
+  {
+    "action": "Topaz bolt tips on bolts -> topaz bolts",
+    "inputs": [
+      "Bolts (metal base)",
+      "Topaz bolt tips"
+    ],
+    "product": "Topaz bolts",
+    "interface": false,
+    "productCard": true,
+    "notes": "UNVERIFIED (lean instant; but 2024 bolt Make-X note MAY cover tipping too). MISSING FAMILY. Bolt tips NO card; gem bolt products carded. Also dragon variants (e.g. Dragonstone dragon bolts) analogous."
+  },
+  {
+    "action": "Sapphire bolt tips on bolts -> sapphire bolts",
+    "inputs": [
+      "Bolts (metal base)",
+      "Sapphire bolt tips"
+    ],
+    "product": "Sapphire bolts",
+    "interface": false,
+    "productCard": true,
+    "notes": "UNVERIFIED (lean instant; but 2024 bolt Make-X note MAY cover tipping too). MISSING FAMILY. Bolt tips NO card; gem bolt products carded. Also dragon variants (e.g. Dragonstone dragon bolts) analogous."
+  },
+  {
+    "action": "Emerald bolt tips on bolts -> emerald bolts",
+    "inputs": [
+      "Bolts (metal base)",
+      "Emerald bolt tips"
+    ],
+    "product": "Emerald bolts",
+    "interface": false,
+    "productCard": true,
+    "notes": "UNVERIFIED (lean instant; but 2024 bolt Make-X note MAY cover tipping too). MISSING FAMILY. Bolt tips NO card; gem bolt products carded. Also dragon variants (e.g. Dragonstone dragon bolts) analogous."
+  },
+  {
+    "action": "Ruby bolt tips on bolts -> ruby bolts",
+    "inputs": [
+      "Bolts (metal base)",
+      "Ruby bolt tips"
+    ],
+    "product": "Ruby bolts",
+    "interface": false,
+    "productCard": true,
+    "notes": "UNVERIFIED (lean instant; but 2024 bolt Make-X note MAY cover tipping too). MISSING FAMILY. Bolt tips NO card; gem bolt products carded. Also dragon variants (e.g. Dragonstone dragon bolts) analogous."
+  },
+  {
+    "action": "Diamond bolt tips on bolts -> diamond bolts",
+    "inputs": [
+      "Bolts (metal base)",
+      "Diamond bolt tips"
+    ],
+    "product": "Diamond bolts",
+    "interface": false,
+    "productCard": true,
+    "notes": "UNVERIFIED (lean instant; but 2024 bolt Make-X note MAY cover tipping too). MISSING FAMILY. Bolt tips NO card; gem bolt products carded. Also dragon variants (e.g. Dragonstone dragon bolts) analogous."
+  },
+  {
+    "action": "Dragonstone bolt tips on bolts -> dragonstone bolts",
+    "inputs": [
+      "Bolts (metal base)",
+      "Dragonstone bolt tips"
+    ],
+    "product": "Dragonstone bolts",
+    "interface": false,
+    "productCard": true,
+    "notes": "UNVERIFIED (lean instant; but 2024 bolt Make-X note MAY cover tipping too). MISSING FAMILY. Bolt tips NO card; gem bolt products carded. Also dragon variants (e.g. Dragonstone dragon bolts) analogous."
+  },
+  {
+    "action": "Onyx bolt tips on bolts -> onyx bolts",
+    "inputs": [
+      "Bolts (metal base)",
+      "Onyx bolt tips"
+    ],
+    "product": "Onyx bolts",
+    "interface": false,
+    "productCard": true,
+    "notes": "UNVERIFIED (lean instant; but 2024 bolt Make-X note MAY cover tipping too). MISSING FAMILY. Bolt tips NO card; gem bolt products carded. Also dragon variants (e.g. Dragonstone dragon bolts) analogous."
+  },
+  {
+    "action": "Limbs on stock -> unstrung crossbow",
+    "inputs": [
+      "Stock (wooden..mahogany)",
+      "Limbs (bronze..runite/dragon)"
+    ],
+    "product": "Crossbow (u)",
+    "interface": false,
+    "productCard": false,
+    "notes": "UNVERIFIED (lean instant/single-item; non-stackable, one per action). MISSING FAMILY. Stock carded, limbs carded, crossbow(u) NOT carded."
+  },
+  {
+    "action": "Crossbow string on unstrung crossbow -> crossbow",
+    "inputs": [
+      "Crossbow (u)",
+      "Crossbow string"
+    ],
+    "product": "Crossbow (bronze..dragon)",
+    "interface": true,
+    "productCard": true,
+    "notes": "UNVERIFIED but LEAN INTERFACE (parallels owner-verified bow stringing). MISSING FAMILY. Crossbow string carded, crossbow products carded."
+  },
+  {
+    "action": "Feather on ogre arrow shaft -> flighted ogre arrow",
+    "inputs": [
+      "Ogre arrow shaft",
+      "Feather"
+    ],
+    "product": "Flighted ogre arrow",
+    "interface": false,
+    "productCard": false,
+    "notes": "UNVERIFIED (lean instant). MISSING FAMILY. Flighted ogre arrow NOT carded (ogre arrow shaft IS carded)."
+  },
+  {
+    "action": "Wolfbone arrowtips on flighted ogre arrow -> ogre arrow",
+    "inputs": [
+      "Flighted ogre arrow",
+      "Wolfbone arrowtips"
+    ],
+    "product": "Ogre arrow",
+    "interface": false,
+    "productCard": false,
+    "notes": "UNVERIFIED (lean instant; wiki '6 arrows made at a time'). MISSING FAMILY. Ogre arrow (plain) has NO card; wolfbone arrowtips NO card. Cannot gate on product - only ogre arrow shaft (carded) upstream."
+  },
+  {
+    "action": "Metal nails on flighted ogre arrow -> bronze brutal",
+    "inputs": [
+      "Flighted ogre arrow",
+      "Bronze nails"
+    ],
+    "product": "Bronze brutal",
+    "interface": false,
+    "productCard": true,
+    "notes": "UNVERIFIED (lean instant; recipe = flighted ogre arrow + matching metal nails). MISSING FAMILY. Brutal products ARE carded (e.g. 'Bronze brutal')."
+  },
+  {
+    "action": "Metal nails on flighted ogre arrow -> iron brutal",
+    "inputs": [
+      "Flighted ogre arrow",
+      "Iron nails"
+    ],
+    "product": "Iron brutal",
+    "interface": false,
+    "productCard": true,
+    "notes": "UNVERIFIED (lean instant; recipe = flighted ogre arrow + matching metal nails). MISSING FAMILY. Brutal products ARE carded (e.g. 'Bronze brutal')."
+  },
+  {
+    "action": "Metal nails on flighted ogre arrow -> steel brutal",
+    "inputs": [
+      "Flighted ogre arrow",
+      "Steel nails"
+    ],
+    "product": "Steel brutal",
+    "interface": false,
+    "productCard": true,
+    "notes": "UNVERIFIED (lean instant; recipe = flighted ogre arrow + matching metal nails). MISSING FAMILY. Brutal products ARE carded (e.g. 'Bronze brutal')."
+  },
+  {
+    "action": "Metal nails on flighted ogre arrow -> black brutal",
+    "inputs": [
+      "Flighted ogre arrow",
+      "Black nails"
+    ],
+    "product": "Black brutal",
+    "interface": false,
+    "productCard": true,
+    "notes": "UNVERIFIED (lean instant; recipe = flighted ogre arrow + matching metal nails). MISSING FAMILY. Brutal products ARE carded (e.g. 'Bronze brutal')."
+  },
+  {
+    "action": "Metal nails on flighted ogre arrow -> mithril brutal",
+    "inputs": [
+      "Flighted ogre arrow",
+      "Mithril nails"
+    ],
+    "product": "Mithril brutal",
+    "interface": false,
+    "productCard": true,
+    "notes": "UNVERIFIED (lean instant; recipe = flighted ogre arrow + matching metal nails). MISSING FAMILY. Brutal products ARE carded (e.g. 'Bronze brutal')."
+  },
+  {
+    "action": "Metal nails on flighted ogre arrow -> adamant brutal",
+    "inputs": [
+      "Flighted ogre arrow",
+      "Adamant nails"
+    ],
+    "product": "Adamant brutal",
+    "interface": false,
+    "productCard": true,
+    "notes": "UNVERIFIED (lean instant; recipe = flighted ogre arrow + matching metal nails). MISSING FAMILY. Brutal products ARE carded (e.g. 'Bronze brutal')."
+  },
+  {
+    "action": "Metal nails on flighted ogre arrow -> rune brutal",
+    "inputs": [
+      "Flighted ogre arrow",
+      "Rune nails"
+    ],
+    "product": "Rune brutal",
+    "interface": false,
+    "productCard": true,
+    "notes": "UNVERIFIED (lean instant; recipe = flighted ogre arrow + matching metal nails). MISSING FAMILY. Brutal products ARE carded (e.g. 'Bronze brutal')."
+  },
+  {
+    "action": "Broad arrowheads on headless arrow -> broad arrows",
+    "inputs": [
+      "Headless arrow",
+      "Broad arrowheads"
+    ],
+    "product": "Broad arrows",
+    "interface": false,
+    "productCard": true,
+    "notes": "UNVERIFIED (lean instant). Requires Broader Fletching slayer unlock. MISSING FAMILY. Broad arrowheads carded, broad arrows carded."
+  },
+  {
+    "action": "Feather on unfinished broad bolts -> broad bolts",
+    "inputs": [
+      "Unfinished broad bolts",
+      "Feather"
+    ],
+    "product": "Broad bolts",
+    "interface": true,
+    "productCard": true,
+    "notes": "UNVERIFIED lean INTERFACE (2024 bolt Make-X note plausibly applies). MISSING FAMILY. Unfinished broad bolts carded, broad bolts carded."
+  },
+  {
+    "action": "Amethyst broad bolt tips on broad bolts -> amethyst broad bolts",
+    "inputs": [
+      "Broad bolts",
+      "Amethyst broad bolt tips"
+    ],
+    "product": "Amethyst broad bolts",
+    "interface": false,
+    "productCard": true,
+    "notes": "UNVERIFIED (lean instant). MISSING FAMILY. Amethyst broad bolts carded."
+  },
+  {
+    "action": "Atlatl dart tips on headless atlatl dart -> atlatl dart",
+    "inputs": [
+      "Headless atlatl dart",
+      "Atlatl dart tips"
+    ],
+    "product": "Atlatl dart",
+    "interface": false,
+    "productCard": true,
+    "notes": "UNVERIFIED (lean instant, dart-family; but distinct 2024 Varlamore item - verify). MISSING FAMILY. Headless atlatl dart carded; atlatl dart tips NOT carded; Atlatl dart carded."
+  },
+  {
+    "action": "Feather on atlatl dart shaft -> headless atlatl dart",
+    "inputs": [
+      "Atlatl dart shaft",
+      "Feather"
+    ],
+    "product": "Headless atlatl dart",
+    "interface": false,
+    "productCard": true,
+    "notes": "UNVERIFIED (creation of the headless intermediate; exact inputs not wiki-confirmed). Headless atlatl dart carded."
+  }
+]

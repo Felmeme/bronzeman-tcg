@@ -3,8 +3,8 @@ package com.bronzemantcg;
 /** Standard two-value dropdown shared by the item settings; Locked = restricted. */
 public enum LockState
 {
-	LOCKED("Locked"),
-	UNLOCKED("Unlocked");
+	LOCKED("Require Card"),
+	UNLOCKED("No Card Needed");
 
 	private final String label;
 

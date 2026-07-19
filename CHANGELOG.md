@@ -1,7 +1,24 @@
 # Changelog
 
-Versioning: 0.MINOR.PATCH — MINOR for new behaviour, PATCH for fixes only.
-The build.gradle version is bumped in the same commit as each release.
+Versioning: 0.MINOR.PATCH — staying on 0.2.x until the full skills sweep is
+complete, then 0.3.0. The runelite-plugin.properties version line is bumped in
+the same commit as each release.
+
+## v0.2.2 — 2026-07-19
+
+### New
+- **Food Settings** dropdown (under Item Usage): Locked / Pots Only /
+  Food Only / Unlocked. An allowed class is treated as owned everywhere,
+  like the exempt list. 315 food and 108 potion items classified
+  (wiki-derived, owner-curated: wines, beers and teas count as food;
+  utility consumables like purple sweets stay locked).
+
+### Fixes
+- Shop Buy options are now hidden on items whose card is missing, and all
+  Buy/Sell options hide when Coins are locked without their card —
+  matching the click blocking added in 0.2.1.
+- The locked-item fade and icon now apply inside shop windows (stock and
+  shop-side inventory).
 
 ## v0.2.1 — 2026-07-19
 
