@@ -3,7 +3,7 @@ package com.bronzemantcg;
 /** Config dropdown; see BronzemanTcgConfig for the behaviour of each mode. */
 public enum BankingMode
 {
-	OFF("Off"),
+	OFF("No Banking"),
 	DEPOSIT_ONLY("Deposit Only"),
 	FULL("Full Banking");
 

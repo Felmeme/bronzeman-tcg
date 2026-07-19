@@ -40,6 +40,7 @@ import net.runelite.client.chat.ChatMessageManager;
 import net.runelite.client.chat.QueuedMessage;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.Subscribe;
+import net.runelite.client.events.ConfigChanged;
 import net.runelite.client.events.RuneScapeProfileChanged;
 import net.runelite.client.game.ItemManager;
 import net.runelite.client.plugins.Plugin;
@@ -652,6 +653,21 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 				target.refresh();
 			}
 		});
+	}
+
+	@Subscribe
+	public void onConfigChanged(ConfigChanged event)
+	{
+		// Unlocking item usage also switches Item Marking off - faded sprites would
+		// otherwise linger on items that are now fully usable. One-shot courtesy, not
+		// a hard link: the player can turn marking back on afterwards.
+		if (BronzemanTcgConfig.GROUP.equals(event.getGroup())
+			&& "itemUsageMode".equals(event.getKey())
+			&& LockState.UNLOCKED.name().equals(event.getNewValue()))
+		{
+			configManager.setConfiguration(BronzemanTcgConfig.GROUP, "lockedItemMarkMode",
+				LockedItemMarkMode.OFF.name());
+		}
 	}
 
 	@Subscribe

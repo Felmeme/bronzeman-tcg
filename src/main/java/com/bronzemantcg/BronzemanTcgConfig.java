@@ -174,15 +174,13 @@ public interface BronzemanTcgConfig extends Config
 	//----------------
 	@ConfigItem(
 		keyName = "npcVisibilityMode",
-		name = "NPC restriction",
-		description = "How NPCs whose card you have not collected are restricted. NPCs with no "
-			+ "card in the TCG catalog are never restricted."
+		name = "NPC Locks",
+		description = "NPCs with no card in the TCG catalog are never restricted."
 			+ "<br>'Prevent Combat': the Attack option is hidden and offensive spells are blocked; "
-			+ "talking and using items on the NPC still work (keeps quests completable)."
+			+ "talking and using items on the NPC still work."
 			+ "<br>'Prevent Interaction': every menu option except Examine is removed, and items "
 			+ "can't be used on the NPC."
-			+ "<br>'Hide NPCs': locked NPCs are invisible."
-			+ "<br>Slayer masters always follow the Slayer section's own rules instead.",
+			+ "<br>'Hide NPCs': locked NPCs are invisible.",
 		section = generalSettings,
 		position = 1
 	)
@@ -208,7 +206,7 @@ public interface BronzemanTcgConfig extends Config
 		keyName = "groundItemsMode",
 		name = "Ground Items",
 		description = "Locked: picking up (or telegrabbing) ground items whose card you have not "
-			+ "collected is blocked, and Take is removed from their menu."
+			+ "collected is blocked."
 			+ "<br>Items with no card in the TCG catalog are never restricted.",
 		section = generalSettings,
 		position = 3
@@ -221,10 +219,7 @@ public interface BronzemanTcgConfig extends Config
 	@ConfigItem(
 			keyName = "itemUsageMode",
 			name = "Item Usage",
-			description = "Locked: inventory items whose card you have not collected keep only "
-					+ "Drop, Destroy and Examine - equipping, drinking, using and every other "
-					+ "option is removed. No card, no permit."
-					+ "<br>Shops always refuse to sell locked items; the exempt list overrides.",
+			description = "Locked: Items will only show Drop, Destroy and Examine until you have the card.",
 			section = generalSettings,
 			position = 4
 	)
@@ -238,9 +233,9 @@ public interface BronzemanTcgConfig extends Config
 			name = "Banking",
 			description = "How locked inventory items interact with the bank while Item Usage is "
 					+ "Locked."
-					+ "<br>'Off': they can't be banked at all. 'Deposit Only': the bank is a "
-					+ "holding pen - deposits work, withdrawals stay blocked until the card "
-					+ "unlocks. 'Full Banking': both directions work.",
+					+ "<br>'Off': they can't be banked at all."
+					+ "<br> 'Deposit Only': Deposits work, withdrawals stay blocked until the card unlocks."
+					+ "<br> 'Full Banking': Deposit and Withrdrawls allowed without needing card.",
 			section = generalSettings,
 			position = 5
 	)
@@ -253,7 +248,7 @@ public interface BronzemanTcgConfig extends Config
 			keyName = "grandExchangeMode",
 			name = "Grand Exchange",
 			description = "Locked: items whose card you have not collected can't be selected in "
-					+ "the Grand Exchange search (best-effort - keyboard flows may bypass)."
+					+ "the Grand Exchange search."
 					+ "<br>Items with no card can always be bought.",
 			section = generalSettings,
 			position = 6
@@ -268,7 +263,7 @@ public interface BronzemanTcgConfig extends Config
 		name = "Coin Settings",
 		description = "Unlocked: Coins are never restricted (looting, buying, banking, etc.), "
 			+ "regardless of the exempt list below."
-			+ "<br>Locked: a true challenge - even coin drops need the card.",
+			+ "<br>Locked: a true challenge - anything involving coins needs the card.",
 		section = generalSettings,
 		position = 8
 	)
@@ -843,11 +838,10 @@ public interface BronzemanTcgConfig extends Config
 	//----------------
 	@ConfigItem(
 		keyName = "lockedItemMarkMode",
-		name = "Item Marking",
+		name = "Locked Item Indicator",
 		description = "Fade items in your inventory and bank while their card is uncollected, "
 			+ "so locked items are obvious at a glance."
-			+ "<br>Fade + Icon adds a small bank-filler badge on top of the faded sprite. "
-			+ "Uses the same rules as blocking, so exempt items are never marked.",
+			+ "<br>Fade + Icon adds a small bank-filler badge on top of the faded sprite. ",
 		section = visualsSection,
 		position = 0
 	)
