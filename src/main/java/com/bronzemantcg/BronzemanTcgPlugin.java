@@ -1699,13 +1699,16 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 				enforceOutput = true;
 				break;
 			case "crafting":
-				if (!config.restrictCrafting())
+			{
+				CraftingMode mode = config.craftingMode();
+				if (mode == CraftingMode.OFF)
 				{
 					return false;
 				}
-				enforceInputs = true;
-				enforceOutput = true;
+				enforceInputs = mode == CraftingMode.INPUT_ONLY || mode == CraftingMode.BOTH;
+				enforceOutput = mode == CraftingMode.OUTPUT_ONLY || mode == CraftingMode.BOTH;
 				break;
+			}
 			case "enchanting":
 				if (!config.restrictEnchanting())
 				{
@@ -1721,8 +1724,9 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 				{
 					return false;
 				}
-				enforceInputs = mode == FletchingMode.PRODUCT_AND_MATERIALS;
-				enforceOutput = true;
+				enforceInputs = mode == FletchingMode.PRODUCT_AND_MATERIALS
+					|| mode == FletchingMode.INPUT_ONLY;
+				enforceOutput = mode != FletchingMode.INPUT_ONLY;
 				break;
 			}
 			case "herblore":
@@ -2246,6 +2250,16 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 				WoodcuttingMode.OFF.name());
 		}
 		configManager.unsetConfiguration(BronzemanTcgConfig.GROUP, "restrictWoodcutting");
+
+		// Crafting joined the four-way wording (Require Card / Input Only / Output
+		// Required / No Card Needed). Its old toggle enforced both halves, which is
+		// the new default, so only an explicit opt-out carries over.
+		if ("false".equals(configManager.getConfiguration(BronzemanTcgConfig.GROUP, "restrictCrafting")))
+		{
+			configManager.setConfiguration(BronzemanTcgConfig.GROUP, "craftingMode",
+				CraftingMode.OFF.name());
+		}
+		configManager.unsetConfiguration(BronzemanTcgConfig.GROUP, "restrictCrafting");
 	}
 
 	private void migrateExemptList()

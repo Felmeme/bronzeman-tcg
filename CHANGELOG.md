@@ -6,7 +6,17 @@ the same commit as each release.
 
 ## v0.2.6 — 2026-07-21
 
+### Changes
+- **Crafting, Smithing, Smelting and Fletching now share the same wording**:
+  Require Card / Input Only / Output Required / No Card Needed. Crafting's
+  on-off toggle became a dropdown (your existing choice carries over);
+  the others keep their settings and only the option names changed.
+  Fletching gained an Input Only choice.
+
 ### Fixes
+- Glassblowing now covers every product. Candle lantern and Oil lamp were
+  missing entirely, and the orb and light-orb rules never matched because
+  the menu names them differently to the items you receive.
 - Crafting no longer asks for the wrong item's card. Using a needle on
   leather or hide, or a glassblowing pipe on molten glass, demanded one
   fixed product's card (e.g. Leather chaps) no matter which item you were

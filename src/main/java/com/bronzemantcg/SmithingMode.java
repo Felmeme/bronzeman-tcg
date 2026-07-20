@@ -3,10 +3,10 @@ package com.bronzemantcg;
 /** Config dropdown; see BronzemanTcgConfig for the behaviour of each mode. */
 public enum SmithingMode
 {
-	OFF("Off"),
-	BARS("Bars"),
-	ITEMS("Items"),
-	BOTH("Both");
+	OFF("No Card Needed"),
+	BARS("Input Only"),
+	ITEMS("Output Required"),
+	BOTH("Require Card");
 
 	private final String label;
 

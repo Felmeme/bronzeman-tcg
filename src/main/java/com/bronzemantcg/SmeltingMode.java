@@ -3,10 +3,10 @@ package com.bronzemantcg;
 /** Config dropdown; see BronzemanTcgConfig for the behaviour of each mode. */
 public enum SmeltingMode
 {
-	OFF("Off"),
-	ORE("Ore"),
-	BARS("Bars"),
-	BOTH("Both");
+	OFF("No Card Needed"),
+	ORE("Input Only"),
+	BARS("Output Required"),
+	BOTH("Require Card");
 
 	private final String label;
 

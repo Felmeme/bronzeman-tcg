@@ -1,16 +1,16 @@
 package com.bronzemantcg;
 
 /** Config dropdown; see BronzemanTcgConfig for the behaviour of each mode. */
-public enum FletchingMode
+public enum CraftingMode
 {
-	OFF("No Card Needed"),
-	PRODUCT("Output Required"),
-	PRODUCT_AND_MATERIALS("Require Card"),
-	INPUT_ONLY("Input Only");
+	BOTH("Require Card"),
+	INPUT_ONLY("Input Only"),
+	OUTPUT_ONLY("Output Required"),
+	OFF("No Card Needed");
 
 	private final String label;
 
-	FletchingMode(String label)
+	CraftingMode(String label)
 	{
 		this.label = label;
 	}

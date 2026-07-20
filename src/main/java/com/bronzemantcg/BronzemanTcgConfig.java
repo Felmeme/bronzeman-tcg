@@ -491,16 +491,18 @@ public interface BronzemanTcgConfig extends Config
 	//Crafting
 	//----------------
 	@ConfigItem(
-		keyName = "restrictCrafting",
-		name = "Restrict crafting",
-		description = "Crafting requires the input AND output item cards."
+		keyName = "craftingMode",
+		name = "Crafting Options",
+		description = "Which cards crafting requires."
+			+ "<br>Input: the materials, e.g. Glassblowing pipe and Molten glass."
+			+ "<br>Output: the item made, e.g. Empty candle lantern."
 			+ "<br>Covers gems, leather, glass, jewellery, spinning, pottery and battlestaves.",
 		section = craftingSection,
 		position = 0
 	)
-	default boolean restrictCrafting()
+	default CraftingMode craftingMode()
 	{
-		return true;
+		return CraftingMode.BOTH;
 	}
 
 	@ConfigItem(

@@ -472,6 +472,19 @@ card-gap policy: requirements fall back to nearest CARDED items. Each
 session: mini-plan + quiz first, 0.2.x release after owner test.
 
 ## Post-launch backlog (agreed with owner)
+- **Force-smelt / single-product bypass (owner-reported 2026-07-21, owner has
+  an idea, NOT urgent):** at a furnace (and any make-interface) a player who
+  carries materials for exactly ONE product skips the selection interface
+  entirely, so the product-click gate never runs. Same class as the
+  spacebar/Make-X honour-system gaps. Owner is well aware it is deliberate
+  cheating if used; revisit when he raises his approach.
+- **D'hide crafting not blocking (owner test 2026-07-21, UNRESOLVED):** needle
+  on <colour> dragon leather opens the menu but picking a product does not
+  block. Wiki CONFIRMS "Green dragon leather" (our trigger target) is correct
+  and layer 1 correctly stays quiet when the material cards are owned, so the
+  suspect is the 24 d'hide/leather TWIN names ("Green d'hide body" etc).
+  Needs one `interface product raw='...'` debug capture from the d'hide menu
+  before changing anything - do NOT guess the strings.
 - **Locked-item marking: SHIPPED + VERIFIED 2026-07-18** — Visuals dropdown
   "Mark locked items" (Off/Transparent/Transparent + icon, default
   Transparent). Widget-opacity fade (140) on inventory/bank/bank-side

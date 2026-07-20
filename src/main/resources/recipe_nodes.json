@@ -9057,114 +9057,6 @@
 			"category": "crafting",
 			"inputs": [
 				[
-					"Glassblowing pipe"
-				],
-				[
-					"Molten glass"
-				]
-			],
-			"output": "Beer glass",
-			"trigger": {
-				"kind": "interface",
-				"name": "Beer glass",
-				"targets": []
-			},
-			"notes": "Make-menu product click for Beer glass (Glassblowing pipe on molten glass). UNVERIFIED menu string - follows the product-name precedent of the other crafting interface rules; if wrong it simply never fires (layer 1 carries no product card, so this cannot cause a false block)."
-		},
-		{
-			"category": "crafting",
-			"inputs": [
-				[
-					"Glassblowing pipe"
-				],
-				[
-					"Molten glass"
-				]
-			],
-			"output": "Vial",
-			"trigger": {
-				"kind": "interface",
-				"name": "Vial",
-				"targets": []
-			},
-			"notes": "Make-menu product click for Vial (Glassblowing pipe on molten glass). UNVERIFIED menu string - follows the product-name precedent of the other crafting interface rules; if wrong it simply never fires (layer 1 carries no product card, so this cannot cause a false block)."
-		},
-		{
-			"category": "crafting",
-			"inputs": [
-				[
-					"Glassblowing pipe"
-				],
-				[
-					"Molten glass"
-				]
-			],
-			"output": "Unpowered orb",
-			"trigger": {
-				"kind": "interface",
-				"name": "Unpowered orb",
-				"targets": []
-			},
-			"notes": "Make-menu product click for Unpowered orb (Glassblowing pipe on molten glass). UNVERIFIED menu string - follows the product-name precedent of the other crafting interface rules; if wrong it simply never fires (layer 1 carries no product card, so this cannot cause a false block)."
-		},
-		{
-			"category": "crafting",
-			"inputs": [
-				[
-					"Glassblowing pipe"
-				],
-				[
-					"Molten glass"
-				]
-			],
-			"output": "Lantern lens",
-			"trigger": {
-				"kind": "interface",
-				"name": "Lantern lens",
-				"targets": []
-			},
-			"notes": "Make-menu product click for Lantern lens (Glassblowing pipe on molten glass). UNVERIFIED menu string - follows the product-name precedent of the other crafting interface rules; if wrong it simply never fires (layer 1 carries no product card, so this cannot cause a false block)."
-		},
-		{
-			"category": "crafting",
-			"inputs": [
-				[
-					"Glassblowing pipe"
-				],
-				[
-					"Molten glass"
-				]
-			],
-			"output": "Fishbowl",
-			"trigger": {
-				"kind": "interface",
-				"name": "Fishbowl",
-				"targets": []
-			},
-			"notes": "Make-menu product click for Fishbowl (Glassblowing pipe on molten glass). UNVERIFIED menu string - follows the product-name precedent of the other crafting interface rules; if wrong it simply never fires (layer 1 carries no product card, so this cannot cause a false block)."
-		},
-		{
-			"category": "crafting",
-			"inputs": [
-				[
-					"Glassblowing pipe"
-				],
-				[
-					"Molten glass"
-				]
-			],
-			"output": "Empty light orb",
-			"trigger": {
-				"kind": "interface",
-				"name": "Empty light orb",
-				"targets": []
-			},
-			"notes": "Make-menu product click for Empty light orb (Glassblowing pipe on molten glass). UNVERIFIED menu string - follows the product-name precedent of the other crafting interface rules; if wrong it simply never fires (layer 1 carries no product card, so this cannot cause a false block)."
-		},
-		{
-			"category": "crafting",
-			"inputs": [
-				[
 					"Needle"
 				],
 				[
@@ -9653,6 +9545,240 @@
 				"targets": []
 			},
 			"notes": "Make-menu product click for Black d'hide body (Needle on black dragon leather). UNVERIFIED menu string - follows the product-name precedent of the other crafting interface rules; if wrong it simply never fires (layer 1 carries no product card, so this cannot cause a false block)."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Glassblowing pipe"
+				],
+				[
+					"Molten glass"
+				]
+			],
+			"output": "Beer glass",
+			"trigger": {
+				"kind": "interface",
+				"name": "Beer glass",
+				"targets": []
+			},
+			"notes": "Glassblowing product click. Menu label 'Beer glass' -> you receive Beer glass. Owner-observed labels differ from item names (the menu drops the 'Empty ' prefix and calls the battlestaff orb 'Unpowered staff orb'), so both spellings are keyed."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Glassblowing pipe"
+				],
+				[
+					"Molten glass"
+				]
+			],
+			"output": "Empty candle lantern",
+			"trigger": {
+				"kind": "interface",
+				"name": "Candle lantern",
+				"targets": []
+			},
+			"notes": "Glassblowing product click. Menu label 'Candle lantern' -> you receive Empty candle lantern. Owner-observed labels differ from item names (the menu drops the 'Empty ' prefix and calls the battlestaff orb 'Unpowered staff orb'), so both spellings are keyed."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Glassblowing pipe"
+				],
+				[
+					"Molten glass"
+				]
+			],
+			"output": "Empty candle lantern",
+			"trigger": {
+				"kind": "interface",
+				"name": "Empty candle lantern",
+				"targets": []
+			},
+			"notes": "Glassblowing product click. Menu label 'Empty candle lantern' -> you receive Empty candle lantern. Owner-observed labels differ from item names (the menu drops the 'Empty ' prefix and calls the battlestaff orb 'Unpowered staff orb'), so both spellings are keyed."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Glassblowing pipe"
+				],
+				[
+					"Molten glass"
+				]
+			],
+			"output": "Empty oil lamp",
+			"trigger": {
+				"kind": "interface",
+				"name": "Oil lamp",
+				"targets": []
+			},
+			"notes": "Glassblowing product click. Menu label 'Oil lamp' -> you receive Empty oil lamp. Owner-observed labels differ from item names (the menu drops the 'Empty ' prefix and calls the battlestaff orb 'Unpowered staff orb'), so both spellings are keyed."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Glassblowing pipe"
+				],
+				[
+					"Molten glass"
+				]
+			],
+			"output": "Empty oil lamp",
+			"trigger": {
+				"kind": "interface",
+				"name": "Empty oil lamp",
+				"targets": []
+			},
+			"notes": "Glassblowing product click. Menu label 'Empty oil lamp' -> you receive Empty oil lamp. Owner-observed labels differ from item names (the menu drops the 'Empty ' prefix and calls the battlestaff orb 'Unpowered staff orb'), so both spellings are keyed."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Glassblowing pipe"
+				],
+				[
+					"Molten glass"
+				]
+			],
+			"output": "Vial",
+			"trigger": {
+				"kind": "interface",
+				"name": "Vial",
+				"targets": []
+			},
+			"notes": "Glassblowing product click. Menu label 'Vial' -> you receive Vial. Owner-observed labels differ from item names (the menu drops the 'Empty ' prefix and calls the battlestaff orb 'Unpowered staff orb'), so both spellings are keyed."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Glassblowing pipe"
+				],
+				[
+					"Molten glass"
+				]
+			],
+			"output": "Fishbowl",
+			"trigger": {
+				"kind": "interface",
+				"name": "Fishbowl",
+				"targets": []
+			},
+			"notes": "Glassblowing product click. Menu label 'Fishbowl' -> you receive Fishbowl. Owner-observed labels differ from item names (the menu drops the 'Empty ' prefix and calls the battlestaff orb 'Unpowered staff orb'), so both spellings are keyed."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Glassblowing pipe"
+				],
+				[
+					"Molten glass"
+				]
+			],
+			"output": "Fishbowl",
+			"trigger": {
+				"kind": "interface",
+				"name": "Empty fishbowl",
+				"targets": []
+			},
+			"notes": "Glassblowing product click. Menu label 'Empty fishbowl' -> you receive Fishbowl. Owner-observed labels differ from item names (the menu drops the 'Empty ' prefix and calls the battlestaff orb 'Unpowered staff orb'), so both spellings are keyed."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Glassblowing pipe"
+				],
+				[
+					"Molten glass"
+				]
+			],
+			"output": "Unpowered orb",
+			"trigger": {
+				"kind": "interface",
+				"name": "Unpowered staff orb",
+				"targets": []
+			},
+			"notes": "Glassblowing product click. Menu label 'Unpowered staff orb' -> you receive Unpowered orb. Owner-observed labels differ from item names (the menu drops the 'Empty ' prefix and calls the battlestaff orb 'Unpowered staff orb'), so both spellings are keyed."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Glassblowing pipe"
+				],
+				[
+					"Molten glass"
+				]
+			],
+			"output": "Unpowered orb",
+			"trigger": {
+				"kind": "interface",
+				"name": "Unpowered orb",
+				"targets": []
+			},
+			"notes": "Glassblowing product click. Menu label 'Unpowered orb' -> you receive Unpowered orb. Owner-observed labels differ from item names (the menu drops the 'Empty ' prefix and calls the battlestaff orb 'Unpowered staff orb'), so both spellings are keyed."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Glassblowing pipe"
+				],
+				[
+					"Molten glass"
+				]
+			],
+			"output": "Lantern lens",
+			"trigger": {
+				"kind": "interface",
+				"name": "Lantern lens",
+				"targets": []
+			},
+			"notes": "Glassblowing product click. Menu label 'Lantern lens' -> you receive Lantern lens. Owner-observed labels differ from item names (the menu drops the 'Empty ' prefix and calls the battlestaff orb 'Unpowered staff orb'), so both spellings are keyed."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Glassblowing pipe"
+				],
+				[
+					"Molten glass"
+				]
+			],
+			"output": "Empty light orb",
+			"trigger": {
+				"kind": "interface",
+				"name": "Light orb",
+				"targets": []
+			},
+			"notes": "Glassblowing product click. Menu label 'Light orb' -> you receive Empty light orb. Owner-observed labels differ from item names (the menu drops the 'Empty ' prefix and calls the battlestaff orb 'Unpowered staff orb'), so both spellings are keyed."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Glassblowing pipe"
+				],
+				[
+					"Molten glass"
+				]
+			],
+			"output": "Empty light orb",
+			"trigger": {
+				"kind": "interface",
+				"name": "Empty light orb",
+				"targets": []
+			},
+			"notes": "Glassblowing product click. Menu label 'Empty light orb' -> you receive Empty light orb. Owner-observed labels differ from item names (the menu drops the 'Empty ' prefix and calls the battlestaff orb 'Unpowered staff orb'), so both spellings are keyed."
 		}
 	]
 }
