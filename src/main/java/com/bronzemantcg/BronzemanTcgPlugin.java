@@ -403,9 +403,9 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 				// Fallback path (pre-API osrs-tcg, or its API hasn't answered yet): the config
 				// read lags behind card pulls, so nudge the player to relog. Self-retiring -
 				// once osrs-tcg's API version connects, hasApiData() is true and this stops.
-				queueChat("[Bronzeman TCG] Not Connected to OSRS TCG - Please relog if you are "
+				queueChat("[Bronzeman TCG] Not Connected to OSRS TCG API - Please relog if you are "
 					+ "missing new card unlocks. Last known collection still active (waiting on"
-					+ "OSRS TCG update).");
+					+ " OSRS TCG update).");
 			}
 		}
 		else
