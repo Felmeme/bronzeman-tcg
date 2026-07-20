@@ -11,7 +11,7 @@
         "Yt-HurKot",
         "Yt-MejKot"
       ],
-      "notes": "Full wave roster + TzTok-Jad + his Yt-HurKot healers all resolve; content fully card-covered. Yt-HurKot also appears in the Inferno (Jad healers) - deduped per content."
+      "notes": ""
     },
     {
       "name": "Inferno",
@@ -30,7 +30,7 @@
         "TzKal-Zuk",
         "Yt-HurKot"
       ],
-      "notes": "Full wave roster + JalTok-Jad (+ Yt-HurKot healers) + TzKal-Zuk (+ Jal-MejJak healer) all resolve; fully card-covered. Pillars are scenery, not NPCs."
+      "notes": ""
     },
     {
       "name": "Fortis Colosseum",
@@ -46,7 +46,7 @@
         "Shockwave Colossus",
         "Sol Heredit"
       ],
-      "notes": "11 reinforcement waves + Sol Heredit. All wave enemies resolve EXCEPT Bee Swarm and Healing totem (no card). 'Passionate Supporter' has a card but is an arena spectator you do not need to fight - excluded from the require-all list (judgment call). Not every enemy appears every wave; the list is the union across waves."
+      "notes": ""
     },
     {
       "name": "Chambers of Xeric",
@@ -54,7 +54,7 @@
         "Great Olm",
         "Lizardman shaman"
       ],
-      "notes": "CoX rooms are randomised per raid - you never see all rooms in one run, and only Great Olm is guaranteed. Almost every raid monster (Tekton, Vasa Nistirio, Muttadile, Ice demon, Vanguards, Vespula + its adds, Skeletal Mystics, Guardians, Scavenger beasts, Deathly mage/ranger, Jewelled Crab, Olm's claws) has NO monster card. Only Great Olm and Lizardman shaman are tracked. NOTE: per the plugin's design, untracked NPCs are NEVER blocked, so CoX stays fully completable despite the tiny card list. The CoX Guardians' in-game name is 'Guardian' - the snapshot's 'Stone guardian' is a different NPC and does NOT resolve."
+      "notes": ""
     },
     {
       "name": "Tombs of Amascut",
@@ -85,7 +85,7 @@
         "Volatile Baboon",
         "Zebak"
       ],
-      "notes": "ToA path selection is player-chosen (via Invocations you may run 0-4 of the god paths), so the real minimum is smaller than this union - the four Wardens (Elidinis'/Tumeken's Warden + phantoms) are always fought, but Akkha/Ba-Ba/Kephri/Zebak and their path adds only appear on paths you unlock. All four bosses, their phantoms, Akkha's Shadow, the full baboon set (incl. Baboon Thrall), the Kephri scarabs (Soldier/Spitting/Arcane/Agile + generic Scarab + Scarab Swarm) and Crocodiles resolve. Only the Wardens-phase Obelisk has no card (attackable but untracked -> never blocked)."
+      "notes": ""
     },
     {
       "name": "Corrupted Gauntlet",
@@ -101,7 +101,7 @@
         "Corrupted Unicorn",
         "Corrupted Wolf"
       ],
-      "notes": "Corrupted Hunllef + every corrupted resource/prep creature resolve; fully card-covered. Resource creatures spawn semi-randomly so not all appear every run, but all can. (The normal Gauntlet uses separate Crystalline-variant cards - out of scope here.)"
+      "notes": ""
     },
     {
       "name": "Theatre of Blood",
@@ -120,7 +120,7 @@
         "Verzik Vitur",
         "Xarpus"
       ],
-      "notes": "All six bosses + Maiden's blood spawns/Nylocas Matomenos + every Nylocas variant resolve; fully card-covered. Verzik's phases fold to one 'Verzik Vitur' card. Nylocas Prinkipas is Hard-Mode-only (optional). Nylocas Matomenos also appears as Maiden's red spawns."
+      "notes": ""
     }
   ]
 }

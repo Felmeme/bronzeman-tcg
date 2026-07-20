@@ -298,10 +298,10 @@
 				"Any needle",
 				"Any hammer",
 				"Jerboa tail",
-				"Toy mouse — Card required: Item is used mid-quest"
+				"Toy mouse"
 			],
 			"monsterCards": [],
-			"notes": ""
+			"notes": "Toy mouse — Card required: Item is used mid-quest"
 		},
 		{
 			"name": "Barbarian Training",
@@ -323,14 +323,10 @@
 				[
 					"Dusty key"
 				],
-				[
-					"Key master teleport"
-				]
 			],
 			"groupLabels": [
 				"Spade",
-				"Dusty key",
-				"Key master teleport"
+				"Dusty key"
 			],
 			"monsterCards": [],
 			"notes": ""
@@ -405,16 +401,12 @@
 					"Hammer"
 				],
 				[
-					"Double ammo mould"
-				],
-				[
 					"Coins"
 				]
 			],
 			"groupLabels": [
 				"Gold bar",
 				"Hammer",
-				"Double ammo mould",
 				"Coins"
 			],
 			"monsterCards": [
@@ -540,7 +532,7 @@
 				"Guard (marked during the quest)"
 			],
 			"monsterCards": [],
-			"notes": "Marking the patrolling guards is an item-on-NPC interaction on \"Guard\" NPCs, blocked while the Guard card is locked."
+			"notes": ""
 		},
 		{
 			"name": "Client of Kourend",
@@ -838,7 +830,7 @@
 			"monsterCards": [
 				"Adala"
 			],
-			"notes": "Enemy re-derivation: Adala added (required combat NPC named only in prose/kills=)."
+			"notes": ""
 		},
 		{
 			"name": "Death to the Dorgeshuun",
@@ -1428,8 +1420,54 @@
 		{
 			"name": "Enlightened Journey",
 			"miniquest": false,
-			"cardGroups": [],
-			"groupLabels": [],
+			"cardGroups": [
+				[
+					"Papyrus"
+				],
+				[
+					"Ball of Wool"
+				],
+				[
+					"Papyrus"
+				],
+				[
+					"Potatoes"
+				],
+				[
+					"Papyrus"
+				],
+				[
+					"Empty Sacks"
+				],
+				[
+					"Unlit candle"
+				],
+				[
+					"Yellow Dye"
+				],
+				[
+					"Red Dye"
+				],
+				[
+					"Silk"
+				],
+				[
+					"Bowl"
+				]
+			],
+			"groupLabels": [
+				"Papyrus",
+				"Ball of Wool",
+				"Papyrus",
+				"Potatoes",
+				"Papyrus",
+				"Empty Sacks",
+				"Unlit candle",
+				"Yellow Dye",
+				"Red Dye",
+				"Silk",
+				"Bowl"
+			],
 			"monsterCards": [],
 			"notes": ""
 		},
@@ -2422,7 +2460,7 @@
 				"Earth rune",
 				"Unpowered orb",
 				"Papyrus",
-				"Ungadulu (use the binding book on him to release the demon Nezikchened)"
+				"Ungadulu"
 			],
 			"monsterCards": [
 				"Ranalph Devere",
@@ -2430,7 +2468,7 @@
 				"San Tojalon",
 				"Nezikchened"
 			],
-			"notes": "Walkthrough-mining pass additions: Then, use your binding book on Ungadulu to release the demon, Nezikchened."
+			"notes": ""
 		},
 		{
 			"name": "Lost City",
@@ -3234,7 +3272,7 @@
 				"Giant bat",
 				"Monkey (monster)"
 			],
-			"notes": "Walkthrough-mining pass additions: kill a Giant rat ... picking up the giant rat bone; kill a unicorn and black bear ...; kill a ram to get a ram skull; ki"
+			"notes": ""
 		},
 		{
 			"name": "Rag and Bone Man II",
@@ -3308,7 +3346,7 @@
 				"Vulture",
 				"Jackal"
 			],
-			"notes": "Walkthrough-mining ruling: 26 bone-source kills + rabbit alternatives; troll bone mapped to Mountain troll."
+			"notes": ""
 		},
 		{
 			"name": "Ratcatchers",
@@ -3815,17 +3853,9 @@
 				[
 					"Silver bar"
 				],
-				[
-					"Desert amulet 2"
-				],
-				[
-					"Pharaoh's sceptre"
-				]
 			],
 			"groupLabels": [
 				"Silver bar",
-				"Desert amulet 2",
-				"Pharaoh's sceptre"
 			],
 			"monsterCards": [
 				"Agrith Naar"
@@ -4770,7 +4800,7 @@
 				"Freidir",
 				"The Draugen"
 			],
-			"notes": "Enemy re-derivation: The Draugen added (required combat NPC named only in prose/kills=)."
+			"notes": ""
 		},
 		{
 			"name": "The Frozen Door",
@@ -5154,12 +5184,6 @@
 				[
 					"Feather"
 				],
-				[
-					"Desert amulet 2"
-				],
-				[
-					"Pharaoh's sceptre"
-				]
 			],
 			"groupLabels": [
 				"Desert shirt",
@@ -5168,8 +5192,6 @@
 				"Hammer",
 				"Bronze bar",
 				"Feather",
-				"Desert amulet 2",
-				"Pharaoh's sceptre"
 			],
 			"monsterCards": [
 				"Mercenary Captain"
@@ -5463,14 +5485,14 @@
 				"Pestle and mortar",
 				"Bat bones",
 				"Jangerberries",
-				"Ogre shaman (use magic ogre potion on each of the six shamans)",
-				"Enclave guard (distract with cave nightshade to enter the Ogre Enclave)"
+				"Ogre shaman",
+				"Enclave guard"
 			],
 			"monsterCards": [
 				"Gorad",
 				"Giant bat"
 			],
-			"notes": "Walkthrough-mining pass additions: Run around the cave and use the magic ogre potion on each of the six ogre shamans ...; Now use one of your nightshades o"
+			"notes": ""
 		},
 		{
 			"name": "Waterfall Quest",

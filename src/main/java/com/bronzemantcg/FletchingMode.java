@@ -5,8 +5,9 @@ public enum FletchingMode
 {
 	OFF("No Card Needed"),
 	PRODUCT("Output Required"),
-	PRODUCT_AND_MATERIALS("Require Card"),
-	INPUT_ONLY("Input Only");
+	INPUT_ONLY("Input Only"),
+	PRODUCT_AND_MATERIALS("Require Card");
+
 
 	private final String label;
 
