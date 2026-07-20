@@ -3,9 +3,9 @@ package com.bronzemantcg;
 /** Config dropdown; see BronzemanTcgConfig for the behaviour of each mode. */
 public enum FletchingMode
 {
-	//OFF("No restrictions"),
+	OFF("No restrictions"),
 	INPUT_ONLY("Input Only"),
-	//PRODUCT("Output Only"),
+	PRODUCT("Output Only"),
 	PRODUCT_AND_MATERIALS("Input + Output");
 
 
