@@ -2,9 +2,11 @@ package com.bronzemantcg;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.LayoutManager;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
@@ -27,6 +29,8 @@ import javax.swing.event.DocumentListener;
 import net.runelite.client.ui.ColorScheme;
 import net.runelite.client.ui.PluginPanel;
 import net.runelite.client.ui.components.IconTextField;
+import net.runelite.client.ui.components.materialtabs.MaterialTab;
+import net.runelite.client.ui.components.materialtabs.MaterialTabGroup;
 
 /**
  * Sidebar panel: card search, collection progress, and collapsible readiness checklists
@@ -55,24 +59,21 @@ class BronzemanTcgPanel extends PluginPanel
 	private final JPanel searchResults = sectionBody();
 	private final JPanel progressList = sectionBody();
 
+	// One list per tab. MaterialTabGroup swaps the selected list into tabDisplay, so the
+	// old per-section collapse state is gone - a tab is either shown or it isn't.
+	private final JPanel tabDisplay = new JPanel(new BorderLayout());
+	private final MaterialTabGroup tabs = new MaterialTabGroup(tabDisplay);
+
 	private final JPanel questList = sectionBody();
-	private final JLabel questsHeader = sectionHeader("Quests ▸");
-	private boolean questsExpanded;
 	private final Set<String> expandedQuests = new HashSet<>();
 
 	private final JPanel slayerList = sectionBody();
-	private final JLabel slayerHeader = sectionHeader("Slayer Masters ▸");
-	private boolean slayerExpanded;
 	private final Set<String> expandedSlayer = new HashSet<>();
 
 	private final JPanel contentList = sectionBody();
-	private final JLabel contentHeader = sectionHeader("PvM Content ▸");
-	private boolean contentExpanded;
 	private final Set<String> expandedContents = new HashSet<>();
 
 	private final JPanel rumoursList = sectionBody();
-	private final JLabel rumoursHeader = sectionHeader("Hunter Rumours ▸");
-	private boolean rumoursExpanded;
 	private final Set<String> expandedRumours = new HashSet<>();
 
 	BronzemanTcgPanel(TrackedMonsterCatalog monsterCatalog, TrackedItemCatalog itemCatalog,
@@ -114,6 +115,13 @@ class BronzemanTcgPanel extends PluginPanel
 			}
 		});
 
+		searchBar.setAlignmentX(Component.LEFT_ALIGNMENT);
+		searchResults.setAlignmentX(Component.LEFT_ALIGNMENT);
+		progressList.setAlignmentX(Component.LEFT_ALIGNMENT);
+		tabs.setAlignmentX(Component.LEFT_ALIGNMENT);
+		tabDisplay.setAlignmentX(Component.LEFT_ALIGNMENT);
+		tabDisplay.setBackground(ColorScheme.DARK_GRAY_COLOR);
+
 		add(searchBar);
 		add(Box.createVerticalStrut(4));
 		add(searchResults);
@@ -121,39 +129,24 @@ class BronzemanTcgPanel extends PluginPanel
 		add(sectionHeader("Progress"));
 		add(progressList);
 
-		wireChecklistHeader(questsHeader, () ->
-		{
-			questsExpanded = !questsExpanded;
-			refreshQuests();
-		});
-		add(questsHeader);
-		add(questList);
-
-		wireChecklistHeader(slayerHeader, () ->
-		{
-			slayerExpanded = !slayerExpanded;
-			refreshSlayer();
-		});
-		add(slayerHeader);
-		add(slayerList);
-
-		wireChecklistHeader(contentHeader, () ->
-		{
-			contentExpanded = !contentExpanded;
-			refreshContent();
-		});
-		add(contentHeader);
-		add(contentList);
-
-		wireChecklistHeader(rumoursHeader, () ->
-		{
-			rumoursExpanded = !rumoursExpanded;
-			refreshRumours();
-		});
-		add(rumoursHeader);
-		add(rumoursList);
+		// Labels stay short: four tabs share the fixed 225px panel width.
+		add(Box.createVerticalStrut(10));
+		addTab("Quests", questList);
+		addTab("Slayer", slayerList);
+		addTab("PvM", contentList);
+		addTab("Rumours", rumoursList);
+		tabs.select(tabs.getTab(0));
+		add(tabs);
+		add(Box.createVerticalStrut(4));
+		add(tabDisplay);
 
 		refresh();
+	}
+
+	private void addTab(String title, JPanel content)
+	{
+		content.setAlignmentX(Component.LEFT_ALIGNMENT);
+		tabs.addTab(new MaterialTab(title, tabs, content));
 	}
 
 	/** Periodic re-render so newly unlocked cards show in every section and count. */
@@ -168,40 +161,27 @@ class BronzemanTcgPanel extends PluginPanel
 
 	// ------------------------------------------------------------------ collapsible checklists
 
-	private static void wireChecklistHeader(JLabel header, Runnable toggle)
-	{
-		header.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		header.addMouseListener(new MouseAdapter()
-		{
-			@Override
-			public void mouseClicked(MouseEvent e)
-			{
-				toggle.run();
-			}
-		});
-	}
-
 	private void refreshQuests()
 	{
-		refreshChecklist(questList, questsHeader, "Quests", questsExpanded,
+		refreshChecklist(questList, "quests completable",
 			questCatalog.getQuests(), expandedQuests, this::refreshQuests, "No quest data bundled");
 	}
 
 	private void refreshContent()
 	{
-		refreshChecklist(contentList, contentHeader, "PvM Content", contentExpanded,
+		refreshChecklist(contentList, "contents completable",
 			contentCatalog.getContents(), expandedContents, this::refreshContent, "No content data bundled");
 	}
 
 	private void refreshSlayer()
 	{
-		refreshChecklist(slayerList, slayerHeader, "Slayer Masters", slayerExpanded,
+		refreshChecklist(slayerList, "masters ready",
 			buildMasterEntries("slayer"), expandedSlayer, this::refreshSlayer, "No slayer data bundled");
 	}
 
 	private void refreshRumours()
 	{
-		refreshChecklist(rumoursList, rumoursHeader, "Hunter Rumours", rumoursExpanded,
+		refreshChecklist(rumoursList, "masters ready",
 			buildMasterEntries("hunter-rumours"), expandedRumours, this::refreshRumours, "No rumour data bundled");
 	}
 
@@ -234,7 +214,7 @@ class BronzemanTcgPanel extends PluginPanel
 		return entries;
 	}
 
-	private void refreshChecklist(JPanel container, JLabel header, String title, boolean expanded,
+	private void refreshChecklist(JPanel container, String summaryNoun,
 		List<QuestCatalog.QuestEntry> entries, Set<String> expandedNames, Runnable refresh, String emptyText)
 	{
 		container.removeAll();
@@ -248,33 +228,29 @@ class BronzemanTcgPanel extends PluginPanel
 				completable++;
 			}
 		}
-		header.setText(String.format("%s %s  %d/%d completable",
-			title, expanded ? "▾" : "▸", completable, entries.size()));
+		container.add(mutedRow(String.format("%d/%d %s", completable, entries.size(), summaryNoun)));
 
-		if (expanded)
+		if (entries.isEmpty())
 		{
-			if (entries.isEmpty())
+			container.add(mutedRow(emptyText));
+		}
+		// Strictly alphabetical (owner ruling 2026-07-21). The previous ordering keyed on
+		// how many requirements were still missing, which meant every card pulled silently
+		// reshuffled the list; a name never moves.
+		List<QuestCatalog.QuestEntry> sorted = new ArrayList<>(entries);
+		sorted.sort(Comparator.comparing(q -> q.name, String.CASE_INSENSITIVE_ORDER));
+		for (QuestCatalog.QuestEntry entry : sorted)
+		{
+			container.add(checklistRow(entry, owned, expandedNames, refresh));
+			if (expandedNames.contains(entry.name))
 			{
-				container.add(mutedRow(emptyText));
-			}
-			// Completable first, then fewest missing, then alphabetical.
-			List<QuestCatalog.QuestEntry> sorted = new ArrayList<>(entries);
-			sorted.sort(Comparator
-				.comparingInt((QuestCatalog.QuestEntry q) -> q.requirements.size() - q.satisfiedCount(owned))
-				.thenComparing(q -> q.name, String.CASE_INSENSITIVE_ORDER));
-			for (QuestCatalog.QuestEntry entry : sorted)
-			{
-				container.add(checklistRow(entry, owned, expandedNames, refresh));
-				if (expandedNames.contains(entry.name))
+				for (QuestCatalog.Requirement requirement : entry.requirements)
 				{
-					for (QuestCatalog.Requirement requirement : entry.requirements)
-					{
-						container.add(requirementRow(requirement, requirement.isSatisfied(owned)));
-					}
-					if (entry.requirements.isEmpty())
-					{
-						container.add(mutedRow("  No card-backed requirements"));
-					}
+					container.add(requirementRow(requirement, requirement.isSatisfied(owned)));
+				}
+				if (entry.requirements.isEmpty())
+				{
+					container.add(mutedRow("  No card-backed requirements"));
 				}
 			}
 		}
@@ -439,11 +415,31 @@ class BronzemanTcgPanel extends PluginPanel
 
 	// ------------------------------------------------------------------ widgets
 
+	/**
+	 * Row container for a BoxLayout column: height tracks the live preferred height, so
+	 * rows never stretch or jitter when a list is rebuilt. Fixing this at construction
+	 * time (the old setMaximumSize call) froze a height computed before layout settled.
+	 */
+	private static JPanel row(LayoutManager layout)
+	{
+		JPanel panel = new JPanel(layout)
+		{
+			@Override
+			public Dimension getMaximumSize()
+			{
+				return new Dimension(Integer.MAX_VALUE, getPreferredSize().height);
+			}
+		};
+		panel.setAlignmentX(Component.LEFT_ALIGNMENT);
+		return panel;
+	}
+
 	private static JPanel sectionBody()
 	{
 		JPanel panel = new JPanel();
 		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 		panel.setBackground(ColorScheme.DARK_GRAY_COLOR);
+		panel.setAlignmentX(Component.LEFT_ALIGNMENT);
 		return panel;
 	}
 
@@ -453,14 +449,15 @@ class BronzemanTcgPanel extends PluginPanel
 		label.setFont(label.getFont().deriveFont(Font.BOLD));
 		label.setForeground(ColorScheme.BRAND_ORANGE);
 		label.setBorder(BorderFactory.createEmptyBorder(10, 0, 4, 0));
+		label.setAlignmentX(Component.LEFT_ALIGNMENT);
 		return label;
 	}
 
 	private static JPanel statusRow(String name, boolean unlocked, String missingCards)
 	{
-		JPanel row = new JPanel(new BorderLayout());
+		JPanel row = row(new BorderLayout(6, 0));
 		row.setBackground(ColorScheme.DARKER_GRAY_COLOR);
-		row.setBorder(BorderFactory.createEmptyBorder(3, 6, 3, 6));
+		row.setBorder(BorderFactory.createEmptyBorder(4, 6, 4, 6));
 
 		JLabel nameLabel = new JLabel(name);
 		nameLabel.setForeground(Color.WHITE);
@@ -478,7 +475,6 @@ class BronzemanTcgPanel extends PluginPanel
 			needs.setFont(needs.getFont().deriveFont(11f));
 			row.add(needs, BorderLayout.SOUTH);
 		}
-		row.setMaximumSize(new Dimension(Integer.MAX_VALUE, row.getPreferredSize().height));
 		return row;
 	}
 
@@ -487,14 +483,15 @@ class BronzemanTcgPanel extends PluginPanel
 		JLabel label = new JLabel(text);
 		label.setForeground(ColorScheme.LIGHT_GRAY_COLOR);
 		label.setBorder(BorderFactory.createEmptyBorder(3, 6, 3, 6));
+		label.setAlignmentX(Component.LEFT_ALIGNMENT);
 		return label;
 	}
 
 	private static JPanel progressRow(String label, int done, int total)
 	{
-		JPanel row = new JPanel(new BorderLayout(0, 2));
+		JPanel row = row(new BorderLayout(0, 2));
 		row.setBackground(ColorScheme.DARK_GRAY_COLOR);
-		row.setBorder(BorderFactory.createEmptyBorder(2, 0, 2, 0));
+		row.setBorder(BorderFactory.createEmptyBorder(3, 0, 3, 0));
 
 		JLabel text = new JLabel(label + "  " + done + "/" + total);
 		text.setForeground(Color.WHITE);
@@ -506,8 +503,6 @@ class BronzemanTcgPanel extends PluginPanel
 		bar.setForeground(done >= total ? UNLOCKED : ColorScheme.BRAND_ORANGE);
 		bar.setBackground(ColorScheme.DARKER_GRAY_COLOR);
 		row.add(bar, BorderLayout.SOUTH);
-
-		row.setMaximumSize(new Dimension(Integer.MAX_VALUE, row.getPreferredSize().height));
 		return row;
 	}
 

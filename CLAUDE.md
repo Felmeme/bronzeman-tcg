@@ -257,8 +257,15 @@ docs/sailing_nodes_report.md):
    section), hide-locked-NPCs option (ground items can't be hidden by the
    renderable draw hook — verified in-game, removed), sidebar panel
    (search / nearby / progress; upside-down bronze med helm icon).
-   **Panel needs design iteration** — owner wants to revisit its layout
-   and content later; ask what's wrong with it before restyling.
+   **Panel restructured 2026-07-21**: the four collapsible sections became
+   MaterialTabGroup tabs (Quests / Slayer / PvM / Rumours, short labels for
+   the fixed 225px width), search + Progress stay pinned above them, and the
+   per-section collapse state is gone. SORTING IS NOW STRICTLY ALPHABETICAL
+   (owner ruling): the old comparator keyed on `requirements.size() -
+   satisfiedCount(owned)`, so every card pulled silently reshuffled the list -
+   the exact complaint. quest_cards.json is already alphabetical, so the panel
+   had been destroying an order that already existed. Do NOT reintroduce a
+   progress-based sort; he declined a sort dropdown too.
 6. **Sailing**: implemented (2026-07-12), needs manual test pass. Boat
    upgrades: mode dropdown Off/Parts/Parts+Materials/Everything; material
    = plank card, log card only in Everything (owner's chain ruling); keels
@@ -570,7 +577,20 @@ session: mini-plan + quiz first, 0.2.x release after owner test.
   iteration for animation edge cases; models are shared per NPC type
   (coherent for us — lock state is per-name). Hub precedent exists but
   expect closer review.
-- Side panel design iteration (ask owner what to change first). Rendering
+- **Side panel art-led redesign (AGREED direction, owner will supply assets):**
+  after the 2026-07-21 tabs/polish pass, the next step is a custom-painted
+  look. Owner's stated priority is a WHOLE-PANEL BACKGROUND + HEADER, with
+  rows kept simple over it; he makes his own art. Deliberately deferred then:
+  in-game item sprites on requirement rows (ItemManager.getImage(itemId)
+  returns the real sprite - free visual upgrade needing no assets). Useful
+  facts: PluginPanel is a plain Swing JPanel, fixed PANEL_WIDTH=225 and
+  already wrapped in a JScrollPane, so vertical space is free and horizontal
+  is the binding constraint; available building blocks are ProgressBar,
+  ThinProgressBar, ColorJButton, FlatTextField, IconTextField, DimmableJPanel,
+  DragAndDropReorderPane, MaterialTab/MaterialTabGroup, FontManager (RS
+  fonts), ColorScheme, ImageUtil.loadImageResource for bundled PNGs, and
+  SpriteManager for interface sprites. Custom paintComponent is fair game
+  for gradients/rounded rows/banners. Rendering
   study notes: "D:\ClaudeFolder\RuneLite Research\osrs-tcg-overlay-techniques.md".
 - Time Tracking plugin interop: per-patch crop harvest restriction +
   compost-type discrimination by reading its persisted config state
