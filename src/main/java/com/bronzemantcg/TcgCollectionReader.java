@@ -22,8 +22,7 @@ import net.runelite.client.config.ConfigManager;
  *    config group/key names (the standard pattern for unrelated Hub plugins).
  *
  * Once any API payload arrives, it wins until {@link #invalidate()} (profile switch),
- * after which we fall back to config until the next payload. Credits aren't in the API,
- * so they always come from the config path.
+ * after which we fall back to config until the next payload.
  *
  * The fallback is cached and refreshed lazily rather than decoded on every menu click,
  * since gzip decode on every single click would be wasteful. A short cache window is
@@ -42,7 +41,6 @@ public class TcgCollectionReader
 	private final Gson gson;
 
 	private Set<String> cachedOwnedLowerCaseNames = Collections.emptySet();
-	private long cachedCredits;
 	private boolean stateAvailable;
 	private long lastRefreshMs = 0L;
 	// Null until the first API payload lands; non-null means the API path is live.
@@ -67,13 +65,6 @@ public class TcgCollectionReader
 		}
 		ensureFresh();
 		return cachedOwnedLowerCaseNames;
-	}
-
-	/** TCG pack currency from the decoded state; only meaningful while {@link #isStateAvailable()}. */
-	public synchronized long getCredits()
-	{
-		ensureFresh();
-		return cachedCredits;
 	}
 
 	/** Distinct card names owned (normal/foil folded), for the stats overlay. */
@@ -150,7 +141,6 @@ public class TcgCollectionReader
 			if (json.isEmpty())
 			{
 				cachedOwnedLowerCaseNames = Collections.emptySet();
-				cachedCredits = 0L;
 				stateAvailable = false;
 				return;
 			}
@@ -159,11 +149,9 @@ public class TcgCollectionReader
 			if (dto == null || dto.cardInstances == null)
 			{
 				cachedOwnedLowerCaseNames = Collections.emptySet();
-				cachedCredits = 0L;
 				stateAvailable = false;
 				return;
 			}
-			cachedCredits = dto.credits;
 			stateAvailable = true;
 
 			Set<String> names = new HashSet<>();
@@ -182,7 +170,6 @@ public class TcgCollectionReader
 			// Fail safe to "own nothing known" rather than crash the client.
 			log.debug("Could not read osrs-tcg collection state", ex);
 			cachedOwnedLowerCaseNames = Collections.emptySet();
-			cachedCredits = 0L;
 			stateAvailable = false;
 		}
 	}

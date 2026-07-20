@@ -15,8 +15,6 @@ import java.util.List;
 public class TcgStateDto
 {
 	public List<OwnedCardInstanceDto> cardInstances;
-	/** TCG pack currency; displayed (with the creator's blessing) in the stats overlay. */
-	public long credits;
 
 	public static class OwnedCardInstanceDto
 	{

@@ -9,9 +9,10 @@ the same commit as each release.
 ### New
 - **OSRS TCG API integration**: the collection is now read via OSRS TCG's
   PluginMessage API when available — unlocks apply instantly (pushed, not
-  polled), and the plugin works with the latest OSRS TCG update's new
-  storage format. The old decode path remains as fallback for older
-  OSRS TCG versions, so any combination of update timing is safe.
+  polled). The API ships in OSRS TCG's next update and activates
+  automatically on both sides; until then the existing decode path is
+  used, which OSRS TCG's latest update can leave stale (state may lag or
+  read as unavailable — resolved the moment their next update lands).
 - **Mining Options / Woodcutting Options** dropdowns (replacing the old
   toggles): Card Required / Ore(Logs) Only / Tool Only / No Card Needed.
   Card Required now also blocks gathering while a locked pickaxe/axe is
@@ -30,6 +31,11 @@ the same commit as each release.
 - A corrupted recipe entry that wrongly gated Earth battlestaff crafting
   was removed.
 - Deprecated RuneLite API calls replaced (WorldView migration).
+
+### Removed
+- The TCG stats overlay (credits / cards collected) — OSRS TCG now has
+  its own built-in display, and the latest OSRS TCG update means the
+  saved state this overlay read from can lag behind the live values.
 
 ## v0.2.2 — 2026-07-19
 

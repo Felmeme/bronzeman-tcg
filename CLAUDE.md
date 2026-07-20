@@ -95,16 +95,24 @@ only, no automation).
   behaviour, which would have locked every user out of the game on any
   upstream format change. New-player-with-zero-cards still restricts
   normally (state present but empty = available).
-- **PluginMessage API (BUILT, waiting on upstream release — branch
-  `feature/osrstcg-api`, 2 commits, pushed):** osrs-tcg commit 977f2ae adds
+- **PluginMessage API (MERGED to main 2026-07-20, in the staged 0.2.3;
+  ACTIVATION pending Az's next hub release):** osrs-tcg commit 977f2ae adds
   an event-bus API: post `PluginMessage("osrstcg", "query-owned-names")`,
   receive "owned-names" reply + "owned-names-changed" pushes carrying
-  `data.ownedNames` (List<String>, foil folded). Our branch feeds this into
-  TcgCollectionReader as the preferred source (instant unlocks, no polling);
-  the config-decode path stays as fallback for pre-API versions, so ANY
-  combination of upgrade timing is safe. Credits are not in the API payload
-  (still decoded from config). Tested both directions in-game 2026-07-18.
-  When Az's update is live on the hub: merge per docs/api_merge_checklist.md.
+  `data.ownedNames` (List<String>, foil folded). Feeds TcgCollectionReader
+  as the preferred source (instant unlocks, no polling); the config-decode
+  path stays as fallback, so ANY combination of upgrade timing is safe.
+  Tested both directions in-game 2026-07-18 against 977f2ae. CAUTION
+  (learned 2026-07-20): the hub's LIVE osrs-tcg (132fe59, "reduce config
+  writes") is cut from an old base 43 commits BEHIND the API commit - the
+  API is NOT live yet (a GitHub forward-compare's ahead-count hid this;
+  Az's word + the reverse compare settled it), AND its write-throttling
+  makes our fallback read stale/absent state (the 2026-07-20 user-facing
+  breakage; unfixable from our side, resolves when Az's next hub release
+  lands and the API answers). The TCG stats overlay (credits+cards) was
+  REMOVED same day (osrs-tcg displays its own stats now; the credits
+  config-decode plumbing went with it - getCredits/cachedCredits/
+  TcgStateDto.credits deleted, showTcgStatsOverlay config item retired).
 - `CardNameCatalog` (abstract) loads a `{entityToCards: {name -> [cards]}}`
   snapshot resource; `TrackedMonsterCatalog` (1,198 NPCs <- 1,225 Monster
   cards) and `TrackedItemCatalog` (5,149 items <- 5,149 Resource cards, 1:1)

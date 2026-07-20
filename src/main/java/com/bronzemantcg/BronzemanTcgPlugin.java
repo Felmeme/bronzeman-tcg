@@ -213,9 +213,6 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	private BronzemanTcgOverlay overlay;
 
 	@Inject
-	private TcgStatsOverlay statsOverlay;
-
-	@Inject
 	private RenderCallbackManager renderCallbackManager;
 
 	@Inject
@@ -292,7 +289,6 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 			.build();
 		clientToolbar.addNavigation(navButton);
 		overlayManager.add(overlay);
-		overlayManager.add(statsOverlay);
 		overlayManager.add(lockedItemIconOverlay);
 		renderCallbackManager.register(this);
 
@@ -308,7 +304,6 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	{
 		renderCallbackManager.unregister(this);
 		overlayManager.remove(overlay);
-		overlayManager.remove(statsOverlay);
 		overlayManager.remove(lockedItemIconOverlay);
 		// Widget opacity outlives the plugin, so faded items must be restored by hand.
 		clientThread.invoke(this::clearLockedItemMarks);
