@@ -264,7 +264,7 @@ public interface BronzemanTcgConfig extends Config
 	@ConfigItem(
 			keyName = "grandExchangeMode",
 			name = "Grand Exchange",
-			description = "Locked: items whose card you have not collected can't be selected in "
+			description = "Require Card: items whose card you have not collected can't be selected in "
 					+ "the Grand Exchange search."
 					+ "<br>Items with no card can always be bought.",
 			section = generalSettings,
@@ -278,9 +278,9 @@ public interface BronzemanTcgConfig extends Config
 	@ConfigItem(
 		keyName = "coinMode",
 		name = "Coin Settings",
-		description = "Unlocked: Coins are never restricted (looting, buying, banking, etc.), "
-			+ "regardless of the exempt list below."
-			+ "<br>Locked: a true challenge - anything involving coins needs the card.",
+		description = "Require Card: a true challenge - anything involving coins needs the card."
+			+ "<br> No Card Needed: Coins are never restricted (looting, buying, banking, etc.), "
+			+ "regardless of the exempt list below.",
 		section = generalSettings,
 		position = 8
 	)
@@ -539,12 +539,8 @@ public interface BronzemanTcgConfig extends Config
 	@ConfigItem(
 		keyName = "fletchingMode",
 		name = "Fletching",
-		description = "Blocked at the fletching interface's product click; using a knife on logs "
-			+ "opens the menu freely."
-			+ "<br>'Product': each step needs the finished item's card (unstrung bows count as "
-			+ "their strung bow). 'Product + Materials': also needs the carded inputs - logs, "
-			+ "bow string, arrow shafts, feathers. Arrowtips and dart tips have no cards and "
-			+ "never gate anything.",
+		description = "Input Only': Recipes only require Input Items Cards."
+			+ "<br>'Input + Output: require all cards in fletching recipes.",
 		section = fletchingSection,
 		position = 0
 	)
