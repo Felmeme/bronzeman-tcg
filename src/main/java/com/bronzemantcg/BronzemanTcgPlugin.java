@@ -2,9 +2,6 @@ package com.bronzemantcg;
 
 import com.google.inject.Provides;
 import java.awt.image.BufferedImage;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -400,9 +397,15 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 
 		if (collectionReader.isStateAvailable())
 		{
-			queueChat(String.format(Locale.UK,
-				"[Bronzeman TCG] v%s Active - %,d/%,d cards collected. Good luck on the pulls!",
-				pluginVersion(), collectionReader.getOwnedCardCount(), CardNames.TOTAL_CARDS));
+			queueChat("[Bronzeman TCG] Plugin is active - Good luck on the pulls!");
+			if (!collectionReader.hasApiData())
+			{
+				// Fallback path (pre-API osrs-tcg, or its API hasn't answered yet): the config
+				// read lags behind card pulls, so nudge the player to relog. Self-retiring -
+				// once osrs-tcg's API version connects, hasApiData() is true and this stops.
+				queueChat("[Bronzeman TCG] Not Connected to OSRS TCG - Please relog if you are "
+					+ "missing unlocks (waiting on OSRS TCG update).");
+			}
 		}
 		else
 		{
@@ -2262,22 +2265,6 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	 * when the player's Game chat tab is set to "Filter" (why feedback looked dead on a
 	 * standard client but fine in dev testing).
 	 */
-	/** Version stamped into version.txt by the build from build.gradle's `version`. */
-	private String pluginVersion()
-	{
-		try (InputStream stream = BronzemanTcgPlugin.class.getResourceAsStream("/version.txt"))
-		{
-			if (stream != null)
-			{
-				return new String(stream.readAllBytes(), StandardCharsets.UTF_8).trim();
-			}
-		}
-		catch (IOException ignored)
-		{
-		}
-		return "?";
-	}
-
 	private void queueChat(String message)
 	{
 		chatMessageManager.queue(QueuedMessage.builder()

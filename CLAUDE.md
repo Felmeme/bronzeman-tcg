@@ -44,9 +44,12 @@
     patches until the full skills sweep is complete, then 0.3.0) AND adds a
     CHANGELOG.md entry. That line is
     the SINGLE source of truth: the hub displays it directly, and
-    build.gradle reads it in (jar name + processResources-stamped
-    version.txt that the welcome message prints - never hardcode a version
-    anywhere else). Then: push, take the hash
+    build.gradle reads it in for the jar name. (The plugin no longer shows
+    its own version anywhere at runtime - the old processResources-stamped
+    version.txt shipped its raw ${version} token on hub builds because the
+    hub PACKAGER does NOT run a plugin's custom processResources/expand
+    logic; removed in 0.2.4. Lesson: build-time resource templating is
+    invisible to the hub packager - never rely on it.) Then: push, take the hash
     from `git log -1 --format=%H` AFTER the final push (never earlier -
     amends invalidate hashes), PR to runelite/plugin-hub bumping
     plugins/bronzeman-tcg `commit=`. runelite-plugin.properties MUST keep
@@ -102,7 +105,12 @@ only, no automation).
   `data.ownedNames` (List<String>, foil folded). Feeds TcgCollectionReader
   as the preferred source (instant unlocks, no polling); the config-decode
   path stays as fallback, so ANY combination of upgrade timing is safe.
-  Tested both directions in-game 2026-07-18 against 977f2ae. CAUTION
+  VERIFIED END-TO-END 2026-07-20 against osrs-tcg 0.17.3 (the git/main API
+  build, sideloaded beside the Bronzeman dev build): handshake log line
+  fires on login AND `::tcg-give` unlocks INSTANTLY with no relog (the
+  push path). Contract confirmed matching on both sides (namespace
+  "osrstcg"; query-owned-names / owned-names / owned-names-changed /
+  ownedNames). Also tested 2026-07-18 against 977f2ae. CAUTION
   (learned 2026-07-20): the hub's LIVE osrs-tcg (132fe59, "reduce config
   writes") is cut from an old base 43 commits BEHIND the API commit - the
   API is NOT live yet (a GitHub forward-compare's ahead-count hid this;

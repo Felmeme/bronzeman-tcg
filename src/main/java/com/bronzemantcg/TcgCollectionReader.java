@@ -67,12 +67,6 @@ public class TcgCollectionReader
 		return cachedOwnedLowerCaseNames;
 	}
 
-	/** Distinct card names owned (normal/foil folded), for the stats overlay. */
-	public synchronized int getOwnedCardCount()
-	{
-		return getOwnedCardNamesLowerCase().size();
-	}
-
 	/** False when osrs-tcg has no readable state (not installed, no data yet, or decode failure). */
 	public synchronized boolean isStateAvailable()
 	{

@@ -4,6 +4,24 @@ Versioning: 0.MINOR.PATCH — staying on 0.2.x until the full skills sweep is
 complete, then 0.3.0. The runelite-plugin.properties version line is bumped in
 the same commit as each release.
 
+## v0.2.4 — 2026-07-21
+
+### New
+- While OSRS TCG's live-update API isn't connected yet, the login message
+  now adds: "Not Connected to OSRS TCG - Please relog if you are missing
+  unlocks (waiting on OSRS TCG update)." It disappears automatically once
+  the API update is live on both plugins.
+
+### Changes
+- Simplified the login welcome message to "Plugin is active - Good luck
+  on the pulls!" — dropped the card count and the version number.
+
+### Fixes
+- The welcome message no longer shows a literal `${version}` placeholder.
+  The build-time resource stamp it relied on isn't run by the plugin-hub
+  packager, so hub builds always shipped the raw token. Removed the unused
+  version-reading code along with it.
+
 ## v0.2.3 — 2026-07-21
 
 ### New
