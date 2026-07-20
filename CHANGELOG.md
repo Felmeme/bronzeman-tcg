@@ -4,6 +4,18 @@ Versioning: 0.MINOR.PATCH — staying on 0.2.x until the full skills sweep is
 complete, then 0.3.0. The runelite-plugin.properties version line is bumped in
 the same commit as each release.
 
+## v0.2.6 — 2026-07-21
+
+### Fixes
+- Crafting no longer asks for the wrong item's card. Using a needle on
+  leather or hide, or a glassblowing pipe on molten glass, demanded one
+  fixed product's card (e.g. Leather chaps) no matter which item you were
+  actually making — while every other product from that menu went ungated.
+  The tool step now only checks the materials, and each product is checked
+  when you pick it from the menu. Covers leather, all four dragon hides,
+  and glassblowing.
+- Smelting iron no longer demands coal for a plain Iron bar.
+
 ## v0.2.5 — 2026-07-21
 
 ### Fixes

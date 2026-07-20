@@ -378,14 +378,32 @@ mentioning if the owner asks why battlestaff crafting behavior changed.
     Unresolvable material = no rule = no block (owner ruling: never a false
     block). Verified by simulation: Yew logs -> Yew stock, the Knife does not
     resolve, and bars/platebodies/bows/shields still match unchanged.
-  - **SYSTEMIC: the same collision exists outside fletching** (pre-existing,
-    owner ruled 2026-07-21 to handle as separate work): one tool-on-material
-    trigger with many products chosen in a follow-up interface, so only the
-    last row is reachable - `needle|leather` (6 products, only Leather chaps
-    reachable), needle on green/blue/red/black d'leather (3 each),
-    `glassblowing pipe|molten glass` (6), `item-on-object iron ore|furnace`
-    (Iron vs Steel bar). Fix is the same interface-twin pattern used for
-    bolts, but needs each interface's real menu strings verified first.
+  - **SYSTEMIC collision outside fletching: FIXED 2026-07-21 (0.2.6),
+    needs owner verification.** Same shape as Crossbow stock: one
+    tool-on-material trigger, many products chosen in a follow-up interface,
+    all sharing one lookup key so only the LAST was reachable - and since
+    crafting enforces the output, that product's card was demanded for ALL
+    of them (e.g. crafting Leather gloves demanded *Leather chaps*: a false
+    block) while the other five were never gated at all.
+    Fix = TWO-LAYER split (owner ruling), mirroring the bow carve/string
+    split, applied by `scripts/fix_multiproduct_collisions.py`:
+    layer 1 = the tool-on-material click keeps only the CERTAIN inputs
+    (needle+thread+leather) with `output:null`, so no product card can be
+    wrongly demanded and the collision disappears; layer 2 = one `interface`
+    twin per product carrying that product's card. 24 colliding rules ->
+    6 material rules + 24 twins, covering leather (6), green/blue/red/black
+    d'hide (3 each) and glassblowing (6). Smelting differed: the ambiguous
+    `item-on-object iron ore|furnace` pair (Iron vs Steel bar) was DELETED
+    outright because `interface|Iron bar` and `interface|Steel bar` already
+    gate both correctly at the product click.
+    DATA-ONLY - no code change needed (the machinery landed in 0.2.5).
+    Verified by simulation: no multi-product collisions remain anywhere in
+    the file, all card refs exact-match, every leather product now gated,
+    and bars/platebodies/bows/bolts/Ball of wool unaffected.
+    UNVERIFIED: the 24 twin menu strings follow the product-name precedent
+    of the existing crafting interface rules; a wrong one merely never fires
+    (layer 1 carries no product card, so it cannot false-block). Owner to
+    confirm via `logInterfaceProduct` on a Crafting run.
   - **STANDING DOCTRINE (owner instruction, 2026-07-20): never key rules
     on guessed menu/item strings.** Acceptable sources ONLY: (a) the
     owner's node-lookup debug capture (exact in-game strings), (b) wiki

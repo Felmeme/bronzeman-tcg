@@ -349,23 +349,6 @@
 			],
 			"output": "Iron bar",
 			"trigger": {
-				"kind": "item-on-object",
-				"name": "Iron ore",
-				"targets": [
-					"furnace"
-				]
-			},
-			"notes": "1 iron ore (~50% success without a ring of forging). Use ore on furnace."
-		},
-		{
-			"category": "smithing-smelt",
-			"inputs": [
-				[
-					"Iron ore"
-				]
-			],
-			"output": "Iron bar",
-			"trigger": {
 				"kind": "interface",
 				"name": "Iron bar",
 				"targets": [
@@ -407,26 +390,6 @@
 				]
 			},
 			"notes": "1 silver ore. Smelting make-interface product click."
-		},
-		{
-			"category": "smithing-smelt",
-			"inputs": [
-				[
-					"Iron ore"
-				],
-				[
-					"Coal"
-				]
-			],
-			"output": "Steel bar",
-			"trigger": {
-				"kind": "item-on-object",
-				"name": "Iron ore",
-				"targets": [
-					"furnace"
-				]
-			},
-			"notes": "1 iron ore + 2 coal. Use ore on furnace."
 		},
 		{
 			"category": "smithing-smelt",
@@ -3783,126 +3746,6 @@
 			"category": "crafting",
 			"inputs": [
 				[
-					"Glassblowing pipe"
-				],
-				[
-					"Molten glass"
-				]
-			],
-			"output": "Beer glass",
-			"trigger": {
-				"kind": "item-on-item",
-				"name": "Glassblowing pipe",
-				"targets": [
-					"molten glass"
-				]
-			},
-			"notes": "Glassblow molten glass."
-		},
-		{
-			"category": "crafting",
-			"inputs": [
-				[
-					"Glassblowing pipe"
-				],
-				[
-					"Molten glass"
-				]
-			],
-			"output": "Vial",
-			"trigger": {
-				"kind": "item-on-item",
-				"name": "Glassblowing pipe",
-				"targets": [
-					"molten glass"
-				]
-			},
-			"notes": "Glassblow molten glass."
-		},
-		{
-			"category": "crafting",
-			"inputs": [
-				[
-					"Glassblowing pipe"
-				],
-				[
-					"Molten glass"
-				]
-			],
-			"output": "Unpowered orb",
-			"trigger": {
-				"kind": "item-on-item",
-				"name": "Glassblowing pipe",
-				"targets": [
-					"molten glass"
-				]
-			},
-			"notes": "Glassblow molten glass."
-		},
-		{
-			"category": "crafting",
-			"inputs": [
-				[
-					"Glassblowing pipe"
-				],
-				[
-					"Molten glass"
-				]
-			],
-			"output": "Lantern lens",
-			"trigger": {
-				"kind": "item-on-item",
-				"name": "Glassblowing pipe",
-				"targets": [
-					"molten glass"
-				]
-			},
-			"notes": "Glassblow molten glass."
-		},
-		{
-			"category": "crafting",
-			"inputs": [
-				[
-					"Glassblowing pipe"
-				],
-				[
-					"Molten glass"
-				]
-			],
-			"output": "Fishbowl",
-			"trigger": {
-				"kind": "item-on-item",
-				"name": "Glassblowing pipe",
-				"targets": [
-					"molten glass"
-				]
-			},
-			"notes": "Glassblow molten glass."
-		},
-		{
-			"category": "crafting",
-			"inputs": [
-				[
-					"Glassblowing pipe"
-				],
-				[
-					"Molten glass"
-				]
-			],
-			"output": "Empty light orb",
-			"trigger": {
-				"kind": "item-on-item",
-				"name": "Glassblowing pipe",
-				"targets": [
-					"molten glass"
-				]
-			},
-			"notes": "Glassblow molten glass."
-		},
-		{
-			"category": "crafting",
-			"inputs": [
-				[
 					"Soft clay"
 				]
 			],
@@ -3949,420 +3792,6 @@
 				]
 			},
 			"notes": "Pottery: mould soft clay on wheel then fire in a pottery oven (2-step; simplified to product)."
-		},
-		{
-			"category": "crafting",
-			"inputs": [
-				[
-					"Needle"
-				],
-				[
-					"Thread"
-				],
-				[
-					"Leather"
-				]
-			],
-			"output": "Leather gloves",
-			"trigger": {
-				"kind": "item-on-item",
-				"name": "Needle",
-				"targets": [
-					"leather"
-				]
-			},
-			"notes": "Craft with needle+thread on leather."
-		},
-		{
-			"category": "crafting",
-			"inputs": [
-				[
-					"Needle"
-				],
-				[
-					"Thread"
-				],
-				[
-					"Leather"
-				]
-			],
-			"output": "Leather boots",
-			"trigger": {
-				"kind": "item-on-item",
-				"name": "Needle",
-				"targets": [
-					"leather"
-				]
-			},
-			"notes": "Craft with needle+thread on leather."
-		},
-		{
-			"category": "crafting",
-			"inputs": [
-				[
-					"Needle"
-				],
-				[
-					"Thread"
-				],
-				[
-					"Leather"
-				]
-			],
-			"output": "Leather cowl",
-			"trigger": {
-				"kind": "item-on-item",
-				"name": "Needle",
-				"targets": [
-					"leather"
-				]
-			},
-			"notes": "Craft with needle+thread on leather."
-		},
-		{
-			"category": "crafting",
-			"inputs": [
-				[
-					"Needle"
-				],
-				[
-					"Thread"
-				],
-				[
-					"Leather"
-				]
-			],
-			"output": "Leather vambraces",
-			"trigger": {
-				"kind": "item-on-item",
-				"name": "Needle",
-				"targets": [
-					"leather"
-				]
-			},
-			"notes": "Craft with needle+thread on leather."
-		},
-		{
-			"category": "crafting",
-			"inputs": [
-				[
-					"Needle"
-				],
-				[
-					"Thread"
-				],
-				[
-					"Leather"
-				]
-			],
-			"output": "Leather body",
-			"trigger": {
-				"kind": "item-on-item",
-				"name": "Needle",
-				"targets": [
-					"leather"
-				]
-			},
-			"notes": "Craft with needle+thread on leather."
-		},
-		{
-			"category": "crafting",
-			"inputs": [
-				[
-					"Needle"
-				],
-				[
-					"Thread"
-				],
-				[
-					"Leather"
-				]
-			],
-			"output": "Leather chaps",
-			"trigger": {
-				"kind": "item-on-item",
-				"name": "Needle",
-				"targets": [
-					"leather"
-				]
-			},
-			"notes": "Craft with needle+thread on leather."
-		},
-		{
-			"category": "crafting",
-			"inputs": [
-				[
-					"Needle"
-				],
-				[
-					"Thread"
-				],
-				[
-					"Green dragon leather"
-				]
-			],
-			"output": "Green d'hide vambraces",
-			"trigger": {
-				"kind": "item-on-item",
-				"name": "Needle",
-				"targets": [
-					"green dragon leather"
-				]
-			},
-			"notes": "Craft dragonhide armour with needle+thread."
-		},
-		{
-			"category": "crafting",
-			"inputs": [
-				[
-					"Needle"
-				],
-				[
-					"Thread"
-				],
-				[
-					"Green dragon leather"
-				]
-			],
-			"output": "Green d'hide chaps",
-			"trigger": {
-				"kind": "item-on-item",
-				"name": "Needle",
-				"targets": [
-					"green dragon leather"
-				]
-			},
-			"notes": "Craft dragonhide armour with needle+thread."
-		},
-		{
-			"category": "crafting",
-			"inputs": [
-				[
-					"Needle"
-				],
-				[
-					"Thread"
-				],
-				[
-					"Green dragon leather"
-				]
-			],
-			"output": "Green d'hide body",
-			"trigger": {
-				"kind": "item-on-item",
-				"name": "Needle",
-				"targets": [
-					"green dragon leather"
-				]
-			},
-			"notes": "Craft dragonhide armour with needle+thread."
-		},
-		{
-			"category": "crafting",
-			"inputs": [
-				[
-					"Needle"
-				],
-				[
-					"Thread"
-				],
-				[
-					"Blue dragon leather"
-				]
-			],
-			"output": "Blue d'hide vambraces",
-			"trigger": {
-				"kind": "item-on-item",
-				"name": "Needle",
-				"targets": [
-					"blue dragon leather"
-				]
-			},
-			"notes": "Craft dragonhide armour with needle+thread."
-		},
-		{
-			"category": "crafting",
-			"inputs": [
-				[
-					"Needle"
-				],
-				[
-					"Thread"
-				],
-				[
-					"Blue dragon leather"
-				]
-			],
-			"output": "Blue d'hide chaps",
-			"trigger": {
-				"kind": "item-on-item",
-				"name": "Needle",
-				"targets": [
-					"blue dragon leather"
-				]
-			},
-			"notes": "Craft dragonhide armour with needle+thread."
-		},
-		{
-			"category": "crafting",
-			"inputs": [
-				[
-					"Needle"
-				],
-				[
-					"Thread"
-				],
-				[
-					"Blue dragon leather"
-				]
-			],
-			"output": "Blue d'hide body",
-			"trigger": {
-				"kind": "item-on-item",
-				"name": "Needle",
-				"targets": [
-					"blue dragon leather"
-				]
-			},
-			"notes": "Craft dragonhide armour with needle+thread."
-		},
-		{
-			"category": "crafting",
-			"inputs": [
-				[
-					"Needle"
-				],
-				[
-					"Thread"
-				],
-				[
-					"Red dragon leather"
-				]
-			],
-			"output": "Red d'hide vambraces",
-			"trigger": {
-				"kind": "item-on-item",
-				"name": "Needle",
-				"targets": [
-					"red dragon leather"
-				]
-			},
-			"notes": "Craft dragonhide armour with needle+thread."
-		},
-		{
-			"category": "crafting",
-			"inputs": [
-				[
-					"Needle"
-				],
-				[
-					"Thread"
-				],
-				[
-					"Red dragon leather"
-				]
-			],
-			"output": "Red d'hide chaps",
-			"trigger": {
-				"kind": "item-on-item",
-				"name": "Needle",
-				"targets": [
-					"red dragon leather"
-				]
-			},
-			"notes": "Craft dragonhide armour with needle+thread."
-		},
-		{
-			"category": "crafting",
-			"inputs": [
-				[
-					"Needle"
-				],
-				[
-					"Thread"
-				],
-				[
-					"Red dragon leather"
-				]
-			],
-			"output": "Red d'hide body",
-			"trigger": {
-				"kind": "item-on-item",
-				"name": "Needle",
-				"targets": [
-					"red dragon leather"
-				]
-			},
-			"notes": "Craft dragonhide armour with needle+thread."
-		},
-		{
-			"category": "crafting",
-			"inputs": [
-				[
-					"Needle"
-				],
-				[
-					"Thread"
-				],
-				[
-					"Black dragon leather"
-				]
-			],
-			"output": "Black d'hide vambraces",
-			"trigger": {
-				"kind": "item-on-item",
-				"name": "Needle",
-				"targets": [
-					"black dragon leather"
-				]
-			},
-			"notes": "Craft dragonhide armour with needle+thread."
-		},
-		{
-			"category": "crafting",
-			"inputs": [
-				[
-					"Needle"
-				],
-				[
-					"Thread"
-				],
-				[
-					"Black dragon leather"
-				]
-			],
-			"output": "Black d'hide chaps",
-			"trigger": {
-				"kind": "item-on-item",
-				"name": "Needle",
-				"targets": [
-					"black dragon leather"
-				]
-			},
-			"notes": "Craft dragonhide armour with needle+thread."
-		},
-		{
-			"category": "crafting",
-			"inputs": [
-				[
-					"Needle"
-				],
-				[
-					"Thread"
-				],
-				[
-					"Black dragon leather"
-				]
-			],
-			"output": "Black d'hide body",
-			"trigger": {
-				"kind": "item-on-item",
-				"name": "Needle",
-				"targets": [
-					"black dragon leather"
-				]
-			},
-			"notes": "Craft dragonhide armour with needle+thread."
 		},
 		{
 			"category": "crafting",
@@ -9603,6 +9032,627 @@
 				]
 			},
 			"notes": "Atlatl dart tips (tip card absent) on headless atlatl dart -> atlatl dart. MISSING family (Varlamore), added this pass. UNVERIFIED interface-vs-instant - lean instant, dart-family analogy."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Glassblowing pipe"
+				],
+				[
+					"Molten glass"
+				]
+			],
+			"output": null,
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Glassblowing pipe",
+				"targets": [
+					"molten glass"
+				]
+			},
+			"notes": "Glassblowing pipe on molten glass opens a make menu with 6 possible products, so only the materials are certain at this click - the product's own card is enforced by the interface twins below. Previously each product had a rule sharing this key, so only the last was reachable and it was demanded for all of them (false block)."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Glassblowing pipe"
+				],
+				[
+					"Molten glass"
+				]
+			],
+			"output": "Beer glass",
+			"trigger": {
+				"kind": "interface",
+				"name": "Beer glass",
+				"targets": []
+			},
+			"notes": "Make-menu product click for Beer glass (Glassblowing pipe on molten glass). UNVERIFIED menu string - follows the product-name precedent of the other crafting interface rules; if wrong it simply never fires (layer 1 carries no product card, so this cannot cause a false block)."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Glassblowing pipe"
+				],
+				[
+					"Molten glass"
+				]
+			],
+			"output": "Vial",
+			"trigger": {
+				"kind": "interface",
+				"name": "Vial",
+				"targets": []
+			},
+			"notes": "Make-menu product click for Vial (Glassblowing pipe on molten glass). UNVERIFIED menu string - follows the product-name precedent of the other crafting interface rules; if wrong it simply never fires (layer 1 carries no product card, so this cannot cause a false block)."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Glassblowing pipe"
+				],
+				[
+					"Molten glass"
+				]
+			],
+			"output": "Unpowered orb",
+			"trigger": {
+				"kind": "interface",
+				"name": "Unpowered orb",
+				"targets": []
+			},
+			"notes": "Make-menu product click for Unpowered orb (Glassblowing pipe on molten glass). UNVERIFIED menu string - follows the product-name precedent of the other crafting interface rules; if wrong it simply never fires (layer 1 carries no product card, so this cannot cause a false block)."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Glassblowing pipe"
+				],
+				[
+					"Molten glass"
+				]
+			],
+			"output": "Lantern lens",
+			"trigger": {
+				"kind": "interface",
+				"name": "Lantern lens",
+				"targets": []
+			},
+			"notes": "Make-menu product click for Lantern lens (Glassblowing pipe on molten glass). UNVERIFIED menu string - follows the product-name precedent of the other crafting interface rules; if wrong it simply never fires (layer 1 carries no product card, so this cannot cause a false block)."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Glassblowing pipe"
+				],
+				[
+					"Molten glass"
+				]
+			],
+			"output": "Fishbowl",
+			"trigger": {
+				"kind": "interface",
+				"name": "Fishbowl",
+				"targets": []
+			},
+			"notes": "Make-menu product click for Fishbowl (Glassblowing pipe on molten glass). UNVERIFIED menu string - follows the product-name precedent of the other crafting interface rules; if wrong it simply never fires (layer 1 carries no product card, so this cannot cause a false block)."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Glassblowing pipe"
+				],
+				[
+					"Molten glass"
+				]
+			],
+			"output": "Empty light orb",
+			"trigger": {
+				"kind": "interface",
+				"name": "Empty light orb",
+				"targets": []
+			},
+			"notes": "Make-menu product click for Empty light orb (Glassblowing pipe on molten glass). UNVERIFIED menu string - follows the product-name precedent of the other crafting interface rules; if wrong it simply never fires (layer 1 carries no product card, so this cannot cause a false block)."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Needle"
+				],
+				[
+					"Thread"
+				],
+				[
+					"Leather"
+				]
+			],
+			"output": null,
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Needle",
+				"targets": [
+					"leather"
+				]
+			},
+			"notes": "Needle on leather opens a make menu with 6 possible products, so only the materials are certain at this click - the product's own card is enforced by the interface twins below. Previously each product had a rule sharing this key, so only the last was reachable and it was demanded for all of them (false block)."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Needle"
+				],
+				[
+					"Thread"
+				],
+				[
+					"Leather"
+				]
+			],
+			"output": "Leather gloves",
+			"trigger": {
+				"kind": "interface",
+				"name": "Leather gloves",
+				"targets": []
+			},
+			"notes": "Make-menu product click for Leather gloves (Needle on leather). UNVERIFIED menu string - follows the product-name precedent of the other crafting interface rules; if wrong it simply never fires (layer 1 carries no product card, so this cannot cause a false block)."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Needle"
+				],
+				[
+					"Thread"
+				],
+				[
+					"Leather"
+				]
+			],
+			"output": "Leather boots",
+			"trigger": {
+				"kind": "interface",
+				"name": "Leather boots",
+				"targets": []
+			},
+			"notes": "Make-menu product click for Leather boots (Needle on leather). UNVERIFIED menu string - follows the product-name precedent of the other crafting interface rules; if wrong it simply never fires (layer 1 carries no product card, so this cannot cause a false block)."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Needle"
+				],
+				[
+					"Thread"
+				],
+				[
+					"Leather"
+				]
+			],
+			"output": "Leather cowl",
+			"trigger": {
+				"kind": "interface",
+				"name": "Leather cowl",
+				"targets": []
+			},
+			"notes": "Make-menu product click for Leather cowl (Needle on leather). UNVERIFIED menu string - follows the product-name precedent of the other crafting interface rules; if wrong it simply never fires (layer 1 carries no product card, so this cannot cause a false block)."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Needle"
+				],
+				[
+					"Thread"
+				],
+				[
+					"Leather"
+				]
+			],
+			"output": "Leather vambraces",
+			"trigger": {
+				"kind": "interface",
+				"name": "Leather vambraces",
+				"targets": []
+			},
+			"notes": "Make-menu product click for Leather vambraces (Needle on leather). UNVERIFIED menu string - follows the product-name precedent of the other crafting interface rules; if wrong it simply never fires (layer 1 carries no product card, so this cannot cause a false block)."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Needle"
+				],
+				[
+					"Thread"
+				],
+				[
+					"Leather"
+				]
+			],
+			"output": "Leather body",
+			"trigger": {
+				"kind": "interface",
+				"name": "Leather body",
+				"targets": []
+			},
+			"notes": "Make-menu product click for Leather body (Needle on leather). UNVERIFIED menu string - follows the product-name precedent of the other crafting interface rules; if wrong it simply never fires (layer 1 carries no product card, so this cannot cause a false block)."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Needle"
+				],
+				[
+					"Thread"
+				],
+				[
+					"Leather"
+				]
+			],
+			"output": "Leather chaps",
+			"trigger": {
+				"kind": "interface",
+				"name": "Leather chaps",
+				"targets": []
+			},
+			"notes": "Make-menu product click for Leather chaps (Needle on leather). UNVERIFIED menu string - follows the product-name precedent of the other crafting interface rules; if wrong it simply never fires (layer 1 carries no product card, so this cannot cause a false block)."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Needle"
+				],
+				[
+					"Thread"
+				],
+				[
+					"Green dragon leather"
+				]
+			],
+			"output": null,
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Needle",
+				"targets": [
+					"green dragon leather"
+				]
+			},
+			"notes": "Needle on green dragon leather opens a make menu with 3 possible products, so only the materials are certain at this click - the product's own card is enforced by the interface twins below. Previously each product had a rule sharing this key, so only the last was reachable and it was demanded for all of them (false block)."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Needle"
+				],
+				[
+					"Thread"
+				],
+				[
+					"Green dragon leather"
+				]
+			],
+			"output": "Green d'hide vambraces",
+			"trigger": {
+				"kind": "interface",
+				"name": "Green d'hide vambraces",
+				"targets": []
+			},
+			"notes": "Make-menu product click for Green d'hide vambraces (Needle on green dragon leather). UNVERIFIED menu string - follows the product-name precedent of the other crafting interface rules; if wrong it simply never fires (layer 1 carries no product card, so this cannot cause a false block)."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Needle"
+				],
+				[
+					"Thread"
+				],
+				[
+					"Green dragon leather"
+				]
+			],
+			"output": "Green d'hide chaps",
+			"trigger": {
+				"kind": "interface",
+				"name": "Green d'hide chaps",
+				"targets": []
+			},
+			"notes": "Make-menu product click for Green d'hide chaps (Needle on green dragon leather). UNVERIFIED menu string - follows the product-name precedent of the other crafting interface rules; if wrong it simply never fires (layer 1 carries no product card, so this cannot cause a false block)."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Needle"
+				],
+				[
+					"Thread"
+				],
+				[
+					"Green dragon leather"
+				]
+			],
+			"output": "Green d'hide body",
+			"trigger": {
+				"kind": "interface",
+				"name": "Green d'hide body",
+				"targets": []
+			},
+			"notes": "Make-menu product click for Green d'hide body (Needle on green dragon leather). UNVERIFIED menu string - follows the product-name precedent of the other crafting interface rules; if wrong it simply never fires (layer 1 carries no product card, so this cannot cause a false block)."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Needle"
+				],
+				[
+					"Thread"
+				],
+				[
+					"Blue dragon leather"
+				]
+			],
+			"output": null,
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Needle",
+				"targets": [
+					"blue dragon leather"
+				]
+			},
+			"notes": "Needle on blue dragon leather opens a make menu with 3 possible products, so only the materials are certain at this click - the product's own card is enforced by the interface twins below. Previously each product had a rule sharing this key, so only the last was reachable and it was demanded for all of them (false block)."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Needle"
+				],
+				[
+					"Thread"
+				],
+				[
+					"Blue dragon leather"
+				]
+			],
+			"output": "Blue d'hide vambraces",
+			"trigger": {
+				"kind": "interface",
+				"name": "Blue d'hide vambraces",
+				"targets": []
+			},
+			"notes": "Make-menu product click for Blue d'hide vambraces (Needle on blue dragon leather). UNVERIFIED menu string - follows the product-name precedent of the other crafting interface rules; if wrong it simply never fires (layer 1 carries no product card, so this cannot cause a false block)."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Needle"
+				],
+				[
+					"Thread"
+				],
+				[
+					"Blue dragon leather"
+				]
+			],
+			"output": "Blue d'hide chaps",
+			"trigger": {
+				"kind": "interface",
+				"name": "Blue d'hide chaps",
+				"targets": []
+			},
+			"notes": "Make-menu product click for Blue d'hide chaps (Needle on blue dragon leather). UNVERIFIED menu string - follows the product-name precedent of the other crafting interface rules; if wrong it simply never fires (layer 1 carries no product card, so this cannot cause a false block)."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Needle"
+				],
+				[
+					"Thread"
+				],
+				[
+					"Blue dragon leather"
+				]
+			],
+			"output": "Blue d'hide body",
+			"trigger": {
+				"kind": "interface",
+				"name": "Blue d'hide body",
+				"targets": []
+			},
+			"notes": "Make-menu product click for Blue d'hide body (Needle on blue dragon leather). UNVERIFIED menu string - follows the product-name precedent of the other crafting interface rules; if wrong it simply never fires (layer 1 carries no product card, so this cannot cause a false block)."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Needle"
+				],
+				[
+					"Thread"
+				],
+				[
+					"Red dragon leather"
+				]
+			],
+			"output": null,
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Needle",
+				"targets": [
+					"red dragon leather"
+				]
+			},
+			"notes": "Needle on red dragon leather opens a make menu with 3 possible products, so only the materials are certain at this click - the product's own card is enforced by the interface twins below. Previously each product had a rule sharing this key, so only the last was reachable and it was demanded for all of them (false block)."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Needle"
+				],
+				[
+					"Thread"
+				],
+				[
+					"Red dragon leather"
+				]
+			],
+			"output": "Red d'hide vambraces",
+			"trigger": {
+				"kind": "interface",
+				"name": "Red d'hide vambraces",
+				"targets": []
+			},
+			"notes": "Make-menu product click for Red d'hide vambraces (Needle on red dragon leather). UNVERIFIED menu string - follows the product-name precedent of the other crafting interface rules; if wrong it simply never fires (layer 1 carries no product card, so this cannot cause a false block)."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Needle"
+				],
+				[
+					"Thread"
+				],
+				[
+					"Red dragon leather"
+				]
+			],
+			"output": "Red d'hide chaps",
+			"trigger": {
+				"kind": "interface",
+				"name": "Red d'hide chaps",
+				"targets": []
+			},
+			"notes": "Make-menu product click for Red d'hide chaps (Needle on red dragon leather). UNVERIFIED menu string - follows the product-name precedent of the other crafting interface rules; if wrong it simply never fires (layer 1 carries no product card, so this cannot cause a false block)."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Needle"
+				],
+				[
+					"Thread"
+				],
+				[
+					"Red dragon leather"
+				]
+			],
+			"output": "Red d'hide body",
+			"trigger": {
+				"kind": "interface",
+				"name": "Red d'hide body",
+				"targets": []
+			},
+			"notes": "Make-menu product click for Red d'hide body (Needle on red dragon leather). UNVERIFIED menu string - follows the product-name precedent of the other crafting interface rules; if wrong it simply never fires (layer 1 carries no product card, so this cannot cause a false block)."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Needle"
+				],
+				[
+					"Thread"
+				],
+				[
+					"Black dragon leather"
+				]
+			],
+			"output": null,
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Needle",
+				"targets": [
+					"black dragon leather"
+				]
+			},
+			"notes": "Needle on black dragon leather opens a make menu with 3 possible products, so only the materials are certain at this click - the product's own card is enforced by the interface twins below. Previously each product had a rule sharing this key, so only the last was reachable and it was demanded for all of them (false block)."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Needle"
+				],
+				[
+					"Thread"
+				],
+				[
+					"Black dragon leather"
+				]
+			],
+			"output": "Black d'hide vambraces",
+			"trigger": {
+				"kind": "interface",
+				"name": "Black d'hide vambraces",
+				"targets": []
+			},
+			"notes": "Make-menu product click for Black d'hide vambraces (Needle on black dragon leather). UNVERIFIED menu string - follows the product-name precedent of the other crafting interface rules; if wrong it simply never fires (layer 1 carries no product card, so this cannot cause a false block)."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Needle"
+				],
+				[
+					"Thread"
+				],
+				[
+					"Black dragon leather"
+				]
+			],
+			"output": "Black d'hide chaps",
+			"trigger": {
+				"kind": "interface",
+				"name": "Black d'hide chaps",
+				"targets": []
+			},
+			"notes": "Make-menu product click for Black d'hide chaps (Needle on black dragon leather). UNVERIFIED menu string - follows the product-name precedent of the other crafting interface rules; if wrong it simply never fires (layer 1 carries no product card, so this cannot cause a false block)."
+		},
+		{
+			"category": "crafting",
+			"inputs": [
+				[
+					"Needle"
+				],
+				[
+					"Thread"
+				],
+				[
+					"Black dragon leather"
+				]
+			],
+			"output": "Black d'hide body",
+			"trigger": {
+				"kind": "interface",
+				"name": "Black d'hide body",
+				"targets": []
+			},
+			"notes": "Make-menu product click for Black d'hide body (Needle on black dragon leather). UNVERIFIED menu string - follows the product-name precedent of the other crafting interface rules; if wrong it simply never fires (layer 1 carries no product card, so this cannot cause a false block)."
 		}
 	]
 }
