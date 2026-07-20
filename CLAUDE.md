@@ -361,9 +361,23 @@ mentioning if the owner asks why battlestaff crafting behavior changed.
     click that opened the menu and key stocks with `targets:["willow logs"]`
     (RecipeCatalog already supports targets + ANY_TARGET fallback, no
     catalog change needed either way).
-    **KNOWN BUG SHIPPING IN 0.2.4:** the 8 "Crossbow stock" rows collapse to
-    one lookup key and RecipeCatalog keeps the LAST, so making ANY stock
-    currently demands Magic logs + Magic stock (a false block). Fix = Phase C.
+    **PHASE C RESOLVED (0.2.5).** Owner capture settled it: product widgets
+    carry NO item id (`widgetItemId=-1` on every interface click), so the
+    label can't be disambiguated on its own. Instead the plugin remembers the
+    item-on-item pair that opened the menu (`lastUsedItemA/B`, ~100-tick
+    window) and `resolveInterfaceMaterial()` passes whichever half has an
+    EXACT rule (`RecipeCatalog.findExact`, no any-target fallback - a
+    fallback would match every candidate and prove nothing). The 8 stock rows
+    are keyed `targets:[<tier logs>]`. Crucially, `RecipeCatalog.load()` now
+    withholds the ANY_TARGET catch-all from interface names shared by more
+    than one recipe - counted automatically at load, so any future
+    generic-label family is safe by default. This had to be conditional:
+    206 interface recipes (smithing-forge 147, crafting 51, smelt 8) declare
+    explicit targets yet are looked up with a null target, so removing the
+    catch-all outright would have silently disabled Smithing and Crafting.
+    Unresolvable material = no rule = no block (owner ruling: never a false
+    block). Verified by simulation: Yew logs -> Yew stock, the Knife does not
+    resolve, and bars/platebodies/bows/shields still match unchanged.
   - **SYSTEMIC: the same collision exists outside fletching** (pre-existing,
     owner ruled 2026-07-21 to handle as separate work): one tool-on-material
     trigger with many products chosen in a follow-up interface, so only the

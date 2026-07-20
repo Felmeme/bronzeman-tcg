@@ -7365,9 +7365,11 @@
 			"trigger": {
 				"kind": "interface",
 				"name": "Crossbow stock",
-				"targets": []
+				"targets": [
+					"logs"
+				]
 			},
-			"notes": "knife-on-logs family (generalises the owner-verified mechanic). Wooden stock feeds into the Bronze crossbow chain via Bronze limbs."
+			"notes": "knife-on-logs family (generalises the owner-verified mechanic). Menu label is the generic 'Crossbow stock', so this row is matched by its material (Logs). Wooden stock feeds into the Bronze crossbow chain via Bronze limbs."
 		},
 		{
 			"category": "fletching",
@@ -7380,9 +7382,11 @@
 			"trigger": {
 				"kind": "interface",
 				"name": "Crossbow stock",
-				"targets": []
+				"targets": [
+					"oak logs"
+				]
 			},
-			"notes": "knife-on-logs family (generalises the owner-verified mechanic). Oak stock feeds into the Blurite crossbow chain via Blurite limbs."
+			"notes": "knife-on-logs family (generalises the owner-verified mechanic). Menu label is the generic 'Crossbow stock', so this row is matched by its material (Oak logs). Oak stock feeds into the Blurite crossbow chain via Blurite limbs."
 		},
 		{
 			"category": "fletching",
@@ -7395,9 +7399,11 @@
 			"trigger": {
 				"kind": "interface",
 				"name": "Crossbow stock",
-				"targets": []
+				"targets": [
+					"willow logs"
+				]
 			},
-			"notes": "knife-on-logs family (generalises the owner-verified mechanic). Willow stock feeds into the Iron crossbow chain via Iron limbs."
+			"notes": "knife-on-logs family (generalises the owner-verified mechanic). Menu label is the generic 'Crossbow stock', so this row is matched by its material (Willow logs). Willow stock feeds into the Iron crossbow chain via Iron limbs."
 		},
 		{
 			"category": "fletching",
@@ -7410,9 +7416,11 @@
 			"trigger": {
 				"kind": "interface",
 				"name": "Crossbow stock",
-				"targets": []
+				"targets": [
+					"teak logs"
+				]
 			},
-			"notes": "knife-on-logs family (generalises the owner-verified mechanic). Teak stock feeds into the Steel crossbow chain via Steel limbs."
+			"notes": "knife-on-logs family (generalises the owner-verified mechanic). Menu label is the generic 'Crossbow stock', so this row is matched by its material (Teak logs). Teak stock feeds into the Steel crossbow chain via Steel limbs."
 		},
 		{
 			"category": "fletching",
@@ -7425,9 +7433,11 @@
 			"trigger": {
 				"kind": "interface",
 				"name": "Crossbow stock",
-				"targets": []
+				"targets": [
+					"maple logs"
+				]
 			},
-			"notes": "knife-on-logs family (generalises the owner-verified mechanic). Maple stock feeds into the Mithril crossbow chain via Mithril limbs."
+			"notes": "knife-on-logs family (generalises the owner-verified mechanic). Menu label is the generic 'Crossbow stock', so this row is matched by its material (Maple logs). Maple stock feeds into the Mithril crossbow chain via Mithril limbs."
 		},
 		{
 			"category": "fletching",
@@ -7440,9 +7450,11 @@
 			"trigger": {
 				"kind": "interface",
 				"name": "Crossbow stock",
-				"targets": []
+				"targets": [
+					"mahogany logs"
+				]
 			},
-			"notes": "knife-on-logs family (generalises the owner-verified mechanic). Mahogany stock feeds into the Adamant crossbow chain via Adamantite limbs."
+			"notes": "knife-on-logs family (generalises the owner-verified mechanic). Menu label is the generic 'Crossbow stock', so this row is matched by its material (Mahogany logs). Mahogany stock feeds into the Adamant crossbow chain via Adamantite limbs."
 		},
 		{
 			"category": "fletching",
@@ -7455,9 +7467,11 @@
 			"trigger": {
 				"kind": "interface",
 				"name": "Crossbow stock",
-				"targets": []
+				"targets": [
+					"yew logs"
+				]
 			},
-			"notes": "knife-on-logs family (generalises the owner-verified mechanic). Yew stock feeds into the Runite crossbow chain via Runite limbs."
+			"notes": "knife-on-logs family (generalises the owner-verified mechanic). Menu label is the generic 'Crossbow stock', so this row is matched by its material (Yew logs). Yew stock feeds into the Runite crossbow chain via Runite limbs."
 		},
 		{
 			"category": "fletching",
@@ -7470,9 +7484,11 @@
 			"trigger": {
 				"kind": "interface",
 				"name": "Crossbow stock",
-				"targets": []
+				"targets": [
+					"magic logs"
+				]
 			},
-			"notes": "knife-on-logs family (generalises the owner-verified mechanic). Magic stock feeds into the Dragon crossbow chain via Dragon limbs."
+			"notes": "knife-on-logs family (generalises the owner-verified mechanic). Menu label is the generic 'Crossbow stock', so this row is matched by its material (Magic logs). Magic stock feeds into the Dragon crossbow chain via Dragon limbs."
 		},
 		{
 			"category": "fletching",

@@ -130,6 +130,9 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	// quieter way to dodge restrictions than switching this plugin off, so it should
 	// surface quickly rather than sit unnoticed for half an hour.
 	private static final int REQUIRED_PLUGIN_TICKS = 100;
+	// ~60s: long enough to browse a make menu before choosing, short enough that the
+	// remembered material can't leak into an unrelated interface opened much later.
+	private static final int MAKE_MATERIAL_MEMORY_TICKS = 100;
 	// Production-interface verbs: the furnace smelting screen (and possibly other stations)
 	// uses a different widget group than the SKILLMULTI/SMITHING ones we match directly, so
 	// any interface click with one of these options gets a recipe lookup by product name.
@@ -255,6 +258,14 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	// for the next container event. Read from the per-frame hide path - keep cheap.
 	private Set<String> carriedPickaxes = Collections.emptySet();
 	private Set<String> carriedAxes = Collections.emptySet();
+	// The item-on-item pair that most recently opened a "make" interface. Some menus
+	// label every tier identically ("Crossbow stock"), so the product name alone can't
+	// say which item is being made - but the material used to open the menu can.
+	// Both halves are kept because the click arrives either way round (knife on logs
+	// or logs on knife); the catalog decides which one is the real material.
+	private String lastUsedItemA;
+	private String lastUsedItemB;
+	private int lastUsedItemTick = Integer.MIN_VALUE;
 	private boolean markRefreshQueued;
 	private int markTickCounter;
 
@@ -1117,7 +1128,8 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 				&& !checkNodeRule(event, ResourceNodeCatalog.KIND_INTERFACE, product,
 					ResourceNodeCatalog.ANY_OPTION))
 			{
-				checkRecipe(event, RecipeCatalog.KIND_INTERFACE, product, null);
+				checkRecipe(event, RecipeCatalog.KIND_INTERFACE, product,
+					resolveInterfaceMaterial(product));
 			}
 			return;
 		}
@@ -1155,7 +1167,8 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 				&& !checkNodeRule(event, ResourceNodeCatalog.KIND_INTERFACE, product,
 					ResourceNodeCatalog.ANY_OPTION))
 			{
-				checkRecipe(event, RecipeCatalog.KIND_INTERFACE, product, null);
+				checkRecipe(event, RecipeCatalog.KIND_INTERFACE, product,
+					resolveInterfaceMaterial(product));
 			}
 		}
 	}
@@ -1217,6 +1230,12 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 		String source = target.substring(0, separator).trim();
 		String destination = target.substring(separator + USED_ON_SEPARATOR.length()).trim();
 
+		// Remember the pair: if this click opens a make interface, the product label may
+		// be too generic to identify the item, and this is the only record of what was used.
+		lastUsedItemA = source;
+		lastUsedItemB = destination;
+		lastUsedItemTick = client.getTickCount();
+
 		boolean isSpell = source.startsWith(CAST_PREFIX) || isSelectedWidgetSpell();
 		if (isSpell)
 		{
@@ -1271,6 +1290,31 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	 * identifies the product outright where the label cannot - the knife menu labels
 	 * every tier "Crossbow stock", but the item id distinguishes Willow from Magic.
 	 */
+	/**
+	 * Resolve the material behind a make-interface product click, for the menus whose
+	 * label is the same for every tier ("Crossbow stock"). Returns whichever remembered
+	 * item actually has a rule for this product - an exact lookup, since the normal
+	 * any-target fallback would match every candidate and prove nothing. Null when the
+	 * menu wasn't opened by a recent item-on-item, in which case the product is simply
+	 * not restricted rather than guessed at.
+	 */
+	private String resolveInterfaceMaterial(String product)
+	{
+		if (client.getTickCount() - lastUsedItemTick > MAKE_MATERIAL_MEMORY_TICKS)
+		{
+			return null;
+		}
+		for (String candidate : new String[]{lastUsedItemA, lastUsedItemB})
+		{
+			if (candidate != null && !candidate.isEmpty()
+				&& recipeCatalog.findExact(RecipeCatalog.KIND_INTERFACE, product, candidate) != null)
+			{
+				return candidate;
+			}
+		}
+		return null;
+	}
+
 	private void logInterfaceProduct(MenuOptionClicked event, String product)
 	{
 		if (!log.isDebugEnabled())

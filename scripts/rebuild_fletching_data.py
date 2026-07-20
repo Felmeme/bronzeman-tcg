@@ -119,17 +119,25 @@ def build():
     ]
     # OWNER FINDING (in-game, 2026-07-21): the knife menu labels EVERY tier
     # "Crossbow stock" - never the tier name - which is why the old tier-specific
-    # keys never matched and stocks never blocked. Keyed generically to match.
-    # KNOWN LIMITATION (tracked): all 8 collapse to one lookup key and
-    # RecipeCatalog keeps the LAST, so only the Magic row is reachable today.
-    # The generic label carries no tier, so the real fix is resolving the
-    # product by widget item id (Phase C) - do not "fix" this by restoring
-    # tier-name keys, they demonstrably never fire.
+    # keys never matched and stocks never blocked. The product widget carries no
+    # item id either (owner capture: widgetItemId=-1), so the label cannot be
+    # disambiguated on its own. Each tier is therefore keyed on the LOGS used to
+    # open the menu, which the plugin remembers from the item-on-item click
+    # (resolveInterfaceMaterial). RecipeCatalog deliberately withholds the
+    # any-target catch-all from names shared by several recipes, so these 8 match
+    # on their logs alone - never last-one-wins.
     for logs, stock, crossbow, limbs in STOCK_TIERS:
-        recipes.append(interface_recipe(
-            "Crossbow stock", [[logs]], stock,
-            "knife-on-logs family (generalises the owner-verified mechanic). "
-            f"{stock} feeds into the {crossbow} chain via {limbs}."))
+        recipes.append({
+            "category": "fletching",
+            "inputs": [[logs]],
+            "output": stock,
+            "trigger": {"kind": INTERFACE, "name": "Crossbow stock",
+                        "targets": [logs.lower()]},
+            "notes": "knife-on-logs family (generalises the owner-verified "
+                     f"mechanic). Menu label is the generic 'Crossbow stock', so "
+                     f"this row is matched by its material ({logs}). {stock} "
+                     f"feeds into the {crossbow} chain via {limbs}.",
+        })
 
     # ---- Wooden shields (Forestry, 2023): knife-on-logs family, spotted by
     # the owner in the knife menu (2026-07-20) - missing from the research

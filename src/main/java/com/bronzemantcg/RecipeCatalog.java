@@ -52,6 +52,22 @@ public class RecipeCatalog
 		load(gson);
 	}
 
+	/**
+	 * Exact lookup with no ANY_TARGET fallback. Used to decide which of several
+	 * candidate items is the real material behind a generic interface label: a
+	 * fallback match would answer "yes" for every candidate and tell us nothing.
+	 */
+	public Recipe findExact(String kind, String name, String target)
+	{
+		if (name == null || target == null)
+		{
+			return null;
+		}
+		return recipes.get(key(kind,
+			CardNames.stripDoseSuffix(name.trim().toLowerCase(Locale.ROOT)),
+			CardNames.stripDoseSuffix(target.trim().toLowerCase(Locale.ROOT))));
+	}
+
 	/** @return the recipe for this interaction, or null if unrestricted. */
 	public Recipe find(String kind, String name, String target)
 	{
@@ -95,6 +111,24 @@ public class RecipeCatalog
 			{
 				return;
 			}
+			// Interface names shared by several recipes (e.g. the knife menu labels every
+			// crossbow stock tier "Crossbow stock") cannot take the ANY_TARGET catch-all
+			// below: all of them would write the same key and only the last would survive,
+			// silently gating every tier on the last one's cards. Those must be matched on
+			// their declared target instead. Counted up front so the rule is automatic -
+			// any future generic-label family is handled without anyone noticing this trap.
+			Map<String, Integer> interfaceNameCounts = new HashMap<>();
+			for (RecipeDto dto : snapshot.recipes)
+			{
+				if (dto != null && dto.trigger != null && dto.trigger.kind != null
+					&& dto.trigger.name != null
+					&& KIND_INTERFACE.equals(dto.trigger.kind.trim().toLowerCase(Locale.ROOT)))
+				{
+					String n = dto.trigger.name.trim().toLowerCase(Locale.ROOT);
+					interfaceNameCounts.merge(n, 1, Integer::sum);
+				}
+			}
+
 			Map<String, Recipe> map = new HashMap<>();
 			for (RecipeDto dto : snapshot.recipes)
 			{
@@ -133,9 +167,12 @@ public class RecipeCatalog
 						// string is less stable than the item name.
 						map.put(key(kind, targetKey, ANY_TARGET), recipe);
 					}
-					if (KIND_INTERFACE.equals(kind))
+					if (KIND_INTERFACE.equals(kind) && interfaceNameCounts.getOrDefault(name, 0) <= 1)
 					{
-						// Make-X clicks only expose the product name, not the station.
+						// Make-X clicks only expose the product name, not the station, so a
+						// uniquely-named product is matched by name alone. Skipped for shared
+						// names (see interfaceNameCounts above) - those match on target only,
+						// and failing to resolve one simply means no restriction.
 						map.put(key(kind, name, ANY_TARGET), recipe);
 					}
 				}

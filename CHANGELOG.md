@@ -4,6 +4,18 @@ Versioning: 0.MINOR.PATCH — staying on 0.2.x until the full skills sweep is
 complete, then 0.3.0. The runelite-plugin.properties version line is bumped in
 the same commit as each release.
 
+## v0.2.5 — 2026-07-21
+
+### Fixes
+- Crossbow stocks are gated on the correct tier again. The fletching menu
+  labels every tier "Crossbow stock", so all eight rules shared one key and
+  only the last survived — making any stock demanded Magic logs and a Magic
+  stock. Each tier is now matched by the logs used to open the menu.
+- Bolt tipping blocks from the make-menu as well as the inventory, for all
+  gem and dragon-tipped bolts.
+- Added the missing Diamond dragon bolts recipe, and fixed two mistyped
+  bolt-tip names that stopped Dragonstone and Topaz dragon bolts matching.
+
 ## v0.2.4 — 2026-07-21
 
 ### New
