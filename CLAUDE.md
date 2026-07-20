@@ -342,6 +342,36 @@ mentioning if the owner asks why battlestaff crafting behavior changed.
     (matches card "Runite crossbow") but finished item = "Rune crossbow"
     (untracked!) - finished-name interface twin added, card stays Runite.
     Adamant has no such trap ("Adamant crossbow (u)" confirmed).
+  - **OWNER'S OWN FIX PASS (2026-07-21) - the lessons, learn these:**
+    (a) **Menu labels are not item names, and may be GENERIC.** The knife
+    menu labels every crossbow stock tier "Crossbow stock" - never "Willow
+    stock" - which is why the tier-keyed rules never fired. Same family as
+    "45 arrow shafts" (leading count). Assume nothing about the label.
+    (b) **Bow carving takes an output gate after all**: the knife menu fires
+    the STRUNG name, so gating on that card is what makes the carve block
+    (revises the 2026-07-20 logs-only ruling).
+    (c) A generic label carries no tier, so no amount of data fixes it -
+    the answer is `MenuEntry/MenuOptionClicked.getWidget().getItemId()`,
+    which identifies the product outright. `logInterfaceProduct()` now logs
+    raw/stripped/itemId/itemName at debug on every interface product click
+    (permanent, owner ruling) so this question is answerable without a code
+    change. **PHASE C (pending owner's in-game capture):** if product
+    widgets carry item ids, resolve the product by id and restore
+    tier-specific stock keys; if not, remember the log from the item-on-item
+    click that opened the menu and key stocks with `targets:["willow logs"]`
+    (RecipeCatalog already supports targets + ANY_TARGET fallback, no
+    catalog change needed either way).
+    **KNOWN BUG SHIPPING IN 0.2.4:** the 8 "Crossbow stock" rows collapse to
+    one lookup key and RecipeCatalog keeps the LAST, so making ANY stock
+    currently demands Magic logs + Magic stock (a false block). Fix = Phase C.
+  - **SYSTEMIC: the same collision exists outside fletching** (pre-existing,
+    owner ruled 2026-07-21 to handle as separate work): one tool-on-material
+    trigger with many products chosen in a follow-up interface, so only the
+    last row is reachable - `needle|leather` (6 products, only Leather chaps
+    reachable), needle on green/blue/red/black d'leather (3 each),
+    `glassblowing pipe|molten glass` (6), `item-on-object iron ore|furnace`
+    (Iron vs Steel bar). Fix is the same interface-twin pattern used for
+    bolts, but needs each interface's real menu strings verified first.
   - **STANDING DOCTRINE (owner instruction, 2026-07-20): never key rules
     on guessed menu/item strings.** Acceptable sources ONLY: (a) the
     owner's node-lookup debug capture (exact in-game strings), (b) wiki

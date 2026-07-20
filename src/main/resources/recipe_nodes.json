@@ -6947,7 +6947,7 @@
 				"name": "Shortbow",
 				"targets": []
 			},
-			"notes": "Stage 1 carving: knife menu fires the plain product name (owner debug-log verified). Tier's Logs only; no output gate (owner ruling 2026-07-20). Bow string NOT required here."
+			"notes": "Stage 1 carving: the knife menu fires the plain product name (owner debug-log verified) - which is the STRUNG bow's name, so gating on that card here is what actually makes the carve block (owner ruling 2026-07-21, revising the earlier logs-only call). Bow string still NOT required at this stage."
 		},
 		{
 			"category": "fletching",
@@ -6982,7 +6982,7 @@
 				"name": "Longbow",
 				"targets": []
 			},
-			"notes": "Stage 1 carving: knife menu fires the plain product name (owner debug-log verified). Tier's Logs only; no output gate (owner ruling 2026-07-20). Bow string NOT required here."
+			"notes": "Stage 1 carving: the knife menu fires the plain product name (owner debug-log verified) - which is the STRUNG bow's name, so gating on that card here is what actually makes the carve block (owner ruling 2026-07-21, revising the earlier logs-only call). Bow string still NOT required at this stage."
 		},
 		{
 			"category": "fletching",
@@ -7017,7 +7017,7 @@
 				"name": "Oak shortbow",
 				"targets": []
 			},
-			"notes": "Stage 1 carving: knife menu fires the plain product name (owner debug-log verified). Tier's Logs only; no output gate (owner ruling 2026-07-20). Bow string NOT required here."
+			"notes": "Stage 1 carving: the knife menu fires the plain product name (owner debug-log verified) - which is the STRUNG bow's name, so gating on that card here is what actually makes the carve block (owner ruling 2026-07-21, revising the earlier logs-only call). Bow string still NOT required at this stage."
 		},
 		{
 			"category": "fletching",
@@ -7052,7 +7052,7 @@
 				"name": "Oak longbow",
 				"targets": []
 			},
-			"notes": "Stage 1 carving: knife menu fires the plain product name (owner debug-log verified). Tier's Logs only; no output gate (owner ruling 2026-07-20). Bow string NOT required here."
+			"notes": "Stage 1 carving: the knife menu fires the plain product name (owner debug-log verified) - which is the STRUNG bow's name, so gating on that card here is what actually makes the carve block (owner ruling 2026-07-21, revising the earlier logs-only call). Bow string still NOT required at this stage."
 		},
 		{
 			"category": "fletching",
@@ -7087,7 +7087,7 @@
 				"name": "Willow shortbow",
 				"targets": []
 			},
-			"notes": "Stage 1 carving: knife menu fires the plain product name (owner debug-log verified). Tier's Logs only; no output gate (owner ruling 2026-07-20). Bow string NOT required here."
+			"notes": "Stage 1 carving: the knife menu fires the plain product name (owner debug-log verified) - which is the STRUNG bow's name, so gating on that card here is what actually makes the carve block (owner ruling 2026-07-21, revising the earlier logs-only call). Bow string still NOT required at this stage."
 		},
 		{
 			"category": "fletching",
@@ -7122,7 +7122,7 @@
 				"name": "Willow longbow",
 				"targets": []
 			},
-			"notes": "Stage 1 carving: knife menu fires the plain product name (owner debug-log verified). Tier's Logs only; no output gate (owner ruling 2026-07-20). Bow string NOT required here."
+			"notes": "Stage 1 carving: the knife menu fires the plain product name (owner debug-log verified) - which is the STRUNG bow's name, so gating on that card here is what actually makes the carve block (owner ruling 2026-07-21, revising the earlier logs-only call). Bow string still NOT required at this stage."
 		},
 		{
 			"category": "fletching",
@@ -7157,7 +7157,7 @@
 				"name": "Maple shortbow",
 				"targets": []
 			},
-			"notes": "Stage 1 carving: knife menu fires the plain product name (owner debug-log verified). Tier's Logs only; no output gate (owner ruling 2026-07-20). Bow string NOT required here."
+			"notes": "Stage 1 carving: the knife menu fires the plain product name (owner debug-log verified) - which is the STRUNG bow's name, so gating on that card here is what actually makes the carve block (owner ruling 2026-07-21, revising the earlier logs-only call). Bow string still NOT required at this stage."
 		},
 		{
 			"category": "fletching",
@@ -7192,7 +7192,7 @@
 				"name": "Maple longbow",
 				"targets": []
 			},
-			"notes": "Stage 1 carving: knife menu fires the plain product name (owner debug-log verified). Tier's Logs only; no output gate (owner ruling 2026-07-20). Bow string NOT required here."
+			"notes": "Stage 1 carving: the knife menu fires the plain product name (owner debug-log verified) - which is the STRUNG bow's name, so gating on that card here is what actually makes the carve block (owner ruling 2026-07-21, revising the earlier logs-only call). Bow string still NOT required at this stage."
 		},
 		{
 			"category": "fletching",
@@ -7227,7 +7227,7 @@
 				"name": "Yew shortbow",
 				"targets": []
 			},
-			"notes": "Stage 1 carving: knife menu fires the plain product name (owner debug-log verified). Tier's Logs only; no output gate (owner ruling 2026-07-20). Bow string NOT required here."
+			"notes": "Stage 1 carving: the knife menu fires the plain product name (owner debug-log verified) - which is the STRUNG bow's name, so gating on that card here is what actually makes the carve block (owner ruling 2026-07-21, revising the earlier logs-only call). Bow string still NOT required at this stage."
 		},
 		{
 			"category": "fletching",
@@ -7262,7 +7262,7 @@
 				"name": "Yew longbow",
 				"targets": []
 			},
-			"notes": "Stage 1 carving: knife menu fires the plain product name (owner debug-log verified). Tier's Logs only; no output gate (owner ruling 2026-07-20). Bow string NOT required here."
+			"notes": "Stage 1 carving: the knife menu fires the plain product name (owner debug-log verified) - which is the STRUNG bow's name, so gating on that card here is what actually makes the carve block (owner ruling 2026-07-21, revising the earlier logs-only call). Bow string still NOT required at this stage."
 		},
 		{
 			"category": "fletching",
@@ -7297,7 +7297,7 @@
 				"name": "Magic shortbow",
 				"targets": []
 			},
-			"notes": "Stage 1 carving: knife menu fires the plain product name (owner debug-log verified). Tier's Logs only; no output gate (owner ruling 2026-07-20). Bow string NOT required here."
+			"notes": "Stage 1 carving: the knife menu fires the plain product name (owner debug-log verified) - which is the STRUNG bow's name, so gating on that card here is what actually makes the carve block (owner ruling 2026-07-21, revising the earlier logs-only call). Bow string still NOT required at this stage."
 		},
 		{
 			"category": "fletching",
@@ -7332,7 +7332,7 @@
 				"name": "Magic longbow",
 				"targets": []
 			},
-			"notes": "Stage 1 carving: knife menu fires the plain product name (owner debug-log verified). Tier's Logs only; no output gate (owner ruling 2026-07-20). Bow string NOT required here."
+			"notes": "Stage 1 carving: the knife menu fires the plain product name (owner debug-log verified) - which is the STRUNG bow's name, so gating on that card here is what actually makes the carve block (owner ruling 2026-07-21, revising the earlier logs-only call). Bow string still NOT required at this stage."
 		},
 		{
 			"category": "fletching",
@@ -8455,38 +8455,6 @@
 					"Feather"
 				]
 			],
-			"output": "Dragon bolts",
-			"trigger": {
-				"kind": "item-on-item",
-				"name": "Feather",
-				"targets": [
-					"dragon bolts (unf)"
-				]
-			},
-			"notes": "Feather unfinished Dragon bolts (unf card absent) into bolts. Wiki (31 Jul 2024): 'Make-X option when fletching bolts' - interface twin added alongside the item-on-item entry; default-vs-toggle unverified so both are covered."
-		},
-		{
-			"category": "fletching",
-			"inputs": [
-				[
-					"Feather"
-				]
-			],
-			"output": "Dragon bolts",
-			"trigger": {
-				"kind": "interface",
-				"name": "Dragon bolts",
-				"targets": []
-			},
-			"notes": "Feather unfinished Dragon bolts (unf card absent) into bolts. Wiki (31 Jul 2024): 'Make-X option when fletching bolts' - interface twin added alongside the item-on-item entry; default-vs-toggle unverified so both are covered."
-		},
-		{
-			"category": "fletching",
-			"inputs": [
-				[
-					"Feather"
-				]
-			],
 			"output": "Blurite bolts",
 			"trigger": {
 				"kind": "item-on-item",
@@ -8516,6 +8484,38 @@
 			"category": "fletching",
 			"inputs": [
 				[
+					"Feather"
+				]
+			],
+			"output": "Dragon bolts",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Feather",
+				"targets": [
+					"dragon bolts (unf)"
+				]
+			},
+			"notes": "Feather unfinished Dragon bolts (unf card absent) into bolts. Wiki (31 Jul 2024): 'Make-X option when fletching bolts' - interface twin added alongside the item-on-item entry; default-vs-toggle unverified so both are covered."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Feather"
+				]
+			],
+			"output": "Dragon bolts",
+			"trigger": {
+				"kind": "interface",
+				"name": "Dragon bolts",
+				"targets": []
+			},
+			"notes": "Feather unfinished Dragon bolts (unf card absent) into bolts. Wiki (31 Jul 2024): 'Make-X option when fletching bolts' - interface twin added alongside the item-on-item entry; default-vs-toggle unverified so both are covered."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
 					"Bronze bolts"
 				]
 			],
@@ -8527,228 +8527,22 @@
 					"opal bolt tips"
 				]
 			},
-			"notes": "Opal bolt tips (tip card absent) attach to Bronze bolts (wiki-verified this pass). UNVERIFIED interface-vs-instant - lean instant per the matrix."
+			"notes": "Opal bolt tips (tip card absent) attach to Bronze bolts -> Opal bolts. Metal base wiki-verified per gem; the dragon-base row mirrors it. Interface twin registered alongside the item-on-item entry - UNVERIFIED which the client uses, and an unmatched twin never fires."
 		},
 		{
 			"category": "fletching",
 			"inputs": [
 				[
-					"Blurite bolts"
+					"Bronze bolts"
 				]
 			],
-			"output": "Jade bolts",
+			"output": "Opal bolts",
 			"trigger": {
-				"kind": "item-on-item",
-				"name": "Blurite bolts",
-				"targets": [
-					"jade bolt tips"
-				]
+				"kind": "interface",
+				"name": "Opal bolts",
+				"targets": []
 			},
-			"notes": "Jade bolt tips (tip card absent) attach to Blurite bolts (wiki-verified this pass). UNVERIFIED interface-vs-instant - lean instant per the matrix."
-		},
-		{
-			"category": "fletching",
-			"inputs": [
-				[
-					"Iron bolts"
-				]
-			],
-			"output": "Pearl bolts",
-			"trigger": {
-				"kind": "item-on-item",
-				"name": "Iron bolts",
-				"targets": [
-					"pearl bolt tips"
-				]
-			},
-			"notes": "Pearl bolt tips (tip card absent) attach to Iron bolts (wiki-verified this pass). UNVERIFIED interface-vs-instant - lean instant per the matrix."
-		},
-		{
-			"category": "fletching",
-			"inputs": [
-				[
-					"Steel bolts"
-				]
-			],
-			"output": "Topaz bolts",
-			"trigger": {
-				"kind": "item-on-item",
-				"name": "Steel bolts",
-				"targets": [
-					"red topaz bolt tips"
-				]
-			},
-			"notes": "Red topaz bolt tips (tip card absent) attach to Steel bolts (wiki-verified this pass). UNVERIFIED interface-vs-instant - lean instant per the matrix."
-		},
-		{
-			"category": "fletching",
-			"inputs": [
-				[
-					"Mithril bolts"
-				]
-			],
-			"output": "Sapphire bolts",
-			"trigger": {
-				"kind": "item-on-item",
-				"name": "Mithril bolts",
-				"targets": [
-					"sapphire bolt tips"
-				]
-			},
-			"notes": "Sapphire bolt tips (tip card absent) attach to Mithril bolts (wiki-verified this pass). UNVERIFIED interface-vs-instant - lean instant per the matrix."
-		},
-		{
-			"category": "fletching",
-			"inputs": [
-				[
-					"Mithril bolts"
-				]
-			],
-			"output": "Emerald bolts",
-			"trigger": {
-				"kind": "item-on-item",
-				"name": "Mithril bolts",
-				"targets": [
-					"emerald bolt tips"
-				]
-			},
-			"notes": "Emerald bolt tips (tip card absent) attach to Mithril bolts (wiki-verified this pass). UNVERIFIED interface-vs-instant - lean instant per the matrix."
-		},
-		{
-			"category": "fletching",
-			"inputs": [
-				[
-					"Adamant bolts"
-				]
-			],
-			"output": "Ruby bolts",
-			"trigger": {
-				"kind": "item-on-item",
-				"name": "Adamant bolts",
-				"targets": [
-					"ruby bolt tips"
-				]
-			},
-			"notes": "Ruby bolt tips (tip card absent) attach to Adamant bolts (wiki-verified this pass). UNVERIFIED interface-vs-instant - lean instant per the matrix."
-		},
-		{
-			"category": "fletching",
-			"inputs": [
-				[
-					"Adamant bolts"
-				]
-			],
-			"output": "Diamond bolts",
-			"trigger": {
-				"kind": "item-on-item",
-				"name": "Adamant bolts",
-				"targets": [
-					"diamond bolt tips"
-				]
-			},
-			"notes": "Diamond bolt tips (tip card absent) attach to Adamant bolts (wiki-verified this pass). UNVERIFIED interface-vs-instant - lean instant per the matrix."
-		},
-		{
-			"category": "fletching",
-			"inputs": [
-				[
-					"Runite bolts"
-				]
-			],
-			"output": "Dragonstone bolts",
-			"trigger": {
-				"kind": "item-on-item",
-				"name": "Runite bolts",
-				"targets": [
-					"dragonstone bolt tips"
-				]
-			},
-			"notes": "Dragonstone bolt tips (tip card absent) attach to Runite bolts (wiki-verified this pass). UNVERIFIED interface-vs-instant - lean instant per the matrix."
-		},
-		{
-			"category": "fletching",
-			"inputs": [
-				[
-					"Runite bolts"
-				]
-			],
-			"output": "Onyx bolts",
-			"trigger": {
-				"kind": "item-on-item",
-				"name": "Runite bolts",
-				"targets": [
-					"onyx bolt tips"
-				]
-			},
-			"notes": "Onyx bolt tips (tip card absent) attach to Runite bolts (wiki-verified this pass). UNVERIFIED interface-vs-instant - lean instant per the matrix."
-		},
-		{
-			"category": "fletching",
-			"inputs": [
-				[
-					"Dragon bolts"
-				]
-			],
-			"output": "Onyx dragon bolts",
-			"trigger": {
-				"kind": "item-on-item",
-				"name": "Dragon bolts",
-				"targets": [
-					"onyx bolt tips"
-				]
-			},
-			"notes": "Onyx bolt tips (tip card absent) attach to Dragon bolts."
-		},
-		{
-			"category": "fletching",
-			"inputs": [
-				[
-					"Dragon bolts"
-				]
-			],
-			"output": "Dragonstone dragon bolts",
-			"trigger": {
-				"kind": "item-on-item",
-				"name": "Dragon bolts",
-				"targets": [
-					"draongstone bolt tips"
-				]
-			},
-			"notes": "Dragonstone bolt tips (tip card absent) attach to Dragon bolts."
-		},
-		{
-			"category": "fletching",
-			"inputs": [
-				[
-					"Dragon bolts"
-				]
-			],
-			"output": "Emerald dragon bolts",
-			"trigger": {
-				"kind": "item-on-item",
-				"name": "Dragon bolts",
-				"targets": [
-					"emerald bolt tips"
-				]
-			},
-			"notes": "Emerald bolt tips (tip card absent) attach to Dragon bolts."
-		},
-		{
-			"category": "fletching",
-			"inputs": [
-				[
-					"Dragon bolts"
-				]
-			],
-			"output": "Jade dragon bolts",
-			"trigger": {
-				"kind": "item-on-item",
-				"name": "Dragon bolts",
-				"targets": [
-					"jade bolt tips"
-				]
-			},
-			"notes": "Jade bolt tips (tip card absent) attach to Dragon bolts."
+			"notes": "Opal bolt tips (tip card absent) attach to Bronze bolts -> Opal bolts. Metal base wiki-verified per gem; the dragon-base row mirrors it. Interface twin registered alongside the item-on-item entry - UNVERIFIED which the client uses, and an unmatched twin never fires."
 		},
 		{
 			"category": "fletching",
@@ -8765,7 +8559,118 @@
 					"opal bolt tips"
 				]
 			},
-			"notes": "Opal bolt tips (tip card absent) attach to Dragon bolts."
+			"notes": "Opal bolt tips (tip card absent) attach to Dragon bolts -> Opal dragon bolts. Metal base wiki-verified per gem; the dragon-base row mirrors it. Interface twin registered alongside the item-on-item entry - UNVERIFIED which the client uses, and an unmatched twin never fires."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Dragon bolts"
+				]
+			],
+			"output": "Opal dragon bolts",
+			"trigger": {
+				"kind": "interface",
+				"name": "Opal dragon bolts",
+				"targets": []
+			},
+			"notes": "Opal bolt tips (tip card absent) attach to Dragon bolts -> Opal dragon bolts. Metal base wiki-verified per gem; the dragon-base row mirrors it. Interface twin registered alongside the item-on-item entry - UNVERIFIED which the client uses, and an unmatched twin never fires."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Blurite bolts"
+				]
+			],
+			"output": "Jade bolts",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Blurite bolts",
+				"targets": [
+					"jade bolt tips"
+				]
+			},
+			"notes": "Jade bolt tips (tip card absent) attach to Blurite bolts -> Jade bolts. Metal base wiki-verified per gem; the dragon-base row mirrors it. Interface twin registered alongside the item-on-item entry - UNVERIFIED which the client uses, and an unmatched twin never fires."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Blurite bolts"
+				]
+			],
+			"output": "Jade bolts",
+			"trigger": {
+				"kind": "interface",
+				"name": "Jade bolts",
+				"targets": []
+			},
+			"notes": "Jade bolt tips (tip card absent) attach to Blurite bolts -> Jade bolts. Metal base wiki-verified per gem; the dragon-base row mirrors it. Interface twin registered alongside the item-on-item entry - UNVERIFIED which the client uses, and an unmatched twin never fires."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Dragon bolts"
+				]
+			],
+			"output": "Jade dragon bolts",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Dragon bolts",
+				"targets": [
+					"jade bolt tips"
+				]
+			},
+			"notes": "Jade bolt tips (tip card absent) attach to Dragon bolts -> Jade dragon bolts. Metal base wiki-verified per gem; the dragon-base row mirrors it. Interface twin registered alongside the item-on-item entry - UNVERIFIED which the client uses, and an unmatched twin never fires."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Dragon bolts"
+				]
+			],
+			"output": "Jade dragon bolts",
+			"trigger": {
+				"kind": "interface",
+				"name": "Jade dragon bolts",
+				"targets": []
+			},
+			"notes": "Jade bolt tips (tip card absent) attach to Dragon bolts -> Jade dragon bolts. Metal base wiki-verified per gem; the dragon-base row mirrors it. Interface twin registered alongside the item-on-item entry - UNVERIFIED which the client uses, and an unmatched twin never fires."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Iron bolts"
+				]
+			],
+			"output": "Pearl bolts",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Iron bolts",
+				"targets": [
+					"pearl bolt tips"
+				]
+			},
+			"notes": "Pearl bolt tips (tip card absent) attach to Iron bolts -> Pearl bolts. Metal base wiki-verified per gem; the dragon-base row mirrors it. Interface twin registered alongside the item-on-item entry - UNVERIFIED which the client uses, and an unmatched twin never fires."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Iron bolts"
+				]
+			],
+			"output": "Pearl bolts",
+			"trigger": {
+				"kind": "interface",
+				"name": "Pearl bolts",
+				"targets": []
+			},
+			"notes": "Pearl bolt tips (tip card absent) attach to Iron bolts -> Pearl bolts. Metal base wiki-verified per gem; the dragon-base row mirrors it. Interface twin registered alongside the item-on-item entry - UNVERIFIED which the client uses, and an unmatched twin never fires."
 		},
 		{
 			"category": "fletching",
@@ -8782,7 +8687,7 @@
 					"pearl bolt tips"
 				]
 			},
-			"notes": "Pearl bolt tips (tip card absent) attach to Dragon bolts."
+			"notes": "Pearl bolt tips (tip card absent) attach to Dragon bolts -> Pearl dragon bolts. Metal base wiki-verified per gem; the dragon-base row mirrors it. Interface twin registered alongside the item-on-item entry - UNVERIFIED which the client uses, and an unmatched twin never fires."
 		},
 		{
 			"category": "fletching",
@@ -8791,15 +8696,109 @@
 					"Dragon bolts"
 				]
 			],
-			"output": "Ruby dragon bolts",
+			"output": "Pearl dragon bolts",
+			"trigger": {
+				"kind": "interface",
+				"name": "Pearl dragon bolts",
+				"targets": []
+			},
+			"notes": "Pearl bolt tips (tip card absent) attach to Dragon bolts -> Pearl dragon bolts. Metal base wiki-verified per gem; the dragon-base row mirrors it. Interface twin registered alongside the item-on-item entry - UNVERIFIED which the client uses, and an unmatched twin never fires."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Steel bolts"
+				]
+			],
+			"output": "Topaz bolts",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Steel bolts",
+				"targets": [
+					"red topaz bolt tips"
+				]
+			},
+			"notes": "Red topaz bolt tips (tip card absent) attach to Steel bolts -> Topaz bolts. Metal base wiki-verified per gem; the dragon-base row mirrors it. Interface twin registered alongside the item-on-item entry - UNVERIFIED which the client uses, and an unmatched twin never fires."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Steel bolts"
+				]
+			],
+			"output": "Topaz bolts",
+			"trigger": {
+				"kind": "interface",
+				"name": "Topaz bolts",
+				"targets": []
+			},
+			"notes": "Red topaz bolt tips (tip card absent) attach to Steel bolts -> Topaz bolts. Metal base wiki-verified per gem; the dragon-base row mirrors it. Interface twin registered alongside the item-on-item entry - UNVERIFIED which the client uses, and an unmatched twin never fires."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Dragon bolts"
+				]
+			],
+			"output": "Topaz dragon bolts",
 			"trigger": {
 				"kind": "item-on-item",
 				"name": "Dragon bolts",
 				"targets": [
-					"ruby bolt tips"
+					"red topaz bolt tips"
 				]
 			},
-			"notes": "Ruby bolt tips (tip card absent) attach to Dragon bolts."
+			"notes": "Red topaz bolt tips (tip card absent) attach to Dragon bolts -> Topaz dragon bolts. Metal base wiki-verified per gem; the dragon-base row mirrors it. Interface twin registered alongside the item-on-item entry - UNVERIFIED which the client uses, and an unmatched twin never fires."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Dragon bolts"
+				]
+			],
+			"output": "Topaz dragon bolts",
+			"trigger": {
+				"kind": "interface",
+				"name": "Topaz dragon bolts",
+				"targets": []
+			},
+			"notes": "Red topaz bolt tips (tip card absent) attach to Dragon bolts -> Topaz dragon bolts. Metal base wiki-verified per gem; the dragon-base row mirrors it. Interface twin registered alongside the item-on-item entry - UNVERIFIED which the client uses, and an unmatched twin never fires."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Mithril bolts"
+				]
+			],
+			"output": "Sapphire bolts",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Mithril bolts",
+				"targets": [
+					"sapphire bolt tips"
+				]
+			},
+			"notes": "Sapphire bolt tips (tip card absent) attach to Mithril bolts -> Sapphire bolts. Metal base wiki-verified per gem; the dragon-base row mirrors it. Interface twin registered alongside the item-on-item entry - UNVERIFIED which the client uses, and an unmatched twin never fires."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Mithril bolts"
+				]
+			],
+			"output": "Sapphire bolts",
+			"trigger": {
+				"kind": "interface",
+				"name": "Sapphire bolts",
+				"targets": []
+			},
+			"notes": "Sapphire bolt tips (tip card absent) attach to Mithril bolts -> Sapphire bolts. Metal base wiki-verified per gem; the dragon-base row mirrors it. Interface twin registered alongside the item-on-item entry - UNVERIFIED which the client uses, and an unmatched twin never fires."
 		},
 		{
 			"category": "fletching",
@@ -8816,7 +8815,7 @@
 					"sapphire bolt tips"
 				]
 			},
-			"notes": "Sapphire bolt tips (tip card absent) attach to Dragon bolts."
+			"notes": "Sapphire bolt tips (tip card absent) attach to Dragon bolts -> Sapphire dragon bolts. Metal base wiki-verified per gem; the dragon-base row mirrors it. Interface twin registered alongside the item-on-item entry - UNVERIFIED which the client uses, and an unmatched twin never fires."
 		},
 		{
 			"category": "fletching",
@@ -8825,15 +8824,333 @@
 					"Dragon bolts"
 				]
 			],
-			"output": "Topaz dragon bolts",
+			"output": "Sapphire dragon bolts",
+			"trigger": {
+				"kind": "interface",
+				"name": "Sapphire dragon bolts",
+				"targets": []
+			},
+			"notes": "Sapphire bolt tips (tip card absent) attach to Dragon bolts -> Sapphire dragon bolts. Metal base wiki-verified per gem; the dragon-base row mirrors it. Interface twin registered alongside the item-on-item entry - UNVERIFIED which the client uses, and an unmatched twin never fires."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Mithril bolts"
+				]
+			],
+			"output": "Emerald bolts",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Mithril bolts",
+				"targets": [
+					"emerald bolt tips"
+				]
+			},
+			"notes": "Emerald bolt tips (tip card absent) attach to Mithril bolts -> Emerald bolts. Metal base wiki-verified per gem; the dragon-base row mirrors it. Interface twin registered alongside the item-on-item entry - UNVERIFIED which the client uses, and an unmatched twin never fires."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Mithril bolts"
+				]
+			],
+			"output": "Emerald bolts",
+			"trigger": {
+				"kind": "interface",
+				"name": "Emerald bolts",
+				"targets": []
+			},
+			"notes": "Emerald bolt tips (tip card absent) attach to Mithril bolts -> Emerald bolts. Metal base wiki-verified per gem; the dragon-base row mirrors it. Interface twin registered alongside the item-on-item entry - UNVERIFIED which the client uses, and an unmatched twin never fires."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Dragon bolts"
+				]
+			],
+			"output": "Emerald dragon bolts",
 			"trigger": {
 				"kind": "item-on-item",
 				"name": "Dragon bolts",
 				"targets": [
-					"topaz bolt tips"
+					"emerald bolt tips"
 				]
 			},
-			"notes": "Topaz bolt tips (tip card absent) attach to Dragon bolts."
+			"notes": "Emerald bolt tips (tip card absent) attach to Dragon bolts -> Emerald dragon bolts. Metal base wiki-verified per gem; the dragon-base row mirrors it. Interface twin registered alongside the item-on-item entry - UNVERIFIED which the client uses, and an unmatched twin never fires."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Dragon bolts"
+				]
+			],
+			"output": "Emerald dragon bolts",
+			"trigger": {
+				"kind": "interface",
+				"name": "Emerald dragon bolts",
+				"targets": []
+			},
+			"notes": "Emerald bolt tips (tip card absent) attach to Dragon bolts -> Emerald dragon bolts. Metal base wiki-verified per gem; the dragon-base row mirrors it. Interface twin registered alongside the item-on-item entry - UNVERIFIED which the client uses, and an unmatched twin never fires."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Adamant bolts"
+				]
+			],
+			"output": "Ruby bolts",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Adamant bolts",
+				"targets": [
+					"ruby bolt tips"
+				]
+			},
+			"notes": "Ruby bolt tips (tip card absent) attach to Adamant bolts -> Ruby bolts. Metal base wiki-verified per gem; the dragon-base row mirrors it. Interface twin registered alongside the item-on-item entry - UNVERIFIED which the client uses, and an unmatched twin never fires."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Adamant bolts"
+				]
+			],
+			"output": "Ruby bolts",
+			"trigger": {
+				"kind": "interface",
+				"name": "Ruby bolts",
+				"targets": []
+			},
+			"notes": "Ruby bolt tips (tip card absent) attach to Adamant bolts -> Ruby bolts. Metal base wiki-verified per gem; the dragon-base row mirrors it. Interface twin registered alongside the item-on-item entry - UNVERIFIED which the client uses, and an unmatched twin never fires."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Dragon bolts"
+				]
+			],
+			"output": "Ruby dragon bolts",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Dragon bolts",
+				"targets": [
+					"ruby bolt tips"
+				]
+			},
+			"notes": "Ruby bolt tips (tip card absent) attach to Dragon bolts -> Ruby dragon bolts. Metal base wiki-verified per gem; the dragon-base row mirrors it. Interface twin registered alongside the item-on-item entry - UNVERIFIED which the client uses, and an unmatched twin never fires."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Dragon bolts"
+				]
+			],
+			"output": "Ruby dragon bolts",
+			"trigger": {
+				"kind": "interface",
+				"name": "Ruby dragon bolts",
+				"targets": []
+			},
+			"notes": "Ruby bolt tips (tip card absent) attach to Dragon bolts -> Ruby dragon bolts. Metal base wiki-verified per gem; the dragon-base row mirrors it. Interface twin registered alongside the item-on-item entry - UNVERIFIED which the client uses, and an unmatched twin never fires."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Adamant bolts"
+				]
+			],
+			"output": "Diamond bolts",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Adamant bolts",
+				"targets": [
+					"diamond bolt tips"
+				]
+			},
+			"notes": "Diamond bolt tips (tip card absent) attach to Adamant bolts -> Diamond bolts. Metal base wiki-verified per gem; the dragon-base row mirrors it. Interface twin registered alongside the item-on-item entry - UNVERIFIED which the client uses, and an unmatched twin never fires."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Adamant bolts"
+				]
+			],
+			"output": "Diamond bolts",
+			"trigger": {
+				"kind": "interface",
+				"name": "Diamond bolts",
+				"targets": []
+			},
+			"notes": "Diamond bolt tips (tip card absent) attach to Adamant bolts -> Diamond bolts. Metal base wiki-verified per gem; the dragon-base row mirrors it. Interface twin registered alongside the item-on-item entry - UNVERIFIED which the client uses, and an unmatched twin never fires."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Dragon bolts"
+				]
+			],
+			"output": "Diamond dragon bolts",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Dragon bolts",
+				"targets": [
+					"diamond bolt tips"
+				]
+			},
+			"notes": "Diamond bolt tips (tip card absent) attach to Dragon bolts -> Diamond dragon bolts. Metal base wiki-verified per gem; the dragon-base row mirrors it. Interface twin registered alongside the item-on-item entry - UNVERIFIED which the client uses, and an unmatched twin never fires."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Dragon bolts"
+				]
+			],
+			"output": "Diamond dragon bolts",
+			"trigger": {
+				"kind": "interface",
+				"name": "Diamond dragon bolts",
+				"targets": []
+			},
+			"notes": "Diamond bolt tips (tip card absent) attach to Dragon bolts -> Diamond dragon bolts. Metal base wiki-verified per gem; the dragon-base row mirrors it. Interface twin registered alongside the item-on-item entry - UNVERIFIED which the client uses, and an unmatched twin never fires."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Runite bolts"
+				]
+			],
+			"output": "Dragonstone bolts",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Runite bolts",
+				"targets": [
+					"dragonstone bolt tips"
+				]
+			},
+			"notes": "Dragonstone bolt tips (tip card absent) attach to Runite bolts -> Dragonstone bolts. Metal base wiki-verified per gem; the dragon-base row mirrors it. Interface twin registered alongside the item-on-item entry - UNVERIFIED which the client uses, and an unmatched twin never fires."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Runite bolts"
+				]
+			],
+			"output": "Dragonstone bolts",
+			"trigger": {
+				"kind": "interface",
+				"name": "Dragonstone bolts",
+				"targets": []
+			},
+			"notes": "Dragonstone bolt tips (tip card absent) attach to Runite bolts -> Dragonstone bolts. Metal base wiki-verified per gem; the dragon-base row mirrors it. Interface twin registered alongside the item-on-item entry - UNVERIFIED which the client uses, and an unmatched twin never fires."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Dragon bolts"
+				]
+			],
+			"output": "Dragonstone dragon bolts",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Dragon bolts",
+				"targets": [
+					"dragonstone bolt tips"
+				]
+			},
+			"notes": "Dragonstone bolt tips (tip card absent) attach to Dragon bolts -> Dragonstone dragon bolts. Metal base wiki-verified per gem; the dragon-base row mirrors it. Interface twin registered alongside the item-on-item entry - UNVERIFIED which the client uses, and an unmatched twin never fires."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Dragon bolts"
+				]
+			],
+			"output": "Dragonstone dragon bolts",
+			"trigger": {
+				"kind": "interface",
+				"name": "Dragonstone dragon bolts",
+				"targets": []
+			},
+			"notes": "Dragonstone bolt tips (tip card absent) attach to Dragon bolts -> Dragonstone dragon bolts. Metal base wiki-verified per gem; the dragon-base row mirrors it. Interface twin registered alongside the item-on-item entry - UNVERIFIED which the client uses, and an unmatched twin never fires."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Runite bolts"
+				]
+			],
+			"output": "Onyx bolts",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Runite bolts",
+				"targets": [
+					"onyx bolt tips"
+				]
+			},
+			"notes": "Onyx bolt tips (tip card absent) attach to Runite bolts -> Onyx bolts. Metal base wiki-verified per gem; the dragon-base row mirrors it. Interface twin registered alongside the item-on-item entry - UNVERIFIED which the client uses, and an unmatched twin never fires."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Runite bolts"
+				]
+			],
+			"output": "Onyx bolts",
+			"trigger": {
+				"kind": "interface",
+				"name": "Onyx bolts",
+				"targets": []
+			},
+			"notes": "Onyx bolt tips (tip card absent) attach to Runite bolts -> Onyx bolts. Metal base wiki-verified per gem; the dragon-base row mirrors it. Interface twin registered alongside the item-on-item entry - UNVERIFIED which the client uses, and an unmatched twin never fires."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Dragon bolts"
+				]
+			],
+			"output": "Onyx dragon bolts",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Dragon bolts",
+				"targets": [
+					"onyx bolt tips"
+				]
+			},
+			"notes": "Onyx bolt tips (tip card absent) attach to Dragon bolts -> Onyx dragon bolts. Metal base wiki-verified per gem; the dragon-base row mirrors it. Interface twin registered alongside the item-on-item entry - UNVERIFIED which the client uses, and an unmatched twin never fires."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Dragon bolts"
+				]
+			],
+			"output": "Onyx dragon bolts",
+			"trigger": {
+				"kind": "interface",
+				"name": "Onyx dragon bolts",
+				"targets": []
+			},
+			"notes": "Onyx bolt tips (tip card absent) attach to Dragon bolts -> Onyx dragon bolts. Metal base wiki-verified per gem; the dragon-base row mirrors it. Interface twin registered alongside the item-on-item entry - UNVERIFIED which the client uses, and an unmatched twin never fires."
 		},
 		{
 			"category": "fletching",

@@ -92,10 +92,12 @@ def build():
             # Card/item names capitalise only the first word: "Magic longbow".
             product = f"{prefix} {base.lower()}" if prefix else base
             recipes.append(interface_recipe(
-                product, [[logs]], None,
-                "Stage 1 carving: knife menu fires the plain product name "
-                "(owner debug-log verified). Tier's Logs only; no output gate "
-                "(owner ruling 2026-07-20). Bow string NOT required here."))
+                product, [[logs]], product,
+                "Stage 1 carving: the knife menu fires the plain product name "
+                "(owner debug-log verified) - which is the STRUNG bow's name, so "
+                "gating on that card here is what actually makes the carve block "
+                "(owner ruling 2026-07-21, revising the earlier logs-only call). "
+                "Bow string still NOT required at this stage."))
             recipes.append(item_recipe(
                 "Bow string", f"{product} (u)", [[logs], ["Bow string"]], product,
                 "Stage 2 stringing, intercepted at the bow-string-on-unstrung "
@@ -115,9 +117,17 @@ def build():
         ("Yew logs", "Yew stock", "Runite crossbow", "Runite limbs"),
         ("Magic logs", "Magic stock", "Dragon crossbow", "Dragon limbs"),
     ]
+    # OWNER FINDING (in-game, 2026-07-21): the knife menu labels EVERY tier
+    # "Crossbow stock" - never the tier name - which is why the old tier-specific
+    # keys never matched and stocks never blocked. Keyed generically to match.
+    # KNOWN LIMITATION (tracked): all 8 collapse to one lookup key and
+    # RecipeCatalog keeps the LAST, so only the Magic row is reachable today.
+    # The generic label carries no tier, so the real fix is resolving the
+    # product by widget item id (Phase C) - do not "fix" this by restoring
+    # tier-name keys, they demonstrably never fire.
     for logs, stock, crossbow, limbs in STOCK_TIERS:
         recipes.append(interface_recipe(
-            stock, [[logs]], stock,
+            "Crossbow stock", [[logs]], stock,
             "knife-on-logs family (generalises the owner-verified mechanic). "
             f"{stock} feeds into the {crossbow} chain via {limbs}."))
 
@@ -219,7 +229,9 @@ def build():
     # default-on) PLUS an interface twin (2024 wiki change note confirms the
     # make interface exists for bolt feathering; default-vs-toggle unverified).
     # Added Blurite as a 7th tier (missing from the old 35; feeds Jade bolts). ----
-    BOLT_TIERS = ["Bronze", "Iron", "Steel", "Mithril", "Adamant", "Runite", "Blurite"]
+    # Dragon added by the owner 2026-07-21 (8th tier; feeds the dragon-tipped family).
+    BOLT_TIERS = ["Bronze", "Iron", "Steel", "Mithril", "Adamant", "Runite", "Blurite",
+                  "Dragon"]
     for tier in BOLT_TIERS:
         output = f"{tier} bolts"
         notes = (
@@ -232,29 +244,43 @@ def build():
             "Feather", f"{tier.lower()} bolts (unf)", [["Feather"]], output, notes))
         recipes.append(interface_recipe(output, [["Feather"]], output, notes))
 
-    # ---- Gem-tipped bolts: wiki-verified base metal-bolt tier per gem
-    # (varies by gem, NOT a single "metal base" as the matrix placeholder
-    # suggested - confirmed per-gem via individual wiki pages this pass). ----
+    # ---- Gem-tipped bolts. Two bases per gem: the wiki-verified metal tier
+    # (varies per gem - NOT one shared base) and Dragon bolts, which yield
+    # "<Gem> dragon bolts" (owner-added 2026-07-21; Diamond was the one variant
+    # missing, and the hand-copied rows carried two typos - "draongstone" and
+    # "topaz" for what is really "red topaz bolt tips" - both fixed by generating
+    # the tip name from the gem here rather than hand-writing it).
+    # Every row also gets an INTERFACE twin keyed on the product card (owner
+    # ruling 2026-07-21): tipping is Make-X-able like feathering, and a twin
+    # whose menu string turns out wrong simply never fires - it cannot
+    # false-block, so registering both kinds is the safe default. ----
+    # (bolt-tip item prefix, metal base, gem name as it appears in products)
     GEM_BOLTS = [
-        ("Opal", "Bronze bolts"),
-        ("Jade", "Blurite bolts"),
-        ("Pearl", "Iron bolts"),
-        ("Red topaz", "Steel bolts", "Topaz bolts"),
-        ("Sapphire", "Mithril bolts"),
-        ("Emerald", "Mithril bolts"),
-        ("Ruby", "Adamant bolts"),
-        ("Diamond", "Adamant bolts"),
-        ("Dragonstone", "Runite bolts"),
-        ("Onyx", "Runite bolts"),
+        ("Opal", "Bronze bolts", "Opal"),
+        ("Jade", "Blurite bolts", "Jade"),
+        ("Pearl", "Iron bolts", "Pearl"),
+        ("Red topaz", "Steel bolts", "Topaz"),
+        ("Sapphire", "Mithril bolts", "Sapphire"),
+        ("Emerald", "Mithril bolts", "Emerald"),
+        ("Ruby", "Adamant bolts", "Ruby"),
+        ("Diamond", "Adamant bolts", "Diamond"),
+        ("Dragonstone", "Runite bolts", "Dragonstone"),
+        ("Onyx", "Runite bolts", "Onyx"),
     ]
-    for entry in GEM_BOLTS:
-        tip_prefix, base = entry[0], entry[1]
-        output = entry[2] if len(entry) > 2 else f"{tip_prefix} bolts"
-        recipes.append(item_recipe(
-            base, f"{tip_prefix.lower()} bolt tips", [[base]], output,
-            f"{tip_prefix} bolt tips (tip card absent) attach to {base} "
-            f"(wiki-verified this pass). UNVERIFIED interface-vs-instant - "
-            "lean instant per the matrix."))
+    for tip_prefix, metal_base, gem in GEM_BOLTS:
+        tip_target = f"{tip_prefix.lower()} bolt tips"
+        for base_bolts, product in ((metal_base, f"{gem} bolts"),
+                                    ("Dragon bolts", f"{gem} dragon bolts")):
+            notes = (
+                f"{tip_prefix} bolt tips (tip card absent) attach to {base_bolts} "
+                f"-> {product}. Metal base wiki-verified per gem; the dragon-base "
+                "row mirrors it. Interface twin registered alongside the "
+                "item-on-item entry - UNVERIFIED which the client uses, and an "
+                "unmatched twin never fires."
+            )
+            recipes.append(item_recipe(
+                base_bolts, tip_target, [[base_bolts]], product, notes))
+            recipes.append(interface_recipe(product, [[base_bolts]], product, notes))
 
     # ---- Javelins: heads uncarded, shaft carded. ----
     JAVELIN_TIERS = ["Bronze", "Iron", "Steel", "Mithril", "Adamant", "Rune",

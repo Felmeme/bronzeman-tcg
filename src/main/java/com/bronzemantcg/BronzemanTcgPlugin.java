@@ -1112,6 +1112,7 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 			// Node rules get first refusal, same as the make-verb fallback below - cooking
 			// lives there, and this interface is how range-click "Cook" flows arrive.
 			String product = stripProductQuantity(Text.removeTags(event.getMenuTarget()));
+			logInterfaceProduct(event, product);
 			if (!product.isEmpty()
 				&& !checkNodeRule(event, ResourceNodeCatalog.KIND_INTERFACE, product,
 					ResourceNodeCatalog.ANY_OPTION))
@@ -1149,6 +1150,7 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 		if (isMakeVerb(optionLower))
 		{
 			String product = stripProductQuantity(Text.removeTags(event.getMenuTarget()));
+			logInterfaceProduct(event, product);
 			if (!product.isEmpty()
 				&& !checkNodeRule(event, ResourceNodeCatalog.KIND_INTERFACE, product,
 					ResourceNodeCatalog.ANY_OPTION))
@@ -1260,6 +1262,27 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 			.replaceAll("(?i)\\s*x\\s*\\d{1,5}$", "")
 			.replaceAll("(?i)^\\d{1,5}\\s*(x\\s+|\\s)", "")
 			.trim();
+	}
+
+	/**
+	 * Companion to the "node lookup" line: every menu-keyed rule depends on the exact
+	 * string an interface sends, and guessing it has been the single biggest source of
+	 * rules that silently never fire. Also reports the clicked widget's item id, which
+	 * identifies the product outright where the label cannot - the knife menu labels
+	 * every tier "Crossbow stock", but the item id distinguishes Willow from Magic.
+	 */
+	private void logInterfaceProduct(MenuOptionClicked event, String product)
+	{
+		if (!log.isDebugEnabled())
+		{
+			return;
+		}
+		Widget widget = event.getWidget();
+		int itemId = widget == null ? -1 : widget.getItemId();
+		String itemName = itemId > 0
+			? itemManager.getItemComposition(itemId).getName() : "(no item id)";
+		log.debug("interface product raw='{}' stripped='{}' widgetItemId={} itemName='{}'",
+			Text.removeTags(event.getMenuTarget()), product, itemId, itemName);
 	}
 
 	private static boolean isMakeVerb(String optionLower)
