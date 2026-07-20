@@ -6145,663 +6145,6 @@
 			"notes": "Cast Lvl-7 Enchant on Zenyte amulet."
 		},
 		{
-			"category": "feltching",
-			"inputs": [
-				[
-					"Knife"
-				],
-				[
-					"Logs"
-				]
-			],
-			"output": "Arrow Shafts",
-			"trigger": {
-				"kind": "item-on-item",
-				"name": "Earth orb",
-				"targets": [
-					"battlestaff"
-				]
-			},
-			"notes": "Craft elemental battlestaff by using an orb on a battlestaff."
-		},
-		{
-			"category": "fletching",
-			"inputs": [
-				[
-					"Logs"
-				]
-			],
-			"output": "Arrow shaft",
-			"trigger": {
-				"kind": "item-on-item",
-				"name": "Knife",
-				"targets": [
-					"logs"
-				]
-			},
-			"notes": "Cut logs into arrow shafts with a knife."
-		},
-		{
-			"category": "fletching",
-			"inputs": [
-				[
-					"Logs"
-				],
-				[
-					"Bow string"
-				]
-			],
-			"output": "Shortbow",
-			"trigger": {
-				"kind": "item-on-item",
-				"name": "Knife",
-				"targets": [
-					"logs"
-				]
-			},
-			"notes": "Fletch Logs into an (unstrung) bow with a knife, then add a bow string. Product card = strung bow."
-		},
-		{
-			"category": "fletching",
-			"inputs": [
-				[
-					"Logs"
-				],
-				[
-					"Bow string"
-				]
-			],
-			"output": "Longbow",
-			"trigger": {
-				"kind": "item-on-item",
-				"name": "Knife",
-				"targets": [
-					"logs"
-				]
-			},
-			"notes": "Fletch Logs into an (unstrung) bow with a knife, then add a bow string. Product card = strung bow."
-		},
-		{
-			"category": "fletching",
-			"inputs": [
-				[
-					"Oak logs"
-				],
-				[
-					"Bow string"
-				]
-			],
-			"output": "Oak shortbow",
-			"trigger": {
-				"kind": "item-on-item",
-				"name": "Knife",
-				"targets": [
-					"oak logs"
-				]
-			},
-			"notes": "Fletch Oak logs into an (unstrung) bow with a knife, then add a bow string. Product card = strung bow."
-		},
-		{
-			"category": "fletching",
-			"inputs": [
-				[
-					"Oak logs"
-				],
-				[
-					"Bow string"
-				]
-			],
-			"output": "Oak longbow",
-			"trigger": {
-				"kind": "item-on-item",
-				"name": "Knife",
-				"targets": [
-					"oak logs"
-				]
-			},
-			"notes": "Fletch Oak logs into an (unstrung) bow with a knife, then add a bow string. Product card = strung bow."
-		},
-		{
-			"category": "fletching",
-			"inputs": [
-				[
-					"Willow logs"
-				],
-				[
-					"Bow string"
-				]
-			],
-			"output": "Willow shortbow",
-			"trigger": {
-				"kind": "item-on-item",
-				"name": "Knife",
-				"targets": [
-					"willow logs"
-				]
-			},
-			"notes": "Fletch Willow logs into an (unstrung) bow with a knife, then add a bow string. Product card = strung bow."
-		},
-		{
-			"category": "fletching",
-			"inputs": [
-				[
-					"Willow logs"
-				],
-				[
-					"Bow string"
-				]
-			],
-			"output": "Willow longbow",
-			"trigger": {
-				"kind": "item-on-item",
-				"name": "Knife",
-				"targets": [
-					"willow logs"
-				]
-			},
-			"notes": "Fletch Willow logs into an (unstrung) bow with a knife, then add a bow string. Product card = strung bow."
-		},
-		{
-			"category": "fletching",
-			"inputs": [
-				[
-					"Maple logs"
-				],
-				[
-					"Bow string"
-				]
-			],
-			"output": "Maple shortbow",
-			"trigger": {
-				"kind": "item-on-item",
-				"name": "Knife",
-				"targets": [
-					"maple logs"
-				]
-			},
-			"notes": "Fletch Maple logs into an (unstrung) bow with a knife, then add a bow string. Product card = strung bow."
-		},
-		{
-			"category": "fletching",
-			"inputs": [
-				[
-					"Maple logs"
-				],
-				[
-					"Bow string"
-				]
-			],
-			"output": "Maple longbow",
-			"trigger": {
-				"kind": "item-on-item",
-				"name": "Knife",
-				"targets": [
-					"maple logs"
-				]
-			},
-			"notes": "Fletch Maple logs into an (unstrung) bow with a knife, then add a bow string. Product card = strung bow."
-		},
-		{
-			"category": "fletching",
-			"inputs": [
-				[
-					"Yew logs"
-				],
-				[
-					"Bow string"
-				]
-			],
-			"output": "Yew shortbow",
-			"trigger": {
-				"kind": "item-on-item",
-				"name": "Knife",
-				"targets": [
-					"yew logs"
-				]
-			},
-			"notes": "Fletch Yew logs into an (unstrung) bow with a knife, then add a bow string. Product card = strung bow."
-		},
-		{
-			"category": "fletching",
-			"inputs": [
-				[
-					"Yew logs"
-				],
-				[
-					"Bow string"
-				]
-			],
-			"output": "Yew longbow",
-			"trigger": {
-				"kind": "item-on-item",
-				"name": "Knife",
-				"targets": [
-					"yew logs"
-				]
-			},
-			"notes": "Fletch Yew logs into an (unstrung) bow with a knife, then add a bow string. Product card = strung bow."
-		},
-		{
-			"category": "fletching",
-			"inputs": [
-				[
-					"Magic logs"
-				],
-				[
-					"Bow string"
-				]
-			],
-			"output": "Magic shortbow",
-			"trigger": {
-				"kind": "item-on-item",
-				"name": "Knife",
-				"targets": [
-					"magic logs"
-				]
-			},
-			"notes": "Fletch Magic logs into an (unstrung) bow with a knife, then add a bow string. Product card = strung bow."
-		},
-		{
-			"category": "fletching",
-			"inputs": [
-				[
-					"Magic logs"
-				],
-				[
-					"Bow string"
-				]
-			],
-			"output": "Magic longbow",
-			"trigger": {
-				"kind": "item-on-item",
-				"name": "Knife",
-				"targets": [
-					"magic logs"
-				]
-			},
-			"notes": "Fletch Magic logs into an (unstrung) bow with a knife, then add a bow string. Product card = strung bow."
-		},
-		{
-			"category": "fletching",
-			"inputs": [
-				[
-					"Arrow shaft"
-				],
-				[
-					"Feather"
-				]
-			],
-			"output": "Headless arrow",
-			"trigger": {
-				"kind": "item-on-item",
-				"name": "Feather",
-				"targets": [
-					"arrow shaft"
-				]
-			},
-			"notes": "Feather on arrow shafts = headless arrows."
-		},
-		{
-			"category": "fletching",
-			"inputs": [
-				[
-					"Headless arrow"
-				]
-			],
-			"output": "Bronze arrow",
-			"trigger": {
-				"kind": "item-on-item",
-				"name": "Headless arrow",
-				"targets": [
-					"bronze arrowtips"
-				]
-			},
-			"notes": "Attach Bronze arrowtips (arrowtip card absent) to headless arrows."
-		},
-		{
-			"category": "fletching",
-			"inputs": [
-				[
-					"Headless arrow"
-				]
-			],
-			"output": "Iron arrow",
-			"trigger": {
-				"kind": "item-on-item",
-				"name": "Headless arrow",
-				"targets": [
-					"iron arrowtips"
-				]
-			},
-			"notes": "Attach Iron arrowtips (arrowtip card absent) to headless arrows."
-		},
-		{
-			"category": "fletching",
-			"inputs": [
-				[
-					"Headless arrow"
-				]
-			],
-			"output": "Steel arrow",
-			"trigger": {
-				"kind": "item-on-item",
-				"name": "Headless arrow",
-				"targets": [
-					"steel arrowtips"
-				]
-			},
-			"notes": "Attach Steel arrowtips (arrowtip card absent) to headless arrows."
-		},
-		{
-			"category": "fletching",
-			"inputs": [
-				[
-					"Headless arrow"
-				]
-			],
-			"output": "Mithril arrow",
-			"trigger": {
-				"kind": "item-on-item",
-				"name": "Headless arrow",
-				"targets": [
-					"mithril arrowtips"
-				]
-			},
-			"notes": "Attach Mithril arrowtips (arrowtip card absent) to headless arrows."
-		},
-		{
-			"category": "fletching",
-			"inputs": [
-				[
-					"Headless arrow"
-				]
-			],
-			"output": "Adamant arrow",
-			"trigger": {
-				"kind": "item-on-item",
-				"name": "Headless arrow",
-				"targets": [
-					"adamant arrowtips"
-				]
-			},
-			"notes": "Attach Adamant arrowtips (arrowtip card absent) to headless arrows."
-		},
-		{
-			"category": "fletching",
-			"inputs": [
-				[
-					"Headless arrow"
-				]
-			],
-			"output": "Rune arrow",
-			"trigger": {
-				"kind": "item-on-item",
-				"name": "Headless arrow",
-				"targets": [
-					"rune arrowtips"
-				]
-			},
-			"notes": "Attach Rune arrowtips (arrowtip card absent) to headless arrows."
-		},
-		{
-			"category": "fletching",
-			"inputs": [
-				[
-					"Headless arrow"
-				]
-			],
-			"output": "Dragon arrow",
-			"trigger": {
-				"kind": "item-on-item",
-				"name": "Headless arrow",
-				"targets": [
-					"dragon arrowtips"
-				]
-			},
-			"notes": "Attach Dragon arrowtips (arrowtip card absent) to headless arrows."
-		},
-		{
-			"category": "fletching",
-			"inputs": [
-				[
-					"Headless arrow"
-				]
-			],
-			"output": "Amethyst arrow",
-			"trigger": {
-				"kind": "item-on-item",
-				"name": "Headless arrow",
-				"targets": [
-					"amethyst arrowtips"
-				]
-			},
-			"notes": "Attach Amethyst arrowtips (arrowtip card absent) to headless arrows."
-		},
-		{
-			"category": "fletching",
-			"inputs": [
-				[
-					"Feather"
-				]
-			],
-			"output": "Bronze dart",
-			"trigger": {
-				"kind": "item-on-item",
-				"name": "Feather",
-				"targets": [
-					"bronze dart tip"
-				]
-			},
-			"notes": "Feather Bronze dart tips (dart-tip card absent) into darts."
-		},
-		{
-			"category": "fletching",
-			"inputs": [
-				[
-					"Feather"
-				]
-			],
-			"output": "Iron dart",
-			"trigger": {
-				"kind": "item-on-item",
-				"name": "Feather",
-				"targets": [
-					"iron dart tip"
-				]
-			},
-			"notes": "Feather Iron dart tips (dart-tip card absent) into darts."
-		},
-		{
-			"category": "fletching",
-			"inputs": [
-				[
-					"Feather"
-				]
-			],
-			"output": "Steel dart",
-			"trigger": {
-				"kind": "item-on-item",
-				"name": "Feather",
-				"targets": [
-					"steel dart tip"
-				]
-			},
-			"notes": "Feather Steel dart tips (dart-tip card absent) into darts."
-		},
-		{
-			"category": "fletching",
-			"inputs": [
-				[
-					"Mithril dart tip"
-				],
-				[
-					"Feather"
-				]
-			],
-			"output": "Mithril dart",
-			"trigger": {
-				"kind": "item-on-item",
-				"name": "Feather",
-				"targets": [
-					"mithril dart tip"
-				]
-			},
-			"notes": "Feather dart tips into darts."
-		},
-		{
-			"category": "fletching",
-			"inputs": [
-				[
-					"Feather"
-				]
-			],
-			"output": "Adamant dart",
-			"trigger": {
-				"kind": "item-on-item",
-				"name": "Feather",
-				"targets": [
-					"adamant dart tip"
-				]
-			},
-			"notes": "Feather Adamant dart tips (dart-tip card absent) into darts."
-		},
-		{
-			"category": "fletching",
-			"inputs": [
-				[
-					"Feather"
-				]
-			],
-			"output": "Rune dart",
-			"trigger": {
-				"kind": "item-on-item",
-				"name": "Feather",
-				"targets": [
-					"rune dart tip"
-				]
-			},
-			"notes": "Feather Rune dart tips (dart-tip card absent) into darts."
-		},
-		{
-			"category": "fletching",
-			"inputs": [
-				[
-					"Feather"
-				]
-			],
-			"output": "Dragon dart",
-			"trigger": {
-				"kind": "item-on-item",
-				"name": "Feather",
-				"targets": [
-					"dragon dart tip"
-				]
-			},
-			"notes": "Feather Dragon dart tips (dart-tip card absent) into darts."
-		},
-		{
-			"category": "fletching",
-			"inputs": [
-				[
-					"Feather"
-				]
-			],
-			"output": "Bronze bolts",
-			"trigger": {
-				"kind": "item-on-item",
-				"name": "Feather",
-				"targets": [
-					"bronze bolts (unf)"
-				]
-			},
-			"notes": "Feather unfinished Bronze bolts (unf card absent) into bolts."
-		},
-		{
-			"category": "fletching",
-			"inputs": [
-				[
-					"Feather"
-				]
-			],
-			"output": "Iron bolts",
-			"trigger": {
-				"kind": "item-on-item",
-				"name": "Feather",
-				"targets": [
-					"iron bolts (unf)"
-				]
-			},
-			"notes": "Feather unfinished Iron bolts (unf card absent) into bolts."
-		},
-		{
-			"category": "fletching",
-			"inputs": [
-				[
-					"Feather"
-				]
-			],
-			"output": "Steel bolts",
-			"trigger": {
-				"kind": "item-on-item",
-				"name": "Feather",
-				"targets": [
-					"steel bolts (unf)"
-				]
-			},
-			"notes": "Feather unfinished Steel bolts (unf card absent) into bolts."
-		},
-		{
-			"category": "fletching",
-			"inputs": [
-				[
-					"Feather"
-				]
-			],
-			"output": "Mithril bolts",
-			"trigger": {
-				"kind": "item-on-item",
-				"name": "Feather",
-				"targets": [
-					"mithril bolts (unf)"
-				]
-			},
-			"notes": "Feather unfinished Mithril bolts (unf card absent) into bolts."
-		},
-		{
-			"category": "fletching",
-			"inputs": [
-				[
-					"Feather"
-				]
-			],
-			"output": "Adamant bolts",
-			"trigger": {
-				"kind": "item-on-item",
-				"name": "Feather",
-				"targets": [
-					"adamant bolts (unf)"
-				]
-			},
-			"notes": "Feather unfinished Adamant bolts (unf card absent) into bolts."
-		},
-		{
-			"category": "fletching",
-			"inputs": [
-				[
-					"Feather"
-				]
-			],
-			"output": "Runite bolts",
-			"trigger": {
-				"kind": "item-on-item",
-				"name": "Feather",
-				"targets": [
-					"runite bolts (unf)"
-				]
-			},
-			"notes": "Feather unfinished Runite bolts (unf card absent) into bolts."
-		},
-		{
 			"category": "herblore",
 			"inputs": [
 				[
@@ -7568,6 +6911,1993 @@
 				]
 			},
 			"notes": "Stamina potion: super energy + amylase crystal."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Logs"
+				]
+			],
+			"output": "Arrow shaft",
+			"trigger": {
+				"kind": "interface",
+				"name": "Arrow shaft",
+				"targets": []
+			},
+			"notes": "Owner-verified: knife-on-logs opens the make interface. Only bare Logs yield arrow shafts (other tiers offer bows/crossbow stock instead)."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Logs"
+				],
+				[
+					"Bow string"
+				]
+			],
+			"output": "Shortbow",
+			"trigger": {
+				"kind": "interface",
+				"name": "Shortbow",
+				"targets": []
+			},
+			"notes": "Owner-verified: bow stringing (bow string on unstrung bow) opens the make interface, separate from the knife-on-logs step. Nearest-carded policy: requires the tier's Logs (the unstrung shortbow has no card). Keyed under both 'Shortbow' and 'Shortbow (u)' until the owner confirms the exact product string the stringing interface shows."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Logs"
+				],
+				[
+					"Bow string"
+				]
+			],
+			"output": "Shortbow",
+			"trigger": {
+				"kind": "interface",
+				"name": "Shortbow (u)",
+				"targets": []
+			},
+			"notes": "Owner-verified: bow stringing (bow string on unstrung bow) opens the make interface, separate from the knife-on-logs step. Nearest-carded policy: requires the tier's Logs (the unstrung shortbow has no card). Keyed under both 'Shortbow' and 'Shortbow (u)' until the owner confirms the exact product string the stringing interface shows."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Logs"
+				],
+				[
+					"Bow string"
+				]
+			],
+			"output": "Longbow",
+			"trigger": {
+				"kind": "interface",
+				"name": "Longbow",
+				"targets": []
+			},
+			"notes": "Owner-verified: bow stringing (bow string on unstrung bow) opens the make interface, separate from the knife-on-logs step. Nearest-carded policy: requires the tier's Logs (the unstrung longbow has no card). Keyed under both 'Longbow' and 'Longbow (u)' until the owner confirms the exact product string the stringing interface shows."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Logs"
+				],
+				[
+					"Bow string"
+				]
+			],
+			"output": "Longbow",
+			"trigger": {
+				"kind": "interface",
+				"name": "Longbow (u)",
+				"targets": []
+			},
+			"notes": "Owner-verified: bow stringing (bow string on unstrung bow) opens the make interface, separate from the knife-on-logs step. Nearest-carded policy: requires the tier's Logs (the unstrung longbow has no card). Keyed under both 'Longbow' and 'Longbow (u)' until the owner confirms the exact product string the stringing interface shows."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Oak logs"
+				],
+				[
+					"Bow string"
+				]
+			],
+			"output": "Oak Shortbow",
+			"trigger": {
+				"kind": "interface",
+				"name": "Oak Shortbow",
+				"targets": []
+			},
+			"notes": "Owner-verified: bow stringing (bow string on unstrung bow) opens the make interface, separate from the knife-on-logs step. Nearest-carded policy: requires the tier's Logs (the unstrung shortbow has no card). Keyed under both 'Oak Shortbow' and 'Oak Shortbow (u)' until the owner confirms the exact product string the stringing interface shows."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Oak logs"
+				],
+				[
+					"Bow string"
+				]
+			],
+			"output": "Oak Shortbow",
+			"trigger": {
+				"kind": "interface",
+				"name": "Oak Shortbow (u)",
+				"targets": []
+			},
+			"notes": "Owner-verified: bow stringing (bow string on unstrung bow) opens the make interface, separate from the knife-on-logs step. Nearest-carded policy: requires the tier's Logs (the unstrung shortbow has no card). Keyed under both 'Oak Shortbow' and 'Oak Shortbow (u)' until the owner confirms the exact product string the stringing interface shows."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Oak logs"
+				],
+				[
+					"Bow string"
+				]
+			],
+			"output": "Oak Longbow",
+			"trigger": {
+				"kind": "interface",
+				"name": "Oak Longbow",
+				"targets": []
+			},
+			"notes": "Owner-verified: bow stringing (bow string on unstrung bow) opens the make interface, separate from the knife-on-logs step. Nearest-carded policy: requires the tier's Logs (the unstrung longbow has no card). Keyed under both 'Oak Longbow' and 'Oak Longbow (u)' until the owner confirms the exact product string the stringing interface shows."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Oak logs"
+				],
+				[
+					"Bow string"
+				]
+			],
+			"output": "Oak Longbow",
+			"trigger": {
+				"kind": "interface",
+				"name": "Oak Longbow (u)",
+				"targets": []
+			},
+			"notes": "Owner-verified: bow stringing (bow string on unstrung bow) opens the make interface, separate from the knife-on-logs step. Nearest-carded policy: requires the tier's Logs (the unstrung longbow has no card). Keyed under both 'Oak Longbow' and 'Oak Longbow (u)' until the owner confirms the exact product string the stringing interface shows."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Willow logs"
+				],
+				[
+					"Bow string"
+				]
+			],
+			"output": "Willow Shortbow",
+			"trigger": {
+				"kind": "interface",
+				"name": "Willow Shortbow",
+				"targets": []
+			},
+			"notes": "Owner-verified: bow stringing (bow string on unstrung bow) opens the make interface, separate from the knife-on-logs step. Nearest-carded policy: requires the tier's Logs (the unstrung shortbow has no card). Keyed under both 'Willow Shortbow' and 'Willow Shortbow (u)' until the owner confirms the exact product string the stringing interface shows."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Willow logs"
+				],
+				[
+					"Bow string"
+				]
+			],
+			"output": "Willow Shortbow",
+			"trigger": {
+				"kind": "interface",
+				"name": "Willow Shortbow (u)",
+				"targets": []
+			},
+			"notes": "Owner-verified: bow stringing (bow string on unstrung bow) opens the make interface, separate from the knife-on-logs step. Nearest-carded policy: requires the tier's Logs (the unstrung shortbow has no card). Keyed under both 'Willow Shortbow' and 'Willow Shortbow (u)' until the owner confirms the exact product string the stringing interface shows."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Willow logs"
+				],
+				[
+					"Bow string"
+				]
+			],
+			"output": "Willow Longbow",
+			"trigger": {
+				"kind": "interface",
+				"name": "Willow Longbow",
+				"targets": []
+			},
+			"notes": "Owner-verified: bow stringing (bow string on unstrung bow) opens the make interface, separate from the knife-on-logs step. Nearest-carded policy: requires the tier's Logs (the unstrung longbow has no card). Keyed under both 'Willow Longbow' and 'Willow Longbow (u)' until the owner confirms the exact product string the stringing interface shows."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Willow logs"
+				],
+				[
+					"Bow string"
+				]
+			],
+			"output": "Willow Longbow",
+			"trigger": {
+				"kind": "interface",
+				"name": "Willow Longbow (u)",
+				"targets": []
+			},
+			"notes": "Owner-verified: bow stringing (bow string on unstrung bow) opens the make interface, separate from the knife-on-logs step. Nearest-carded policy: requires the tier's Logs (the unstrung longbow has no card). Keyed under both 'Willow Longbow' and 'Willow Longbow (u)' until the owner confirms the exact product string the stringing interface shows."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Maple logs"
+				],
+				[
+					"Bow string"
+				]
+			],
+			"output": "Maple Shortbow",
+			"trigger": {
+				"kind": "interface",
+				"name": "Maple Shortbow",
+				"targets": []
+			},
+			"notes": "Owner-verified: bow stringing (bow string on unstrung bow) opens the make interface, separate from the knife-on-logs step. Nearest-carded policy: requires the tier's Logs (the unstrung shortbow has no card). Keyed under both 'Maple Shortbow' and 'Maple Shortbow (u)' until the owner confirms the exact product string the stringing interface shows."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Maple logs"
+				],
+				[
+					"Bow string"
+				]
+			],
+			"output": "Maple Shortbow",
+			"trigger": {
+				"kind": "interface",
+				"name": "Maple Shortbow (u)",
+				"targets": []
+			},
+			"notes": "Owner-verified: bow stringing (bow string on unstrung bow) opens the make interface, separate from the knife-on-logs step. Nearest-carded policy: requires the tier's Logs (the unstrung shortbow has no card). Keyed under both 'Maple Shortbow' and 'Maple Shortbow (u)' until the owner confirms the exact product string the stringing interface shows."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Maple logs"
+				],
+				[
+					"Bow string"
+				]
+			],
+			"output": "Maple Longbow",
+			"trigger": {
+				"kind": "interface",
+				"name": "Maple Longbow",
+				"targets": []
+			},
+			"notes": "Owner-verified: bow stringing (bow string on unstrung bow) opens the make interface, separate from the knife-on-logs step. Nearest-carded policy: requires the tier's Logs (the unstrung longbow has no card). Keyed under both 'Maple Longbow' and 'Maple Longbow (u)' until the owner confirms the exact product string the stringing interface shows."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Maple logs"
+				],
+				[
+					"Bow string"
+				]
+			],
+			"output": "Maple Longbow",
+			"trigger": {
+				"kind": "interface",
+				"name": "Maple Longbow (u)",
+				"targets": []
+			},
+			"notes": "Owner-verified: bow stringing (bow string on unstrung bow) opens the make interface, separate from the knife-on-logs step. Nearest-carded policy: requires the tier's Logs (the unstrung longbow has no card). Keyed under both 'Maple Longbow' and 'Maple Longbow (u)' until the owner confirms the exact product string the stringing interface shows."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Yew logs"
+				],
+				[
+					"Bow string"
+				]
+			],
+			"output": "Yew Shortbow",
+			"trigger": {
+				"kind": "interface",
+				"name": "Yew Shortbow",
+				"targets": []
+			},
+			"notes": "Owner-verified: bow stringing (bow string on unstrung bow) opens the make interface, separate from the knife-on-logs step. Nearest-carded policy: requires the tier's Logs (the unstrung shortbow has no card). Keyed under both 'Yew Shortbow' and 'Yew Shortbow (u)' until the owner confirms the exact product string the stringing interface shows."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Yew logs"
+				],
+				[
+					"Bow string"
+				]
+			],
+			"output": "Yew Shortbow",
+			"trigger": {
+				"kind": "interface",
+				"name": "Yew Shortbow (u)",
+				"targets": []
+			},
+			"notes": "Owner-verified: bow stringing (bow string on unstrung bow) opens the make interface, separate from the knife-on-logs step. Nearest-carded policy: requires the tier's Logs (the unstrung shortbow has no card). Keyed under both 'Yew Shortbow' and 'Yew Shortbow (u)' until the owner confirms the exact product string the stringing interface shows."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Yew logs"
+				],
+				[
+					"Bow string"
+				]
+			],
+			"output": "Yew Longbow",
+			"trigger": {
+				"kind": "interface",
+				"name": "Yew Longbow",
+				"targets": []
+			},
+			"notes": "Owner-verified: bow stringing (bow string on unstrung bow) opens the make interface, separate from the knife-on-logs step. Nearest-carded policy: requires the tier's Logs (the unstrung longbow has no card). Keyed under both 'Yew Longbow' and 'Yew Longbow (u)' until the owner confirms the exact product string the stringing interface shows."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Yew logs"
+				],
+				[
+					"Bow string"
+				]
+			],
+			"output": "Yew Longbow",
+			"trigger": {
+				"kind": "interface",
+				"name": "Yew Longbow (u)",
+				"targets": []
+			},
+			"notes": "Owner-verified: bow stringing (bow string on unstrung bow) opens the make interface, separate from the knife-on-logs step. Nearest-carded policy: requires the tier's Logs (the unstrung longbow has no card). Keyed under both 'Yew Longbow' and 'Yew Longbow (u)' until the owner confirms the exact product string the stringing interface shows."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Magic logs"
+				],
+				[
+					"Bow string"
+				]
+			],
+			"output": "Magic Shortbow",
+			"trigger": {
+				"kind": "interface",
+				"name": "Magic Shortbow",
+				"targets": []
+			},
+			"notes": "Owner-verified: bow stringing (bow string on unstrung bow) opens the make interface, separate from the knife-on-logs step. Nearest-carded policy: requires the tier's Logs (the unstrung shortbow has no card). Keyed under both 'Magic Shortbow' and 'Magic Shortbow (u)' until the owner confirms the exact product string the stringing interface shows."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Magic logs"
+				],
+				[
+					"Bow string"
+				]
+			],
+			"output": "Magic Shortbow",
+			"trigger": {
+				"kind": "interface",
+				"name": "Magic Shortbow (u)",
+				"targets": []
+			},
+			"notes": "Owner-verified: bow stringing (bow string on unstrung bow) opens the make interface, separate from the knife-on-logs step. Nearest-carded policy: requires the tier's Logs (the unstrung shortbow has no card). Keyed under both 'Magic Shortbow' and 'Magic Shortbow (u)' until the owner confirms the exact product string the stringing interface shows."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Magic logs"
+				],
+				[
+					"Bow string"
+				]
+			],
+			"output": "Magic Longbow",
+			"trigger": {
+				"kind": "interface",
+				"name": "Magic Longbow",
+				"targets": []
+			},
+			"notes": "Owner-verified: bow stringing (bow string on unstrung bow) opens the make interface, separate from the knife-on-logs step. Nearest-carded policy: requires the tier's Logs (the unstrung longbow has no card). Keyed under both 'Magic Longbow' and 'Magic Longbow (u)' until the owner confirms the exact product string the stringing interface shows."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Magic logs"
+				],
+				[
+					"Bow string"
+				]
+			],
+			"output": "Magic Longbow",
+			"trigger": {
+				"kind": "interface",
+				"name": "Magic Longbow (u)",
+				"targets": []
+			},
+			"notes": "Owner-verified: bow stringing (bow string on unstrung bow) opens the make interface, separate from the knife-on-logs step. Nearest-carded policy: requires the tier's Logs (the unstrung longbow has no card). Keyed under both 'Magic Longbow' and 'Magic Longbow (u)' until the owner confirms the exact product string the stringing interface shows."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Logs"
+				]
+			],
+			"output": "Wooden stock",
+			"trigger": {
+				"kind": "interface",
+				"name": "Wooden stock",
+				"targets": []
+			},
+			"notes": "knife-on-logs family (generalises the owner-verified mechanic). Wooden stock feeds into the Bronze crossbow chain via Bronze limbs."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Oak logs"
+				]
+			],
+			"output": "Oak stock",
+			"trigger": {
+				"kind": "interface",
+				"name": "Oak stock",
+				"targets": []
+			},
+			"notes": "knife-on-logs family (generalises the owner-verified mechanic). Oak stock feeds into the Blurite crossbow chain via Blurite limbs."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Willow logs"
+				]
+			],
+			"output": "Willow stock",
+			"trigger": {
+				"kind": "interface",
+				"name": "Willow stock",
+				"targets": []
+			},
+			"notes": "knife-on-logs family (generalises the owner-verified mechanic). Willow stock feeds into the Iron crossbow chain via Iron limbs."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Teak logs"
+				]
+			],
+			"output": "Teak stock",
+			"trigger": {
+				"kind": "interface",
+				"name": "Teak stock",
+				"targets": []
+			},
+			"notes": "knife-on-logs family (generalises the owner-verified mechanic). Teak stock feeds into the Steel crossbow chain via Steel limbs."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Maple logs"
+				]
+			],
+			"output": "Maple stock",
+			"trigger": {
+				"kind": "interface",
+				"name": "Maple stock",
+				"targets": []
+			},
+			"notes": "knife-on-logs family (generalises the owner-verified mechanic). Maple stock feeds into the Mithril crossbow chain via Mithril limbs."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Mahogany logs"
+				]
+			],
+			"output": "Mahogany stock",
+			"trigger": {
+				"kind": "interface",
+				"name": "Mahogany stock",
+				"targets": []
+			},
+			"notes": "knife-on-logs family (generalises the owner-verified mechanic). Mahogany stock feeds into the Adamant crossbow chain via Adamantite limbs."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Yew logs"
+				]
+			],
+			"output": "Yew stock",
+			"trigger": {
+				"kind": "interface",
+				"name": "Yew stock",
+				"targets": []
+			},
+			"notes": "knife-on-logs family (generalises the owner-verified mechanic). Yew stock feeds into the Runite crossbow chain via Runite limbs."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Magic logs"
+				]
+			],
+			"output": "Magic stock",
+			"trigger": {
+				"kind": "interface",
+				"name": "Magic stock",
+				"targets": []
+			},
+			"notes": "knife-on-logs family (generalises the owner-verified mechanic). Magic stock feeds into the Dragon crossbow chain via Dragon limbs."
+		},
+		{
+			"category": "fletching",
+			"inputs": [],
+			"output": "Ogre arrow shaft",
+			"trigger": {
+				"kind": "interface",
+				"name": "Ogre arrow shaft",
+				"targets": []
+			},
+			"notes": "knife-on-logs family, inferred from the owner-verified mechanic. Achey tree logs are uncarded, so this is an output-only gate."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Wooden stock"
+				],
+				[
+					"Bronze limbs"
+				],
+				[
+					"Crossbow string"
+				]
+			],
+			"output": "Bronze crossbow",
+			"trigger": {
+				"kind": "interface",
+				"name": "Bronze crossbow",
+				"targets": []
+			},
+			"notes": "UNVERIFIED whether crossbow stringing is item-on-item or opens an interface (leans interface by analogy to owner-verified bow stringing) - both trigger kinds registered defensively. Nearest-carded: requires stock+limbs, not the uncarded Crossbow (u)."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Wooden stock"
+				],
+				[
+					"Bronze limbs"
+				],
+				[
+					"Crossbow string"
+				]
+			],
+			"output": "Bronze crossbow",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Crossbow string",
+				"targets": [
+					"Bronze crossbow (u)"
+				]
+			},
+			"notes": "UNVERIFIED whether crossbow stringing is item-on-item or opens an interface (leans interface by analogy to owner-verified bow stringing) - both trigger kinds registered defensively. Nearest-carded: requires stock+limbs, not the uncarded Crossbow (u)."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Oak stock"
+				],
+				[
+					"Blurite limbs"
+				],
+				[
+					"Crossbow string"
+				]
+			],
+			"output": "Blurite crossbow",
+			"trigger": {
+				"kind": "interface",
+				"name": "Blurite crossbow",
+				"targets": []
+			},
+			"notes": "UNVERIFIED whether crossbow stringing is item-on-item or opens an interface (leans interface by analogy to owner-verified bow stringing) - both trigger kinds registered defensively. Nearest-carded: requires stock+limbs, not the uncarded Crossbow (u)."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Oak stock"
+				],
+				[
+					"Blurite limbs"
+				],
+				[
+					"Crossbow string"
+				]
+			],
+			"output": "Blurite crossbow",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Crossbow string",
+				"targets": [
+					"Blurite crossbow (u)"
+				]
+			},
+			"notes": "UNVERIFIED whether crossbow stringing is item-on-item or opens an interface (leans interface by analogy to owner-verified bow stringing) - both trigger kinds registered defensively. Nearest-carded: requires stock+limbs, not the uncarded Crossbow (u)."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Willow stock"
+				],
+				[
+					"Iron limbs"
+				],
+				[
+					"Crossbow string"
+				]
+			],
+			"output": "Iron crossbow",
+			"trigger": {
+				"kind": "interface",
+				"name": "Iron crossbow",
+				"targets": []
+			},
+			"notes": "UNVERIFIED whether crossbow stringing is item-on-item or opens an interface (leans interface by analogy to owner-verified bow stringing) - both trigger kinds registered defensively. Nearest-carded: requires stock+limbs, not the uncarded Crossbow (u)."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Willow stock"
+				],
+				[
+					"Iron limbs"
+				],
+				[
+					"Crossbow string"
+				]
+			],
+			"output": "Iron crossbow",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Crossbow string",
+				"targets": [
+					"Iron crossbow (u)"
+				]
+			},
+			"notes": "UNVERIFIED whether crossbow stringing is item-on-item or opens an interface (leans interface by analogy to owner-verified bow stringing) - both trigger kinds registered defensively. Nearest-carded: requires stock+limbs, not the uncarded Crossbow (u)."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Teak stock"
+				],
+				[
+					"Steel limbs"
+				],
+				[
+					"Crossbow string"
+				]
+			],
+			"output": "Steel crossbow",
+			"trigger": {
+				"kind": "interface",
+				"name": "Steel crossbow",
+				"targets": []
+			},
+			"notes": "UNVERIFIED whether crossbow stringing is item-on-item or opens an interface (leans interface by analogy to owner-verified bow stringing) - both trigger kinds registered defensively. Nearest-carded: requires stock+limbs, not the uncarded Crossbow (u)."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Teak stock"
+				],
+				[
+					"Steel limbs"
+				],
+				[
+					"Crossbow string"
+				]
+			],
+			"output": "Steel crossbow",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Crossbow string",
+				"targets": [
+					"Steel crossbow (u)"
+				]
+			},
+			"notes": "UNVERIFIED whether crossbow stringing is item-on-item or opens an interface (leans interface by analogy to owner-verified bow stringing) - both trigger kinds registered defensively. Nearest-carded: requires stock+limbs, not the uncarded Crossbow (u)."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Maple stock"
+				],
+				[
+					"Mithril limbs"
+				],
+				[
+					"Crossbow string"
+				]
+			],
+			"output": "Mithril crossbow",
+			"trigger": {
+				"kind": "interface",
+				"name": "Mithril crossbow",
+				"targets": []
+			},
+			"notes": "UNVERIFIED whether crossbow stringing is item-on-item or opens an interface (leans interface by analogy to owner-verified bow stringing) - both trigger kinds registered defensively. Nearest-carded: requires stock+limbs, not the uncarded Crossbow (u)."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Maple stock"
+				],
+				[
+					"Mithril limbs"
+				],
+				[
+					"Crossbow string"
+				]
+			],
+			"output": "Mithril crossbow",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Crossbow string",
+				"targets": [
+					"Mithril crossbow (u)"
+				]
+			},
+			"notes": "UNVERIFIED whether crossbow stringing is item-on-item or opens an interface (leans interface by analogy to owner-verified bow stringing) - both trigger kinds registered defensively. Nearest-carded: requires stock+limbs, not the uncarded Crossbow (u)."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Mahogany stock"
+				],
+				[
+					"Adamantite limbs"
+				],
+				[
+					"Crossbow string"
+				]
+			],
+			"output": "Adamant crossbow",
+			"trigger": {
+				"kind": "interface",
+				"name": "Adamant crossbow",
+				"targets": []
+			},
+			"notes": "UNVERIFIED whether crossbow stringing is item-on-item or opens an interface (leans interface by analogy to owner-verified bow stringing) - both trigger kinds registered defensively. Nearest-carded: requires stock+limbs, not the uncarded Crossbow (u)."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Mahogany stock"
+				],
+				[
+					"Adamantite limbs"
+				],
+				[
+					"Crossbow string"
+				]
+			],
+			"output": "Adamant crossbow",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Crossbow string",
+				"targets": [
+					"Adamant crossbow (u)"
+				]
+			},
+			"notes": "UNVERIFIED whether crossbow stringing is item-on-item or opens an interface (leans interface by analogy to owner-verified bow stringing) - both trigger kinds registered defensively. Nearest-carded: requires stock+limbs, not the uncarded Crossbow (u)."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Yew stock"
+				],
+				[
+					"Runite limbs"
+				],
+				[
+					"Crossbow string"
+				]
+			],
+			"output": "Runite crossbow",
+			"trigger": {
+				"kind": "interface",
+				"name": "Runite crossbow",
+				"targets": []
+			},
+			"notes": "UNVERIFIED whether crossbow stringing is item-on-item or opens an interface (leans interface by analogy to owner-verified bow stringing) - both trigger kinds registered defensively. Nearest-carded: requires stock+limbs, not the uncarded Crossbow (u)."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Yew stock"
+				],
+				[
+					"Runite limbs"
+				],
+				[
+					"Crossbow string"
+				]
+			],
+			"output": "Runite crossbow",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Crossbow string",
+				"targets": [
+					"Runite crossbow (u)"
+				]
+			},
+			"notes": "UNVERIFIED whether crossbow stringing is item-on-item or opens an interface (leans interface by analogy to owner-verified bow stringing) - both trigger kinds registered defensively. Nearest-carded: requires stock+limbs, not the uncarded Crossbow (u)."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Magic stock"
+				],
+				[
+					"Dragon limbs"
+				],
+				[
+					"Crossbow string"
+				]
+			],
+			"output": "Dragon crossbow",
+			"trigger": {
+				"kind": "interface",
+				"name": "Dragon crossbow",
+				"targets": []
+			},
+			"notes": "UNVERIFIED whether crossbow stringing is item-on-item or opens an interface (leans interface by analogy to owner-verified bow stringing) - both trigger kinds registered defensively. Nearest-carded: requires stock+limbs, not the uncarded Crossbow (u)."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Magic stock"
+				],
+				[
+					"Dragon limbs"
+				],
+				[
+					"Crossbow string"
+				]
+			],
+			"output": "Dragon crossbow",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Crossbow string",
+				"targets": [
+					"Dragon crossbow (u)"
+				]
+			},
+			"notes": "UNVERIFIED whether crossbow stringing is item-on-item or opens an interface (leans interface by analogy to owner-verified bow stringing) - both trigger kinds registered defensively. Nearest-carded: requires stock+limbs, not the uncarded Crossbow (u)."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Arrow shaft"
+				],
+				[
+					"Feather"
+				]
+			],
+			"output": "Headless arrow",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Feather",
+				"targets": [
+					"arrow shaft"
+				]
+			},
+			"notes": "Feather on arrow shafts = headless arrows. UNVERIFIED interface-vs-instant (no Make-X wiki note) - lean instant kept from prior data."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Headless arrow"
+				]
+			],
+			"output": "Bronze arrow",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Headless arrow",
+				"targets": [
+					"bronze arrowtips"
+				]
+			},
+			"notes": "Attach Bronze arrowtips (arrowtip card absent) to headless arrows. UNVERIFIED interface-vs-instant (no Make-X note) - lean instant."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Headless arrow"
+				]
+			],
+			"output": "Iron arrow",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Headless arrow",
+				"targets": [
+					"iron arrowtips"
+				]
+			},
+			"notes": "Attach Iron arrowtips (arrowtip card absent) to headless arrows. UNVERIFIED interface-vs-instant (no Make-X note) - lean instant."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Headless arrow"
+				]
+			],
+			"output": "Steel arrow",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Headless arrow",
+				"targets": [
+					"steel arrowtips"
+				]
+			},
+			"notes": "Attach Steel arrowtips (arrowtip card absent) to headless arrows. UNVERIFIED interface-vs-instant (no Make-X note) - lean instant."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Headless arrow"
+				]
+			],
+			"output": "Mithril arrow",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Headless arrow",
+				"targets": [
+					"mithril arrowtips"
+				]
+			},
+			"notes": "Attach Mithril arrowtips (arrowtip card absent) to headless arrows. UNVERIFIED interface-vs-instant (no Make-X note) - lean instant."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Headless arrow"
+				]
+			],
+			"output": "Adamant arrow",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Headless arrow",
+				"targets": [
+					"adamant arrowtips"
+				]
+			},
+			"notes": "Attach Adamant arrowtips (arrowtip card absent) to headless arrows. UNVERIFIED interface-vs-instant (no Make-X note) - lean instant."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Headless arrow"
+				]
+			],
+			"output": "Rune arrow",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Headless arrow",
+				"targets": [
+					"rune arrowtips"
+				]
+			},
+			"notes": "Attach Rune arrowtips (arrowtip card absent) to headless arrows. UNVERIFIED interface-vs-instant (no Make-X note) - lean instant."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Headless arrow"
+				]
+			],
+			"output": "Dragon arrow",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Headless arrow",
+				"targets": [
+					"dragon arrowtips"
+				]
+			},
+			"notes": "Attach Dragon arrowtips (arrowtip card absent) to headless arrows. UNVERIFIED interface-vs-instant (no Make-X note) - lean instant."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Headless arrow"
+				]
+			],
+			"output": "Amethyst arrow",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Headless arrow",
+				"targets": [
+					"amethyst arrowtips"
+				]
+			},
+			"notes": "Attach Amethyst arrowtips (arrowtip card absent) to headless arrows. UNVERIFIED interface-vs-instant (no Make-X note) - lean instant."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Feather"
+				]
+			],
+			"output": "Bronze dart",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Feather",
+				"targets": [
+					"bronze dart tip"
+				]
+			},
+			"notes": "Feather Bronze dart tips (dart-tip card absent) into darts. Owner-verified INSTANT by default; opt-in Make-X toggle is an accepted honor-system edge (not covered)."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Feather"
+				]
+			],
+			"output": "Iron dart",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Feather",
+				"targets": [
+					"iron dart tip"
+				]
+			},
+			"notes": "Feather Iron dart tips (dart-tip card absent) into darts. Owner-verified INSTANT by default; opt-in Make-X toggle is an accepted honor-system edge (not covered)."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Feather"
+				]
+			],
+			"output": "Steel dart",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Feather",
+				"targets": [
+					"steel dart tip"
+				]
+			},
+			"notes": "Feather Steel dart tips (dart-tip card absent) into darts. Owner-verified INSTANT by default; opt-in Make-X toggle is an accepted honor-system edge (not covered)."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Feather"
+				]
+			],
+			"output": "Mithril dart",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Feather",
+				"targets": [
+					"mithril dart tip"
+				]
+			},
+			"notes": "Feather Mithril dart tips (dart-tip card absent) into darts. Owner-verified INSTANT by default; opt-in Make-X toggle is an accepted honor-system edge (not covered)."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Feather"
+				]
+			],
+			"output": "Adamant dart",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Feather",
+				"targets": [
+					"adamant dart tip"
+				]
+			},
+			"notes": "Feather Adamant dart tips (dart-tip card absent) into darts. Owner-verified INSTANT by default; opt-in Make-X toggle is an accepted honor-system edge (not covered)."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Feather"
+				]
+			],
+			"output": "Rune dart",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Feather",
+				"targets": [
+					"rune dart tip"
+				]
+			},
+			"notes": "Feather Rune dart tips (dart-tip card absent) into darts. Owner-verified INSTANT by default; opt-in Make-X toggle is an accepted honor-system edge (not covered)."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Feather"
+				]
+			],
+			"output": "Dragon dart",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Feather",
+				"targets": [
+					"dragon dart tip"
+				]
+			},
+			"notes": "Feather Dragon dart tips (dart-tip card absent) into darts. Owner-verified INSTANT by default; opt-in Make-X toggle is an accepted honor-system edge (not covered)."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Feather"
+				]
+			],
+			"output": "Bronze bolts",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Feather",
+				"targets": [
+					"bronze bolts (unf)"
+				]
+			},
+			"notes": "Feather unfinished Bronze bolts (unf card absent) into bolts. Wiki (31 Jul 2024): 'Make-X option when fletching bolts' - interface twin added alongside the item-on-item entry; default-vs-toggle unverified so both are covered."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Feather"
+				]
+			],
+			"output": "Bronze bolts",
+			"trigger": {
+				"kind": "interface",
+				"name": "Bronze bolts",
+				"targets": []
+			},
+			"notes": "Feather unfinished Bronze bolts (unf card absent) into bolts. Wiki (31 Jul 2024): 'Make-X option when fletching bolts' - interface twin added alongside the item-on-item entry; default-vs-toggle unverified so both are covered."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Feather"
+				]
+			],
+			"output": "Iron bolts",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Feather",
+				"targets": [
+					"iron bolts (unf)"
+				]
+			},
+			"notes": "Feather unfinished Iron bolts (unf card absent) into bolts. Wiki (31 Jul 2024): 'Make-X option when fletching bolts' - interface twin added alongside the item-on-item entry; default-vs-toggle unverified so both are covered."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Feather"
+				]
+			],
+			"output": "Iron bolts",
+			"trigger": {
+				"kind": "interface",
+				"name": "Iron bolts",
+				"targets": []
+			},
+			"notes": "Feather unfinished Iron bolts (unf card absent) into bolts. Wiki (31 Jul 2024): 'Make-X option when fletching bolts' - interface twin added alongside the item-on-item entry; default-vs-toggle unverified so both are covered."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Feather"
+				]
+			],
+			"output": "Steel bolts",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Feather",
+				"targets": [
+					"steel bolts (unf)"
+				]
+			},
+			"notes": "Feather unfinished Steel bolts (unf card absent) into bolts. Wiki (31 Jul 2024): 'Make-X option when fletching bolts' - interface twin added alongside the item-on-item entry; default-vs-toggle unverified so both are covered."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Feather"
+				]
+			],
+			"output": "Steel bolts",
+			"trigger": {
+				"kind": "interface",
+				"name": "Steel bolts",
+				"targets": []
+			},
+			"notes": "Feather unfinished Steel bolts (unf card absent) into bolts. Wiki (31 Jul 2024): 'Make-X option when fletching bolts' - interface twin added alongside the item-on-item entry; default-vs-toggle unverified so both are covered."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Feather"
+				]
+			],
+			"output": "Mithril bolts",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Feather",
+				"targets": [
+					"mithril bolts (unf)"
+				]
+			},
+			"notes": "Feather unfinished Mithril bolts (unf card absent) into bolts. Wiki (31 Jul 2024): 'Make-X option when fletching bolts' - interface twin added alongside the item-on-item entry; default-vs-toggle unverified so both are covered."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Feather"
+				]
+			],
+			"output": "Mithril bolts",
+			"trigger": {
+				"kind": "interface",
+				"name": "Mithril bolts",
+				"targets": []
+			},
+			"notes": "Feather unfinished Mithril bolts (unf card absent) into bolts. Wiki (31 Jul 2024): 'Make-X option when fletching bolts' - interface twin added alongside the item-on-item entry; default-vs-toggle unverified so both are covered."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Feather"
+				]
+			],
+			"output": "Adamant bolts",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Feather",
+				"targets": [
+					"adamant bolts (unf)"
+				]
+			},
+			"notes": "Feather unfinished Adamant bolts (unf card absent) into bolts. Wiki (31 Jul 2024): 'Make-X option when fletching bolts' - interface twin added alongside the item-on-item entry; default-vs-toggle unverified so both are covered."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Feather"
+				]
+			],
+			"output": "Adamant bolts",
+			"trigger": {
+				"kind": "interface",
+				"name": "Adamant bolts",
+				"targets": []
+			},
+			"notes": "Feather unfinished Adamant bolts (unf card absent) into bolts. Wiki (31 Jul 2024): 'Make-X option when fletching bolts' - interface twin added alongside the item-on-item entry; default-vs-toggle unverified so both are covered."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Feather"
+				]
+			],
+			"output": "Runite bolts",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Feather",
+				"targets": [
+					"runite bolts (unf)"
+				]
+			},
+			"notes": "Feather unfinished Runite bolts (unf card absent) into bolts. Wiki (31 Jul 2024): 'Make-X option when fletching bolts' - interface twin added alongside the item-on-item entry; default-vs-toggle unverified so both are covered."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Feather"
+				]
+			],
+			"output": "Runite bolts",
+			"trigger": {
+				"kind": "interface",
+				"name": "Runite bolts",
+				"targets": []
+			},
+			"notes": "Feather unfinished Runite bolts (unf card absent) into bolts. Wiki (31 Jul 2024): 'Make-X option when fletching bolts' - interface twin added alongside the item-on-item entry; default-vs-toggle unverified so both are covered."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Feather"
+				]
+			],
+			"output": "Blurite bolts",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Feather",
+				"targets": [
+					"blurite bolts (unf)"
+				]
+			},
+			"notes": "Feather unfinished Blurite bolts (unf card absent) into bolts. Wiki (31 Jul 2024): 'Make-X option when fletching bolts' - interface twin added alongside the item-on-item entry; default-vs-toggle unverified so both are covered."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Feather"
+				]
+			],
+			"output": "Blurite bolts",
+			"trigger": {
+				"kind": "interface",
+				"name": "Blurite bolts",
+				"targets": []
+			},
+			"notes": "Feather unfinished Blurite bolts (unf card absent) into bolts. Wiki (31 Jul 2024): 'Make-X option when fletching bolts' - interface twin added alongside the item-on-item entry; default-vs-toggle unverified so both are covered."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Bronze bolts"
+				]
+			],
+			"output": "Opal bolts",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Bronze bolts",
+				"targets": [
+					"opal bolt tips"
+				]
+			},
+			"notes": "Opal bolt tips (tip card absent) attach to Bronze bolts (wiki-verified this pass). UNVERIFIED interface-vs-instant - lean instant per the matrix."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Blurite bolts"
+				]
+			],
+			"output": "Jade bolts",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Blurite bolts",
+				"targets": [
+					"jade bolt tips"
+				]
+			},
+			"notes": "Jade bolt tips (tip card absent) attach to Blurite bolts (wiki-verified this pass). UNVERIFIED interface-vs-instant - lean instant per the matrix."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Iron bolts"
+				]
+			],
+			"output": "Pearl bolts",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Iron bolts",
+				"targets": [
+					"pearl bolt tips"
+				]
+			},
+			"notes": "Pearl bolt tips (tip card absent) attach to Iron bolts (wiki-verified this pass). UNVERIFIED interface-vs-instant - lean instant per the matrix."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Steel bolts"
+				]
+			],
+			"output": "Topaz bolts",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Steel bolts",
+				"targets": [
+					"red topaz bolt tips"
+				]
+			},
+			"notes": "Red topaz bolt tips (tip card absent) attach to Steel bolts (wiki-verified this pass). UNVERIFIED interface-vs-instant - lean instant per the matrix."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Mithril bolts"
+				]
+			],
+			"output": "Sapphire bolts",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Mithril bolts",
+				"targets": [
+					"sapphire bolt tips"
+				]
+			},
+			"notes": "Sapphire bolt tips (tip card absent) attach to Mithril bolts (wiki-verified this pass). UNVERIFIED interface-vs-instant - lean instant per the matrix."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Mithril bolts"
+				]
+			],
+			"output": "Emerald bolts",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Mithril bolts",
+				"targets": [
+					"emerald bolt tips"
+				]
+			},
+			"notes": "Emerald bolt tips (tip card absent) attach to Mithril bolts (wiki-verified this pass). UNVERIFIED interface-vs-instant - lean instant per the matrix."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Adamant bolts"
+				]
+			],
+			"output": "Ruby bolts",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Adamant bolts",
+				"targets": [
+					"ruby bolt tips"
+				]
+			},
+			"notes": "Ruby bolt tips (tip card absent) attach to Adamant bolts (wiki-verified this pass). UNVERIFIED interface-vs-instant - lean instant per the matrix."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Adamant bolts"
+				]
+			],
+			"output": "Diamond bolts",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Adamant bolts",
+				"targets": [
+					"diamond bolt tips"
+				]
+			},
+			"notes": "Diamond bolt tips (tip card absent) attach to Adamant bolts (wiki-verified this pass). UNVERIFIED interface-vs-instant - lean instant per the matrix."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Runite bolts"
+				]
+			],
+			"output": "Dragonstone bolts",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Runite bolts",
+				"targets": [
+					"dragonstone bolt tips"
+				]
+			},
+			"notes": "Dragonstone bolt tips (tip card absent) attach to Runite bolts (wiki-verified this pass). UNVERIFIED interface-vs-instant - lean instant per the matrix."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Runite bolts"
+				]
+			],
+			"output": "Onyx bolts",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Runite bolts",
+				"targets": [
+					"onyx bolt tips"
+				]
+			},
+			"notes": "Onyx bolt tips (tip card absent) attach to Runite bolts (wiki-verified this pass). UNVERIFIED interface-vs-instant - lean instant per the matrix."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Javelin shaft"
+				]
+			],
+			"output": "Bronze javelin",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "bronze javelin heads",
+				"targets": [
+					"javelin shaft"
+				]
+			},
+			"notes": "Bronze javelin heads (heads card absent) on javelin shaft. MISSING family, added this pass. UNVERIFIED interface-vs-instant - lean instant per the matrix."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Javelin shaft"
+				]
+			],
+			"output": "Iron javelin",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "iron javelin heads",
+				"targets": [
+					"javelin shaft"
+				]
+			},
+			"notes": "Iron javelin heads (heads card absent) on javelin shaft. MISSING family, added this pass. UNVERIFIED interface-vs-instant - lean instant per the matrix."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Javelin shaft"
+				]
+			],
+			"output": "Steel javelin",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "steel javelin heads",
+				"targets": [
+					"javelin shaft"
+				]
+			},
+			"notes": "Steel javelin heads (heads card absent) on javelin shaft. MISSING family, added this pass. UNVERIFIED interface-vs-instant - lean instant per the matrix."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Javelin shaft"
+				]
+			],
+			"output": "Mithril javelin",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "mithril javelin heads",
+				"targets": [
+					"javelin shaft"
+				]
+			},
+			"notes": "Mithril javelin heads (heads card absent) on javelin shaft. MISSING family, added this pass. UNVERIFIED interface-vs-instant - lean instant per the matrix."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Javelin shaft"
+				]
+			],
+			"output": "Adamant javelin",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "adamant javelin heads",
+				"targets": [
+					"javelin shaft"
+				]
+			},
+			"notes": "Adamant javelin heads (heads card absent) on javelin shaft. MISSING family, added this pass. UNVERIFIED interface-vs-instant - lean instant per the matrix."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Javelin shaft"
+				]
+			],
+			"output": "Rune javelin",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "rune javelin heads",
+				"targets": [
+					"javelin shaft"
+				]
+			},
+			"notes": "Rune javelin heads (heads card absent) on javelin shaft. MISSING family, added this pass. UNVERIFIED interface-vs-instant - lean instant per the matrix."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Javelin shaft"
+				]
+			],
+			"output": "Dragon javelin",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "dragon javelin heads",
+				"targets": [
+					"javelin shaft"
+				]
+			},
+			"notes": "Dragon javelin heads (heads card absent) on javelin shaft. MISSING family, added this pass. UNVERIFIED interface-vs-instant - lean instant per the matrix."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Javelin shaft"
+				]
+			],
+			"output": "Amethyst javelin",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "amethyst javelin heads",
+				"targets": [
+					"javelin shaft"
+				]
+			},
+			"notes": "Amethyst javelin heads (heads card absent) on javelin shaft. MISSING family, added this pass. UNVERIFIED interface-vs-instant - lean instant per the matrix."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Ogre arrow shaft"
+				],
+				[
+					"Bronze nails"
+				]
+			],
+			"output": "Bronze brutal",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Bronze nails",
+				"targets": [
+					"flighted ogre arrow"
+				]
+			},
+			"notes": "Bronze nails on flighted ogre arrow (uncarded) -> Bronze brutal. Nearest-carded: requires Ogre arrow shaft (flighted is uncarded), plus the nails themselves (carded). MISSING family, added this pass. UNVERIFIED interface-vs-instant - lean instant."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Ogre arrow shaft"
+				],
+				[
+					"Iron nails"
+				]
+			],
+			"output": "Iron brutal",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Iron nails",
+				"targets": [
+					"flighted ogre arrow"
+				]
+			},
+			"notes": "Iron nails on flighted ogre arrow (uncarded) -> Iron brutal. Nearest-carded: requires Ogre arrow shaft (flighted is uncarded), plus the nails themselves (carded). MISSING family, added this pass. UNVERIFIED interface-vs-instant - lean instant."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Ogre arrow shaft"
+				],
+				[
+					"Steel nails"
+				]
+			],
+			"output": "Steel brutal",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Steel nails",
+				"targets": [
+					"flighted ogre arrow"
+				]
+			},
+			"notes": "Steel nails on flighted ogre arrow (uncarded) -> Steel brutal. Nearest-carded: requires Ogre arrow shaft (flighted is uncarded), plus the nails themselves (carded). MISSING family, added this pass. UNVERIFIED interface-vs-instant - lean instant."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Ogre arrow shaft"
+				],
+				[
+					"Black nails"
+				]
+			],
+			"output": "Black brutal",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Black nails",
+				"targets": [
+					"flighted ogre arrow"
+				]
+			},
+			"notes": "Black nails on flighted ogre arrow (uncarded) -> Black brutal. Nearest-carded: requires Ogre arrow shaft (flighted is uncarded), plus the nails themselves (carded). MISSING family, added this pass. UNVERIFIED interface-vs-instant - lean instant."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Ogre arrow shaft"
+				],
+				[
+					"Mithril nails"
+				]
+			],
+			"output": "Mithril brutal",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Mithril nails",
+				"targets": [
+					"flighted ogre arrow"
+				]
+			},
+			"notes": "Mithril nails on flighted ogre arrow (uncarded) -> Mithril brutal. Nearest-carded: requires Ogre arrow shaft (flighted is uncarded), plus the nails themselves (carded). MISSING family, added this pass. UNVERIFIED interface-vs-instant - lean instant."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Ogre arrow shaft"
+				],
+				[
+					"Adamantite nails"
+				]
+			],
+			"output": "Adamant brutal",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Adamantite nails",
+				"targets": [
+					"flighted ogre arrow"
+				]
+			},
+			"notes": "Adamantite nails on flighted ogre arrow (uncarded) -> Adamant brutal. Nearest-carded: requires Ogre arrow shaft (flighted is uncarded), plus the nails themselves (carded). MISSING family, added this pass. UNVERIFIED interface-vs-instant - lean instant."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Ogre arrow shaft"
+				],
+				[
+					"Rune nails"
+				]
+			],
+			"output": "Rune brutal",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Rune nails",
+				"targets": [
+					"flighted ogre arrow"
+				]
+			},
+			"notes": "Rune nails on flighted ogre arrow (uncarded) -> Rune brutal. Nearest-carded: requires Ogre arrow shaft (flighted is uncarded), plus the nails themselves (carded). MISSING family, added this pass. UNVERIFIED interface-vs-instant - lean instant."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Headless arrow"
+				],
+				[
+					"Broad arrowheads"
+				]
+			],
+			"output": "Broad arrows",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Broad arrowheads",
+				"targets": [
+					"headless arrow"
+				]
+			},
+			"notes": "Broad arrowheads on headless arrow -> broad arrows. MISSING family, added this pass. UNVERIFIED interface-vs-instant - lean instant. Requires Broader Fletching slayer unlock in-game."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Unfinished broad bolts"
+				],
+				[
+					"Feather"
+				]
+			],
+			"output": "Broad bolts",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Feather",
+				"targets": [
+					"unfinished broad bolts"
+				]
+			},
+			"notes": "Feather unfinished broad bolts into broad bolts. Both items ARE carded (unlike plain unf bolts). MISSING family, added this pass. Wiki 2024 Make-X note plausibly applies here too - interface twin added defensively alongside item-on-item."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Unfinished broad bolts"
+				],
+				[
+					"Feather"
+				]
+			],
+			"output": "Broad bolts",
+			"trigger": {
+				"kind": "interface",
+				"name": "Broad bolts",
+				"targets": []
+			},
+			"notes": "Feather unfinished broad bolts into broad bolts. Both items ARE carded (unlike plain unf bolts). MISSING family, added this pass. Wiki 2024 Make-X note plausibly applies here too - interface twin added defensively alongside item-on-item."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Broad bolts"
+				]
+			],
+			"output": "Amethyst broad bolts",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Amethyst broad bolt tips",
+				"targets": [
+					"broad bolts"
+				]
+			},
+			"notes": "Amethyst broad bolt tips (tip card absent) on broad bolts. MISSING family, added this pass. UNVERIFIED interface-vs-instant - lean instant."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Atlatl dart shaft"
+				],
+				[
+					"Feather"
+				]
+			],
+			"output": "Headless atlatl dart",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Feather",
+				"targets": [
+					"atlatl dart shaft"
+				]
+			},
+			"notes": "Feather on atlatl dart shaft -> headless atlatl dart. MISSING family (Varlamore), added this pass. UNVERIFIED interface-vs-instant - lean instant, dart-family analogy."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Headless atlatl dart"
+				]
+			],
+			"output": "Atlatl dart",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Headless atlatl dart",
+				"targets": [
+					"atlatl dart tips"
+				]
+			},
+			"notes": "Atlatl dart tips (tip card absent) on headless atlatl dart -> atlatl dart. MISSING family (Varlamore), added this pass. UNVERIFIED interface-vs-instant - lean instant, dart-family analogy."
 		}
 	]
 }

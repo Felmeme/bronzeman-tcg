@@ -270,27 +270,55 @@ docs/sailing_nodes_report.md):
    any editable list field.
 
 ## ACTIVE: Skills sweep to 0.3.0 (2026-07-19 onward)
-**Session 1 (Fletching) IN FLIGHT, code half DONE 2026-07-19:** FletchingMode
-dropdown (Off/Product/Product+Materials, default P+M) replaces
-restrictFletching (migrated), checkRecipe wired. REMAINING: rebuild the 35
-fletching recipes from item-on-item knife triggers to interface product
-rules - knife-on-logs must open the menu freely; block at the product
-click. Owner's requirement chains: shaft = Arrow shaft+Logs; headless =
-Headless arrow+Arrow shaft+Feather; tipped arrows = arrow+Headless arrow
-(tips have no cards, never gate); bows keyed under BOTH plain and "(u)"
-names until in-game menu strings verified; darts stay item-on-item keyed
-on the tip, requiring dart+Feather. The interface-vs-instant matrix is in
-docs/fletching_actions.json + docs/fletching_report.md (52 actions). Key
-verdicts: knife-on-logs and stringing = INTERFACE (owner-verified); darts =
-instant by default (2023 note; opt-in Make-X toggle exists - honor-system
-edge); bolt feathering = Make-X INTERFACE since a 31 Jul 2024 change note
-(needs interface twins like the cooking fix; default-vs-toggle unverified);
-arrows/headless/javelins/crossbows/ogre = UNVERIFIED-lean-instant, verify
-in owner test. MISSING families to add: javelins, crossbows, gem-tipped
-bolts, ogre/brutal arrows, broad ammo, Varlamore atlatl darts (all final
-products carded). "Ogre arrow" itself has NO card (freely makeable;
-card-gap report). Rebuild data in one scripted pass from the matrix, then
-owner test pass, ship as 0.2.3.
+**Session 1 (Fletching): data rebuild DONE 2026-07-19, needs owner in-game
+test pass, then ship as 0.2.3.** FletchingMode dropdown (Off/Product/
+Product+Materials, default P+M) was already wired pre-rebuild. The 35 old
+recipes (all mis-keyed item-on-item on the knife) were replaced by 111
+recipes via `scripts/rebuild_fletching_data.py` (rerun it if
+docs/fletching_actions.json's verdicts change - it fully regenerates the
+"fletching" category, nothing there is hand-edited). Also deleted one
+corrupted `"feltching"` (typo) entry found during the rebuild - a garbled
+duplicate of the Earth battlestaff crafting recipe with the wrong output;
+unrelated to fletching but was silently mis-gating that item, worth
+mentioning if the owner asks why battlestaff crafting behavior changed.
+  - **Knife-on-logs family -> `kind:"interface"`** (owner-verified): Arrow
+    shaft (bare Logs only), all 8 crossbow stocks (Wooden..Magic, wiki-
+    verified log->stock pairing), Ogre arrow shaft (Achey tree logs,
+    uncarded so output-only gate). Two-stage bow chain: stringing (bow
+    string on unstrung bow) is the interface action, separate from the
+    knife step; nearest-carded requires the tier's Logs, not the uncarded
+    Shortbow (u)/Longbow (u). Each bow product is keyed under BOTH the
+    plain and "(u)" name until the owner confirms which string the
+    stringing interface actually shows.
+  - **Bolts got interface twins** (both `item-on-item` AND `interface`
+    registered, same product/inputs) per the 31 Jul 2024 Make-X wiki note -
+    default-vs-toggle is unverified so both fire. Added Blurite bolts as a
+    7th tier (was missing; needed as Jade bolts' base). Darts stayed
+    item-on-item only (owner-verified default-instant; the opt-in Make-X
+    toggle is an accepted honor-system gap, no twin).
+  - **MISSING families added, all wiki-verified this pass (not guessed):**
+    javelins (8 tiers, heads uncarded -> gate on Javelin shaft only);
+    crossbows (8 tiers - stringing registered under BOTH item-on-item and
+    interface since even the lean-toward-interface guess is unverified;
+    stock/limbs/crossbow tier pairing confirmed via oldschool.runescape.wiki,
+    e.g. Teak stock + Steel limbs -> Steel crossbow, Mahogany + Adamantite
+    limbs -> Adamant crossbow); gem-tipped bolts (10 gems, base metal-bolt
+    tier confirmed PER GEM via individual wiki pages - it varies, e.g. Opal
+    -> Bronze bolts, Sapphire/Emerald -> Mithril bolts, Onyx/Dragonstone ->
+    Runite bolts; the old matrix's "Bolts (metal base)" placeholder was not
+    reliable enough to code from directly); ogre/brutal arrows (7 nail
+    tiers, nearest-carded requires Ogre arrow shaft since Flighted ogre
+    arrow is uncarded; plain "Ogre arrow" itself has NO card and can never
+    be gated - card-gap report); broad ammo (broad arrowheads/unfinished
+    broad bolts ARE carded, unlike other tip families, so both recipe sides
+    enforce); Varlamore atlatl darts (headless + tipped, both carded).
+  - Everything not owner-verified is still UNVERIFIED-lean-instant/interface
+    per the matrix (docs/fletching_actions.json, docs/fletching_report.md) -
+    the owner's in-game test pass is what promotes leans to verified facts,
+    same as it did for knife-on-logs and bow-stringing originally.
+  - Build is green (`./gradlew build`); recipe_nodes.json validated for
+    zero key collisions (111 unique fletching trigger keys, zero clashes
+    against the other 344 non-fletching recipes).
 docs/plan_skills_sweep.md is the governing roadmap: broken skills first
 (Fishing -> Sailing -> Fletching), then missing rules (Varlamore thieving,
 Agility, Construction, Farming-harvest), then owner test passes. Assistant

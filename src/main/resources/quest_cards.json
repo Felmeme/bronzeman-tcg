@@ -3676,10 +3676,14 @@
 		{
 			"name": "Rune Mysteries",
 			"miniquest": false,
-			"cardGroups": [],
+			"cardGroups": [
+				[
+					"Air Talisman"
+				]
+			],
 			"groupLabels": [],
 			"monsterCards": [],
-			"notes": ""
+			"notes": "Card for Air Talisman does not block quest."
 		},
 		{
 			"name": "Scorpion Catcher",
