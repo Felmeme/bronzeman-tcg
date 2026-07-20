@@ -9,6 +9,7 @@ import javax.inject.Singleton;
 import net.runelite.api.Client;
 import net.runelite.api.NPC;
 import net.runelite.api.NPCComposition;
+import net.runelite.api.WorldView;
 import net.runelite.client.ui.overlay.Overlay;
 import net.runelite.client.ui.overlay.OverlayLayer;
 import net.runelite.client.ui.overlay.OverlayPosition;
@@ -53,11 +54,19 @@ class BronzemanTcgOverlay extends Overlay
 			return null;
 		}
 
+		// NPCs live on the WorldView now (multi-world support); the old Client.getNpcs()
+		// is a deprecated pass-through. Top level = the player's own world. Null before
+		// the world exists (login screen), where there is nothing to outline anyway.
+		WorldView worldView = client.getTopLevelWorldView();
+		if (worldView == null)
+		{
+			return null;
+		}
 		Set<String> owned = collectionReader.getOwnedCardNamesLowerCase();
 		Color color = config.lockedOutlineColor();
 		int width = config.lockedOutlineWidth();
 		int feather = config.lockedOutlineFeather();
-		for (NPC npc : client.getNpcs())
+		for (NPC npc : worldView.npcs())
 		{
 			if (npc == null || !isLocked(npc, owned))
 			{

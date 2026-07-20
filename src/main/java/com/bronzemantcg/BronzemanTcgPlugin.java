@@ -20,20 +20,25 @@ import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.ChatMessageType;
 import net.runelite.api.Client;
 import net.runelite.api.GameState;
+import net.runelite.api.Item;
 import net.runelite.api.ItemComposition;
+import net.runelite.api.ItemContainer;
 import net.runelite.api.MenuAction;
 import net.runelite.api.MenuEntry;
 import net.runelite.api.NPC;
 import net.runelite.api.NPCComposition;
 import net.runelite.api.Renderable;
 import net.runelite.api.ScriptID;
+import net.runelite.api.WorldView;
 import net.runelite.api.events.GameStateChanged;
 import net.runelite.api.events.GameTick;
+import net.runelite.api.events.ItemContainerChanged;
 import net.runelite.api.events.MenuEntryAdded;
 import net.runelite.api.events.MenuOptionClicked;
 import net.runelite.api.events.ScriptPostFired;
 import net.runelite.api.events.WidgetLoaded;
 import net.runelite.api.gameval.InterfaceID;
+import net.runelite.api.gameval.InventoryID;
 import net.runelite.api.gameval.VarbitID;
 import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetUtil;
@@ -118,6 +123,18 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	private static final Set<String> MAKE_VERBS = new HashSet<>(List.of(
 		"smelt", "make", "make-x", "make-all", "make sets", "craft", "smith",
 		"string", "mix", "cook", "bake", "fletch", "spin", "fire"));
+	// Woodcutting axes only - suffix-matching " axe" would also catch carried COMBAT
+	// axes (Zombie axe, Soulreaper axe, Morrigan's throwing axe - all carded), which
+	// must never gate chopping. Pickaxes need no list: every "* pickaxe" is a mining
+	// tool. Uncarded entries (felling axes) are future-proofing - untracked names are
+	// never locked, so they stay inert until osrs-tcg cards them.
+	private static final Set<String> WOODCUTTING_AXES = new HashSet<>(List.of(
+		"bronze axe", "iron axe", "steel axe", "black axe", "mithril axe",
+		"adamant axe", "rune axe", "dragon axe", "crystal axe", "infernal axe",
+		"gilded axe", "3rd age axe", "corrupted axe",
+		"bronze felling axe", "iron felling axe", "steel felling axe",
+		"black felling axe", "mithril felling axe", "adamant felling axe",
+		"rune felling axe", "dragon felling axe", "crystal felling axe"));
 	// LMS island map regions, copied verbatim from RuneLite core's LootTrackerPlugin; a lenient
 	// fallback so restrictions stay lifted even if a client update shifts the BR_INGAME timing.
 	private static final Set<Integer> LMS_REGIONS = new HashSet<>(List.of(
@@ -219,6 +236,11 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	// Locked-mark lookup cache, keyed by item id; dropped whenever the owned set changes.
 	private final Map<Integer, Boolean> lockedItemCache = new HashMap<>();
 	private Set<String> lockedItemCacheOwned;
+	// Carried tool NAMES (not lock states): recomputed on inventory/equipment change,
+	// while lock state is evaluated per check so card unlocks apply without waiting
+	// for the next container event. Read from the per-frame hide path - keep cheap.
+	private Set<String> carriedPickaxes = Collections.emptySet();
+	private Set<String> carriedAxes = Collections.emptySet();
 	private boolean markRefreshQueued;
 	private int markTickCounter;
 
@@ -228,6 +250,9 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 		collectionReader.invalidate();
 		migrateExemptList();
 		migrateNpcVisibility();
+		migrateSkillToggles();
+		// Mid-session enable fires no ItemContainerChanged, so seed the tool cache now.
+		clientThread.invokeLater(this::refreshCarriedTools);
 		welcomeShown = false;
 		welcomeDelayTicks = -1;
 		reminderTicks = -1;
@@ -876,6 +901,59 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 		sendBlockedMessage(itemName);
 	}
 
+	// ------------------------------------------------------------------ carried tools
+
+	@Subscribe
+	public void onItemContainerChanged(ItemContainerChanged event)
+	{
+		// Equipment too: a pickaxe equipped before its card locked (or before the
+		// plugin was enabled) still mines.
+		if (event.getContainerId() == InventoryID.INV
+			|| event.getContainerId() == InventoryID.WORN)
+		{
+			refreshCarriedTools();
+		}
+	}
+
+	private void refreshCarriedTools()
+	{
+		Set<String> pickaxes = new HashSet<>();
+		Set<String> axes = new HashSet<>();
+		collectTools(client.getItemContainer(InventoryID.INV), pickaxes, axes);
+		collectTools(client.getItemContainer(InventoryID.WORN), pickaxes, axes);
+		carriedPickaxes = pickaxes;
+		carriedAxes = axes;
+	}
+
+	private void collectTools(ItemContainer container, Set<String> pickaxes, Set<String> axes)
+	{
+		if (container == null)
+		{
+			return;
+		}
+		for (Item item : container.getItems())
+		{
+			if (item.getId() < 0)
+			{
+				continue;
+			}
+			String name = itemManager.getItemComposition(item.getId()).getName();
+			if (name == null)
+			{
+				continue;
+			}
+			String lower = name.toLowerCase(Locale.ROOT);
+			if (lower.endsWith(" pickaxe"))
+			{
+				pickaxes.add(name);
+			}
+			else if (WOODCUTTING_AXES.contains(lower))
+			{
+				axes.add(name);
+			}
+		}
+	}
+
 	// ------------------------------------------------------------------ game objects
 
 	private void handleGameObjectInteraction(MenuOptionClicked event)
@@ -968,7 +1046,7 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 			// keyboard defaults bypass the menu pipeline (owner-accepted limitation).
 			// Node rules get first refusal, same as the make-verb fallback below - cooking
 			// lives there, and this interface is how range-click "Cook" flows arrive.
-			String product = Text.removeTags(event.getMenuTarget()).trim();
+			String product = stripProductQuantity(Text.removeTags(event.getMenuTarget()));
 			if (!product.isEmpty()
 				&& !checkNodeRule(event, ResourceNodeCatalog.KIND_INTERFACE, product,
 					ResourceNodeCatalog.ANY_OPTION))
@@ -1005,7 +1083,7 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 		// Node rules get first refusal (they carry role-based modes, e.g. sailing upgrades).
 		if (isMakeVerb(optionLower))
 		{
-			String product = Text.removeTags(event.getMenuTarget()).trim();
+			String product = stripProductQuantity(Text.removeTags(event.getMenuTarget()));
 			if (!product.isEmpty()
 				&& !checkNodeRule(event, ResourceNodeCatalog.KIND_INTERFACE, product,
 					ResourceNodeCatalog.ANY_OPTION))
@@ -1083,18 +1161,40 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 			return;
 		}
 
-		// Locked usage: a locked item can't be used on anything (or be used upon).
-		if (config.itemUsageMode() == LockState.LOCKED
-			&& (blockIfLockedItem(event, source) || blockIfLockedItem(event, destination)))
+		// Recipes get first refusal (owner ruling 2026-07-20): their block message names
+		// EVERY missing card, where the generic item lock below would stop at the first
+		// locked item (e.g. "Feather" alone when the bolts card is also missing). A
+		// passing recipe implies its material cards are owned, so the item lock cannot
+		// disagree with it. Data keys tool->material; clicks can arrive either way round.
+		if (checkRecipe(event, RecipeCatalog.KIND_ITEM_ON_ITEM, source, destination)
+			|| checkRecipe(event, RecipeCatalog.KIND_ITEM_ON_ITEM, destination, source))
 		{
 			return;
 		}
 
-		// Processing recipes; data keys tool->material, clicks can arrive either way round.
-		if (!checkRecipe(event, RecipeCatalog.KIND_ITEM_ON_ITEM, source, destination))
+		// Locked usage: a locked item can't be used on anything (or be used upon).
+		if (config.itemUsageMode() == LockState.LOCKED)
 		{
-			checkRecipe(event, RecipeCatalog.KIND_ITEM_ON_ITEM, destination, source);
+			if (!blockIfLockedItem(event, source))
+			{
+				blockIfLockedItem(event, destination);
+			}
 		}
+	}
+
+	/**
+	 * Make-interface product widgets can carry a batch quantity in their name - the
+	 * owner's debug capture shows knife-menu shafts as "45 arrow shafts" (count scales
+	 * with log tier). Recipe/node keys hold plain product names, so strip a leading
+	 * count ("45 ", "45 x ") and a trailing "xN". Digits-without-space names ("3rd age
+	 * pickaxe") and plain products pass through unchanged.
+	 */
+	private static String stripProductQuantity(String product)
+	{
+		return product.trim()
+			.replaceAll("(?i)\\s*x\\s*\\d{1,5}$", "")
+			.replaceAll("(?i)^\\d{1,5}\\s*(x\\s+|\\s)", "")
+			.trim();
 	}
 
 	private static boolean isMakeVerb(String optionLower)
@@ -1163,6 +1263,11 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 			return null;
 		}
 
+		if ("mining".equals(rule.category) || "woodcutting".equals(rule.category))
+		{
+			return evaluateGatheringRule(rule);
+		}
+
 		boolean forceAllInGroups = false;
 		Set<String> excludedRoles;
 		if ("fishing".equals(rule.category))
@@ -1203,6 +1308,55 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	}
 
 	/**
+	 * Mining/woodcutting share a four-way dial whose halves are the node's yield cards
+	 * (ore/logs) and the carried tool. The tool half blocks while ANY carried pickaxe/axe
+	 * is locked - the client silently uses the best tool carried, so one unlocked tool
+	 * must not alibi a locked better one (owner's ruling). Untracked tool variants
+	 * (ornamented kits, uncarded felling axes) are never locked, per the standing rule.
+	 */
+	private List<String> evaluateGatheringRule(ResourceNodeCatalog.Rule rule)
+	{
+		boolean mining = "mining".equals(rule.category);
+		boolean enforceYield;
+		boolean enforceTool;
+		if (mining)
+		{
+			MiningMode mode = config.miningMode();
+			if (mode == MiningMode.OFF)
+			{
+				return null;
+			}
+			enforceYield = mode != MiningMode.TOOL_ONLY;
+			enforceTool = mode != MiningMode.ORE_ONLY;
+		}
+		else
+		{
+			WoodcuttingMode mode = config.woodcuttingMode();
+			if (mode == WoodcuttingMode.OFF)
+			{
+				return null;
+			}
+			enforceYield = mode != WoodcuttingMode.TOOL_ONLY;
+			enforceTool = mode != WoodcuttingMode.LOGS_ONLY;
+		}
+
+		List<String> missing = enforceYield
+			? rule.missingRequirements(effectiveOwnedCards(), Collections.emptySet(), false)
+			: new ArrayList<>();
+		if (enforceTool)
+		{
+			for (String tool : mining ? carriedPickaxes : carriedAxes)
+			{
+				if (!isLootExempt(tool) && !isUnlocked(itemCatalog, tool))
+				{
+					missing.add(tool);
+				}
+			}
+		}
+		return missing.isEmpty() ? null : missing;
+	}
+
+	/**
 	 * Config gate per node category.
 	 *
 	 * @return roles to skip during evaluation, or null when the category is switched off.
@@ -1212,10 +1366,6 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	{
 		switch (category)
 		{
-			case "woodcutting":
-				return config.restrictWoodcutting() ? Collections.emptySet() : null;
-			case "mining":
-				return config.restrictMining() ? Collections.emptySet() : null;
 			case "pickpocketing":
 				switch (config.thievingMode())
 				{
@@ -1545,7 +1695,15 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 		{
 			return true;
 		}
-		for (int region : client.getMapRegions())
+		// Map regions moved to the WorldView (multi-world support); top level = the
+		// player's world. Null before the world exists - no world means no LMS match,
+		// so restrictions stand (the conservative default).
+		WorldView worldView = client.getTopLevelWorldView();
+		if (worldView == null)
+		{
+			return false;
+		}
+		for (int region : worldView.getMapRegions())
 		{
 			if (LMS_REGIONS.contains(region))
 			{
@@ -1923,14 +2081,39 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 		configManager.unsetConfiguration(BronzemanTcgConfig.GROUP, "hideLockedOptions");
 		// The CotS toggle is replaced by automatic quest-state awareness.
 		configManager.unsetConfiguration(BronzemanTcgConfig.GROUP, "allowCotsGuards");
+	}
 
-		// Fletching's toggle became a mode dropdown in the skills sweep.
+	/**
+	 * Skill toggles become mode dropdowns as the skills sweep reaches them. Deliberately
+	 * unguarded: each mapping reads a retired key and then unsets it, so it self-disarms
+	 * after one run. (The fletching mapping moved here from migrateNpcVisibility, whose
+	 * one-shot flag was already set for players who ran 0.2.1 - inside that guard it
+	 * would never have fired for them.) Same lenient-carries-over rule as the item
+	 * settings pass: only an explicit "false" maps to the off value; everyone else gets
+	 * the new (stricter) default rather than a forced re-lock of a deliberate opt-out.
+	 */
+	private void migrateSkillToggles()
+	{
 		if ("false".equals(configManager.getConfiguration(BronzemanTcgConfig.GROUP, "restrictFletching")))
 		{
 			configManager.setConfiguration(BronzemanTcgConfig.GROUP, "fletchingMode",
 				FletchingMode.OFF.name());
 		}
 		configManager.unsetConfiguration(BronzemanTcgConfig.GROUP, "restrictFletching");
+
+		if ("false".equals(configManager.getConfiguration(BronzemanTcgConfig.GROUP, "restrictMining")))
+		{
+			configManager.setConfiguration(BronzemanTcgConfig.GROUP, "miningMode",
+				MiningMode.OFF.name());
+		}
+		configManager.unsetConfiguration(BronzemanTcgConfig.GROUP, "restrictMining");
+
+		if ("false".equals(configManager.getConfiguration(BronzemanTcgConfig.GROUP, "restrictWoodcutting")))
+		{
+			configManager.setConfiguration(BronzemanTcgConfig.GROUP, "woodcuttingMode",
+				WoodcuttingMode.OFF.name());
+		}
+		configManager.unsetConfiguration(BronzemanTcgConfig.GROUP, "restrictWoodcutting");
 	}
 
 	private void migrateExemptList()

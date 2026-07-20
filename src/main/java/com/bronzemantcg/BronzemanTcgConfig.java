@@ -357,29 +357,31 @@ public interface BronzemanTcgConfig extends Config
 	//Resource nodes
 	//----------------
 	@ConfigItem(
-		keyName = "restrictWoodcutting",
-		name = "Restrict woodcutting",
-		description = "Block chopping trees until the respective logs card is collected."
-			+ "<br>e.g. Oak tree needs Oak logs.",
+		keyName = "woodcuttingMode",
+		name = "Woodcutting Options",
+		description = "Block chopping trees until the respective cards are collected."
+			+ "<br>Logs: e.g. Oak tree needs Oak logs."
+			+ "<br>Tool: no locked axe carried.",
 		section = woodcuttingSection,
 		position = 0
 	)
-	default boolean restrictWoodcutting()
+	default WoodcuttingMode woodcuttingMode()
 	{
-		return true;
+		return WoodcuttingMode.CARD_REQUIRED;
 	}
 
 	@ConfigItem(
-		keyName = "restrictMining",
-		name = "Restrict mining",
-		description = "Block mining rocks until the respective ore card is collected."
-			+ "<br>e.g. Copper rocks need Copper ore.",
+		keyName = "miningMode",
+		name = "Mining Options",
+		description = "Block mining rocks until the respective cards are collected."
+			+ "<br>Ore: e.g. Copper rocks need Copper ore."
+			+ "<br>Tool: no locked pickaxe carried.",
 		section = miningSection,
 		position = 0
 	)
-	default boolean restrictMining()
+	default MiningMode miningMode()
 	{
-		return true;
+		return MiningMode.CARD_REQUIRED;
 	}
 
 	@ConfigItem(

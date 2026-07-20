@@ -284,12 +284,57 @@ mentioning if the owner asks why battlestaff crafting behavior changed.
   - **Knife-on-logs family -> `kind:"interface"`** (owner-verified): Arrow
     shaft (bare Logs only), all 8 crossbow stocks (Wooden..Magic, wiki-
     verified log->stock pairing), Ogre arrow shaft (Achey tree logs,
-    uncarded so output-only gate). Two-stage bow chain: stringing (bow
-    string on unstrung bow) is the interface action, separate from the
-    knife step; nearest-carded requires the tier's Logs, not the uncarded
-    Shortbow (u)/Longbow (u). Each bow product is keyed under BOTH the
-    plain and "(u)" name until the owner confirms which string the
-    stringing interface actually shows.
+    uncarded so output-only gate). Two-stage bow chain, GROUND-TRUTHED via
+    the owner's debug-log capture (2026-07-20): the knife menu fires PLAIN
+    product names ("Willow shortbow", NOT "(u)" - two earlier guesses were
+    both wrong), so the plain interface key = STAGE-1 CARVING, tier's Logs
+    only, output null (owner ruling: strung card never gates the carve).
+    STAGE-2 STRINGING is keyed item-on-item instead (Bow string on
+    "<bow> (u)" - the unstrung item name is reliable there): logs + Bow
+    string + strung card output. No "(u)" interface keys remain.
+    Owner-test rulings/facts (2026-07-20): arrow shafts come from EVERY
+    log tier and the menu string is "45 arrow shafts" (leading count,
+    log-verified) - shaft rule is output-only, keyed singular+plural, and
+    stripProductQuantity removes leading counts ("45 ", "45 x ") and
+    trailing "xN" from interface product strings. WOODEN SHIELDS
+    (Forestry 2023, all 7 tiers Wooden..Redwood carded) were missing from
+    the research matrix entirely - owner spotted them in the knife menu;
+    added as interface rules (tier logs + shield card). RECIPE-FIRST
+    ordering in handleWidgetOnWidget (owner ruling): item-on-item recipe
+    checks now run BEFORE the generic itemUsageMode lock, so block
+    messages name every missing card instead of just the first locked
+    material item (previously a locked Feather masked the bolts card and
+    made stringing/bolts/darts results look like data bugs). Bow names
+    are first-word-capitalised only ("Magic longbow"); all card
+    references exact-match tracked_item_names (validated per regen).
+    Stocks keys look correct ("Willow stock") but the owner saw no block -
+    if the retest still doesn't block, capture the stock click's
+    node-lookup line. WorldView migration done same day: getNpcs() ->
+    getTopLevelWorldView().npcs() (overlay), getMapRegions() -> WorldView
+    (LMS check), both null-guarded; deprecation warnings resolved. Avoid
+    deprecated API in new code (owner instruction 2026-07-20).
+  - **Verification sweep (2026-07-20 night, wiki plain-page fetches per
+    etiquette; 125 fletching recipes final):** shields START AT OAK (no
+    plain-logs shield exists - the guessed "Wooden shield" tier removed;
+    2 logs each, Oak_shield page); JAVELIN SHAFTS are another missed
+    knife-menu product (15/plain log, Fletching 3 - added output-only like
+    arrow shafts); atlatl chain verified end-to-end (knife on Ent branch
+    [CARDED] -> 100 shafts -> +Feathers -> headless -> +tips -> dart; Ent
+    branch singular/plural unverified so both targets keyed); "Amethyst
+    broad bolt tips" DOES NOT EXIST - real item is "Amethyst bolt tips"
+    (trigger fixed); RUNE/RUNITE TRAP: unstrung = "Runite crossbow (u)"
+    (matches card "Runite crossbow") but finished item = "Rune crossbow"
+    (untracked!) - finished-name interface twin added, card stays Runite.
+    Adamant has no such trap ("Adamant crossbow (u)" confirmed).
+  - **STANDING DOCTRINE (owner instruction, 2026-07-20): never key rules
+    on guessed menu/item strings.** Acceptable sources ONLY: (a) the
+    owner's node-lookup debug capture (exact in-game strings), (b) wiki
+    item pages fetched per the etiquette rules. Where a string is
+    genuinely unobtainable ahead of time, key ALL plausible variants,
+    label them UNVERIFIED in notes, and put them on the owner's test
+    list. Every data regen must re-run exact-match validation against
+    tracked_item_names + the collision check (both scripted in
+    scripts/rebuild_fletching_data.py's validation snippet pattern).
   - **Bolts got interface twins** (both `item-on-item` AND `interface`
     registered, same product/inputs) per the 31 Jul 2024 Make-X wiki note -
     default-vs-toggle is unverified so both fire. Added Blurite bolts as a
@@ -319,6 +364,28 @@ mentioning if the owner asks why battlestaff crafting behavior changed.
   - Build is green (`./gradlew build`); recipe_nodes.json validated for
     zero key collisions (111 unique fletching trigger keys, zero clashes
     against the other 344 non-fletching recipes).
+
+**Locked-tool gathering fix (2026-07-20, rides in the 0.2.3 release, needs
+in-game test):** rocks/trees were minable/choppable with a LOCKED pickaxe/axe
+carried - the node rules only checked the ore/logs card, and itemUsageMode
+never fires because gathering doesn't click the tool. Fix (owner quiz'd):
+`restrictMining`/`restrictWoodcutting` toggles became dropdowns `miningMode`
+("Mining Options": Card Required/Ore Only/Tool Only/No Card Needed, default
+Card Required) and `woodcuttingMode` (same with Logs Only) - new keyNames,
+old ones mapped in migrateSkillToggles() (explicit false -> No Card Needed).
+Tool half is STRICT: blocks while ANY carried (inv+equipped) pickaxe/axe is
+locked, because the client silently uses the best tool carried. Mechanics:
+carried tool NAMES cached on ItemContainerChanged (lock state evaluated per
+check so unlocks apply instantly); mining/woodcutting left excludedRolesFor
+for a dedicated evaluateGatheringRule(); WOODCUTTING_AXES allowlist avoids
+combat axes (Zombie/Soulreaper/Morrigan's are carded ' axe' names!) and
+pre-lists uncarded felling axes (inert until carded). Exempt list applies
+to tools; untracked variants (e.g. 'Dragon pickaxe (or)') never block.
+ALSO: migrateSkillToggles() is deliberately UNGUARDED (self-disarming) and
+the fletching toggle migration MOVED into it - it previously sat inside
+guard-flagged migrateNpcVisibility, where 0.2.1 upgraders (flag already
+set) would never have run it; real latent bug, mention to owner. Owner
+plans to reword the two new config descriptions himself.
 docs/plan_skills_sweep.md is the governing roadmap: broken skills first
 (Fishing -> Sailing -> Fletching), then missing rules (Varlamore thieving,
 Agility, Construction, Farming-harvest), then owner test passes. Assistant

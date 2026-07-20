@@ -6914,36 +6914,40 @@
 		},
 		{
 			"category": "fletching",
-			"inputs": [
-				[
-					"Logs"
-				]
-			],
+			"inputs": [],
 			"output": "Arrow shaft",
 			"trigger": {
 				"kind": "interface",
 				"name": "Arrow shaft",
 				"targets": []
 			},
-			"notes": "Owner-verified: knife-on-logs opens the make interface. Only bare Logs yield arrow shafts (other tiers offer bows/crossbow stock instead)."
+			"notes": "Owner-verified: knife-on-logs opens the make interface, and every log tier offers shafts (qty scales with tier), so the product click can't identify the log - output-only gate on Arrow shaft. Plural twin keyed; plugin strips the xN quantity."
+		},
+		{
+			"category": "fletching",
+			"inputs": [],
+			"output": "Arrow shaft",
+			"trigger": {
+				"kind": "interface",
+				"name": "Arrow shafts",
+				"targets": []
+			},
+			"notes": "Owner-verified: knife-on-logs opens the make interface, and every log tier offers shafts (qty scales with tier), so the product click can't identify the log - output-only gate on Arrow shaft. Plural twin keyed; plugin strips the xN quantity."
 		},
 		{
 			"category": "fletching",
 			"inputs": [
 				[
 					"Logs"
-				],
-				[
-					"Bow string"
 				]
 			],
-			"output": "Shortbow",
+			"output": null,
 			"trigger": {
 				"kind": "interface",
 				"name": "Shortbow",
 				"targets": []
 			},
-			"notes": "Owner-verified: bow stringing (bow string on unstrung bow) opens the make interface, separate from the knife-on-logs step. Nearest-carded policy: requires the tier's Logs (the unstrung shortbow has no card). Keyed under both 'Shortbow' and 'Shortbow (u)' until the owner confirms the exact product string the stringing interface shows."
+			"notes": "Stage 1 carving: knife menu fires the plain product name (owner debug-log verified). Tier's Logs only; no output gate (owner ruling 2026-07-20). Bow string NOT required here."
 		},
 		{
 			"category": "fletching",
@@ -6957,29 +6961,28 @@
 			],
 			"output": "Shortbow",
 			"trigger": {
-				"kind": "interface",
-				"name": "Shortbow (u)",
-				"targets": []
+				"kind": "item-on-item",
+				"name": "Bow string",
+				"targets": [
+					"Shortbow (u)"
+				]
 			},
-			"notes": "Owner-verified: bow stringing (bow string on unstrung bow) opens the make interface, separate from the knife-on-logs step. Nearest-carded policy: requires the tier's Logs (the unstrung shortbow has no card). Keyed under both 'Shortbow' and 'Shortbow (u)' until the owner confirms the exact product string the stringing interface shows."
+			"notes": "Stage 2 stringing, intercepted at the bow-string-on-unstrung item-on-item click (the unstrung item name is reliable there; the stringing interface's own product string shows the plain name, which is the carving key). Nearest-carded: Logs + Bow string; output = strung Shortbow."
 		},
 		{
 			"category": "fletching",
 			"inputs": [
 				[
 					"Logs"
-				],
-				[
-					"Bow string"
 				]
 			],
-			"output": "Longbow",
+			"output": null,
 			"trigger": {
 				"kind": "interface",
 				"name": "Longbow",
 				"targets": []
 			},
-			"notes": "Owner-verified: bow stringing (bow string on unstrung bow) opens the make interface, separate from the knife-on-logs step. Nearest-carded policy: requires the tier's Logs (the unstrung longbow has no card). Keyed under both 'Longbow' and 'Longbow (u)' until the owner confirms the exact product string the stringing interface shows."
+			"notes": "Stage 1 carving: knife menu fires the plain product name (owner debug-log verified). Tier's Logs only; no output gate (owner ruling 2026-07-20). Bow string NOT required here."
 		},
 		{
 			"category": "fletching",
@@ -6993,11 +6996,28 @@
 			],
 			"output": "Longbow",
 			"trigger": {
+				"kind": "item-on-item",
+				"name": "Bow string",
+				"targets": [
+					"Longbow (u)"
+				]
+			},
+			"notes": "Stage 2 stringing, intercepted at the bow-string-on-unstrung item-on-item click (the unstrung item name is reliable there; the stringing interface's own product string shows the plain name, which is the carving key). Nearest-carded: Logs + Bow string; output = strung Longbow."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Oak logs"
+				]
+			],
+			"output": null,
+			"trigger": {
 				"kind": "interface",
-				"name": "Longbow (u)",
+				"name": "Oak shortbow",
 				"targets": []
 			},
-			"notes": "Owner-verified: bow stringing (bow string on unstrung bow) opens the make interface, separate from the knife-on-logs step. Nearest-carded policy: requires the tier's Logs (the unstrung longbow has no card). Keyed under both 'Longbow' and 'Longbow (u)' until the owner confirms the exact product string the stringing interface shows."
+			"notes": "Stage 1 carving: knife menu fires the plain product name (owner debug-log verified). Tier's Logs only; no output gate (owner ruling 2026-07-20). Bow string NOT required here."
 		},
 		{
 			"category": "fletching",
@@ -7009,13 +7029,30 @@
 					"Bow string"
 				]
 			],
-			"output": "Oak Shortbow",
+			"output": "Oak shortbow",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Bow string",
+				"targets": [
+					"Oak shortbow (u)"
+				]
+			},
+			"notes": "Stage 2 stringing, intercepted at the bow-string-on-unstrung item-on-item click (the unstrung item name is reliable there; the stringing interface's own product string shows the plain name, which is the carving key). Nearest-carded: Oak logs + Bow string; output = strung Oak shortbow."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Oak logs"
+				]
+			],
+			"output": null,
 			"trigger": {
 				"kind": "interface",
-				"name": "Oak Shortbow",
+				"name": "Oak longbow",
 				"targets": []
 			},
-			"notes": "Owner-verified: bow stringing (bow string on unstrung bow) opens the make interface, separate from the knife-on-logs step. Nearest-carded policy: requires the tier's Logs (the unstrung shortbow has no card). Keyed under both 'Oak Shortbow' and 'Oak Shortbow (u)' until the owner confirms the exact product string the stringing interface shows."
+			"notes": "Stage 1 carving: knife menu fires the plain product name (owner debug-log verified). Tier's Logs only; no output gate (owner ruling 2026-07-20). Bow string NOT required here."
 		},
 		{
 			"category": "fletching",
@@ -7027,49 +7064,30 @@
 					"Bow string"
 				]
 			],
-			"output": "Oak Shortbow",
+			"output": "Oak longbow",
 			"trigger": {
-				"kind": "interface",
-				"name": "Oak Shortbow (u)",
-				"targets": []
+				"kind": "item-on-item",
+				"name": "Bow string",
+				"targets": [
+					"Oak longbow (u)"
+				]
 			},
-			"notes": "Owner-verified: bow stringing (bow string on unstrung bow) opens the make interface, separate from the knife-on-logs step. Nearest-carded policy: requires the tier's Logs (the unstrung shortbow has no card). Keyed under both 'Oak Shortbow' and 'Oak Shortbow (u)' until the owner confirms the exact product string the stringing interface shows."
+			"notes": "Stage 2 stringing, intercepted at the bow-string-on-unstrung item-on-item click (the unstrung item name is reliable there; the stringing interface's own product string shows the plain name, which is the carving key). Nearest-carded: Oak logs + Bow string; output = strung Oak longbow."
 		},
 		{
 			"category": "fletching",
 			"inputs": [
 				[
-					"Oak logs"
-				],
-				[
-					"Bow string"
+					"Willow logs"
 				]
 			],
-			"output": "Oak Longbow",
+			"output": null,
 			"trigger": {
 				"kind": "interface",
-				"name": "Oak Longbow",
+				"name": "Willow shortbow",
 				"targets": []
 			},
-			"notes": "Owner-verified: bow stringing (bow string on unstrung bow) opens the make interface, separate from the knife-on-logs step. Nearest-carded policy: requires the tier's Logs (the unstrung longbow has no card). Keyed under both 'Oak Longbow' and 'Oak Longbow (u)' until the owner confirms the exact product string the stringing interface shows."
-		},
-		{
-			"category": "fletching",
-			"inputs": [
-				[
-					"Oak logs"
-				],
-				[
-					"Bow string"
-				]
-			],
-			"output": "Oak Longbow",
-			"trigger": {
-				"kind": "interface",
-				"name": "Oak Longbow (u)",
-				"targets": []
-			},
-			"notes": "Owner-verified: bow stringing (bow string on unstrung bow) opens the make interface, separate from the knife-on-logs step. Nearest-carded policy: requires the tier's Logs (the unstrung longbow has no card). Keyed under both 'Oak Longbow' and 'Oak Longbow (u)' until the owner confirms the exact product string the stringing interface shows."
+			"notes": "Stage 1 carving: knife menu fires the plain product name (owner debug-log verified). Tier's Logs only; no output gate (owner ruling 2026-07-20). Bow string NOT required here."
 		},
 		{
 			"category": "fletching",
@@ -7081,13 +7099,30 @@
 					"Bow string"
 				]
 			],
-			"output": "Willow Shortbow",
+			"output": "Willow shortbow",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Bow string",
+				"targets": [
+					"Willow shortbow (u)"
+				]
+			},
+			"notes": "Stage 2 stringing, intercepted at the bow-string-on-unstrung item-on-item click (the unstrung item name is reliable there; the stringing interface's own product string shows the plain name, which is the carving key). Nearest-carded: Willow logs + Bow string; output = strung Willow shortbow."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Willow logs"
+				]
+			],
+			"output": null,
 			"trigger": {
 				"kind": "interface",
-				"name": "Willow Shortbow",
+				"name": "Willow longbow",
 				"targets": []
 			},
-			"notes": "Owner-verified: bow stringing (bow string on unstrung bow) opens the make interface, separate from the knife-on-logs step. Nearest-carded policy: requires the tier's Logs (the unstrung shortbow has no card). Keyed under both 'Willow Shortbow' and 'Willow Shortbow (u)' until the owner confirms the exact product string the stringing interface shows."
+			"notes": "Stage 1 carving: knife menu fires the plain product name (owner debug-log verified). Tier's Logs only; no output gate (owner ruling 2026-07-20). Bow string NOT required here."
 		},
 		{
 			"category": "fletching",
@@ -7099,49 +7134,30 @@
 					"Bow string"
 				]
 			],
-			"output": "Willow Shortbow",
+			"output": "Willow longbow",
 			"trigger": {
-				"kind": "interface",
-				"name": "Willow Shortbow (u)",
-				"targets": []
+				"kind": "item-on-item",
+				"name": "Bow string",
+				"targets": [
+					"Willow longbow (u)"
+				]
 			},
-			"notes": "Owner-verified: bow stringing (bow string on unstrung bow) opens the make interface, separate from the knife-on-logs step. Nearest-carded policy: requires the tier's Logs (the unstrung shortbow has no card). Keyed under both 'Willow Shortbow' and 'Willow Shortbow (u)' until the owner confirms the exact product string the stringing interface shows."
+			"notes": "Stage 2 stringing, intercepted at the bow-string-on-unstrung item-on-item click (the unstrung item name is reliable there; the stringing interface's own product string shows the plain name, which is the carving key). Nearest-carded: Willow logs + Bow string; output = strung Willow longbow."
 		},
 		{
 			"category": "fletching",
 			"inputs": [
 				[
-					"Willow logs"
-				],
-				[
-					"Bow string"
+					"Maple logs"
 				]
 			],
-			"output": "Willow Longbow",
+			"output": null,
 			"trigger": {
 				"kind": "interface",
-				"name": "Willow Longbow",
+				"name": "Maple shortbow",
 				"targets": []
 			},
-			"notes": "Owner-verified: bow stringing (bow string on unstrung bow) opens the make interface, separate from the knife-on-logs step. Nearest-carded policy: requires the tier's Logs (the unstrung longbow has no card). Keyed under both 'Willow Longbow' and 'Willow Longbow (u)' until the owner confirms the exact product string the stringing interface shows."
-		},
-		{
-			"category": "fletching",
-			"inputs": [
-				[
-					"Willow logs"
-				],
-				[
-					"Bow string"
-				]
-			],
-			"output": "Willow Longbow",
-			"trigger": {
-				"kind": "interface",
-				"name": "Willow Longbow (u)",
-				"targets": []
-			},
-			"notes": "Owner-verified: bow stringing (bow string on unstrung bow) opens the make interface, separate from the knife-on-logs step. Nearest-carded policy: requires the tier's Logs (the unstrung longbow has no card). Keyed under both 'Willow Longbow' and 'Willow Longbow (u)' until the owner confirms the exact product string the stringing interface shows."
+			"notes": "Stage 1 carving: knife menu fires the plain product name (owner debug-log verified). Tier's Logs only; no output gate (owner ruling 2026-07-20). Bow string NOT required here."
 		},
 		{
 			"category": "fletching",
@@ -7153,13 +7169,30 @@
 					"Bow string"
 				]
 			],
-			"output": "Maple Shortbow",
+			"output": "Maple shortbow",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Bow string",
+				"targets": [
+					"Maple shortbow (u)"
+				]
+			},
+			"notes": "Stage 2 stringing, intercepted at the bow-string-on-unstrung item-on-item click (the unstrung item name is reliable there; the stringing interface's own product string shows the plain name, which is the carving key). Nearest-carded: Maple logs + Bow string; output = strung Maple shortbow."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Maple logs"
+				]
+			],
+			"output": null,
 			"trigger": {
 				"kind": "interface",
-				"name": "Maple Shortbow",
+				"name": "Maple longbow",
 				"targets": []
 			},
-			"notes": "Owner-verified: bow stringing (bow string on unstrung bow) opens the make interface, separate from the knife-on-logs step. Nearest-carded policy: requires the tier's Logs (the unstrung shortbow has no card). Keyed under both 'Maple Shortbow' and 'Maple Shortbow (u)' until the owner confirms the exact product string the stringing interface shows."
+			"notes": "Stage 1 carving: knife menu fires the plain product name (owner debug-log verified). Tier's Logs only; no output gate (owner ruling 2026-07-20). Bow string NOT required here."
 		},
 		{
 			"category": "fletching",
@@ -7171,49 +7204,30 @@
 					"Bow string"
 				]
 			],
-			"output": "Maple Shortbow",
+			"output": "Maple longbow",
 			"trigger": {
-				"kind": "interface",
-				"name": "Maple Shortbow (u)",
-				"targets": []
+				"kind": "item-on-item",
+				"name": "Bow string",
+				"targets": [
+					"Maple longbow (u)"
+				]
 			},
-			"notes": "Owner-verified: bow stringing (bow string on unstrung bow) opens the make interface, separate from the knife-on-logs step. Nearest-carded policy: requires the tier's Logs (the unstrung shortbow has no card). Keyed under both 'Maple Shortbow' and 'Maple Shortbow (u)' until the owner confirms the exact product string the stringing interface shows."
+			"notes": "Stage 2 stringing, intercepted at the bow-string-on-unstrung item-on-item click (the unstrung item name is reliable there; the stringing interface's own product string shows the plain name, which is the carving key). Nearest-carded: Maple logs + Bow string; output = strung Maple longbow."
 		},
 		{
 			"category": "fletching",
 			"inputs": [
 				[
-					"Maple logs"
-				],
-				[
-					"Bow string"
+					"Yew logs"
 				]
 			],
-			"output": "Maple Longbow",
+			"output": null,
 			"trigger": {
 				"kind": "interface",
-				"name": "Maple Longbow",
+				"name": "Yew shortbow",
 				"targets": []
 			},
-			"notes": "Owner-verified: bow stringing (bow string on unstrung bow) opens the make interface, separate from the knife-on-logs step. Nearest-carded policy: requires the tier's Logs (the unstrung longbow has no card). Keyed under both 'Maple Longbow' and 'Maple Longbow (u)' until the owner confirms the exact product string the stringing interface shows."
-		},
-		{
-			"category": "fletching",
-			"inputs": [
-				[
-					"Maple logs"
-				],
-				[
-					"Bow string"
-				]
-			],
-			"output": "Maple Longbow",
-			"trigger": {
-				"kind": "interface",
-				"name": "Maple Longbow (u)",
-				"targets": []
-			},
-			"notes": "Owner-verified: bow stringing (bow string on unstrung bow) opens the make interface, separate from the knife-on-logs step. Nearest-carded policy: requires the tier's Logs (the unstrung longbow has no card). Keyed under both 'Maple Longbow' and 'Maple Longbow (u)' until the owner confirms the exact product string the stringing interface shows."
+			"notes": "Stage 1 carving: knife menu fires the plain product name (owner debug-log verified). Tier's Logs only; no output gate (owner ruling 2026-07-20). Bow string NOT required here."
 		},
 		{
 			"category": "fletching",
@@ -7225,13 +7239,30 @@
 					"Bow string"
 				]
 			],
-			"output": "Yew Shortbow",
+			"output": "Yew shortbow",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Bow string",
+				"targets": [
+					"Yew shortbow (u)"
+				]
+			},
+			"notes": "Stage 2 stringing, intercepted at the bow-string-on-unstrung item-on-item click (the unstrung item name is reliable there; the stringing interface's own product string shows the plain name, which is the carving key). Nearest-carded: Yew logs + Bow string; output = strung Yew shortbow."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Yew logs"
+				]
+			],
+			"output": null,
 			"trigger": {
 				"kind": "interface",
-				"name": "Yew Shortbow",
+				"name": "Yew longbow",
 				"targets": []
 			},
-			"notes": "Owner-verified: bow stringing (bow string on unstrung bow) opens the make interface, separate from the knife-on-logs step. Nearest-carded policy: requires the tier's Logs (the unstrung shortbow has no card). Keyed under both 'Yew Shortbow' and 'Yew Shortbow (u)' until the owner confirms the exact product string the stringing interface shows."
+			"notes": "Stage 1 carving: knife menu fires the plain product name (owner debug-log verified). Tier's Logs only; no output gate (owner ruling 2026-07-20). Bow string NOT required here."
 		},
 		{
 			"category": "fletching",
@@ -7243,49 +7274,30 @@
 					"Bow string"
 				]
 			],
-			"output": "Yew Shortbow",
+			"output": "Yew longbow",
 			"trigger": {
-				"kind": "interface",
-				"name": "Yew Shortbow (u)",
-				"targets": []
+				"kind": "item-on-item",
+				"name": "Bow string",
+				"targets": [
+					"Yew longbow (u)"
+				]
 			},
-			"notes": "Owner-verified: bow stringing (bow string on unstrung bow) opens the make interface, separate from the knife-on-logs step. Nearest-carded policy: requires the tier's Logs (the unstrung shortbow has no card). Keyed under both 'Yew Shortbow' and 'Yew Shortbow (u)' until the owner confirms the exact product string the stringing interface shows."
+			"notes": "Stage 2 stringing, intercepted at the bow-string-on-unstrung item-on-item click (the unstrung item name is reliable there; the stringing interface's own product string shows the plain name, which is the carving key). Nearest-carded: Yew logs + Bow string; output = strung Yew longbow."
 		},
 		{
 			"category": "fletching",
 			"inputs": [
 				[
-					"Yew logs"
-				],
-				[
-					"Bow string"
+					"Magic logs"
 				]
 			],
-			"output": "Yew Longbow",
+			"output": null,
 			"trigger": {
 				"kind": "interface",
-				"name": "Yew Longbow",
+				"name": "Magic shortbow",
 				"targets": []
 			},
-			"notes": "Owner-verified: bow stringing (bow string on unstrung bow) opens the make interface, separate from the knife-on-logs step. Nearest-carded policy: requires the tier's Logs (the unstrung longbow has no card). Keyed under both 'Yew Longbow' and 'Yew Longbow (u)' until the owner confirms the exact product string the stringing interface shows."
-		},
-		{
-			"category": "fletching",
-			"inputs": [
-				[
-					"Yew logs"
-				],
-				[
-					"Bow string"
-				]
-			],
-			"output": "Yew Longbow",
-			"trigger": {
-				"kind": "interface",
-				"name": "Yew Longbow (u)",
-				"targets": []
-			},
-			"notes": "Owner-verified: bow stringing (bow string on unstrung bow) opens the make interface, separate from the knife-on-logs step. Nearest-carded policy: requires the tier's Logs (the unstrung longbow has no card). Keyed under both 'Yew Longbow' and 'Yew Longbow (u)' until the owner confirms the exact product string the stringing interface shows."
+			"notes": "Stage 1 carving: knife menu fires the plain product name (owner debug-log verified). Tier's Logs only; no output gate (owner ruling 2026-07-20). Bow string NOT required here."
 		},
 		{
 			"category": "fletching",
@@ -7297,13 +7309,30 @@
 					"Bow string"
 				]
 			],
-			"output": "Magic Shortbow",
+			"output": "Magic shortbow",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Bow string",
+				"targets": [
+					"Magic shortbow (u)"
+				]
+			},
+			"notes": "Stage 2 stringing, intercepted at the bow-string-on-unstrung item-on-item click (the unstrung item name is reliable there; the stringing interface's own product string shows the plain name, which is the carving key). Nearest-carded: Magic logs + Bow string; output = strung Magic shortbow."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Magic logs"
+				]
+			],
+			"output": null,
 			"trigger": {
 				"kind": "interface",
-				"name": "Magic Shortbow",
+				"name": "Magic longbow",
 				"targets": []
 			},
-			"notes": "Owner-verified: bow stringing (bow string on unstrung bow) opens the make interface, separate from the knife-on-logs step. Nearest-carded policy: requires the tier's Logs (the unstrung shortbow has no card). Keyed under both 'Magic Shortbow' and 'Magic Shortbow (u)' until the owner confirms the exact product string the stringing interface shows."
+			"notes": "Stage 1 carving: knife menu fires the plain product name (owner debug-log verified). Tier's Logs only; no output gate (owner ruling 2026-07-20). Bow string NOT required here."
 		},
 		{
 			"category": "fletching",
@@ -7315,49 +7344,15 @@
 					"Bow string"
 				]
 			],
-			"output": "Magic Shortbow",
+			"output": "Magic longbow",
 			"trigger": {
-				"kind": "interface",
-				"name": "Magic Shortbow (u)",
-				"targets": []
-			},
-			"notes": "Owner-verified: bow stringing (bow string on unstrung bow) opens the make interface, separate from the knife-on-logs step. Nearest-carded policy: requires the tier's Logs (the unstrung shortbow has no card). Keyed under both 'Magic Shortbow' and 'Magic Shortbow (u)' until the owner confirms the exact product string the stringing interface shows."
-		},
-		{
-			"category": "fletching",
-			"inputs": [
-				[
-					"Magic logs"
-				],
-				[
-					"Bow string"
+				"kind": "item-on-item",
+				"name": "Bow string",
+				"targets": [
+					"Magic longbow (u)"
 				]
-			],
-			"output": "Magic Longbow",
-			"trigger": {
-				"kind": "interface",
-				"name": "Magic Longbow",
-				"targets": []
 			},
-			"notes": "Owner-verified: bow stringing (bow string on unstrung bow) opens the make interface, separate from the knife-on-logs step. Nearest-carded policy: requires the tier's Logs (the unstrung longbow has no card). Keyed under both 'Magic Longbow' and 'Magic Longbow (u)' until the owner confirms the exact product string the stringing interface shows."
-		},
-		{
-			"category": "fletching",
-			"inputs": [
-				[
-					"Magic logs"
-				],
-				[
-					"Bow string"
-				]
-			],
-			"output": "Magic Longbow",
-			"trigger": {
-				"kind": "interface",
-				"name": "Magic Longbow (u)",
-				"targets": []
-			},
-			"notes": "Owner-verified: bow stringing (bow string on unstrung bow) opens the make interface, separate from the knife-on-logs step. Nearest-carded policy: requires the tier's Logs (the unstrung longbow has no card). Keyed under both 'Magic Longbow' and 'Magic Longbow (u)' until the owner confirms the exact product string the stringing interface shows."
+			"notes": "Stage 2 stringing, intercepted at the bow-string-on-unstrung item-on-item click (the unstrung item name is reliable there; the stringing interface's own product string shows the plain name, which is the carving key). Nearest-carded: Magic logs + Bow string; output = strung Magic longbow."
 		},
 		{
 			"category": "fletching",
@@ -7481,6 +7476,118 @@
 		},
 		{
 			"category": "fletching",
+			"inputs": [
+				[
+					"Oak logs"
+				]
+			],
+			"output": "Oak shield",
+			"trigger": {
+				"kind": "interface",
+				"name": "Oak shield",
+				"targets": []
+			},
+			"notes": "Forestry wooden shield, knife-on-logs family (owner spotted the menu option; family absent from the original research matrix). Requires the tier's logs + the shield card."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Willow logs"
+				]
+			],
+			"output": "Willow shield",
+			"trigger": {
+				"kind": "interface",
+				"name": "Willow shield",
+				"targets": []
+			},
+			"notes": "Forestry wooden shield, knife-on-logs family (owner spotted the menu option; family absent from the original research matrix). Requires the tier's logs + the shield card."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Maple logs"
+				]
+			],
+			"output": "Maple shield",
+			"trigger": {
+				"kind": "interface",
+				"name": "Maple shield",
+				"targets": []
+			},
+			"notes": "Forestry wooden shield, knife-on-logs family (owner spotted the menu option; family absent from the original research matrix). Requires the tier's logs + the shield card."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Yew logs"
+				]
+			],
+			"output": "Yew shield",
+			"trigger": {
+				"kind": "interface",
+				"name": "Yew shield",
+				"targets": []
+			},
+			"notes": "Forestry wooden shield, knife-on-logs family (owner spotted the menu option; family absent from the original research matrix). Requires the tier's logs + the shield card."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Magic logs"
+				]
+			],
+			"output": "Magic shield",
+			"trigger": {
+				"kind": "interface",
+				"name": "Magic shield",
+				"targets": []
+			},
+			"notes": "Forestry wooden shield, knife-on-logs family (owner spotted the menu option; family absent from the original research matrix). Requires the tier's logs + the shield card."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Redwood logs"
+				]
+			],
+			"output": "Redwood shield",
+			"trigger": {
+				"kind": "interface",
+				"name": "Redwood shield",
+				"targets": []
+			},
+			"notes": "Forestry wooden shield, knife-on-logs family (owner spotted the menu option; family absent from the original research matrix). Requires the tier's logs + the shield card."
+		},
+		{
+			"category": "fletching",
+			"inputs": [],
+			"output": "Javelin shaft",
+			"trigger": {
+				"kind": "interface",
+				"name": "Javelin shaft",
+				"targets": []
+			},
+			"notes": "Knife-on-logs product (wiki-verified: 15 per plain log) missed by the research matrix. Output-only gate on the Javelin shaft card; leading-count menu string handled by the plugin."
+		},
+		{
+			"category": "fletching",
+			"inputs": [],
+			"output": "Javelin shaft",
+			"trigger": {
+				"kind": "interface",
+				"name": "Javelin shafts",
+				"targets": []
+			},
+			"notes": "Knife-on-logs product (wiki-verified: 15 per plain log) missed by the research matrix. Output-only gate on the Javelin shaft card; leading-count menu string handled by the plugin."
+		},
+		{
+			"category": "fletching",
 			"inputs": [],
 			"output": "Ogre arrow shaft",
 			"trigger": {
@@ -7488,7 +7595,18 @@
 				"name": "Ogre arrow shaft",
 				"targets": []
 			},
-			"notes": "knife-on-logs family, inferred from the owner-verified mechanic. Achey tree logs are uncarded, so this is an output-only gate."
+			"notes": "knife-on-logs family, inferred from the owner-verified mechanic. Achey tree logs are uncarded, so this is an output-only gate. Plural twin keyed until the exact menu string is confirmed."
+		},
+		{
+			"category": "fletching",
+			"inputs": [],
+			"output": "Ogre arrow shaft",
+			"trigger": {
+				"kind": "interface",
+				"name": "Ogre arrow shafts",
+				"targets": []
+			},
+			"notes": "knife-on-logs family, inferred from the owner-verified mechanic. Achey tree logs are uncarded, so this is an output-only gate. Plural twin keyed until the exact menu string is confirmed."
 		},
 		{
 			"category": "fletching",
@@ -7797,6 +7915,27 @@
 				]
 			},
 			"notes": "UNVERIFIED whether crossbow stringing is item-on-item or opens an interface (leans interface by analogy to owner-verified bow stringing) - both trigger kinds registered defensively. Nearest-carded: requires stock+limbs, not the uncarded Crossbow (u)."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Yew stock"
+				],
+				[
+					"Runite limbs"
+				],
+				[
+					"Crossbow string"
+				]
+			],
+			"output": "Runite crossbow",
+			"trigger": {
+				"kind": "interface",
+				"name": "Rune crossbow",
+				"targets": []
+			},
+			"notes": "UNVERIFIED whether crossbow stringing is item-on-item or opens an interface (leans interface by analogy to owner-verified bow stringing) - both trigger kinds registered defensively. Nearest-carded: requires stock+limbs, not the uncarded Crossbow (u). Finished-name twin: item is 'Rune crossbow', card is 'Runite crossbow'."
 		},
 		{
 			"category": "fletching",
@@ -8855,12 +8994,60 @@
 			"output": "Amethyst broad bolts",
 			"trigger": {
 				"kind": "item-on-item",
-				"name": "Amethyst broad bolt tips",
+				"name": "Amethyst bolt tips",
 				"targets": [
 					"broad bolts"
 				]
 			},
-			"notes": "Amethyst broad bolt tips (tip card absent) on broad bolts. MISSING family, added this pass. UNVERIFIED interface-vs-instant - lean instant."
+			"notes": "Amethyst bolt tips (the real item name, wiki-verified 2026-07-20 - an earlier cut keyed the nonexistent 'Amethyst broad bolt tips') on broad bolts. Tip card absent. UNVERIFIED interface-vs-instant - lean instant."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Ent branch"
+				]
+			],
+			"output": "Atlatl dart shaft",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Knife",
+				"targets": [
+					"ent branch",
+					"ent branches"
+				]
+			},
+			"notes": "Knife on Ent branch -> 100 atlatl dart shafts (wiki-verified; singular/plural item name unverified so both targets keyed). UNVERIFIED interface-vs-instant - lean instant, interface twin registered too."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Ent branch"
+				]
+			],
+			"output": "Atlatl dart shaft",
+			"trigger": {
+				"kind": "interface",
+				"name": "Atlatl dart shaft",
+				"targets": []
+			},
+			"notes": "Interface twin for the knife-on-Ent-branch action (100 per branch, so a leading-count menu string is plausible)."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Ent branch"
+				]
+			],
+			"output": "Atlatl dart shaft",
+			"trigger": {
+				"kind": "interface",
+				"name": "Atlatl dart shafts",
+				"targets": []
+			},
+			"notes": "Interface twin for the knife-on-Ent-branch action (100 per branch, so a leading-count menu string is plausible)."
 		},
 		{
 			"category": "fletching",
@@ -8880,7 +9067,7 @@
 					"atlatl dart shaft"
 				]
 			},
-			"notes": "Feather on atlatl dart shaft -> headless atlatl dart. MISSING family (Varlamore), added this pass. UNVERIFIED interface-vs-instant - lean instant, dart-family analogy."
+			"notes": "Feather on atlatl dart shafts -> headless (wiki-verified 2026-07-20: 20 shafts + 20 feathers at Fletching 74). UNVERIFIED interface-vs-instant - lean instant, dart-family analogy."
 		},
 		{
 			"category": "fletching",
