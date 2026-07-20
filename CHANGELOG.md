@@ -4,6 +4,33 @@ Versioning: 0.MINOR.PATCH — staying on 0.2.x until the full skills sweep is
 complete, then 0.3.0. The runelite-plugin.properties version line is bumped in
 the same commit as each release.
 
+## v0.2.3 — 2026-07-21
+
+### New
+- **OSRS TCG API integration**: the collection is now read via OSRS TCG's
+  PluginMessage API when available — unlocks apply instantly (pushed, not
+  polled), and the plugin works with the latest OSRS TCG update's new
+  storage format. The old decode path remains as fallback for older
+  OSRS TCG versions, so any combination of update timing is safe.
+- **Mining Options / Woodcutting Options** dropdowns (replacing the old
+  toggles): Card Required / Ore(Logs) Only / Tool Only / No Card Needed.
+  Card Required now also blocks gathering while a locked pickaxe/axe is
+  carried — previously a locked tool could still mine and chop.
+- **Fletching families added**: crossbows (stocks, stringing), javelins
+  and javelin shafts, gem-tipped bolts, ogre/brutal arrows, broad ammo,
+  Forestry wooden shields (Oak–Redwood), and Varlamore atlatl darts.
+
+### Fixes
+- Fletching's knife-on-logs products (arrow shafts, bows, stocks,
+  shields) now block at the make-menu product click with the correct
+  in-game names — carving an unstrung bow needs only the logs card;
+  stringing needs logs + Bow string + the bow card.
+- Item-on-item crafting blocks now list every missing card instead of
+  stopping at the first locked material item.
+- A corrupted recipe entry that wrongly gated Earth battlestaff crafting
+  was removed.
+- Deprecated RuneLite API calls replaced (WorldView migration).
+
 ## v0.2.2 — 2026-07-19
 
 ### New
