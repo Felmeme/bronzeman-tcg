@@ -207,9 +207,8 @@ public interface BronzemanTcgConfig extends Config
 	@ConfigItem(
 		keyName = "groundItemsMode",
 		name = "Ground Items",
-		description = "Locked: picking up (or telegrabbing) ground items whose card you have not "
-			+ "collected is blocked."
-			+ "<br>Items with no card in the TCG catalog are never restricted.",
+		description = "'Require Card': hides options for picking up Ground Items"
+			+ "<br>'No Card Needed': Ground items do not require their card to unlock.",
 		section = generalSettings,
 		position = 3
 	)
@@ -221,7 +220,8 @@ public interface BronzemanTcgConfig extends Config
 	@ConfigItem(
 			keyName = "itemUsageMode",
 			name = "Item Usage",
-			description = "Locked: Items will only show Drop, Destroy and Examine until you have the card.",
+			description = "'Require Card': Items require their Card. Hides everything other than Drop/Destroy"
+				+ "<br> No Card Needed: You can freely use items without their card.",
 			section = generalSettings,
 			position = 4
 	)
@@ -359,9 +359,10 @@ public interface BronzemanTcgConfig extends Config
 	@ConfigItem(
 		keyName = "woodcuttingMode",
 		name = "Woodcutting Options",
-		description = "Block chopping trees until the respective cards are collected."
-			+ "<br>Logs: e.g. Oak tree needs Oak logs."
-			+ "<br>Tool: no locked axe carried.",
+		description = "Block chopping trees until the respective logs card is collected."
+			+ "<br>e.g. Oak tree needs Oak logs."
+			+ "<br>'Tool Only' instead requires the axe you are carrying."
+			+ "<br>'Card Required' needs both.",
 		section = woodcuttingSection,
 		position = 0
 	)
@@ -373,9 +374,10 @@ public interface BronzemanTcgConfig extends Config
 	@ConfigItem(
 		keyName = "miningMode",
 		name = "Mining Options",
-		description = "Block mining rocks until the respective cards are collected."
-			+ "<br>Ore: e.g. Copper rocks need Copper ore."
-			+ "<br>Tool: no locked pickaxe carried.",
+		description = "Block mining rocks until the respective ore card is collected."
+			+ "<br>e.g. Copper rocks need Copper ore."
+			+ "<br>'Tool Only' instead requires the pickaxe you are carrying."
+			+ "<br>'Card Required' needs both.",
 		section = miningSection,
 		position = 0
 	)
@@ -493,10 +495,9 @@ public interface BronzemanTcgConfig extends Config
 	@ConfigItem(
 		keyName = "craftingMode",
 		name = "Crafting Options",
-		description = "Which cards crafting requires."
-			+ "<br>Input: the materials, e.g. Glassblowing pipe and Molten glass."
-			+ "<br>Output: the item made, e.g. Empty candle lantern."
-			+ "<br>Covers gems, leather, glass, jewellery, spinning, pottery and battlestaves.",
+		description = "Crafting requires the input AND output item cards."
+			+ "<br>Covers gems, leather, glass, jewellery, spinning, pottery and battlestaves."
+			+ "<br>'Input Only' needs just the materials, 'Output Required' just the item made.",
 		section = craftingSection,
 		position = 0
 	)

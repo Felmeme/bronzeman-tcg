@@ -55,6 +55,17 @@
     plugins/bronzeman-tcg `commit=`. runelite-plugin.properties MUST keep
     `build=standard`. Config keyNames are a public contract now. Assistant
     handovers for release-bound work must state the suggested next version.
+  - **VERIFY EVERY MERGE'S CONTENT, not just its conflict markers (learned
+    the hard way 2026-07-21).** `f041097` ("Merge remote-tracking branch
+    'origin/main'") auto-resolved with NO conflict and a clean `git status`,
+    yet silently discarded the owner's newer Ground Items / Item Usage
+    config descriptions in favour of the other side's older text. A clean
+    merge can still drop a side's content. After ANY merge, run
+    `git diff <parent1> <merge>` AND `git diff <parent2> <merge>` and read
+    every deletion, asking "did the other side legitimately replace this,
+    or did we just lose it?". Recovery is easy if caught (the text lives in
+    the parent commit) and invisible if not. Pure-addition merges (only
+    `+` lines vs both parents) are safe by inspection.
   - The shell-permission service occasionally drops for a few minutes
     ("temporarily unavailable... classifier"); Write/Edit still work — route
     file changes through them and commit when it recovers.
