@@ -8455,6 +8455,38 @@
 					"Feather"
 				]
 			],
+			"output": "Dragon bolts",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Feather",
+				"targets": [
+					"dragon bolts (unf)"
+				]
+			},
+			"notes": "Feather unfinished Dragon bolts (unf card absent) into bolts. Wiki (31 Jul 2024): 'Make-X option when fletching bolts' - interface twin added alongside the item-on-item entry; default-vs-toggle unverified so both are covered."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Feather"
+				]
+			],
+			"output": "Dragon bolts",
+			"trigger": {
+				"kind": "interface",
+				"name": "Dragon bolts",
+				"targets": []
+			},
+			"notes": "Feather unfinished Dragon bolts (unf card absent) into bolts. Wiki (31 Jul 2024): 'Make-X option when fletching bolts' - interface twin added alongside the item-on-item entry; default-vs-toggle unverified so both are covered."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Feather"
+				]
+			],
 			"output": "Blurite bolts",
 			"trigger": {
 				"kind": "item-on-item",
@@ -8649,6 +8681,159 @@
 				]
 			},
 			"notes": "Onyx bolt tips (tip card absent) attach to Runite bolts (wiki-verified this pass). UNVERIFIED interface-vs-instant - lean instant per the matrix."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Dragon bolts"
+				]
+			],
+			"output": "Onyx dragon bolts",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Dragon bolts",
+				"targets": [
+					"onyx bolt tips"
+				]
+			},
+			"notes": "Onyx bolt tips (tip card absent) attach to Dragon bolts."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Dragon bolts"
+				]
+			],
+			"output": "Dragonstone dragon bolts",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Dragon bolts",
+				"targets": [
+					"draongstone bolt tips"
+				]
+			},
+			"notes": "Dragonstone bolt tips (tip card absent) attach to Dragon bolts."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Dragon bolts"
+				]
+			],
+			"output": "Emerald dragon bolts",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Dragon bolts",
+				"targets": [
+					"emerald bolt tips"
+				]
+			},
+			"notes": "Emerald bolt tips (tip card absent) attach to Dragon bolts."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Dragon bolts"
+				]
+			],
+			"output": "Jade dragon bolts",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Dragon bolts",
+				"targets": [
+					"jade bolt tips"
+				]
+			},
+			"notes": "Jade bolt tips (tip card absent) attach to Dragon bolts."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Dragon bolts"
+				]
+			],
+			"output": "Opal dragon bolts",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Dragon bolts",
+				"targets": [
+					"opal bolt tips"
+				]
+			},
+			"notes": "Opal bolt tips (tip card absent) attach to Dragon bolts."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Dragon bolts"
+				]
+			],
+			"output": "Pearl dragon bolts",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Dragon bolts",
+				"targets": [
+					"pearl bolt tips"
+				]
+			},
+			"notes": "Pearl bolt tips (tip card absent) attach to Dragon bolts."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Dragon bolts"
+				]
+			],
+			"output": "Ruby dragon bolts",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Dragon bolts",
+				"targets": [
+					"ruby bolt tips"
+				]
+			},
+			"notes": "Ruby bolt tips (tip card absent) attach to Dragon bolts."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Dragon bolts"
+				]
+			],
+			"output": "Sapphire dragon bolts",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Dragon bolts",
+				"targets": [
+					"sapphire bolt tips"
+				]
+			},
+			"notes": "Sapphire bolt tips (tip card absent) attach to Dragon bolts."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Dragon bolts"
+				]
+			],
+			"output": "Topaz dragon bolts",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Dragon bolts",
+				"targets": [
+					"topaz bolt tips"
+				]
+			},
+			"notes": "Topaz bolt tips (tip card absent) attach to Dragon bolts."
 		},
 		{
 			"category": "fletching",
