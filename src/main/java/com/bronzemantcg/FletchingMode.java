@@ -3,10 +3,10 @@ package com.bronzemantcg;
 /** Config dropdown; see BronzemanTcgConfig for the behaviour of each mode. */
 public enum FletchingMode
 {
-	OFF("No Card Needed"),
-	PRODUCT("Output Required"),
+	//OFF("No restrictions"),
 	INPUT_ONLY("Input Only"),
-	PRODUCT_AND_MATERIALS("Require Card");
+	//PRODUCT("Output Only"),
+	PRODUCT_AND_MATERIALS("Input + Output");
 
 
 	private final String label;
