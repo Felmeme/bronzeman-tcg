@@ -1,15 +1,15 @@
 package com.bronzemantcg;
 
 /** Config dropdown; see BronzemanTcgConfig for the behaviour of each mode. */
-public enum FiremakingMode
+public enum SlayerMode
 {
-	OFF("Off"),
-	JUST_LOGS("Just logs"),
-	BOTH("Logs + Tinderbox");
+	OFF("No Restrictions"),
+	MASTER("Require Slayer Master"),
+	FULL("Full Task List");
 
 	private final String label;
 
-	FiremakingMode(String label)
+	SlayerMode(String label)
 	{
 		this.label = label;
 	}

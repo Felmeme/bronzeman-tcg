@@ -1,0 +1,361 @@
+{
+ "Aberrant spectre": [
+  "Aberrant spectre",
+  "Deviant spectre"
+ ],
+ "Bloodveld": [
+  "Bloodveld",
+  "Mutated Bloodveld"
+ ],
+ "Jelly": [
+  "Jelly",
+  "Warped Jelly",
+  "Chilled Jelly"
+ ],
+ "Nechryael": [
+  "Nechryael",
+  "Greater Nechryael"
+ ],
+ "Smoke devil": [
+  "Smoke devil",
+  "Thermonuclear smoke devil"
+ ],
+ "Cave kraken": [
+  "Cave kraken",
+  "Kraken"
+ ],
+ "Basilisk": [
+  "Basilisk",
+  "Basilisk Knight"
+ ],
+ "Black demon": [
+  "Black demon",
+  "Demonic gorilla",
+  "Skotizo",
+  "Porazdir",
+  "Balfrug Kreeyath"
+ ],
+ "Greater demon": [
+  "Greater demon",
+  "K'ril Tsutsaroth",
+  "Tstanon Karlak",
+  "Skotizo",
+  "Tormented Demon"
+ ],
+ "Lesser demon": [
+  "Lesser demon",
+  "Zakl'n Gritch"
+ ],
+ "Hellhound": [
+  "Hellhound",
+  "Cerberus"
+ ],
+ "Hill Giant": [
+  "Hill Giant",
+  "Obor"
+ ],
+ "Moss giant": [
+  "Moss giant",
+  "Bryophyta"
+ ],
+ "Gargoyle": [
+  "Gargoyle",
+  "Dawn",
+  "Dusk"
+ ],
+ "Hydra": [
+  "Hydra",
+  "Alchemical Hydra"
+ ],
+ "Dagannoth": [
+  "Dagannoth",
+  "Dagannoth Prime",
+  "Dagannoth Rex",
+  "Dagannoth Supreme",
+  "Dagannoth fledgeling"
+ ],
+ "Aviansie": [
+  "Aviansie",
+  "Kree'arra",
+  "Wingman Skree",
+  "Flockleader Geerin",
+  "Flight Kilisa"
+ ],
+ "Banshee": [
+  "Banshee",
+  "Twisted Banshee"
+ ],
+ "Cockatrice": [
+  "Cockatrice",
+  "Moonlight cockatrice"
+ ],
+ "Lizardman": [
+  "Lizardman",
+  "Lizardman brute",
+  "Lizardman shaman"
+ ],
+ "Black dragon": [
+  "Black dragon",
+  "Brutal black dragon",
+  "King Black Dragon"
+ ],
+ "Blue dragon": [
+  "Blue dragon",
+  "Brutal blue dragon",
+  "Vorkath"
+ ],
+ "Red dragon": [
+  "Red dragon",
+  "Brutal red dragon"
+ ],
+ "Callisto": [
+  "Callisto",
+  "Artio"
+ ],
+ "Venenatis": [
+  "Venenatis",
+  "Spindel"
+ ],
+ "Vet'ion": [
+  "Vet'ion",
+  "Calvar'ion"
+ ],
+ "Ancient Zygomite": [
+  "Ancient Zygomite",
+  "Zygomite"
+ ],
+ "Zygomite": [
+  "Zygomite",
+  "Ancient Zygomite"
+ ],
+ "Kalphite Guardian": [
+  "Kalphite Guardian",
+  "Kalphite Soldier",
+  "Kalphite Worker",
+  "Kalphite Queen"
+ ],
+ "Kalphite Soldier": [
+  "Kalphite Soldier",
+  "Kalphite Guardian",
+  "Kalphite Worker",
+  "Kalphite Queen"
+ ],
+ "Kalphite Worker": [
+  "Kalphite Worker",
+  "Kalphite Guardian",
+  "Kalphite Soldier",
+  "Kalphite Queen"
+ ],
+ "Ancient Wyvern": [
+  "Ancient Wyvern",
+  "Long-tailed Wyvern",
+  "Spitting Wyvern",
+  "Taloned Wyvern"
+ ],
+ "Long-tailed Wyvern": [
+  "Long-tailed Wyvern",
+  "Ancient Wyvern",
+  "Spitting Wyvern",
+  "Taloned Wyvern"
+ ],
+ "Spitting Wyvern": [
+  "Spitting Wyvern",
+  "Ancient Wyvern",
+  "Long-tailed Wyvern",
+  "Taloned Wyvern"
+ ],
+ "Taloned Wyvern": [
+  "Taloned Wyvern",
+  "Ancient Wyvern",
+  "Long-tailed Wyvern",
+  "Spitting Wyvern"
+ ],
+ "TzHaar-Hur": [
+  "TzHaar-Hur",
+  "TzHaar-Ket",
+  "TzHaar-Mej",
+  "TzHaar-Xil",
+  "TzTok-Jad",
+  "TzKal-Zuk"
+ ],
+ "TzHaar-Ket": [
+  "TzHaar-Ket",
+  "TzHaar-Hur",
+  "TzHaar-Mej",
+  "TzHaar-Xil",
+  "TzTok-Jad",
+  "TzKal-Zuk"
+ ],
+ "TzHaar-Mej": [
+  "TzHaar-Mej",
+  "TzHaar-Hur",
+  "TzHaar-Ket",
+  "TzHaar-Xil",
+  "TzTok-Jad",
+  "TzKal-Zuk"
+ ],
+ "TzHaar-Xil": [
+  "TzHaar-Xil",
+  "TzHaar-Hur",
+  "TzHaar-Ket",
+  "TzHaar-Mej",
+  "TzTok-Jad",
+  "TzKal-Zuk"
+ ],
+ "Feral Vampyre": [
+  "Feral Vampyre",
+  "Vampyre Juvinate",
+  "Vyrewatch",
+  "Vyrewatch Sentinel"
+ ],
+ "Vampyre Juvinate": [
+  "Vampyre Juvinate",
+  "Feral Vampyre",
+  "Vyrewatch",
+  "Vyrewatch Sentinel"
+ ],
+ "Elf Warrior": [
+  "Elf Warrior",
+  "Elf Archer",
+  "Iorwerth Warrior",
+  "Iorwerth Archer",
+  "Mourner"
+ ],
+ "Elf Archer": [
+  "Elf Archer",
+  "Elf Warrior",
+  "Iorwerth Warrior",
+  "Iorwerth Archer",
+  "Mourner"
+ ],
+ "Shade": [
+  "Shade",
+  "Loar shade",
+  "Phrin shade",
+  "Riyl shade",
+  "Asyn shade",
+  "Fiyr shade",
+  "Urium shade"
+ ],
+ "Rat": [
+  "Rat",
+  "Giant rat",
+  "Dungeon rat",
+  "Crypt rat",
+  "Scurrius"
+ ],
+ "Spider": [
+  "Spider",
+  "Giant spider",
+  "Shadow spider",
+  "Jungle spider",
+  "Deadly red spider",
+  "Poison spider",
+  "Blessed spider",
+  "Kalrag",
+  "Crypt spider",
+  "Temple spider",
+  "Sarachnis",
+  "Spindel",
+  "Venenatis",
+  "Araxyte",
+  "Araxxor"
+ ],
+ "Scorpion": [
+  "Scorpion",
+  "King scorpion",
+  "Poison scorpion",
+  "Pit scorpion",
+  "Scorpia",
+  "Lobstrosity"
+ ],
+ "Bird": [
+  "Bird",
+  "Chicken",
+  "Rooster",
+  "Seagull",
+  "Terrorbird",
+  "Vulture",
+  "Undead chicken",
+  "Chompy bird",
+  "Mounted terrorbird gnome"
+ ],
+ "Bat": [
+  "Bat",
+  "Giant bat",
+  "Albino bat"
+ ],
+ "Wolf": [
+  "Wolf",
+  "Big wolf",
+  "Dire wolf",
+  "Jungle wolf",
+  "Desert wolf",
+  "Ice wolf"
+ ],
+ "Guard dog": [
+  "Guard dog",
+  "Wild dog",
+  "Jackal"
+ ],
+ "Wild dog": [
+  "Wild dog",
+  "Guard dog",
+  "Jackal"
+ ],
+ "Jackal": [
+  "Jackal",
+  "Guard dog",
+  "Wild dog"
+ ],
+ "Skeleton": [
+  "Skeleton",
+  "Vet'ion",
+  "Calvar'ion"
+ ],
+ "Zombie": [
+  "Zombie",
+  "Vorkath"
+ ],
+ "Cow": [
+  "Cow",
+  "Cow calf",
+  "Undead cow"
+ ],
+ "Goblin": [
+  "Goblin",
+  "Sergeant Strongstack",
+  "Sergeant Grimspike",
+  "Sergeant Steelwill",
+  "Cave goblin"
+ ],
+ "Ghost": [
+  "Ghost",
+  "Tortured soul"
+ ],
+ "Black bear": [
+  "Black bear",
+  "Grizzly bear",
+  "Grizzly bear cub",
+  "Callisto",
+  "Artio"
+ ],
+ "Grizzly bear": [
+  "Grizzly bear",
+  "Black bear",
+  "Grizzly bear cub",
+  "Callisto",
+  "Artio"
+ ],
+ "Lizard": [
+  "Lizard",
+  "Desert lizard",
+  "Grimy lizard",
+  "Small lizard",
+  "Sulphur lizard"
+ ],
+ "Monkey (monster)": [
+  "Monkey (monster)",
+  "Demonic gorilla"
+ ]
+}

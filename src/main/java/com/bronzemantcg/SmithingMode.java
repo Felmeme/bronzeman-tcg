@@ -5,8 +5,7 @@ public enum SmithingMode
 {
 	OFF("No Card Needed"),
 	BARS("Input Only"),
-	ITEMS("Output Required"),
-	BOTH("Require Card");
+	BOTH("Input + Output");
 
 	private final String label;
 

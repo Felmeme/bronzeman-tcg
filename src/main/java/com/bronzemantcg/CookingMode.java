@@ -1,16 +1,15 @@
 package com.bronzemantcg;
 
 /** Config dropdown; see BronzemanTcgConfig for the behaviour of each mode. */
-public enum FarmingPlantMode
+public enum CookingMode
 {
-	OFF("Off"),
-	TOOLS("Tools only"),
-	TOOLS_SEEDS("Tools + Seeds"),
-	ALL("All");
+	OFF("No restrictions"),
+	INPUT_ONLY("Input Only"),
+	INPUT_OUTPUT("Input + Output");
 
 	private final String label;
 
-	FarmingPlantMode(String label)
+	CookingMode(String label)
 	{
 		this.label = label;
 	}

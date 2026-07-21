@@ -35,7 +35,6 @@ import net.runelite.client.ui.components.materialtabs.MaterialTabGroup;
 /**
  * Sidebar panel: card search, collection progress, and collapsible readiness checklists
  * for quests, slayer masters, PvM content and hunter rumour masters.
- *
  * Threading contract: everything here runs on the Swing EDT. The catalogs are immutable
  * after load and TcgCollectionReader is synchronized, so reading them from the EDT is
  * safe; live game state is never touched here. {@link #refresh()} is called periodically
@@ -194,7 +193,7 @@ class BronzemanTcgPanel extends PluginPanel
 	{
 		boolean slayer = "slayer".equals(category);
 		boolean countSuperiors = slayer
-			&& config.restrictSlayerMonsters() && config.restrictSlayerSuperiors();
+			&& config.slayerMode() == SlayerMode.FULL && config.restrictSlayerSuperiors();
 		List<QuestCatalog.QuestEntry> entries = new ArrayList<>();
 		for (Map.Entry<String, ResourceNodeCatalog.Rule> e : distinctRules(category).entrySet())
 		{

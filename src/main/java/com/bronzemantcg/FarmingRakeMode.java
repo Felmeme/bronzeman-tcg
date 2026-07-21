@@ -3,7 +3,6 @@ package com.bronzemantcg;
 /** Config dropdown; see BronzemanTcgConfig for the behaviour of each mode. */
 public enum FarmingRakeMode
 {
-	OFF("Off"),
 	TOOLS("Tools only"),
 	BOTH("Tools + Weeds");
 
