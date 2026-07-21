@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -64,12 +63,10 @@ import net.runelite.client.util.Text;
  * Bronzeman-style restriction driven by the OSRS TCG plugin's collection:
  * attacking NPCs, looting, equipping, buying, gathering and processing are
  * gated behind owning the matching card(s).
- *
  * Interop is read-only via osrs-tcg's PluginMessage API, falling back to
  * decoding its persisted ConfigManager state on hub versions that predate
  * the API (see {@link TcgCollectionReader}); there is no compile-time
  * dependency, so both plugins install independently from the Plugin Hub.
- *
  * Everything works by consuming MenuOptionClicked. Known limitation
  * (documented, owner-accepted): keyboard-driven interface defaults
  * (spacebar "make") bypass the menu pipeline and cannot be consumed.
@@ -1458,8 +1455,9 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 			{
 				return null;
 			}
-			enforceYield = mode != MiningMode.TOOL_ONLY;
-			enforceTool = mode != MiningMode.ORE_ONLY;
+			// Both remaining modes need the pickaxe; only "Tool + Ore" also needs the ore card.
+			enforceYield = mode == MiningMode.CARD_REQUIRED;
+			enforceTool = true;
 		}
 		else
 		{
@@ -1468,8 +1466,11 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 			{
 				return null;
 			}
-			enforceYield = mode != WoodcuttingMode.TOOL_ONLY;
-			enforceTool = mode != WoodcuttingMode.LOGS_ONLY;
+			// Both remaining modes need the axe; only "Logs + Tools Needed" also needs the
+			// logs card. (Chopping always uses an axe, so a logs-card-without-tool mode made
+			// little sense - the owner folded it into the tool requirement.)
+			enforceYield = mode == WoodcuttingMode.LOGS_ONLY;
+			enforceTool = true;
 		}
 
 		List<String> missing = enforceYield
@@ -1513,22 +1514,35 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 						return null;
 				}
 			case "cooking":
-				if (!config.restrictCooking())
+			{
+				// Cooking rules carry input (raw) / output (cooked) / burnt roles. The
+				// Cooking dropdown picks the food card (input or output); the separate Burnt
+				// Food Cards dropdown layers the burnt card on top - but only while cooking
+				// is actually restricted (a burnt requirement with cooking off is nonsense).
+				CookingMode mode = config.cookingMode();
+				if (mode == CookingMode.OFF)
 				{
 					return null;
 				}
-				// Burnt cards ride on top of the cooked requirement, like slayer's superiors.
-				return config.restrictBurntFood() ? Collections.emptySet() : Set.of("burnt");
+				Set<String> excluded = new HashSet<>();
+				if (mode == CookingMode.INPUT_ONLY)
+				{
+					excluded.add("output");
+				}
+				// INPUT_OUTPUT enforces both the raw and cooked cards (excludes neither).
+				if (config.burntFoodMode() != BurntFoodMode.REQUIRE_CARD)
+				{
+					excluded.add("burnt");
+				}
+				return excluded;
+			}
 			case "farming-compost":
-				return config.restrictCompost() ? Collections.emptySet() : null;
+				return config.compostMode() == CardRequirement.CARD_REQUIRED
+					? Collections.emptySet() : null;
 			case "hunter-chins":
 				return config.restrictChins() ? Collections.emptySet() : null;
 			case "hunter-rumours":
 				return config.restrictHunterRumours() ? Collections.emptySet() : null;
-			case "quest-cots":
-				// CotS guard marking waives itself while the quest is actually running -
-				// quest progression is the permit, no toggle.
-				return questNpcIndex.isCotsInProgress() ? null : Collections.emptySet();
 			case "runecrafting":
 				switch (config.runecraftingMode())
 				{
@@ -1549,18 +1563,6 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 					default:
 						return null;
 				}
-			case "farming-plant":
-				switch (config.farmingPlantMode())
-				{
-					case TOOLS:
-						return Set.of("seed", "produce");
-					case TOOLS_SEEDS:
-						return Set.of("produce");
-					case ALL:
-						return Collections.emptySet();
-					default:
-						return null;
-				}
 			case "sailing-upgrades":
 				switch (config.sailingUpgradeMode())
 				{
@@ -1577,21 +1579,23 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 				return config.restrictSalvaging() ? Collections.emptySet() : null;
 			case "slayer":
 			{
-				Set<String> excluded = new HashSet<>();
-				if (!config.restrictSlayerMasters())
+				SlayerMode mode = config.slayerMode();
+				if (mode == SlayerMode.OFF)
 				{
-					excluded.add("master");
+					return null;
 				}
-				if (!config.restrictSlayerMonsters())
+				// Both modes enforce the master card; only Full Task List adds the monster
+				// list, and only then (plus the opt-in) do the superior variants apply.
+				Set<String> excluded = new HashSet<>();
+				if (mode != SlayerMode.FULL)
 				{
 					excluded.add("monsters");
 				}
-				// Superiors ride on top of Require-monsters; the checkbox alone does nothing.
-				if (!config.restrictSlayerMonsters() || !config.restrictSlayerSuperiors())
+				if (mode != SlayerMode.FULL || !config.restrictSlayerSuperiors())
 				{
 					excluded.add("superiors");
 				}
-				return excluded.contains("master") && excluded.contains("monsters") ? null : excluded;
+				return excluded;
 			}
 			case "hunter-birds":
 			case "hunter-butterflies":
@@ -1652,20 +1656,22 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 
 		boolean enforceInputs;
 		boolean enforceOutput;
-		boolean skipTinderbox = false;
+		boolean firemakingTinderboxOnly = false;
 		switch (recipe.category)
 		{
 			case "firemaking":
 			{
-				FiremakingMode mode = config.firemakingMode();
-				if (mode == FiremakingMode.OFF
-					|| (recipe.eventLog && !config.restrictEventLogs()))
+				// Firemaking now gates ONLY the Tinderbox card - the logs are already gated
+				// when you obtain them (Woodcutting / loot), so re-checking them here was the
+				// convoluted part. Enforce inputs to compute the Tinderbox requirement, then
+				// keep only it (the logs are dropped from the block by the filter below).
+				if (config.tinderboxMode() != CardRequirement.CARD_REQUIRED)
 				{
 					return false;
 				}
 				enforceInputs = true;
 				enforceOutput = false;
-				skipTinderbox = mode == FiremakingMode.JUST_LOGS;
+				firemakingTinderboxOnly = true;
 				break;
 			}
 			case "smithing-smelt":
@@ -1676,7 +1682,7 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 					return false;
 				}
 				enforceInputs = mode == SmeltingMode.ORE || mode == SmeltingMode.BOTH;
-				enforceOutput = mode == SmeltingMode.BARS || mode == SmeltingMode.BOTH;
+				enforceOutput = mode == SmeltingMode.BOTH;
 				break;
 			}
 			case "smithing-forge":
@@ -1687,17 +1693,22 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 					return false;
 				}
 				enforceInputs = mode == SmithingMode.BARS || mode == SmithingMode.BOTH;
-				enforceOutput = mode == SmithingMode.ITEMS || mode == SmithingMode.BOTH;
+				enforceOutput = mode == SmithingMode.BOTH;
 				break;
 			}
 			case "cooking":
-				if (!config.restrictCooking())
+			{
+				// Recipe-path cooking (e.g. slicing a banana): no burnt product exists, so the
+				// Burnt Food Cards dropdown doesn't apply here - only the input/output choice.
+				CookingMode mode = config.cookingMode();
+				if (mode == CookingMode.OFF)
 				{
 					return false;
 				}
-				enforceInputs = true;
-				enforceOutput = true;
+				enforceInputs = mode == CookingMode.INPUT_ONLY || mode == CookingMode.INPUT_OUTPUT;
+				enforceOutput = mode == CookingMode.INPUT_OUTPUT;
 				break;
+			}
 			case "crafting":
 			{
 				CraftingMode mode = config.craftingMode();
@@ -1706,7 +1717,7 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 					return false;
 				}
 				enforceInputs = mode == CraftingMode.INPUT_ONLY || mode == CraftingMode.BOTH;
-				enforceOutput = mode == CraftingMode.OUTPUT_ONLY || mode == CraftingMode.BOTH;
+				enforceOutput = mode == CraftingMode.BOTH;
 				break;
 			}
 			case "enchanting":
@@ -1744,15 +1755,10 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 
 		List<String> missing = recipe.missingRequirements(
 			effectiveOwnedCards(), enforceInputs, enforceOutput);
-		if (skipTinderbox)
+		if (firemakingTinderboxOnly)
 		{
-			for (Iterator<String> it = missing.iterator(); it.hasNext(); )
-			{
-				if ("Tinderbox".equalsIgnoreCase(it.next()))
-				{
-					it.remove();
-				}
-			}
+			// Keep only the Tinderbox card in the block - the logs are gated elsewhere.
+			missing.removeIf(card -> !"Tinderbox".equalsIgnoreCase(card));
 		}
 		// Crushed gem rides on top of the crafting requirement, for gems that can shatter.
 		if (recipe.crushable && config.requireCrushedGem()
@@ -2270,6 +2276,109 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 				CraftingMode.OFF.name());
 		}
 		configManager.unsetConfiguration(BronzemanTcgConfig.GROUP, "restrictCrafting");
+
+		// "Output Required" was removed from Crafting (crafting always needs the materials,
+		// so an output-only gate was redundant). Anyone who had selected it moves to Input
+		// Only rather than being silently escalated to the Input + Output default. Reads the
+		// raw stored string, so it still matches now that the enum constant is gone.
+		if ("OUTPUT_ONLY".equals(configManager.getConfiguration(BronzemanTcgConfig.GROUP, "craftingMode")))
+		{
+			configManager.setConfiguration(BronzemanTcgConfig.GROUP, "craftingMode",
+				CraftingMode.INPUT_ONLY.name());
+		}
+
+		// Compost's toggle became a two-option dropdown.
+		if ("false".equals(configManager.getConfiguration(BronzemanTcgConfig.GROUP, "restrictCompost")))
+		{
+			configManager.setConfiguration(BronzemanTcgConfig.GROUP, "compostMode",
+				CardRequirement.NO_CARD.name());
+		}
+		configManager.unsetConfiguration(BronzemanTcgConfig.GROUP, "restrictCompost");
+
+		// Smelting / Smithing dropped their output-only option (you always need the inputs).
+		// Anyone who had it moves to Input Only rather than the Input + Output default.
+		if ("BARS".equals(configManager.getConfiguration(BronzemanTcgConfig.GROUP, "smeltingMode")))
+		{
+			configManager.setConfiguration(BronzemanTcgConfig.GROUP, "smeltingMode",
+				SmeltingMode.ORE.name());
+		}
+		if ("ITEMS".equals(configManager.getConfiguration(BronzemanTcgConfig.GROUP, "smithingMode")))
+		{
+			configManager.setConfiguration(BronzemanTcgConfig.GROUP, "smithingMode",
+				SmithingMode.BARS.name());
+		}
+
+		// Woodcutting dropped "Card Required" (both) and repurposed "Logs Only" as
+		// "Logs + Tools Needed" (both). The old both-mode maps onto the new both-mode; the
+		// old logs-only choice is gone, so its users now also need the axe unlocked.
+		if ("CARD_REQUIRED".equals(configManager.getConfiguration(BronzemanTcgConfig.GROUP, "woodcuttingMode")))
+		{
+			configManager.setConfiguration(BronzemanTcgConfig.GROUP, "woodcuttingMode",
+				WoodcuttingMode.LOGS_ONLY.name());
+		}
+
+		// Firemaking became the Tinderbox Use dropdown (logs are gated elsewhere now). Old
+		// "Logs + Tinderbox" wanted the Tinderbox card -> Card Required; "Off" and the old
+		// logs-only default explicitly did NOT want it -> No Card Needed (leniency kept).
+		String oldFiremaking = configManager.getConfiguration(BronzemanTcgConfig.GROUP, "firemakingMode");
+		if ("BOTH".equals(oldFiremaking))
+		{
+			configManager.setConfiguration(BronzemanTcgConfig.GROUP, "tinderboxMode",
+				CardRequirement.CARD_REQUIRED.name());
+		}
+		else if ("OFF".equals(oldFiremaking) || "JUST_LOGS".equals(oldFiremaking))
+		{
+			configManager.setConfiguration(BronzemanTcgConfig.GROUP, "tinderboxMode",
+				CardRequirement.NO_CARD.name());
+		}
+		configManager.unsetConfiguration(BronzemanTcgConfig.GROUP, "firemakingMode");
+
+		// Mining dropped "Ore Only" (no-tool) and repurposed "Card Required" as "Tool + Ore".
+		// Ore-only users keep their ore gating and gain the tool check.
+		if ("ORE_ONLY".equals(configManager.getConfiguration(BronzemanTcgConfig.GROUP, "miningMode")))
+		{
+			configManager.setConfiguration(BronzemanTcgConfig.GROUP, "miningMode",
+				MiningMode.CARD_REQUIRED.name());
+		}
+
+		// Slayer's Require-masters + Require-monsters toggles became the Slayer Options
+		// dropdown (Superiors stays its own opt-in). masters+monsters -> Full Task List;
+		// masters alone -> Require Slayer Master; anything else falls to the No Restrictions
+		// default (owner ruling: don't special-case a monsters-without-master setup).
+		boolean slMasters = "true".equals(
+			configManager.getConfiguration(BronzemanTcgConfig.GROUP, "restrictSlayerMasters"));
+		boolean slMonsters = "true".equals(
+			configManager.getConfiguration(BronzemanTcgConfig.GROUP, "restrictSlayerMonsters"));
+		if (slMasters && slMonsters)
+		{
+			configManager.setConfiguration(BronzemanTcgConfig.GROUP, "slayerMode",
+				SlayerMode.FULL.name());
+		}
+		else if (slMasters)
+		{
+			configManager.setConfiguration(BronzemanTcgConfig.GROUP, "slayerMode",
+				SlayerMode.MASTER.name());
+		}
+		configManager.unsetConfiguration(BronzemanTcgConfig.GROUP, "restrictSlayerMasters");
+		configManager.unsetConfiguration(BronzemanTcgConfig.GROUP, "restrictSlayerMonsters");
+
+		// Cooking's two toggles became two dropdowns. restrictCooking=false -> No
+		// restrictions; everyone else falls to the INPUT_OUTPUT default. Old cooking gated
+		// only the cooked card and there is no cooked-only option now, so INPUT_OUTPUT keeps
+		// that cooked requirement and adds the raw card (never drops gating). The old
+		// "Require burnt food" toggle maps straight to the new Burnt Food Cards dropdown.
+		if ("false".equals(configManager.getConfiguration(BronzemanTcgConfig.GROUP, "restrictCooking")))
+		{
+			configManager.setConfiguration(BronzemanTcgConfig.GROUP, "cookingMode",
+				CookingMode.OFF.name());
+		}
+		if ("true".equals(configManager.getConfiguration(BronzemanTcgConfig.GROUP, "restrictBurntFood")))
+		{
+			configManager.setConfiguration(BronzemanTcgConfig.GROUP, "burntFoodMode",
+				BurntFoodMode.REQUIRE_CARD.name());
+		}
+		configManager.unsetConfiguration(BronzemanTcgConfig.GROUP, "restrictCooking");
+		configManager.unsetConfiguration(BronzemanTcgConfig.GROUP, "restrictBurntFood");
 	}
 
 	private void migrateExemptList()

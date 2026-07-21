@@ -3,10 +3,10 @@ package com.bronzemantcg;
 /** Config dropdown; see BronzemanTcgConfig for the behaviour of each mode. */
 public enum WoodcuttingMode
 {
-	CARD_REQUIRED("Card Required"),
-	LOGS_ONLY("Logs Only"),
+	OFF("No Restrictions"),
 	TOOL_ONLY("Tool Only"),
-	OFF("No Card Needed");
+	LOGS_ONLY("Logs + Axe");
+
 
 	private final String label;
 

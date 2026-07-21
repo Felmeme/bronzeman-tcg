@@ -3,10 +3,9 @@ package com.bronzemantcg;
 /** Config dropdown; see BronzemanTcgConfig for the behaviour of each mode. */
 public enum MiningMode
 {
-	CARD_REQUIRED("Card Required"),
-	ORE_ONLY("Ore Only"),
+	OFF("No Restrictions"),
 	TOOL_ONLY("Tool Only"),
-	OFF("No Card Needed");
+	CARD_REQUIRED("Tool + Ore");
 
 	private final String label;
 

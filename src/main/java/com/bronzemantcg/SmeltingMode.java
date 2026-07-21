@@ -5,8 +5,7 @@ public enum SmeltingMode
 {
 	OFF("No Card Needed"),
 	ORE("Input Only"),
-	BARS("Output Required"),
-	BOTH("Require Card");
+	BOTH("Input + Output");
 
 	private final String label;
 

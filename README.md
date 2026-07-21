@@ -9,7 +9,7 @@ and enforces the restrictions. Every restriction is individually toggleable,
 so you tune the difficulty to taste.
 
 ## What gets restricted
-
+ 
 - **Combat** — attacking an NPC (and casting spells / using items on it) is
   blocked until you own its card. Cards with location variants ("Soldier
   (Yanille)") all unlock the plain NPC name; owning any variant counts.
@@ -50,32 +50,13 @@ Locked NPCs get a configurable grey outline (colour/width/feather), or can be
 hidden entirely. An optional plain-text overlay shows your OSRS TCG credits
 and cards collected (read-only, displayed with the TCG creator's blessing).
 
-The sidebar panel (upside-down bronze med helm icon) offers card lookup with
-lock state, the nearest tracked NPCs around you, collection progress meters
-per slayer/rumour master, and two readiness checklists: **Quests** (all 206
-quests' required item and enemy cards, completable-first with click-to-expand
-checklists) and **PvM Content** (Fight Caves, Inferno, Fortis Colosseum, CoX,
-ToA, Corrupted Gauntlet, ToB monster rosters).
+The sidebar panel offers card lookup with lock state, the nearest tracked NPCs around you, 
+collection progress meters per slayer/rumour master, and two readiness checklists: **Quests** 
+(all 206 quests' required item and enemy cards, completable-first with click-to-expand
+checklists) and **PvM Content** (Fight Caves, Inferno, Fortis Colosseum, CoX, ToA, Corrupted Gauntlet, 
+ToB monster rosters).
 
-## Design principles
-
-- **No card = no restriction.** Anything absent from the TCG catalog can
-  never be unlocked, so it is never restricted.
-- **Fails safe and loud.** If the TCG collection can't be read (format drift,
-  plugin missing), everything tracked locks and a debug log explains why —
-  breakage should be obvious in a challenge mode, not silent.
-- **Menu-click enforcement only.** Restrictions consume menu clicks, the
-  standard restriction-plugin pattern. Keyboard-driven interface defaults
-  (spacebar "make") bypass the menu pipeline and are honor-system.
-
-## Interop details
-
-The OSRS TCG plugin persists its collection RSProfile-scoped under config
-group `osrstcg`, key `state` (`RLTCG_v2:` + base64(xor(gzip(json)))). This
-plugin decodes that read-only with a 5-second cache — no compile-time
-dependency, so both plugins install independently. Card catalogs are bundled
-snapshots generated from osrs-tcg's `Card.json` by `scripts/` (regenerate
-when upstream updates; see script docstrings).
+## How it works
 
 Curious how it all works? [docs/HOW_IT_WORKS.md](docs/HOW_IT_WORKS.md) is a
 plain-language walkthrough of the whole architecture, from the collection

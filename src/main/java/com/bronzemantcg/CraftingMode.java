@@ -3,10 +3,9 @@ package com.bronzemantcg;
 /** Config dropdown; see BronzemanTcgConfig for the behaviour of each mode. */
 public enum CraftingMode
 {
-	BOTH("Require Card"),
+	OFF("No Restrictions"),
 	INPUT_ONLY("Input Only"),
-	OUTPUT_ONLY("Output Required"),
-	OFF("No Card Needed");
+	BOTH("Input + Output");
 
 	private final String label;
 
