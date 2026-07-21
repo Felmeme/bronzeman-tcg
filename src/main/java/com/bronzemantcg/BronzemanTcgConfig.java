@@ -826,7 +826,7 @@ public interface BronzemanTcgConfig extends Config
 		name = "Tint locked NPCs grey",
 		description = "NPCs whose card you have not collected are greyed out in the world.",
 		section = visualsSection,
-		position = 3
+		position = 1
 	)
 	default boolean tintLockedNpcs()
 	{
@@ -836,9 +836,9 @@ public interface BronzemanTcgConfig extends Config
 	@ConfigItem(
 		keyName = "duelistCityMode",
 		name = "Duelist City Mode",
-		description = "IT'S TIME TO...",
+		description = "IT'S TIME, TO...",
 		section = visualsSection,
-		position = 4
+		position = 5
 	)
 	default boolean duelistCityMode()
 	{
@@ -851,7 +851,7 @@ public interface BronzemanTcgConfig extends Config
 		name = "Outline colour",
 		description = "Colour (and opacity) of the locked-NPC outline.",
 		section = visualsSection,
-		position = 4
+		position = 2
 	)
 	default Color lockedOutlineColor()
 	{
@@ -864,7 +864,7 @@ public interface BronzemanTcgConfig extends Config
 		name = "Outline width",
 		description = "Thickness of the locked-NPC outline in pixels.",
 		section = visualsSection,
-		position = 5
+		position = 3
 	)
 	default int lockedOutlineWidth()
 	{
@@ -877,7 +877,7 @@ public interface BronzemanTcgConfig extends Config
 		name = "Outline feather",
 		description = "How softly the outline fades at its edge (0 = hard line).",
 		section = visualsSection,
-		position = 6
+		position = 4
 	)
 	default int lockedOutlineFeather()
 	{
