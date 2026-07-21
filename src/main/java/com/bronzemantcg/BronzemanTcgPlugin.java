@@ -1724,9 +1724,9 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 				{
 					return false;
 				}
-				enforceInputs = mode == FletchingMode.PRODUCT_AND_MATERIALS
-					|| mode == FletchingMode.INPUT_ONLY;
-				enforceOutput = mode != FletchingMode.INPUT_ONLY;
+				enforceInputs = mode == FletchingMode.INPUT_ONLY
+					|| mode == FletchingMode.PRODUCT_AND_MATERIALS;
+				enforceOutput = mode == FletchingMode.PRODUCT_AND_MATERIALS;
 				break;
 			}
 			case "herblore":
@@ -2236,6 +2236,16 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 				FletchingMode.OFF.name());
 		}
 		configManager.unsetConfiguration(BronzemanTcgConfig.GROUP, "restrictFletching");
+
+		// The retired "Output Only" fletching mode (enum PRODUCT) -> Input Only. Preserves
+		// leniency (owner ruling): left to RuneLite's unparseable-enum fallback it would
+		// instead land on the Input + Output default, silently making a lenient choice the
+		// strictest one. Self-disarming: the value is only ever "PRODUCT" for old configs.
+		if ("PRODUCT".equals(configManager.getConfiguration(BronzemanTcgConfig.GROUP, "fletchingMode")))
+		{
+			configManager.setConfiguration(BronzemanTcgConfig.GROUP, "fletchingMode",
+				FletchingMode.INPUT_ONLY.name());
+		}
 
 		if ("false".equals(configManager.getConfiguration(BronzemanTcgConfig.GROUP, "restrictMining")))
 		{

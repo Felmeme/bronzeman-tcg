@@ -5,7 +5,6 @@ public enum FletchingMode
 {
 	OFF("No restrictions"),
 	INPUT_ONLY("Input Only"),
-	PRODUCT("Output Only"),
 	PRODUCT_AND_MATERIALS("Input + Output");
 
 

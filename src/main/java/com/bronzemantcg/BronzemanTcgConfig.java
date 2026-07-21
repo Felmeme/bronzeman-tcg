@@ -539,8 +539,9 @@ public interface BronzemanTcgConfig extends Config
 	@ConfigItem(
 		keyName = "fletchingMode",
 		name = "Fletching",
-		description = "Input Only': Recipes only require Input Items Cards."
-			+ "<br>'Input + Output: require all cards in fletching recipes.",
+		description = "'No restrictions': fletching is never blocked."
+			+ "<br>'Input Only': recipes only require the input item cards."
+			+ "<br>'Input + Output': require all cards in fletching recipes.",
 		section = fletchingSection,
 		position = 0
 	)
