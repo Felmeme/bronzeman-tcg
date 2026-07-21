@@ -871,6 +871,18 @@ public interface BronzemanTcgConfig extends Config
 		return true;
 	}
 
+	@ConfigItem(
+		keyName = "duelistCityMode",
+		name = "Duelist City Mode",
+		description = "IT'S TIME TO...",
+		section = visualsSection,
+		position = 4
+	)
+	default boolean duelistCityMode()
+	{
+		return false;
+	}
+
 	@Alpha
 	@ConfigItem(
 		keyName = "lockedOutlineColor",
