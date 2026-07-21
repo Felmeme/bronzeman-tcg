@@ -282,7 +282,7 @@ public interface BronzemanTcgConfig extends Config
 	)
 	default LockState coinMode()
 	{
-		return LockState.UNLOCKED;
+		return LockState.LOCKED;
 	}
 
 	@ConfigItem(
@@ -429,7 +429,7 @@ public interface BronzemanTcgConfig extends Config
 	)
 	default BurntFoodMode burntFoodMode()
 	{
-		return BurntFoodMode.OFF;
+		return BurntFoodMode.REQUIRE_CARD;
 	}
 
 	//----------------
@@ -519,7 +519,7 @@ public interface BronzemanTcgConfig extends Config
 	)
 	default boolean requireCrushedGem()
 	{
-		return false;
+		return true;
 	}
 
 	//----------------
