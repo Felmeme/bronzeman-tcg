@@ -22,6 +22,8 @@ import net.runelite.api.ItemContainer;
 import net.runelite.api.MenuAction;
 import net.runelite.api.MenuEntry;
 import net.runelite.api.NPC;
+import net.runelite.api.Player;
+import net.runelite.api.PlayerComposition;
 import net.runelite.api.NPCComposition;
 import net.runelite.api.Renderable;
 import net.runelite.api.ScriptID;
@@ -31,11 +33,15 @@ import net.runelite.api.events.GameTick;
 import net.runelite.api.events.ItemContainerChanged;
 import net.runelite.api.events.MenuEntryAdded;
 import net.runelite.api.events.MenuOptionClicked;
+import net.runelite.api.events.PlayerChanged;
+import net.runelite.api.events.PlayerDespawned;
+import net.runelite.api.events.PlayerSpawned;
 import net.runelite.api.events.ScriptPostFired;
 import net.runelite.api.events.WidgetLoaded;
 import net.runelite.api.gameval.InterfaceID;
 import net.runelite.api.gameval.InventoryID;
 import net.runelite.api.gameval.VarbitID;
+import net.runelite.api.kit.KitType;
 import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetUtil;
 import net.runelite.client.callback.ClientThread;
@@ -250,6 +256,19 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	// Locked-mark lookup cache, keyed by item id; dropped whenever the owned set changes.
 	private final Map<Integer, Boolean> lockedItemCache = new HashMap<>();
 	private Set<String> lockedItemCacheOwned;
+	// Duelist City Mode: fake Mystic cards (2h) on every player, client-side only. We must
+	// remember each player's REAL weapon/shield ids so we can put them back when disabled.
+	// Keyed by the player's scene index (stable while they're in view; freed on despawn).
+	private static final int MYSTIC_CARDS_ITEM_ID = 27645;
+	// Mystic cards' weapon stance, captured in-game 2026-07-21 via logLocalStanceOnChange:
+	// idle, walk, run, idleRotateLeft, idleRotateRight, walkRotateLeft, walkRotateRight,
+	// walkRotate180 - the order both applyStance() and the restore snapshot use.
+	private static final int[] MYSTIC_STANCE = {9847, 9849, 9850, 823, 823, 9851, 9852, 820};
+	// Per player (scene id): [weapon, shield, then the 8 real stance ids], kept so both the
+	// model and the stance can be put back exactly when the mode is turned off.
+	private final Map<Integer, int[]> duelistRealEquip = new HashMap<>();
+	// Last-logged local-player stance, so the capture logger fires only when it changes.
+	private int[] lastLoggedStance;
 	// Carried tool NAMES (not lock states): recomputed on inventory/equipment change,
 	// while lock state is evaluated per check so card unlocks apply without waiting
 	// for the next container event. Read from the per-frame hide path - keep cheap.
@@ -312,6 +331,8 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 		overlayManager.remove(lockedItemIconOverlay);
 		// Widget opacity outlives the plugin, so faded items must be restored by hand.
 		clientThread.invoke(this::clearLockedItemMarks);
+		// Same for faked player models: put everyone's real gear back before we unload.
+		clientThread.invoke(() -> sweepDuelistCity(false));
 		clientToolbar.removeNavigation(navButton);
 		navButton = null;
 		panel = null;
@@ -741,6 +762,8 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 		// is closed, and on every tick rather than one in five.
 		tickWelcomeTimers();
 
+		logLocalStanceOnChange();
+
 		// Periodically re-render the panel so unlocks show without reopening it. Cheap and
 		// only when visible; nothing here reads live scene state.
 		if (panel == null || ++tickCounter % 5 != 0)
@@ -769,6 +792,167 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 		{
 			configManager.setConfiguration(BronzemanTcgConfig.GROUP, "lockedItemMarkMode",
 				LockedItemMarkMode.OFF.name());
+		}
+
+		// Duelist City Mode flipped: sweep every player in view right away rather than
+		// waiting for their next appearance update. Composition edits touch client memory,
+		// so they run on the client thread.
+		if (BronzemanTcgConfig.GROUP.equals(event.getGroup())
+			&& "duelistCityMode".equals(event.getKey()))
+		{
+			boolean on = Boolean.parseBoolean(event.getNewValue());
+			clientThread.invoke(() -> sweepDuelistCity(on));
+		}
+	}
+
+	// ------------------------------------------------------------------ Duelist City Mode
+
+	@Subscribe
+	public void onPlayerSpawned(PlayerSpawned event)
+	{
+		if (config.duelistCityMode())
+		{
+			applyDuelistCards(event.getPlayer());
+		}
+	}
+
+	@Subscribe
+	public void onPlayerChanged(PlayerChanged event)
+	{
+		// Fires when the server re-sends a player's appearance (they changed gear, or just
+		// came into range). At this instant the composition holds their REAL equipment, so
+		// this is where we snapshot it before overwriting - and where our fake would be
+		// wiped if we didn't re-apply.
+		if (config.duelistCityMode())
+		{
+			applyDuelistCards(event.getPlayer());
+		}
+	}
+
+	@Subscribe
+	public void onPlayerDespawned(PlayerDespawned event)
+	{
+		// Player left view; their cached real equipment is no longer needed (a fresh
+		// snapshot is taken if they return). Prevents the map growing without bound.
+		duelistRealEquip.remove(event.getPlayer().getId());
+	}
+
+	/**
+	 * Capture aid (debug only, permanent): logs the local player's 8 weapon-stance pose
+	 * animation ids whenever they change - equip a weapon and its stance ids print once.
+	 * ItemComposition doesn't expose these, so an in-game capture is the reliable source
+	 * for hard-coding a specific weapon's stance (e.g. Mystic cards for Duelist City Mode).
+	 * Order matches how the stance is applied: idle, walk, run, then the five turn poses.
+	 */
+	private void logLocalStanceOnChange()
+	{
+		if (!log.isDebugEnabled())
+		{
+			return;
+		}
+		Player me = client.getLocalPlayer();
+		if (me == null)
+		{
+			return;
+		}
+		int[] stance = {
+			me.getIdlePoseAnimation(), me.getWalkAnimation(), me.getRunAnimation(),
+			me.getIdleRotateLeft(), me.getIdleRotateRight(),
+			me.getWalkRotateLeft(), me.getWalkRotateRight(), me.getWalkRotate180(),
+		};
+		if (java.util.Arrays.equals(stance, lastLoggedStance))
+		{
+			return;
+		}
+		lastLoggedStance = stance;
+		log.debug("local stance: idle={} walk={} run={} idleRotL={} idleRotR={} "
+				+ "walkRotL={} walkRotR={} walkRot180={}",
+			stance[0], stance[1], stance[2], stance[3], stance[4], stance[5], stance[6], stance[7]);
+	}
+
+	/** Give one player the Mystic-cards look, remembering their real weapon/shield first. */
+	private void applyDuelistCards(Player player)
+	{
+		PlayerComposition comp = player == null ? null : player.getPlayerComposition();
+		if (comp == null)
+		{
+			return;
+		}
+		int[] equip = comp.getEquipmentIds();
+		int weaponIdx = KitType.WEAPON.getIndex();
+		int shieldIdx = KitType.SHIELD.getIndex();
+
+		// Snapshot the real weapon/shield AND the real stance the first time we touch this
+		// player (or whenever the server hands us a genuine update - PlayerChanged carries
+		// real values, so if the weapon isn't already our fake, the appearance was freshly
+		// decoded and the pose fields hold the true weapon's stance to restore to).
+		int fakeWeapon = MYSTIC_CARDS_ITEM_ID + PlayerComposition.ITEM_OFFSET;
+		if (equip[weaponIdx] != fakeWeapon)
+		{
+			duelistRealEquip.put(player.getId(), new int[]{
+				equip[weaponIdx], equip[shieldIdx],
+				player.getIdlePoseAnimation(), player.getWalkAnimation(), player.getRunAnimation(),
+				player.getIdleRotateLeft(), player.getIdleRotateRight(),
+				player.getWalkRotateLeft(), player.getWalkRotateRight(), player.getWalkRotate180(),
+			});
+		}
+
+		// Two-handed: fill the weapon slot with Mystic cards and blank the shield slot, then
+		// force a model rebuild. setHash() re-renders the MODEL but not the pose animations,
+		// so the stance is applied separately.
+		equip[weaponIdx] = fakeWeapon;
+		equip[shieldIdx] = 0;
+		comp.setHash();
+		applyStance(player, MYSTIC_STANCE);
+	}
+
+	/** Put one player's real weapon/shield AND real stance back, and rebuild their model. */
+	private void restoreDuelistCards(Player player)
+	{
+		PlayerComposition comp = player == null ? null : player.getPlayerComposition();
+		int[] real = player == null ? null : duelistRealEquip.remove(player.getId());
+		if (comp == null || real == null)
+		{
+			return;
+		}
+		int[] equip = comp.getEquipmentIds();
+		equip[KitType.WEAPON.getIndex()] = real[0];
+		equip[KitType.SHIELD.getIndex()] = real[1];
+		comp.setHash();
+		applyStance(player, java.util.Arrays.copyOfRange(real, 2, real.length));
+	}
+
+	/** Set all eight weapon-stance pose animations on a player. Order matches MYSTIC_STANCE. */
+	private static void applyStance(Player p, int[] s)
+	{
+		p.setIdlePoseAnimation(s[0]);
+		p.setWalkAnimation(s[1]);
+		p.setRunAnimation(s[2]);
+		p.setIdleRotateLeft(s[3]);
+		p.setIdleRotateRight(s[4]);
+		p.setWalkRotateLeft(s[5]);
+		p.setWalkRotateRight(s[6]);
+		p.setWalkRotate180(s[7]);
+	}
+
+	/** Apply (or restore) the Mystic-cards look across every player currently in view. */
+	private void sweepDuelistCity(boolean enable)
+	{
+		WorldView worldView = client.getTopLevelWorldView();
+		if (worldView == null)
+		{
+			return;
+		}
+		for (Player player : worldView.players())
+		{
+			if (enable)
+			{
+				applyDuelistCards(player);
+			}
+			else
+			{
+				restoreDuelistCards(player);
+			}
 		}
 	}
 
