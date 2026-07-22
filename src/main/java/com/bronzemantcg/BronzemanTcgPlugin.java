@@ -189,6 +189,12 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	private TcgCollectionReader collectionReader;
 
 	@Inject
+	private RecentUnlocksTracker recentUnlocksTracker;
+
+	@Inject
+	private ImportantUnlocksCatalog importantUnlocksCatalog;
+
+	@Inject
 	private TrackedMonsterCatalog monsterCatalog;
 
 	@Inject
@@ -289,6 +295,7 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	protected void startUp()
 	{
 		collectionReader.invalidate();
+		recentUnlocksTracker.reload();
 		migrateExemptList();
 		migrateNpcVisibility();
 		migrateSkillToggles();
@@ -304,7 +311,7 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 		apiQueryTicks = 0;
 
 		panel = new BronzemanTcgPanel(monsterCatalog, itemCatalog, nodeCatalog, questCatalog,
-			contentCatalog, collectionReader, config);
+			contentCatalog, collectionReader, recentUnlocksTracker, importantUnlocksCatalog, config);
 		navButton = NavigationButton.builder()
 			.tooltip("Bronzeman TCG")
 			.icon(loadPanelIcon())
@@ -758,6 +765,13 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	@Subscribe
 	public void onGameTick(GameTick event)
 	{
+		boolean newUnlock = recentUnlocksTracker.update(
+			collectionReader.getOwnedCardNamesLowerCase(), collectionReader.isStateAvailable());
+		if (newUnlock)
+		{
+			refreshVisiblePanel();
+		}
+
 		// Ahead of the panel guard below - the greeting must still fire when the panel
 		// is closed, and on every tick rather than one in five.
 		tickWelcomeTimers();
@@ -962,6 +976,7 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 		// New account/profile: never let a previous profile's collection linger. This
 		// drops any API-provided data too, so re-arm the query for the new profile.
 		collectionReader.invalidate();
+		recentUnlocksTracker.reload();
 		apiQueryTicks = 0;
 	}
 
@@ -985,10 +1000,35 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 		}
 		boolean firstPayload = !collectionReader.hasApiData();
 		collectionReader.onApiOwnedNames((List<?>) names);
+		if (firstPayload)
+		{
+			recentUnlocksTracker.resetBaseline();
+		}
+		if (recentUnlocksTracker.update(collectionReader.getOwnedCardNamesLowerCase(), true))
+		{
+			refreshVisiblePanel();
+		}
 		if (firstPayload && collectionReader.hasApiData())
 		{
 			log.info("osrs-tcg PluginMessage API active; collection now push-updated.");
 		}
+	}
+
+	/** Refresh only a visible Swing panel; tracking itself continues while it is closed. */
+	private void refreshVisiblePanel()
+	{
+		BronzemanTcgPanel target = panel;
+		if (target == null)
+		{
+			return;
+		}
+		SwingUtilities.invokeLater(() ->
+		{
+			if (target.isShowing())
+			{
+				target.refresh();
+			}
+		});
 	}
 
 	@Subscribe
@@ -1727,6 +1767,10 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 				return config.restrictChins() ? Collections.emptySet() : null;
 			case "hunter-rumours":
 				return config.restrictHunterRumours() ? Collections.emptySet() : null;
+			case "quest-cots":
+				// CotS guard marking waives itself while the quest is actually running -
+				// quest progression is the permit, no toggle.
+				return questNpcIndex.isCotsInProgress() ? null : Collections.emptySet();
 			case "runecrafting":
 				switch (config.runecraftingMode())
 				{

@@ -6,9 +6,13 @@ import java.awt.Component;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.FlowLayout;
 import java.awt.LayoutManager;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.time.Instant;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashSet;
@@ -45,6 +49,8 @@ class BronzemanTcgPanel extends PluginPanel
 	private static final int MAX_SEARCH_RESULTS = 20;
 	private static final Color UNLOCKED = ColorScheme.PROGRESS_COMPLETE_COLOR;
 	private static final Color LOCKED = ColorScheme.PROGRESS_ERROR_COLOR;
+	private static final DateTimeFormatter UNLOCK_TIME_FORMAT = DateTimeFormatter
+		.ofPattern("d MMM, HH:mm").withZone(ZoneId.systemDefault());
 
 	private final TrackedMonsterCatalog monsterCatalog;
 	private final TrackedItemCatalog itemCatalog;
@@ -52,6 +58,8 @@ class BronzemanTcgPanel extends PluginPanel
 	private final QuestCatalog questCatalog;
 	private final ContentCatalog contentCatalog;
 	private final TcgCollectionReader collectionReader;
+	private final RecentUnlocksTracker recentUnlocksTracker;
+	private final ImportantUnlocksCatalog importantUnlocksCatalog;
 	private final BronzemanTcgConfig config;
 
 	private final IconTextField searchBar = new IconTextField();
@@ -75,9 +83,17 @@ class BronzemanTcgPanel extends PluginPanel
 	private final JPanel rumoursList = sectionBody();
 	private final Set<String> expandedRumours = new HashSet<>();
 
+	private final JPanel recentUnlocksPanel = sectionBody();
+	private final IconTextField recentUnlocksSearchBar = new IconTextField();
+	private final JPanel recentUnlocksList = sectionBody();
+
+	private final JPanel importantUnlocksList = sectionBody();
+	private final Set<String> expandedImportantCategories = new HashSet<>();
+
 	BronzemanTcgPanel(TrackedMonsterCatalog monsterCatalog, TrackedItemCatalog itemCatalog,
 		ResourceNodeCatalog nodeCatalog, QuestCatalog questCatalog, ContentCatalog contentCatalog,
-		TcgCollectionReader collectionReader, BronzemanTcgConfig config)
+		TcgCollectionReader collectionReader, RecentUnlocksTracker recentUnlocksTracker,
+		ImportantUnlocksCatalog importantUnlocksCatalog, BronzemanTcgConfig config)
 	{
 		this.monsterCatalog = monsterCatalog;
 		this.itemCatalog = itemCatalog;
@@ -85,6 +101,8 @@ class BronzemanTcgPanel extends PluginPanel
 		this.questCatalog = questCatalog;
 		this.contentCatalog = contentCatalog;
 		this.collectionReader = collectionReader;
+		this.recentUnlocksTracker = recentUnlocksTracker;
+		this.importantUnlocksCatalog = importantUnlocksCatalog;
 		this.config = config;
 
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
@@ -120,6 +138,35 @@ class BronzemanTcgPanel extends PluginPanel
 		tabs.setAlignmentX(Component.LEFT_ALIGNMENT);
 		tabDisplay.setAlignmentX(Component.LEFT_ALIGNMENT);
 		tabDisplay.setBackground(ColorScheme.DARK_GRAY_COLOR);
+		tabs.setLayout(new WrapLayout(FlowLayout.CENTER, 4, 0));
+
+		recentUnlocksSearchBar.setIcon(IconTextField.Icon.SEARCH);
+		recentUnlocksSearchBar.setToolTipText("Search recent unlocks");
+		recentUnlocksSearchBar.setMaximumSize(new Dimension(Integer.MAX_VALUE, 28));
+		recentUnlocksSearchBar.setAlignmentX(Component.LEFT_ALIGNMENT);
+		recentUnlocksSearchBar.getDocument().addDocumentListener(new DocumentListener()
+		{
+			@Override
+			public void insertUpdate(DocumentEvent e)
+			{
+				refreshRecentUnlocks();
+			}
+
+			@Override
+			public void removeUpdate(DocumentEvent e)
+			{
+				refreshRecentUnlocks();
+			}
+
+			@Override
+			public void changedUpdate(DocumentEvent e)
+			{
+				refreshRecentUnlocks();
+			}
+		});
+		recentUnlocksPanel.add(recentUnlocksSearchBar);
+		recentUnlocksPanel.add(Box.createVerticalStrut(4));
+		recentUnlocksPanel.add(recentUnlocksList);
 
 		add(searchBar);
 		add(Box.createVerticalStrut(4));
@@ -128,12 +175,14 @@ class BronzemanTcgPanel extends PluginPanel
 		add(sectionHeader("Progress"));
 		add(progressList);
 
-		// Labels stay short: four tabs share the fixed 225px panel width.
+		// WrapLayout preserves full labels in the fixed-width sidebar.
 		add(Box.createVerticalStrut(10));
 		addTab("Quests", questList);
 		addTab("Slayer", slayerList);
 		addTab("PvM", contentList);
 		addTab("Rumours", rumoursList);
+		addTab("Recent Unlocks", recentUnlocksPanel);
+		addTab("Important Unlocks", importantUnlocksList);
 		tabs.select(tabs.getTab(0));
 		add(tabs);
 		add(Box.createVerticalStrut(4));
@@ -156,6 +205,8 @@ class BronzemanTcgPanel extends PluginPanel
 		refreshSlayer();
 		refreshContent();
 		refreshRumours();
+		refreshRecentUnlocks();
+		refreshImportantUnlocks();
 	}
 
 	// ------------------------------------------------------------------ collapsible checklists
@@ -182,6 +233,74 @@ class BronzemanTcgPanel extends PluginPanel
 	{
 		refreshChecklist(rumoursList, "masters ready",
 			buildMasterEntries("hunter-rumours"), expandedRumours, this::refreshRumours, "No rumour data bundled");
+	}
+
+	private void refreshRecentUnlocks()
+	{
+		recentUnlocksList.removeAll();
+		String query = recentUnlocksSearchBar.getText() == null ? ""
+			: recentUnlocksSearchBar.getText().trim().toLowerCase(Locale.ROOT);
+		for (RecentUnlocksTracker.Unlock unlock : recentUnlocksTracker.getRecent())
+		{
+			String name = displayCardName(unlock.name);
+			if (query.isEmpty() || name.toLowerCase(Locale.ROOT).contains(query))
+			{
+				recentUnlocksList.add(recentUnlockRow(name, unlock.time));
+			}
+		}
+		if (recentUnlocksList.getComponentCount() == 0)
+		{
+			recentUnlocksList.add(mutedRow(query.isEmpty()
+				? "No new unlocks recorded yet" : "No recent unlocks match"));
+		}
+		recentUnlocksList.revalidate();
+		recentUnlocksList.repaint();
+	}
+
+	private void refreshImportantUnlocks()
+	{
+		importantUnlocksList.removeAll();
+		Set<String> owned = collectionReader.getOwnedCardNamesLowerCase();
+		for (ImportantUnlocksCatalog.Category category : importantUnlocksCatalog.getCategories())
+		{
+			int have = countOwned(category.items, owned);
+			importantUnlocksList.add(importantCategoryRow(category, have));
+			if (expandedImportantCategories.contains(category.name))
+			{
+				for (String card : category.items)
+				{
+					importantUnlocksList.add(statusRow("  " + displayCardName(card),
+						owned.contains(card.toLowerCase(Locale.ROOT)), null));
+				}
+			}
+		}
+		if (importantUnlocksCatalog.getCategories().isEmpty())
+		{
+			importantUnlocksList.add(mutedRow("No Important Unlocks data bundled"));
+		}
+		importantUnlocksList.revalidate();
+		importantUnlocksList.repaint();
+	}
+
+	private JPanel importantCategoryRow(ImportantUnlocksCatalog.Category category, int have)
+	{
+		boolean expanded = expandedImportantCategories.contains(category.name);
+		JPanel row = progressRow((expanded ? "▼ " : "▶ ") + category.name,
+			have, category.items.size());
+		row.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		row.addMouseListener(new MouseAdapter()
+		{
+			@Override
+			public void mouseClicked(MouseEvent e)
+			{
+				if (!expandedImportantCategories.remove(category.name))
+				{
+					expandedImportantCategories.add(category.name);
+				}
+				refreshImportantUnlocks();
+			}
+		});
+		return row;
 	}
 
 	/**
@@ -400,6 +519,19 @@ class BronzemanTcgPanel extends PluginPanel
 		return count;
 	}
 
+	private static int countOwned(List<String> cards, Set<String> owned)
+	{
+		int count = 0;
+		for (String card : cards)
+		{
+			if (owned.contains(card.toLowerCase(Locale.ROOT)))
+			{
+				count++;
+			}
+		}
+		return count;
+	}
+
 	private static boolean ownsAny(Set<String> owned, Set<String> variants)
 	{
 		for (String card : variants)
@@ -477,6 +609,28 @@ class BronzemanTcgPanel extends PluginPanel
 		return row;
 	}
 
+	private static JPanel recentUnlockRow(String name, long time)
+	{
+		JPanel row = row(new BorderLayout(6, 0));
+		row.setBackground(ColorScheme.DARKER_GRAY_COLOR);
+		row.setBorder(BorderFactory.createEmptyBorder(4, 6, 4, 6));
+
+		JLabel nameLabel = new JLabel(name);
+		nameLabel.setForeground(Color.WHITE);
+		row.add(nameLabel, BorderLayout.CENTER);
+
+		JLabel status = new JLabel("✓");
+		status.setForeground(UNLOCKED);
+		status.setFont(status.getFont().deriveFont(Font.BOLD));
+		row.add(status, BorderLayout.EAST);
+
+		JLabel when = new JLabel("Unlocked " + UNLOCK_TIME_FORMAT.format(Instant.ofEpochMilli(time)));
+		when.setForeground(ColorScheme.LIGHT_GRAY_COLOR);
+		when.setFont(when.getFont().deriveFont(11f));
+		row.add(when, BorderLayout.SOUTH);
+		return row;
+	}
+
 	private static JLabel mutedRow(String text)
 	{
 		JLabel label = new JLabel(text);
@@ -512,6 +666,17 @@ class BronzemanTcgPanel extends PluginPanel
 			return lowerName;
 		}
 		return Character.toUpperCase(lowerName.charAt(0)) + lowerName.substring(1);
+	}
+
+	private String displayCardName(String cardName)
+	{
+		String itemName = itemCatalog.findDisplayCardName(cardName);
+		if (itemName != null)
+		{
+			return itemName;
+		}
+		String monsterName = monsterCatalog.findDisplayCardName(cardName);
+		return monsterName == null ? display(cardName) : monsterName;
 	}
 
 }

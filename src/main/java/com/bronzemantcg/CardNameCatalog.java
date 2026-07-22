@@ -33,6 +33,9 @@ import lombok.extern.slf4j.Slf4j;
 abstract class CardNameCatalog
 {
 	private Map<String, Set<String>> entityToCardsLowerCase = Collections.emptyMap();
+	// The matching map deliberately uses lower-case names. Keep the original spelling too
+	// for user-facing panel rows (for example, "TzHaar-ket-om").
+	private Map<String, String> cardNamesByLowerCase = Collections.emptyMap();
 
 	protected CardNameCatalog(Gson gson, String resourcePath, String logLabel)
 	{
@@ -81,6 +84,23 @@ abstract class CardNameCatalog
 		return entityToCardsLowerCase;
 	}
 
+	/** Returns the bundled card spelling for a lower-cased owned-name, when known. */
+	public String getDisplayCardName(String cardName)
+	{
+		String displayName = findDisplayCardName(cardName);
+		return displayName == null ? cardName == null ? "" : cardName.trim() : displayName;
+	}
+
+	/** @return the bundled spelling, or null when this catalog has no such card. */
+	public String findDisplayCardName(String cardName)
+	{
+		if (cardName == null)
+		{
+			return null;
+		}
+		return cardNamesByLowerCase.get(cardName.trim().toLowerCase(Locale.ROOT));
+	}
+
 	private void load(Gson gson, String resourcePath, String logLabel)
 	{
 		try (InputStream stream = getClass().getResourceAsStream(resourcePath))
@@ -97,6 +117,7 @@ abstract class CardNameCatalog
 				return;
 			}
 			Map<String, Set<String>> map = new HashMap<>();
+			Map<String, String> displayNames = new HashMap<>();
 			for (Map.Entry<String, List<String>> entry : snapshot.entityToCards.entrySet())
 			{
 				if (entry.getKey() == null || entry.getValue() == null)
@@ -108,7 +129,10 @@ abstract class CardNameCatalog
 				{
 					if (cardName != null && !cardName.trim().isEmpty())
 					{
-						cards.add(cardName.trim().toLowerCase(Locale.ROOT));
+						String canonical = cardName.trim();
+						String lower = canonical.toLowerCase(Locale.ROOT);
+						cards.add(lower);
+						displayNames.putIfAbsent(lower, canonical);
 					}
 				}
 				if (!cards.isEmpty())
@@ -118,6 +142,7 @@ abstract class CardNameCatalog
 				}
 			}
 			entityToCardsLowerCase = Collections.unmodifiableMap(map);
+			cardNamesByLowerCase = Collections.unmodifiableMap(displayNames);
 			log.info("Loaded {} tracked {} from osrs-tcg snapshot", map.size(), logLabel);
 		}
 		catch (IOException ex)
