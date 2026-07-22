@@ -1727,6 +1727,10 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 				return config.restrictChins() ? Collections.emptySet() : null;
 			case "hunter-rumours":
 				return config.restrictHunterRumours() ? Collections.emptySet() : null;
+			case "quest-cots":
+				// CotS guard marking waives itself while the quest is actually running -
+				// quest progression is the permit, no toggle.
+				return questNpcIndex.isCotsInProgress() ? null : Collections.emptySet();
 			case "runecrafting":
 				switch (config.runecraftingMode())
 				{
