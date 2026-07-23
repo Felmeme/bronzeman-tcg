@@ -3637,8 +3637,14 @@
 		{
 			"name": "Romeo & Juliet",
 			"miniquest": false,
-			"cardGroups": [],
-			"groupLabels": [],
+			"cardGroups": [
+				[
+					"Cadava berries"
+				]
+			],
+			"groupLabels": [
+				"Cadava berries"
+			],
 			"monsterCards": [],
 			"notes": ""
 		},
@@ -3908,8 +3914,14 @@
 		{
 			"name": "Sheep Shearer",
 			"miniquest": false,
-			"cardGroups": [],
-			"groupLabels": [],
+			"cardGroups": [
+				[
+					"Shears"
+				]
+			],
+			"groupLabels": [
+				"Shears"
+			],
 			"monsterCards": [],
 			"notes": ""
 		},
