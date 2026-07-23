@@ -286,8 +286,7 @@ class BronzemanTcgPanel extends PluginPanel
 		return new PanelSnapshot(data, owned, recentUnlocksTracker.getRecent(),
 			includeSlayerSuperiors,
 			countUnlocked(monsterCatalog.getEntityToCards(), owned),
-			countUnlocked(itemCatalog.getEntityToCards(), owned),
-			countOwned(nodeCatalog.getMasterFarmerSeedCards(), owned));
+			countUnlocked(itemCatalog.getEntityToCards(), owned));
 	}
 
 	private PreparedData prepareStaticData()
@@ -666,13 +665,6 @@ class BronzemanTcgPanel extends PluginPanel
 		progressList.add(progressRow("Items unlocked",
 			current.unlockedItems, itemCatalog.size()));
 
-		List<String> seeds = nodeCatalog.getMasterFarmerSeedCards();
-		if (!seeds.isEmpty())
-		{
-			progressList.add(progressRow("Master Farmer seeds",
-				current.masterFarmerSeeds, seeds.size()));
-		}
-
 		progressList.revalidate();
 		progressList.repaint();
 	}
@@ -984,12 +976,11 @@ class BronzemanTcgPanel extends PluginPanel
 		private final boolean includeSlayerSuperiors;
 		private final int unlockedMonsters;
 		private final int unlockedItems;
-		private final int masterFarmerSeeds;
 
 		private PanelSnapshot(PreparedData data, Set<String> owned,
 			List<RecentUnlocksTracker.Unlock> recentUnlocks,
 			boolean includeSlayerSuperiors, int unlockedMonsters,
-			int unlockedItems, int masterFarmerSeeds)
+			int unlockedItems)
 		{
 			this.data = data;
 			this.owned = owned;
@@ -997,7 +988,6 @@ class BronzemanTcgPanel extends PluginPanel
 			this.includeSlayerSuperiors = includeSlayerSuperiors;
 			this.unlockedMonsters = unlockedMonsters;
 			this.unlockedItems = unlockedItems;
-			this.masterFarmerSeeds = masterFarmerSeeds;
 		}
 	}
 
