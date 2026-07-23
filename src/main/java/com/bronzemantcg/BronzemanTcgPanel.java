@@ -1,12 +1,14 @@
 package com.bronzemantcg;
 
 import java.awt.BorderLayout;
+import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.FlowLayout;
+import java.awt.Insets;
 import java.awt.LayoutManager;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -14,22 +16,28 @@ import java.time.Instant;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
+import java.util.EnumMap;
+import java.util.EnumSet;
 import java.util.HashSet;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.atomic.AtomicBoolean;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
+import javax.swing.SwingUtilities;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
+import lombok.extern.slf4j.Slf4j;
 import net.runelite.client.ui.ColorScheme;
 import net.runelite.client.ui.PluginPanel;
 import net.runelite.client.ui.components.IconTextField;
@@ -39,11 +47,12 @@ import net.runelite.client.ui.components.materialtabs.MaterialTabGroup;
 /**
  * Sidebar panel: card search, collection progress, and collapsible readiness checklists
  * for quests, slayer masters, PvM content and hunter rumour masters.
- * Threading contract: everything here runs on the Swing EDT. The catalogs are immutable
- * after load and TcgCollectionReader is synchronized, so reading them from the EDT is
- * safe; live game state is never touched here. {@link #refresh()} is called periodically
- * from the plugin (via SwingUtilities.invokeLater) so unlocks show without reopening.
+ * Threading contract: immutable view data is prepared on RuneLite's shared executor;
+ * every Swing component is created or changed on the Swing EDT. The catalogs are
+ * immutable after load and TcgCollectionReader/RecentUnlocksTracker are synchronized.
+ * Live game state is never touched here.
  */
+@Slf4j
 class BronzemanTcgPanel extends PluginPanel
 {
 	private static final int MAX_SEARCH_RESULTS = 20;
@@ -61,6 +70,14 @@ class BronzemanTcgPanel extends PluginPanel
 	private final RecentUnlocksTracker recentUnlocksTracker;
 	private final ImportantUnlocksCatalog importantUnlocksCatalog;
 	private final BronzemanTcgConfig config;
+	private final ScheduledExecutorService executor;
+	private final AtomicBoolean refreshRunning = new AtomicBoolean();
+	private final AtomicBoolean refreshAgain = new AtomicBoolean();
+	private final EnumSet<PanelTab> dirtyTabs = EnumSet.allOf(PanelTab.class);
+	private volatile PreparedData preparedData;
+	private volatile boolean disposed;
+	private PanelSnapshot snapshot;
+	private PanelTab selectedTab = PanelTab.QUESTS;
 
 	private final IconTextField searchBar = new IconTextField();
 	private final JPanel searchResults = sectionBody();
@@ -68,8 +85,11 @@ class BronzemanTcgPanel extends PluginPanel
 
 	// One list per tab. MaterialTabGroup swaps the selected list into tabDisplay, so the
 	// old per-section collapse state is gone - a tab is either shown or it isn't.
-	private final JPanel tabDisplay = new JPanel(new BorderLayout());
-	private final MaterialTabGroup tabs = new MaterialTabGroup(tabDisplay);
+	// MaterialTabGroup normally removes and re-adds the selected panel on every click,
+	// forcing Swing to lay out hundreds of rows again. Keep every panel attached and let
+	// CardLayout switch visibility instead.
+	private final SelectedCardPanel tabDisplay = new SelectedCardPanel();
+	private final MaterialTabGroup tabs = new MaterialTabGroup();
 
 	private final JPanel questList = sectionBody();
 	private final Set<String> expandedQuests = new HashSet<>();
@@ -93,7 +113,8 @@ class BronzemanTcgPanel extends PluginPanel
 	BronzemanTcgPanel(TrackedMonsterCatalog monsterCatalog, TrackedItemCatalog itemCatalog,
 		ResourceNodeCatalog nodeCatalog, QuestCatalog questCatalog, ContentCatalog contentCatalog,
 		TcgCollectionReader collectionReader, RecentUnlocksTracker recentUnlocksTracker,
-		ImportantUnlocksCatalog importantUnlocksCatalog, BronzemanTcgConfig config)
+		ImportantUnlocksCatalog importantUnlocksCatalog, BronzemanTcgConfig config,
+		ScheduledExecutorService executor)
 	{
 		this.monsterCatalog = monsterCatalog;
 		this.itemCatalog = itemCatalog;
@@ -104,6 +125,7 @@ class BronzemanTcgPanel extends PluginPanel
 		this.recentUnlocksTracker = recentUnlocksTracker;
 		this.importantUnlocksCatalog = importantUnlocksCatalog;
 		this.config = config;
+		this.executor = executor;
 
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		setBorder(BorderFactory.createEmptyBorder(8, 8, 8, 8));
@@ -177,36 +199,200 @@ class BronzemanTcgPanel extends PluginPanel
 
 		// WrapLayout preserves full labels in the fixed-width sidebar.
 		add(Box.createVerticalStrut(10));
-		addTab("Quests", questList);
-		addTab("Slayer", slayerList);
-		addTab("PvM", contentList);
-		addTab("Rumours", rumoursList);
-		addTab("Recent Unlocks", recentUnlocksPanel);
-		addTab("Important Unlocks", importantUnlocksList);
+		progressList.add(mutedRow("Loading collection..."));
+		questList.add(mutedRow("Loading quests..."));
+		addTab("Quests", questList, PanelTab.QUESTS);
+		addTab("Slayer", slayerList, PanelTab.SLAYER);
+		addTab("PvM", contentList, PanelTab.PVM);
+		addTab("Rumours", rumoursList, PanelTab.RUMOURS);
+		addTab("Recent Unlocks", recentUnlocksPanel, PanelTab.RECENT);
+		addTab("Important Unlocks", importantUnlocksList, PanelTab.IMPORTANT);
 		tabs.select(tabs.getTab(0));
 		add(tabs);
 		add(Box.createVerticalStrut(4));
 		add(tabDisplay);
 
-		refresh();
 	}
 
-	private void addTab(String title, JPanel content)
+	private void addTab(String title, JPanel content, PanelTab panelTab)
 	{
 		content.setAlignmentX(Component.LEFT_ALIGNMENT);
-		tabs.addTab(new MaterialTab(title, tabs, content));
+		tabDisplay.addCard(panelTab, content);
+		MaterialTab tab = new MaterialTab(title, tabs, content);
+		tab.setOnSelectEvent(() ->
+		{
+			selectedTab = panelTab;
+			tabDisplay.showCard(panelTab);
+			// Let the selected card paint before a dirty tab creates its rows.
+			SwingUtilities.invokeLater(this::renderSelectedTab);
+			return true;
+		});
+		tabs.addTab(tab);
 	}
 
-	/** Periodic re-render so newly unlocked cards show in every section and count. */
-	void refresh()
+	/**
+	 * Queue one background snapshot. Calls arriving while one is in flight collapse into
+	 * one follow-up, so game ticks and PluginMessage pushes cannot flood either thread.
+	 */
+	void requestRefresh()
 	{
-		refreshProgress();
-		refreshQuests();
-		refreshSlayer();
-		refreshContent();
-		refreshRumours();
-		refreshRecentUnlocks();
-		refreshImportantUnlocks();
+		if (disposed)
+		{
+			return;
+		}
+		if (!refreshRunning.compareAndSet(false, true))
+		{
+			refreshAgain.set(true);
+			return;
+		}
+
+		executor.execute(() ->
+		{
+			PanelSnapshot next = null;
+			try
+			{
+				next = buildSnapshot();
+			}
+			catch (RuntimeException ex)
+			{
+				log.warn("Could not prepare Bronzeman TCG panel data", ex);
+			}
+			PanelSnapshot completed = next;
+			SwingUtilities.invokeLater(() -> finishRefresh(completed));
+		});
+	}
+
+	/** Stop queued work from touching a panel that has been removed from the toolbar. */
+	void dispose()
+	{
+		disposed = true;
+		refreshAgain.set(false);
+	}
+
+	private PanelSnapshot buildSnapshot()
+	{
+		PreparedData data = preparedData;
+		if (data == null)
+		{
+			data = prepareStaticData();
+			preparedData = data;
+		}
+
+		Set<String> owned = Collections.unmodifiableSet(
+			new HashSet<>(collectionReader.getOwnedCardNamesLowerCase()));
+		boolean includeSlayerSuperiors =
+			config.slayerMode() == SlayerMode.FULL && config.restrictSlayerSuperiors();
+
+		return new PanelSnapshot(data, owned, recentUnlocksTracker.getRecent(),
+			includeSlayerSuperiors,
+			countUnlocked(monsterCatalog.getEntityToCards(), owned),
+			countUnlocked(itemCatalog.getEntityToCards(), owned),
+			countOwned(nodeCatalog.getMasterFarmerSeedCards(), owned));
+	}
+
+	private PreparedData prepareStaticData()
+	{
+		List<QuestCatalog.QuestEntry> quests = sortedEntries(questCatalog.getQuests());
+		List<QuestCatalog.QuestEntry> contents = sortedEntries(contentCatalog.getContents());
+		List<QuestCatalog.QuestEntry> slayer = sortedEntries(buildMasterEntries("slayer", false));
+		List<QuestCatalog.QuestEntry> slayerWithSuperiors =
+			sortedEntries(buildMasterEntries("slayer", true));
+		List<QuestCatalog.QuestEntry> rumours =
+			sortedEntries(buildMasterEntries("hunter-rumours", false));
+
+		List<SearchEntry> searchEntries = new ArrayList<>();
+		for (Map.Entry<String, Set<String>> entry :
+			new TreeMap<>(monsterCatalog.getEntityToCards()).entrySet())
+		{
+			String npcName = entry.getKey() + " (npc)";
+			searchEntries.add(new SearchEntry(npcName, display(npcName), entry.getValue()));
+		}
+		for (Map.Entry<String, Set<String>> entry :
+			new TreeMap<>(itemCatalog.getEntityToCards()).entrySet())
+		{
+			searchEntries.add(new SearchEntry(entry.getKey(), display(entry.getKey()), entry.getValue()));
+		}
+
+		return new PreparedData(quests, contents, slayer, slayerWithSuperiors,
+			rumours, searchEntries);
+	}
+
+	private void finishRefresh(PanelSnapshot next)
+	{
+		try
+		{
+			if (!disposed && next != null)
+			{
+				applySnapshot(next);
+			}
+		}
+		finally
+		{
+			refreshRunning.set(false);
+			if (!disposed && refreshAgain.getAndSet(false))
+			{
+				requestRefresh();
+			}
+		}
+	}
+
+	private void applySnapshot(PanelSnapshot next)
+	{
+		PanelSnapshot previous = snapshot;
+		boolean first = previous == null;
+		boolean ownedChanged = first || !previous.owned.equals(next.owned);
+		boolean recentChanged = first || !sameUnlocks(previous.recentUnlocks, next.recentUnlocks);
+		boolean slayerChanged = first
+			|| previous.includeSlayerSuperiors != next.includeSlayerSuperiors;
+		snapshot = next;
+
+		if (ownedChanged)
+		{
+			dirtyTabs.addAll(EnumSet.allOf(PanelTab.class));
+			refreshProgress(next);
+			refreshSearch();
+		}
+		if (recentChanged)
+		{
+			dirtyTabs.add(PanelTab.RECENT);
+		}
+		if (slayerChanged)
+		{
+			dirtyTabs.add(PanelTab.SLAYER);
+		}
+		renderSelectedTab();
+	}
+
+	private void renderSelectedTab()
+	{
+		if (snapshot == null || !dirtyTabs.remove(selectedTab))
+		{
+			return;
+		}
+
+		switch (selectedTab)
+		{
+			case QUESTS:
+				refreshQuests();
+				break;
+			case SLAYER:
+				refreshSlayer();
+				break;
+			case PVM:
+				refreshContent();
+				break;
+			case RUMOURS:
+				refreshRumours();
+				break;
+			case RECENT:
+				refreshRecentUnlocks();
+				break;
+			case IMPORTANT:
+				refreshImportantUnlocks();
+				break;
+			default:
+				break;
+		}
 	}
 
 	// ------------------------------------------------------------------ collapsible checklists
@@ -214,33 +400,45 @@ class BronzemanTcgPanel extends PluginPanel
 	private void refreshQuests()
 	{
 		refreshChecklist(questList, "quests completable",
-			questCatalog.getQuests(), expandedQuests, this::refreshQuests, "No quest data bundled");
+			snapshot.data.quests, snapshot.owned, expandedQuests,
+			this::refreshQuests, "No quest data bundled");
 	}
 
 	private void refreshContent()
 	{
 		refreshChecklist(contentList, "contents completable",
-			contentCatalog.getContents(), expandedContents, this::refreshContent, "No content data bundled");
+			snapshot.data.contents, snapshot.owned, expandedContents,
+			this::refreshContent, "No content data bundled");
 	}
 
 	private void refreshSlayer()
 	{
 		refreshChecklist(slayerList, "masters ready",
-			buildMasterEntries("slayer"), expandedSlayer, this::refreshSlayer, "No slayer data bundled");
+			snapshot.includeSlayerSuperiors
+				? snapshot.data.slayerWithSuperiors : snapshot.data.slayer,
+			snapshot.owned, expandedSlayer, this::refreshSlayer, "No slayer data bundled");
 	}
 
 	private void refreshRumours()
 	{
 		refreshChecklist(rumoursList, "masters ready",
-			buildMasterEntries("hunter-rumours"), expandedRumours, this::refreshRumours, "No rumour data bundled");
+			snapshot.data.rumours, snapshot.owned, expandedRumours,
+			this::refreshRumours, "No rumour data bundled");
 	}
 
 	private void refreshRecentUnlocks()
 	{
 		recentUnlocksList.removeAll();
+		if (snapshot == null)
+		{
+			recentUnlocksList.add(mutedRow("Loading recent unlocks..."));
+			recentUnlocksList.revalidate();
+			recentUnlocksList.repaint();
+			return;
+		}
 		String query = recentUnlocksSearchBar.getText() == null ? ""
 			: recentUnlocksSearchBar.getText().trim().toLowerCase(Locale.ROOT);
-		for (RecentUnlocksTracker.Unlock unlock : recentUnlocksTracker.getRecent())
+		for (RecentUnlocksTracker.Unlock unlock : snapshot.recentUnlocks)
 		{
 			String name = displayCardName(unlock.name);
 			if (query.isEmpty() || name.toLowerCase(Locale.ROOT).contains(query))
@@ -260,7 +458,7 @@ class BronzemanTcgPanel extends PluginPanel
 	private void refreshImportantUnlocks()
 	{
 		importantUnlocksList.removeAll();
-		Set<String> owned = collectionReader.getOwnedCardNamesLowerCase();
+		Set<String> owned = snapshot.owned;
 		for (ImportantUnlocksCatalog.Category category : importantUnlocksCatalog.getCategories())
 		{
 			int have = countOwned(category.items, owned);
@@ -308,11 +506,10 @@ class BronzemanTcgPanel extends PluginPanel
 	 * renders. Slayer masters show their assignable-monster cards (plus superiors when the
 	 * config stacks them on, mirroring the restriction); rumour masters show every creature.
 	 */
-	private List<QuestCatalog.QuestEntry> buildMasterEntries(String category)
+	private List<QuestCatalog.QuestEntry> buildMasterEntries(String category,
+		boolean countSuperiors)
 	{
 		boolean slayer = "slayer".equals(category);
-		boolean countSuperiors = slayer
-			&& config.slayerMode() == SlayerMode.FULL && config.restrictSlayerSuperiors();
 		List<QuestCatalog.QuestEntry> entries = new ArrayList<>();
 		for (Map.Entry<String, ResourceNodeCatalog.Rule> e : distinctRules(category).entrySet())
 		{
@@ -333,10 +530,10 @@ class BronzemanTcgPanel extends PluginPanel
 	}
 
 	private void refreshChecklist(JPanel container, String summaryNoun,
-		List<QuestCatalog.QuestEntry> entries, Set<String> expandedNames, Runnable refresh, String emptyText)
+		List<QuestCatalog.QuestEntry> entries, Set<String> owned,
+		Set<String> expandedNames, Runnable refresh, String emptyText)
 	{
 		container.removeAll();
-		Set<String> owned = collectionReader.getOwnedCardNamesLowerCase();
 
 		int completable = 0;
 		for (QuestCatalog.QuestEntry entry : entries)
@@ -352,12 +549,9 @@ class BronzemanTcgPanel extends PluginPanel
 		{
 			container.add(mutedRow(emptyText));
 		}
-		// Strictly alphabetical (owner ruling 2026-07-21). The previous ordering keyed on
-		// how many requirements were still missing, which meant every card pulled silently
-		// reshuffled the list; a name never moves.
-		List<QuestCatalog.QuestEntry> sorted = new ArrayList<>(entries);
-		sorted.sort(Comparator.comparing(q -> q.name, String.CASE_INSENSITIVE_ORDER));
-		for (QuestCatalog.QuestEntry entry : sorted)
+		// Entries are sorted once by the background preparation pass. A name never moves
+		// when the owned collection changes.
+		for (QuestCatalog.QuestEntry entry : entries)
 		{
 			container.add(checklistRow(entry, owned, expandedNames, refresh));
 			if (expandedNames.contains(entry.name))
@@ -424,36 +618,35 @@ class BronzemanTcgPanel extends PluginPanel
 		String query = searchBar.getText() == null ? "" : searchBar.getText().trim().toLowerCase(Locale.ROOT);
 		if (query.length() >= 2)
 		{
-			Set<String> owned = collectionReader.getOwnedCardNamesLowerCase();
+			if (snapshot == null)
+			{
+				searchResults.add(mutedRow("Loading card index..."));
+				searchResults.revalidate();
+				searchResults.repaint();
+				return;
+			}
+
 			int shown = 0;
-			// NPCs first, then items; TreeMap for stable alphabetical results.
-			Map<String, Set<String>> matches = new LinkedHashMap<>();
-			for (Map.Entry<String, Set<String>> e : new TreeMap<>(monsterCatalog.getEntityToCards()).entrySet())
+			int matches = 0;
+			for (SearchEntry entry : snapshot.data.searchEntries)
 			{
-				if (e.getKey().contains(query))
+				if (!entry.searchName.contains(query))
 				{
-					matches.put(e.getKey() + " (npc)", e.getValue());
+					continue;
+				}
+				matches++;
+				if (++shown <= MAX_SEARCH_RESULTS)
+				{
+					boolean unlocked = ownsAny(snapshot.owned, entry.cards);
+					searchResults.add(statusRow(entry.displayName, unlocked,
+						unlocked ? null : String.join(" / ", entry.cards)));
 				}
 			}
-			for (Map.Entry<String, Set<String>> e : new TreeMap<>(itemCatalog.getEntityToCards()).entrySet())
+			if (matches > MAX_SEARCH_RESULTS)
 			{
-				if (e.getKey().contains(query))
-				{
-					matches.put(e.getKey(), e.getValue());
-				}
+				searchResults.add(mutedRow("...and " + (matches - MAX_SEARCH_RESULTS) + " more"));
 			}
-			for (Map.Entry<String, Set<String>> e : matches.entrySet())
-			{
-				if (++shown > MAX_SEARCH_RESULTS)
-				{
-					searchResults.add(mutedRow("...and " + (matches.size() - MAX_SEARCH_RESULTS) + " more"));
-					break;
-				}
-				boolean unlocked = ownsAny(owned, e.getValue());
-				searchResults.add(statusRow(display(e.getKey()), unlocked,
-					unlocked ? null : String.join(" / ", e.getValue())));
-			}
-			if (matches.isEmpty())
+			if (matches == 0)
 			{
 				searchResults.add(mutedRow("No tracked NPC or item matches"));
 			}
@@ -464,28 +657,20 @@ class BronzemanTcgPanel extends PluginPanel
 
 	// ------------------------------------------------------------------ progress
 
-	private void refreshProgress()
+	private void refreshProgress(PanelSnapshot current)
 	{
 		progressList.removeAll();
-		Set<String> owned = collectionReader.getOwnedCardNamesLowerCase();
 
 		progressList.add(progressRow("NPCs unlocked",
-			countUnlocked(monsterCatalog.getEntityToCards(), owned), monsterCatalog.size()));
+			current.unlockedMonsters, monsterCatalog.size()));
 		progressList.add(progressRow("Items unlocked",
-			countUnlocked(itemCatalog.getEntityToCards(), owned), itemCatalog.size()));
+			current.unlockedItems, itemCatalog.size()));
 
 		List<String> seeds = nodeCatalog.getMasterFarmerSeedCards();
 		if (!seeds.isEmpty())
 		{
-			int have = 0;
-			for (String seed : seeds)
-			{
-				if (owned.contains(seed.toLowerCase(Locale.ROOT)))
-				{
-					have++;
-				}
-			}
-			progressList.add(progressRow("Master Farmer seeds", have, seeds.size()));
+			progressList.add(progressRow("Master Farmer seeds",
+				current.masterFarmerSeeds, seeds.size()));
 		}
 
 		progressList.revalidate();
@@ -530,6 +715,33 @@ class BronzemanTcgPanel extends PluginPanel
 			}
 		}
 		return count;
+	}
+
+	private static List<QuestCatalog.QuestEntry> sortedEntries(
+		List<QuestCatalog.QuestEntry> entries)
+	{
+		List<QuestCatalog.QuestEntry> sorted = new ArrayList<>(entries);
+		sorted.sort(Comparator.comparing(entry -> entry.name, String.CASE_INSENSITIVE_ORDER));
+		return Collections.unmodifiableList(sorted);
+	}
+
+	private static boolean sameUnlocks(List<RecentUnlocksTracker.Unlock> first,
+		List<RecentUnlocksTracker.Unlock> second)
+	{
+		if (first.size() != second.size())
+		{
+			return false;
+		}
+		for (int i = 0; i < first.size(); i++)
+		{
+			RecentUnlocksTracker.Unlock a = first.get(i);
+			RecentUnlocksTracker.Unlock b = second.get(i);
+			if (a.time != b.time || !a.name.equals(b.name))
+			{
+				return false;
+			}
+		}
+		return true;
 	}
 
 	private static boolean ownsAny(Set<String> owned, Set<String> variants)
@@ -677,6 +889,130 @@ class BronzemanTcgPanel extends PluginPanel
 		}
 		String monsterName = monsterCatalog.findDisplayCardName(cardName);
 		return monsterName == null ? display(cardName) : monsterName;
+	}
+
+	private enum PanelTab
+	{
+		QUESTS,
+		SLAYER,
+		PVM,
+		RUMOURS,
+		RECENT,
+		IMPORTANT
+	}
+
+	/**
+	 * CardLayout keeps every tab attached, but its default preferred size is the largest
+	 * card. The sidebar should instead follow the visible card so shorter tabs do not
+	 * inherit a long hidden tab's scroll height.
+	 */
+	private static class SelectedCardPanel extends JPanel
+	{
+		private final CardLayout cardLayout = new CardLayout();
+		private final Map<PanelTab, Component> cards = new EnumMap<>(PanelTab.class);
+		private Component selected;
+
+		private SelectedCardPanel()
+		{
+			setLayout(cardLayout);
+		}
+
+		private void addCard(PanelTab key, Component component)
+		{
+			cards.put(key, component);
+			add(component, key.name());
+			if (selected == null)
+			{
+				selected = component;
+			}
+		}
+
+		private void showCard(PanelTab key)
+		{
+			selected = cards.get(key);
+			cardLayout.show(this, key.name());
+			revalidate();
+			repaint();
+		}
+
+		@Override
+		public Dimension getPreferredSize()
+		{
+			if (selected == null)
+			{
+				return super.getPreferredSize();
+			}
+			Dimension size = selected.getPreferredSize();
+			Insets insets = getInsets();
+			return new Dimension(size.width + insets.left + insets.right,
+				size.height + insets.top + insets.bottom);
+		}
+	}
+
+	/** Immutable catalog-derived data built once on the background executor. */
+	private static class PreparedData
+	{
+		private final List<QuestCatalog.QuestEntry> quests;
+		private final List<QuestCatalog.QuestEntry> contents;
+		private final List<QuestCatalog.QuestEntry> slayer;
+		private final List<QuestCatalog.QuestEntry> slayerWithSuperiors;
+		private final List<QuestCatalog.QuestEntry> rumours;
+		private final List<SearchEntry> searchEntries;
+
+		private PreparedData(List<QuestCatalog.QuestEntry> quests,
+			List<QuestCatalog.QuestEntry> contents,
+			List<QuestCatalog.QuestEntry> slayer,
+			List<QuestCatalog.QuestEntry> slayerWithSuperiors,
+			List<QuestCatalog.QuestEntry> rumours,
+			List<SearchEntry> searchEntries)
+		{
+			this.quests = quests;
+			this.contents = contents;
+			this.slayer = slayer;
+			this.slayerWithSuperiors = slayerWithSuperiors;
+			this.rumours = rumours;
+			this.searchEntries = Collections.unmodifiableList(searchEntries);
+		}
+	}
+
+	/** Immutable player-state snapshot passed from the executor to Swing. */
+	private static class PanelSnapshot
+	{
+		private final PreparedData data;
+		private final Set<String> owned;
+		private final List<RecentUnlocksTracker.Unlock> recentUnlocks;
+		private final boolean includeSlayerSuperiors;
+		private final int unlockedMonsters;
+		private final int unlockedItems;
+		private final int masterFarmerSeeds;
+
+		private PanelSnapshot(PreparedData data, Set<String> owned,
+			List<RecentUnlocksTracker.Unlock> recentUnlocks,
+			boolean includeSlayerSuperiors, int unlockedMonsters,
+			int unlockedItems, int masterFarmerSeeds)
+		{
+			this.data = data;
+			this.owned = owned;
+			this.recentUnlocks = recentUnlocks;
+			this.includeSlayerSuperiors = includeSlayerSuperiors;
+			this.unlockedMonsters = unlockedMonsters;
+			this.unlockedItems = unlockedItems;
+			this.masterFarmerSeeds = masterFarmerSeeds;
+		}
+	}
+
+	private static class SearchEntry
+	{
+		private final String searchName;
+		private final String displayName;
+		private final Set<String> cards;
+
+		private SearchEntry(String searchName, String displayName, Set<String> cards)
+		{
+			this.searchName = searchName;
+			this.displayName = displayName;
+			this.cards = cards;
+		}
 	}
 
 }

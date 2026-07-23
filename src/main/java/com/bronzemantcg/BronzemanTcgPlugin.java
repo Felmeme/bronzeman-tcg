@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.ScheduledExecutorService;
 import javax.inject.Inject;
 import javax.swing.SwingUtilities;
 import lombok.extern.slf4j.Slf4j;
@@ -242,6 +243,9 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	@Inject
 	private EventBus eventBus;
 
+	@Inject
+	private ScheduledExecutorService executor;
+
 	private long lastBlockMessageMs;
 	private boolean welcomeShown;
 	// Countdowns in game ticks; negative means idle.
@@ -249,8 +253,11 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	private int reminderTicks = -1;
 	private int requiredPluginTicks = -1;
 	private int apiQueryTicks = -1;
-	private BronzemanTcgPanel panel;
-	private NavigationButton navButton;
+	private volatile BronzemanTcgPanel panel;
+	private volatile NavigationButton navButton;
+	// Invalidates queued Swing startup work when the plugin is stopped or restarted
+	// before the EDT has had a chance to install the navigation panel.
+	private volatile long panelGeneration;
 	private int tickCounter;
 	private String lootExemptRaw;
 	private Set<String> lootExemptSet = Collections.emptySet();
@@ -310,15 +317,8 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 		// query posted from startUp would arrive before we can hear it.
 		apiQueryTicks = 0;
 
-		panel = new BronzemanTcgPanel(monsterCatalog, itemCatalog, nodeCatalog, questCatalog,
-			contentCatalog, collectionReader, recentUnlocksTracker, importantUnlocksCatalog, config);
-		navButton = NavigationButton.builder()
-			.tooltip("Bronzeman TCG")
-			.icon(loadPanelIcon())
-			.priority(7)
-			.panel(panel)
-			.build();
-		clientToolbar.addNavigation(navButton);
+		long generation = ++panelGeneration;
+		SwingUtilities.invokeLater(() -> installPanel(generation));
 		overlayManager.add(overlay);
 		overlayManager.add(lockedItemIconOverlay);
 		renderCallbackManager.register(this);
@@ -333,6 +333,7 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	@Override
 	protected void shutDown()
 	{
+		++panelGeneration;
 		renderCallbackManager.unregister(this);
 		overlayManager.remove(overlay);
 		overlayManager.remove(lockedItemIconOverlay);
@@ -340,10 +341,56 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 		clientThread.invoke(this::clearLockedItemMarks);
 		// Same for faked player models: put everyone's real gear back before we unload.
 		clientThread.invoke(() -> sweepDuelistCity(false));
-		clientToolbar.removeNavigation(navButton);
+		BronzemanTcgPanel oldPanel = panel;
+		NavigationButton oldNavButton = navButton;
 		navButton = null;
 		panel = null;
+		SwingUtilities.invokeLater(() ->
+		{
+			if (oldPanel != null)
+			{
+				oldPanel.dispose();
+			}
+			if (oldNavButton != null)
+			{
+				clientToolbar.removeNavigation(oldNavButton);
+			}
+		});
 		log.info("Bronzeman TCG stopped.");
+	}
+
+	/**
+	 * Build and install Swing state on Swing's event thread. The generation check covers
+	 * the enable-then-immediately-disable race: stale queued work must never resurrect
+	 * the panel after shutDown().
+	 */
+	private void installPanel(long generation)
+	{
+		if (generation != panelGeneration)
+		{
+			return;
+		}
+
+		BronzemanTcgPanel newPanel = new BronzemanTcgPanel(monsterCatalog, itemCatalog,
+			nodeCatalog, questCatalog, contentCatalog, collectionReader, recentUnlocksTracker,
+			importantUnlocksCatalog, config, executor);
+		NavigationButton newNavButton = NavigationButton.builder()
+			.tooltip("Bronzeman TCG")
+			.icon(loadPanelIcon())
+			.priority(7)
+			.panel(newPanel)
+			.build();
+
+		if (generation != panelGeneration)
+		{
+			newPanel.dispose();
+			return;
+		}
+
+		panel = newPanel;
+		navButton = newNavButton;
+		clientToolbar.addNavigation(newNavButton);
+		newPanel.requestRefresh();
 	}
 
 	@Subscribe
@@ -778,8 +825,8 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 
 		logLocalStanceOnChange();
 
-		// Periodically re-render the panel so unlocks show without reopening it. Cheap and
-		// only when visible; nothing here reads live scene state.
+		// Periodically ask the visible panel for a snapshot. The panel coalesces requests
+		// and skips rendering when the collection/configuration has not changed.
 		if (panel == null || ++tickCounter % 5 != 0)
 		{
 			return;
@@ -789,7 +836,7 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 		{
 			if (target.isShowing())
 			{
-				target.refresh();
+				target.requestRefresh();
 			}
 		});
 	}
@@ -816,6 +863,11 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 		{
 			boolean on = Boolean.parseBoolean(event.getNewValue());
 			clientThread.invoke(() -> sweepDuelistCity(on));
+		}
+
+		if (BronzemanTcgConfig.GROUP.equals(event.getGroup()))
+		{
+			refreshVisiblePanel();
 		}
 	}
 
@@ -1026,7 +1078,7 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 		{
 			if (target.isShowing())
 			{
-				target.refresh();
+				target.requestRefresh();
 			}
 		});
 	}
