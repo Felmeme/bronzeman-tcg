@@ -11,6 +11,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ScheduledExecutorService;
+import java.util.stream.Collectors;
 import javax.inject.Inject;
 import javax.swing.SwingUtilities;
 import lombok.extern.slf4j.Slf4j;
@@ -155,6 +156,24 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 		"bronze felling axe", "iron felling axe", "steel felling axe",
 		"black felling axe", "mithril felling axe", "adamant felling axe",
 		"rune felling axe", "dragon felling axe", "crystal felling axe"));
+	// Which carried tools each fishing menu option uses, so a locked harpoon in the pack
+	// can't block Net fishing. Uncarded tools (fly fishing rod, barbarian rod, karambwan
+	// vessel, ...) are listed for completeness but never lock, per the standing rule.
+	private static final Map<String, Set<String>> FISHING_TOOLS_BY_OPTION = Map.of(
+		"net", Set.of("small fishing net"),
+		"small net", Set.of("small fishing net"),
+		"big net", Set.of("big fishing net"),
+		"harpoon", Set.of("harpoon", "dragon harpoon", "infernal harpoon", "crystal harpoon",
+			"corrupted harpoon", "barb-tail harpoon"),
+		"cage", Set.of("lobster pot"),
+		"bait", Set.of("fishing rod", "pearl fishing rod", "oily fishing rod", "oily pearl fishing rod"),
+		"lure", Set.of("fly fishing rod", "pearl fly fishing rod"),
+		"use-rod", Set.of("barbarian rod", "pearl barbarian rod"),
+		"fish", Set.of("karambwan vessel"));
+	/** Union of the sets above; the carried-tool sweep recognises fishing tools with it. */
+	private static final Set<String> FISHING_TOOL_NAMES = FISHING_TOOLS_BY_OPTION.values().stream()
+		.flatMap(Set::stream)
+		.collect(Collectors.toUnmodifiableSet());
 	// LMS island map regions, copied verbatim from RuneLite core's LootTrackerPlugin; a lenient
 	// fallback so restrictions stay lifted even if a client update shifts the BR_INGAME timing.
 	private static final Set<Integer> LMS_REGIONS = new HashSet<>(List.of(
@@ -287,6 +306,7 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	// for the next container event. Read from the per-frame hide path - keep cheap.
 	private Set<String> carriedPickaxes = Collections.emptySet();
 	private Set<String> carriedAxes = Collections.emptySet();
+	private Set<String> carriedFishingTools = Collections.emptySet();
 	// The item-on-item pair that most recently opened a "make" interface. Some menus
 	// label every tier identically ("Crossbow stock"), so the product name alone can't
 	// say which item is being made - but the material used to open the menu can.
@@ -306,6 +326,7 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 		migrateExemptList();
 		migrateNpcVisibility();
 		migrateSkillToggles();
+		migrateFishingMode();
 		// Mid-session enable fires no ItemContainerChanged, so seed the tool cache now.
 		clientThread.invokeLater(this::refreshCarriedTools);
 		welcomeShown = false;
@@ -1268,13 +1289,16 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	{
 		Set<String> pickaxes = new HashSet<>();
 		Set<String> axes = new HashSet<>();
-		collectTools(client.getItemContainer(InventoryID.INV), pickaxes, axes);
-		collectTools(client.getItemContainer(InventoryID.WORN), pickaxes, axes);
+		Set<String> fishingTools = new HashSet<>();
+		collectTools(client.getItemContainer(InventoryID.INV), pickaxes, axes, fishingTools);
+		collectTools(client.getItemContainer(InventoryID.WORN), pickaxes, axes, fishingTools);
 		carriedPickaxes = pickaxes;
 		carriedAxes = axes;
+		carriedFishingTools = fishingTools;
 	}
 
-	private void collectTools(ItemContainer container, Set<String> pickaxes, Set<String> axes)
+	private void collectTools(ItemContainer container, Set<String> pickaxes, Set<String> axes,
+		Set<String> fishingTools)
 	{
 		if (container == null)
 		{
@@ -1299,6 +1323,10 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 			else if (WOODCUTTING_AXES.contains(lower))
 			{
 				axes.add(name);
+			}
+			else if (FISHING_TOOL_NAMES.contains(lower))
+			{
+				fishingTools.add(name);
 			}
 		}
 	}
@@ -1672,22 +1700,14 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 		{
 			return evaluateGatheringRule(rule);
 		}
+		if ("fishing".equals(rule.category))
+		{
+			return evaluateFishingRule(rule, option);
+		}
 
 		boolean forceAllInGroups = false;
 		Set<String> excludedRoles;
-		if ("fishing".equals(rule.category))
-		{
-			// Fishing has a three-way mode instead of a toggle; it overrides the rule's
-			// any-of group since the any/all choice is the player's difficulty dial.
-			FishingRestrictionMode mode = config.fishingMode();
-			if (mode == FishingRestrictionMode.OFF)
-			{
-				return null;
-			}
-			forceAllInGroups = mode == FishingRestrictionMode.REQUIRE_ALL;
-			excludedRoles = Collections.emptySet();
-		}
-		else if ("thieving-stalls".equals(rule.category))
+		if ("thieving-stalls".equals(rule.category))
 		{
 			// Stalls carry one any-of loot group; the mode dial forces all-of for "All items".
 			StallThievingMode mode = config.stallThievingMode();
@@ -1757,6 +1777,44 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 			for (String tool : mining ? carriedPickaxes : carriedAxes)
 			{
 				if (!isLootExempt(tool) && !isUnlocked(itemCatalog, tool))
+				{
+					missing.add(tool);
+				}
+			}
+		}
+		return missing.isEmpty() ? null : missing;
+	}
+
+	/**
+	 * Fishing's dial mirrors mining/woodcutting: both non-off modes need the carried tool
+	 * for the clicked option unlocked; "Tools + Fish" also needs any card the spot type
+	 * can yield. The tool half is scoped by menu option (Net, Harpoon, ...) so a locked
+	 * harpoon in the pack can't block Net fishing, and it blocks while ANY carried,
+	 * option-relevant tool is locked - the spot silently uses the best tool carried, so
+	 * one unlocked tool must not alibi a locked better one (same ruling as gathering).
+	 * Tools with no card are never locked, so barbarian rods, karambwan vessels and the
+	 * plain fly fishing rod pass the tool half untouched.
+	 */
+	private List<String> evaluateFishingRule(ResourceNodeCatalog.Rule rule, String option)
+	{
+		FishingRestrictionMode mode = config.fishingMode();
+		if (mode == FishingRestrictionMode.OFF)
+		{
+			return null;
+		}
+		boolean enforceYield = mode == FishingRestrictionMode.CARD_REQUIRED;
+
+		List<String> missing = enforceYield
+			? rule.missingRequirements(effectiveOwnedCards(), Collections.emptySet(), false)
+			: new ArrayList<>();
+		Set<String> optionTools = option == null ? null
+			: FISHING_TOOLS_BY_OPTION.get(option.trim().toLowerCase(Locale.ROOT));
+		if (optionTools != null)
+		{
+			for (String tool : carriedFishingTools)
+			{
+				if (optionTools.contains(tool.toLowerCase(Locale.ROOT))
+					&& !isLootExempt(tool) && !isUnlocked(itemCatalog, tool))
 				{
 					missing.add(tool);
 				}
@@ -2659,6 +2717,36 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 		}
 		configManager.unsetConfiguration(BronzemanTcgConfig.GROUP, "restrictCooking");
 		configManager.unsetConfiguration(BronzemanTcgConfig.GROUP, "restrictBurntFood");
+	}
+
+	/**
+	 * One-time mapping of the retired fishing dial (Any of / Require ALL) onto the
+	 * gathering-style modes (Tools Only / Tools + Fish), keeping each player at the
+	 * nearest severity: the loose union check becomes the loose tool check, the strict
+	 * all-fish check becomes the strict tool+fish check, and Off stays Off (its constant
+	 * survives, so no explicit case). Same strict one-shot pattern as migrateExemptList:
+	 * flag first, so a mid-way crash can never re-run it. Reads the raw stored strings,
+	 * so they still match now that the enum constants are gone.
+	 */
+	private void migrateFishingMode()
+	{
+		if (config.fishingModeMigrated())
+		{
+			return;
+		}
+		configManager.setConfiguration(BronzemanTcgConfig.GROUP, "fishingModeMigrated", true);
+
+		String stored = configManager.getConfiguration(BronzemanTcgConfig.GROUP, "fishingMode");
+		if ("ANY_OF".equals(stored))
+		{
+			configManager.setConfiguration(BronzemanTcgConfig.GROUP, "fishingMode",
+				FishingRestrictionMode.TOOL_ONLY.name());
+		}
+		else if ("REQUIRE_ALL".equals(stored))
+		{
+			configManager.setConfiguration(BronzemanTcgConfig.GROUP, "fishingMode",
+				FishingRestrictionMode.CARD_REQUIRED.name());
+		}
 	}
 
 	private void migrateExemptList()

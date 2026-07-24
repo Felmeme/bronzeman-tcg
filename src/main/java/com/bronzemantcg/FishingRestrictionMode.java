@@ -1,15 +1,16 @@
 package com.bronzemantcg;
 
 /**
- * Fishing spots share one NPC name everywhere, so a rule can only key on the menu option
- * (Net, Harpoon, ...) and lists every fish that option can yield anywhere. This mode picks
- * how much of that union the player must own; rendered as a config dropdown.
+ * Config dropdown; see BronzemanTcgConfig for the behaviour of each mode. Mirrors the
+ * mining/woodcutting dials: the tool half blocks while any carried, card-backed tool for
+ * the clicked spot type is locked (uncarded tools never lock, per the standing rule), and
+ * "Tools + Fish" additionally needs any card from the spot type's yield union.
  */
 public enum FishingRestrictionMode
 {
-	OFF("Off"),
-	ANY_OF("Any of"),
-	REQUIRE_ALL("Require ALL");
+	OFF("No Restrictions"),
+	TOOL_ONLY("Tools Only"),
+	CARD_REQUIRED("Tools + Fish");
 
 	private final String label;
 

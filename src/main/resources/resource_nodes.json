@@ -3603,10 +3603,13 @@
 				"Raw mackerel",
 				"Raw cod",
 				"Raw bass",
-				"Big fishing net"
+				"Casket",
+				"Oyster",
+				"Seaweed",
+				"Leather gloves"
 			],
 			"requireAll": false,
-			"notes": "Fishing spots yield different fish by location; we list the UNION and use requireAll=false so owning ANY yielded fish unlocks the spot (cannot distinguish location)."
+			"notes": "Yield union only (tools are enforced in code from carried items). Spots yield different fish by location; requireAll=false so owning ANY yielded card satisfies the fish half. Big net also yields carded secondary catches (casket, oyster, seaweed, leather gloves)."
 		},
 		{
 			"category": "fishing",
@@ -3617,10 +3620,10 @@
 			],
 			"requiredCards": [
 				"Raw lobster",
-				"Lobster pot"
+				"Raw dark crab"
 			],
 			"requireAll": false,
-			"notes": "Fishing spots yield different fish by location; we list the UNION and use requireAll=false so owning ANY yielded fish unlocks the spot. Dark Crabs need to be added and change lobster spots to IDs instead"
+			"notes": "Yield union only (tools are enforced in code from carried items). Cage spots yield lobster, or dark crab in the Wilderness; requireAll=false so owning ANY yielded card satisfies the fish half."
 		},
 		{
 			"category": "fishing",

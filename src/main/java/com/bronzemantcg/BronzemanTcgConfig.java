@@ -384,20 +384,32 @@ public interface BronzemanTcgConfig extends Config
 
 	@ConfigItem(
 		keyName = "fishingMode",
-		name = "Restrict fishing",
-		description = "Fishing spots share one name everywhere, so each spot type lists every fish it can "
-			+ "yield at any location."
-			+ "<br>'Any of': owning any one of those fish unlocks that spot type "
-			+ "(e.g. Raw tuna unlocks all Harpoon spots, shark spots included)."
-			+ "<br>'Require ALL': the spot type stays locked until you own every fish it can yield "
-			+ "(e.g. Harpoon needs Raw tuna, Raw swordfish AND Raw shark)."
-			+ "<br>'Off': no fishing restriction.",
+		name = "Fishing Options",
+		description = "Block fishing like the other gathering skills."
+			+ "<br>'Tools Only': the carried tool for that spot type (net, harpoon, rod, ...) must be "
+			+ "unlocked. Tools with no card are never locked."
+			+ "<br>'Tools + Fish': also needs any one card the spot type can yield anywhere "
+			+ "(spot types share one name per option, so the yields are a union across locations)."
+			+ "<br>'No Restrictions': no fishing restriction.",
 		section = fishingSection,
 		position = 0
 	)
 	default FishingRestrictionMode fishingMode()
 	{
-		return FishingRestrictionMode.ANY_OF;
+		return FishingRestrictionMode.CARD_REQUIRED;
+	}
+
+	@ConfigItem(
+		keyName = "fishingModeMigrated",
+		name = "",
+		description = "",
+		hidden = true,
+		section = fishingSection,
+		position = 98
+	)
+	default boolean fishingModeMigrated()
+	{
+		return false;
 	}
 
 	//----------------

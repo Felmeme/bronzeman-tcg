@@ -215,7 +215,7 @@ public class ResourceNodeCatalog
 		/**
 		 * @param owned         lower-cased owned card names
 		 * @param excludedRoles group roles a config mode has switched off (never null)
-		 * @param forceAllInGroups treat any-of groups as all-required (fishing "Require ALL")
+		 * @param forceAllInGroups treat any-of groups as all-required (stall thieving "All items")
 		 * @return display strings for each unsatisfied requirement, empty when allowed.
 		 *         Any-of groups render as "A / B" so the player sees the alternatives.
 		 */
