@@ -3578,183 +3578,876 @@
 		},
 		{
 			"category": "fishing",
-			"kind": "npc",
-			"name": "Fishing spot",
+			"kind": "fishing-spot",
+			"name": "SHRIMP",
 			"options": [
-				"bait"
+				"Net",
+				"Small Net"
 			],
-			"requiredCards": [
-				"Raw sardine",
-				"Raw herring",
-				"Raw pike",
-				"Raw anglerfish"
+			"requiredCardGroups": [
+				[
+					"Small fishing net"
+				],
+				[
+					"Raw shrimps",
+					"Raw anchovies"
+				]
 			],
-			"requireAll": false,
-			"notes": "Fishing spots yield different fish by location; we list the UNION and use requireAll=false so owning ANY yielded fish unlocks the spot (cannot distinguish location). Includes anglerfish (Port Piscarilius bait spot)."
+			"groupRoles": [
+				"tool",
+				"catch"
+			],
+			"requireAll": true,
+			"notes": "RuneLite FishingSpot.SHRIMP; options verified from the local RuneLite NPC cache. Tools include carded bait and consumables."
 		},
 		{
 			"category": "fishing",
-			"kind": "npc",
-			"name": "Fishing spot",
+			"kind": "fishing-spot",
+			"name": "SHRIMP",
 			"options": [
-				"big net"
+				"Bait"
 			],
-			"requiredCards": [
-				"Raw mackerel",
-				"Raw cod",
-				"Raw bass",
-				"Casket",
-				"Oyster",
-				"Seaweed",
-				"Leather gloves"
+			"requiredCardGroups": [
+				[
+					"Fishing rod",
+					"Pearl fishing rod"
+				],
+				[
+					"Fishing bait"
+				],
+				[
+					"Raw sardine",
+					"Raw herring"
+				]
 			],
-			"requireAll": false,
-			"notes": "Yield union only (tools are enforced in code from carried items). Spots yield different fish by location; requireAll=false so owning ANY yielded card satisfies the fish half. Big net also yields carded secondary catches (casket, oyster, seaweed, leather gloves)."
+			"groupRoles": [
+				"tool",
+				"tool",
+				"catch"
+			],
+			"requireAll": true,
+			"notes": "RuneLite FishingSpot.SHRIMP; options verified from the local RuneLite NPC cache. Tools include carded bait and consumables."
 		},
 		{
 			"category": "fishing",
-			"kind": "npc",
-			"name": "Fishing spot",
+			"kind": "fishing-spot",
+			"name": "LOBSTER",
 			"options": [
-				"cage"
+				"Cage"
 			],
-			"requiredCards": [
-				"Raw lobster",
-				"Raw dark crab"
+			"requiredCardGroups": [
+				[
+					"Lobster pot"
+				],
+				[
+					"Raw lobster"
+				]
 			],
-			"requireAll": false,
-			"notes": "Yield union only (tools are enforced in code from carried items). Cage spots yield lobster, or dark crab in the Wilderness; requireAll=false so owning ANY yielded card satisfies the fish half."
+			"groupRoles": [
+				"tool",
+				"catch"
+			],
+			"requireAll": true,
+			"notes": "RuneLite FishingSpot.LOBSTER; options verified from the local RuneLite NPC cache. Tools include carded bait and consumables."
 		},
 		{
 			"category": "fishing",
-			"kind": "npc",
-			"name": "Fishing spot",
+			"kind": "fishing-spot",
+			"name": "LOBSTER",
 			"options": [
-				"fish"
+				"Harpoon"
 			],
-			"requiredCards": [
-				"Raw karambwan"
+			"requiredCardGroups": [
+				[
+					"Harpoon",
+					"Dragon harpoon",
+					"Infernal harpoon",
+					"Crystal harpoon",
+					"Corrupted harpoon",
+					"Barb-tail harpoon"
+				],
+				[
+					"Raw tuna",
+					"Raw swordfish",
+					"Big swordfish"
+				]
 			],
-			"requireAll": false,
-			"notes": "Fishing spots yield different fish by location; we list the UNION and use requireAll=false so owning ANY yielded fish unlocks the spot (cannot distinguish location). Karambwan spot; verify option text ('Fish')."
+			"groupRoles": [
+				"tool",
+				"catch"
+			],
+			"requireAll": true,
+			"notes": "RuneLite FishingSpot.LOBSTER; options verified from the local RuneLite NPC cache. Tools include carded bait and consumables."
 		},
 		{
 			"category": "fishing",
-			"kind": "npc",
-			"name": "Fishing spot",
+			"kind": "fishing-spot",
+			"name": "SHARK",
 			"options": [
-				"harpoon"
+				"Net",
+				"Big Net"
 			],
-			"requiredCards": [
-				"Raw tuna",
-				"Raw swordfish",
-				"Raw shark",
-				"Raw harpoonfish"
+			"requiredCardGroups": [
+				[
+					"Big fishing net"
+				],
+				[
+					"Raw mackerel",
+					"Raw cod",
+					"Raw bass",
+					"Big bass",
+					"Casket",
+					"Leather boots",
+					"Leather gloves",
+					"Oyster",
+					"Seaweed"
+				]
 			],
-			"requireAll": false,
-			"notes": "Fishing spots yield different fish by location; we list the UNION and use requireAll=false so owning ANY yielded fish unlocks the spot (cannot distinguish location). Raw harpoonfish added (Tempoross Cove deep-sea spots share this identity)."
+			"groupRoles": [
+				"tool",
+				"catch"
+			],
+			"requireAll": true,
+			"notes": "RuneLite FishingSpot.SHARK; options verified from the local RuneLite NPC cache. Tools include carded bait and consumables."
 		},
 		{
 			"category": "fishing",
-			"kind": "npc",
-			"name": "Fishing spot",
+			"kind": "fishing-spot",
+			"name": "SHARK",
 			"options": [
-				"lure"
+				"Harpoon"
 			],
-			"requiredCards": [
-				"Raw trout",
-				"Raw salmon"
+			"requiredCardGroups": [
+				[
+					"Harpoon",
+					"Dragon harpoon",
+					"Infernal harpoon",
+					"Crystal harpoon",
+					"Corrupted harpoon",
+					"Barb-tail harpoon"
+				],
+				[
+					"Raw shark",
+					"Big shark"
+				]
 			],
-			"requireAll": false,
-			"notes": "Fishing spots yield different fish by location; we list the UNION and use requireAll=false so owning ANY yielded fish unlocks the spot (cannot distinguish location)."
+			"groupRoles": [
+				"tool",
+				"catch"
+			],
+			"requireAll": true,
+			"notes": "RuneLite FishingSpot.SHARK; options verified from the local RuneLite NPC cache. Tools include carded bait and consumables."
 		},
 		{
 			"category": "fishing",
-			"kind": "npc",
-			"name": "Fishing spot",
+			"kind": "fishing-spot",
+			"name": "MONKFISH",
 			"options": [
-				"net"
+				"Net"
 			],
-			"requiredCards": [
-				"Raw shrimps",
-				"Raw anchovies",
-				"Raw monkfish"
+			"requiredCardGroups": [
+				[
+					"Small fishing net"
+				],
+				[
+					"Raw monkfish"
+				]
 			],
-			"requireAll": false,
-			"notes": "Fishing spots yield different fish by location; we list the UNION and use requireAll=false so owning ANY yielded fish unlocks the spot (cannot distinguish location)."
+			"groupRoles": [
+				"tool",
+				"catch"
+			],
+			"requireAll": true,
+			"notes": "RuneLite FishingSpot.MONKFISH; options verified from the local RuneLite NPC cache. Tools include carded bait and consumables."
 		},
 		{
 			"category": "fishing",
-			"kind": "npc",
-			"name": "Fishing spot",
+			"kind": "fishing-spot",
+			"name": "MONKFISH",
 			"options": [
-				"small net"
+				"Harpoon"
 			],
-			"requiredCards": [
-				"Minnow"
+			"requiredCardGroups": [
+				[
+					"Harpoon",
+					"Dragon harpoon",
+					"Infernal harpoon",
+					"Crystal harpoon",
+					"Corrupted harpoon",
+					"Barb-tail harpoon"
+				],
+				[
+					"Raw tuna",
+					"Raw swordfish",
+					"Big swordfish"
+				]
 			],
-			"requireAll": false,
-			"notes": "Fishing spots yield different fish by location; we list the UNION and use requireAll=false so owning ANY yielded fish unlocks the spot (cannot distinguish location)."
+			"groupRoles": [
+				"tool",
+				"catch"
+			],
+			"requireAll": true,
+			"notes": "RuneLite FishingSpot.MONKFISH; options verified from the local RuneLite NPC cache. Tools include carded bait and consumables."
 		},
 		{
 			"category": "fishing",
-			"kind": "npc",
-			"name": "Fishing spot",
+			"kind": "fishing-spot",
+			"name": "SALMON",
 			"options": [
-				"use-rod"
+				"Lure"
 			],
-			"requiredCards": [
-				"Leaping trout",
-				"Leaping salmon",
-				"Leaping sturgeon"
+			"requiredCardGroups": [
+				[
+					"Fly fishing rod",
+					"Pearl fly fishing rod"
+				],
+				[
+					"Feather",
+					"Stripy feather"
+				],
+				[
+					"Raw trout",
+					"Raw salmon",
+					"Raw rainbow fish"
+				]
 			],
-			"requireAll": false,
-			"notes": "Fishing spots yield different fish by location; we list the UNION and use requireAll=false so owning ANY yielded fish unlocks the spot (cannot distinguish location). Barbarian Fishing; verify option text ('Use-rod')."
+			"groupRoles": [
+				"tool",
+				"tool",
+				"catch"
+			],
+			"requireAll": true,
+			"notes": "RuneLite FishingSpot.SALMON; options verified from the local RuneLite NPC cache. Tools include carded bait and consumables."
 		},
 		{
 			"category": "fishing",
-			"kind": "npc",
-			"name": "Rod Fishing spot",
+			"kind": "fishing-spot",
+			"name": "SALMON",
 			"options": [
-				"bait"
+				"Bait"
 			],
-			"requiredCards": [
-				"Raw sardine",
-				"Raw herring",
-				"Raw pike",
-				"Raw anglerfish"
+			"requiredCardGroups": [
+				[
+					"Fishing rod",
+					"Pearl fishing rod"
+				],
+				[
+					"Fishing bait"
+				],
+				[
+					"Raw pike"
+				]
 			],
-			"requireAll": false,
-			"notes": "Fishing spots yield different fish by location; we list the UNION and use requireAll=false so owning ANY yielded fish unlocks the spot (cannot distinguish location). 'Rod Fishing spot' NPC variant."
+			"groupRoles": [
+				"tool",
+				"tool",
+				"catch"
+			],
+			"requireAll": true,
+			"notes": "RuneLite FishingSpot.SALMON; options verified from the local RuneLite NPC cache. Tools include carded bait and consumables."
 		},
 		{
 			"category": "fishing",
-			"kind": "npc",
-			"name": "Rod Fishing spot",
+			"kind": "fishing-spot",
+			"name": "LAVA_EEL",
 			"options": [
-				"lure"
+				"Bait"
 			],
-			"requiredCards": [
-				"Raw trout",
-				"Raw salmon"
+			"requiredCardGroups": [
+				[
+					"Oily pearl fishing rod"
+				],
+				[
+					"Fishing bait"
+				]
 			],
-			"requireAll": false,
-			"notes": "Fishing spots yield different fish by location; we list the UNION and use requireAll=false so owning ANY yielded fish unlocks the spot (cannot distinguish location). 'Rod Fishing spot' NPC variant."
+			"groupRoles": [
+				"tool",
+				"tool"
+			],
+			"requireAll": true,
+			"notes": "RuneLite FishingSpot.LAVA_EEL; options verified from the local RuneLite NPC cache. Tools include carded bait and consumables."
 		},
 		{
 			"category": "fishing",
-			"kind": "npc",
-			"name": "Rod Fishing spot",
+			"kind": "fishing-spot",
+			"name": "BARB_FISH",
 			"options": [
-				"use-rod"
+				"Use-rod"
 			],
-			"requiredCards": [
-				"Leaping trout",
-				"Leaping salmon",
-				"Leaping sturgeon"
+			"requiredCardGroups": [
+				[
+					"Pearl barbarian rod"
+				],
+				[
+					"Fishing bait",
+					"Feather",
+					"Fish offcuts",
+					"Fine fish offcuts",
+					"Roe",
+					"Caviar"
+				],
+				[
+					"Leaping trout",
+					"Leaping salmon",
+					"Leaping sturgeon"
+				]
 			],
-			"requireAll": false,
-			"notes": "Fishing spots yield different fish by location; we list the UNION and use requireAll=false so owning ANY yielded fish unlocks the spot (cannot distinguish location). 'Rod Fishing spot' NPC variant."
+			"groupRoles": [
+				"tool",
+				"tool",
+				"catch"
+			],
+			"requireAll": true,
+			"notes": "RuneLite FishingSpot.BARB_FISH; options verified from the local RuneLite NPC cache. Tools include carded bait and consumables."
+		},
+		{
+			"category": "fishing",
+			"kind": "fishing-spot",
+			"name": "ANGLERFISH",
+			"options": [
+				"Bait"
+			],
+			"requiredCardGroups": [
+				[
+					"Fishing rod",
+					"Pearl fishing rod"
+				],
+				[
+					"Sandworms"
+				],
+				[
+					"Raw anglerfish"
+				]
+			],
+			"groupRoles": [
+				"tool",
+				"tool",
+				"catch"
+			],
+			"requireAll": true,
+			"notes": "RuneLite FishingSpot.ANGLERFISH; options verified from the local RuneLite NPC cache. Tools include carded bait and consumables."
+		},
+		{
+			"category": "fishing",
+			"kind": "fishing-spot",
+			"name": "MINNOW",
+			"options": [
+				"Small Net"
+			],
+			"requiredCardGroups": [
+				[
+					"Small fishing net"
+				],
+				[
+					"Minnow"
+				]
+			],
+			"groupRoles": [
+				"tool",
+				"catch"
+			],
+			"requireAll": true,
+			"notes": "RuneLite FishingSpot.MINNOW; options verified from the local RuneLite NPC cache. Tools include carded bait and consumables."
+		},
+		{
+			"category": "fishing",
+			"kind": "fishing-spot",
+			"name": "HARPOONFISH",
+			"options": [
+				"Harpoon"
+			],
+			"requiredCardGroups": [
+				[
+					"Harpoon",
+					"Dragon harpoon",
+					"Infernal harpoon",
+					"Crystal harpoon",
+					"Corrupted harpoon",
+					"Barb-tail harpoon"
+				],
+				[
+					"Raw harpoonfish",
+					"Crystallised harpoonfish"
+				]
+			],
+			"groupRoles": [
+				"tool",
+				"catch"
+			],
+			"requireAll": true,
+			"notes": "RuneLite FishingSpot.HARPOONFISH; options verified from the local RuneLite NPC cache. Tools include carded bait and consumables."
+		},
+		{
+			"category": "fishing",
+			"kind": "fishing-spot",
+			"name": "INFERNAL_EEL",
+			"options": [
+				"Bait"
+			],
+			"requiredCardGroups": [
+				[
+					"Oily pearl fishing rod"
+				],
+				[
+					"Fishing bait"
+				],
+				[
+					"Infernal eel"
+				]
+			],
+			"groupRoles": [
+				"tool",
+				"tool",
+				"catch"
+			],
+			"requireAll": true,
+			"notes": "RuneLite FishingSpot.INFERNAL_EEL; options verified from the local RuneLite NPC cache. Tools include carded bait and consumables."
+		},
+		{
+			"category": "fishing",
+			"kind": "fishing-spot",
+			"name": "KARAMBWAN",
+			"options": [
+				"Fish"
+			],
+			"requiredCardGroups": [
+				[
+					"Raw karambwan"
+				]
+			],
+			"groupRoles": [
+				"catch"
+			],
+			"requireAll": true,
+			"notes": "RuneLite FishingSpot.KARAMBWAN; options verified from the local RuneLite NPC cache. Tools include carded bait and consumables."
+		},
+		{
+			"category": "fishing",
+			"kind": "fishing-spot",
+			"name": "SACRED_EEL",
+			"options": [
+				"Bait"
+			],
+			"requiredCardGroups": [
+				[
+					"Fishing rod",
+					"Pearl fishing rod"
+				],
+				[
+					"Fishing bait"
+				],
+				[
+					"Sacred eel"
+				]
+			],
+			"groupRoles": [
+				"tool",
+				"tool",
+				"catch"
+			],
+			"requireAll": true,
+			"notes": "RuneLite FishingSpot.SACRED_EEL; options verified from the local RuneLite NPC cache. Tools include carded bait and consumables."
+		},
+		{
+			"category": "fishing",
+			"kind": "fishing-spot",
+			"name": "CAVE_EEL",
+			"options": [
+				"Net",
+				"Small Net"
+			],
+			"requiredCardGroups": [
+				[
+					"Small fishing net"
+				],
+				[
+					"Frog spawn"
+				]
+			],
+			"groupRoles": [
+				"tool",
+				"catch"
+			],
+			"requireAll": true,
+			"notes": "RuneLite FishingSpot.CAVE_EEL; options verified from the local RuneLite NPC cache. Tools include carded bait and consumables."
+		},
+		{
+			"category": "fishing",
+			"kind": "fishing-spot",
+			"name": "CAVE_EEL",
+			"options": [
+				"Bait"
+			],
+			"requiredCardGroups": [
+				[
+					"Fishing rod",
+					"Pearl fishing rod"
+				],
+				[
+					"Fishing bait"
+				],
+				[
+					"Raw slimy eel",
+					"Raw cave eel"
+				]
+			],
+			"groupRoles": [
+				"tool",
+				"tool",
+				"catch"
+			],
+			"requireAll": true,
+			"notes": "RuneLite FishingSpot.CAVE_EEL; options verified from the local RuneLite NPC cache. Tools include carded bait and consumables."
+		},
+		{
+			"category": "fishing",
+			"kind": "fishing-spot",
+			"name": "SLIMY_EEL",
+			"options": [
+				"Bait"
+			],
+			"requiredCardGroups": [
+				[
+					"Fishing rod",
+					"Pearl fishing rod"
+				],
+				[
+					"Fishing bait"
+				],
+				[
+					"Raw slimy eel"
+				]
+			],
+			"groupRoles": [
+				"tool",
+				"tool",
+				"catch"
+			],
+			"requireAll": true,
+			"notes": "RuneLite FishingSpot.SLIMY_EEL; options verified from the local RuneLite NPC cache. Tools include carded bait and consumables."
+		},
+		{
+			"category": "fishing",
+			"kind": "fishing-spot",
+			"name": "DARK_CRAB",
+			"options": [
+				"Cage"
+			],
+			"requiredCardGroups": [
+				[
+					"Lobster pot"
+				],
+				[
+					"Dark fishing bait"
+				],
+				[
+					"Raw lobster",
+					"Raw dark crab"
+				]
+			],
+			"groupRoles": [
+				"tool",
+				"tool",
+				"catch"
+			],
+			"requireAll": true,
+			"notes": "RuneLite FishingSpot.DARK_CRAB; options verified from the local RuneLite NPC cache. Tools include carded bait and consumables."
+		},
+		{
+			"category": "fishing",
+			"kind": "fishing-spot",
+			"name": "COMMON_TENCH",
+			"options": [
+				"Catch"
+			],
+			"requiredCardGroups": [
+				[
+					"Cormorant's glove"
+				],
+				[
+					"King worm",
+					"Fish chunks"
+				],
+				[
+					"Bluegill",
+					"Common tench",
+					"Mottled eel",
+					"Greater siren",
+					"Golden tench"
+				]
+			],
+			"groupRoles": [
+				"tool",
+				"tool",
+				"catch"
+			],
+			"requireAll": true,
+			"notes": "RuneLite FishingSpot.COMMON_TENCH; options verified from the local RuneLite NPC cache. Tools include carded bait and consumables."
+		},
+		{
+			"category": "fishing",
+			"kind": "fishing-spot",
+			"name": "CAMDOZAAL_TETRA",
+			"options": [
+				"Small Net"
+			],
+			"requiredCardGroups": [
+				[
+					"Small fishing net"
+				],
+				[
+					"Raw guppy",
+					"Raw cavefish",
+					"Raw tetra",
+					"Barronite handle"
+				]
+			],
+			"groupRoles": [
+				"tool",
+				"catch"
+			],
+			"requireAll": true,
+			"notes": "RuneLite FishingSpot.CAMDOZAAL_TETRA; options verified from the local RuneLite NPC cache. Tools include carded bait and consumables."
+		},
+		{
+			"category": "fishing",
+			"kind": "fishing-spot",
+			"name": "CAMDOZAAL_TETRA",
+			"options": [
+				"Big Net"
+			],
+			"requiredCardGroups": [
+				[
+					"Big fishing net"
+				],
+				[
+					"Raw tetra",
+					"Raw catfish",
+					"Barronite handle"
+				]
+			],
+			"groupRoles": [
+				"tool",
+				"catch"
+			],
+			"requireAll": true,
+			"notes": "RuneLite FishingSpot.CAMDOZAAL_TETRA; options verified from the local RuneLite NPC cache. Tools include carded bait and consumables."
+		},
+		{
+			"category": "fishing",
+			"kind": "fishing-spot",
+			"name": "CAMDOZAAL_CAVE_EEL",
+			"options": [
+				"Small Net"
+			],
+			"requiredCardGroups": [
+				[
+					"Small fishing net"
+				],
+				[
+					"Frog spawn"
+				]
+			],
+			"groupRoles": [
+				"tool",
+				"catch"
+			],
+			"requireAll": true,
+			"notes": "RuneLite FishingSpot.CAMDOZAAL_CAVE_EEL; options verified from the local RuneLite NPC cache. Tools include carded bait and consumables."
+		},
+		{
+			"category": "fishing",
+			"kind": "fishing-spot",
+			"name": "CAMDOZAAL_CAVE_EEL",
+			"options": [
+				"Bait"
+			],
+			"requiredCardGroups": [
+				[
+					"Fishing rod",
+					"Pearl fishing rod"
+				],
+				[
+					"Fishing bait"
+				],
+				[
+					"Raw slimy eel",
+					"Raw cave eel"
+				]
+			],
+			"groupRoles": [
+				"tool",
+				"tool",
+				"catch"
+			],
+			"requireAll": true,
+			"notes": "RuneLite FishingSpot.CAMDOZAAL_CAVE_EEL; options verified from the local RuneLite NPC cache. Tools include carded bait and consumables."
+		},
+		{
+			"category": "fishing",
+			"kind": "fishing-spot",
+			"name": "TUTORIAL_SHRIMP",
+			"options": [
+				"Net"
+			],
+			"requiredCardGroups": [
+				[
+					"Small fishing net"
+				],
+				[
+					"Raw shrimps"
+				]
+			],
+			"groupRoles": [
+				"tool",
+				"catch"
+			],
+			"requireAll": true,
+			"notes": "RuneLite FishingSpot.TUTORIAL_SHRIMP; options verified from the local RuneLite NPC cache. Tools include carded bait and consumables."
+		},
+		{
+			"category": "fishing",
+			"kind": "fishing-spot",
+			"name": "ETCETERIA_LOBSTER",
+			"options": [
+				"Cage"
+			],
+			"requiredCardGroups": [
+				[
+					"Lobster pot"
+				],
+				[
+					"Raw lobster"
+				]
+			],
+			"groupRoles": [
+				"tool",
+				"catch"
+			],
+			"requireAll": true,
+			"notes": "RuneLite FishingSpot.ETCETERIA_LOBSTER; options verified from the local RuneLite NPC cache. Tools include carded bait and consumables."
+		},
+		{
+			"category": "fishing",
+			"kind": "fishing-spot",
+			"name": "ETCETERIA_LOBSTER",
+			"options": [
+				"Harpoon"
+			],
+			"requiredCardGroups": [
+				[
+					"Harpoon",
+					"Dragon harpoon",
+					"Infernal harpoon",
+					"Crystal harpoon",
+					"Corrupted harpoon",
+					"Barb-tail harpoon"
+				],
+				[
+					"Raw tuna",
+					"Raw swordfish",
+					"Big swordfish"
+				]
+			],
+			"groupRoles": [
+				"tool",
+				"catch"
+			],
+			"requireAll": true,
+			"notes": "RuneLite FishingSpot.ETCETERIA_LOBSTER; options verified from the local RuneLite NPC cache. Tools include carded bait and consumables."
+		},
+		{
+			"category": "fishing",
+			"kind": "fishing-spot",
+			"name": "QUEST_TAI_BWO_WANNAI_TRIO",
+			"options": [
+				"Fish"
+			],
+			"requiredCardGroups": [
+				[
+					"Raw karambwan"
+				]
+			],
+			"groupRoles": [
+				"catch"
+			],
+			"requireAll": true,
+			"notes": "RuneLite FishingSpot.QUEST_TAI_BWO_WANNAI_TRIO; options verified from the local RuneLite NPC cache. Tools include carded bait and consumables."
+		},
+		{
+			"category": "fishing",
+			"kind": "fishing-spot",
+			"name": "QUEST_FISHING_CONTEST",
+			"options": [
+				"Bait"
+			],
+			"requiredCardGroups": [
+				[
+					"Fishing rod",
+					"Pearl fishing rod"
+				]
+			],
+			"groupRoles": [
+				"tool"
+			],
+			"requireAll": true,
+			"notes": "RuneLite FishingSpot.QUEST_FISHING_CONTEST; options verified from the local RuneLite NPC cache. Tools include carded bait and consumables."
+		},
+		{
+			"category": "fishing",
+			"kind": "fishing-spot",
+			"name": "CIVITAS_ILLA_FORTIS_PARK",
+			"options": [
+				"Cast"
+			],
+			"requiredCardGroups": [
+				[
+					"Big fishing net"
+				],
+				[
+					"House keys",
+					"Casket",
+					"Red topaz",
+					"Jade",
+					"Big fishing net",
+					"Old boot"
+				]
+			],
+			"groupRoles": [
+				"tool",
+				"catch"
+			],
+			"requireAll": true,
+			"notes": "RuneLite FishingSpot.CIVITAS_ILLA_FORTIS_PARK; options verified from the local RuneLite NPC cache. Tools include carded bait and consumables."
+		},
+		{
+			"category": "fishing",
+			"kind": "fishing-spot",
+			"name": "SQUID",
+			"options": [
+				"Harpoon"
+			],
+			"requiredCardGroups": [
+				[
+					"Harpoon",
+					"Dragon harpoon",
+					"Infernal harpoon",
+					"Crystal harpoon",
+					"Corrupted harpoon",
+					"Barb-tail harpoon"
+				],
+				[
+					"Raw swordtip squid",
+					"Raw jumbo squid"
+				]
+			],
+			"groupRoles": [
+				"tool",
+				"catch"
+			],
+			"requireAll": true,
+			"notes": "RuneLite FishingSpot.SQUID; options verified from the local RuneLite NPC cache. Tools include carded bait and consumables."
 		},
 		{
 			"category": "hunter-birds",

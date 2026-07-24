@@ -7,3 +7,5 @@ launch-client.bat
 # Local working notes - not for the repo
 docs/api_merge_checklist.md
 /AGENTS.md
+/scripts/FishingSpotCacheDump.java
+/scripts/rebuild_fishing_data.js

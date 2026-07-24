@@ -1,5 +1,9 @@
 # Resource Nodes Data — Coverage Report
 
+> Historical report for the original 2026-07-10 snapshot. Its 12-row fishing
+> section was superseded on 2026-07-24 by the RuneLite FishingSpot rebuild in
+> `fishing_spots_report.md`.
+
 Data file: `resource_nodes.json`. Every `requiredCards` entry and every cooking `name`
 (used item) was validated by exact string match against `Card.json` — **0 unmapped**.
 

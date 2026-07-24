@@ -159,10 +159,15 @@ only, no automation).
     pouch; the target's own card too in NPC+Loot mode via role "npc"
     groups), and using raw food on a fire/range needs the cooked card
     (parsed from the "item -> object" menu target). Config in a "Resource nodes" section:
-    toggles for woodcutting/mining/pickpocketing/cooking, a three-way
-    fishing mode (Off / Any of / Require ALL — spot locations are
-    indistinguishable so rules hold the union per menu option and the mode
-    overrides requireAll), and a dedicated Master Farmer mode (Off /
+    toggles for woodcutting/mining/pickpocketing/cooking, and a four-way
+    fishing mode (No Restrictions / Tools Only / Tools + Any Fish / Tools +
+    Fish). Fishing is keyed by RuneLite's maintained
+    `net.runelite.client.game.FishingSpot.findSpot(npc.getId())` enum group
+    plus the exact cache-verified option, so same-name spots no longer share
+    one global catch union. Bait/feathers count as tools; the default Any
+    mode needs one carded catch and the strict mode needs every carded catch.
+    Fishing options are deliberately never hidden — click enforcement still
+    blocks them. See docs/fishing_spots_report.md. A dedicated Master Farmer mode (Off /
     Coins+Pouch / Insanity = all 45 seed cards from
     `masterFarmerSeedCards`, code path in the plugin, not a generic node).
     Unknown categories restrict by default so new data is loud, not inert.
@@ -596,12 +601,19 @@ session: mini-plan + quiz first, 0.2.x release after owner test.
   compost-type discrimination by reading its persisted config state
   (same pattern as the osrs-tcg interop).
 - Krystilia require-all difficulty revisit (wilderness bosses).
-- **Fishing gear-card edits (owner hand-edit 2026-07-17, incomplete)**: the
-  cage "Fishing spot" union is now [Raw lobster, Lobster pot] — Raw dark
-  crab was REMOVED pending the owner's plan to split lobster vs dark-crab
-  spots by NPC ID (his note in the node). Until then dark-crab spots
-  unlock via lobster cards. Big-net union gained "Big fishing net" as a
-  gear alternative. Re-add dark crabs when doing the ID split.
+- **Fishing RuneLite-map split: IMPLEMENTED 2026-07-24, needs owner in-game test.**
+  Uses RuneLite's FishingSpot mapping directly (27 groups / 150 NPC IDs)
+  rather than copying IDs; 35 data rows / 38 exact option keys replace the
+  12 broad name unions. DARK_CRAB is now distinct from LOBSTER, bait and
+  feathers are role:"tool" inputs, and all 81 card references validate.
+  Source matrix: docs/fishing_actions.json; repeatable merge:
+  scripts/rebuild_fishing_data.js; local cache option audit:
+  scripts/FishingSpotCacheDump.java. QUEST_RUM_DEAL stays unrestricted
+  because its requirements have no TCG cards; Fishing Contest still checks
+  its carded fishing rod. Final audit found card-relevant interactions outside
+  RuneLite FishingSpot (Stranglewood NPC plus CoX/Gauntlet game objects);
+  these need a separately reviewed explicit-ID extension and are listed in
+  docs/fishing_spots_report.md rather than being guessed into this pass.
 - Sailing test pass (see DEFERRED section above).
 - **Tracked-name encoding defect (found 2026-07-19)**: four tracked names
   (rosé wines, "grubs à la mode") carry a literal U+FFFD replacement char

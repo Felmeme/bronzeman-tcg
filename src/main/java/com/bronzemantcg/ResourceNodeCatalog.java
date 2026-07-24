@@ -40,6 +40,8 @@ public class ResourceNodeCatalog
 {
 	public static final String KIND_OBJECT = "object";
 	public static final String KIND_NPC = "npc";
+	/** RuneLite FishingSpot enum name + the clicked fishing option. */
+	public static final String KIND_FISHING_SPOT = "fishing-spot";
 	public static final String KIND_ITEM_ON_OBJECT = "item-on-object";
 	public static final String KIND_INVENTORY = "inventory";
 	/** Make-interface product clicks; nodes use options ["*"] since only the product name is known. */

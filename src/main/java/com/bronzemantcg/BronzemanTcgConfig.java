@@ -385,11 +385,11 @@ public interface BronzemanTcgConfig extends Config
 	@ConfigItem(
 		keyName = "fishingMode",
 		name = "Fishing Options",
-		description = "Block fishing like the other gathering skills."
-			+ "<br>'Tools Only': the carried tool for that spot type (net, harpoon, rod, ...) must be "
-			+ "unlocked. Tools with no card are never locked."
-			+ "<br>'Tools + Fish': also needs any one card the spot type can yield anywhere "
-			+ "(spot types share one name per option, so the yields are a union across locations)."
+		description = "Restrict fishing using the exact fishing spot and selected method."
+			+ "<br>'Tools Only': every carried card-backed tool, bait or consumable applicable "
+			+ "to that method must be unlocked."
+			+ "<br>'Tools + Any Fish': also requires any one carded catch from that method."
+			+ "<br>'Tools + Fish': requires every carded catch from that method."
 			+ "<br>'No Restrictions': no fishing restriction.",
 		section = fishingSection,
 		position = 0
