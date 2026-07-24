@@ -371,9 +371,18 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 			return;
 		}
 
-		BronzemanTcgPanel newPanel = new BronzemanTcgPanel(monsterCatalog, itemCatalog,
-			nodeCatalog, questCatalog, contentCatalog, collectionReader, recentUnlocksTracker,
-			importantUnlocksCatalog, config, executor);
+		BronzemanTcgPanel newPanel = new BronzemanTcgPanel(
+				monsterCatalog,
+				itemCatalog,
+				nodeCatalog,
+				questCatalog,
+				contentCatalog,
+				collectionReader,
+				recentUnlocksTracker,
+				importantUnlocksCatalog,
+				config,
+				configManager,
+				executor);
 		NavigationButton newNavButton = NavigationButton.builder()
 			.tooltip("Bronzeman TCG")
 			.icon(loadPanelIcon())
@@ -487,8 +496,7 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 				// read lags behind card pulls, so nudge the player to relog. Self-retiring -
 				// once osrs-tcg's API version connects, hasApiData() is true and this stops.
 				queueChat("[Bronzeman TCG] Not Connected to OSRS TCG API - Please relog if you are "
-					+ "missing new card unlocks. Last known collection still active (waiting on"
-					+ " OSRS TCG update).");
+					+ "missing new card unlocks. Last known collection still active. Check OSRS TCG is enabled.");
 			}
 		}
 		else

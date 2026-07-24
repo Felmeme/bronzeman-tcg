@@ -1,8 +1,12 @@
 /**
- * Build the broad owner-editable Important Unlocks snapshot.
+ * Build a broad Important Unlocks seed for owner review.
  *
  * Usage:
  *   node scripts/build_important_unlocks.js C:\\Users\\ocari\\Downloads\\card_categories.json
+ *
+ * This deliberately writes to docs/, NOT the live owner-curated
+ * src/main/resources/important_unlocks.json. Copy or merge reviewed entries by hand so
+ * custom categories and subcategories can never be erased by rerunning this script.
  *
  * The supplied export classifies Weapon / Armour. The bundled consumables snapshot
  * already separates food and potions. Tools take priority over Weapons: woodcutting
@@ -84,6 +88,6 @@ const output = {
 	]
 };
 
-const outputPath = path.join(root, 'src/main/resources/important_unlocks.json');
+const outputPath = path.join(root, 'docs/important_unlocks_generated.json');
 fs.writeFileSync(outputPath, `${JSON.stringify(output, null, 2)}\n`, 'utf8');
-console.log(`Wrote ${outputPath}: ${output.categories.map(c => `${c.name}=${c.items.length}`).join(', ')}`);
+console.log(`Wrote review seed ${outputPath}: ${output.categories.map(c => `${c.name}=${c.items.length}`).join(', ')}`);
