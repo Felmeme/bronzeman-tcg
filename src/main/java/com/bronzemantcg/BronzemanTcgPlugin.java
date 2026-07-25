@@ -26,6 +26,8 @@ import net.runelite.api.NPC;
 import net.runelite.api.Player;
 import net.runelite.api.PlayerComposition;
 import net.runelite.api.NPCComposition;
+import net.runelite.api.Quest;
+import net.runelite.api.QuestState;
 import net.runelite.api.Renderable;
 import net.runelite.api.ScriptID;
 import net.runelite.api.WorldView;
@@ -215,6 +217,9 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	private ContentCatalog contentCatalog;
 
 	@Inject
+	private MonsterAreaCatalog monsterAreaCatalog;
+
+	@Inject
 	private ClientToolbar clientToolbar;
 
 	@Inject
@@ -260,6 +265,7 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	// before the EDT has had a chance to install the navigation panel.
 	private volatile long panelGeneration;
 	private int tickCounter;
+	private boolean questStateInitialized;
 	private String lootExemptRaw;
 	private Set<String> lootExemptSet = Collections.emptySet();
 	private Set<String> effectiveOwned = Collections.emptySet();
@@ -317,6 +323,7 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 		welcomeDelayTicks = -1;
 		reminderTicks = -1;
 		requiredPluginTicks = -1;
+		questStateInitialized = false;
 		// Query on the first tick, not here: RuneLite registers our @Subscribe methods
 		// only after startUp returns, and EventBus.post is synchronous, so a reply to a
 		// query posted from startUp would arrive before we can hear it.
@@ -382,6 +389,7 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 				nodeCatalog,
 				questCatalog,
 				contentCatalog,
+				monsterAreaCatalog,
 				collectionReader,
 				recentUnlocksTracker,
 				importantUnlocksCatalog,
@@ -413,6 +421,7 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 		switch (event.getGameState())
 		{
 			case LOGGED_IN:
+				questStateInitialized = false;
 				scheduleWelcome();
 				break;
 			case LOGIN_SCREEN:
@@ -852,6 +861,14 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 			return;
 		}
 		BronzemanTcgPanel target = panel;
+		// Quest states change rarely. Capture immediately after login/panel creation,
+		// then every 25 ticks (~15 seconds), instead of walking every Quest enum on each
+		// five-tick panel refresh.
+		if (!questStateInitialized || tickCounter % 25 == 0)
+		{
+			target.updateCompletedQuests(captureCompletedQuests());
+			questStateInitialized = true;
+		}
 		SwingUtilities.invokeLater(() ->
 		{
 			if (target.isShowing())
@@ -859,6 +876,24 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 				target.requestRefresh();
 			}
 		});
+	}
+
+	/** Read RuneLite quest state on the client thread; the panel only receives names. */
+	private Set<String> captureCompletedQuests()
+	{
+		if (client.getGameState() != GameState.LOGGED_IN)
+		{
+			return Collections.emptySet();
+		}
+		Set<String> completed = new HashSet<>();
+		for (Quest quest : Quest.values())
+		{
+			if (quest.getState(client) == QuestState.FINISHED)
+			{
+				completed.add(quest.getName().toLowerCase(Locale.ROOT));
+			}
+		}
+		return Collections.unmodifiableSet(completed);
 	}
 
 	@Subscribe

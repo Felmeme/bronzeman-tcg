@@ -3,55 +3,118 @@
   "categories": [
     {
       "name": "Tools",
-      "items": [
-        "Air talisman",
-        "Abyssal lantern",
-        "Barb-tail harpoon",
-        "Bucket of Water",
-        "Bucket",
-        "Chisel",
-        "Fletching Knife",
-        "Gardening Trowel",
-        "Glassblowing Pipe",
-        "Hammer",
-        "Hallowed hammer",
-        "Imbued tephra",
-        "Imcando hammer",
-        "Jade machete",
-        "Jug of water",
-        "Jug",
-        "Knife",
-        "Machete",
-        "Maple blackjack",
-        "Needle",
-        "Oak blackjack",
-        "Oily pearl fishing rod",
-        "Opal machete",
-        "Pearl barbarian rod",
-        "Pearl fishing rod",
-        "Pearl fly fishing rod",
-        "Pharaoh's sceptre",
-        "Pestle and mortar",
-        "Rake",
-        "Redwood hiking staff",
-        "Rope",
-        "Saw",
-        "Secateurs",
-        "Seed Dibber",
-        "Skull sceptre",
-        "Spade",
-        "Steel axe",
-        "Thread",
-        "Tinderbox",
-        "Vial of Water",
-        "Vial",
-        "Watering can",
-        "Willow blackjack"
-      ]
-    },
-    {
-      "name": "Tools",
       "subcategories": [
+        {
+          "name": "Axes",
+          "items": [
+            "Adamant axe",
+            "Bronze axe",
+            "Black axe",
+            "Dragon axe",
+            "Gilded axe",
+            "Infernal axe",
+            "Iron axe",
+            "Mithril axe",
+            "Rune axe",
+            "Steel axe"
+          ]
+        },
+        {
+          "name": "Crafting Tools",
+          "items": [
+            "Bucket of Water",
+            "Chisel",
+            "Glassblowing Pipe",
+            "Needle",
+            "Thread"
+          ]
+        },
+        {
+          "name": "Farming Tools",
+          "items": [
+            "Bucket",
+            "Gardening Trowel",
+            "Rake",
+            "Secateurs",
+            "Seed Dibber",
+            "Spade",
+            "Watering can"
+          ]
+        },
+        {
+          "name": "Fishing Tools",
+          "items": [
+            "Barb-tail harpoon",
+            "Dragon harpoon",
+            "Oily pearl fishing rod",
+            "Pearl barbarian rod",
+            "Pearl fishing rod",
+            "Pearl fly fishing rod",
+            "Harpoon",
+            "Lobster pot",
+            "Fishing rod",
+            "Fly fishing rod",
+            "Small fishing net",
+            "Big fishing net",
+            "Fishing bait",
+            "Infernal harpoon"
+          ]
+        },
+        {
+          "name": "Fletching Tools",
+          "items": [
+            "Bow String",
+            "Chisel",
+            "Feathers",
+            "Flax",
+            "Fletching Knife",
+            "Knife",
+            "Redwood hiking staff"
+          ]
+        },
+        {
+          "name": "Gauntlet Tools",
+          "items": [
+            "Corrupted axe",
+            "Corrupted harpoon",
+            "Corrupted pickaxe",
+            "Corrupted sceptre",
+            "Crystal axe",
+            "Crystal harpoon",
+            "Crystal pickaxe",
+            "Crystal sceptre",
+            "Pestle and Mortar"
+          ]
+        },
+        {
+          "name": "Herblore Tools",
+          "items": [
+            "Pestle and mortar",
+            "Vial of Water",
+            "Vial"
+          ]
+        },
+        {
+          "name": "Hunter Tools",
+          "items": [
+            "Bird Snare",
+            "Box Trap",
+            "Butterfly Net",
+            "Hunter's spear",
+            "Impling Jar",
+            "Magic Butterfly Net",
+            "Noose wand"
+          ]
+        },
+        {
+          "name": "Other Tools",
+          "items": [
+            "Jade machete",
+            "Machete",
+            "Opal machete",
+            "Red Topaz Machete"
+          ]
+        },
         {
           "name": "Pickaxes",
           "items": [
@@ -68,69 +131,37 @@
           ]
         },
         {
-          "name": "Axes",
+          "name": "Runecrafting",
           "items": [
-            "Adamant axe",
-            "Bronze axe",
-            "Black axe",
-            "Dragon axe",
-            "Gilded axe",
-            "Infernal axe",
-            "Iron axe",
-            "Mithril axe",
-            "Rune axe"
+            "Air talisman",
+            "Abyssal lantern",
+            "Need to add rest of talismans"
           ]
         },
         {
-          "name": "Hunter Tools",
+          "name": "Shared Tools",
           "items": [
-            "Bird Snare",
-            "Box Trap",
-            "Butterfly Net",
-            "Hunter's spear",
-            "Impling Jar",
-            "Magic Butterfly Net",
-            "Noose wand"
-          ]
-        },
-        {
-          "name": "Farming Tools",
-          "items": [
-
-          ]
-        },
-        {
-          "name": "Fishing Tools",
-          "items": [
-
+            "Bucket of Water",
+            "Bucket",
+            "Chisel",
+            "Hallowed hammer",
+            "Hammer",
+            "Imcando hammer",
+            "Jug of water",
+            "Jug",
+            "Knife",
+            "Rope",
+            "Saw",
+            "Spade",
+            "Tinderbox"
           ]
         },
         {
           "name": "Thieving Tools",
           "items": [
-
-          ]
-        },
-        {
-          "name": "Generic Tools",
-          "items": [
-
-          ]
-        },
-        {
-          "name": "Runecrafting",
-          "items": [
-
-          ]
-        },
-        {
-          "name": "Gauntlet Tools",
-          "items": [
-            "Corrupted axe",
-            "Corrupted pickaxe",
-            "Crystal axe",
-            "Crystal pickaxe",
-            "Pestle and Mortar"
+            "Maple blackjack",
+            "Oak blackjack",
+            "Willow blackjack"
           ]
         }
       ]
@@ -226,14 +257,10 @@
         "Cleaver",
         "Colossal blade",
         "Comp ogre bow",
-        "Corrupted harpoon",
-        "Corrupted sceptre",
         "Craw's bow",
         "Crossbow",
         "Crystal grail",
         "Crystal halberd",
-        "Crystal harpoon",
-        "Crystal sceptre",
         "Dark bow",
         "Dawnbringer",
         "Dharok's greataxe",
@@ -247,7 +274,6 @@
         "Dragon dagger",
         "Dragon dart",
         "Dragon halberd",
-        "Dragon harpoon",
         "Dragon hasta",
         "Dragon hunter crossbow",
         "Dragon hunter lance",
@@ -286,7 +312,6 @@
         "Hunters' crossbow",
         "Hunters' sunlight crossbow",
         "Ice ancient sceptre",
-        "Infernal harpoon",
         "Inquisitor's mace",
         "Iron 2h sword",
         "Iron battleaxe",

@@ -65,12 +65,19 @@ class BronzemanTcgPanel extends PluginPanel
 		.ofPattern("d MMM, HH:mm").withZone(ZoneId.systemDefault());
 	private static final String IMPORTANT_SHOW_LOCKED_KEY = "importantShowLocked";
 	private static final String IMPORTANT_SHOW_UNLOCKED_KEY = "importantShowUnlocked";
+	private static final String QUEST_HIDE_COMPLETED_KEY = "questHideCompleted";
+	private static final String QUEST_HIDE_INCOMPLETABLE_KEY = "questHideIncompletable";
+	private static final String SLAYER_SHOW_LOCKED_KEY = "slayerShowLocked";
+	private static final String SLAYER_SHOW_UNLOCKED_KEY = "slayerShowUnlocked";
+	private static final String PVM_SHOW_LOCKED_KEY = "pvmShowLocked";
+	private static final String PVM_SHOW_UNLOCKED_KEY = "pvmShowUnlocked";
 
 	private final TrackedMonsterCatalog monsterCatalog;
 	private final TrackedItemCatalog itemCatalog;
 	private final ResourceNodeCatalog nodeCatalog;
 	private final QuestCatalog questCatalog;
 	private final ContentCatalog contentCatalog;
+	private final MonsterAreaCatalog monsterAreaCatalog;
 	private final TcgCollectionReader collectionReader;
 	private final RecentUnlocksTracker recentUnlocksTracker;
 	private final ImportantUnlocksCatalog importantUnlocksCatalog;
@@ -97,14 +104,31 @@ class BronzemanTcgPanel extends PluginPanel
 	private final SelectedCardPanel tabDisplay = new SelectedCardPanel();
 	private final MaterialTabGroup tabs = new MaterialTabGroup();
 
+	private final JPanel questPanel = sectionBody();
+	private final JPanel questFilters = new JPanel(new FlowLayout(FlowLayout.LEFT, 4, 0));
+	private final JCheckBox hideCompletedQuests = new JCheckBox("Hide completed");
+	private final JCheckBox hideIncompletableQuests = new JCheckBox("Hide incompletable");
 	private final JPanel questList = sectionBody();
 	private final Set<String> expandedQuests = new HashSet<>();
+	private volatile Set<String> completedQuestNames = Collections.emptySet();
 
+	private final JPanel slayerPanel = sectionBody();
+	private final JPanel slayerFilters = new JPanel(new FlowLayout(FlowLayout.LEFT, 4, 0));
+	private final JCheckBox showLockedSlayer = new JCheckBox("Show locked");
+	private final JCheckBox showUnlockedSlayer = new JCheckBox("Show unlocked");
 	private final JPanel slayerList = sectionBody();
 	private final Set<String> expandedSlayer = new HashSet<>();
+	private final Set<String> expandedSlayerTasks = new HashSet<>();
+	private final Set<String> expandedSlayerSuperiorGroups = new HashSet<>();
+	private boolean expandedGlobalSuperiors;
 
+	private final JPanel pvmPanel = sectionBody();
+	private final JPanel pvmFilters = new JPanel(new FlowLayout(FlowLayout.LEFT, 4, 0));
+	private final JCheckBox showLockedPvm = new JCheckBox("Show locked");
+	private final JCheckBox showUnlockedPvm = new JCheckBox("Show unlocked");
 	private final JPanel contentList = sectionBody();
-	private final Set<String> expandedContents = new HashSet<>();
+	private final Set<String> expandedPvmSections = new HashSet<>();
+	private final Set<String> expandedPvmGroups = new HashSet<>();
 
 	private final JPanel rumoursList = sectionBody();
 	private final Set<String> expandedRumours = new HashSet<>();
@@ -131,6 +155,7 @@ class BronzemanTcgPanel extends PluginPanel
 			ResourceNodeCatalog nodeCatalog,
 			QuestCatalog questCatalog,
 			ContentCatalog contentCatalog,
+			MonsterAreaCatalog monsterAreaCatalog,
 			TcgCollectionReader collectionReader,
 			RecentUnlocksTracker recentUnlocksTracker,
 			ImportantUnlocksCatalog importantUnlocksCatalog,
@@ -143,6 +168,7 @@ class BronzemanTcgPanel extends PluginPanel
 		this.nodeCatalog = nodeCatalog;
 		this.questCatalog = questCatalog;
 		this.contentCatalog = contentCatalog;
+		this.monsterAreaCatalog = monsterAreaCatalog;
 		this.collectionReader = collectionReader;
 		this.recentUnlocksTracker = recentUnlocksTracker;
 		this.importantUnlocksCatalog = importantUnlocksCatalog;
@@ -213,6 +239,23 @@ class BronzemanTcgPanel extends PluginPanel
 		recentUnlocksPanel.add(Box.createVerticalStrut(4));
 		recentUnlocksPanel.add(recentUnlocksList);
 
+		configureQuestFilters();
+		questPanel.add(questFilters);
+		questPanel.add(Box.createVerticalStrut(4));
+		questPanel.add(questList);
+
+		configureVisibilityFilters(slayerFilters, showLockedSlayer, showUnlockedSlayer,
+			SLAYER_SHOW_LOCKED_KEY, SLAYER_SHOW_UNLOCKED_KEY, PanelTab.SLAYER);
+		slayerPanel.add(slayerFilters);
+		slayerPanel.add(Box.createVerticalStrut(4));
+		slayerPanel.add(slayerList);
+
+		configureVisibilityFilters(pvmFilters, showLockedPvm, showUnlockedPvm,
+			PVM_SHOW_LOCKED_KEY, PVM_SHOW_UNLOCKED_KEY, PanelTab.PVM);
+		pvmPanel.add(pvmFilters);
+		pvmPanel.add(Box.createVerticalStrut(4));
+		pvmPanel.add(contentList);
+
 		configureImportantUnlockFilters();
 		importantUnlocksPanel.add(importantUnlocksFilters);
 		importantUnlocksPanel.add(Box.createVerticalStrut(4));
@@ -229,9 +272,9 @@ class BronzemanTcgPanel extends PluginPanel
 		add(Box.createVerticalStrut(10));
 		progressList.add(mutedRow("Loading collection..."));
 		questList.add(mutedRow("Loading quests..."));
-		addTab("Quests", questList, PanelTab.QUESTS);
-		addTab("Slayer", slayerList, PanelTab.SLAYER);
-		addTab("PvM", contentList, PanelTab.PVM);
+		addTab("Quests", questPanel, PanelTab.QUESTS);
+		addTab("Slayer", slayerPanel, PanelTab.SLAYER);
+		addTab("PvM", pvmPanel, PanelTab.PVM);
 		addTab("Rumours", rumoursList, PanelTab.RUMOURS);
 		addTab("Recent Unlocks", recentUnlocksPanel, PanelTab.RECENT);
 		addTab("Important Unlocks", importantUnlocksPanel, PanelTab.IMPORTANT);
@@ -290,6 +333,13 @@ class BronzemanTcgPanel extends PluginPanel
 		});
 	}
 
+	/** Receives an immutable-friendly quest-state snapshot captured on the client thread. */
+	void updateCompletedQuests(Set<String> completed)
+	{
+		completedQuestNames = completed == null
+			? Collections.emptySet() : Collections.unmodifiableSet(new HashSet<>(completed));
+	}
+
 	/** Stop queued work from touching a panel that has been removed from the toolbar. */
 	void dispose()
 	{
@@ -308,11 +358,11 @@ class BronzemanTcgPanel extends PluginPanel
 
 		Set<String> owned = Collections.unmodifiableSet(
 			new HashSet<>(collectionReader.getOwnedCardNamesLowerCase()));
-		boolean includeSlayerSuperiors =
-			config.slayerMode() == SlayerMode.FULL && config.restrictSlayerSuperiors();
+		boolean includeSlayerSuperiors = config.restrictSlayerSuperiors();
+		Set<String> completed = completedQuestNames;
 
 		return new PanelSnapshot(data, owned, recentUnlocksTracker.getRecent(),
-			includeSlayerSuperiors,
+			includeSlayerSuperiors, completed,
 			countUnlocked(monsterCatalog.getEntityToCards(), owned),
 			countUnlocked(itemCatalog.getEntityToCards(), owned));
 	}
@@ -321,11 +371,11 @@ class BronzemanTcgPanel extends PluginPanel
 	{
 		List<QuestCatalog.QuestEntry> quests = sortedEntries(questCatalog.getQuests());
 		List<QuestCatalog.QuestEntry> contents = sortedEntries(contentCatalog.getContents());
-		List<QuestCatalog.QuestEntry> slayer = sortedEntries(buildMasterEntries("slayer", false));
-		List<QuestCatalog.QuestEntry> slayerWithSuperiors =
-			sortedEntries(buildMasterEntries("slayer", true));
+		List<QuestCatalog.QuestEntry> areas = buildAreaEntries();
+		List<SlayerMasterEntry> slayer = buildSlayerEntries();
+		List<QuestCatalog.Requirement> allSuperiors = buildGlobalSuperiors(slayer);
 		List<QuestCatalog.QuestEntry> rumours =
-			sortedEntries(buildMasterEntries("hunter-rumours", false));
+			sortedEntries(buildMasterEntries("hunter-rumours"));
 
 		List<SearchEntry> searchEntries = new ArrayList<>();
 		for (Map.Entry<String, Set<String>> entry :
@@ -340,7 +390,7 @@ class BronzemanTcgPanel extends PluginPanel
 			searchEntries.add(new SearchEntry(entry.getKey(), display(entry.getKey()), entry.getValue()));
 		}
 
-		return new PreparedData(quests, contents, slayer, slayerWithSuperiors,
+		return new PreparedData(quests, contents, areas, slayer, allSuperiors,
 			rumours, searchEntries);
 	}
 
@@ -371,6 +421,8 @@ class BronzemanTcgPanel extends PluginPanel
 		boolean recentChanged = first || !sameUnlocks(previous.recentUnlocks, next.recentUnlocks);
 		boolean slayerChanged = first
 			|| previous.includeSlayerSuperiors != next.includeSlayerSuperiors;
+		boolean questStateChanged = first
+			|| !previous.completedQuests.equals(next.completedQuests);
 		snapshot = next;
 
 		if (ownedChanged)
@@ -386,6 +438,10 @@ class BronzemanTcgPanel extends PluginPanel
 		if (slayerChanged)
 		{
 			dirtyTabs.add(PanelTab.SLAYER);
+		}
+		if (questStateChanged)
+		{
+			dirtyTabs.add(PanelTab.QUESTS);
 		}
 		renderSelectedTab();
 	}
@@ -426,24 +482,412 @@ class BronzemanTcgPanel extends PluginPanel
 
 	private void refreshQuests()
 	{
+		List<QuestCatalog.QuestEntry> visible = new ArrayList<>();
+		for (QuestCatalog.QuestEntry quest : snapshot.data.quests)
+		{
+			boolean completed = snapshot.completedQuests.contains(
+				quest.name.toLowerCase(Locale.ROOT));
+			boolean completable =
+				quest.satisfiedCount(snapshot.owned) == quest.requirements.size();
+			if (hideCompletedQuests.isSelected() && completed)
+			{
+				continue;
+			}
+			if (hideIncompletableQuests.isSelected() && !completable)
+			{
+				continue;
+			}
+			visible.add(quest);
+		}
 		refreshChecklist(questList, "quests completable",
-			snapshot.data.quests, snapshot.owned, expandedQuests,
-			this::refreshQuests, "No quest data bundled");
+			visible, snapshot.owned, expandedQuests,
+			this::refreshQuests, snapshot.data.quests.isEmpty()
+				? "No quest data bundled" : "No quests match these filters");
 	}
 
 	private void refreshContent()
 	{
-		refreshChecklist(contentList, "contents completable",
-			snapshot.data.contents, snapshot.owned, expandedContents,
-			this::refreshContent, "No content data bundled");
+		contentList.removeAll();
+		boolean visible = addPvmSection("Instanced Content/Raids", snapshot.data.contents);
+		visible |= addPvmSection("Monsters by Area", snapshot.data.areas);
+		if (snapshot.data.contents.isEmpty() && snapshot.data.areas.isEmpty())
+		{
+			contentList.add(mutedRow("No PvM data bundled"));
+		}
+		else if (!visible)
+		{
+			contentList.add(mutedRow("No PvM entries match these filters"));
+		}
+		contentList.revalidate();
+		contentList.repaint();
 	}
 
 	private void refreshSlayer()
 	{
-		refreshChecklist(slayerList, "masters ready",
-			snapshot.includeSlayerSuperiors
-				? snapshot.data.slayerWithSuperiors : snapshot.data.slayer,
-			snapshot.owned, expandedSlayer, this::refreshSlayer, "No slayer data bundled");
+		slayerList.removeAll();
+		int ready = 0;
+		for (SlayerMasterEntry master : snapshot.data.slayer)
+		{
+			if (master.satisfiedCount(snapshot.owned, snapshot.includeSlayerSuperiors)
+				== master.requirementCount(snapshot.includeSlayerSuperiors))
+			{
+				ready++;
+			}
+		}
+		slayerList.add(mutedRow(String.format("%d/%d masters ready",
+			ready, snapshot.data.slayer.size())));
+
+		boolean visible = false;
+		if (!snapshot.includeSlayerSuperiors)
+		{
+			visible = addGlobalSuperiorList();
+		}
+		for (SlayerMasterEntry master : snapshot.data.slayer)
+		{
+			if (hasVisibleSlayerContent(master))
+			{
+				addSlayerMaster(master);
+				visible = true;
+			}
+		}
+		if (snapshot.data.slayer.isEmpty())
+		{
+			slayerList.add(mutedRow("No slayer data bundled"));
+		}
+		else if (!visible)
+		{
+			slayerList.add(mutedRow("No Slayer entries match these filters"));
+		}
+		slayerList.revalidate();
+		slayerList.repaint();
+	}
+
+	private boolean addGlobalSuperiorList()
+	{
+		List<QuestCatalog.Requirement> superiors = snapshot.data.allSuperiors;
+		boolean hasVisibleSuperior = false;
+		for (QuestCatalog.Requirement superior : superiors)
+		{
+			if (hasVisibleSlayerCards(superior.displayCards))
+			{
+				hasVisibleSuperior = true;
+				break;
+			}
+		}
+		if (!hasVisibleSuperior)
+		{
+			return false;
+		}
+
+		int have = satisfiedRequirements(superiors, snapshot.owned);
+		String arrow = expandedGlobalSuperiors ? "\u25bc " : "\u25b6 ";
+		slayerList.add(clickableProgressRow(arrow + "Superior Creatures",
+			have, superiors.size(), () ->
+			{
+				expandedGlobalSuperiors = !expandedGlobalSuperiors;
+				refreshSlayer();
+			}));
+		if (expandedGlobalSuperiors)
+		{
+			for (QuestCatalog.Requirement superior : superiors)
+			{
+				if (hasVisibleSlayerCards(superior.displayCards))
+				{
+					slayerList.add(statusRow("  " + superior.label,
+						superior.isSatisfied(snapshot.owned), null));
+				}
+			}
+		}
+		return true;
+	}
+
+	private void addSlayerMaster(SlayerMasterEntry master)
+	{
+		boolean expanded = expandedSlayer.contains(master.name);
+		int have = master.satisfiedCount(snapshot.owned, snapshot.includeSlayerSuperiors);
+		int total = master.requirementCount(snapshot.includeSlayerSuperiors);
+		String arrow = expanded ? "\u25bc " : "\u25b6 ";
+		slayerList.add(clickableProgressRow(arrow + master.name, have, total, () ->
+		{
+			if (!expandedSlayer.remove(master.name))
+			{
+				expandedSlayer.add(master.name);
+			}
+			refreshSlayer();
+		}));
+		if (!expanded)
+		{
+			return;
+		}
+
+		for (SlayerTaskEntry task : master.tasks)
+		{
+			if (!hasVisibleSlayerCards(task.requirements))
+			{
+				continue;
+			}
+			String key = nestedKey(master.name, task.label);
+			boolean taskExpanded = expandedSlayerTasks.contains(key);
+			String taskArrow = taskExpanded ? "\u25bc " : "\u25b6 ";
+			if (task.locationSpecific)
+			{
+				int locationsOwned = satisfiedRequirements(task.requirements, snapshot.owned);
+				slayerList.add(clickableProgressRow(
+					"  " + taskArrow + task.label, locationsOwned, task.requirements.size(),
+					() ->
+					{
+						if (!expandedSlayerTasks.remove(key))
+						{
+							expandedSlayerTasks.add(key);
+						}
+						refreshSlayer();
+					}));
+			}
+			else
+			{
+				QuestCatalog.Requirement requirement = task.requirements.get(0);
+				int variantsOwned = countOwned(requirement.displayCards, snapshot.owned);
+				slayerList.add(clickableProgressRow(
+					"  " + taskArrow + task.label,
+					variantsOwned, requirement.displayCards.size(), variantsOwned > 0, () ->
+					{
+						if (!expandedSlayerTasks.remove(key))
+						{
+							expandedSlayerTasks.add(key);
+						}
+						refreshSlayer();
+					}));
+			}
+			if (!taskExpanded)
+			{
+				continue;
+			}
+
+			for (QuestCatalog.Requirement requirement : task.requirements)
+			{
+				if (!hasVisibleSlayerCards(requirement.displayCards))
+				{
+					continue;
+				}
+				if (task.locationSpecific)
+				{
+					slayerList.add(statusRow("    " + requirement.label,
+						requirement.isSatisfied(snapshot.owned), null));
+				}
+				for (String card : requirement.displayCards)
+				{
+					if (isSlayerCardVisible(card))
+					{
+						String indent = task.locationSpecific ? "      " : "    ";
+						slayerList.add(statusRow(indent + displayCardName(card),
+							snapshot.owned.contains(card.toLowerCase(Locale.ROOT)), null));
+					}
+				}
+			}
+		}
+
+		if (snapshot.includeSlayerSuperiors
+			&& hasVisibleSlayerCards(master.superiors))
+		{
+			String key = master.name;
+			boolean superiorExpanded = expandedSlayerSuperiorGroups.contains(key);
+			int superiorHave = satisfiedRequirements(master.superiors, snapshot.owned);
+			String superiorArrow = superiorExpanded ? "\u25bc " : "\u25b6 ";
+			slayerList.add(clickableProgressRow(
+				"  " + superiorArrow + "Superior Creatures",
+				superiorHave, master.superiors.size(), () ->
+				{
+					if (!expandedSlayerSuperiorGroups.remove(key))
+					{
+						expandedSlayerSuperiorGroups.add(key);
+					}
+					refreshSlayer();
+				}));
+			if (superiorExpanded)
+			{
+				for (QuestCatalog.Requirement superior : master.superiors)
+				{
+					if (hasVisibleSlayerCards(superior.displayCards))
+					{
+						slayerList.add(statusRow("    " + superior.label,
+							superior.isSatisfied(snapshot.owned), null));
+					}
+				}
+			}
+		}
+	}
+
+	private boolean addPvmSection(String sectionName, List<QuestCatalog.QuestEntry> entries)
+	{
+		boolean hasVisibleEntry = false;
+		for (QuestCatalog.QuestEntry entry : entries)
+		{
+			if (hasVisiblePvmRequirement(entry))
+			{
+				hasVisibleEntry = true;
+				break;
+			}
+		}
+		if (!hasVisibleEntry)
+		{
+			return false;
+		}
+
+		boolean expanded = expandedPvmSections.contains(sectionName);
+		int ready = 0;
+		for (QuestCatalog.QuestEntry entry : entries)
+		{
+			if (entry.satisfiedCount(snapshot.owned) == entry.requirements.size())
+			{
+				ready++;
+			}
+		}
+		String arrow = expanded ? "\u25bc " : "\u25b6 ";
+		contentList.add(clickableProgressRow(arrow + sectionName, ready, entries.size(), () ->
+		{
+			if (!expandedPvmSections.remove(sectionName))
+			{
+				expandedPvmSections.add(sectionName);
+			}
+			refreshContent();
+		}));
+		if (!expanded)
+		{
+			return true;
+		}
+
+		for (QuestCatalog.QuestEntry entry : entries)
+		{
+			if (!hasVisiblePvmRequirement(entry))
+			{
+				continue;
+			}
+			String key = nestedKey(sectionName, entry.name);
+			boolean groupExpanded = expandedPvmGroups.contains(key);
+			String groupArrow = groupExpanded ? "\u25bc " : "\u25b6 ";
+			contentList.add(clickableProgressRow("  " + groupArrow + entry.name,
+				entry.satisfiedCount(snapshot.owned), entry.requirements.size(), () ->
+				{
+					if (!expandedPvmGroups.remove(key))
+					{
+						expandedPvmGroups.add(key);
+					}
+					refreshContent();
+				}));
+			if (groupExpanded)
+			{
+				for (QuestCatalog.Requirement requirement : entry.requirements)
+				{
+					boolean unlocked = requirement.isSatisfied(snapshot.owned);
+					if (isPvmEntryVisible(unlocked))
+					{
+						contentList.add(statusRow("    " + requirement.label,
+							unlocked, null));
+					}
+				}
+			}
+		}
+		return true;
+	}
+
+	private boolean hasVisibleSlayerContent(SlayerMasterEntry master)
+	{
+		for (SlayerTaskEntry task : master.tasks)
+		{
+			if (hasVisibleSlayerCards(task.requirements))
+			{
+				return true;
+			}
+		}
+		return snapshot.includeSlayerSuperiors
+			&& hasVisibleSlayerCards(master.superiors);
+	}
+
+	private boolean hasVisibleSlayerCards(List<QuestCatalog.Requirement> requirements)
+	{
+		for (QuestCatalog.Requirement requirement : requirements)
+		{
+			if (hasVisibleSlayerCards(requirement.displayCards))
+			{
+				return true;
+			}
+		}
+		return false;
+	}
+
+	private boolean hasVisibleSlayerCards(Iterable<String> cards)
+	{
+		for (String card : cards)
+		{
+			if (isSlayerCardVisible(card))
+			{
+				return true;
+			}
+		}
+		return false;
+	}
+
+	private boolean isSlayerCardVisible(String card)
+	{
+		boolean unlocked = snapshot.owned.contains(card.toLowerCase(Locale.ROOT));
+		return unlocked ? showUnlockedSlayer.isSelected() : showLockedSlayer.isSelected();
+	}
+
+	private boolean hasVisiblePvmRequirement(QuestCatalog.QuestEntry entry)
+	{
+		for (QuestCatalog.Requirement requirement : entry.requirements)
+		{
+			if (isPvmEntryVisible(requirement.isSatisfied(snapshot.owned)))
+			{
+				return true;
+			}
+		}
+		return false;
+	}
+
+	private boolean isPvmEntryVisible(boolean unlocked)
+	{
+		return unlocked ? showUnlockedPvm.isSelected() : showLockedPvm.isSelected();
+	}
+
+	private JPanel clickableProgressRow(String label, int have, int total, Runnable action)
+	{
+		return clickableProgressRow(label, have, total, have >= total, action);
+	}
+
+	private JPanel clickableProgressRow(String label, int have, int total,
+		boolean complete, Runnable action)
+	{
+		JPanel row = progressRow(label, have, total, complete);
+		row.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		row.addMouseListener(new MouseAdapter()
+		{
+			@Override
+			public void mouseClicked(MouseEvent event)
+			{
+				action.run();
+			}
+		});
+		return row;
+	}
+
+	private static String nestedKey(String parent, String child)
+	{
+		return parent + "\0" + child;
+	}
+
+	private static int satisfiedRequirements(List<QuestCatalog.Requirement> requirements,
+		Set<String> owned)
+	{
+		int count = 0;
+		for (QuestCatalog.Requirement requirement : requirements)
+		{
+			if (requirement.isSatisfied(owned))
+			{
+				count++;
+			}
+		}
+		return count;
 	}
 
 	private void refreshRumours()
@@ -480,6 +924,77 @@ class BronzemanTcgPanel extends PluginPanel
 		}
 		recentUnlocksList.revalidate();
 		recentUnlocksList.repaint();
+	}
+
+	private void configureQuestFilters()
+	{
+		hideCompletedQuests.setSelected(getSavedBoolean(QUEST_HIDE_COMPLETED_KEY, true));
+		hideIncompletableQuests.setSelected(
+			getSavedBoolean(QUEST_HIDE_INCOMPLETABLE_KEY, false));
+
+		questFilters.setOpaque(false);
+		questFilters.setAlignmentX(Component.LEFT_ALIGNMENT);
+		questFilters.setMaximumSize(new Dimension(Integer.MAX_VALUE, 52));
+
+		for (JCheckBox checkBox : new JCheckBox[]{
+			hideCompletedQuests, hideIncompletableQuests})
+		{
+			checkBox.setOpaque(false);
+			checkBox.setForeground(Color.WHITE);
+			checkBox.setFocusable(false);
+			questFilters.add(checkBox);
+			checkBox.addActionListener(event -> updateQuestFilters());
+		}
+	}
+
+	private void updateQuestFilters()
+	{
+		configManager.setConfiguration(BronzemanTcgConfig.GROUP,
+			QUEST_HIDE_COMPLETED_KEY, hideCompletedQuests.isSelected());
+		configManager.setConfiguration(BronzemanTcgConfig.GROUP,
+			QUEST_HIDE_INCOMPLETABLE_KEY, hideIncompletableQuests.isSelected());
+		dirtyTabs.add(PanelTab.QUESTS);
+		if (selectedTab == PanelTab.QUESTS)
+		{
+			renderSelectedTab();
+		}
+	}
+
+	private void configureVisibilityFilters(JPanel filterPanel,
+		JCheckBox showLocked, JCheckBox showUnlocked,
+		String lockedKey, String unlockedKey, PanelTab tab)
+	{
+		showLocked.setSelected(getSavedBoolean(lockedKey, true));
+		showUnlocked.setSelected(getSavedBoolean(unlockedKey, true));
+
+		filterPanel.setOpaque(false);
+		filterPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
+		filterPanel.setMaximumSize(new Dimension(Integer.MAX_VALUE, 30));
+
+		for (JCheckBox checkBox : new JCheckBox[]{showLocked, showUnlocked})
+		{
+			checkBox.setOpaque(false);
+			checkBox.setForeground(Color.WHITE);
+			checkBox.setFocusable(false);
+			filterPanel.add(checkBox);
+			checkBox.addActionListener(event ->
+				updateVisibilityFilters(showLocked, showUnlocked,
+					lockedKey, unlockedKey, tab));
+		}
+	}
+
+	private void updateVisibilityFilters(JCheckBox showLocked, JCheckBox showUnlocked,
+		String lockedKey, String unlockedKey, PanelTab tab)
+	{
+		configManager.setConfiguration(BronzemanTcgConfig.GROUP,
+			lockedKey, showLocked.isSelected());
+		configManager.setConfiguration(BronzemanTcgConfig.GROUP,
+			unlockedKey, showUnlocked.isSelected());
+		dirtyTabs.add(tab);
+		if (selectedTab == tab)
+		{
+			renderSelectedTab();
+		}
 	}
 
 	private void configureImportantUnlockFilters()
@@ -664,25 +1179,165 @@ class BronzemanTcgPanel extends PluginPanel
 		return category + "\0" + subcategory;
 	}
 
-	/**
-	 * Adapts slayer / rumour master rules into the same QuestEntry shape the checklist
-	 * renders. Slayer masters show their assignable-monster cards (plus superiors when the
-	 * config stacks them on, mirroring the restriction); rumour masters show every creature.
-	 */
-	private List<QuestCatalog.QuestEntry> buildMasterEntries(String category,
-		boolean countSuperiors)
+	private List<QuestCatalog.QuestEntry> buildAreaEntries()
 	{
-		boolean slayer = "slayer".equals(category);
+		List<QuestCatalog.QuestEntry> entries = new ArrayList<>();
+		for (MonsterAreaCatalog.Area area : monsterAreaCatalog.getAreas())
+		{
+			List<QuestCatalog.Requirement> requirements = new ArrayList<>();
+			for (String card : area.monsterCards)
+			{
+				requirements.add(new QuestCatalog.Requirement(card,
+					Collections.singletonList(card)));
+			}
+			entries.add(new QuestCatalog.QuestEntry(area.name, false, requirements, ""));
+		}
+		return sortedEntries(entries);
+	}
+
+	private List<SlayerMasterEntry> buildSlayerEntries()
+	{
+		Map<String, Map<String, SlayerTaskBuilder>> tasksByMaster =
+			new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
+		Map<String, Map<String, QuestCatalog.Requirement>> superiorsByMaster =
+			new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
+		for (Map.Entry<String, ResourceNodeCatalog.Rule> entry :
+			distinctRules("slayer").entrySet())
+		{
+			String masterName = slayerPanelMasterName(entry.getKey());
+			boolean locationSpecific =
+				"konar quo maten".equalsIgnoreCase(entry.getKey());
+			Map<String, SlayerTaskBuilder> tasks = tasksByMaster.computeIfAbsent(
+				masterName, ignored -> new TreeMap<>(String.CASE_INSENSITIVE_ORDER));
+			Map<String, QuestCatalog.Requirement> superiors =
+				superiorsByMaster.computeIfAbsent(masterName,
+					ignored -> new TreeMap<>(String.CASE_INSENSITIVE_ORDER));
+			for (ResourceNodeCatalog.CardGroup group : entry.getValue().groups)
+			{
+				QuestCatalog.Requirement requirement =
+					new QuestCatalog.Requirement(group.label, group.displayCards);
+				if ("monsters".equals(group.role))
+				{
+					String taskLabel = group.label;
+					String requirementLabel = group.label;
+					if (locationSpecific)
+					{
+						int separator = group.label.indexOf(" \u2014 ");
+						if (separator >= 0)
+						{
+							taskLabel = group.label.substring(0, separator);
+							requirementLabel = group.label.substring(separator + 3);
+						}
+					}
+					final String finalTaskLabel = taskLabel;
+					SlayerTaskBuilder task = tasks.computeIfAbsent(finalTaskLabel,
+						ignored -> new SlayerTaskBuilder(
+							finalTaskLabel, locationSpecific));
+					task.add(new QuestCatalog.Requirement(
+						requirementLabel, group.displayCards));
+				}
+				else if ("superiors".equals(group.role))
+				{
+					mergeSlayerRequirement(superiors, requirement);
+				}
+			}
+		}
+
+		List<SlayerMasterEntry> entries = new ArrayList<>();
+		for (Map.Entry<String, Map<String, SlayerTaskBuilder>> entry :
+			tasksByMaster.entrySet())
+		{
+			Map<String, QuestCatalog.Requirement> superiors =
+				superiorsByMaster.getOrDefault(entry.getKey(), Collections.emptyMap());
+			List<SlayerTaskEntry> tasks = new ArrayList<>();
+			for (SlayerTaskBuilder task : entry.getValue().values())
+			{
+				tasks.add(task.build());
+			}
+			entries.add(new SlayerMasterEntry(entry.getKey(),
+				tasks,
+				new ArrayList<>(superiors.values())));
+		}
+		return Collections.unmodifiableList(entries);
+	}
+
+	private static String slayerPanelMasterName(String masterName)
+	{
+		switch (masterName.toLowerCase(Locale.ROOT))
+		{
+			case "achtryn":
+			case "mazchna":
+				return "Mazchna/Achtryn";
+			case "aya":
+			case "turael":
+				return "Turael/Aya";
+			case "nieve":
+			case "steve":
+				return "Nieve/Steve";
+			case "duradel":
+			case "kuradal":
+				return "Duradel/Kuradal";
+			default:
+				return display(masterName);
+		}
+	}
+
+	private static void mergeSlayerRequirement(
+		Map<String, QuestCatalog.Requirement> requirements,
+		QuestCatalog.Requirement incoming)
+	{
+		QuestCatalog.Requirement existing = requirements.get(incoming.label);
+		if (existing == null)
+		{
+			requirements.put(incoming.label, incoming);
+			return;
+		}
+
+		Map<String, String> cards = new LinkedHashMap<>();
+		for (String card : existing.displayCards)
+		{
+			cards.put(card.toLowerCase(Locale.ROOT), card);
+		}
+		for (String card : incoming.displayCards)
+		{
+			cards.putIfAbsent(card.toLowerCase(Locale.ROOT), card);
+		}
+		requirements.put(existing.label,
+			new QuestCatalog.Requirement(existing.label, new ArrayList<>(cards.values())));
+	}
+
+	private static List<QuestCatalog.Requirement> buildGlobalSuperiors(
+		List<SlayerMasterEntry> masters)
+	{
+		Map<String, String> cards = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
+		for (SlayerMasterEntry master : masters)
+		{
+			for (QuestCatalog.Requirement superior : master.superiors)
+			{
+				for (String card : superior.displayCards)
+				{
+					cards.putIfAbsent(card, card);
+				}
+			}
+		}
+		List<QuestCatalog.Requirement> result = new ArrayList<>();
+		for (String card : cards.values())
+		{
+			result.add(new QuestCatalog.Requirement(card, Collections.singletonList(card)));
+		}
+		return Collections.unmodifiableList(result);
+	}
+
+	/** Adapts rumour-master rules into the checklist shape shared with quests. */
+	private List<QuestCatalog.QuestEntry> buildMasterEntries(String category)
+	{
 		List<QuestCatalog.QuestEntry> entries = new ArrayList<>();
 		for (Map.Entry<String, ResourceNodeCatalog.Rule> e : distinctRules(category).entrySet())
 		{
 			List<QuestCatalog.Requirement> reqs = new ArrayList<>();
 			for (ResourceNodeCatalog.CardGroup group : e.getValue().groups)
 			{
-				boolean include = slayer
-					? "monsters".equals(group.role) || (countSuperiors && "superiors".equals(group.role))
-					: true;
-				if (include && !group.displayCards.isEmpty())
+				if (!group.displayCards.isEmpty())
 				{
 					reqs.add(new QuestCatalog.Requirement(group.label, group.displayCards));
 				}
@@ -1010,6 +1665,11 @@ class BronzemanTcgPanel extends PluginPanel
 
 	private static JPanel progressRow(String label, int done, int total)
 	{
+		return progressRow(label, done, total, done >= total);
+	}
+
+	private static JPanel progressRow(String label, int done, int total, boolean complete)
+	{
 		JPanel row = row(new BorderLayout(0, 2));
 		row.setBackground(ColorScheme.DARK_GRAY_COLOR);
 		row.setBorder(BorderFactory.createEmptyBorder(3, 0, 3, 0));
@@ -1021,7 +1681,7 @@ class BronzemanTcgPanel extends PluginPanel
 		JProgressBar bar = new JProgressBar(0, Math.max(total, 1));
 		bar.setValue(done);
 		bar.setPreferredSize(new Dimension(PluginPanel.PANEL_WIDTH - 20, 6));
-		bar.setForeground(done >= total ? UNLOCKED : ColorScheme.BRAND_ORANGE);
+		bar.setForeground(complete ? UNLOCKED : ColorScheme.BRAND_ORANGE);
 		bar.setBackground(ColorScheme.DARKER_GRAY_COLOR);
 		row.add(bar, BorderLayout.SOUTH);
 		return row;
@@ -1110,24 +1770,104 @@ class BronzemanTcgPanel extends PluginPanel
 	{
 		private final List<QuestCatalog.QuestEntry> quests;
 		private final List<QuestCatalog.QuestEntry> contents;
-		private final List<QuestCatalog.QuestEntry> slayer;
-		private final List<QuestCatalog.QuestEntry> slayerWithSuperiors;
+		private final List<QuestCatalog.QuestEntry> areas;
+		private final List<SlayerMasterEntry> slayer;
+		private final List<QuestCatalog.Requirement> allSuperiors;
 		private final List<QuestCatalog.QuestEntry> rumours;
 		private final List<SearchEntry> searchEntries;
 
 		private PreparedData(List<QuestCatalog.QuestEntry> quests,
 			List<QuestCatalog.QuestEntry> contents,
-			List<QuestCatalog.QuestEntry> slayer,
-			List<QuestCatalog.QuestEntry> slayerWithSuperiors,
+			List<QuestCatalog.QuestEntry> areas,
+			List<SlayerMasterEntry> slayer,
+			List<QuestCatalog.Requirement> allSuperiors,
 			List<QuestCatalog.QuestEntry> rumours,
 			List<SearchEntry> searchEntries)
 		{
 			this.quests = quests;
 			this.contents = contents;
+			this.areas = areas;
 			this.slayer = slayer;
-			this.slayerWithSuperiors = slayerWithSuperiors;
+			this.allSuperiors = allSuperiors;
 			this.rumours = rumours;
 			this.searchEntries = Collections.unmodifiableList(searchEntries);
+		}
+	}
+
+	private static class SlayerMasterEntry
+	{
+		private final String name;
+		private final List<SlayerTaskEntry> tasks;
+		private final List<QuestCatalog.Requirement> superiors;
+
+		private SlayerMasterEntry(String name, List<SlayerTaskEntry> tasks,
+			List<QuestCatalog.Requirement> superiors)
+		{
+			this.name = name;
+			this.tasks = Collections.unmodifiableList(new ArrayList<>(tasks));
+			this.superiors = Collections.unmodifiableList(new ArrayList<>(superiors));
+		}
+
+		private int satisfiedCount(Set<String> owned, boolean includeSuperiors)
+		{
+			int count = 0;
+			for (SlayerTaskEntry task : tasks)
+			{
+				count += satisfiedRequirements(task.requirements, owned);
+			}
+			return count + (includeSuperiors
+				? satisfiedRequirements(superiors, owned) : 0);
+		}
+
+		private int requirementCount(boolean includeSuperiors)
+		{
+			int count = 0;
+			for (SlayerTaskEntry task : tasks)
+			{
+				count += task.requirements.size();
+			}
+			return count + (includeSuperiors ? superiors.size() : 0);
+		}
+	}
+
+	private static class SlayerTaskEntry
+	{
+		private final String label;
+		private final boolean locationSpecific;
+		private final List<QuestCatalog.Requirement> requirements;
+
+		private SlayerTaskEntry(String label, boolean locationSpecific,
+			List<QuestCatalog.Requirement> requirements)
+		{
+			this.label = label;
+			this.locationSpecific = locationSpecific;
+			this.requirements = Collections.unmodifiableList(
+				new ArrayList<>(requirements));
+		}
+	}
+
+	private static class SlayerTaskBuilder
+	{
+		private final String label;
+		private final boolean locationSpecific;
+		private final Map<String, QuestCatalog.Requirement> requirements =
+			new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
+
+		private SlayerTaskBuilder(String label, boolean locationSpecific)
+		{
+			this.label = label;
+			this.locationSpecific = locationSpecific;
+		}
+
+		private void add(QuestCatalog.Requirement requirement)
+		{
+			mergeSlayerRequirement(requirements, requirement);
+		}
+
+		private SlayerTaskEntry build()
+		{
+			return new SlayerTaskEntry(label, locationSpecific,
+				new ArrayList<>(requirements.values()));
 		}
 	}
 
@@ -1138,18 +1878,21 @@ class BronzemanTcgPanel extends PluginPanel
 		private final Set<String> owned;
 		private final List<RecentUnlocksTracker.Unlock> recentUnlocks;
 		private final boolean includeSlayerSuperiors;
+		private final Set<String> completedQuests;
 		private final int unlockedMonsters;
 		private final int unlockedItems;
 
 		private PanelSnapshot(PreparedData data, Set<String> owned,
 			List<RecentUnlocksTracker.Unlock> recentUnlocks,
-			boolean includeSlayerSuperiors, int unlockedMonsters,
+			boolean includeSlayerSuperiors, Set<String> completedQuests,
+			int unlockedMonsters,
 			int unlockedItems)
 		{
 			this.data = data;
 			this.owned = owned;
 			this.recentUnlocks = recentUnlocks;
 			this.includeSlayerSuperiors = includeSlayerSuperiors;
+			this.completedQuests = completedQuests;
 			this.unlockedMonsters = unlockedMonsters;
 			this.unlockedItems = unlockedItems;
 		}

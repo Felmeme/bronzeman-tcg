@@ -11162,9 +11162,7 @@
 			],
 			"requiredCardGroups": [
 				[
-					"Fur",
-					"Grey wolf fur",
-					"Bear fur"
+					"Grey wolf fur"
 				]
 			],
 			"groupRoles": [
@@ -15345,6 +15343,9 @@
 					"Guardian Drake"
 				],
 				[
+					"Insatiable Bloodveld"
+				],
+				[
 					"King kurask"
 				],
 				[
@@ -15444,6 +15445,7 @@
 				"superiors",
 				"superiors",
 				"superiors",
+				"superiors",
 				"superiors"
 			],
 			"groupLabels": [
@@ -15502,6 +15504,7 @@
 				"Elder aquanite",
 				"Greater abyssal demon",
 				"Guardian Drake",
+				"Insatiable Bloodveld",
 				"King kurask",
 				"Marble gargoyle",
 				"Monstrous Basilisk (The Fremennik Exiles)",

@@ -271,6 +271,32 @@ docs/sailing_nodes_report.md):
    the exact complaint. quest_cards.json is already alphabetical, so the panel
    had been destroying an order that already existed. Do NOT reintroduce a
    progress-based sort; he declined a sort dropdown too.
+   **Panel usability pass (2026-07-25, needs owner in-game verification):**
+   Slayer now renders Master -> task/location -> individual variant cards.
+   Replacement masters share four panel sections without changing their
+   separate enforcement rules: Mazchna/Achtryn, Turael/Aya, Nieve/Steve and
+   Duradel/Kuradal. Duplicate task and superior groups are merged by label.
+   Konar's 108 enforced task/location requirements are condensed in the panel
+   into 38 task rows; expanding one shows its locations and the valid cards at
+   each location. The excluded Boss assignment and unrestricted
+   Vampyres/Vampyrium pair remain absent by design. Slayer and PvM each have
+   persistent Show locked / Show unlocked filters (both default ON). They
+   filter the lowest-level card/location/requirement rows while retaining any
+   parent that still has visible children; progress totals never change.
+   `Include superiors` dynamically moves the same role-tagged superior data:
+   OFF shows one global Superior Creatures checklist; ON removes that global
+   row, adds a Superior Creatures group under every applicable master, and
+   includes those groups in that master's readiness total. No duplicate
+   superior data was introduced. Quests have persistent panel-only filters:
+   Hide Completed defaults ON and uses real `Quest.getState(client)` captured
+   on the client thread; Hide Incompletable defaults OFF and uses card
+   readiness. PvM is now nested under Instanced Content/Raids and Monsters by
+   Area. `monster_areas.json` starts with 403 cards normalized from OSRS TCG's
+   area categories (11 canonical areas; multi-area cards appear in each).
+   The other 822 cards remain owner-review work in
+   `docs/monster_areas_report.md`. `scripts/build_monster_areas.js` writes only
+   a docs review seed and never overwrites the live owner-curated resource.
+   All large lists remain lazy: collapsed groups create no child Swing rows.
 6. **Sailing**: implemented (2026-07-12), needs manual test pass. Boat
    upgrades: mode dropdown Off/Parts/Parts+Materials/Everything; material
    = plank card, log card only in Everything (owner's chain ruling); keels

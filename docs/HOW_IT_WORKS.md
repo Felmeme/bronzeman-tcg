@@ -68,9 +68,11 @@ Why snapshots instead of reading OSRS TCG live, like we do for ownership? Three 
 The fix is to make each catalog a **map from in-game entity name to a list of card variants**:
 
 ```json
-"soldier": ["Soldier (Al Kharid)", "Soldier (Yanille)", "Soldier (Burthorpe)", ...11 total...],
-"monkey":  ["Monkey (monster)"],
-"abyssal demon": ["Abyssal demon"]
+{
+  "soldier": ["Soldier (Al Kharid)", "Soldier (Yanille)", "Soldier (Burthorpe)"],
+  "monkey": ["Monkey (monster)"],
+  "abyssal demon": ["Abyssal demon"]
+}
 ```
 
 At lookup time, the plugin takes the plain name the game gives it, finds the entry, and unlocks the entity if you own **any one** of the variant cards. Owning a single "Soldier (Yanille)" card unlocks *all* soldiers — which is the only sane behaviour given the game can't tell you which soldier you're clicking. Fifteen NPCs have multiple variants; Soldier has eleven. `TrackedMonsterCatalog` holds 1,198 NPCs mapping from 1,225 cards. `TrackedItemCatalog` is a thin subclass over the same `CardNameCatalog` base with a 1:1 item map (5,149 items, no bracket problems). One landmine the catalog design has to respect: item and monster cards can *collide* by name (`Ferret` the item-resource card versus `Ferret (Hunter)` the monster card), which is exactly why the monster and item maps are kept as two separate catalogs rather than one merged pile.
@@ -103,7 +105,10 @@ Everything converges on a single subscriber:
 
 ```java
 @Subscribe
-public void onMenuOptionClicked(MenuOptionClicked event) { ... }
+public void onMenuOptionClicked(MenuOptionClicked event)
+{
+    // Route the interaction and consume it when its card requirements are not met.
+}
 ```
 
 RuneLite fires this for *every* menu option the player activates — left-click default action or right-click selection alike. The `event` carries the option text ("Attack"), the target ("Giant spider"), a `MenuAction` enum saying what *kind* of interaction it is, and IDs for the entities involved. The method's whole job is to route the event to the right handler and, if the handler decides to block, call `event.consume()`.
@@ -136,7 +141,7 @@ Blocking is invisible until you click. Two overlay features make locked things *
 
 **Hiding entirely** (`RenderCallbackManager` + `addEntity`). Fully hiding a locked NPC needs a lower-level hook than painting over it. The plugin registers itself as a `RenderCallback` and implements `addEntity(Renderable, boolean)`, which RuneLite calls as it assembles the scene each frame. *Returning `false` keeps that entity out of the scene entirely* — and, importantly, removes its clickbox too, so a hidden monster can't even be clicked. The comment records a real experiment: this hook only fires for NPCs, **not** ground items (verified in-game on the predecessor hook), which is why "hide locked ground items" was tried and removed — the code simply can't do it, so loot relies on the Take-blocking from Section 4 instead. Note the two visual modes are mutually exclusive by design: the outline overlay bails out if hide-mode is on, since there'd be nothing to outline.
 
-**The threading rule.** This is the one piece of concurrency discipline in the plugin, and it's non-negotiable in RuneLite. There are two threads that matter: the **client thread** (where the game runs and where game state is safe to read) and the **Swing EDT** (Event Dispatch Thread, where all UI panels must be built and updated). Reading live game state from the EDT, or touching Swing from the client thread, causes intermittent corruption that's miserable to debug. The sidebar panel obeys the split cleanly: every few game ticks, `onGameTick` runs on the client thread and *gathers* the nearby tracked-NPC snapshot (names and distances) into a plain list; then it hands that inert list to the panel via `SwingUtilities.invokeLater(...)`, which *renders* it on the EDT. Game state is read only on the client thread; the panel only ever sees a frozen snapshot. The panel's own comment states the contract: the catalogs are immutable after load and the reader is synchronized, so reading *those* from the EDT is fine — the one forbidden thing is touching live game state, and that's exactly what the client-thread gather step keeps out.
+**The threading rule.** This is the one piece of concurrency discipline in the plugin, and it's non-negotiable in RuneLite. There are two threads that matter: the **client thread** (where the game runs and where game state is safe to read) and the **Swing EDT** (Event Dispatch Thread, where all UI panels must be built and updated). Reading live game state from the EDT, or touching Swing from the client thread, causes intermittent corruption that's miserable to debug. The sidebar panel obeys the split cleanly: every few game ticks, `onGameTick` reads real quest completion through RuneLite's `Quest` API on the client thread and hands only a frozen set of completed quest names to the panel. Static card catalogs and collection snapshots are prepared on RuneLite's shared executor; Swing rows are created only on the EDT. Large nested Slayer and PvM lists are lazy, so collapsed groups do not create hundreds of hidden components.
 
 ---
 

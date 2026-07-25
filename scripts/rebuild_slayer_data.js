@@ -21,7 +21,8 @@ const EXISTING_VARIANTS = "docs/slayer_variants.json";
 const KONAR_HTML = "scripts/wiki_cache/Konar_quo_Maten.cache";
 const REPORT = "docs/slayer_rebuild_report.md";
 
-const readJson = path => JSON.parse(fs.readFileSync(path, "utf8"));
+const readJson = path => JSON.parse(
+	fs.readFileSync(path, "utf8").replace(/,(\s*[}\]])/g, "$1"));
 const unique = values => [...new Set(values)];
 const norm = value => value
 	.replace(/\s*\([^)]*\)\s*$/u, "")
@@ -403,7 +404,11 @@ for (const [canonicalMaster, aliases] of Object.entries(policy.masterAliases))
 		{
 			throw new Error(`Slayer master '${alias}' has no Monster card`);
 		}
-		const superiorGroups = superiorByMaster.get(alias) || superiorByMaster.get(canonicalMaster) || [];
+		// Replacement masters share their canonical master's assignment table and must
+		// share its superior table too. Reading alias data first previously left Steve
+		// one Bloodveld superior behind Nieve.
+		const superiorGroups = superiorByMaster.get(canonicalMaster)
+			|| superiorByMaster.get(alias) || [];
 		generatedNodes.push({
 			category: "slayer",
 			kind: "npc",
