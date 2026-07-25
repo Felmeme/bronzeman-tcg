@@ -125,6 +125,17 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	private static final String TCG_API_REPLY = "owned-names";
 	private static final String TCG_API_CHANGED = "owned-names-changed";
 	private static final String TCG_API_NAMES_KEY = "ownedNames";
+	// This plugin's own PluginMessage API, for sibling plugins that run a group mode on top of the
+	// same collection: they post their extra unlocked card names and the restriction engine honours
+	// them. Without it those modes have no effect here, because every lock check reads this
+	// player's collection alone. Constants are copied, not imported - Hub plugins cannot see each
+	// other's classes. Post SHARED_UNLOCKS with SHARED_SOURCE_KEY (your plugin's name) and
+	// SHARED_NAMES_KEY (your complete set, which replaces whatever you sent before); an empty list
+	// withdraws it.
+	private static final String SHARED_API_NAMESPACE = "bronzemantcg";
+	private static final String SHARED_UNLOCKS = "shared-unlocks";
+	private static final String SHARED_SOURCE_KEY = "source";
+	private static final String SHARED_NAMES_KEY = "cardNames";
 	// ~60s between query retries while unanswered - osrs-tcg may start after us, or be
 	// a hub version without the API (in which case we retry forever, cheaply, on the
 	// config fallback).
@@ -191,6 +202,9 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 
 	@Inject
 	private TcgCollectionReader collectionReader;
+
+	@Inject
+	private SharedUnlockStore sharedUnlockStore;
 
 	@Inject
 	private RecentUnlocksTracker recentUnlocksTracker;
@@ -271,6 +285,7 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	private Set<String> effectiveOwned = Collections.emptySet();
 	private Set<String> effectiveOwnedBase;
 	private Set<String> effectiveOwnedExempt;
+	private Set<String> effectiveOwnedShared;
 	private boolean effectiveOwnedCoins;
 	private FoodSettingsMode effectiveOwnedFoodMode;
 	// Locked-mark lookup cache, keyed by item id; dropped whenever the owned set changes.
@@ -920,6 +935,16 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 			clientThread.invoke(() -> sweepDuelistCity(on));
 		}
 
+		// Shared unlocks switched off: forget what was offered rather than hold it aside. Switching
+		// back on then waits for a source to offer again, so the setting can never quietly restore
+		// a set the player has not seen arrive.
+		if (BronzemanTcgConfig.GROUP.equals(event.getGroup())
+			&& "acceptSharedUnlocks".equals(event.getKey())
+			&& !Boolean.parseBoolean(event.getNewValue()))
+		{
+			sharedUnlockStore.clear();
+		}
+
 		if (BronzemanTcgConfig.GROUP.equals(event.getGroup()))
 		{
 			refreshVisiblePanel();
@@ -1084,7 +1109,43 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 		// drops any API-provided data too, so re-arm the query for the new profile.
 		collectionReader.invalidate();
 		recentUnlocksTracker.reload();
+		// Shared unlocks describe a group this account was in, not this one; the sources will offer
+		// them again if they still apply.
+		sharedUnlockStore.clear();
 		apiQueryTicks = 0;
+	}
+
+	/**
+	 * A sibling plugin offering extra unlocked cards, e.g. a party mode where a card owned by any
+	 * member counts for the group. Honoured only while the player has switched shared unlocks on,
+	 * so nothing another plugin does can loosen the restrictions behind their back.
+	 */
+	private void onSharedUnlocks(PluginMessage event)
+	{
+		if (!SHARED_UNLOCKS.equals(event.getName()))
+		{
+			return;
+		}
+		Map<String, Object> data = event.getData();
+		Object source = data == null ? null : data.get(SHARED_SOURCE_KEY);
+		Object names = data == null ? null : data.get(SHARED_NAMES_KEY);
+		if (!(source instanceof String) || !(names instanceof List))
+		{
+			return;
+		}
+		if (!config.acceptSharedUnlocks())
+		{
+			// Remembering it while switched off would make flipping the setting on apply a set the
+			// player never saw arrive, so the offer is simply dropped.
+			return;
+		}
+		if (sharedUnlockStore.put((String) source, (List<?>) names))
+		{
+			// Menus and marks read through effectiveOwnedCards() on demand, so only the panel needs
+			// telling. Deliberately not fed to the unlocks tracker: these are not cards this player
+			// pulled, and listing them as recent unlocks would misreport their own progress.
+			refreshVisiblePanel();
+		}
 	}
 
 	/**
@@ -1094,6 +1155,11 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	@Subscribe
 	public void onPluginMessage(PluginMessage event)
 	{
+		if (SHARED_API_NAMESPACE.equals(event.getNamespace()))
+		{
+			onSharedUnlocks(event);
+			return;
+		}
 		if (!TCG_API_NAMESPACE.equals(event.getNamespace())
 			|| (!TCG_API_REPLY.equals(event.getName()) && !TCG_API_CHANGED.equals(event.getName())))
 		{
@@ -2483,20 +2549,27 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	{
 		Set<String> owned = collectionReader.getOwnedCardNamesLowerCase();
 		Set<String> exempt = exemptSet();
+		// Extra unlocks offered by a sibling plugin (a party mode, say). Folded in here with the
+		// exempt list so every lock check in the plugin honours them in one place, and cached by
+		// identity like the rest - the store hands back the same instance until it changes.
+		Set<String> shared = config.acceptSharedUnlocks()
+			? sharedUnlockStore.getSharedCardNamesLowerCase() : Collections.emptySet();
 		boolean coins = config.coinMode() == LockState.UNLOCKED;
 		// Food Settings works exactly like the exempt list: an allowed class's names
 		// merge into the effective-owned set, so every lock check in the plugin
 		// (usage, pickup, shops, GE, marking, recipes) honours it in one place.
 		FoodSettingsMode foodMode = config.foodSettingsMode();
-		if (exempt.isEmpty() && !coins && foodMode == FoodSettingsMode.LOCKED)
+		if (exempt.isEmpty() && shared.isEmpty() && !coins && foodMode == FoodSettingsMode.LOCKED)
 		{
 			return owned;
 		}
 		if (owned != effectiveOwnedBase || exempt != effectiveOwnedExempt
+			|| shared != effectiveOwnedShared
 			|| coins != effectiveOwnedCoins || foodMode != effectiveOwnedFoodMode)
 		{
 			Set<String> combined = new HashSet<>(owned);
 			combined.addAll(exempt);
+			combined.addAll(shared);
 			if (coins)
 			{
 				combined.add("coins");
@@ -2512,6 +2585,7 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 			effectiveOwned = combined;
 			effectiveOwnedBase = owned;
 			effectiveOwnedExempt = exempt;
+			effectiveOwnedShared = shared;
 			effectiveOwnedCoins = coins;
 			effectiveOwnedFoodMode = foodMode;
 		}
