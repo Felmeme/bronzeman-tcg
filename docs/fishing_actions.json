@@ -57,7 +57,7 @@
       "spot": "SALMON",
       "options": ["Lure"],
       "toolGroups": [["Fly fishing rod", "Pearl fly fishing rod"], ["Feather", "Stripy feather"]],
-      "catches": ["Raw trout", "Raw salmon", "Raw rainbow fish"]
+      "catches": ["Raw trout", "Raw salmon"]
     },
     {
       "spot": "SALMON",

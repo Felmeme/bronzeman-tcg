@@ -9,3 +9,4 @@ docs/api_merge_checklist.md
 /AGENTS.md
 /scripts/FishingSpotCacheDump.java
 /scripts/rebuild_fishing_data.js
+/scripts/build_monster_areas.js

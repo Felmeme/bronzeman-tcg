@@ -600,9 +600,9 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 		}
 		for (String name : activeConflictingPlugins())
 		{
-			queueChat("[Bronzeman TCG] - Plugin Conflict! Please note, '" + name + "' is also enabled. "
-				+ "Items without cards may be locked. Double check your settings on both plugins or "
-				+ "consider running just one! Disable this message in Bronzeman TCG Settings.");
+			queueChat("[Bronzeman TCG] - TCG Locked Plugin Detected! Please note, '" + name + "' is also enabled. "
+				+ "Double check your settings on both plugins to make sure everything works!"
+				+ "Disable this message in Bronzeman TCG Settings.");
 		}
 	}
 

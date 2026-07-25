@@ -322,7 +322,7 @@
 				],
 				[
 					"Dusty key"
-				],
+				]
 			],
 			"groupLabels": [
 				"Spade",
@@ -835,8 +835,39 @@
 		{
 			"name": "Death to the Dorgeshuun",
 			"miniquest": false,
-			"cardGroups": [],
-			"groupLabels": [],
+			"cardGroups": [
+				[
+					"Ham boots"
+				],
+				[
+					"Ham cloak"
+				],
+				[
+					"Ham gloves"
+				],
+				[
+					"Ham hood"
+				],
+				[
+					"Ham logo"
+				],
+				[
+					"Ham robe"
+				],
+				[
+					"Ham shirt"
+				]
+
+			],
+			"groupLabels": [
+					"Ham boots",
+					"Ham cloak",
+					"Ham gloves",
+					"Ham hood",
+					"Ham logo",
+					"Ham robe",
+					"Ham shirt"
+				],
 			"monsterCards": [
 				"Sigmund",
 				"H.A.M. Guard"
@@ -871,11 +902,15 @@
 				],
 				[
 					"Bones"
+				],
+				[
+					"Coins"
 				]
 			],
 			"groupLabels": [
 				"Bucket of water",
-				"Bones"
+				"Bones",
+				"Coins"
 			],
 			"monsterCards": [
 				"Delrith"
@@ -1748,11 +1783,15 @@
 				],
 				[
 					"Coins"
+				],
+				[
+					"Raw sardine"
 				]
 			],
 			"groupLabels": [
 				"Bucket of milk",
-				"Coins"
+				"Coins",
+				"Raw Sardine"
 			],
 			"monsterCards": [],
 			"notes": ""
@@ -1949,7 +1988,9 @@
 			"miniquest": false,
 			"cardGroups": [],
 			"groupLabels": [],
-			"monsterCards": [],
+			"monsterCards": [
+				"Clivet"
+			],
 			"notes": ""
 		},
 		{
@@ -2387,16 +2428,6 @@
 				"Mosschin",
 				"Redeyes",
 				"Strongbones"
-			],
-			"notes": ""
-		},
-		{
-			"name": "Learning the Ropes",
-			"miniquest": false,
-			"cardGroups": [],
-			"groupLabels": [],
-			"monsterCards": [
-				"Giant rat"
 			],
 			"notes": ""
 		},
@@ -2899,6 +2930,9 @@
 			"cardGroups": [
 				[
 					"Pot"
+				],
+				[
+					"Pot of Flour"
 				]
 			],
 			"groupLabels": [
@@ -3852,10 +3886,10 @@
 			"cardGroups": [
 				[
 					"Silver bar"
-				],
+				]
 			],
 			"groupLabels": [
-				"Silver bar",
+				"Silver bar"
 			],
 			"monsterCards": [
 				"Agrith Naar"
@@ -5183,7 +5217,7 @@
 				],
 				[
 					"Feather"
-				],
+				]
 			],
 			"groupLabels": [
 				"Desert shirt",
@@ -5191,7 +5225,7 @@
 				"Desert boots",
 				"Hammer",
 				"Bronze bar",
-				"Feather",
+				"Feather"
 			],
 			"monsterCards": [
 				"Mercenary Captain"
@@ -5311,12 +5345,10 @@
 			"miniquest": false,
 			"cardGroups": [
 				[
-					"Hammer",
-					"Imcando hammer"
+					"Hammer"
 				],
 				[
-					"Saw",
-					"Amy's saw"
+					"Saw"
 				]
 			],
 			"groupLabels": [
@@ -5526,10 +5558,14 @@
 			"cardGroups": [
 				[
 					"Chaos rune"
+				],
+				[
+					"Bowl"
 				]
 			],
 			"groupLabels": [
-				"Chaos rune"
+				"Chaos rune",
+				"Bowl"
 			],
 			"monsterCards": [
 				"Outlaw",
