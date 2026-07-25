@@ -964,7 +964,10 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 		if (BronzemanTcgConfig.GROUP.equals(event.getGroup())
 			&& "acceptSharedUnlocks".equals(event.getKey()))
 		{
-			if (Boolean.parseBoolean(event.getNewValue()))
+			// Read the setting rather than parse the event: returning an item to its default clears
+			// the stored value, and a null parses as false. This one defaults to on, so that would
+			// read a reset as "switched off" and wipe the store instead of re-asking.
+			if (config.acceptSharedUnlocks())
 			{
 				sharedQueryPending = true;
 			}

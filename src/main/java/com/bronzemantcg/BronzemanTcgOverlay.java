@@ -3,7 +3,7 @@ package com.bronzemantcg;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
-import java.util.HashSet;
+import java.util.Collections;
 import java.util.Set;
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -67,14 +67,18 @@ class BronzemanTcgOverlay extends Overlay
 		}
 		// Shared cards count here too, or an NPC the group has unlocked would stay outlined as
 		// locked while being perfectly attackable - the outline has to say the same thing the
-		// enforcement paths do.
-		Set<String> owned = withSharedUnlocks(collectionReader.getOwnedCardNamesLowerCase());
+		// enforcement paths do. Held as two sets and checked separately rather than merged: this
+		// runs every frame, and combining them would allocate one per frame for as long as anything
+		// is shared.
+		Set<String> owned = collectionReader.getOwnedCardNamesLowerCase();
+		Set<String> shared = config.acceptSharedUnlocks()
+			? sharedUnlockStore.getSharedCardNamesLowerCase() : Collections.emptySet();
 		Color color = config.lockedOutlineColor();
 		int width = config.lockedOutlineWidth();
 		int feather = config.lockedOutlineFeather();
 		for (NPC npc : worldView.npcs())
 		{
-			if (npc == null || !isLocked(npc, owned))
+			if (npc == null || !isLocked(npc, owned, shared))
 			{
 				continue;
 			}
@@ -83,27 +87,7 @@ class BronzemanTcgOverlay extends Overlay
 		return null;
 	}
 
-	/**
-	 * @return the owned set plus any shared cards, or the owned set untouched when nothing is
-	 * shared - the common case, kept allocation-free because this runs once per frame.
-	 */
-	private Set<String> withSharedUnlocks(Set<String> owned)
-	{
-		if (!config.acceptSharedUnlocks())
-		{
-			return owned;
-		}
-		Set<String> shared = sharedUnlockStore.getSharedCardNamesLowerCase();
-		if (shared.isEmpty())
-		{
-			return owned;
-		}
-		Set<String> combined = new HashSet<>(owned);
-		combined.addAll(shared);
-		return combined;
-	}
-
-	private boolean isLocked(NPC npc, Set<String> owned)
+	private boolean isLocked(NPC npc, Set<String> owned, Set<String> shared)
 	{
 		NPCComposition composition = npc.getTransformedComposition();
 		String name = composition != null ? composition.getName() : npc.getName();
@@ -118,7 +102,7 @@ class BronzemanTcgOverlay extends Overlay
 		}
 		for (String card : variants)
 		{
-			if (owned.contains(card))
+			if (owned.contains(card) || shared.contains(card))
 			{
 				return false;
 			}
