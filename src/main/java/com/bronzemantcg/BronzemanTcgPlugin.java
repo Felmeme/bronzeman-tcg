@@ -276,8 +276,12 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	private int welcomeDelayTicks = -1;
 	private int reminderTicks = -1;
 	private int requiredPluginTicks = -1;
-	/** Set when the shared-unlocks picture is stale; the query goes out on the next tick. */
-	private boolean sharedQueryPending;
+	/**
+	 * Set when the shared-unlocks picture is stale; the query goes out on the next tick. Volatile
+	 * because the settings panel raises ConfigChanged on the EDT while the tick that acts on it runs
+	 * on the client thread.
+	 */
+	private volatile boolean sharedQueryPending;
 
 	private int apiQueryTicks = -1;
 	private volatile BronzemanTcgPanel panel;

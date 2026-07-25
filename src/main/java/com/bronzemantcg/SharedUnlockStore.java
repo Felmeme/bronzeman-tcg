@@ -23,12 +23,16 @@ import javax.inject.Singleton;
  * <p>The union is rebuilt only when something changes and handed out as the same instance until it
  * does, because the effective-owned cache in the plugin compares by identity and the menu-hide path
  * asks for it many times per frame.</p>
+ *
+ * <p>Reads are lock-free for that reason: the union is replaced wholesale rather than mutated, so a
+ * reader either sees the old set or the new one, never a half-built one. Writes arrive from
+ * PluginMessage handlers and are rare, so they take the lock; the render and menu paths must not.</p>
  */
 @Singleton
 public class SharedUnlockStore
 {
 	private final Map<String, Set<String>> bySource = new HashMap<>();
-	private Set<String> union = Collections.emptySet();
+	private volatile Set<String> union = Collections.emptySet();
 
 	/**
 	 * Replaces everything {@code source} previously contributed.
@@ -74,8 +78,8 @@ public class SharedUnlockStore
 		return true;
 	}
 
-	/** Drops a source's contribution, e.g. when it stops sharing. @return true if anything changed */
-	public synchronized boolean remove(String source)
+	/** Drops a source's contribution when it withdraws by sending an empty set. */
+	private boolean remove(String source)
 	{
 		String key = key(source);
 		if (key.isEmpty() || bySource.remove(key) == null)
@@ -100,17 +104,12 @@ public class SharedUnlockStore
 
 	/**
 	 * @return the union of every source's card names, lower-cased. The same instance is returned
-	 * until the contents change, so callers may cache against it by identity.
+	 * until the contents change, so callers may cache against it by identity. Called from the
+	 * render and menu paths, so it takes no lock.
 	 */
-	public synchronized Set<String> getSharedCardNamesLowerCase()
+	public Set<String> getSharedCardNamesLowerCase()
 	{
 		return union;
-	}
-
-	/** @return how many plugins are currently contributing, for the side panel. */
-	public synchronized int sourceCount()
-	{
-		return bySource.size();
 	}
 
 	private void rebuild()
