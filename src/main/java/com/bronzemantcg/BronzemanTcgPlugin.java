@@ -643,7 +643,7 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 		{
 			queueChat("[Bronzeman TCG] - TCG Locked Plugin Detected! Please note, '" + name + "' is also enabled. "
 				+ "Double check your settings on both plugins to make sure everything works!"
-				+ "Disable this message in Bronzeman TCG Settings.");
+				+ " Disable this message in Bronzeman TCG Settings.");
 		}
 	}
 
