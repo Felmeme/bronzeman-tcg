@@ -3,6 +3,7 @@ package com.bronzemantcg;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
+import java.util.Collections;
 import java.util.Set;
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -29,17 +30,19 @@ class BronzemanTcgOverlay extends Overlay
 	private final BronzemanTcgConfig config;
 	private final TrackedMonsterCatalog monsterCatalog;
 	private final TcgCollectionReader collectionReader;
+	private final SharedUnlockStore sharedUnlockStore;
 	private final ModelOutlineRenderer modelOutlineRenderer;
 
 	@Inject
 	BronzemanTcgOverlay(Client client, BronzemanTcgConfig config,
 		TrackedMonsterCatalog monsterCatalog, TcgCollectionReader collectionReader,
-		ModelOutlineRenderer modelOutlineRenderer)
+		SharedUnlockStore sharedUnlockStore, ModelOutlineRenderer modelOutlineRenderer)
 	{
 		this.client = client;
 		this.config = config;
 		this.monsterCatalog = monsterCatalog;
 		this.collectionReader = collectionReader;
+		this.sharedUnlockStore = sharedUnlockStore;
 		this.modelOutlineRenderer = modelOutlineRenderer;
 		setPosition(OverlayPosition.DYNAMIC);
 		setLayer(OverlayLayer.ABOVE_SCENE);
@@ -62,13 +65,20 @@ class BronzemanTcgOverlay extends Overlay
 		{
 			return null;
 		}
+		// Shared cards count here too, or an NPC the group has unlocked would stay outlined as
+		// locked while being perfectly attackable - the outline has to say the same thing the
+		// enforcement paths do. Held as two sets and checked separately rather than merged: this
+		// runs every frame, and combining them would allocate one per frame for as long as anything
+		// is shared.
 		Set<String> owned = collectionReader.getOwnedCardNamesLowerCase();
+		Set<String> shared = config.acceptSharedUnlocks()
+			? sharedUnlockStore.getSharedCardNamesLowerCase() : Collections.emptySet();
 		Color color = config.lockedOutlineColor();
 		int width = config.lockedOutlineWidth();
 		int feather = config.lockedOutlineFeather();
 		for (NPC npc : worldView.npcs())
 		{
-			if (npc == null || !isLocked(npc, owned))
+			if (npc == null || !isLocked(npc, owned, shared))
 			{
 				continue;
 			}
@@ -77,7 +87,7 @@ class BronzemanTcgOverlay extends Overlay
 		return null;
 	}
 
-	private boolean isLocked(NPC npc, Set<String> owned)
+	private boolean isLocked(NPC npc, Set<String> owned, Set<String> shared)
 	{
 		NPCComposition composition = npc.getTransformedComposition();
 		String name = composition != null ? composition.getName() : npc.getName();
@@ -92,7 +102,7 @@ class BronzemanTcgOverlay extends Overlay
 		}
 		for (String card : variants)
 		{
-			if (owned.contains(card))
+			if (owned.contains(card) || shared.contains(card))
 			{
 				return false;
 			}

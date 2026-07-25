@@ -286,6 +286,22 @@ public interface BronzemanTcgConfig extends Config
 	}
 
 	@ConfigItem(
+		keyName = "acceptSharedUnlocks",
+		name = "Shared Unlocks",
+		description = "Let another plugin unlock cards for you, for group play."
+			+ "<br>A party plugin can treat a card owned by any member as owned by everyone;"
+			+ " with this off those cards stay locked here and the group mode has no effect."
+			+ "<br>Only plugins you have installed and set up can offer them, and your own"
+			+ " collection is never changed.",
+		section = generalSettings,
+		position = 10
+	)
+	default boolean acceptSharedUnlocks()
+	{
+		return true;
+	}
+
+	@ConfigItem(
 		keyName = "exemptListMigrated",
 		name = "",
 		description = "",
