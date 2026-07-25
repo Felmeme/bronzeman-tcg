@@ -10907,4296 +10907,6 @@
 			"notes": "Wooden hull tier; keyed on install name (guessed) and workbench part products (verified) so one path always intercepts."
 		},
 		{
-			"category": "slayer",
-			"kind": "npc",
-			"name": "Achtryn",
-			"options": [
-				"talk-to",
-				"assignment",
-				"trade",
-				"rewards"
-			],
-			"requiredCardGroups": [
-				[
-					"Achtryn"
-				],
-				[
-					"Banshee",
-					"Twisted Banshee"
-				],
-				[
-					"Bat",
-					"Giant bat",
-					"Albino bat"
-				],
-				[
-					"Black bear",
-					"Grizzly bear",
-					"Grizzly bear cub",
-					"Callisto",
-					"Artio"
-				],
-				[
-					"Catablepon"
-				],
-				[
-					"Cave bug"
-				],
-				[
-					"Cave crawler"
-				],
-				[
-					"Cave slime"
-				],
-				[
-					"Cockatrice",
-					"Moonlight cockatrice"
-				],
-				[
-					"Crab"
-				],
-				[
-					"Crawling Hand"
-				],
-				[
-					"Feral Vampyre",
-					"Vampyre Juvinate",
-					"Vyrewatch",
-					"Vyrewatch Sentinel"
-				],
-				[
-					"Flesh Crawler"
-				],
-				[
-					"Ghost",
-					"Tortured soul"
-				],
-				[
-					"Ghoul"
-				],
-				[
-					"Grizzly bear",
-					"Black bear",
-					"Grizzly bear cub",
-					"Callisto",
-					"Artio"
-				],
-				[
-					"Guard dog",
-					"Wild dog",
-					"Jackal"
-				],
-				[
-					"Hill Giant",
-					"Obor"
-				],
-				[
-					"Hobgoblin"
-				],
-				[
-					"Ice warrior"
-				],
-				[
-					"Jackal",
-					"Guard dog",
-					"Wild dog"
-				],
-				[
-					"Kalphite Guardian",
-					"Kalphite Soldier",
-					"Kalphite Worker",
-					"Kalphite Queen"
-				],
-				[
-					"Kalphite Soldier",
-					"Kalphite Guardian",
-					"Kalphite Worker",
-					"Kalphite Queen"
-				],
-				[
-					"Kalphite Worker",
-					"Kalphite Guardian",
-					"Kalphite Soldier",
-					"Kalphite Queen"
-				],
-				[
-					"Killerwatt"
-				],
-				[
-					"Lizard",
-					"Desert lizard",
-					"Grimy lizard",
-					"Small lizard",
-					"Sulphur lizard"
-				],
-				[
-					"Mogre"
-				],
-				[
-					"Pyrefiend"
-				],
-				[
-					"Rockslug"
-				],
-				[
-					"Scorpion",
-					"King scorpion",
-					"Poison scorpion",
-					"Pit scorpion",
-					"Scorpia",
-					"Lobstrosity"
-				],
-				[
-					"Shade",
-					"Loar shade",
-					"Phrin shade",
-					"Riyl shade",
-					"Asyn shade",
-					"Fiyr shade",
-					"Urium shade"
-				],
-				[
-					"Skeleton",
-					"Vet'ion",
-					"Calvar'ion"
-				],
-				[
-					"Vampyre Juvinate",
-					"Feral Vampyre",
-					"Vyrewatch",
-					"Vyrewatch Sentinel"
-				],
-				[
-					"Wall beast"
-				],
-				[
-					"Wild dog",
-					"Guard dog",
-					"Jackal"
-				],
-				[
-					"Wolf",
-					"Big wolf",
-					"Dire wolf",
-					"Jungle wolf",
-					"Desert wolf",
-					"Ice wolf"
-				],
-				[
-					"Zombie",
-					"Vorkath"
-				],
-				[
-					"Chasm Crawler"
-				],
-				[
-					"Cockathrice"
-				],
-				[
-					"Crushing hand"
-				],
-				[
-					"Flaming pyrelord"
-				],
-				[
-					"Giant rockslug"
-				],
-				[
-					"Screaming banshee"
-				]
-			],
-			"groupRoles": [
-				"master",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors"
-			],
-			"requireAll": true,
-			"notes": "Achtryn replaces Mazchna after While Guthix Sleeps (2024); identical assignment table per the wiki, so the monster/superior groups are cloned from Mazchna with only the master card swapped."
-		},
-		{
-			"category": "slayer",
-			"kind": "npc",
-			"name": "Aya",
-			"options": [
-				"talk-to",
-				"assignment",
-				"trade",
-				"rewards"
-			],
-			"requiredCardGroups": [
-				[
-					"Aya"
-				],
-				[
-					"Banshee",
-					"Twisted Banshee"
-				],
-				[
-					"Bat",
-					"Giant bat",
-					"Albino bat"
-				],
-				[
-					"Bird",
-					"Chicken",
-					"Rooster",
-					"Seagull",
-					"Terrorbird",
-					"Vulture",
-					"Undead chicken",
-					"Chompy bird",
-					"Mounted terrorbird gnome"
-				],
-				[
-					"Black bear",
-					"Grizzly bear",
-					"Grizzly bear cub",
-					"Callisto",
-					"Artio"
-				],
-				[
-					"Cave bug"
-				],
-				[
-					"Cave crawler"
-				],
-				[
-					"Cave slime"
-				],
-				[
-					"Cow",
-					"Cow calf",
-					"Undead cow"
-				],
-				[
-					"Crawling Hand"
-				],
-				[
-					"Dwarf"
-				],
-				[
-					"Ghost",
-					"Tortured soul"
-				],
-				[
-					"Goblin",
-					"Sergeant Strongstack",
-					"Sergeant Grimspike",
-					"Sergeant Steelwill",
-					"Cave goblin"
-				],
-				[
-					"Grizzly bear",
-					"Black bear",
-					"Grizzly bear cub",
-					"Callisto",
-					"Artio"
-				],
-				[
-					"Guard dog",
-					"Wild dog",
-					"Jackal"
-				],
-				[
-					"Icefiend"
-				],
-				[
-					"Jackal",
-					"Guard dog",
-					"Wild dog"
-				],
-				[
-					"Kalphite Guardian",
-					"Kalphite Soldier",
-					"Kalphite Worker",
-					"Kalphite Queen"
-				],
-				[
-					"Kalphite Soldier",
-					"Kalphite Guardian",
-					"Kalphite Worker",
-					"Kalphite Queen"
-				],
-				[
-					"Kalphite Worker",
-					"Kalphite Guardian",
-					"Kalphite Soldier",
-					"Kalphite Queen"
-				],
-				[
-					"Lizard",
-					"Desert lizard",
-					"Grimy lizard",
-					"Small lizard",
-					"Sulphur lizard"
-				],
-				[
-					"Minotaur"
-				],
-				[
-					"Monkey (monster)",
-					"Demonic gorilla"
-				],
-				[
-					"Rat",
-					"Giant rat",
-					"Dungeon rat",
-					"Crypt rat",
-					"Scurrius"
-				],
-				[
-					"Scorpion",
-					"King scorpion",
-					"Poison scorpion",
-					"Pit scorpion",
-					"Scorpia",
-					"Lobstrosity"
-				],
-				[
-					"Skeleton",
-					"Vet'ion",
-					"Calvar'ion"
-				],
-				[
-					"Spider",
-					"Giant spider",
-					"Shadow spider",
-					"Jungle spider",
-					"Deadly red spider",
-					"Poison spider",
-					"Blessed spider",
-					"Kalrag",
-					"Crypt spider",
-					"Temple spider",
-					"Sarachnis",
-					"Spindel",
-					"Venenatis",
-					"Araxyte",
-					"Araxxor"
-				],
-				[
-					"Wild dog",
-					"Guard dog",
-					"Jackal"
-				],
-				[
-					"Wolf",
-					"Big wolf",
-					"Dire wolf",
-					"Jungle wolf",
-					"Desert wolf",
-					"Ice wolf"
-				],
-				[
-					"Zombie",
-					"Vorkath"
-				],
-				[
-					"Chasm Crawler"
-				],
-				[
-					"Crushing hand"
-				],
-				[
-					"Screaming banshee"
-				]
-			],
-			"groupRoles": [
-				"master",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"superiors",
-				"superiors",
-				"superiors"
-			],
-			"requireAll": true,
-			"notes": "master card + 29 assignable-monster cards; toggles include/exclude roles"
-		},
-		{
-			"category": "slayer",
-			"kind": "npc",
-			"name": "Chaeldar",
-			"options": [
-				"talk-to",
-				"assignment",
-				"trade",
-				"rewards"
-			],
-			"requiredCardGroups": [
-				[
-					"Chaeldar"
-				],
-				[
-					"Aberrant spectre",
-					"Deviant spectre"
-				],
-				[
-					"Abyssal demon"
-				],
-				[
-					"Ancient Wyvern",
-					"Long-tailed Wyvern",
-					"Spitting Wyvern",
-					"Taloned Wyvern"
-				],
-				[
-					"Ancient Zygomite",
-					"Zygomite"
-				],
-				[
-					"Aviansie",
-					"Kree'arra",
-					"Wingman Skree",
-					"Flockleader Geerin",
-					"Flight Kilisa"
-				],
-				[
-					"Basilisk",
-					"Basilisk Knight"
-				],
-				[
-					"Black demon",
-					"Demonic gorilla",
-					"Skotizo",
-					"Porazdir",
-					"Balfrug Kreeyath"
-				],
-				[
-					"Bloodveld",
-					"Mutated Bloodveld"
-				],
-				[
-					"Blue dragon",
-					"Brutal blue dragon",
-					"Vorkath"
-				],
-				[
-					"Brine rat"
-				],
-				[
-					"Cave horror"
-				],
-				[
-					"Cave kraken",
-					"Kraken"
-				],
-				[
-					"Crab"
-				],
-				[
-					"Dagannoth",
-					"Dagannoth Prime",
-					"Dagannoth Rex",
-					"Dagannoth Supreme",
-					"Dagannoth fledgeling"
-				],
-				[
-					"Dust devil"
-				],
-				[
-					"Earthen Nagua"
-				],
-				[
-					"Elder custodian stalker"
-				],
-				[
-					"Elf Archer",
-					"Elf Warrior",
-					"Iorwerth Warrior",
-					"Iorwerth Archer",
-					"Mourner"
-				],
-				[
-					"Elf Warrior",
-					"Elf Archer",
-					"Iorwerth Warrior",
-					"Iorwerth Archer",
-					"Mourner"
-				],
-				[
-					"Feral Vampyre",
-					"Vampyre Juvinate",
-					"Vyrewatch",
-					"Vyrewatch Sentinel"
-				],
-				[
-					"Fever spider"
-				],
-				[
-					"Fire giant"
-				],
-				[
-					"Frost Nagua"
-				],
-				[
-					"Gargoyle",
-					"Dawn",
-					"Dusk"
-				],
-				[
-					"Greater demon",
-					"K'ril Tsutsaroth",
-					"Tstanon Karlak",
-					"Skotizo",
-					"Tormented Demon"
-				],
-				[
-					"Gryphon"
-				],
-				[
-					"Hellhound",
-					"Cerberus"
-				],
-				[
-					"Jelly",
-					"Warped Jelly",
-					"Chilled Jelly"
-				],
-				[
-					"Jungle horror"
-				],
-				[
-					"Juvenile custodian stalker"
-				],
-				[
-					"Kalphite Guardian",
-					"Kalphite Soldier",
-					"Kalphite Worker",
-					"Kalphite Queen"
-				],
-				[
-					"Kalphite Soldier",
-					"Kalphite Guardian",
-					"Kalphite Worker",
-					"Kalphite Queen"
-				],
-				[
-					"Kalphite Worker",
-					"Kalphite Guardian",
-					"Kalphite Soldier",
-					"Kalphite Queen"
-				],
-				[
-					"Kurask"
-				],
-				[
-					"Lesser demon",
-					"Zakl'n Gritch"
-				],
-				[
-					"Lizardman",
-					"Lizardman brute",
-					"Lizardman shaman"
-				],
-				[
-					"Long-tailed Wyvern",
-					"Ancient Wyvern",
-					"Spitting Wyvern",
-					"Taloned Wyvern"
-				],
-				[
-					"Mature custodian stalker"
-				],
-				[
-					"Mountain troll"
-				],
-				[
-					"Nechryael",
-					"Greater Nechryael"
-				],
-				[
-					"Shadow warrior"
-				],
-				[
-					"Skeletal Wyvern"
-				],
-				[
-					"Spiritual mage"
-				],
-				[
-					"Spiritual ranger"
-				],
-				[
-					"Spiritual warrior"
-				],
-				[
-					"Spitting Wyvern",
-					"Ancient Wyvern",
-					"Long-tailed Wyvern",
-					"Taloned Wyvern"
-				],
-				[
-					"Sulphur Nagua"
-				],
-				[
-					"Taloned Wyvern",
-					"Ancient Wyvern",
-					"Long-tailed Wyvern",
-					"Spitting Wyvern"
-				],
-				[
-					"Turoth"
-				],
-				[
-					"TzHaar-Hur",
-					"TzHaar-Ket",
-					"TzHaar-Mej",
-					"TzHaar-Xil",
-					"TzTok-Jad",
-					"TzKal-Zuk"
-				],
-				[
-					"TzHaar-Ket",
-					"TzHaar-Hur",
-					"TzHaar-Mej",
-					"TzHaar-Xil",
-					"TzTok-Jad",
-					"TzKal-Zuk"
-				],
-				[
-					"TzHaar-Mej",
-					"TzHaar-Hur",
-					"TzHaar-Ket",
-					"TzHaar-Xil",
-					"TzTok-Jad",
-					"TzKal-Zuk"
-				],
-				[
-					"TzHaar-Xil",
-					"TzHaar-Hur",
-					"TzHaar-Ket",
-					"TzHaar-Mej",
-					"TzTok-Jad",
-					"TzKal-Zuk"
-				],
-				[
-					"Vampyre Juvinate",
-					"Feral Vampyre",
-					"Vyrewatch",
-					"Vyrewatch Sentinel"
-				],
-				[
-					"Warped Terrorbird"
-				],
-				[
-					"Warped Tortoise"
-				],
-				[
-					"Wyrm"
-				],
-				[
-					"Zygomite",
-					"Ancient Zygomite"
-				],
-				[
-					"Abhorrent spectre"
-				],
-				[
-					"Ancient Custodian"
-				],
-				[
-					"Cave abomination"
-				],
-				[
-					"Choke devil"
-				],
-				[
-					"Dire gryphon"
-				],
-				[
-					"Greater abyssal demon"
-				],
-				[
-					"Insatiable Bloodveld"
-				],
-				[
-					"King kurask"
-				],
-				[
-					"Marble gargoyle"
-				],
-				[
-					"Monstrous Basilisk (The Fremennik Exiles)"
-				],
-				[
-					"Monstrous basilisk"
-				],
-				[
-					"Mutated Terrorbird"
-				],
-				[
-					"Mutated Tortoise"
-				],
-				[
-					"Nechryarch"
-				],
-				[
-					"Shadow Wyrm"
-				],
-				[
-					"Spiked Turoth"
-				],
-				[
-					"Vitreous Jelly"
-				]
-			],
-			"groupRoles": [
-				"master",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors"
-			],
-			"requireAll": true,
-			"notes": "master card + 58 assignable-monster cards; toggles include/exclude roles"
-		},
-		{
-			"category": "slayer",
-			"kind": "npc",
-			"name": "Duradel",
-			"options": [
-				"talk-to",
-				"assignment",
-				"trade",
-				"rewards"
-			],
-			"requiredCardGroups": [
-				[
-					"Duradel"
-				],
-				[
-					"Aberrant spectre",
-					"Deviant spectre"
-				],
-				[
-					"Abyssal demon"
-				],
-				[
-					"Ancient Wyvern",
-					"Long-tailed Wyvern",
-					"Spitting Wyvern",
-					"Taloned Wyvern"
-				],
-				[
-					"Ancient Zygomite",
-					"Zygomite"
-				],
-				[
-					"Ankou"
-				],
-				[
-					"Aquanite"
-				],
-				[
-					"Araxyte"
-				],
-				[
-					"Aviansie",
-					"Kree'arra",
-					"Wingman Skree",
-					"Flockleader Geerin",
-					"Flight Kilisa"
-				],
-				[
-					"Basilisk",
-					"Basilisk Knight"
-				],
-				[
-					"Black demon",
-					"Demonic gorilla",
-					"Skotizo",
-					"Porazdir",
-					"Balfrug Kreeyath"
-				],
-				[
-					"Black dragon",
-					"Brutal black dragon",
-					"King Black Dragon"
-				],
-				[
-					"Bloodveld",
-					"Mutated Bloodveld"
-				],
-				[
-					"Blue dragon",
-					"Brutal blue dragon",
-					"Vorkath"
-				],
-				[
-					"Bronze dragon"
-				],
-				[
-					"Cave horror"
-				],
-				[
-					"Cave kraken",
-					"Kraken"
-				],
-				[
-					"Dagannoth",
-					"Dagannoth Prime",
-					"Dagannoth Rex",
-					"Dagannoth Supreme",
-					"Dagannoth fledgeling"
-				],
-				[
-					"Dark beast"
-				],
-				[
-					"Drake"
-				],
-				[
-					"Dust devil"
-				],
-				[
-					"Elf Archer",
-					"Elf Warrior",
-					"Iorwerth Warrior",
-					"Iorwerth Archer",
-					"Mourner"
-				],
-				[
-					"Elf Warrior",
-					"Elf Archer",
-					"Iorwerth Warrior",
-					"Iorwerth Archer",
-					"Mourner"
-				],
-				[
-					"Feral Vampyre",
-					"Vampyre Juvinate",
-					"Vyrewatch",
-					"Vyrewatch Sentinel"
-				],
-				[
-					"Fire giant"
-				],
-				[
-					"Frost dragon"
-				],
-				[
-					"Gargoyle",
-					"Dawn",
-					"Dusk"
-				],
-				[
-					"Greater demon",
-					"K'ril Tsutsaroth",
-					"Tstanon Karlak",
-					"Skotizo",
-					"Tormented Demon"
-				],
-				[
-					"Gryphon"
-				],
-				[
-					"Hellhound",
-					"Cerberus"
-				],
-				[
-					"Iron dragon"
-				],
-				[
-					"Kalphite Guardian",
-					"Kalphite Soldier",
-					"Kalphite Worker",
-					"Kalphite Queen"
-				],
-				[
-					"Kalphite Soldier",
-					"Kalphite Guardian",
-					"Kalphite Worker",
-					"Kalphite Queen"
-				],
-				[
-					"Kalphite Worker",
-					"Kalphite Guardian",
-					"Kalphite Soldier",
-					"Kalphite Queen"
-				],
-				[
-					"Kurask"
-				],
-				[
-					"Lizardman",
-					"Lizardman brute",
-					"Lizardman shaman"
-				],
-				[
-					"Long-tailed Wyvern",
-					"Ancient Wyvern",
-					"Spitting Wyvern",
-					"Taloned Wyvern"
-				],
-				[
-					"Mountain troll"
-				],
-				[
-					"Nechryael",
-					"Greater Nechryael"
-				],
-				[
-					"Red dragon",
-					"Brutal red dragon"
-				],
-				[
-					"Skeletal Wyvern"
-				],
-				[
-					"Smoke devil",
-					"Thermonuclear smoke devil"
-				],
-				[
-					"Spiritual mage"
-				],
-				[
-					"Spiritual ranger"
-				],
-				[
-					"Spiritual warrior"
-				],
-				[
-					"Spitting Wyvern",
-					"Ancient Wyvern",
-					"Long-tailed Wyvern",
-					"Taloned Wyvern"
-				],
-				[
-					"Steel dragon"
-				],
-				[
-					"Suqah"
-				],
-				[
-					"Taloned Wyvern",
-					"Ancient Wyvern",
-					"Long-tailed Wyvern",
-					"Spitting Wyvern"
-				],
-				[
-					"TzHaar-Hur",
-					"TzHaar-Ket",
-					"TzHaar-Mej",
-					"TzHaar-Xil",
-					"TzTok-Jad",
-					"TzKal-Zuk"
-				],
-				[
-					"TzHaar-Ket",
-					"TzHaar-Hur",
-					"TzHaar-Mej",
-					"TzHaar-Xil",
-					"TzTok-Jad",
-					"TzKal-Zuk"
-				],
-				[
-					"TzHaar-Mej",
-					"TzHaar-Hur",
-					"TzHaar-Ket",
-					"TzHaar-Xil",
-					"TzTok-Jad",
-					"TzKal-Zuk"
-				],
-				[
-					"TzHaar-Xil",
-					"TzHaar-Hur",
-					"TzHaar-Ket",
-					"TzHaar-Mej",
-					"TzTok-Jad",
-					"TzKal-Zuk"
-				],
-				[
-					"Vampyre Juvinate",
-					"Feral Vampyre",
-					"Vyrewatch",
-					"Vyrewatch Sentinel"
-				],
-				[
-					"Warped Terrorbird"
-				],
-				[
-					"Warped Tortoise"
-				],
-				[
-					"Waterfiend"
-				],
-				[
-					"Wyrm"
-				],
-				[
-					"Zygomite",
-					"Ancient Zygomite"
-				],
-				[
-					"Abhorrent spectre"
-				],
-				[
-					"Cave abomination"
-				],
-				[
-					"Choke devil"
-				],
-				[
-					"Dire gryphon"
-				],
-				[
-					"Dreadborn Araxyte"
-				],
-				[
-					"Elder aquanite"
-				],
-				[
-					"Greater abyssal demon"
-				],
-				[
-					"Guardian Drake"
-				],
-				[
-					"Insatiable Bloodveld"
-				],
-				[
-					"King kurask"
-				],
-				[
-					"Marble gargoyle"
-				],
-				[
-					"Monstrous Basilisk (The Fremennik Exiles)"
-				],
-				[
-					"Monstrous basilisk"
-				],
-				[
-					"Mutated Terrorbird"
-				],
-				[
-					"Mutated Tortoise"
-				],
-				[
-					"Nechryarch"
-				],
-				[
-					"Night beast"
-				],
-				[
-					"Nuclear smoke devil"
-				],
-				[
-					"Shadow Wyrm"
-				]
-			],
-			"groupRoles": [
-				"master",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors"
-			],
-			"requireAll": true,
-			"notes": "master card + 58 assignable-monster cards; toggles include/exclude roles"
-		},
-		{
-			"category": "slayer",
-			"kind": "npc",
-			"name": "Konar quo Maten",
-			"options": [
-				"talk-to",
-				"assignment",
-				"trade",
-				"rewards"
-			],
-			"requiredCardGroups": [
-				[
-					"Konar quo Maten"
-				],
-				[
-					"Aberrant spectre",
-					"Deviant spectre"
-				],
-				[
-					"Abyssal demon"
-				],
-				[
-					"Ancient Wyvern",
-					"Long-tailed Wyvern",
-					"Spitting Wyvern",
-					"Taloned Wyvern"
-				],
-				[
-					"Ancient Zygomite",
-					"Zygomite"
-				],
-				[
-					"Ankou"
-				],
-				[
-					"Aviansie",
-					"Kree'arra",
-					"Wingman Skree",
-					"Flockleader Geerin",
-					"Flight Kilisa"
-				],
-				[
-					"Basilisk",
-					"Basilisk Knight"
-				],
-				[
-					"Black demon",
-					"Demonic gorilla",
-					"Skotizo",
-					"Porazdir",
-					"Balfrug Kreeyath"
-				],
-				[
-					"Black dragon",
-					"Brutal black dragon",
-					"King Black Dragon"
-				],
-				[
-					"Bloodveld",
-					"Mutated Bloodveld"
-				],
-				[
-					"Blue dragon",
-					"Brutal blue dragon",
-					"Vorkath"
-				],
-				[
-					"Brine rat"
-				],
-				[
-					"Bronze dragon"
-				],
-				[
-					"Cave kraken",
-					"Kraken"
-				],
-				[
-					"Dagannoth",
-					"Dagannoth Prime",
-					"Dagannoth Rex",
-					"Dagannoth Supreme",
-					"Dagannoth fledgeling"
-				],
-				[
-					"Dark beast"
-				],
-				[
-					"Drake"
-				],
-				[
-					"Dust devil"
-				],
-				[
-					"Earthen Nagua"
-				],
-				[
-					"Feral Vampyre",
-					"Vampyre Juvinate",
-					"Vyrewatch",
-					"Vyrewatch Sentinel"
-				],
-				[
-					"Fire giant"
-				],
-				[
-					"Frost Nagua"
-				],
-				[
-					"Gargoyle",
-					"Dawn",
-					"Dusk"
-				],
-				[
-					"Greater demon",
-					"K'ril Tsutsaroth",
-					"Tstanon Karlak",
-					"Skotizo",
-					"Tormented Demon"
-				],
-				[
-					"Hellhound",
-					"Cerberus"
-				],
-				[
-					"Hydra",
-					"Alchemical Hydra"
-				],
-				[
-					"Iron dragon"
-				],
-				[
-					"Jelly",
-					"Warped Jelly",
-					"Chilled Jelly"
-				],
-				[
-					"Kalphite Guardian",
-					"Kalphite Soldier",
-					"Kalphite Worker",
-					"Kalphite Queen"
-				],
-				[
-					"Kalphite Soldier",
-					"Kalphite Guardian",
-					"Kalphite Worker",
-					"Kalphite Queen"
-				],
-				[
-					"Kalphite Worker",
-					"Kalphite Guardian",
-					"Kalphite Soldier",
-					"Kalphite Queen"
-				],
-				[
-					"Kurask"
-				],
-				[
-					"Lizardman",
-					"Lizardman brute",
-					"Lizardman shaman"
-				],
-				[
-					"Long-tailed Wyvern",
-					"Ancient Wyvern",
-					"Spitting Wyvern",
-					"Taloned Wyvern"
-				],
-				[
-					"Mountain troll"
-				],
-				[
-					"Nechryael",
-					"Greater Nechryael"
-				],
-				[
-					"Red dragon",
-					"Brutal red dragon"
-				],
-				[
-					"Skeletal Wyvern"
-				],
-				[
-					"Smoke devil",
-					"Thermonuclear smoke devil"
-				],
-				[
-					"Spitting Wyvern",
-					"Ancient Wyvern",
-					"Long-tailed Wyvern",
-					"Taloned Wyvern"
-				],
-				[
-					"Steel dragon"
-				],
-				[
-					"Sulphur Nagua"
-				],
-				[
-					"Taloned Wyvern",
-					"Ancient Wyvern",
-					"Long-tailed Wyvern",
-					"Spitting Wyvern"
-				],
-				[
-					"Turoth"
-				],
-				[
-					"Vampyre Juvinate",
-					"Feral Vampyre",
-					"Vyrewatch",
-					"Vyrewatch Sentinel"
-				],
-				[
-					"Warped Terrorbird"
-				],
-				[
-					"Warped Tortoise"
-				],
-				[
-					"Waterfiend"
-				],
-				[
-					"Wyrm"
-				],
-				[
-					"Zygomite",
-					"Ancient Zygomite"
-				],
-				[
-					"Abhorrent spectre"
-				],
-				[
-					"Choke devil"
-				],
-				[
-					"Colossal Hydra"
-				],
-				[
-					"Greater abyssal demon"
-				],
-				[
-					"Guardian Drake"
-				],
-				[
-					"Insatiable Bloodveld"
-				],
-				[
-					"King kurask"
-				],
-				[
-					"Marble gargoyle"
-				],
-				[
-					"Monstrous Basilisk (The Fremennik Exiles)"
-				],
-				[
-					"Monstrous basilisk"
-				],
-				[
-					"Mutated Terrorbird"
-				],
-				[
-					"Mutated Tortoise"
-				],
-				[
-					"Nechryarch"
-				],
-				[
-					"Night beast"
-				],
-				[
-					"Nuclear smoke devil"
-				],
-				[
-					"Shadow Wyrm"
-				],
-				[
-					"Spiked Turoth"
-				],
-				[
-					"Vitreous Jelly"
-				]
-			],
-			"groupRoles": [
-				"master",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors"
-			],
-			"requireAll": true,
-			"notes": "master card + 50 assignable-monster cards; toggles include/exclude roles"
-		},
-		{
-			"category": "slayer",
-			"kind": "npc",
-			"name": "Krystilia",
-			"options": [
-				"talk-to",
-				"assignment",
-				"trade",
-				"rewards"
-			],
-			"requiredCardGroups": [
-				[
-					"Krystilia"
-				],
-				[
-					"Abyssal demon"
-				],
-				[
-					"Ankou"
-				],
-				[
-					"Aviansie",
-					"Kree'arra",
-					"Wingman Skree",
-					"Flockleader Geerin",
-					"Flight Kilisa"
-				],
-				[
-					"Bandit"
-				],
-				[
-					"Black Knight"
-				],
-				[
-					"Black bear",
-					"Grizzly bear",
-					"Grizzly bear cub",
-					"Callisto",
-					"Artio"
-				],
-				[
-					"Black demon",
-					"Demonic gorilla",
-					"Skotizo",
-					"Porazdir",
-					"Balfrug Kreeyath"
-				],
-				[
-					"Black dragon",
-					"Brutal black dragon",
-					"King Black Dragon"
-				],
-				[
-					"Bloodveld",
-					"Mutated Bloodveld"
-				],
-				[
-					"Callisto",
-					"Artio"
-				],
-				[
-					"Chaos Elemental"
-				],
-				[
-					"Chaos Fanatic"
-				],
-				[
-					"Chaos druid"
-				],
-				[
-					"Crazy archaeologist"
-				],
-				[
-					"Dark warrior"
-				],
-				[
-					"Dust devil"
-				],
-				[
-					"Earth warrior"
-				],
-				[
-					"Ent"
-				],
-				[
-					"Fire giant"
-				],
-				[
-					"Greater demon",
-					"K'ril Tsutsaroth",
-					"Tstanon Karlak",
-					"Skotizo",
-					"Tormented Demon"
-				],
-				[
-					"Green dragon"
-				],
-				[
-					"Grizzly bear",
-					"Black bear",
-					"Grizzly bear cub",
-					"Callisto",
-					"Artio"
-				],
-				[
-					"Hellhound",
-					"Cerberus"
-				],
-				[
-					"Hill Giant",
-					"Obor"
-				],
-				[
-					"Ice giant"
-				],
-				[
-					"Ice warrior"
-				],
-				[
-					"Jelly",
-					"Warped Jelly",
-					"Chilled Jelly"
-				],
-				[
-					"Lava dragon"
-				],
-				[
-					"Lesser demon",
-					"Zakl'n Gritch"
-				],
-				[
-					"Magic axe"
-				],
-				[
-					"Mammoth"
-				],
-				[
-					"Moss giant",
-					"Bryophyta"
-				],
-				[
-					"Nechryael",
-					"Greater Nechryael"
-				],
-				[
-					"Pirate"
-				],
-				[
-					"Rogue"
-				],
-				[
-					"Scorpia"
-				],
-				[
-					"Scorpion",
-					"King scorpion",
-					"Poison scorpion",
-					"Pit scorpion",
-					"Scorpia",
-					"Lobstrosity"
-				],
-				[
-					"Skeleton",
-					"Vet'ion",
-					"Calvar'ion"
-				],
-				[
-					"Spider",
-					"Giant spider",
-					"Shadow spider",
-					"Jungle spider",
-					"Deadly red spider",
-					"Poison spider",
-					"Blessed spider",
-					"Kalrag",
-					"Crypt spider",
-					"Temple spider",
-					"Sarachnis",
-					"Spindel",
-					"Venenatis",
-					"Araxyte",
-					"Araxxor"
-				],
-				[
-					"Spiritual mage"
-				],
-				[
-					"Spiritual ranger"
-				],
-				[
-					"Spiritual warrior"
-				],
-				[
-					"Venenatis",
-					"Spindel"
-				],
-				[
-					"Vet'ion",
-					"Calvar'ion"
-				],
-				[
-					"Zombie",
-					"Vorkath"
-				],
-				[
-					"Choke devil"
-				],
-				[
-					"Greater abyssal demon"
-				],
-				[
-					"Insatiable Bloodveld"
-				],
-				[
-					"Nechryarch"
-				],
-				[
-					"Vitreous Jelly"
-				]
-			],
-			"groupRoles": [
-				"master",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors"
-			],
-			"requireAll": true,
-			"notes": "master card + 45 assignable-monster cards; toggles include/exclude roles"
-		},
-		{
-			"category": "slayer",
-			"kind": "npc",
-			"name": "Kuradal",
-			"options": [
-				"talk-to",
-				"assignment",
-				"trade",
-				"rewards"
-			],
-			"requiredCardGroups": [
-				[
-					"Kuradal"
-				],
-				[
-					"Aberrant spectre",
-					"Deviant spectre"
-				],
-				[
-					"Abyssal demon"
-				],
-				[
-					"Ancient Wyvern",
-					"Long-tailed Wyvern",
-					"Spitting Wyvern",
-					"Taloned Wyvern"
-				],
-				[
-					"Ancient Zygomite",
-					"Zygomite"
-				],
-				[
-					"Ankou"
-				],
-				[
-					"Aquanite"
-				],
-				[
-					"Araxyte"
-				],
-				[
-					"Aviansie",
-					"Kree'arra",
-					"Wingman Skree",
-					"Flockleader Geerin",
-					"Flight Kilisa"
-				],
-				[
-					"Basilisk",
-					"Basilisk Knight"
-				],
-				[
-					"Black demon",
-					"Demonic gorilla",
-					"Skotizo",
-					"Porazdir",
-					"Balfrug Kreeyath"
-				],
-				[
-					"Black dragon",
-					"Brutal black dragon",
-					"King Black Dragon"
-				],
-				[
-					"Bloodveld",
-					"Mutated Bloodveld"
-				],
-				[
-					"Blue dragon",
-					"Brutal blue dragon",
-					"Vorkath"
-				],
-				[
-					"Bronze dragon"
-				],
-				[
-					"Cave horror"
-				],
-				[
-					"Cave kraken",
-					"Kraken"
-				],
-				[
-					"Dagannoth",
-					"Dagannoth Prime",
-					"Dagannoth Rex",
-					"Dagannoth Supreme",
-					"Dagannoth fledgeling"
-				],
-				[
-					"Dark beast"
-				],
-				[
-					"Drake"
-				],
-				[
-					"Dust devil"
-				],
-				[
-					"Elf Archer",
-					"Elf Warrior",
-					"Iorwerth Warrior",
-					"Iorwerth Archer",
-					"Mourner"
-				],
-				[
-					"Elf Warrior",
-					"Elf Archer",
-					"Iorwerth Warrior",
-					"Iorwerth Archer",
-					"Mourner"
-				],
-				[
-					"Feral Vampyre",
-					"Vampyre Juvinate",
-					"Vyrewatch",
-					"Vyrewatch Sentinel"
-				],
-				[
-					"Fire giant"
-				],
-				[
-					"Frost dragon"
-				],
-				[
-					"Gargoyle",
-					"Dawn",
-					"Dusk"
-				],
-				[
-					"Greater demon",
-					"K'ril Tsutsaroth",
-					"Tstanon Karlak",
-					"Skotizo",
-					"Tormented Demon"
-				],
-				[
-					"Gryphon"
-				],
-				[
-					"Hellhound",
-					"Cerberus"
-				],
-				[
-					"Iron dragon"
-				],
-				[
-					"Kalphite Guardian",
-					"Kalphite Soldier",
-					"Kalphite Worker",
-					"Kalphite Queen"
-				],
-				[
-					"Kalphite Soldier",
-					"Kalphite Guardian",
-					"Kalphite Worker",
-					"Kalphite Queen"
-				],
-				[
-					"Kalphite Worker",
-					"Kalphite Guardian",
-					"Kalphite Soldier",
-					"Kalphite Queen"
-				],
-				[
-					"Kurask"
-				],
-				[
-					"Lizardman",
-					"Lizardman brute",
-					"Lizardman shaman"
-				],
-				[
-					"Long-tailed Wyvern",
-					"Ancient Wyvern",
-					"Spitting Wyvern",
-					"Taloned Wyvern"
-				],
-				[
-					"Mountain troll"
-				],
-				[
-					"Nechryael",
-					"Greater Nechryael"
-				],
-				[
-					"Red dragon",
-					"Brutal red dragon"
-				],
-				[
-					"Skeletal Wyvern"
-				],
-				[
-					"Smoke devil",
-					"Thermonuclear smoke devil"
-				],
-				[
-					"Spiritual mage"
-				],
-				[
-					"Spiritual ranger"
-				],
-				[
-					"Spiritual warrior"
-				],
-				[
-					"Spitting Wyvern",
-					"Ancient Wyvern",
-					"Long-tailed Wyvern",
-					"Taloned Wyvern"
-				],
-				[
-					"Steel dragon"
-				],
-				[
-					"Suqah"
-				],
-				[
-					"Taloned Wyvern",
-					"Ancient Wyvern",
-					"Long-tailed Wyvern",
-					"Spitting Wyvern"
-				],
-				[
-					"TzHaar-Hur",
-					"TzHaar-Ket",
-					"TzHaar-Mej",
-					"TzHaar-Xil",
-					"TzTok-Jad",
-					"TzKal-Zuk"
-				],
-				[
-					"TzHaar-Ket",
-					"TzHaar-Hur",
-					"TzHaar-Mej",
-					"TzHaar-Xil",
-					"TzTok-Jad",
-					"TzKal-Zuk"
-				],
-				[
-					"TzHaar-Mej",
-					"TzHaar-Hur",
-					"TzHaar-Ket",
-					"TzHaar-Xil",
-					"TzTok-Jad",
-					"TzKal-Zuk"
-				],
-				[
-					"TzHaar-Xil",
-					"TzHaar-Hur",
-					"TzHaar-Ket",
-					"TzHaar-Mej",
-					"TzTok-Jad",
-					"TzKal-Zuk"
-				],
-				[
-					"Vampyre Juvinate",
-					"Feral Vampyre",
-					"Vyrewatch",
-					"Vyrewatch Sentinel"
-				],
-				[
-					"Warped Terrorbird"
-				],
-				[
-					"Warped Tortoise"
-				],
-				[
-					"Waterfiend"
-				],
-				[
-					"Wyrm"
-				],
-				[
-					"Zygomite",
-					"Ancient Zygomite"
-				],
-				[
-					"Abhorrent spectre"
-				],
-				[
-					"Cave abomination"
-				],
-				[
-					"Choke devil"
-				],
-				[
-					"Dire gryphon"
-				],
-				[
-					"Dreadborn Araxyte"
-				],
-				[
-					"Elder aquanite"
-				],
-				[
-					"Greater abyssal demon"
-				],
-				[
-					"Guardian Drake"
-				],
-				[
-					"Insatiable Bloodveld"
-				],
-				[
-					"King kurask"
-				],
-				[
-					"Marble gargoyle"
-				],
-				[
-					"Monstrous Basilisk (The Fremennik Exiles)"
-				],
-				[
-					"Monstrous basilisk"
-				],
-				[
-					"Mutated Terrorbird"
-				],
-				[
-					"Mutated Tortoise"
-				],
-				[
-					"Nechryarch"
-				],
-				[
-					"Night beast"
-				],
-				[
-					"Nuclear smoke devil"
-				],
-				[
-					"Shadow Wyrm"
-				]
-			],
-			"groupRoles": [
-				"master",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors"
-			],
-			"requireAll": true,
-			"notes": "Kuradal replaces Duradel after While Guthix Sleeps (2024); identical assignment table per the wiki, so the monster/superior groups are cloned from Duradel with only the master card swapped."
-		},
-		{
-			"category": "slayer",
-			"kind": "npc",
-			"name": "Mazchna",
-			"options": [
-				"talk-to",
-				"assignment",
-				"trade",
-				"rewards"
-			],
-			"requiredCardGroups": [
-				[
-					"Mazchna"
-				],
-				[
-					"Banshee",
-					"Twisted Banshee"
-				],
-				[
-					"Bat",
-					"Giant bat",
-					"Albino bat"
-				],
-				[
-					"Black bear",
-					"Grizzly bear",
-					"Grizzly bear cub",
-					"Callisto",
-					"Artio"
-				],
-				[
-					"Catablepon"
-				],
-				[
-					"Cave bug"
-				],
-				[
-					"Cave crawler"
-				],
-				[
-					"Cave slime"
-				],
-				[
-					"Cockatrice",
-					"Moonlight cockatrice"
-				],
-				[
-					"Crab"
-				],
-				[
-					"Crawling Hand"
-				],
-				[
-					"Feral Vampyre",
-					"Vampyre Juvinate",
-					"Vyrewatch",
-					"Vyrewatch Sentinel"
-				],
-				[
-					"Flesh Crawler"
-				],
-				[
-					"Ghost",
-					"Tortured soul"
-				],
-				[
-					"Ghoul"
-				],
-				[
-					"Grizzly bear",
-					"Black bear",
-					"Grizzly bear cub",
-					"Callisto",
-					"Artio"
-				],
-				[
-					"Guard dog",
-					"Wild dog",
-					"Jackal"
-				],
-				[
-					"Hill Giant",
-					"Obor"
-				],
-				[
-					"Hobgoblin"
-				],
-				[
-					"Ice warrior"
-				],
-				[
-					"Jackal",
-					"Guard dog",
-					"Wild dog"
-				],
-				[
-					"Kalphite Guardian",
-					"Kalphite Soldier",
-					"Kalphite Worker",
-					"Kalphite Queen"
-				],
-				[
-					"Kalphite Soldier",
-					"Kalphite Guardian",
-					"Kalphite Worker",
-					"Kalphite Queen"
-				],
-				[
-					"Kalphite Worker",
-					"Kalphite Guardian",
-					"Kalphite Soldier",
-					"Kalphite Queen"
-				],
-				[
-					"Killerwatt"
-				],
-				[
-					"Lizard",
-					"Desert lizard",
-					"Grimy lizard",
-					"Small lizard",
-					"Sulphur lizard"
-				],
-				[
-					"Mogre"
-				],
-				[
-					"Pyrefiend"
-				],
-				[
-					"Rockslug"
-				],
-				[
-					"Scorpion",
-					"King scorpion",
-					"Poison scorpion",
-					"Pit scorpion",
-					"Scorpia",
-					"Lobstrosity"
-				],
-				[
-					"Shade",
-					"Loar shade",
-					"Phrin shade",
-					"Riyl shade",
-					"Asyn shade",
-					"Fiyr shade",
-					"Urium shade"
-				],
-				[
-					"Skeleton",
-					"Vet'ion",
-					"Calvar'ion"
-				],
-				[
-					"Vampyre Juvinate",
-					"Feral Vampyre",
-					"Vyrewatch",
-					"Vyrewatch Sentinel"
-				],
-				[
-					"Wall beast"
-				],
-				[
-					"Wild dog",
-					"Guard dog",
-					"Jackal"
-				],
-				[
-					"Wolf",
-					"Big wolf",
-					"Dire wolf",
-					"Jungle wolf",
-					"Desert wolf",
-					"Ice wolf"
-				],
-				[
-					"Zombie",
-					"Vorkath"
-				],
-				[
-					"Chasm Crawler"
-				],
-				[
-					"Cockathrice"
-				],
-				[
-					"Crushing hand"
-				],
-				[
-					"Flaming pyrelord"
-				],
-				[
-					"Giant rockslug"
-				],
-				[
-					"Screaming banshee"
-				]
-			],
-			"groupRoles": [
-				"master",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors"
-			],
-			"requireAll": true,
-			"notes": "master card + 36 assignable-monster cards; toggles include/exclude roles"
-		},
-		{
-			"category": "slayer",
-			"kind": "npc",
-			"name": "Nieve",
-			"options": [
-				"talk-to",
-				"assignment",
-				"trade",
-				"rewards"
-			],
-			"requiredCardGroups": [
-				[
-					"Nieve"
-				],
-				[
-					"Aberrant spectre",
-					"Deviant spectre"
-				],
-				[
-					"Abyssal demon"
-				],
-				[
-					"Ancient Wyvern",
-					"Long-tailed Wyvern",
-					"Spitting Wyvern",
-					"Taloned Wyvern"
-				],
-				[
-					"Ancient Zygomite",
-					"Zygomite"
-				],
-				[
-					"Ankou"
-				],
-				[
-					"Aquanite"
-				],
-				[
-					"Araxyte"
-				],
-				[
-					"Aviansie",
-					"Kree'arra",
-					"Wingman Skree",
-					"Flockleader Geerin",
-					"Flight Kilisa"
-				],
-				[
-					"Basilisk",
-					"Basilisk Knight"
-				],
-				[
-					"Black demon",
-					"Demonic gorilla",
-					"Skotizo",
-					"Porazdir",
-					"Balfrug Kreeyath"
-				],
-				[
-					"Black dragon",
-					"Brutal black dragon",
-					"King Black Dragon"
-				],
-				[
-					"Bloodveld",
-					"Mutated Bloodveld"
-				],
-				[
-					"Blue dragon",
-					"Brutal blue dragon",
-					"Vorkath"
-				],
-				[
-					"Brine rat"
-				],
-				[
-					"Bronze dragon"
-				],
-				[
-					"Cave horror"
-				],
-				[
-					"Cave kraken",
-					"Kraken"
-				],
-				[
-					"Dagannoth",
-					"Dagannoth Prime",
-					"Dagannoth Rex",
-					"Dagannoth Supreme",
-					"Dagannoth fledgeling"
-				],
-				[
-					"Dark beast"
-				],
-				[
-					"Drake"
-				],
-				[
-					"Dust devil"
-				],
-				[
-					"Elder custodian stalker"
-				],
-				[
-					"Elf Archer",
-					"Elf Warrior",
-					"Iorwerth Warrior",
-					"Iorwerth Archer",
-					"Mourner"
-				],
-				[
-					"Elf Warrior",
-					"Elf Archer",
-					"Iorwerth Warrior",
-					"Iorwerth Archer",
-					"Mourner"
-				],
-				[
-					"Feral Vampyre",
-					"Vampyre Juvinate",
-					"Vyrewatch",
-					"Vyrewatch Sentinel"
-				],
-				[
-					"Fire giant"
-				],
-				[
-					"Frost dragon"
-				],
-				[
-					"Gargoyle",
-					"Dawn",
-					"Dusk"
-				],
-				[
-					"Greater demon",
-					"K'ril Tsutsaroth",
-					"Tstanon Karlak",
-					"Skotizo",
-					"Tormented Demon"
-				],
-				[
-					"Gryphon"
-				],
-				[
-					"Hellhound",
-					"Cerberus"
-				],
-				[
-					"Iron dragon"
-				],
-				[
-					"Juvenile custodian stalker"
-				],
-				[
-					"Kalphite Guardian",
-					"Kalphite Soldier",
-					"Kalphite Worker",
-					"Kalphite Queen"
-				],
-				[
-					"Kalphite Soldier",
-					"Kalphite Guardian",
-					"Kalphite Worker",
-					"Kalphite Queen"
-				],
-				[
-					"Kalphite Worker",
-					"Kalphite Guardian",
-					"Kalphite Soldier",
-					"Kalphite Queen"
-				],
-				[
-					"Kurask"
-				],
-				[
-					"Lizardman",
-					"Lizardman brute",
-					"Lizardman shaman"
-				],
-				[
-					"Locust rider"
-				],
-				[
-					"Long-tailed Wyvern",
-					"Ancient Wyvern",
-					"Spitting Wyvern",
-					"Taloned Wyvern"
-				],
-				[
-					"Mature custodian stalker"
-				],
-				[
-					"Mountain troll"
-				],
-				[
-					"Nechryael",
-					"Greater Nechryael"
-				],
-				[
-					"Red dragon",
-					"Brutal red dragon"
-				],
-				[
-					"Scarab Mage"
-				],
-				[
-					"Skeletal Wyvern"
-				],
-				[
-					"Smoke devil",
-					"Thermonuclear smoke devil"
-				],
-				[
-					"Spiritual mage"
-				],
-				[
-					"Spiritual ranger"
-				],
-				[
-					"Spiritual warrior"
-				],
-				[
-					"Spitting Wyvern",
-					"Ancient Wyvern",
-					"Long-tailed Wyvern",
-					"Taloned Wyvern"
-				],
-				[
-					"Steel dragon"
-				],
-				[
-					"Suqah"
-				],
-				[
-					"Taloned Wyvern",
-					"Ancient Wyvern",
-					"Long-tailed Wyvern",
-					"Spitting Wyvern"
-				],
-				[
-					"Turoth"
-				],
-				[
-					"TzHaar-Hur",
-					"TzHaar-Ket",
-					"TzHaar-Mej",
-					"TzHaar-Xil",
-					"TzTok-Jad",
-					"TzKal-Zuk"
-				],
-				[
-					"TzHaar-Ket",
-					"TzHaar-Hur",
-					"TzHaar-Mej",
-					"TzHaar-Xil",
-					"TzTok-Jad",
-					"TzKal-Zuk"
-				],
-				[
-					"TzHaar-Mej",
-					"TzHaar-Hur",
-					"TzHaar-Ket",
-					"TzHaar-Xil",
-					"TzTok-Jad",
-					"TzKal-Zuk"
-				],
-				[
-					"TzHaar-Xil",
-					"TzHaar-Hur",
-					"TzHaar-Ket",
-					"TzHaar-Mej",
-					"TzTok-Jad",
-					"TzKal-Zuk"
-				],
-				[
-					"Vampyre Juvinate",
-					"Feral Vampyre",
-					"Vyrewatch",
-					"Vyrewatch Sentinel"
-				],
-				[
-					"Warped Terrorbird"
-				],
-				[
-					"Warped Tortoise"
-				],
-				[
-					"Wyrm"
-				],
-				[
-					"Zygomite",
-					"Ancient Zygomite"
-				],
-				[
-					"Abhorrent spectre"
-				],
-				[
-					"Ancient Custodian"
-				],
-				[
-					"Cave abomination"
-				],
-				[
-					"Choke devil"
-				],
-				[
-					"Dire gryphon"
-				],
-				[
-					"Dreadborn Araxyte"
-				],
-				[
-					"Elder aquanite"
-				],
-				[
-					"Greater abyssal demon"
-				],
-				[
-					"Guardian Drake"
-				],
-				[
-					"Insatiable Bloodveld"
-				],
-				[
-					"King kurask"
-				],
-				[
-					"Marble gargoyle"
-				],
-				[
-					"Monstrous Basilisk (The Fremennik Exiles)"
-				],
-				[
-					"Monstrous basilisk"
-				],
-				[
-					"Mutated Terrorbird"
-				],
-				[
-					"Mutated Tortoise"
-				],
-				[
-					"Nechryarch"
-				],
-				[
-					"Night beast"
-				],
-				[
-					"Nuclear smoke devil"
-				],
-				[
-					"Shadow Wyrm"
-				],
-				[
-					"Spiked Turoth"
-				]
-			],
-			"groupRoles": [
-				"master",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors"
-			],
-			"requireAll": true,
-			"notes": "master card + 64 assignable-monster cards; toggles include/exclude roles"
-		},
-		{
-			"category": "slayer",
-			"kind": "npc",
-			"name": "Spria",
-			"options": [
-				"talk-to",
-				"assignment",
-				"trade",
-				"rewards"
-			],
-			"requiredCardGroups": [
-				[
-					"Spria"
-				],
-				[
-					"Banshee",
-					"Twisted Banshee"
-				],
-				[
-					"Bat",
-					"Giant bat",
-					"Albino bat"
-				],
-				[
-					"Bird",
-					"Chicken",
-					"Rooster",
-					"Seagull",
-					"Terrorbird",
-					"Vulture",
-					"Undead chicken",
-					"Chompy bird",
-					"Mounted terrorbird gnome"
-				],
-				[
-					"Black bear",
-					"Grizzly bear",
-					"Grizzly bear cub",
-					"Callisto",
-					"Artio"
-				],
-				[
-					"Cave bug"
-				],
-				[
-					"Cave crawler"
-				],
-				[
-					"Cave slime"
-				],
-				[
-					"Cow",
-					"Cow calf",
-					"Undead cow"
-				],
-				[
-					"Crawling Hand"
-				],
-				[
-					"Dwarf"
-				],
-				[
-					"Ghost",
-					"Tortured soul"
-				],
-				[
-					"Goblin",
-					"Sergeant Strongstack",
-					"Sergeant Grimspike",
-					"Sergeant Steelwill",
-					"Cave goblin"
-				],
-				[
-					"Grizzly bear",
-					"Black bear",
-					"Grizzly bear cub",
-					"Callisto",
-					"Artio"
-				],
-				[
-					"Guard dog",
-					"Wild dog",
-					"Jackal"
-				],
-				[
-					"Icefiend"
-				],
-				[
-					"Jackal",
-					"Guard dog",
-					"Wild dog"
-				],
-				[
-					"Kalphite Guardian",
-					"Kalphite Soldier",
-					"Kalphite Worker",
-					"Kalphite Queen"
-				],
-				[
-					"Kalphite Soldier",
-					"Kalphite Guardian",
-					"Kalphite Worker",
-					"Kalphite Queen"
-				],
-				[
-					"Kalphite Worker",
-					"Kalphite Guardian",
-					"Kalphite Soldier",
-					"Kalphite Queen"
-				],
-				[
-					"Lizard",
-					"Desert lizard",
-					"Grimy lizard",
-					"Small lizard",
-					"Sulphur lizard"
-				],
-				[
-					"Minotaur"
-				],
-				[
-					"Monkey (monster)",
-					"Demonic gorilla"
-				],
-				[
-					"Rat",
-					"Giant rat",
-					"Dungeon rat",
-					"Crypt rat",
-					"Scurrius"
-				],
-				[
-					"Scorpion",
-					"King scorpion",
-					"Poison scorpion",
-					"Pit scorpion",
-					"Scorpia",
-					"Lobstrosity"
-				],
-				[
-					"Skeleton",
-					"Vet'ion",
-					"Calvar'ion"
-				],
-				[
-					"Sourhog"
-				],
-				[
-					"Spider",
-					"Giant spider",
-					"Shadow spider",
-					"Jungle spider",
-					"Deadly red spider",
-					"Poison spider",
-					"Blessed spider",
-					"Kalrag",
-					"Crypt spider",
-					"Temple spider",
-					"Sarachnis",
-					"Spindel",
-					"Venenatis",
-					"Araxyte",
-					"Araxxor"
-				],
-				[
-					"Wild dog",
-					"Guard dog",
-					"Jackal"
-				],
-				[
-					"Wolf",
-					"Big wolf",
-					"Dire wolf",
-					"Jungle wolf",
-					"Desert wolf",
-					"Ice wolf"
-				],
-				[
-					"Zombie",
-					"Vorkath"
-				],
-				[
-					"Chasm Crawler"
-				],
-				[
-					"Crushing hand"
-				],
-				[
-					"Screaming banshee"
-				]
-			],
-			"groupRoles": [
-				"master",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"superiors",
-				"superiors",
-				"superiors"
-			],
-			"requireAll": true,
-			"notes": "master card + 30 assignable-monster cards; toggles include/exclude roles"
-		},
-		{
-			"category": "slayer",
-			"kind": "npc",
-			"name": "Steve",
-			"options": [
-				"talk-to",
-				"assignment",
-				"trade",
-				"rewards"
-			],
-			"requiredCardGroups": [
-				[
-					"Steve"
-				],
-				[
-					"Aberrant spectre",
-					"Deviant spectre"
-				],
-				[
-					"Abyssal demon"
-				],
-				[
-					"Ancient Wyvern",
-					"Long-tailed Wyvern",
-					"Spitting Wyvern",
-					"Taloned Wyvern"
-				],
-				[
-					"Ancient Zygomite",
-					"Zygomite"
-				],
-				[
-					"Ankou"
-				],
-				[
-					"Aquanite"
-				],
-				[
-					"Araxyte"
-				],
-				[
-					"Aviansie",
-					"Kree'arra",
-					"Wingman Skree",
-					"Flockleader Geerin",
-					"Flight Kilisa"
-				],
-				[
-					"Basilisk",
-					"Basilisk Knight"
-				],
-				[
-					"Black demon",
-					"Demonic gorilla",
-					"Skotizo",
-					"Porazdir",
-					"Balfrug Kreeyath"
-				],
-				[
-					"Black dragon",
-					"Brutal black dragon",
-					"King Black Dragon"
-				],
-				[
-					"Blue dragon",
-					"Brutal blue dragon",
-					"Vorkath"
-				],
-				[
-					"Brine rat"
-				],
-				[
-					"Bronze dragon"
-				],
-				[
-					"Cave horror"
-				],
-				[
-					"Cave kraken",
-					"Kraken"
-				],
-				[
-					"Dagannoth",
-					"Dagannoth Prime",
-					"Dagannoth Rex",
-					"Dagannoth Supreme",
-					"Dagannoth fledgeling"
-				],
-				[
-					"Dark beast"
-				],
-				[
-					"Drake"
-				],
-				[
-					"Dust devil"
-				],
-				[
-					"Elder custodian stalker"
-				],
-				[
-					"Elf Archer",
-					"Elf Warrior",
-					"Iorwerth Warrior",
-					"Iorwerth Archer",
-					"Mourner"
-				],
-				[
-					"Elf Warrior",
-					"Elf Archer",
-					"Iorwerth Warrior",
-					"Iorwerth Archer",
-					"Mourner"
-				],
-				[
-					"Feral Vampyre",
-					"Vampyre Juvinate",
-					"Vyrewatch",
-					"Vyrewatch Sentinel"
-				],
-				[
-					"Fire giant"
-				],
-				[
-					"Frost dragon"
-				],
-				[
-					"Gargoyle",
-					"Dawn",
-					"Dusk"
-				],
-				[
-					"Greater demon",
-					"K'ril Tsutsaroth",
-					"Tstanon Karlak",
-					"Skotizo",
-					"Tormented Demon"
-				],
-				[
-					"Gryphon"
-				],
-				[
-					"Hellhound",
-					"Cerberus"
-				],
-				[
-					"Iron dragon"
-				],
-				[
-					"Juvenile custodian stalker"
-				],
-				[
-					"Kalphite Guardian",
-					"Kalphite Soldier",
-					"Kalphite Worker",
-					"Kalphite Queen"
-				],
-				[
-					"Kalphite Soldier",
-					"Kalphite Guardian",
-					"Kalphite Worker",
-					"Kalphite Queen"
-				],
-				[
-					"Kalphite Worker",
-					"Kalphite Guardian",
-					"Kalphite Soldier",
-					"Kalphite Queen"
-				],
-				[
-					"Kurask"
-				],
-				[
-					"Lizardman",
-					"Lizardman brute",
-					"Lizardman shaman"
-				],
-				[
-					"Locust rider"
-				],
-				[
-					"Long-tailed Wyvern",
-					"Ancient Wyvern",
-					"Spitting Wyvern",
-					"Taloned Wyvern"
-				],
-				[
-					"Mature custodian stalker"
-				],
-				[
-					"Mountain troll"
-				],
-				[
-					"Nechryael",
-					"Greater Nechryael"
-				],
-				[
-					"Red dragon",
-					"Brutal red dragon"
-				],
-				[
-					"Scarab Mage"
-				],
-				[
-					"Skeletal Wyvern"
-				],
-				[
-					"Smoke devil",
-					"Thermonuclear smoke devil"
-				],
-				[
-					"Spiritual mage"
-				],
-				[
-					"Spiritual ranger"
-				],
-				[
-					"Spiritual warrior"
-				],
-				[
-					"Spitting Wyvern",
-					"Ancient Wyvern",
-					"Long-tailed Wyvern",
-					"Taloned Wyvern"
-				],
-				[
-					"Steel dragon"
-				],
-				[
-					"Suqah"
-				],
-				[
-					"Taloned Wyvern",
-					"Ancient Wyvern",
-					"Long-tailed Wyvern",
-					"Spitting Wyvern"
-				],
-				[
-					"Turoth"
-				],
-				[
-					"TzHaar-Hur",
-					"TzHaar-Ket",
-					"TzHaar-Mej",
-					"TzHaar-Xil",
-					"TzTok-Jad",
-					"TzKal-Zuk"
-				],
-				[
-					"TzHaar-Ket",
-					"TzHaar-Hur",
-					"TzHaar-Mej",
-					"TzHaar-Xil",
-					"TzTok-Jad",
-					"TzKal-Zuk"
-				],
-				[
-					"TzHaar-Mej",
-					"TzHaar-Hur",
-					"TzHaar-Ket",
-					"TzHaar-Xil",
-					"TzTok-Jad",
-					"TzKal-Zuk"
-				],
-				[
-					"TzHaar-Xil",
-					"TzHaar-Hur",
-					"TzHaar-Ket",
-					"TzHaar-Mej",
-					"TzTok-Jad",
-					"TzKal-Zuk"
-				],
-				[
-					"Vampyre Juvinate",
-					"Feral Vampyre",
-					"Vyrewatch",
-					"Vyrewatch Sentinel"
-				],
-				[
-					"Warped Terrorbird"
-				],
-				[
-					"Warped Tortoise"
-				],
-				[
-					"Wyrm"
-				],
-				[
-					"Zygomite",
-					"Ancient Zygomite"
-				],
-				[
-					"Abhorrent spectre"
-				],
-				[
-					"Ancient Custodian"
-				],
-				[
-					"Cave abomination"
-				],
-				[
-					"Choke devil"
-				],
-				[
-					"Dire gryphon"
-				],
-				[
-					"Dreadborn Araxyte"
-				],
-				[
-					"Elder aquanite"
-				],
-				[
-					"Greater abyssal demon"
-				],
-				[
-					"Guardian Drake"
-				],
-				[
-					"King kurask"
-				],
-				[
-					"Marble gargoyle"
-				],
-				[
-					"Monstrous Basilisk (The Fremennik Exiles)"
-				],
-				[
-					"Monstrous basilisk"
-				],
-				[
-					"Mutated Terrorbird"
-				],
-				[
-					"Mutated Tortoise"
-				],
-				[
-					"Nechryarch"
-				],
-				[
-					"Night beast"
-				],
-				[
-					"Nuclear smoke devil"
-				],
-				[
-					"Shadow Wyrm"
-				],
-				[
-					"Spiked Turoth"
-				]
-			],
-			"groupRoles": [
-				"master",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors"
-			],
-			"requireAll": true,
-			"notes": "master card + 63 assignable-monster cards; toggles include/exclude roles"
-		},
-		{
-			"category": "slayer",
-			"kind": "npc",
-			"name": "Turael",
-			"options": [
-				"talk-to",
-				"assignment",
-				"trade",
-				"rewards"
-			],
-			"requiredCardGroups": [
-				[
-					"Turael"
-				],
-				[
-					"Banshee",
-					"Twisted Banshee"
-				],
-				[
-					"Bat",
-					"Giant bat",
-					"Albino bat"
-				],
-				[
-					"Bird",
-					"Chicken",
-					"Rooster",
-					"Seagull",
-					"Terrorbird",
-					"Vulture",
-					"Undead chicken",
-					"Chompy bird",
-					"Mounted terrorbird gnome"
-				],
-				[
-					"Black bear",
-					"Grizzly bear",
-					"Grizzly bear cub",
-					"Callisto",
-					"Artio"
-				],
-				[
-					"Cave bug"
-				],
-				[
-					"Cave crawler"
-				],
-				[
-					"Cave slime"
-				],
-				[
-					"Cow",
-					"Cow calf",
-					"Undead cow"
-				],
-				[
-					"Crawling Hand"
-				],
-				[
-					"Dwarf"
-				],
-				[
-					"Ghost",
-					"Tortured soul"
-				],
-				[
-					"Goblin",
-					"Sergeant Strongstack",
-					"Sergeant Grimspike",
-					"Sergeant Steelwill",
-					"Cave goblin"
-				],
-				[
-					"Grizzly bear",
-					"Black bear",
-					"Grizzly bear cub",
-					"Callisto",
-					"Artio"
-				],
-				[
-					"Guard dog",
-					"Wild dog",
-					"Jackal"
-				],
-				[
-					"Icefiend"
-				],
-				[
-					"Jackal",
-					"Guard dog",
-					"Wild dog"
-				],
-				[
-					"Kalphite Guardian",
-					"Kalphite Soldier",
-					"Kalphite Worker",
-					"Kalphite Queen"
-				],
-				[
-					"Kalphite Soldier",
-					"Kalphite Guardian",
-					"Kalphite Worker",
-					"Kalphite Queen"
-				],
-				[
-					"Kalphite Worker",
-					"Kalphite Guardian",
-					"Kalphite Soldier",
-					"Kalphite Queen"
-				],
-				[
-					"Lizard",
-					"Desert lizard",
-					"Grimy lizard",
-					"Small lizard",
-					"Sulphur lizard"
-				],
-				[
-					"Minotaur"
-				],
-				[
-					"Monkey (monster)",
-					"Demonic gorilla"
-				],
-				[
-					"Rat",
-					"Giant rat",
-					"Dungeon rat",
-					"Crypt rat",
-					"Scurrius"
-				],
-				[
-					"Scorpion",
-					"King scorpion",
-					"Poison scorpion",
-					"Pit scorpion",
-					"Scorpia",
-					"Lobstrosity"
-				],
-				[
-					"Skeleton",
-					"Vet'ion",
-					"Calvar'ion"
-				],
-				[
-					"Spider",
-					"Giant spider",
-					"Shadow spider",
-					"Jungle spider",
-					"Deadly red spider",
-					"Poison spider",
-					"Blessed spider",
-					"Kalrag",
-					"Crypt spider",
-					"Temple spider",
-					"Sarachnis",
-					"Spindel",
-					"Venenatis",
-					"Araxyte",
-					"Araxxor"
-				],
-				[
-					"Wild dog",
-					"Guard dog",
-					"Jackal"
-				],
-				[
-					"Wolf",
-					"Big wolf",
-					"Dire wolf",
-					"Jungle wolf",
-					"Desert wolf",
-					"Ice wolf"
-				],
-				[
-					"Zombie",
-					"Vorkath"
-				],
-				[
-					"Chasm Crawler"
-				],
-				[
-					"Crushing hand"
-				],
-				[
-					"Screaming banshee"
-				]
-			],
-			"groupRoles": [
-				"master",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"superiors",
-				"superiors",
-				"superiors"
-			],
-			"requireAll": true,
-			"notes": "master card + 29 assignable-monster cards; toggles include/exclude roles"
-		},
-		{
-			"category": "slayer",
-			"kind": "npc",
-			"name": "Vannaka",
-			"options": [
-				"talk-to",
-				"assignment",
-				"trade",
-				"rewards"
-			],
-			"requiredCardGroups": [
-				[
-					"Vannaka"
-				],
-				[
-					"Aberrant spectre",
-					"Deviant spectre"
-				],
-				[
-					"Abyssal demon"
-				],
-				[
-					"Ankou"
-				],
-				[
-					"Basilisk",
-					"Basilisk Knight"
-				],
-				[
-					"Bloodveld",
-					"Mutated Bloodveld"
-				],
-				[
-					"Blue dragon",
-					"Brutal blue dragon",
-					"Vorkath"
-				],
-				[
-					"Brine rat"
-				],
-				[
-					"Cockatrice",
-					"Moonlight cockatrice"
-				],
-				[
-					"Crab"
-				],
-				[
-					"Crocodile"
-				],
-				[
-					"Dagannoth",
-					"Dagannoth Prime",
-					"Dagannoth Rex",
-					"Dagannoth Supreme",
-					"Dagannoth fledgeling"
-				],
-				[
-					"Dust devil"
-				],
-				[
-					"Elf Archer",
-					"Elf Warrior",
-					"Iorwerth Warrior",
-					"Iorwerth Archer",
-					"Mourner"
-				],
-				[
-					"Elf Warrior",
-					"Elf Archer",
-					"Iorwerth Warrior",
-					"Iorwerth Archer",
-					"Mourner"
-				],
-				[
-					"Feral Vampyre",
-					"Vampyre Juvinate",
-					"Vyrewatch",
-					"Vyrewatch Sentinel"
-				],
-				[
-					"Fever spider"
-				],
-				[
-					"Fire giant"
-				],
-				[
-					"Gargoyle",
-					"Dawn",
-					"Dusk"
-				],
-				[
-					"Ghoul"
-				],
-				[
-					"Giant Sea Snake"
-				],
-				[
-					"Gryphon"
-				],
-				[
-					"Harpie Bug Swarm"
-				],
-				[
-					"Hellhound",
-					"Cerberus"
-				],
-				[
-					"Hill Giant",
-					"Obor"
-				],
-				[
-					"Hobgoblin"
-				],
-				[
-					"Ice giant"
-				],
-				[
-					"Ice warrior"
-				],
-				[
-					"Infernal Mage"
-				],
-				[
-					"Jelly",
-					"Warped Jelly",
-					"Chilled Jelly"
-				],
-				[
-					"Jungle horror"
-				],
-				[
-					"Kalphite Guardian",
-					"Kalphite Soldier",
-					"Kalphite Worker",
-					"Kalphite Queen"
-				],
-				[
-					"Kalphite Soldier",
-					"Kalphite Guardian",
-					"Kalphite Worker",
-					"Kalphite Queen"
-				],
-				[
-					"Kalphite Worker",
-					"Kalphite Guardian",
-					"Kalphite Soldier",
-					"Kalphite Queen"
-				],
-				[
-					"Kurask"
-				],
-				[
-					"Lesser demon",
-					"Zakl'n Gritch"
-				],
-				[
-					"Mogre"
-				],
-				[
-					"Molanisk"
-				],
-				[
-					"Moss giant",
-					"Bryophyta"
-				],
-				[
-					"Mountain troll"
-				],
-				[
-					"Nechryael",
-					"Greater Nechryael"
-				],
-				[
-					"Ogre"
-				],
-				[
-					"Otherworldly being"
-				],
-				[
-					"Pyrefiend"
-				],
-				[
-					"Sea Snake Hatchling"
-				],
-				[
-					"Sea Snake Young"
-				],
-				[
-					"Shade",
-					"Loar shade",
-					"Phrin shade",
-					"Riyl shade",
-					"Asyn shade",
-					"Fiyr shade",
-					"Urium shade"
-				],
-				[
-					"Shadow warrior"
-				],
-				[
-					"Spiritual mage"
-				],
-				[
-					"Spiritual ranger"
-				],
-				[
-					"Spiritual warrior"
-				],
-				[
-					"Terror dog"
-				],
-				[
-					"Turoth"
-				],
-				[
-					"Vampyre Juvinate",
-					"Feral Vampyre",
-					"Vyrewatch",
-					"Vyrewatch Sentinel"
-				],
-				[
-					"Werewolf"
-				],
-				[
-					"Abhorrent spectre"
-				],
-				[
-					"Choke devil"
-				],
-				[
-					"Cockathrice"
-				],
-				[
-					"Dire gryphon"
-				],
-				[
-					"Flaming pyrelord"
-				],
-				[
-					"Greater abyssal demon"
-				],
-				[
-					"Insatiable Bloodveld"
-				],
-				[
-					"King kurask"
-				],
-				[
-					"Malevolent Mage"
-				],
-				[
-					"Marble gargoyle"
-				],
-				[
-					"Monstrous Basilisk (The Fremennik Exiles)"
-				],
-				[
-					"Monstrous basilisk"
-				],
-				[
-					"Nechryarch"
-				],
-				[
-					"Spiked Turoth"
-				],
-				[
-					"Vitreous Jelly"
-				]
-			],
-			"groupRoles": [
-				"master",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"monsters",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors",
-				"superiors"
-			],
-			"requireAll": true,
-			"notes": "master card + 54 assignable-monster cards; toggles include/exclude roles"
-		},
-		{
 			"category": "thieving-stalls",
 			"kind": "object",
 			"name": "Baker's stall",
@@ -15959,6 +11669,4421 @@
 			],
 			"requireAll": true,
 			"notes": "Verify in-game object name suffix ('X' vs 'X tree'); both variants included as separate nodes."
+		},
+		{
+			"category": "slayer",
+			"kind": "npc",
+			"name": "Achtryn",
+			"options": [
+				"talk-to",
+				"assignment",
+				"trade",
+				"rewards"
+			],
+			"requiredCardGroups": [
+				[
+					"Achtryn"
+				],
+				[
+					"Banshee",
+					"Twisted Banshee"
+				],
+				[
+					"Bat",
+					"Giant bat",
+					"Albino bat"
+				],
+				[
+					"Black bear",
+					"Grizzly bear",
+					"Grizzly bear cub"
+				],
+				[
+					"Catablepon"
+				],
+				[
+					"Cave bug"
+				],
+				[
+					"Cave crawler"
+				],
+				[
+					"Cave slime"
+				],
+				[
+					"Cockatrice",
+					"Moonlight Cockatrice"
+				],
+				[
+					"Crab",
+					"Ammonite Crab",
+					"Frost Crab",
+					"King Sand Crab",
+					"Rock Crab",
+					"Giant Rock Crab",
+					"Sand Crab",
+					"Swamp Crab"
+				],
+				[
+					"Crawling Hand"
+				],
+				[
+					"Guard dog",
+					"Wild dog",
+					"Jackal"
+				],
+				[
+					"Flesh Crawler"
+				],
+				[
+					"Ghost"
+				],
+				[
+					"Ghoul"
+				],
+				[
+					"Hill Giant",
+					"Cyclops"
+				],
+				[
+					"Hobgoblin"
+				],
+				[
+					"Ice warrior"
+				],
+				[
+					"Kalphite Worker",
+					"Kalphite Soldier",
+					"Kalphite Guardian"
+				],
+				[
+					"Killerwatt"
+				],
+				[
+					"Lizard",
+					"Desert Lizard",
+					"Grimy Lizard",
+					"Small Lizard",
+					"Sulphur Lizard"
+				],
+				[
+					"Mogre"
+				],
+				[
+					"Pyrefiend"
+				],
+				[
+					"Rockslug"
+				],
+				[
+					"Scorpion",
+					"King Scorpion",
+					"Poison Scorpion",
+					"Pit Scorpion"
+				],
+				[
+					"Shade",
+					"Loar Shade",
+					"Phrin Shade",
+					"Riyl Shade",
+					"Asyn Shade",
+					"Fiyr Shade",
+					"Urium Shade"
+				],
+				[
+					"Skeleton"
+				],
+				[
+					"Feral Vampyre",
+					"Vampyre Juvinate",
+					"Vyrewatch",
+					"Vyrewatch Sentinel"
+				],
+				[
+					"Wall beast"
+				],
+				[
+					"Wolf",
+					"Big Wolf",
+					"Dire Wolf",
+					"Jungle Wolf",
+					"Desert Wolf",
+					"Ice wolf"
+				],
+				[
+					"Zombie",
+					"Zogre"
+				],
+				[
+					"Chasm Crawler"
+				],
+				[
+					"Cockathrice"
+				],
+				[
+					"Crushing hand"
+				],
+				[
+					"Flaming pyrelord"
+				],
+				[
+					"Giant rockslug"
+				],
+				[
+					"Screaming banshee"
+				]
+			],
+			"groupRoles": [
+				"master",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors"
+			],
+			"groupLabels": [
+				"Achtryn",
+				"Banshees",
+				"Bats",
+				"Bears",
+				"Catablepon",
+				"Cave Bugs",
+				"Cave Crawlers",
+				"Cave Slimes",
+				"Cockatrice",
+				"Crabs",
+				"Crawling Hands",
+				"Dogs",
+				"Fleshcrawlers",
+				"Ghosts",
+				"Ghouls",
+				"Hill Giants",
+				"Hobgoblins",
+				"Ice Warriors",
+				"Kalphites",
+				"Killerwatts",
+				"Lizards",
+				"Mogres",
+				"Pyrefiends",
+				"Rockslugs",
+				"Scorpions",
+				"Shades",
+				"Skeletons",
+				"Vampyres",
+				"Wall Beasts",
+				"Wolves",
+				"Zombies",
+				"Chasm Crawler",
+				"Cockathrice",
+				"Crushing hand",
+				"Flaming pyrelord",
+				"Giant rockslug",
+				"Screaming banshee"
+			],
+			"requireAll": true,
+			"notes": "Achtryn mirrors Mazchna; 30 generated RuneLite assignment requirements; superiors remain opt-in"
+		},
+		{
+			"category": "slayer",
+			"kind": "npc",
+			"name": "Aya",
+			"options": [
+				"talk-to",
+				"assignment",
+				"trade",
+				"rewards"
+			],
+			"requiredCardGroups": [
+				[
+					"Aya"
+				],
+				[
+					"Banshee",
+					"Twisted Banshee"
+				],
+				[
+					"Bat",
+					"Giant bat",
+					"Albino bat"
+				],
+				[
+					"Black bear",
+					"Grizzly bear",
+					"Grizzly bear cub"
+				],
+				[
+					"Bird",
+					"Chicken",
+					"Rooster",
+					"Seagull",
+					"Terrorbird",
+					"Vulture"
+				],
+				[
+					"Cave bug"
+				],
+				[
+					"Cave crawler"
+				],
+				[
+					"Cave slime"
+				],
+				[
+					"Cow",
+					"Cow calf"
+				],
+				[
+					"Crawling Hand"
+				],
+				[
+					"Guard dog",
+					"Wild dog",
+					"Jackal"
+				],
+				[
+					"Dwarf",
+					"Black Guard"
+				],
+				[
+					"Ghost"
+				],
+				[
+					"Goblin",
+					"Cave goblin (monster)"
+				],
+				[
+					"Icefiend"
+				],
+				[
+					"Kalphite Worker",
+					"Kalphite Soldier",
+					"Kalphite Guardian"
+				],
+				[
+					"Lizard",
+					"Desert Lizard",
+					"Grimy Lizard",
+					"Small Lizard",
+					"Sulphur Lizard"
+				],
+				[
+					"Minotaur"
+				],
+				[
+					"Monkey (monster)"
+				],
+				[
+					"Rat",
+					"Giant rat",
+					"Dungeon rat",
+					"Crypt rat"
+				],
+				[
+					"Scorpion",
+					"King Scorpion",
+					"Poison Scorpion",
+					"Pit Scorpion"
+				],
+				[
+					"Skeleton"
+				],
+				[
+					"Spider",
+					"Giant spider",
+					"Shadow spider",
+					"Jungle spider",
+					"Deadly red spider",
+					"Poison spider",
+					"Blessed spider",
+					"Crypt spider",
+					"Temple Spider"
+				],
+				[
+					"Wolf",
+					"Big Wolf",
+					"Dire Wolf",
+					"Jungle Wolf",
+					"Desert Wolf",
+					"Ice wolf"
+				],
+				[
+					"Zombie",
+					"Zogre"
+				],
+				[
+					"Chasm Crawler"
+				],
+				[
+					"Crushing hand"
+				],
+				[
+					"Screaming banshee"
+				]
+			],
+			"groupRoles": [
+				"master",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"superiors",
+				"superiors",
+				"superiors"
+			],
+			"groupLabels": [
+				"Aya",
+				"Banshees",
+				"Bats",
+				"Bears",
+				"Birds",
+				"Cave Bugs",
+				"Cave Crawlers",
+				"Cave Slimes",
+				"Cows",
+				"Crawling Hands",
+				"Dogs",
+				"Dwarves",
+				"Ghosts",
+				"Goblins",
+				"Icefiends",
+				"Kalphites",
+				"Lizards",
+				"Minotaurs",
+				"Monkeys",
+				"Rats",
+				"Scorpions",
+				"Skeletons",
+				"Spiders",
+				"Wolves",
+				"Zombies",
+				"Chasm Crawler",
+				"Crushing hand",
+				"Screaming banshee"
+			],
+			"requireAll": true,
+			"notes": "Aya mirrors Turael; 24 generated RuneLite assignment requirements; superiors remain opt-in"
+		},
+		{
+			"category": "slayer",
+			"kind": "npc",
+			"name": "Chaeldar",
+			"options": [
+				"talk-to",
+				"assignment",
+				"trade",
+				"rewards"
+			],
+			"requiredCardGroups": [
+				[
+					"Chaeldar"
+				],
+				[
+					"Aberrant spectre",
+					"Deviant spectre"
+				],
+				[
+					"Abyssal demon"
+				],
+				[
+					"Aviansie"
+				],
+				[
+					"Basilisk",
+					"Basilisk Knight"
+				],
+				[
+					"Black demon"
+				],
+				[
+					"Bloodveld",
+					"Mutated Bloodveld"
+				],
+				[
+					"Blue dragon"
+				],
+				[
+					"Brine rat"
+				],
+				[
+					"Cave horror"
+				],
+				[
+					"Cave kraken"
+				],
+				[
+					"Crab",
+					"Ammonite Crab",
+					"Frost Crab",
+					"King Sand Crab",
+					"Rock Crab",
+					"Giant Rock Crab",
+					"Sand Crab",
+					"Swamp Crab"
+				],
+				[
+					"Juvenile custodian stalker",
+					"Mature custodian stalker",
+					"Elder custodian stalker"
+				],
+				[
+					"Dagannoth",
+					"Dagannoth fledgeling"
+				],
+				[
+					"Dust devil"
+				],
+				[
+					"Elf Warrior",
+					"Elf Archer",
+					"Iorwerth Warrior",
+					"Iorwerth Archer",
+					"Mourner"
+				],
+				[
+					"Fever spider"
+				],
+				[
+					"Fire giant"
+				],
+				[
+					"Ancient Wyvern",
+					"Long-tailed Wyvern",
+					"Spitting Wyvern",
+					"Taloned Wyvern"
+				],
+				[
+					"Gargoyle"
+				],
+				[
+					"Greater demon"
+				],
+				[
+					"Gryphon"
+				],
+				[
+					"Hellhound"
+				],
+				[
+					"Jelly",
+					"Warped Jelly",
+					"Chilled jelly"
+				],
+				[
+					"Jungle horror"
+				],
+				[
+					"Kalphite Worker",
+					"Kalphite Soldier",
+					"Kalphite Guardian"
+				],
+				[
+					"Kurask"
+				],
+				[
+					"Lesser demon"
+				],
+				[
+					"Earthen Nagua",
+					"Frost Nagua",
+					"Sulphur Nagua"
+				],
+				[
+					"Lizardman",
+					"Lizardman brute",
+					"Lizardman shaman"
+				],
+				[
+					"Zygomite",
+					"Ancient Zygomite"
+				],
+				[
+					"Nechryael",
+					"Greater Nechryael"
+				],
+				[
+					"Shadow warrior"
+				],
+				[
+					"Skeletal Wyvern"
+				],
+				[
+					"Spiritual ranger",
+					"Spiritual mage",
+					"Spiritual warrior"
+				],
+				[
+					"Mountain troll"
+				],
+				[
+					"Turoth"
+				],
+				[
+					"TzHaar-Hur",
+					"TzHaar-Ket",
+					"TzHaar-Mej",
+					"TzHaar-Xil"
+				],
+				[
+					"Feral Vampyre",
+					"Vampyre Juvinate",
+					"Vyrewatch",
+					"Vyrewatch Sentinel"
+				],
+				[
+					"Warped Terrorbird",
+					"Warped Tortoise",
+					"Mutated Terrorbird",
+					"Mutated Tortoise"
+				],
+				[
+					"Wyrm"
+				],
+				[
+					"Abhorrent spectre"
+				],
+				[
+					"Ancient Custodian"
+				],
+				[
+					"Cave abomination"
+				],
+				[
+					"Choke devil"
+				],
+				[
+					"Dire gryphon"
+				],
+				[
+					"Greater abyssal demon"
+				],
+				[
+					"Insatiable Bloodveld"
+				],
+				[
+					"King kurask"
+				],
+				[
+					"Marble gargoyle"
+				],
+				[
+					"Monstrous Basilisk (The Fremennik Exiles)"
+				],
+				[
+					"Monstrous basilisk"
+				],
+				[
+					"Mutated Terrorbird"
+				],
+				[
+					"Mutated Tortoise"
+				],
+				[
+					"Nechryarch"
+				],
+				[
+					"Shadow Wyrm"
+				],
+				[
+					"Spiked Turoth"
+				],
+				[
+					"Vitreous Jelly"
+				]
+			],
+			"groupRoles": [
+				"master",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors"
+			],
+			"groupLabels": [
+				"Chaeldar",
+				"Aberrant Spectres",
+				"Abyssal Demons",
+				"Aviansies",
+				"Basilisks",
+				"Black Demons",
+				"Bloodveld",
+				"Blue Dragons",
+				"Brine Rats",
+				"Cave Horrors",
+				"Cave Kraken",
+				"Crabs",
+				"Custodian Stalkers",
+				"Dagannoth",
+				"Dust Devils",
+				"Elves",
+				"Fever Spiders",
+				"Fire Giants",
+				"Fossil Island Wyverns",
+				"Gargoyles",
+				"Greater Demons",
+				"Gryphons",
+				"Hellhounds",
+				"Jellies",
+				"Jungle Horrors",
+				"Kalphites",
+				"Kurask",
+				"Lesser Demons",
+				"Lesser Nagua",
+				"Lizardmen",
+				"Mutated Zygomites",
+				"Nechryael",
+				"Shadow warriors",
+				"Skeletal Wyverns",
+				"Spiritual Creatures",
+				"Trolls",
+				"Turoth",
+				"Tzhaar",
+				"Vampyres",
+				"Warped Creatures",
+				"Wyrms",
+				"Abhorrent spectre",
+				"Ancient Custodian",
+				"Cave abomination",
+				"Choke devil",
+				"Dire gryphon",
+				"Greater abyssal demon",
+				"Insatiable Bloodveld",
+				"King kurask",
+				"Marble gargoyle",
+				"Monstrous Basilisk (The Fremennik Exiles)",
+				"Monstrous basilisk",
+				"Mutated Terrorbird",
+				"Mutated Tortoise",
+				"Nechryarch",
+				"Shadow Wyrm",
+				"Spiked Turoth",
+				"Vitreous Jelly"
+			],
+			"requireAll": true,
+			"notes": "40 generated RuneLite assignment requirements; superiors remain opt-in"
+		},
+		{
+			"category": "slayer",
+			"kind": "npc",
+			"name": "Duradel",
+			"options": [
+				"talk-to",
+				"assignment",
+				"trade",
+				"rewards"
+			],
+			"requiredCardGroups": [
+				[
+					"Duradel"
+				],
+				[
+					"Aberrant spectre",
+					"Deviant spectre"
+				],
+				[
+					"Abyssal demon",
+					"Abyssal Sire"
+				],
+				[
+					"Ankou"
+				],
+				[
+					"Aquanite"
+				],
+				[
+					"Araxyte",
+					"Araxxor"
+				],
+				[
+					"Aviansie",
+					"Kree'arra",
+					"Wingman Skree",
+					"Flockleader Geerin",
+					"Flight Kilisa"
+				],
+				[
+					"Basilisk",
+					"Basilisk Knight"
+				],
+				[
+					"Black demon",
+					"Demonic gorilla",
+					"Skotizo",
+					"Porazdir",
+					"Balfrug Kreeyath"
+				],
+				[
+					"Black dragon",
+					"Brutal black dragon",
+					"King Black Dragon"
+				],
+				[
+					"Bloodveld",
+					"Mutated Bloodveld"
+				],
+				[
+					"Blue dragon",
+					"Brutal blue dragon",
+					"Vorkath"
+				],
+				[
+					"Cave horror"
+				],
+				[
+					"Cave kraken",
+					"Kraken"
+				],
+				[
+					"Dagannoth",
+					"Dagannoth Prime",
+					"Dagannoth Rex",
+					"Dagannoth Supreme",
+					"Dagannoth fledgeling"
+				],
+				[
+					"Dark beast"
+				],
+				[
+					"Drake"
+				],
+				[
+					"Dust devil"
+				],
+				[
+					"Elf Warrior",
+					"Elf Archer",
+					"Iorwerth Warrior",
+					"Iorwerth Archer",
+					"Mourner"
+				],
+				[
+					"Fire giant",
+					"Branda the Fire Queen"
+				],
+				[
+					"Ancient Wyvern",
+					"Long-tailed Wyvern",
+					"Spitting Wyvern",
+					"Taloned Wyvern"
+				],
+				[
+					"Frost dragon"
+				],
+				[
+					"Gargoyle",
+					"Dawn",
+					"Dusk"
+				],
+				[
+					"Greater demon",
+					"K'ril Tsutsaroth",
+					"Tstanon Karlak",
+					"Skotizo",
+					"Tormented Demon"
+				],
+				[
+					"Gryphon"
+				],
+				[
+					"Hellhound",
+					"Cerberus"
+				],
+				[
+					"Kalphite Worker",
+					"Kalphite Soldier",
+					"Kalphite Guardian",
+					"Kalphite Queen"
+				],
+				[
+					"Kurask"
+				],
+				[
+					"Lizardman",
+					"Lizardman brute",
+					"Lizardman shaman"
+				],
+				[
+					"Bronze dragon",
+					"Iron dragon",
+					"Steel dragon",
+					"Mithril dragon",
+					"Adamant dragon",
+					"Rune dragon"
+				],
+				[
+					"Zygomite",
+					"Ancient Zygomite"
+				],
+				[
+					"Nechryael",
+					"Greater Nechryael"
+				],
+				[
+					"Red dragon",
+					"Brutal red dragon"
+				],
+				[
+					"Skeletal Wyvern"
+				],
+				[
+					"Smoke devil",
+					"Thermonuclear smoke devil"
+				],
+				[
+					"Spiritual ranger",
+					"Spiritual mage",
+					"Spiritual warrior"
+				],
+				[
+					"Suqah"
+				],
+				[
+					"Mountain troll"
+				],
+				[
+					"TzHaar-Hur",
+					"TzHaar-Ket",
+					"TzHaar-Mej",
+					"TzHaar-Xil",
+					"TzTok-Jad",
+					"TzKal-Zuk"
+				],
+				[
+					"Feral Vampyre",
+					"Vampyre Juvinate",
+					"Vyrewatch",
+					"Vyrewatch Sentinel"
+				],
+				[
+					"Warped Terrorbird",
+					"Warped Tortoise",
+					"Mutated Terrorbird",
+					"Mutated Tortoise"
+				],
+				[
+					"Waterfiend"
+				],
+				[
+					"Wyrm"
+				],
+				[
+					"Abhorrent spectre"
+				],
+				[
+					"Cave abomination"
+				],
+				[
+					"Choke devil"
+				],
+				[
+					"Dire gryphon"
+				],
+				[
+					"Dreadborn Araxyte"
+				],
+				[
+					"Elder aquanite"
+				],
+				[
+					"Greater abyssal demon"
+				],
+				[
+					"Guardian Drake"
+				],
+				[
+					"Insatiable Bloodveld"
+				],
+				[
+					"King kurask"
+				],
+				[
+					"Marble gargoyle"
+				],
+				[
+					"Monstrous Basilisk (The Fremennik Exiles)"
+				],
+				[
+					"Monstrous basilisk"
+				],
+				[
+					"Mutated Terrorbird"
+				],
+				[
+					"Mutated Tortoise"
+				],
+				[
+					"Nechryarch"
+				],
+				[
+					"Night beast"
+				],
+				[
+					"Nuclear smoke devil"
+				],
+				[
+					"Shadow Wyrm"
+				]
+			],
+			"groupRoles": [
+				"master",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors"
+			],
+			"groupLabels": [
+				"Duradel",
+				"Aberrant Spectres",
+				"Abyssal Demons",
+				"Ankou",
+				"Aquanites",
+				"Araxytes",
+				"Aviansies",
+				"Basilisks",
+				"Black Demons",
+				"Black Dragons",
+				"Bloodveld",
+				"Blue Dragons",
+				"Cave Horrors",
+				"Cave Kraken",
+				"Dagannoth",
+				"Dark Beasts",
+				"Drakes",
+				"Dust Devils",
+				"Elves",
+				"Fire Giants",
+				"Fossil Island Wyverns",
+				"Frost Dragons",
+				"Gargoyles",
+				"Greater Demons",
+				"Gryphons",
+				"Hellhounds",
+				"Kalphites",
+				"Kurask",
+				"Lizardmen",
+				"Metal Dragons",
+				"Mutated Zygomites",
+				"Nechryael",
+				"Red Dragons",
+				"Skeletal Wyverns",
+				"Smoke Devils",
+				"Spiritual Creatures",
+				"Suqahs",
+				"Trolls",
+				"Tzhaar",
+				"Vampyres",
+				"Warped Creatures",
+				"Waterfiends",
+				"Wyrms",
+				"Abhorrent spectre",
+				"Cave abomination",
+				"Choke devil",
+				"Dire gryphon",
+				"Dreadborn Araxyte",
+				"Elder aquanite",
+				"Greater abyssal demon",
+				"Guardian Drake",
+				"Insatiable Bloodveld",
+				"King kurask",
+				"Marble gargoyle",
+				"Monstrous Basilisk (The Fremennik Exiles)",
+				"Monstrous basilisk",
+				"Mutated Terrorbird",
+				"Mutated Tortoise",
+				"Nechryarch",
+				"Night beast",
+				"Nuclear smoke devil",
+				"Shadow Wyrm"
+			],
+			"requireAll": true,
+			"notes": "42 generated RuneLite assignment requirements; superiors remain opt-in"
+		},
+		{
+			"category": "slayer",
+			"kind": "npc",
+			"name": "Konar quo Maten",
+			"options": [
+				"talk-to",
+				"assignment",
+				"trade",
+				"rewards"
+			],
+			"requiredCardGroups": [
+				[
+					"Konar quo Maten"
+				],
+				[
+					"Deviant spectre"
+				],
+				[
+					"Aberrant spectre"
+				],
+				[
+					"Aberrant spectre"
+				],
+				[
+					"Abyssal demon"
+				],
+				[
+					"Abyssal demon"
+				],
+				[
+					"Abyssal demon"
+				],
+				[
+					"Ankou"
+				],
+				[
+					"Ankou"
+				],
+				[
+					"Ankou"
+				],
+				[
+					"Aviansie",
+					"Kree'arra",
+					"Flight Kilisa",
+					"Flockleader Geerin",
+					"Wingman Skree"
+				],
+				[
+					"Basilisk"
+				],
+				[
+					"Basilisk Knight"
+				],
+				[
+					"Black demon"
+				],
+				[
+					"Black demon"
+				],
+				[
+					"Black demon"
+				],
+				[
+					"Black demon",
+					"Skotizo"
+				],
+				[
+					"Black dragon",
+					"Brutal black dragon"
+				],
+				[
+					"Black dragon",
+					"Baby black dragon"
+				],
+				[
+					"Black dragon",
+					"Baby black dragon"
+				],
+				[
+					"Black dragon",
+					"Baby black dragon"
+				],
+				[
+					"Bloodveld"
+				],
+				[
+					"Bloodveld"
+				],
+				[
+					"Bloodveld"
+				],
+				[
+					"Mutated Bloodveld"
+				],
+				[
+					"Mutated Bloodveld"
+				],
+				[
+					"Mutated Bloodveld"
+				],
+				[
+					"Brutal blue dragon"
+				],
+				[
+					"Blue dragon",
+					"Baby blue dragon"
+				],
+				[
+					"Blue dragon",
+					"Baby blue dragon"
+				],
+				[
+					"Blue dragon"
+				],
+				[
+					"Blue dragon",
+					"Baby blue dragon"
+				],
+				[
+					"Brutal blue dragon",
+					"Baby blue dragon"
+				],
+				[
+					"Brine rat"
+				],
+				[
+					"Cave kraken",
+					"Kraken"
+				],
+				[
+					"Dagannoth"
+				],
+				[
+					"Dagannoth"
+				],
+				[
+					"Dagannoth",
+					"Dagannoth Prime",
+					"Dagannoth Rex",
+					"Dagannoth Supreme",
+					"Dagannoth spawn"
+				],
+				[
+					"Dagannoth"
+				],
+				[
+					"Dark beast"
+				],
+				[
+					"Dark beast"
+				],
+				[
+					"Drake"
+				],
+				[
+					"Dust devil"
+				],
+				[
+					"Dust devil"
+				],
+				[
+					"Fire giant"
+				],
+				[
+					"Fire giant"
+				],
+				[
+					"Fire giant"
+				],
+				[
+					"Fire giant"
+				],
+				[
+					"Fire giant"
+				],
+				[
+					"Fire giant"
+				],
+				[
+					"Fire giant"
+				],
+				[
+					"Ancient Wyvern",
+					"Long-tailed Wyvern",
+					"Spitting Wyvern",
+					"Taloned Wyvern"
+				],
+				[
+					"Gargoyle",
+					"Dawn",
+					"Dusk"
+				],
+				[
+					"Greater demon"
+				],
+				[
+					"Greater demon"
+				],
+				[
+					"Greater demon"
+				],
+				[
+					"Greater demon",
+					"Skotizo"
+				],
+				[
+					"Greater demon"
+				],
+				[
+					"Hellhound"
+				],
+				[
+					"Hellhound"
+				],
+				[
+					"Hellhound",
+					"Cerberus"
+				],
+				[
+					"Hellhound"
+				],
+				[
+					"Hellhound"
+				],
+				[
+					"Hydra",
+					"Alchemical Hydra"
+				],
+				[
+					"Warped Jelly"
+				],
+				[
+					"Jelly"
+				],
+				[
+					"Chilled jelly"
+				],
+				[
+					"Kalphite Worker",
+					"Kalphite Soldier",
+					"Kalphite Guardian",
+					"Kalphite Queen"
+				],
+				[
+					"Kalphite Worker",
+					"Kalphite Soldier",
+					"Kalphite Guardian"
+				],
+				[
+					"Kurask"
+				],
+				[
+					"Kurask"
+				],
+				[
+					"Earthen Nagua",
+					"Frost Nagua",
+					"Sulphur Nagua"
+				],
+				[
+					"Earthen Nagua",
+					"Frost Nagua",
+					"Sulphur Nagua",
+					"Amoxliatl"
+				],
+				[
+					"Earthen Nagua",
+					"Frost Nagua",
+					"Sulphur Nagua"
+				],
+				[
+					"Lizardman",
+					"Lizardman brute",
+					"Lizardman shaman"
+				],
+				[
+					"Lizardman",
+					"Lizardman brute",
+					"Lizardman shaman"
+				],
+				[
+					"Lizardman",
+					"Lizardman brute",
+					"Lizardman shaman"
+				],
+				[
+					"Lizardman",
+					"Lizardman brute",
+					"Lizardman shaman"
+				],
+				[
+					"Lizardman",
+					"Lizardman brute",
+					"Lizardman shaman"
+				],
+				[
+					"Bronze dragon",
+					"Iron dragon",
+					"Steel dragon",
+					"Mithril dragon",
+					"Adamant dragon",
+					"Rune dragon"
+				],
+				[
+					"Bronze dragon",
+					"Iron dragon",
+					"Steel dragon",
+					"Mithril dragon",
+					"Adamant dragon",
+					"Rune dragon"
+				],
+				[
+					"Bronze dragon",
+					"Iron dragon",
+					"Steel dragon",
+					"Mithril dragon",
+					"Adamant dragon",
+					"Rune dragon"
+				],
+				[
+					"Bronze dragon",
+					"Iron dragon",
+					"Steel dragon",
+					"Mithril dragon",
+					"Adamant dragon",
+					"Rune dragon"
+				],
+				[
+					"Zygomite",
+					"Ancient Zygomite"
+				],
+				[
+					"Zygomite",
+					"Ancient Zygomite"
+				],
+				[
+					"Greater Nechryael"
+				],
+				[
+					"Nechryael"
+				],
+				[
+					"Nechryael",
+					"Greater Nechryael"
+				],
+				[
+					"Red dragon",
+					"Brutal red dragon"
+				],
+				[
+					"Red dragon"
+				],
+				[
+					"Red dragon"
+				],
+				[
+					"Red dragon"
+				],
+				[
+					"Skeletal Wyvern"
+				],
+				[
+					"Smoke devil",
+					"Thermonuclear smoke devil"
+				],
+				[
+					"Mountain troll",
+					"Pee Hat",
+					"Kraka",
+					"Stick"
+				],
+				[
+					"Mountain troll",
+					"Troll general"
+				],
+				[
+					"Mountain troll"
+				],
+				[
+					"Mountain troll"
+				],
+				[
+					"Mountain troll"
+				],
+				[
+					"Turoth"
+				],
+				[
+					"Feral Vampyre",
+					"Vampyre Juvinate",
+					"Vampyre Juvenile",
+					"Vyrewatch",
+					"Vyrewatch Sentinel"
+				],
+				[
+					"Feral Vampyre",
+					"Vampyre Juvinate",
+					"Vampyre Juvenile",
+					"Vyrewatch"
+				],
+				[
+					"Warped Terrorbird",
+					"Warped Tortoise",
+					"Mutated Terrorbird",
+					"Mutated Tortoise"
+				],
+				[
+					"Waterfiend"
+				],
+				[
+					"Waterfiend"
+				],
+				[
+					"Waterfiend"
+				],
+				[
+					"Wyrm"
+				],
+				[
+					"Wyrm",
+					"Wyrmling"
+				],
+				[
+					"Wyrm",
+					"Lava Strykewyrm"
+				],
+				[
+					"Abhorrent spectre"
+				],
+				[
+					"Choke devil"
+				],
+				[
+					"Colossal Hydra"
+				],
+				[
+					"Greater abyssal demon"
+				],
+				[
+					"Guardian Drake"
+				],
+				[
+					"Insatiable Bloodveld"
+				],
+				[
+					"King kurask"
+				],
+				[
+					"Marble gargoyle"
+				],
+				[
+					"Monstrous Basilisk (The Fremennik Exiles)"
+				],
+				[
+					"Monstrous basilisk"
+				],
+				[
+					"Mutated Terrorbird"
+				],
+				[
+					"Mutated Tortoise"
+				],
+				[
+					"Nechryarch"
+				],
+				[
+					"Night beast"
+				],
+				[
+					"Nuclear smoke devil"
+				],
+				[
+					"Shadow Wyrm"
+				],
+				[
+					"Spiked Turoth"
+				],
+				[
+					"Vitreous Jelly"
+				]
+			],
+			"groupRoles": [
+				"master",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors"
+			],
+			"groupLabels": [
+				"Konar quo Maten",
+				"Aberrant Spectres — Catacombs of Kourend",
+				"Aberrant Spectres — Slayer Tower",
+				"Aberrant Spectres — Stronghold Slayer Dungeon",
+				"Abyssal Demons — Catacombs of Kourend",
+				"Abyssal Demons — Slayer Tower",
+				"Abyssal Demons — The Abyss",
+				"Ankou — Stronghold Slayer Dungeon",
+				"Ankou — Stronghold of Security",
+				"Ankou — Catacombs of Kourend",
+				"Aviansies — God Wars Dungeon",
+				"Basilisks — Fremennik Slayer Dungeon",
+				"Basilisks — Jormungand's Prison",
+				"Black Demons — Chasm of Fire",
+				"Black Demons — Taverley Dungeon",
+				"Black Demons — Brimhaven Dungeon",
+				"Black Demons — Catacombs of Kourend",
+				"Black Dragons — Catacombs of Kourend",
+				"Black Dragons — Myths' Guild Dungeon",
+				"Black Dragons — Taverley Dungeon",
+				"Black Dragons — Evil Chicken's Lair",
+				"Bloodveld — Stronghold Slayer Dungeon",
+				"Bloodveld — Slayer Tower",
+				"Bloodveld — God Wars Dungeon",
+				"Bloodveld — Catacombs of Kourend",
+				"Bloodveld — Iorwerth Dungeon",
+				"Bloodveld — Meiyerditch Laboratories",
+				"Blue Dragons — Catacombs of Kourend",
+				"Blue Dragons — Myths' Guild Dungeon",
+				"Blue Dragons — Taverley Dungeon",
+				"Blue Dragons — Ogre Enclave",
+				"Blue Dragons — Isle of Souls",
+				"Blue Dragons — Tapoyauik",
+				"Brine Rats — Brine Rat Cavern",
+				"Cave Kraken — Kraken Cove",
+				"Dagannoth — in the Lighthouse",
+				"Dagannoth — Catacombs of Kourend",
+				"Dagannoth — Waterbirth Island",
+				"Dagannoth — Jormungand's Prison",
+				"Dark Beasts — Iorwerth Dungeon",
+				"Dark Beasts — Mourner Tunnels",
+				"Drakes — Karuulm Slayer Dungeon",
+				"Dust Devils — Catacombs of Kourend",
+				"Dust Devils — Smoke Dungeon",
+				"Fire Giants — Karuulm Slayer Dungeon",
+				"Fire Giants — Stronghold Slayer Dungeon",
+				"Fire Giants — Catacombs of Kourend",
+				"Fire Giants — Waterfall Dungeon",
+				"Fire Giants — Brimhaven Dungeon",
+				"Fire Giants — Isle of Souls",
+				"Fire Giants — Giants' Den",
+				"Fossil Island Wyverns — Fossil Island",
+				"Gargoyles — Slayer Tower",
+				"Greater Demons — Karuulm Slayer Dungeon",
+				"Greater Demons — Chasm of Fire",
+				"Greater Demons — Brimhaven Dungeon",
+				"Greater Demons — Catacombs of Kourend",
+				"Greater Demons — Isle of Souls",
+				"Hellhounds — Karuulm Slayer Dungeon",
+				"Hellhounds — Witchaven Dungeon",
+				"Hellhounds — Taverley Dungeon",
+				"Hellhounds — Stronghold Slayer Dungeon",
+				"Hellhounds — Catacombs of Kourend",
+				"Hydras — Karuulm Slayer Dungeon",
+				"Jellies — Catacombs of Kourend",
+				"Jellies — Fremennik Slayer Dungeon",
+				"Jellies — Tapoyauik",
+				"Kalphites — Kalphite Lair",
+				"Kalphites — task-only Kalphite Cave",
+				"Kurask — Fremennik Slayer Dungeon",
+				"Kurask — Iorwerth Dungeon",
+				"Lesser Nagua — Neypotzli",
+				"Lesser Nagua — Tapoyauik",
+				"Lesser Nagua — Crypt of Tonali",
+				"Lizardmen — Lizardman Canyon",
+				"Lizardmen — Molch",
+				"Lizardmen — Lizardman Settlement",
+				"Lizardmen — Kebos Swamp",
+				"Lizardmen — The Battlefront",
+				"Metal Dragons — Catacombs of Kourend",
+				"Metal Dragons — Brimhaven Dungeon",
+				"Metal Dragons — Isle of Souls",
+				"Metal Dragons — Lithkren Vault",
+				"Mutated Zygomites — Zanaris",
+				"Mutated Zygomites — Fossil Island",
+				"Nechryael — Catacombs of Kourend",
+				"Nechryael — Slayer Tower",
+				"Nechryael — Iorwerth Dungeon",
+				"Red Dragons — Catacombs of Kourend",
+				"Red Dragons — Brimhaven Dungeon",
+				"Red Dragons — Myths' Guild Dungeon",
+				"Red Dragons — Forthos Dungeon",
+				"Skeletal Wyverns — Asgarnian Ice Dungeon",
+				"Smoke Devils — Smoke Devil Dungeon",
+				"Trolls — Death Plateau",
+				"Trolls — Troll Stronghold",
+				"Trolls — Keldagrim",
+				"Trolls — South of Mount Quidamortem",
+				"Trolls — Fremennik Isles",
+				"Turoth — Fremennik Slayer Dungeon",
+				"Vampyres — Darkmeyer",
+				"Vampyres — Slepe",
+				"Warped Creatures — Poison Waste Dungeon",
+				"Waterfiends — Ancient Cavern",
+				"Waterfiends — Kraken Cove",
+				"Waterfiends — Iorwerth Dungeon",
+				"Wyrms — Karuulm Slayer Dungeon",
+				"Wyrms — Neypotzli",
+				"Wyrms — Charred Dungeon",
+				"Abhorrent spectre",
+				"Choke devil",
+				"Colossal Hydra",
+				"Greater abyssal demon",
+				"Guardian Drake",
+				"Insatiable Bloodveld",
+				"King kurask",
+				"Marble gargoyle",
+				"Monstrous Basilisk (The Fremennik Exiles)",
+				"Monstrous basilisk",
+				"Mutated Terrorbird",
+				"Mutated Tortoise",
+				"Nechryarch",
+				"Night beast",
+				"Nuclear smoke devil",
+				"Shadow Wyrm",
+				"Spiked Turoth",
+				"Vitreous Jelly"
+			],
+			"requireAll": true,
+			"notes": "108 generated RuneLite assignment requirements; superiors remain opt-in"
+		},
+		{
+			"category": "slayer",
+			"kind": "npc",
+			"name": "Krystilia",
+			"options": [
+				"talk-to",
+				"assignment",
+				"trade",
+				"rewards"
+			],
+			"requiredCardGroups": [
+				[
+					"Krystilia"
+				],
+				[
+					"Abyssal demon"
+				],
+				[
+					"Ankou"
+				],
+				[
+					"Aviansie"
+				],
+				[
+					"Bandit"
+				],
+				[
+					"Black bear",
+					"Grizzly bear",
+					"Callisto",
+					"Artio"
+				],
+				[
+					"Black demon"
+				],
+				[
+					"Black dragon"
+				],
+				[
+					"Black Knight"
+				],
+				[
+					"Bloodveld"
+				],
+				[
+					"Chaos druid"
+				],
+				[
+					"Dark warrior"
+				],
+				[
+					"Dust devil"
+				],
+				[
+					"Earth warrior"
+				],
+				[
+					"Ent"
+				],
+				[
+					"Fire giant"
+				],
+				[
+					"Greater demon"
+				],
+				[
+					"Green dragon"
+				],
+				[
+					"Hellhound"
+				],
+				[
+					"Hill Giant"
+				],
+				[
+					"Ice giant"
+				],
+				[
+					"Ice warrior"
+				],
+				[
+					"Jelly"
+				],
+				[
+					"Lava dragon"
+				],
+				[
+					"Lesser demon"
+				],
+				[
+					"Magic axe"
+				],
+				[
+					"Mammoth"
+				],
+				[
+					"Moss giant"
+				],
+				[
+					"Nechryael"
+				],
+				[
+					"Pirate"
+				],
+				[
+					"Rogue"
+				],
+				[
+					"Scorpion",
+					"Scorpia"
+				],
+				[
+					"Skeleton",
+					"Vet'ion",
+					"Calvar'ion"
+				],
+				[
+					"Spider",
+					"Venenatis",
+					"Spindel"
+				],
+				[
+					"Spiritual ranger",
+					"Spiritual mage",
+					"Spiritual warrior"
+				],
+				[
+					"Zombie"
+				],
+				[
+					"Choke devil"
+				],
+				[
+					"Greater abyssal demon"
+				],
+				[
+					"Insatiable Bloodveld"
+				],
+				[
+					"Nechryarch"
+				],
+				[
+					"Vitreous Jelly"
+				]
+			],
+			"groupRoles": [
+				"master",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors"
+			],
+			"groupLabels": [
+				"Krystilia",
+				"Abyssal Demons",
+				"Ankou",
+				"Aviansies",
+				"Bandits",
+				"Bears",
+				"Black Demons",
+				"Black Dragons",
+				"Black Knights",
+				"Bloodveld",
+				"Chaos Druids",
+				"Dark Warriors",
+				"Dust Devils",
+				"Earth Warriors",
+				"Ents",
+				"Fire Giants",
+				"Greater Demons",
+				"Green Dragons",
+				"Hellhounds",
+				"Hill Giants",
+				"Ice Giants",
+				"Ice Warriors",
+				"Jellies",
+				"Lava Dragons",
+				"Lesser Demons",
+				"Magic Axes",
+				"Mammoths",
+				"Moss Giants",
+				"Nechryael",
+				"Pirates",
+				"Rogues",
+				"Scorpions",
+				"Skeletons",
+				"Spiders",
+				"Spiritual Creatures",
+				"Zombies",
+				"Choke devil",
+				"Greater abyssal demon",
+				"Insatiable Bloodveld",
+				"Nechryarch",
+				"Vitreous Jelly"
+			],
+			"requireAll": true,
+			"notes": "35 generated RuneLite assignment requirements; superiors remain opt-in"
+		},
+		{
+			"category": "slayer",
+			"kind": "npc",
+			"name": "Kuradal",
+			"options": [
+				"talk-to",
+				"assignment",
+				"trade",
+				"rewards"
+			],
+			"requiredCardGroups": [
+				[
+					"Kuradal"
+				],
+				[
+					"Aberrant spectre",
+					"Deviant spectre"
+				],
+				[
+					"Abyssal demon",
+					"Abyssal Sire"
+				],
+				[
+					"Ankou"
+				],
+				[
+					"Aquanite"
+				],
+				[
+					"Araxyte",
+					"Araxxor"
+				],
+				[
+					"Aviansie",
+					"Kree'arra",
+					"Wingman Skree",
+					"Flockleader Geerin",
+					"Flight Kilisa"
+				],
+				[
+					"Basilisk",
+					"Basilisk Knight"
+				],
+				[
+					"Black demon",
+					"Demonic gorilla",
+					"Skotizo",
+					"Porazdir",
+					"Balfrug Kreeyath"
+				],
+				[
+					"Black dragon",
+					"Brutal black dragon",
+					"King Black Dragon"
+				],
+				[
+					"Bloodveld",
+					"Mutated Bloodveld"
+				],
+				[
+					"Blue dragon",
+					"Brutal blue dragon",
+					"Vorkath"
+				],
+				[
+					"Cave horror"
+				],
+				[
+					"Cave kraken",
+					"Kraken"
+				],
+				[
+					"Dagannoth",
+					"Dagannoth Prime",
+					"Dagannoth Rex",
+					"Dagannoth Supreme",
+					"Dagannoth fledgeling"
+				],
+				[
+					"Dark beast"
+				],
+				[
+					"Drake"
+				],
+				[
+					"Dust devil"
+				],
+				[
+					"Elf Warrior",
+					"Elf Archer",
+					"Iorwerth Warrior",
+					"Iorwerth Archer",
+					"Mourner"
+				],
+				[
+					"Fire giant",
+					"Branda the Fire Queen"
+				],
+				[
+					"Ancient Wyvern",
+					"Long-tailed Wyvern",
+					"Spitting Wyvern",
+					"Taloned Wyvern"
+				],
+				[
+					"Frost dragon"
+				],
+				[
+					"Gargoyle",
+					"Dawn",
+					"Dusk"
+				],
+				[
+					"Greater demon",
+					"K'ril Tsutsaroth",
+					"Tstanon Karlak",
+					"Skotizo",
+					"Tormented Demon"
+				],
+				[
+					"Gryphon"
+				],
+				[
+					"Hellhound",
+					"Cerberus"
+				],
+				[
+					"Kalphite Worker",
+					"Kalphite Soldier",
+					"Kalphite Guardian",
+					"Kalphite Queen"
+				],
+				[
+					"Kurask"
+				],
+				[
+					"Lizardman",
+					"Lizardman brute",
+					"Lizardman shaman"
+				],
+				[
+					"Bronze dragon",
+					"Iron dragon",
+					"Steel dragon",
+					"Mithril dragon",
+					"Adamant dragon",
+					"Rune dragon"
+				],
+				[
+					"Zygomite",
+					"Ancient Zygomite"
+				],
+				[
+					"Nechryael",
+					"Greater Nechryael"
+				],
+				[
+					"Red dragon",
+					"Brutal red dragon"
+				],
+				[
+					"Skeletal Wyvern"
+				],
+				[
+					"Smoke devil",
+					"Thermonuclear smoke devil"
+				],
+				[
+					"Spiritual ranger",
+					"Spiritual mage",
+					"Spiritual warrior"
+				],
+				[
+					"Suqah"
+				],
+				[
+					"Mountain troll"
+				],
+				[
+					"TzHaar-Hur",
+					"TzHaar-Ket",
+					"TzHaar-Mej",
+					"TzHaar-Xil",
+					"TzTok-Jad",
+					"TzKal-Zuk"
+				],
+				[
+					"Feral Vampyre",
+					"Vampyre Juvinate",
+					"Vyrewatch",
+					"Vyrewatch Sentinel"
+				],
+				[
+					"Warped Terrorbird",
+					"Warped Tortoise",
+					"Mutated Terrorbird",
+					"Mutated Tortoise"
+				],
+				[
+					"Waterfiend"
+				],
+				[
+					"Wyrm"
+				],
+				[
+					"Abhorrent spectre"
+				],
+				[
+					"Cave abomination"
+				],
+				[
+					"Choke devil"
+				],
+				[
+					"Dire gryphon"
+				],
+				[
+					"Dreadborn Araxyte"
+				],
+				[
+					"Elder aquanite"
+				],
+				[
+					"Greater abyssal demon"
+				],
+				[
+					"Guardian Drake"
+				],
+				[
+					"Insatiable Bloodveld"
+				],
+				[
+					"King kurask"
+				],
+				[
+					"Marble gargoyle"
+				],
+				[
+					"Monstrous Basilisk (The Fremennik Exiles)"
+				],
+				[
+					"Monstrous basilisk"
+				],
+				[
+					"Mutated Terrorbird"
+				],
+				[
+					"Mutated Tortoise"
+				],
+				[
+					"Nechryarch"
+				],
+				[
+					"Night beast"
+				],
+				[
+					"Nuclear smoke devil"
+				],
+				[
+					"Shadow Wyrm"
+				]
+			],
+			"groupRoles": [
+				"master",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors"
+			],
+			"groupLabels": [
+				"Kuradal",
+				"Aberrant Spectres",
+				"Abyssal Demons",
+				"Ankou",
+				"Aquanites",
+				"Araxytes",
+				"Aviansies",
+				"Basilisks",
+				"Black Demons",
+				"Black Dragons",
+				"Bloodveld",
+				"Blue Dragons",
+				"Cave Horrors",
+				"Cave Kraken",
+				"Dagannoth",
+				"Dark Beasts",
+				"Drakes",
+				"Dust Devils",
+				"Elves",
+				"Fire Giants",
+				"Fossil Island Wyverns",
+				"Frost Dragons",
+				"Gargoyles",
+				"Greater Demons",
+				"Gryphons",
+				"Hellhounds",
+				"Kalphites",
+				"Kurask",
+				"Lizardmen",
+				"Metal Dragons",
+				"Mutated Zygomites",
+				"Nechryael",
+				"Red Dragons",
+				"Skeletal Wyverns",
+				"Smoke Devils",
+				"Spiritual Creatures",
+				"Suqahs",
+				"Trolls",
+				"Tzhaar",
+				"Vampyres",
+				"Warped Creatures",
+				"Waterfiends",
+				"Wyrms",
+				"Abhorrent spectre",
+				"Cave abomination",
+				"Choke devil",
+				"Dire gryphon",
+				"Dreadborn Araxyte",
+				"Elder aquanite",
+				"Greater abyssal demon",
+				"Guardian Drake",
+				"Insatiable Bloodveld",
+				"King kurask",
+				"Marble gargoyle",
+				"Monstrous Basilisk (The Fremennik Exiles)",
+				"Monstrous basilisk",
+				"Mutated Terrorbird",
+				"Mutated Tortoise",
+				"Nechryarch",
+				"Night beast",
+				"Nuclear smoke devil",
+				"Shadow Wyrm"
+			],
+			"requireAll": true,
+			"notes": "Kuradal mirrors Duradel; 42 generated RuneLite assignment requirements; superiors remain opt-in"
+		},
+		{
+			"category": "slayer",
+			"kind": "npc",
+			"name": "Mazchna",
+			"options": [
+				"talk-to",
+				"assignment",
+				"trade",
+				"rewards"
+			],
+			"requiredCardGroups": [
+				[
+					"Mazchna"
+				],
+				[
+					"Banshee",
+					"Twisted Banshee"
+				],
+				[
+					"Bat",
+					"Giant bat",
+					"Albino bat"
+				],
+				[
+					"Black bear",
+					"Grizzly bear",
+					"Grizzly bear cub"
+				],
+				[
+					"Catablepon"
+				],
+				[
+					"Cave bug"
+				],
+				[
+					"Cave crawler"
+				],
+				[
+					"Cave slime"
+				],
+				[
+					"Cockatrice",
+					"Moonlight Cockatrice"
+				],
+				[
+					"Crab",
+					"Ammonite Crab",
+					"Frost Crab",
+					"King Sand Crab",
+					"Rock Crab",
+					"Giant Rock Crab",
+					"Sand Crab",
+					"Swamp Crab"
+				],
+				[
+					"Crawling Hand"
+				],
+				[
+					"Guard dog",
+					"Wild dog",
+					"Jackal"
+				],
+				[
+					"Flesh Crawler"
+				],
+				[
+					"Ghost"
+				],
+				[
+					"Ghoul"
+				],
+				[
+					"Hill Giant",
+					"Cyclops"
+				],
+				[
+					"Hobgoblin"
+				],
+				[
+					"Ice warrior"
+				],
+				[
+					"Kalphite Worker",
+					"Kalphite Soldier",
+					"Kalphite Guardian"
+				],
+				[
+					"Killerwatt"
+				],
+				[
+					"Lizard",
+					"Desert Lizard",
+					"Grimy Lizard",
+					"Small Lizard",
+					"Sulphur Lizard"
+				],
+				[
+					"Mogre"
+				],
+				[
+					"Pyrefiend"
+				],
+				[
+					"Rockslug"
+				],
+				[
+					"Scorpion",
+					"King Scorpion",
+					"Poison Scorpion",
+					"Pit Scorpion"
+				],
+				[
+					"Shade",
+					"Loar Shade",
+					"Phrin Shade",
+					"Riyl Shade",
+					"Asyn Shade",
+					"Fiyr Shade",
+					"Urium Shade"
+				],
+				[
+					"Skeleton"
+				],
+				[
+					"Feral Vampyre",
+					"Vampyre Juvinate",
+					"Vyrewatch",
+					"Vyrewatch Sentinel"
+				],
+				[
+					"Wall beast"
+				],
+				[
+					"Wolf",
+					"Big Wolf",
+					"Dire Wolf",
+					"Jungle Wolf",
+					"Desert Wolf",
+					"Ice wolf"
+				],
+				[
+					"Zombie",
+					"Zogre"
+				],
+				[
+					"Chasm Crawler"
+				],
+				[
+					"Cockathrice"
+				],
+				[
+					"Crushing hand"
+				],
+				[
+					"Flaming pyrelord"
+				],
+				[
+					"Giant rockslug"
+				],
+				[
+					"Screaming banshee"
+				]
+			],
+			"groupRoles": [
+				"master",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors"
+			],
+			"groupLabels": [
+				"Mazchna",
+				"Banshees",
+				"Bats",
+				"Bears",
+				"Catablepon",
+				"Cave Bugs",
+				"Cave Crawlers",
+				"Cave Slimes",
+				"Cockatrice",
+				"Crabs",
+				"Crawling Hands",
+				"Dogs",
+				"Fleshcrawlers",
+				"Ghosts",
+				"Ghouls",
+				"Hill Giants",
+				"Hobgoblins",
+				"Ice Warriors",
+				"Kalphites",
+				"Killerwatts",
+				"Lizards",
+				"Mogres",
+				"Pyrefiends",
+				"Rockslugs",
+				"Scorpions",
+				"Shades",
+				"Skeletons",
+				"Vampyres",
+				"Wall Beasts",
+				"Wolves",
+				"Zombies",
+				"Chasm Crawler",
+				"Cockathrice",
+				"Crushing hand",
+				"Flaming pyrelord",
+				"Giant rockslug",
+				"Screaming banshee"
+			],
+			"requireAll": true,
+			"notes": "30 generated RuneLite assignment requirements; superiors remain opt-in"
+		},
+		{
+			"category": "slayer",
+			"kind": "npc",
+			"name": "Nieve",
+			"options": [
+				"talk-to",
+				"assignment",
+				"trade",
+				"rewards"
+			],
+			"requiredCardGroups": [
+				[
+					"Nieve"
+				],
+				[
+					"Aberrant spectre",
+					"Deviant spectre"
+				],
+				[
+					"Abyssal demon",
+					"Abyssal Sire"
+				],
+				[
+					"Ankou"
+				],
+				[
+					"Aquanite"
+				],
+				[
+					"Araxyte",
+					"Araxxor"
+				],
+				[
+					"Aviansie",
+					"Kree'arra",
+					"Wingman Skree",
+					"Flockleader Geerin",
+					"Flight Kilisa"
+				],
+				[
+					"Basilisk",
+					"Basilisk Knight"
+				],
+				[
+					"Black demon",
+					"Demonic gorilla",
+					"Skotizo",
+					"Porazdir",
+					"Balfrug Kreeyath"
+				],
+				[
+					"Black dragon",
+					"Brutal black dragon",
+					"King Black Dragon"
+				],
+				[
+					"Bloodveld",
+					"Mutated Bloodveld"
+				],
+				[
+					"Blue dragon",
+					"Brutal blue dragon",
+					"Vorkath"
+				],
+				[
+					"Brine rat"
+				],
+				[
+					"Cave horror"
+				],
+				[
+					"Cave kraken",
+					"Kraken"
+				],
+				[
+					"Juvenile custodian stalker",
+					"Mature custodian stalker",
+					"Elder custodian stalker"
+				],
+				[
+					"Dagannoth",
+					"Dagannoth Prime",
+					"Dagannoth Rex",
+					"Dagannoth Supreme",
+					"Dagannoth fledgeling"
+				],
+				[
+					"Dark beast"
+				],
+				[
+					"Drake"
+				],
+				[
+					"Dust devil"
+				],
+				[
+					"Elf Warrior",
+					"Elf Archer",
+					"Iorwerth Warrior",
+					"Iorwerth Archer",
+					"Mourner"
+				],
+				[
+					"Fire giant",
+					"Branda the Fire Queen"
+				],
+				[
+					"Ancient Wyvern",
+					"Long-tailed Wyvern",
+					"Spitting Wyvern",
+					"Taloned Wyvern"
+				],
+				[
+					"Frost dragon"
+				],
+				[
+					"Gargoyle",
+					"Dawn",
+					"Dusk"
+				],
+				[
+					"Greater demon",
+					"K'ril Tsutsaroth",
+					"Tstanon Karlak",
+					"Skotizo",
+					"Tormented Demon"
+				],
+				[
+					"Gryphon"
+				],
+				[
+					"Hellhound",
+					"Cerberus"
+				],
+				[
+					"Kalphite Worker",
+					"Kalphite Soldier",
+					"Kalphite Guardian",
+					"Kalphite Queen"
+				],
+				[
+					"Kurask"
+				],
+				[
+					"Lizardman",
+					"Lizardman brute",
+					"Lizardman shaman"
+				],
+				[
+					"Bronze dragon",
+					"Iron dragon",
+					"Steel dragon",
+					"Mithril dragon",
+					"Adamant dragon",
+					"Rune dragon"
+				],
+				[
+					"Zygomite",
+					"Ancient Zygomite"
+				],
+				[
+					"Nechryael",
+					"Greater Nechryael"
+				],
+				[
+					"Red dragon",
+					"Brutal red dragon"
+				],
+				[
+					"Scarab Swarm",
+					"Locust rider",
+					"Scarab Mage",
+					"Small scarab"
+				],
+				[
+					"Skeletal Wyvern"
+				],
+				[
+					"Smoke devil",
+					"Thermonuclear smoke devil"
+				],
+				[
+					"Spiritual ranger",
+					"Spiritual mage",
+					"Spiritual warrior"
+				],
+				[
+					"Suqah"
+				],
+				[
+					"Mountain troll"
+				],
+				[
+					"Turoth"
+				],
+				[
+					"TzHaar-Hur",
+					"TzHaar-Ket",
+					"TzHaar-Mej",
+					"TzHaar-Xil",
+					"TzTok-Jad",
+					"TzKal-Zuk"
+				],
+				[
+					"Feral Vampyre",
+					"Vampyre Juvinate",
+					"Vyrewatch",
+					"Vyrewatch Sentinel"
+				],
+				[
+					"Warped Terrorbird",
+					"Warped Tortoise",
+					"Mutated Terrorbird",
+					"Mutated Tortoise"
+				],
+				[
+					"Wyrm"
+				],
+				[
+					"Abhorrent spectre"
+				],
+				[
+					"Ancient Custodian"
+				],
+				[
+					"Cave abomination"
+				],
+				[
+					"Choke devil"
+				],
+				[
+					"Dire gryphon"
+				],
+				[
+					"Dreadborn Araxyte"
+				],
+				[
+					"Elder aquanite"
+				],
+				[
+					"Greater abyssal demon"
+				],
+				[
+					"Guardian Drake"
+				],
+				[
+					"Insatiable Bloodveld"
+				],
+				[
+					"King kurask"
+				],
+				[
+					"Marble gargoyle"
+				],
+				[
+					"Monstrous Basilisk (The Fremennik Exiles)"
+				],
+				[
+					"Monstrous basilisk"
+				],
+				[
+					"Mutated Terrorbird"
+				],
+				[
+					"Mutated Tortoise"
+				],
+				[
+					"Nechryarch"
+				],
+				[
+					"Night beast"
+				],
+				[
+					"Nuclear smoke devil"
+				],
+				[
+					"Shadow Wyrm"
+				],
+				[
+					"Spiked Turoth"
+				]
+			],
+			"groupRoles": [
+				"master",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors"
+			],
+			"groupLabels": [
+				"Nieve",
+				"Aberrant Spectres",
+				"Abyssal Demons",
+				"Ankou",
+				"Aquanites",
+				"Araxytes",
+				"Aviansies",
+				"Basilisks",
+				"Black Demons",
+				"Black Dragons",
+				"Bloodveld",
+				"Blue Dragons",
+				"Brine Rats",
+				"Cave Horrors",
+				"Cave Kraken",
+				"Custodian Stalkers",
+				"Dagannoth",
+				"Dark Beasts",
+				"Drakes",
+				"Dust Devils",
+				"Elves",
+				"Fire Giants",
+				"Fossil Island Wyverns",
+				"Frost Dragons",
+				"Gargoyles",
+				"Greater Demons",
+				"Gryphons",
+				"Hellhounds",
+				"Kalphites",
+				"Kurask",
+				"Lizardmen",
+				"Metal Dragons",
+				"Mutated Zygomites",
+				"Nechryael",
+				"Red Dragons",
+				"Scabarites",
+				"Skeletal Wyverns",
+				"Smoke Devils",
+				"Spiritual Creatures",
+				"Suqahs",
+				"Trolls",
+				"Turoth",
+				"Tzhaar",
+				"Vampyres",
+				"Warped Creatures",
+				"Wyrms",
+				"Abhorrent spectre",
+				"Ancient Custodian",
+				"Cave abomination",
+				"Choke devil",
+				"Dire gryphon",
+				"Dreadborn Araxyte",
+				"Elder aquanite",
+				"Greater abyssal demon",
+				"Guardian Drake",
+				"Insatiable Bloodveld",
+				"King kurask",
+				"Marble gargoyle",
+				"Monstrous Basilisk (The Fremennik Exiles)",
+				"Monstrous basilisk",
+				"Mutated Terrorbird",
+				"Mutated Tortoise",
+				"Nechryarch",
+				"Night beast",
+				"Nuclear smoke devil",
+				"Shadow Wyrm",
+				"Spiked Turoth"
+			],
+			"requireAll": true,
+			"notes": "45 generated RuneLite assignment requirements; superiors remain opt-in"
+		},
+		{
+			"category": "slayer",
+			"kind": "npc",
+			"name": "Spria",
+			"options": [
+				"talk-to",
+				"assignment",
+				"trade",
+				"rewards"
+			],
+			"requiredCardGroups": [
+				[
+					"Spria"
+				],
+				[
+					"Banshee",
+					"Twisted Banshee"
+				],
+				[
+					"Bat",
+					"Giant bat",
+					"Albino bat"
+				],
+				[
+					"Black bear",
+					"Grizzly bear",
+					"Grizzly bear cub"
+				],
+				[
+					"Bird",
+					"Chicken",
+					"Rooster",
+					"Seagull",
+					"Terrorbird",
+					"Vulture"
+				],
+				[
+					"Cave bug"
+				],
+				[
+					"Cave crawler"
+				],
+				[
+					"Cave slime"
+				],
+				[
+					"Cow",
+					"Cow calf"
+				],
+				[
+					"Crawling Hand"
+				],
+				[
+					"Guard dog",
+					"Wild dog",
+					"Jackal"
+				],
+				[
+					"Dwarf",
+					"Black Guard"
+				],
+				[
+					"Ghost"
+				],
+				[
+					"Goblin",
+					"Cave goblin (monster)"
+				],
+				[
+					"Icefiend"
+				],
+				[
+					"Kalphite Worker",
+					"Kalphite Soldier",
+					"Kalphite Guardian"
+				],
+				[
+					"Lizard",
+					"Desert Lizard",
+					"Grimy Lizard",
+					"Small Lizard",
+					"Sulphur Lizard"
+				],
+				[
+					"Minotaur"
+				],
+				[
+					"Monkey (monster)"
+				],
+				[
+					"Rat",
+					"Giant rat",
+					"Dungeon rat",
+					"Crypt rat"
+				],
+				[
+					"Scorpion",
+					"King Scorpion",
+					"Poison Scorpion",
+					"Pit Scorpion"
+				],
+				[
+					"Skeleton"
+				],
+				[
+					"Sourhog"
+				],
+				[
+					"Spider",
+					"Giant spider",
+					"Shadow spider",
+					"Jungle spider",
+					"Deadly red spider",
+					"Poison spider",
+					"Blessed spider",
+					"Crypt spider",
+					"Temple Spider"
+				],
+				[
+					"Wolf",
+					"Big Wolf",
+					"Dire Wolf",
+					"Jungle Wolf",
+					"Desert Wolf",
+					"Ice wolf"
+				],
+				[
+					"Zombie",
+					"Zogre"
+				],
+				[
+					"Chasm Crawler"
+				],
+				[
+					"Crushing hand"
+				],
+				[
+					"Screaming banshee"
+				]
+			],
+			"groupRoles": [
+				"master",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"superiors",
+				"superiors",
+				"superiors"
+			],
+			"groupLabels": [
+				"Spria",
+				"Banshees",
+				"Bats",
+				"Bears",
+				"Birds",
+				"Cave Bugs",
+				"Cave Crawlers",
+				"Cave Slimes",
+				"Cows",
+				"Crawling Hands",
+				"Dogs",
+				"Dwarves",
+				"Ghosts",
+				"Goblins",
+				"Icefiends",
+				"Kalphites",
+				"Lizards",
+				"Minotaurs",
+				"Monkeys",
+				"Rats",
+				"Scorpions",
+				"Skeletons",
+				"Sourhogs",
+				"Spiders",
+				"Wolves",
+				"Zombies",
+				"Chasm Crawler",
+				"Crushing hand",
+				"Screaming banshee"
+			],
+			"requireAll": true,
+			"notes": "25 generated RuneLite assignment requirements; superiors remain opt-in"
+		},
+		{
+			"category": "slayer",
+			"kind": "npc",
+			"name": "Steve",
+			"options": [
+				"talk-to",
+				"assignment",
+				"trade",
+				"rewards"
+			],
+			"requiredCardGroups": [
+				[
+					"Steve"
+				],
+				[
+					"Aberrant spectre",
+					"Deviant spectre"
+				],
+				[
+					"Abyssal demon",
+					"Abyssal Sire"
+				],
+				[
+					"Ankou"
+				],
+				[
+					"Aquanite"
+				],
+				[
+					"Araxyte",
+					"Araxxor"
+				],
+				[
+					"Aviansie",
+					"Kree'arra",
+					"Wingman Skree",
+					"Flockleader Geerin",
+					"Flight Kilisa"
+				],
+				[
+					"Basilisk",
+					"Basilisk Knight"
+				],
+				[
+					"Black demon",
+					"Demonic gorilla",
+					"Skotizo",
+					"Porazdir",
+					"Balfrug Kreeyath"
+				],
+				[
+					"Black dragon",
+					"Brutal black dragon",
+					"King Black Dragon"
+				],
+				[
+					"Bloodveld",
+					"Mutated Bloodveld"
+				],
+				[
+					"Blue dragon",
+					"Brutal blue dragon",
+					"Vorkath"
+				],
+				[
+					"Brine rat"
+				],
+				[
+					"Cave horror"
+				],
+				[
+					"Cave kraken",
+					"Kraken"
+				],
+				[
+					"Juvenile custodian stalker",
+					"Mature custodian stalker",
+					"Elder custodian stalker"
+				],
+				[
+					"Dagannoth",
+					"Dagannoth Prime",
+					"Dagannoth Rex",
+					"Dagannoth Supreme",
+					"Dagannoth fledgeling"
+				],
+				[
+					"Dark beast"
+				],
+				[
+					"Drake"
+				],
+				[
+					"Dust devil"
+				],
+				[
+					"Elf Warrior",
+					"Elf Archer",
+					"Iorwerth Warrior",
+					"Iorwerth Archer",
+					"Mourner"
+				],
+				[
+					"Fire giant",
+					"Branda the Fire Queen"
+				],
+				[
+					"Ancient Wyvern",
+					"Long-tailed Wyvern",
+					"Spitting Wyvern",
+					"Taloned Wyvern"
+				],
+				[
+					"Frost dragon"
+				],
+				[
+					"Gargoyle",
+					"Dawn",
+					"Dusk"
+				],
+				[
+					"Greater demon",
+					"K'ril Tsutsaroth",
+					"Tstanon Karlak",
+					"Skotizo",
+					"Tormented Demon"
+				],
+				[
+					"Gryphon"
+				],
+				[
+					"Hellhound",
+					"Cerberus"
+				],
+				[
+					"Kalphite Worker",
+					"Kalphite Soldier",
+					"Kalphite Guardian",
+					"Kalphite Queen"
+				],
+				[
+					"Kurask"
+				],
+				[
+					"Lizardman",
+					"Lizardman brute",
+					"Lizardman shaman"
+				],
+				[
+					"Bronze dragon",
+					"Iron dragon",
+					"Steel dragon",
+					"Mithril dragon",
+					"Adamant dragon",
+					"Rune dragon"
+				],
+				[
+					"Zygomite",
+					"Ancient Zygomite"
+				],
+				[
+					"Nechryael",
+					"Greater Nechryael"
+				],
+				[
+					"Red dragon",
+					"Brutal red dragon"
+				],
+				[
+					"Scarab Swarm",
+					"Locust rider",
+					"Scarab Mage",
+					"Small scarab"
+				],
+				[
+					"Skeletal Wyvern"
+				],
+				[
+					"Smoke devil",
+					"Thermonuclear smoke devil"
+				],
+				[
+					"Spiritual ranger",
+					"Spiritual mage",
+					"Spiritual warrior"
+				],
+				[
+					"Suqah"
+				],
+				[
+					"Mountain troll"
+				],
+				[
+					"Turoth"
+				],
+				[
+					"TzHaar-Hur",
+					"TzHaar-Ket",
+					"TzHaar-Mej",
+					"TzHaar-Xil",
+					"TzTok-Jad",
+					"TzKal-Zuk"
+				],
+				[
+					"Feral Vampyre",
+					"Vampyre Juvinate",
+					"Vyrewatch",
+					"Vyrewatch Sentinel"
+				],
+				[
+					"Warped Terrorbird",
+					"Warped Tortoise",
+					"Mutated Terrorbird",
+					"Mutated Tortoise"
+				],
+				[
+					"Wyrm"
+				],
+				[
+					"Abhorrent spectre"
+				],
+				[
+					"Ancient Custodian"
+				],
+				[
+					"Cave abomination"
+				],
+				[
+					"Choke devil"
+				],
+				[
+					"Dire gryphon"
+				],
+				[
+					"Dreadborn Araxyte"
+				],
+				[
+					"Elder aquanite"
+				],
+				[
+					"Greater abyssal demon"
+				],
+				[
+					"Guardian Drake"
+				],
+				[
+					"King kurask"
+				],
+				[
+					"Marble gargoyle"
+				],
+				[
+					"Monstrous Basilisk (The Fremennik Exiles)"
+				],
+				[
+					"Monstrous basilisk"
+				],
+				[
+					"Mutated Terrorbird"
+				],
+				[
+					"Mutated Tortoise"
+				],
+				[
+					"Nechryarch"
+				],
+				[
+					"Night beast"
+				],
+				[
+					"Nuclear smoke devil"
+				],
+				[
+					"Shadow Wyrm"
+				],
+				[
+					"Spiked Turoth"
+				]
+			],
+			"groupRoles": [
+				"master",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors"
+			],
+			"groupLabels": [
+				"Steve",
+				"Aberrant Spectres",
+				"Abyssal Demons",
+				"Ankou",
+				"Aquanites",
+				"Araxytes",
+				"Aviansies",
+				"Basilisks",
+				"Black Demons",
+				"Black Dragons",
+				"Bloodveld",
+				"Blue Dragons",
+				"Brine Rats",
+				"Cave Horrors",
+				"Cave Kraken",
+				"Custodian Stalkers",
+				"Dagannoth",
+				"Dark Beasts",
+				"Drakes",
+				"Dust Devils",
+				"Elves",
+				"Fire Giants",
+				"Fossil Island Wyverns",
+				"Frost Dragons",
+				"Gargoyles",
+				"Greater Demons",
+				"Gryphons",
+				"Hellhounds",
+				"Kalphites",
+				"Kurask",
+				"Lizardmen",
+				"Metal Dragons",
+				"Mutated Zygomites",
+				"Nechryael",
+				"Red Dragons",
+				"Scabarites",
+				"Skeletal Wyverns",
+				"Smoke Devils",
+				"Spiritual Creatures",
+				"Suqahs",
+				"Trolls",
+				"Turoth",
+				"Tzhaar",
+				"Vampyres",
+				"Warped Creatures",
+				"Wyrms",
+				"Abhorrent spectre",
+				"Ancient Custodian",
+				"Cave abomination",
+				"Choke devil",
+				"Dire gryphon",
+				"Dreadborn Araxyte",
+				"Elder aquanite",
+				"Greater abyssal demon",
+				"Guardian Drake",
+				"King kurask",
+				"Marble gargoyle",
+				"Monstrous Basilisk (The Fremennik Exiles)",
+				"Monstrous basilisk",
+				"Mutated Terrorbird",
+				"Mutated Tortoise",
+				"Nechryarch",
+				"Night beast",
+				"Nuclear smoke devil",
+				"Shadow Wyrm",
+				"Spiked Turoth"
+			],
+			"requireAll": true,
+			"notes": "Steve mirrors Nieve; 45 generated RuneLite assignment requirements; superiors remain opt-in"
+		},
+		{
+			"category": "slayer",
+			"kind": "npc",
+			"name": "Turael",
+			"options": [
+				"talk-to",
+				"assignment",
+				"trade",
+				"rewards"
+			],
+			"requiredCardGroups": [
+				[
+					"Turael"
+				],
+				[
+					"Banshee",
+					"Twisted Banshee"
+				],
+				[
+					"Bat",
+					"Giant bat",
+					"Albino bat"
+				],
+				[
+					"Black bear",
+					"Grizzly bear",
+					"Grizzly bear cub"
+				],
+				[
+					"Bird",
+					"Chicken",
+					"Rooster",
+					"Seagull",
+					"Terrorbird",
+					"Vulture"
+				],
+				[
+					"Cave bug"
+				],
+				[
+					"Cave crawler"
+				],
+				[
+					"Cave slime"
+				],
+				[
+					"Cow",
+					"Cow calf"
+				],
+				[
+					"Crawling Hand"
+				],
+				[
+					"Guard dog",
+					"Wild dog",
+					"Jackal"
+				],
+				[
+					"Dwarf",
+					"Black Guard"
+				],
+				[
+					"Ghost"
+				],
+				[
+					"Goblin",
+					"Cave goblin (monster)"
+				],
+				[
+					"Icefiend"
+				],
+				[
+					"Kalphite Worker",
+					"Kalphite Soldier",
+					"Kalphite Guardian"
+				],
+				[
+					"Lizard",
+					"Desert Lizard",
+					"Grimy Lizard",
+					"Small Lizard",
+					"Sulphur Lizard"
+				],
+				[
+					"Minotaur"
+				],
+				[
+					"Monkey (monster)"
+				],
+				[
+					"Rat",
+					"Giant rat",
+					"Dungeon rat",
+					"Crypt rat"
+				],
+				[
+					"Scorpion",
+					"King Scorpion",
+					"Poison Scorpion",
+					"Pit Scorpion"
+				],
+				[
+					"Skeleton"
+				],
+				[
+					"Spider",
+					"Giant spider",
+					"Shadow spider",
+					"Jungle spider",
+					"Deadly red spider",
+					"Poison spider",
+					"Blessed spider",
+					"Crypt spider",
+					"Temple Spider"
+				],
+				[
+					"Wolf",
+					"Big Wolf",
+					"Dire Wolf",
+					"Jungle Wolf",
+					"Desert Wolf",
+					"Ice wolf"
+				],
+				[
+					"Zombie",
+					"Zogre"
+				],
+				[
+					"Chasm Crawler"
+				],
+				[
+					"Crushing hand"
+				],
+				[
+					"Screaming banshee"
+				]
+			],
+			"groupRoles": [
+				"master",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"superiors",
+				"superiors",
+				"superiors"
+			],
+			"groupLabels": [
+				"Turael",
+				"Banshees",
+				"Bats",
+				"Bears",
+				"Birds",
+				"Cave Bugs",
+				"Cave Crawlers",
+				"Cave Slimes",
+				"Cows",
+				"Crawling Hands",
+				"Dogs",
+				"Dwarves",
+				"Ghosts",
+				"Goblins",
+				"Icefiends",
+				"Kalphites",
+				"Lizards",
+				"Minotaurs",
+				"Monkeys",
+				"Rats",
+				"Scorpions",
+				"Skeletons",
+				"Spiders",
+				"Wolves",
+				"Zombies",
+				"Chasm Crawler",
+				"Crushing hand",
+				"Screaming banshee"
+			],
+			"requireAll": true,
+			"notes": "24 generated RuneLite assignment requirements; superiors remain opt-in"
+		},
+		{
+			"category": "slayer",
+			"kind": "npc",
+			"name": "Vannaka",
+			"options": [
+				"talk-to",
+				"assignment",
+				"trade",
+				"rewards"
+			],
+			"requiredCardGroups": [
+				[
+					"Vannaka"
+				],
+				[
+					"Aberrant spectre",
+					"Deviant spectre"
+				],
+				[
+					"Abyssal demon"
+				],
+				[
+					"Ankou"
+				],
+				[
+					"Basilisk",
+					"Basilisk Knight"
+				],
+				[
+					"Bloodveld",
+					"Mutated Bloodveld"
+				],
+				[
+					"Blue dragon"
+				],
+				[
+					"Brine rat"
+				],
+				[
+					"Cockatrice",
+					"Moonlight Cockatrice"
+				],
+				[
+					"Crab",
+					"Ammonite Crab",
+					"Frost Crab",
+					"King Sand Crab",
+					"Rock Crab",
+					"Giant Rock Crab",
+					"Sand Crab",
+					"Swamp Crab"
+				],
+				[
+					"Crocodile"
+				],
+				[
+					"Dagannoth",
+					"Dagannoth fledgeling"
+				],
+				[
+					"Dust devil"
+				],
+				[
+					"Elf Warrior",
+					"Elf Archer",
+					"Iorwerth Warrior",
+					"Iorwerth Archer",
+					"Mourner"
+				],
+				[
+					"Fever spider"
+				],
+				[
+					"Fire giant"
+				],
+				[
+					"Gargoyle"
+				],
+				[
+					"Ghoul"
+				],
+				[
+					"Gryphon"
+				],
+				[
+					"Harpie Bug Swarm"
+				],
+				[
+					"Hellhound"
+				],
+				[
+					"Hill Giant",
+					"Cyclops"
+				],
+				[
+					"Hobgoblin"
+				],
+				[
+					"Ice giant"
+				],
+				[
+					"Ice warrior"
+				],
+				[
+					"Infernal Mage"
+				],
+				[
+					"Jelly",
+					"Warped Jelly",
+					"Chilled jelly"
+				],
+				[
+					"Jungle horror"
+				],
+				[
+					"Kalphite Worker",
+					"Kalphite Soldier",
+					"Kalphite Guardian"
+				],
+				[
+					"Kurask"
+				],
+				[
+					"Lesser demon"
+				],
+				[
+					"Mogre"
+				],
+				[
+					"Molanisk"
+				],
+				[
+					"Moss giant"
+				],
+				[
+					"Nechryael",
+					"Greater Nechryael"
+				],
+				[
+					"Ogre",
+					"Enclave guard",
+					"Mogre",
+					"Skogre",
+					"Zogre"
+				],
+				[
+					"Otherworldly being"
+				],
+				[
+					"Pyrefiend"
+				],
+				[
+					"Sea Snake Young",
+					"Sea Snake Hatchling",
+					"Giant Sea Snake"
+				],
+				[
+					"Shade",
+					"Loar Shade",
+					"Phrin Shade",
+					"Riyl Shade",
+					"Asyn Shade",
+					"Fiyr Shade",
+					"Urium Shade"
+				],
+				[
+					"Shadow warrior"
+				],
+				[
+					"Spiritual ranger",
+					"Spiritual mage",
+					"Spiritual warrior"
+				],
+				[
+					"Terror dog"
+				],
+				[
+					"Mountain troll"
+				],
+				[
+					"Turoth"
+				],
+				[
+					"Feral Vampyre",
+					"Vampyre Juvinate",
+					"Vyrewatch",
+					"Vyrewatch Sentinel"
+				],
+				[
+					"Werewolf"
+				],
+				[
+					"Abhorrent spectre"
+				],
+				[
+					"Choke devil"
+				],
+				[
+					"Cockathrice"
+				],
+				[
+					"Dire gryphon"
+				],
+				[
+					"Flaming pyrelord"
+				],
+				[
+					"Greater abyssal demon"
+				],
+				[
+					"Insatiable Bloodveld"
+				],
+				[
+					"King kurask"
+				],
+				[
+					"Malevolent Mage"
+				],
+				[
+					"Marble gargoyle"
+				],
+				[
+					"Monstrous Basilisk (The Fremennik Exiles)"
+				],
+				[
+					"Monstrous basilisk"
+				],
+				[
+					"Nechryarch"
+				],
+				[
+					"Spiked Turoth"
+				],
+				[
+					"Vitreous Jelly"
+				]
+			],
+			"groupRoles": [
+				"master",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"monsters",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors",
+				"superiors"
+			],
+			"groupLabels": [
+				"Vannaka",
+				"Aberrant Spectres",
+				"Abyssal Demons",
+				"Ankou",
+				"Basilisks",
+				"Bloodveld",
+				"Blue Dragons",
+				"Brine Rats",
+				"Cockatrice",
+				"Crabs",
+				"Crocodiles",
+				"Dagannoth",
+				"Dust Devils",
+				"Elves",
+				"Fever Spiders",
+				"Fire Giants",
+				"Gargoyles",
+				"Ghouls",
+				"Gryphons",
+				"Harpie Bug Swarms",
+				"Hellhounds",
+				"Hill Giants",
+				"Hobgoblins",
+				"Ice Giants",
+				"Ice Warriors",
+				"Infernal Mages",
+				"Jellies",
+				"Jungle Horrors",
+				"Kalphites",
+				"Kurask",
+				"Lesser Demons",
+				"Mogres",
+				"Molanisks",
+				"Moss Giants",
+				"Nechryael",
+				"Ogres",
+				"Otherworldly Beings",
+				"Pyrefiends",
+				"Sea Snakes",
+				"Shades",
+				"Shadow warriors",
+				"Spiritual Creatures",
+				"Terror Dogs",
+				"Trolls",
+				"Turoth",
+				"Vampyres",
+				"Werewolves",
+				"Abhorrent spectre",
+				"Choke devil",
+				"Cockathrice",
+				"Dire gryphon",
+				"Flaming pyrelord",
+				"Greater abyssal demon",
+				"Insatiable Bloodveld",
+				"King kurask",
+				"Malevolent Mage",
+				"Marble gargoyle",
+				"Monstrous Basilisk (The Fremennik Exiles)",
+				"Monstrous basilisk",
+				"Nechryarch",
+				"Spiked Turoth",
+				"Vitreous Jelly"
+			],
+			"requireAll": true,
+			"notes": "46 generated RuneLite assignment requirements; superiors remain opt-in"
 		}
 	],
 	"masterFarmerSeedCards": [

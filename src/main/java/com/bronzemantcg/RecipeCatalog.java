@@ -142,7 +142,8 @@ public class RecipeCatalog
 				{
 					for (List<String> group : dto.inputs)
 					{
-						ResourceNodeCatalog.CardGroup g = ResourceNodeCatalog.CardGroup.of(group, null);
+						ResourceNodeCatalog.CardGroup g =
+							ResourceNodeCatalog.CardGroup.of(group, null, null);
 						if (g != null)
 						{
 							inputs.add(g);

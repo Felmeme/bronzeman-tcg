@@ -138,3 +138,5 @@ progress), but the lists are broad and worth an eyeball:
   count" while quoting text proving it does; missed Obor/Bryophyta on base pages),
   I re-queried the **boss's own page** for the authoritative Slayer-category line.
 - Re-run `build_slayer_variants.py` to regenerate + re-validate `slayer_variants.json`.
+> Historical research input. The active generated Slayer rules and current
+> review findings are documented in `docs/slayer_rebuild_report.md`.

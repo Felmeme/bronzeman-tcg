@@ -520,7 +520,7 @@ class BronzemanTcgPanel extends PluginPanel
 					: true;
 				if (include && !group.displayCards.isEmpty())
 				{
-					reqs.add(new QuestCatalog.Requirement(group.displayCards.get(0), group.displayCards));
+					reqs.add(new QuestCatalog.Requirement(group.label, group.displayCards));
 				}
 			}
 			entries.add(new QuestCatalog.QuestEntry(display(e.getKey()), false, reqs, ""));

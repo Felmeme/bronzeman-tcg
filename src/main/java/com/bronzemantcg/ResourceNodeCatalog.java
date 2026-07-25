@@ -171,7 +171,9 @@ public class ResourceNodeCatalog
 				List<String> cards = node.requiredCardGroups.get(i);
 				String role = node.groupRoles != null && i < node.groupRoles.size()
 					? node.groupRoles.get(i) : null;
-				CardGroup group = CardGroup.of(cards, role);
+				String label = node.groupLabels != null && i < node.groupLabels.size()
+					? node.groupLabels.get(i) : null;
+				CardGroup group = CardGroup.of(cards, role, label);
 				if (group != null)
 				{
 					groups.add(group);
@@ -184,7 +186,7 @@ public class ResourceNodeCatalog
 			{
 				for (String card : node.requiredCards)
 				{
-					CardGroup group = CardGroup.of(Collections.singletonList(card), null);
+					CardGroup group = CardGroup.of(Collections.singletonList(card), null, null);
 					if (group != null)
 					{
 						groups.add(group);
@@ -193,7 +195,7 @@ public class ResourceNodeCatalog
 			}
 			else
 			{
-				CardGroup group = CardGroup.of(node.requiredCards, null);
+				CardGroup group = CardGroup.of(node.requiredCards, null, null);
 				if (group != null)
 				{
 					groups.add(group);
@@ -256,15 +258,18 @@ public class ResourceNodeCatalog
 		public final List<String> displayCards;
 		public final List<String> lowerCards;
 		public final String role;
+		public final String label;
 
-		private CardGroup(List<String> displayCards, List<String> lowerCards, String role)
+		private CardGroup(List<String> displayCards, List<String> lowerCards, String role,
+			String label)
 		{
 			this.displayCards = Collections.unmodifiableList(displayCards);
 			this.lowerCards = Collections.unmodifiableList(lowerCards);
 			this.role = role;
+			this.label = label;
 		}
 
-		static CardGroup of(List<String> cards, String role)
+		static CardGroup of(List<String> cards, String role, String label)
 		{
 			if (cards == null)
 			{
@@ -286,7 +291,9 @@ public class ResourceNodeCatalog
 			}
 			String cleanRole = role == null || role.trim().isEmpty()
 				? null : role.trim().toLowerCase(Locale.ROOT);
-			return new CardGroup(display, lower, cleanRole);
+			String cleanLabel = label == null || label.trim().isEmpty()
+				? display.get(0) : label.trim();
+			return new CardGroup(display, lower, cleanRole, cleanLabel);
 		}
 
 		boolean isSatisfied(Set<String> owned)
@@ -317,6 +324,7 @@ public class ResourceNodeCatalog
 		List<String> requiredCards;
 		List<List<String>> requiredCardGroups;
 		List<String> groupRoles;
+		List<String> groupLabels;
 		boolean requireAll;
 	}
 }

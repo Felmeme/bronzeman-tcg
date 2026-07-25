@@ -309,6 +309,26 @@ docs/sailing_nodes_report.md):
    any editable list field.
 
 ## ACTIVE: Skills sweep to 0.3.0 (2026-07-19 onward)
+**Slayer rebuild (2026-07-25): IMPLEMENTED, needs owner in-game verification.**
+Slayer task membership now comes from RuneLite's local DB tables via the
+developer-only `scripts/SlayerCacheDump.java`; the checked-in snapshot has 330
+master/task rows. `scripts/rebuild_slayer_data.js` regenerates all 13 master
+nodes from that snapshot plus the small reviewed policy in
+`docs/slayer_variant_policy.json`. Logical assignments are one any-of group
+instead of duplicated per monster (for example Lesser Nagua, Metal Dragons and
+Warped Creatures). Variants are master-tiered: early masters do not accept
+technical boss/quest matches such as the Goblin sergeants; reviewed bosses can
+substitute for higher-master tasks. Krystilia uses only explicitly
+Wilderness-valid alternatives. Konar is split into 108 real task+location
+requirements using the cached plain Wiki page in `scripts/wiki_cache/`;
+Vampyres in Vampyrium is left
+unrestricted because Venator has no card. `groupLabels` is optional data used
+only by the side panel so Konar displays readable task/location requirements;
+enforcement and chat still use exact card names. Superiors remain a separate
+opt-in role. See `docs/slayer_rebuild_report.md` for coverage and the four
+deliberately unclassified candidates. Re-run the generator after any policy or
+snapshot change; it validates every emitted card against the Monster catalog.
+
 **Session 1 (Fletching): data rebuild DONE 2026-07-19, needs owner in-game
 test pass, then ship as 0.2.3.** FletchingMode dropdown (Off/Product/
 Product+Materials, default P+M) was already wired pre-rebuild. The 35 old

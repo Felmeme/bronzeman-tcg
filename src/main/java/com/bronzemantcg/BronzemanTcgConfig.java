@@ -703,7 +703,8 @@ public interface BronzemanTcgConfig extends Config
 		description = "Using a slayer master (Talk-to/Assignment/Trade/Rewards)."
 			+ "<br>'Require Slayer Master': needs that master's own NPC card."
 			+ "<br>'Full Task List': also needs the card of every monster that master can assign."
-			+ "<br>Bosses and revenants are excluded - no representative cards.",
+			+ "<br>Boss and revenant assignment categories are excluded; reviewed bosses can "
+			+ "still substitute for a normal higher-master task.",
 		section = slayerSection,
 		position = 0
 	)
