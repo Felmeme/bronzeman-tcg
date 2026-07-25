@@ -21,6 +21,7 @@ import java.util.Comparator;
 import java.util.EnumMap;
 import java.util.EnumSet;
 import java.util.HashSet;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -31,6 +32,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
+import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
@@ -38,6 +40,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import lombok.extern.slf4j.Slf4j;
+import net.runelite.client.config.ConfigManager;
 import net.runelite.client.ui.ColorScheme;
 import net.runelite.client.ui.PluginPanel;
 import net.runelite.client.ui.components.IconTextField;
@@ -60,6 +63,8 @@ class BronzemanTcgPanel extends PluginPanel
 	private static final Color LOCKED = ColorScheme.PROGRESS_ERROR_COLOR;
 	private static final DateTimeFormatter UNLOCK_TIME_FORMAT = DateTimeFormatter
 		.ofPattern("d MMM, HH:mm").withZone(ZoneId.systemDefault());
+	private static final String IMPORTANT_SHOW_LOCKED_KEY = "importantShowLocked";
+	private static final String IMPORTANT_SHOW_UNLOCKED_KEY = "importantShowUnlocked";
 
 	private final TrackedMonsterCatalog monsterCatalog;
 	private final TrackedItemCatalog itemCatalog;
@@ -70,6 +75,7 @@ class BronzemanTcgPanel extends PluginPanel
 	private final RecentUnlocksTracker recentUnlocksTracker;
 	private final ImportantUnlocksCatalog importantUnlocksCatalog;
 	private final BronzemanTcgConfig config;
+	private final ConfigManager configManager;
 	private final ScheduledExecutorService executor;
 	private final AtomicBoolean refreshRunning = new AtomicBoolean();
 	private final AtomicBoolean refreshAgain = new AtomicBoolean();
@@ -107,14 +113,30 @@ class BronzemanTcgPanel extends PluginPanel
 	private final IconTextField recentUnlocksSearchBar = new IconTextField();
 	private final JPanel recentUnlocksList = sectionBody();
 
+	private final JPanel importantUnlocksPanel = sectionBody();
+	private final JPanel importantUnlocksFilters = new JPanel(
+		new FlowLayout(FlowLayout.LEFT, 4, 0));
+
+	private final JCheckBox showLockedImportant = new JCheckBox("Show locked");
+
+	private final JCheckBox showUnlockedImportant = new JCheckBox("Show unlocked");
+
 	private final JPanel importantUnlocksList = sectionBody();
 	private final Set<String> expandedImportantCategories = new HashSet<>();
+	private final Set<String> expandedImportantSubcategories = new HashSet<>();
 
-	BronzemanTcgPanel(TrackedMonsterCatalog monsterCatalog, TrackedItemCatalog itemCatalog,
-		ResourceNodeCatalog nodeCatalog, QuestCatalog questCatalog, ContentCatalog contentCatalog,
-		TcgCollectionReader collectionReader, RecentUnlocksTracker recentUnlocksTracker,
-		ImportantUnlocksCatalog importantUnlocksCatalog, BronzemanTcgConfig config,
-		ScheduledExecutorService executor)
+	BronzemanTcgPanel(
+			TrackedMonsterCatalog monsterCatalog,
+			TrackedItemCatalog itemCatalog,
+			ResourceNodeCatalog nodeCatalog,
+			QuestCatalog questCatalog,
+			ContentCatalog contentCatalog,
+			TcgCollectionReader collectionReader,
+			RecentUnlocksTracker recentUnlocksTracker,
+			ImportantUnlocksCatalog importantUnlocksCatalog,
+			BronzemanTcgConfig config,
+			ConfigManager configManager,
+			ScheduledExecutorService executor)
 	{
 		this.monsterCatalog = monsterCatalog;
 		this.itemCatalog = itemCatalog;
@@ -125,6 +147,7 @@ class BronzemanTcgPanel extends PluginPanel
 		this.recentUnlocksTracker = recentUnlocksTracker;
 		this.importantUnlocksCatalog = importantUnlocksCatalog;
 		this.config = config;
+		this.configManager = configManager;
 		this.executor = executor;
 
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
@@ -190,6 +213,11 @@ class BronzemanTcgPanel extends PluginPanel
 		recentUnlocksPanel.add(Box.createVerticalStrut(4));
 		recentUnlocksPanel.add(recentUnlocksList);
 
+		configureImportantUnlockFilters();
+		importantUnlocksPanel.add(importantUnlocksFilters);
+		importantUnlocksPanel.add(Box.createVerticalStrut(4));
+		importantUnlocksPanel.add(importantUnlocksList);
+
 		add(searchBar);
 		add(Box.createVerticalStrut(4));
 		add(searchResults);
@@ -206,7 +234,7 @@ class BronzemanTcgPanel extends PluginPanel
 		addTab("PvM", contentList, PanelTab.PVM);
 		addTab("Rumours", rumoursList, PanelTab.RUMOURS);
 		addTab("Recent Unlocks", recentUnlocksPanel, PanelTab.RECENT);
-		addTab("Important Unlocks", importantUnlocksList, PanelTab.IMPORTANT);
+		addTab("Important Unlocks", importantUnlocksPanel, PanelTab.IMPORTANT);
 		tabs.select(tabs.getTab(0));
 		add(tabs);
 		add(Box.createVerticalStrut(4));
@@ -454,20 +482,110 @@ class BronzemanTcgPanel extends PluginPanel
 		recentUnlocksList.repaint();
 	}
 
+	private void configureImportantUnlockFilters()
+	{
+		showLockedImportant.setSelected(
+			getSavedBoolean(IMPORTANT_SHOW_LOCKED_KEY, true));
+		showUnlockedImportant.setSelected(
+			getSavedBoolean(IMPORTANT_SHOW_UNLOCKED_KEY, true));
+
+		importantUnlocksFilters.setOpaque(false);
+		importantUnlocksFilters.setAlignmentX(Component.LEFT_ALIGNMENT);
+		importantUnlocksFilters.setMaximumSize(new Dimension(Integer.MAX_VALUE, 30));
+
+		for (JCheckBox checkBox : new JCheckBox[]{showLockedImportant, showUnlockedImportant})
+		{
+			checkBox.setOpaque(false);
+			checkBox.setForeground(Color.WHITE);
+			checkBox.setFocusable(false);
+			importantUnlocksFilters.add(checkBox);
+			checkBox.addActionListener(event -> updateImportantUnlockFilters());
+		}
+	}
+
+	private boolean getSavedBoolean(String key, boolean defaultValue)
+	{
+		String stored = configManager.getConfiguration(BronzemanTcgConfig.GROUP, key);
+		return stored == null ? defaultValue : Boolean.parseBoolean(stored);
+	}
+
+	private void updateImportantUnlockFilters()
+	{
+		configManager.setConfiguration(BronzemanTcgConfig.GROUP,
+			IMPORTANT_SHOW_LOCKED_KEY, showLockedImportant.isSelected());
+		configManager.setConfiguration(BronzemanTcgConfig.GROUP,
+			IMPORTANT_SHOW_UNLOCKED_KEY, showUnlockedImportant.isSelected());
+
+		dirtyTabs.add(PanelTab.IMPORTANT);
+		if (selectedTab == PanelTab.IMPORTANT)
+		{
+			renderSelectedTab();
+		}
+	}
+
+	private boolean shouldShowImportantItem(boolean unlocked)
+	{
+		return unlocked ? showUnlockedImportant.isSelected() : showLockedImportant.isSelected();
+	}
+
 	private void refreshImportantUnlocks()
 	{
 		importantUnlocksList.removeAll();
 		Set<String> owned = snapshot.owned;
+		if (!showLockedImportant.isSelected() && !showUnlockedImportant.isSelected())
+		{
+			importantUnlocksList.add(mutedRow("Select a status to display items"));
+			importantUnlocksList.revalidate();
+			importantUnlocksList.repaint();
+			return;
+		}
+
+		int visibleCategories = 0;
 		for (ImportantUnlocksCatalog.Category category : importantUnlocksCatalog.getCategories())
 		{
-			int have = countOwned(category.items, owned);
+			List<String> visibleItems = visibleImportantItems(category.items, owned);
+			Map<ImportantUnlocksCatalog.Subcategory, List<String>> visibleSubcategories =
+				new LinkedHashMap<>();
+			for (ImportantUnlocksCatalog.Subcategory subcategory : category.subcategories)
+			{
+				List<String> subcategoryItems = visibleImportantItems(subcategory.items, owned);
+				if (!subcategoryItems.isEmpty())
+				{
+					visibleSubcategories.put(subcategory, subcategoryItems);
+				}
+			}
+			if (visibleItems.isEmpty() && visibleSubcategories.isEmpty())
+			{
+				continue;
+			}
+
+			visibleCategories++;
+			int have = countOwned(category.allItems, owned);
 			importantUnlocksList.add(importantCategoryRow(category, have));
 			if (expandedImportantCategories.contains(category.name))
 			{
-				for (String card : category.items)
+				for (String card : visibleItems)
 				{
+					boolean unlocked = owned.contains(card.toLowerCase(Locale.ROOT));
 					importantUnlocksList.add(statusRow("  " + displayCardName(card),
-						owned.contains(card.toLowerCase(Locale.ROOT)), null));
+						unlocked, null));
+				}
+				for (Map.Entry<ImportantUnlocksCatalog.Subcategory, List<String>> entry
+					: visibleSubcategories.entrySet())
+				{
+					ImportantUnlocksCatalog.Subcategory subcategory = entry.getKey();
+					importantUnlocksList.add(importantSubcategoryRow(category, subcategory,
+						countOwned(subcategory.items, owned)));
+					if (expandedImportantSubcategories.contains(
+						importantSubcategoryKey(category.name, subcategory.name)))
+					{
+						for (String card : entry.getValue())
+						{
+							boolean unlocked = owned.contains(card.toLowerCase(Locale.ROOT));
+							importantUnlocksList.add(statusRow(
+								"    " + displayCardName(card), unlocked, null));
+						}
+					}
 				}
 			}
 		}
@@ -475,15 +593,33 @@ class BronzemanTcgPanel extends PluginPanel
 		{
 			importantUnlocksList.add(mutedRow("No Important Unlocks data bundled"));
 		}
+		else if (visibleCategories == 0)
+		{
+			importantUnlocksList.add(mutedRow("No Important Unlocks match these filters"));
+		}
 		importantUnlocksList.revalidate();
 		importantUnlocksList.repaint();
+	}
+
+	private List<String> visibleImportantItems(List<String> items, Set<String> owned)
+	{
+		List<String> visible = new ArrayList<>();
+		for (String card : items)
+		{
+			boolean unlocked = owned.contains(card.toLowerCase(Locale.ROOT));
+			if (shouldShowImportantItem(unlocked))
+			{
+				visible.add(card);
+			}
+		}
+		return visible;
 	}
 
 	private JPanel importantCategoryRow(ImportantUnlocksCatalog.Category category, int have)
 	{
 		boolean expanded = expandedImportantCategories.contains(category.name);
 		JPanel row = progressRow((expanded ? "▼ " : "▶ ") + category.name,
-			have, category.items.size());
+			have, category.allItems.size());
 		row.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		row.addMouseListener(new MouseAdapter()
 		{
@@ -498,6 +634,34 @@ class BronzemanTcgPanel extends PluginPanel
 			}
 		});
 		return row;
+	}
+
+	private JPanel importantSubcategoryRow(ImportantUnlocksCatalog.Category category,
+		ImportantUnlocksCatalog.Subcategory subcategory, int have)
+	{
+		String key = importantSubcategoryKey(category.name, subcategory.name);
+		boolean expanded = expandedImportantSubcategories.contains(key);
+		JPanel row = progressRow("  " + (expanded ? "\u25bc " : "\u25b6 ") + subcategory.name,
+			have, subcategory.items.size());
+		row.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		row.addMouseListener(new MouseAdapter()
+		{
+			@Override
+			public void mouseClicked(MouseEvent event)
+			{
+				if (!expandedImportantSubcategories.remove(key))
+				{
+					expandedImportantSubcategories.add(key);
+				}
+				refreshImportantUnlocks();
+			}
+		});
+		return row;
+	}
+
+	private static String importantSubcategoryKey(String category, String subcategory)
+	{
+		return category + "\0" + subcategory;
 	}
 
 	/**
