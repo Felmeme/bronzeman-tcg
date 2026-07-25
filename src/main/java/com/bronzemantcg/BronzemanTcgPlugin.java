@@ -134,6 +134,10 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	// withdraws it.
 	private static final String SHARED_API_NAMESPACE = "bronzemantcg";
 	private static final String SHARED_UNLOCKS = "shared-unlocks";
+	// Asked whenever this plugin needs the current picture rather than waiting to be told: at
+	// startup (a source that shared before we loaded would otherwise never reach us), after a
+	// profile switch, and when the setting is turned on. Sources answer with SHARED_UNLOCKS.
+	private static final String SHARED_QUERY = "query-shared-unlocks";
 	private static final String SHARED_SOURCE_KEY = "source";
 	private static final String SHARED_NAMES_KEY = "cardNames";
 	// ~60s between query retries while unanswered - osrs-tcg may start after us, or be
@@ -272,6 +276,9 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	private int welcomeDelayTicks = -1;
 	private int reminderTicks = -1;
 	private int requiredPluginTicks = -1;
+	/** Set when the shared-unlocks picture is stale; the query goes out on the next tick. */
+	private boolean sharedQueryPending;
+
 	private int apiQueryTicks = -1;
 	private volatile BronzemanTcgPanel panel;
 	private volatile NavigationButton navButton;
@@ -328,6 +335,10 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	{
 		collectionReader.invalidate();
 		recentUnlocksTracker.reload();
+		// Nothing shared survives a restart of this plugin. Sources are asked to re-offer on the
+		// first tick, so a set from before we unloaded can never linger unnoticed.
+		sharedUnlockStore.clear();
+		sharedQueryPending = true;
 		migrateExemptList();
 		migrateNpcVisibility();
 		migrateSkillToggles();
@@ -361,6 +372,10 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	protected void shutDown()
 	{
 		++panelGeneration;
+		// Shared unlocks are only ever as current as the sources telling us about them, and while
+		// this plugin is unloaded nothing is listening. Dropping them here means a restart starts
+		// from nothing and re-asks, rather than reviving a set that may since have been withdrawn.
+		sharedUnlockStore.clear();
 		renderCallbackManager.unregister(this);
 		overlayManager.remove(overlay);
 		overlayManager.remove(lockedItemIconOverlay);
@@ -488,6 +503,13 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 			// EventBus.post is synchronous, so an answered query flips hasApiData before
 			// this line. Once answered, pushes keep us current - no more polling.
 			apiQueryTicks = collectionReader.hasApiData() ? -1 : API_QUERY_RETRY_TICKS;
+		}
+		if (sharedQueryPending)
+		{
+			// Asked from a tick for the same reason as the osrs-tcg query above: a reply posted
+			// during startUp would arrive before our @Subscribe methods are registered.
+			sharedQueryPending = false;
+			eventBus.post(new PluginMessage(SHARED_API_NAMESPACE, SHARED_QUERY));
 		}
 		if (welcomeDelayTicks >= 0 && --welcomeDelayTicks < 0)
 		{
@@ -935,14 +957,21 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 			clientThread.invoke(() -> sweepDuelistCity(on));
 		}
 
-		// Shared unlocks switched off: forget what was offered rather than hold it aside. Switching
-		// back on then waits for a source to offer again, so the setting can never quietly restore
-		// a set the player has not seen arrive.
+		// Shared unlocks switched off: forget what was offered rather than hold it aside, so the
+		// setting can never quietly restore a set the player has not seen arrive. Switched on: ask
+		// for the current picture, since sources have had no reason to send anything while it was
+		// off and would otherwise stay silent until their next change.
 		if (BronzemanTcgConfig.GROUP.equals(event.getGroup())
-			&& "acceptSharedUnlocks".equals(event.getKey())
-			&& !Boolean.parseBoolean(event.getNewValue()))
+			&& "acceptSharedUnlocks".equals(event.getKey()))
 		{
-			sharedUnlockStore.clear();
+			if (Boolean.parseBoolean(event.getNewValue()))
+			{
+				sharedQueryPending = true;
+			}
+			else
+			{
+				sharedUnlockStore.clear();
+			}
 		}
 
 		if (BronzemanTcgConfig.GROUP.equals(event.getGroup()))
@@ -1109,9 +1138,10 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 		// drops any API-provided data too, so re-arm the query for the new profile.
 		collectionReader.invalidate();
 		recentUnlocksTracker.reload();
-		// Shared unlocks describe a group this account was in, not this one; the sources will offer
-		// them again if they still apply.
+		// Shared unlocks describe a group this account was in, not this one; ask the sources for
+		// the new profile's picture rather than waiting for one of them to notice.
 		sharedUnlockStore.clear();
+		sharedQueryPending = true;
 		apiQueryTicks = 0;
 	}
 
@@ -1139,13 +1169,12 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 			// player never saw arrive, so the offer is simply dropped.
 			return;
 		}
-		if (sharedUnlockStore.put((String) source, (List<?>) names))
-		{
-			// Menus and marks read through effectiveOwnedCards() on demand, so only the panel needs
-			// telling. Deliberately not fed to the unlocks tracker: these are not cards this player
-			// pulled, and listing them as recent unlocks would misreport their own progress.
-			refreshVisiblePanel();
-		}
+		// Menus read effectiveOwnedCards() on demand and the ~3s sweep re-applies item marks, so a
+		// change needs no explicit refresh. The panel is left alone deliberately: it reports this
+		// player's own collection, which shared cards do not change. Nor are they fed to the
+		// unlocks tracker - they are not cards this player pulled, and listing them as recent
+		// unlocks would misreport their progress.
+		sharedUnlockStore.put((String) source, (List<?>) names);
 	}
 
 	/**

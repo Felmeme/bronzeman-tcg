@@ -3,6 +3,7 @@ package com.bronzemantcg;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
+import java.util.HashSet;
 import java.util.Set;
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -29,17 +30,19 @@ class BronzemanTcgOverlay extends Overlay
 	private final BronzemanTcgConfig config;
 	private final TrackedMonsterCatalog monsterCatalog;
 	private final TcgCollectionReader collectionReader;
+	private final SharedUnlockStore sharedUnlockStore;
 	private final ModelOutlineRenderer modelOutlineRenderer;
 
 	@Inject
 	BronzemanTcgOverlay(Client client, BronzemanTcgConfig config,
 		TrackedMonsterCatalog monsterCatalog, TcgCollectionReader collectionReader,
-		ModelOutlineRenderer modelOutlineRenderer)
+		SharedUnlockStore sharedUnlockStore, ModelOutlineRenderer modelOutlineRenderer)
 	{
 		this.client = client;
 		this.config = config;
 		this.monsterCatalog = monsterCatalog;
 		this.collectionReader = collectionReader;
+		this.sharedUnlockStore = sharedUnlockStore;
 		this.modelOutlineRenderer = modelOutlineRenderer;
 		setPosition(OverlayPosition.DYNAMIC);
 		setLayer(OverlayLayer.ABOVE_SCENE);
@@ -62,7 +65,10 @@ class BronzemanTcgOverlay extends Overlay
 		{
 			return null;
 		}
-		Set<String> owned = collectionReader.getOwnedCardNamesLowerCase();
+		// Shared cards count here too, or an NPC the group has unlocked would stay outlined as
+		// locked while being perfectly attackable - the outline has to say the same thing the
+		// enforcement paths do.
+		Set<String> owned = withSharedUnlocks(collectionReader.getOwnedCardNamesLowerCase());
 		Color color = config.lockedOutlineColor();
 		int width = config.lockedOutlineWidth();
 		int feather = config.lockedOutlineFeather();
@@ -75,6 +81,26 @@ class BronzemanTcgOverlay extends Overlay
 			modelOutlineRenderer.drawOutline(npc, width, color, feather);
 		}
 		return null;
+	}
+
+	/**
+	 * @return the owned set plus any shared cards, or the owned set untouched when nothing is
+	 * shared - the common case, kept allocation-free because this runs once per frame.
+	 */
+	private Set<String> withSharedUnlocks(Set<String> owned)
+	{
+		if (!config.acceptSharedUnlocks())
+		{
+			return owned;
+		}
+		Set<String> shared = sharedUnlockStore.getSharedCardNamesLowerCase();
+		if (shared.isEmpty())
+		{
+			return owned;
+		}
+		Set<String> combined = new HashSet<>(owned);
+		combined.addAll(shared);
+		return combined;
 	}
 
 	private boolean isLocked(NPC npc, Set<String> owned)
