@@ -75,12 +75,32 @@ public class ResourceNodeCatalog
 	/** @return the rule for this interaction, or null if the node is unrestricted. */
 	public Rule find(String kind, String name, String option)
 	{
+		return find(kind, name, option, -1);
+	}
+
+	/**
+	 * ID-aware lookup for objects whose display name is not specific enough to identify
+	 * their loot table (notably Thieving chests, which are commonly all named "Chest").
+	 * Exact ID rules take priority; ordinary name-based rules remain the fallback.
+	 */
+	public Rule find(String kind, String name, String option, int targetId)
+	{
 		if (name == null || option == null)
 		{
 			return null;
 		}
+		String cleanKind = kind.trim().toLowerCase(Locale.ROOT);
+		String cleanOption = option.trim().toLowerCase(Locale.ROOT);
+		if (targetId >= 0)
+		{
+			Rule idRule = rules.get(idKey(cleanKind, targetId, cleanOption));
+			if (idRule != null)
+			{
+				return idRule;
+			}
+		}
 		String nameKey = CardNames.stripDoseSuffix(name.trim().toLowerCase(Locale.ROOT));
-		return rules.get(key(kind, nameKey, option.trim().toLowerCase(Locale.ROOT)));
+		return rules.get(key(cleanKind, nameKey, cleanOption));
 	}
 
 	public int size()
@@ -100,6 +120,11 @@ public class ResourceNodeCatalog
 	private static String key(String kind, String nameLower, String optionLower)
 	{
 		return kind + '|' + nameLower + '|' + optionLower;
+	}
+
+	private static String idKey(String kind, int id, String optionLower)
+	{
+		return kind + "|#" + id + '|' + optionLower;
 	}
 
 	private void load(Gson gson)
@@ -131,9 +156,10 @@ public class ResourceNodeCatalog
 					continue;
 				}
 				Rule rule = new Rule(node.category, groups);
+				String kindLower = node.kind.trim().toLowerCase(Locale.ROOT);
 				String nameLower = node.name.trim().toLowerCase(Locale.ROOT);
 				if ("slayer".equals(node.category)
-					&& KIND_NPC.equals(node.kind.trim().toLowerCase(Locale.ROOT)))
+					&& KIND_NPC.equals(kindLower))
 				{
 					slayerNames.add(nameLower);
 				}
@@ -141,8 +167,21 @@ public class ResourceNodeCatalog
 				{
 					if (option != null && !option.trim().isEmpty())
 					{
-						map.put(key(node.kind.trim().toLowerCase(Locale.ROOT), nameLower,
-							option.trim().toLowerCase(Locale.ROOT)), rule);
+						String optionLower = option.trim().toLowerCase(Locale.ROOT);
+						if (node.objectIds != null && !node.objectIds.isEmpty())
+						{
+							for (Integer objectId : node.objectIds)
+							{
+								if (objectId != null && objectId >= 0)
+								{
+									map.put(idKey(kindLower, objectId, optionLower), rule);
+								}
+							}
+						}
+						else
+						{
+							map.put(key(kindLower, nameLower, optionLower), rule);
+						}
 					}
 				}
 			}
@@ -321,6 +360,7 @@ public class ResourceNodeCatalog
 		String kind;
 		String name;
 		List<String> options;
+		List<Integer> objectIds;
 		List<String> requiredCards;
 		List<List<String>> requiredCardGroups;
 		List<String> groupRoles;

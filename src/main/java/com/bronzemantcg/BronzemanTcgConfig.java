@@ -23,9 +23,16 @@ public interface BronzemanTcgConfig extends Config
 	@ConfigSection(
 			name = "Visuals",
 			description = "How locked NPCs and items are shown in the game world.",
-			position = 1
+			position = 2
 	)
 	String visualsSection = "visualsSection";
+
+	@ConfigSection(
+			name = "External Plugins",
+			description = "Integration with other RuneLite plugins.",
+			position = 1
+	)
+	String externalPluginsSection = "externalPluginsSection";
 
 	@ConfigSection(
 			name = "Cooking",
@@ -78,7 +85,8 @@ public interface BronzemanTcgConfig extends Config
 
 	@ConfigSection(
 			name = "Hunter",
-			description = "Hunting requires the gear cards (and optionally the creature cards) for each method.",
+			description = "Choose whether Hunter methods require no cards, their tools, or all "
+				+ "relevant tool, creature and guaranteed-loot cards.",
 			position = 10
 	)
 	String hunterSection = "hunterSection";
@@ -217,7 +225,10 @@ public interface BronzemanTcgConfig extends Config
 	@ConfigItem(
 			keyName = "itemUsageMode",
 			name = "Item Usage",
-			description = "'Require Card': Items require their Card. Hides everything other than Drop/Destroy"
+			description = "'Require Card': blocked item actions require their card; Drop and Destroy "
+				+ "remain allowed."
+				+ "<br>For one-click dropping, use Menu Entry Swapper's per-item "
+				+ "'Swap left-click > Drop' option."
 				+ "<br>'No Card Needed': You can freely use items without their card.",
 			section = generalSettings,
 			position = 4
@@ -287,14 +298,14 @@ public interface BronzemanTcgConfig extends Config
 
 	@ConfigItem(
 		keyName = "acceptSharedUnlocks",
-		name = "Shared Unlocks",
+		name = "TCG Locked Party Sharing",
 		description = "Let another plugin unlock cards for you, for group play."
 			+ "<br>A party plugin can treat a card owned by any member as owned by everyone;"
 			+ " with this off those cards stay locked here and the group mode has no effect."
 			+ "<br>Only plugins you have installed and set up can offer them, and your own"
 			+ " collection is never changed.",
-		section = generalSettings,
-		position = 10
+		section = externalPluginsSection,
+		position = 0
 	)
 	default boolean acceptSharedUnlocks()
 	{
@@ -317,7 +328,9 @@ public interface BronzemanTcgConfig extends Config
 	@ConfigItem(
 		keyName = "lootExemptNames",
 		name = "Exempt List",
-		description = "Comma-separated, case-insensitive."
+		description = "Comma-separated and case-insensitive."
+			+ "<br>Use * to match any number of characters, for example Rune* or *potion*."
+			+ "<br>An entry containing only * is ignored to prevent disabling every restriction."
 			+ "<br>Items and NPC names added to the list are never restricted even without their card."
 			+ "<br>For universal items that would otherwise make the game unplayable."
 			+ "<br>Use this list to add exceptions based on things like Foil Card Rules.",
@@ -330,25 +343,18 @@ public interface BronzemanTcgConfig extends Config
 	}
 
 	@ConfigItem(
-		keyName = "chatFeedback",
-		name = "Chat feedback",
-		description = "Send a game chat message explaining why an action was blocked.",
+		keyName = "showLockedMenuOptions",
+		name = "Unhide Mouseover Options",
+		description = "Keep blocked options visible for resources, ground items, shops and "
+			+ "inventory interactions."
+			+ "<br>The click is still blocked and chat explains which cards are missing."
+			+ "<br>NPC options continue to follow the separate NPC Locks setting.",
 		section = generalSettings,
 		position = 10
 	)
-	default boolean chatFeedback() { return true; }
-
-	@ConfigItem(
-		keyName = "allowInLms",
-		name = "Allow Last Man Standing",
-		description = "Lift all restrictions while inside a Last Man Standing match, since LMS hands "
-			+ "you temporary gear and supplies you don't own.",
-		section = generalSettings,
-		position = 11
-	)
-	default boolean allowInLms()
+	default boolean showLockedMenuOptions()
 	{
-		return true;
+		return false;
 	}
 
 	@ConfigItem(
@@ -357,8 +363,8 @@ public interface BronzemanTcgConfig extends Config
 		description = "Warn in chat when another plugin that restricts the same actions is "
 			+ "enabled alongside this one, repeating every 30 minutes while both stay on."
 			+ "<br>Turn off if you're deliberately running both and don't need the reminder.",
-		section = generalSettings,
-		position = 14
+		section = externalPluginsSection,
+		position = 1
 	)
 	default boolean showConflictMessage()
 	{
@@ -568,17 +574,20 @@ public interface BronzemanTcgConfig extends Config
 	}
 
 	@ConfigItem(
-		keyName = "restrictHerblore",
-		name = "Restrict herblore",
-		description = "Making potions requires the input cards (herb/unfinished/secondary) and the "
-			+ "output potion card."
+		keyName = "herbloreMode",
+		name = "Herblore Options",
+		description = "'Off': Herblore recipes are unrestricted."
+			+ "<br>'Input Only': require every physical ingredient card."
+			+ "<br>'Require Unfinished': additionally require the unfinished potion card "
+			+ "when creating it."
+			+ "<br>'Require All': additionally require every recipe's output card."
 			+ "<br>Card names are dose-less, so any dose matches the one card.",
 		section = herbloreSection,
 		position = 1
 	)
-	default boolean restrictHerblore()
+	default HerbloreMode herbloreMode()
 	{
-		return true;
+		return HerbloreMode.REQUIRE_ALL;
 	}
 
 	@ConfigItem(
@@ -586,7 +595,9 @@ public interface BronzemanTcgConfig extends Config
 		name = "Runecrafting",
 		description = "Crafting at an altar requires essence + talisman (tiara counts) cards."
 			+ "<br>'Talisman and Runes' additionally requires the crafted rune's card."
-			+ "<br>Altars with no talisman (Astral/Blood/Soul) skip that part.",
+			+ "<br>Altars with no talisman (Astral/Blood/Soul) skip that part."
+			+ "<br>Guardians of the Rift uses its supplied essence/portals, so only the "
+			+ "crafted rune card applies there in the stricter mode.",
 		section = runecraftingSection,
 		position = 2
 	)
@@ -599,73 +610,31 @@ public interface BronzemanTcgConfig extends Config
 	//Hunter
 	//----------------
 	@ConfigItem(
-		keyName = "hunterBirdsMode",
-		name = "Birds & butterflies",
-		description = "'Gear only': bird snaring needs the Bird snare card; catching butterflies needs "
-			+ "Butterfly net (Magic butterfly net counts)."
-			+ "<br>'All bird drops': additionally requires the creature cards "
-			+ "(any-of for snares, since a laid snare can't know which bird lands).",
+		keyName = "hunterMode",
+		name = "Hunter Options",
+		description = "'Tools Only': every supported method requires its normal tool cards."
+			+ "<br>'All Cards': additionally requires the relevant creature, caught-item and "
+			+ "guaranteed-loot cards."
+			+ "<br>Hunter-rumour items are only used by the separate rumour-master setting.",
 		section = hunterSection,
 		position = 0
 	)
-	default HunterBirdsMode hunterBirdsMode()
+	default HunterMode hunterMode()
 	{
-		return HunterBirdsMode.NET_ONLY;
+		return HunterMode.TOOLS_ONLY;
 	}
 
 	@ConfigItem(
-		keyName = "implingMode",
-		name = "Implings",
-		description = "'Butterfly net only': catching implings needs a butterfly net card (Magic counts)."
-			+ "<br>'Net + jar': additionally requires the Impling jar card.",
+		keyName = "hunterModeMigrated",
+		name = "",
+		description = "",
+		hidden = true,
 		section = hunterSection,
-		position = 1
+		position = 98
 	)
-	default ImplingMode implingMode()
+	default boolean hunterModeMigrated()
 	{
-		return ImplingMode.BOTH;
-	}
-
-	@ConfigItem(
-		keyName = "restrictChins",
-		name = "Chinchompas",
-		description = "Laying a box trap requires the Box trap card plus any chinchompa card."
-			+ "<br>A laid trap can't know which species wanders in.",
-		section = hunterSection,
-		position = 2
-	)
-	default boolean restrictChins()
-	{
-		return true;
-	}
-
-	@ConfigItem(
-		keyName = "salamanderMode",
-		name = "Salamanders",
-		description = "'Rope + Net': setting a net trap needs the Rope and Small fishing net cards."
-			+ "<br>'Items + Salamander': additionally requires the respective salamander's card.",
-		section = hunterSection,
-		position = 3
-	)
-	default SalamanderMode salamanderMode()
-	{
-		return SalamanderMode.ROPE_NET;
-	}
-
-	@ConfigItem(
-		keyName = "pitfallMode",
-		name = "Pitfalls",
-		description = "'Just tools': teasing a beast into a pitfall needs the tool cards "
-			+ "(teasing stick, knife, any logs)."
-			+ "<br>'All': additionally requires the beast's own card."
-			+ "<br>Only Horned graahk and antelopes have cards - larupia/kyatt have none and are "
-			+ "never restricted.",
-		section = hunterSection,
-		position = 4
-	)
-	default PitfallMode pitfallMode()
-	{
-		return PitfallMode.ALL;
+		return false;
 	}
 
 	@ConfigItem(
@@ -675,7 +644,7 @@ public interface BronzemanTcgConfig extends Config
 			+ "they can assign."
 			+ "<br>Creatures with no card are excluded from the requirement.",
 		section = hunterSection,
-		position = 5
+		position = 1
 	)
 	default boolean restrictHunterRumours()
 	{
@@ -751,7 +720,7 @@ public interface BronzemanTcgConfig extends Config
 	//----------------
 	@ConfigItem(
 		keyName = "thievingMode",
-		name = "Pickpocketing",
+		name = "Pickpocketing Options",
 		description = "'Coins + Pouch': pickpocketing an NPC requires Coins and Coin pouch. "
 			+ "<br>'Coins, Pouch and NPC Card': additionally requires the card of the NPC being pickpocketed."
 			+ "<br> 'All': requires all loot from NPCs loot table and NPC Card of the NPC being pickpocketed."
@@ -765,8 +734,8 @@ public interface BronzemanTcgConfig extends Config
 	}
 
 	@ConfigItem(
-			keyName = "hamFullLoot",
-			name = "H.A.M. Insanity",
+		keyName = "hamFullLoot",
+		name = "H.A.M. Full Loot",
 			description = "With All mode, require all 37 pickpocket items instead of the Ham Outfit pieces.",
 			section = thievingSection,
 			position = 2
@@ -777,8 +746,8 @@ public interface BronzemanTcgConfig extends Config
 	}
 
 	@ConfigItem(
-			keyName = "masterFarmerInsanity",
-			name = "Master Farmer",
+		keyName = "masterFarmerInsanity",
+		name = "Master Farmer Full Loot",
 			description = "With All mode, require all 45 Master Farmer seeds.",
 			section = thievingSection,
 			position = 3
@@ -790,10 +759,11 @@ public interface BronzemanTcgConfig extends Config
 
 	@ConfigItem(
 		keyName = "stallThievingMode",
-		name = "Stalls",
-		description = "'Off': no stall restriction. Stalls with no card-backed loot are never restricted."
-			+ "<br>'Any of': owning any one loot card unlocks the stall."
-			+ "<br>'All items': the stall stays locked until you own every card-backed loot item.",
+		name = "Stalls & Chests",
+		description = "'Off': no stall or thievable-chest restriction."
+			+ "<br>'Any Of': owning any one card-backed loot item unlocks it."
+			+ "<br>'All': every card-backed item on its loot table is required."
+			+ "<br>Uncarded loot is ignored; unrelated storage and reward chests are unaffected.",
 		section = thievingSection,
 		position = 1
 	)

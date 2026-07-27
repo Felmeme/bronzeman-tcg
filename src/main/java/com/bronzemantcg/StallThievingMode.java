@@ -8,8 +8,8 @@ package com.bronzemantcg;
 public enum StallThievingMode
 {
 	OFF("Off"),
-	ANY_OF("Any of"),
-	REQUIRE_ALL("All items");
+	ANY_OF("Any Of"),
+	REQUIRE_ALL("All");
 
 	private final String label;
 

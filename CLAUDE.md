@@ -335,6 +335,68 @@ docs/sailing_nodes_report.md):
    any editable list field.
 
 ## ACTIVE: Skills sweep to 0.3.0 (2026-07-19 onward)
+**Thievable chests (2026-07-26): IMPLEMENTED, needs owner in-game
+verification.** The existing stall setting is now displayed as
+`Stalls & Chests`, with the owner-approved labels Off / Any Of / All.
+All 16 official thievable chest types are represented by 20 exact object-ID
+and menu-option combinations under category `thieving-chests`. ID-first
+lookup in `ResourceNodeCatalog` distinguishes identically named classic
+chests without changing name-based rules elsewhere. `objectIds` is an
+optional resource-node field; ID rules fall back to ordinary name lookup
+when no ID match exists. `scripts/rebuild_thieving_chest_data.js` regenerates
+the category and validates every card and ID/action key. No menu string was
+guessed: classic trapped chests use Search for traps, modern chests Picklock,
+Dorgesh-Kaan Pick-lock, and the underwater open state Search. Uncarded loot
+is omitted. See `docs/thieving_chests_report.md`.
+
+**Hunter / Herblore / Runecrafting / Sailing refinement (2026-07-26):
+IMPLEMENTED.** Hunter birds and chinchompas
+use one shared `HunterMode` (Off / Tools Only / All Cards, default Tools Only).
+Birds add their Monster card where one exists plus guaranteed bones/meat/normal
+feather by reviewed region; Tailfeathers stays rumour-only. Chins add both the
+Hunter Monster card and caught-item card (Carnivorous -> Red chinchompa).
+Unknown regions enforce tools only rather than guessing. Butterflies always
+require either net card + Butterfly jar; implings require Magic butterfly net +
+Impling jar and add the matching filled jar in All Cards, even bare-handed.
+Net-trap Young trees use RuneLite `ObjectID` constants to distinguish all five
+salamanders. Pitfall Tease needs only Teasing stick in Tools, then Monster card
+where one exists plus guaranteed ordinary loot in All; knife/logs, optional fur
+and rumour parts are excluded. `scripts/rebuild_hunter_data.js` regenerates and
+validates the 26 ordinary rules. Chat feedback and the LMS bypass are now
+unconditional; `Show locked menu options` defaults on for non-NPC restrictions,
+while NPC visibility remains owned by NPC Locks. TCG Locked Party Sharing and
+Conflict plugins message live under External Plugins. Herblore is rebuilt from
+`docs/herblore_actions.json` by `scripts/rebuild_herblore_data.js`: 82 verified
+standard recipes, with eight uncertain multi-stage recipes explicitly excluded
+for a later dedicated pass. Runecrafting checks the actual essence variant in
+inventory (falling back to any valid essence when all essence is hidden in
+pouches); GotR is detected with `VarbitID.GOTR_IS_PLAYING`, ignores ordinary
+talisman/essence requirements, and gates only the rune output in strict mode.
+Sailing's dedicated menu/customisation interfaces now prefer widget item IDs
+and emit focused debug evidence when no stable ID is available; no interface
+label mapping was guessed. **Owner pass 2026-07-27:** Hunter and the ordinary
+Runecrafting altar path passed. GotR is awaiting player feedback; Sailing is
+still awaiting an owner/player pass.
+
+**Herblore dropdown rebuild (2026-07-27): IMPLEMENTED, needs focused owner
+pass.** `HerbloreMode` is Off / Input Only / Require Unfinished / Require All,
+default Require All. The retired `restrictHerblore=false` migrates to Off;
+enabled/default users retain Require All. Every generated recipe now declares
+an explicit `unfinished`, `finished` or `upgrade` stage. Require Unfinished
+adds the output gate only while creating an unfinished potion; ordinary
+finished recipes and direct upgrades remain input-only in that mode. Require
+All gates every carded output. `scripts/rebuild_herblore_data.js` generates
+82 item-on-item plus 82 matching interface rules from the same 82 logical
+recipes. Finished item-on-item targets now use the real `(unf)` item form
+(the previous card-name target could not match the inventory item), finished
+interface dose suffixes use the existing dose normalisation, and duplicate
+unfinished products such as Toadflax/Irit are resolved by the remembered base
+item. The eight uncertain multi-stage recipes remain explicitly excluded.
+Mode, stage-count, trigger-collision, interaction-parity and representative
+lookup tests are green. Owner should capture one unfinished and one finished
+`interface product` debug line while testing Make-X, to promote the interface
+labels from source-verified item names to in-client evidence.
+
 **Slayer rebuild (2026-07-25): IMPLEMENTED, needs owner in-game verification.**
 Slayer task membership now comes from RuneLite's local DB tables via the
 developer-only `scripts/SlayerCacheDump.java`; the checked-in snapshot has 330

@@ -177,7 +177,7 @@ class BronzemanTcgPanel extends PluginPanel
 		this.executor = executor;
 
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-		setBorder(BorderFactory.createEmptyBorder(8, 8, 8, 8));
+		setBorder(BorderFactory.createEmptyBorder(8, 10, 8, 10));
 
 		searchBar.setIcon(IconTextField.Icon.SEARCH);
 		searchBar.setPreferredSize(new Dimension(PluginPanel.PANEL_WIDTH - 20, 28));
@@ -502,7 +502,7 @@ class BronzemanTcgPanel extends PluginPanel
 		refreshChecklist(questList, "quests completable",
 			visible, snapshot.owned, expandedQuests,
 			this::refreshQuests, snapshot.data.quests.isEmpty()
-				? "No quest data bundled" : "No quests match these filters");
+				? "No quest data bundled" : "No quests match these filters", true);
 	}
 
 	private void refreshContent()
@@ -894,7 +894,7 @@ class BronzemanTcgPanel extends PluginPanel
 	{
 		refreshChecklist(rumoursList, "masters ready",
 			snapshot.data.rumours, snapshot.owned, expandedRumours,
-			this::refreshRumours, "No rumour data bundled");
+			this::refreshRumours, "No rumour data bundled", false);
 	}
 
 	private void refreshRecentUnlocks()
@@ -1074,6 +1074,10 @@ class BronzemanTcgPanel extends PluginPanel
 				continue;
 			}
 
+			if (visibleCategories > 0)
+			{
+				addSpacedDivider(importantUnlocksList);
+			}
 			visibleCategories++;
 			int have = countOwned(category.allItems, owned);
 			importantUnlocksList.add(importantCategoryRow(category, have));
@@ -1085,9 +1089,15 @@ class BronzemanTcgPanel extends PluginPanel
 					importantUnlocksList.add(statusRow("  " + displayCardName(card),
 						unlocked, null));
 				}
+				int visibleSubcategoryIndex = 0;
 				for (Map.Entry<ImportantUnlocksCatalog.Subcategory, List<String>> entry
 					: visibleSubcategories.entrySet())
 				{
+					if (visibleSubcategoryIndex > 0)
+					{
+						importantUnlocksList.add(listDivider());
+					}
+					visibleSubcategoryIndex++;
 					ImportantUnlocksCatalog.Subcategory subcategory = entry.getKey();
 					importantUnlocksList.add(importantSubcategoryRow(category, subcategory,
 						countOwned(subcategory.items, owned)));
@@ -1349,7 +1359,8 @@ class BronzemanTcgPanel extends PluginPanel
 
 	private void refreshChecklist(JPanel container, String summaryNoun,
 		List<QuestCatalog.QuestEntry> entries, Set<String> owned,
-		Set<String> expandedNames, Runnable refresh, String emptyText)
+		Set<String> expandedNames, Runnable refresh, String emptyText,
+		boolean showEntryDividers)
 	{
 		container.removeAll();
 
@@ -1369,8 +1380,14 @@ class BronzemanTcgPanel extends PluginPanel
 		}
 		// Entries are sorted once by the background preparation pass. A name never moves
 		// when the owned collection changes.
+		int entryIndex = 0;
 		for (QuestCatalog.QuestEntry entry : entries)
 		{
+			if (showEntryDividers && entryIndex > 0)
+			{
+				addSpacedDivider(container);
+			}
+			entryIndex++;
 			container.add(checklistRow(entry, owned, expandedNames, refresh));
 			if (expandedNames.contains(entry.name))
 			{
@@ -1663,6 +1680,24 @@ class BronzemanTcgPanel extends PluginPanel
 		return label;
 	}
 
+	private static JPanel listDivider()
+	{
+		JPanel divider = new JPanel();
+		divider.setBackground(ColorScheme.DARKER_GRAY_COLOR);
+		divider.setPreferredSize(new Dimension(PluginPanel.PANEL_WIDTH - 20, 2));
+		divider.setMinimumSize(new Dimension(0, 2));
+		divider.setMaximumSize(new Dimension(Integer.MAX_VALUE, 2));
+		divider.setAlignmentX(Component.LEFT_ALIGNMENT);
+		return divider;
+	}
+
+	private static void addSpacedDivider(JPanel container)
+	{
+		container.add(Box.createVerticalStrut(2));
+		container.add(listDivider());
+		container.add(Box.createVerticalStrut(3));
+	}
+
 	private static JPanel progressRow(String label, int done, int total)
 	{
 		return progressRow(label, done, total, done >= total);
@@ -1679,7 +1714,7 @@ class BronzemanTcgPanel extends PluginPanel
 		row.add(text, BorderLayout.NORTH);
 
 		JProgressBar bar = new JProgressBar(0, Math.max(total, 1));
-		bar.setValue(done);
+		bar.setValue(total == 0 && complete ? 1 : done);
 		bar.setPreferredSize(new Dimension(PluginPanel.PANEL_WIDTH - 20, 6));
 		bar.setForeground(complete ? UNLOCKED : ColorScheme.BRAND_ORANGE);
 		bar.setBackground(ColorScheme.DARKER_GRAY_COLOR);

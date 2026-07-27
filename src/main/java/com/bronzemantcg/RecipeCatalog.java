@@ -159,7 +159,8 @@ public class RecipeCatalog
 				{
 					String targetKey = target == null ? ANY_TARGET : target.trim().toLowerCase(Locale.ROOT);
 					boolean eventLog = "firemaking".equals(dto.category) && EVENT_LOGS.contains(targetKey);
-					Recipe recipe = new Recipe(dto.category, inputs, dto.output, eventLog, dto.crushable);
+					Recipe recipe = new Recipe(dto.category, inputs, dto.output, eventLog,
+						dto.crushable, HerbloreRecipeStage.from(dto.stage));
 					map.put(key(kind, name, targetKey), recipe);
 					if (KIND_SPELL_ON_ITEM.equals(kind))
 					{
@@ -196,15 +197,18 @@ public class RecipeCatalog
 		public final boolean eventLog;
 		/** Gem-cutting recipes whose gem can shatter into a Crushed gem; config-gated extra. */
 		public final boolean crushable;
+		/** Herblore chain position; null for non-Herblore recipes. */
+		public final HerbloreRecipeStage herbloreStage;
 
 		Recipe(String category, List<ResourceNodeCatalog.CardGroup> inputGroups, String output,
-			boolean eventLog, boolean crushable)
+			boolean eventLog, boolean crushable, HerbloreRecipeStage herbloreStage)
 		{
 			this.category = category.trim().toLowerCase(Locale.ROOT);
 			this.inputGroups = Collections.unmodifiableList(inputGroups);
 			this.output = output;
 			this.eventLog = eventLog;
 			this.crushable = crushable;
+			this.herbloreStage = herbloreStage;
 		}
 
 		/** Display strings for unmet requirements under the given enforcement, empty = allowed. */
@@ -239,6 +243,7 @@ public class RecipeCatalog
 	private static class RecipeDto
 	{
 		String category;
+		String stage;
 		List<List<String>> inputs;
 		String output;
 		boolean crushable;

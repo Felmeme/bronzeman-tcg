@@ -4,6 +4,121 @@ Versioning: 0.MINOR.PATCH — staying on 0.2.x until the full skills sweep is
 complete, then 0.3.0. The runelite-plugin.properties version line is bumped in
 the same commit as each release.
 
+## v0.2.12 — 2026-07-26
+
+### New
+- The Exempt List now supports `*` wildcards for item and NPC names, such as
+  `Rune*` or `*potion*`. Matching is case-insensitive and applies consistently
+  to direct item restrictions, recipes, resource nodes and locked-item marking.
+- An entry containing only `*` characters is ignored to prevent accidentally
+  exempting the entire card catalog.
+- Hunter now uses one Off / Tools Only / All Cards setting. Birds and
+  chinchompas use reviewed hunting regions; butterflies and implings enforce
+  their approved tools even bare-handed; salamanders use exact RuneLite object
+  IDs; and pitfalls use only the teasing stick plus guaranteed ordinary loot.
+- Stalls & Chests now covers all 16 official thievable chest types. Exact
+  object IDs keep visually identical chests separate, while the shared setting
+  remains Off / Any Of / All.
+- Locked non-NPC menu options can remain visible while their clicks are still
+  blocked, making the missing-card feedback easier to discover.
+- Herblore now has Off / Input Only / Require Unfinished / Require All modes.
+  Its 82 verified recipes are enforced consistently on both immediate
+  item-on-item mixing and the Make-X interface.
+
+### Fixes
+- Chat feedback is always enabled and Last Man Standing always bypasses
+  restrictions. Their redundant settings have been removed.
+- Per-item left-click Drop choices from RuneLite's Menu Entry Swapper are
+  respected without adding a broad one-click-drop toggle.
+- Party sharing and conflict-message settings now live under External Plugins;
+  Shared Unlocks is labelled TCG Locked Party Sharing.
+- Runecrafting checks the actual carried essence variant, while Guardians of
+  the Rift correctly ignores ordinary talisman and essence requirements.
+- Sailing's dedicated interfaces now use widget item IDs when available and
+  produce focused debug evidence when an interaction still needs mapping.
+
+## v0.2.11 — 2026-07-25
+
+### New
+- **Shared Unlocks support**: sibling plugins such as TCG Locked can offer
+  additional card names for group play without changing the player's own
+  collection. Shared cards apply to restrictions and locked-NPC outlines,
+  while side-panel progress and Recent Unlocks remain personal.
+- Shared unlock sources are queried on startup, profile changes and when the
+  setting is enabled, and stale contributions are cleared safely.
+
+### Fixes
+- Corrected several quest requirements and removed the obsolete Learning the
+  Ropes entry.
+- Corrected `Feathers` to the tracked `Feather` card in Important Unlocks.
+- Removed Raw rainbow fish from the ordinary lure fishing catch group.
+- Reworded the TCG Locked compatibility message to explain that both plugins'
+  settings should be checked.
+
+## v0.2.10 — 2026-07-25
+
+### New
+- **Fishing overhaul**: restrictions now use RuneLite's maintained
+  `FishingSpot` mapping, with Tools Only, Tools + Any Fish and Tools + Fish
+  modes. Bait and feathers count as tools, and fishing options remain visible
+  while locked.
+- **Slayer assignment rebuild**: master task lists now come from RuneLite's
+  local data, with reviewed variants, Wilderness-safe Krystilia alternatives
+  and location-specific Konar requirements.
+- Important Unlocks gained nested subcategories.
+- The side panel gained Slayer task/variant drill-downs, compact Konar groups,
+  locked/unlocked filters, quest filters and a Monsters by Area PvM section.
+
+### Fixes
+- Infernal eels remain unrestricted because Heroes' Quest supplies their
+  access requirement rather than a card-gated fishing spot.
+- Large side-panel lists remain lazy and cached so tab switching does not
+  repeatedly rebuild every row.
+
+## v0.2.9 — 2026-07-23
+
+### New
+- Added **Recent Unlocks**, recording up to 200 cards unlocked after the
+  feature establishes its first-run baseline, with search support.
+- Added **Important Unlocks**, initially grouping useful tools, weapons,
+  armour, potions and food.
+
+### Changes
+- Side-panel data preparation moved off the client thread.
+- Tabs keep their built panels attached and only refresh changed content,
+  removing repeated tab-switch layout work.
+
+## v0.2.8 — 2026-07-22
+
+### New
+- Added the optional client-side Duelist City Mode, displaying Mystic cards
+  and their matching stance on nearby players.
+- Rebuilt Slayer options into No Restrictions, Require Slayer Master and Full
+  Task List, while keeping superior creatures as a separate opt-in.
+- Added reviewed Slayer monster variants.
+
+### Changes
+- Consolidated Cooking, Compost, Firemaking, Mining, Smelting and Smithing
+  settings into consistent dropdowns, with migrations for existing users.
+- Simplified Firemaking to gate Tinderbox use and removed redundant
+  output-only modes where inputs are always required.
+
+### Fixes
+- Added the Children of the Sun quest interaction correction.
+
+## v0.2.7 — 2026-07-21
+
+### New
+- Replaced the side panel's collapsible sections with Quests, Slayer, PvM and
+  Rumours tabs.
+
+### Changes
+- Quest and checklist entries now stay alphabetically ordered instead of
+  reshuffling when cards are collected.
+- Simplified Fletching to Input Only and Input + Output, including migration
+  from the retired Product setting.
+- Refined general settings descriptions and side-panel requirement data.
+
 ## v0.2.6 — 2026-07-21
 
 ### Changes

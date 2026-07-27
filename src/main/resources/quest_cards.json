@@ -543,7 +543,8 @@
 				]
 			],
 			"groupLabels": [
-				"Feather"
+				"Feather",
+				"Any Feather, check wiki"
 			],
 			"monsterCards": [],
 			"notes": ""
@@ -828,7 +829,9 @@
 			"cardGroups": [],
 			"groupLabels": [],
 			"monsterCards": [
-				"Adala"
+				"Adala",
+				"Don't have to attack to complete quest",
+				"Considered grey area quest."
 			],
 			"notes": ""
 		},
@@ -909,6 +912,7 @@
 			],
 			"groupLabels": [
 				"Bucket of water",
+				"Any water container can be used.",
 				"Bones",
 				"Coins"
 			],
@@ -1472,10 +1476,10 @@
 					"Papyrus"
 				],
 				[
-					"Empty Sacks"
+					"Empty Sack"
 				],
 				[
-					"Unlit candle"
+					"Candle"
 				],
 				[
 					"Yellow Dye"
@@ -1496,8 +1500,8 @@
 				"Papyrus",
 				"Potatoes",
 				"Papyrus",
-				"Empty Sacks",
-				"Unlit candle",
+				"Empty Sack",
+				"Candle",
 				"Yellow Dye",
 				"Red Dye",
 				"Silk",
@@ -1574,14 +1578,6 @@
 			"monsterCards": [
 				"Gorak"
 			],
-			"notes": ""
-		},
-		{
-			"name": "Fallen From Grace",
-			"miniquest": false,
-			"cardGroups": [],
-			"groupLabels": [],
-			"monsterCards": [],
 			"notes": ""
 		},
 		{
@@ -2651,15 +2647,11 @@
 				],
 				[
 					"Sapphire amulet"
-				],
-				[
-					"Morytania legs 2"
 				]
 			],
 			"groupLabels": [
 				"Spade",
-				"Sapphire amulet",
-				"Morytania legs 2"
+				"Sapphire amulet"
 			],
 			"monsterCards": [],
 			"notes": ""
@@ -2936,7 +2928,8 @@
 				]
 			],
 			"groupLabels": [
-				"Pot"
+				"Pot",
+				"Pot of Flour"
 			],
 			"monsterCards": [],
 			"notes": ""
@@ -3753,9 +3746,12 @@
 					"Air Talisman"
 				]
 			],
-			"groupLabels": [],
+			"groupLabels": [
+				"Air Talisman",
+				"Considered grey area quest."
+			],
 			"monsterCards": [],
-			"notes": "Card for Air Talisman does not block quest."
+			"notes": ""
 		},
 		{
 			"name": "Scorpion Catcher",
@@ -3766,7 +3762,7 @@
 				]
 			],
 			"groupLabels": [
-				"Dusty key"
+				"Dusty key Or 70 Agility"
 			],
 			"monsterCards": [
 				"Jailer"
@@ -3809,10 +3805,14 @@
 			"cardGroups": [
 				[
 					"Swamp paste"
+				],
+				[
+					"Torch"
 				]
 			],
 			"groupLabels": [
-				"Swamp paste"
+				"Swamp paste",
+				"Torch"
 			],
 			"monsterCards": [],
 			"notes": ""
@@ -3942,8 +3942,22 @@
 		{
 			"name": "Sheep Shearer",
 			"miniquest": false,
-			"cardGroups": [],
-			"groupLabels": [],
+			"cardGroups": [
+				[
+					"Shears"
+				],
+				[
+					"Wool"
+				],
+				[
+					"Ball of Wool"
+				]
+			],
+			"groupLabels": [
+				"Shears",
+				"Wool",
+				"Ball of Wool"
+			],
 			"monsterCards": [],
 			"notes": ""
 		},
@@ -4813,6 +4827,9 @@
 					"Beer"
 				],
 				[
+					"Beer tankard"
+				],
+				[
 					"Tinderbox"
 				],
 				[
@@ -4823,11 +4840,13 @@
 			],
 			"groupLabels": [
 				"Coins",
-				"Beer",
+				"Beer / Beer Tankard",
 				"Tinderbox",
-				"Raw shark / Raw manta ray / Raw sea turtle"
+				"Raw shark / Raw manta ray / Raw sea turtle",
+				"Items for Lyre - Check wiki"
 			],
 			"monsterCards": [
+				"Lyre Monsters - Check wiki",
 				"Lanzig",
 				"Borrokar",
 				"Lensa",
@@ -4985,14 +5004,6 @@
 			"notes": ""
 		},
 		{
-			"name": "The Graveyard",
-			"miniquest": false,
-			"cardGroups": [],
-			"groupLabels": [],
-			"monsterCards": [],
-			"notes": ""
-		},
-		{
 			"name": "The Great Brain Robbery",
 			"miniquest": false,
 			"cardGroups": [
@@ -5105,8 +5116,37 @@
 		{
 			"name": "The Lost Tribe",
 			"miniquest": false,
-			"cardGroups": [],
-			"groupLabels": [],
+			"cardGroups": [
+				[
+					"3rd age pickaxe",
+					"Adamant pickaxe",
+					"Black pickaxe",
+					"Bronze pickaxe",
+					"Crystal pickaxe",
+					"Dragon pickaxe",
+					"Gilded pickaxe",
+					"Infernal pickaxe",
+					"Iron pickaxe",
+					"Mithril pickaxe",
+					"Rune pickaxe",
+					"Steel pickaxe"
+				],
+				[
+					"Abyssal lantern",
+					"Bruma torch",
+					"Bullseye lantern",
+					"Candle lantern",
+					"Lit candle",
+					"Mining helmet",
+					"Oil lamp",
+					"Oil lantern",
+					"Torch"
+				]
+			],
+			"groupLabels": [
+				"Any pickaxe",
+				"Any light source"
+			],
 			"monsterCards": [],
 			"notes": ""
 		},
@@ -5166,9 +5206,28 @@
 		{
 			"name": "The Ribbiting Tale of a Lily Pad Labour Dispute",
 			"miniquest": false,
-			"cardGroups": [],
-			"groupLabels": [],
-			"monsterCards": [],
+			"cardGroups": [
+				[
+					"3rd age axe",
+					"Adamant axe",
+					"Black axe",
+					"Bronze axe",
+					"Crystal axe",
+					"Dragon axe",
+					"Gilded axe",
+					"Infernal axe",
+					"Iron axe",
+					"Mithril axe",
+					"Rune axe",
+					"Steel axe"
+				]
+			],
+			"groupLabels": [
+				"Any axe"
+			],
+			"monsterCards": [
+				"Cuthbert"
+			],
 			"notes": ""
 		},
 		{
@@ -5364,8 +5423,14 @@
 		{
 			"name": "Twilight's Promise",
 			"miniquest": false,
-			"cardGroups": [],
-			"groupLabels": [],
+			"cardGroups": [
+				[
+					"Quetzal feed"
+				]
+			],
+			"groupLabels": [
+				"Quetzal Feed"
+			],
 			"monsterCards": [
 				"Knight of Varlamore",
 				"Cultist"

@@ -223,6 +223,9 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	private TrackedItemCatalog itemCatalog;
 
 	@Inject
+	private ExemptionList exemptionList;
+
+	@Inject
 	private ResourceNodeCatalog nodeCatalog;
 
 	@Inject
@@ -291,8 +294,6 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	private volatile long panelGeneration;
 	private int tickCounter;
 	private boolean questStateInitialized;
-	private String lootExemptRaw;
-	private Set<String> lootExemptSet = Collections.emptySet();
 	private Set<String> effectiveOwned = Collections.emptySet();
 	private Set<String> effectiveOwnedBase;
 	private Set<String> effectiveOwnedExempt;
@@ -323,6 +324,7 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	// Fishing rules use their role:"tool" groups as the allowlist. Keep every carried
 	// item name here so bait, feathers and future spot-specific inputs stay data-driven.
 	private Set<String> carriedFishingInputs = Collections.emptySet();
+	private Set<String> inventoryItemNamesLower = Collections.emptySet();
 	// The item-on-item pair that most recently opened a "make" interface. Some menus
 	// label every tier identically ("Crossbow stock"), so the product name alone can't
 	// say which item is being made - but the material used to open the menu can.
@@ -347,6 +349,8 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 		migrateNpcVisibility();
 		migrateSkillToggles();
 		migrateFishingMode();
+		migrateHunterMode();
+		removeRetiredGeneralSettings();
 		// Mid-session enable fires no ItemContainerChanged, so seed the tool cache now.
 		clientThread.invokeLater(this::refreshCarriedTools);
 		welcomeShown = false;
@@ -716,16 +720,36 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	@Subscribe
 	public void onMenuEntryAdded(MenuEntryAdded event)
 	{
-		// NPC stripping is inherent to the visibility dropdown; only the non-NPC branches
-		// of shouldHideEntry consult the hideLockedOptions toggle.
 		if (isEnforcementBypassed())
 		{
 			return;
 		}
 		MenuEntry entry = event.getMenuEntry();
+		// NPC option visibility is owned exclusively by NPC Locks. Every other interaction
+		// can remain visible for discoverability while the click path still blocks it and
+		// explains the missing cards.
+		if (config.showLockedMenuOptions() && !isNpcMenuOption(entry.getType()))
+		{
+			return;
+		}
 		if (shouldHideEntry(entry))
 		{
 			client.getMenu().removeMenuEntry(entry);
+		}
+	}
+
+	private boolean isNpcMenuOption(MenuAction action)
+	{
+		switch (action)
+		{
+			case NPC_FIRST_OPTION:
+			case NPC_SECOND_OPTION:
+			case NPC_THIRD_OPTION:
+			case NPC_FOURTH_OPTION:
+			case NPC_FIFTH_OPTION:
+				return true;
+			default:
+				return false;
 		}
 	}
 
@@ -779,6 +803,13 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 				{
 					return true;
 				}
+				// NPC Locks has had first refusal above. With discoverability enabled,
+				// keep resource/activity options such as Catch, Tease and Pickpocket
+				// visible; their click handlers still enforce and explain the rule.
+				if (config.showLockedMenuOptions())
+				{
+					return false;
+				}
 				if (MASTER_FARMER_NAME.equals(name.toLowerCase(Locale.ROOT))
 					&& PICKPOCKET_OPTION.equals(optionLower))
 				{
@@ -810,7 +841,8 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 			{
 				String objectName = Text.removeTags(entry.getTarget()).trim();
 				return !objectName.isEmpty()
-					&& evaluateNodeRule(ResourceNodeCatalog.KIND_OBJECT, objectName, option) != null;
+					&& evaluateNodeRule(ResourceNodeCatalog.KIND_OBJECT, objectName, option,
+						entry.getIdentifier()) != null;
 			}
 			case WIDGET_TARGET:
 			{
@@ -868,7 +900,7 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 				// Locked usage means the item keeps only its disposal options; equip, drink,
 				// use and everything else fall under the same rule.
 				return config.itemUsageMode() == LockState.LOCKED
-					&& !FORCED_DROP_ALLOWED.contains(optionLower);
+					&& !isLockedItemDisposalOption(optionLower);
 			}
 			default:
 				return false;
@@ -1437,11 +1469,35 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 		Set<String> pickaxes = new HashSet<>();
 		Set<String> axes = new HashSet<>();
 		Set<String> fishingInputs = new HashSet<>();
-		collectTools(client.getItemContainer(InventoryID.INV), pickaxes, axes, fishingInputs);
-		collectTools(client.getItemContainer(InventoryID.WORN), pickaxes, axes, fishingInputs);
+		ItemContainer inventory = client.getItemContainer(InventoryID.INV);
+		ItemContainer equipment = client.getItemContainer(InventoryID.WORN);
+		collectTools(inventory, pickaxes, axes, fishingInputs);
+		collectTools(equipment, pickaxes, axes, fishingInputs);
 		carriedPickaxes = pickaxes;
 		carriedAxes = axes;
 		carriedFishingInputs = fishingInputs;
+		inventoryItemNamesLower = collectItemNamesLower(inventory);
+	}
+
+	private Set<String> collectItemNamesLower(ItemContainer container)
+	{
+		if (container == null)
+		{
+			return Collections.emptySet();
+		}
+		Set<String> names = new HashSet<>();
+		for (Item item : container.getItems())
+		{
+			if (item.getId() >= 0)
+			{
+				String name = itemManager.getItemComposition(item.getId()).getName();
+				if (name != null)
+				{
+					names.add(name.toLowerCase(Locale.ROOT));
+				}
+			}
+		}
+		return names;
 	}
 
 	private void collectTools(ItemContainer container, Set<String> pickaxes, Set<String> axes,
@@ -1485,7 +1541,15 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 			return;
 		}
 		String objectName = Text.removeTags(event.getMenuTarget()).trim();
-		checkNodeRule(event, ResourceNodeCatalog.KIND_OBJECT, objectName, Text.removeTags(option));
+		if (log.isDebugEnabled() && (objectName.toLowerCase(Locale.ROOT).contains("shipwreck")
+			|| objectName.toLowerCase(Locale.ROOT).contains("salvaging hook")
+			|| objectName.equalsIgnoreCase("Boat schematics")))
+		{
+			log.debug("sailing object click id={} name='{}' option='{}' action={}",
+				event.getId(), objectName, Text.removeTags(option), event.getMenuAction());
+		}
+		checkNodeRule(event, ResourceNodeCatalog.KIND_OBJECT, objectName, Text.removeTags(option),
+			event.getId());
 	}
 
 	private void handleItemOnGameObject(MenuOptionClicked event)
@@ -1515,6 +1579,43 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 		String option = Text.removeTags(event.getMenuOption()).trim();
 		String optionLower = option.toLowerCase(Locale.ROOT);
 		int group = WidgetUtil.componentToInterface(entry.getParam1());
+
+		if (group == InterfaceID.SAILING_MENU || group == InterfaceID.SAILING_CUSTOMISATION)
+		{
+			Widget widget = event.getWidget();
+			String itemName = null;
+			if (widget != null && widget.getItemId() > 0)
+			{
+				itemName = itemManager.getItemComposition(widget.getItemId()).getName();
+			}
+			if (log.isDebugEnabled())
+			{
+				log.debug("sailing interface group={} component={} child={} option='{}' target='{}' "
+						+ "itemId={} itemName='{}' text='{}' name='{}'",
+					group,
+					widget == null ? -1 : widget.getId(),
+					widget == null ? -1 : widget.getIndex(),
+					option,
+					Text.removeTags(event.getMenuTarget()),
+					widget == null ? -1 : widget.getItemId(),
+					itemName == null ? "(no item id)" : itemName,
+					widget == null || widget.getText() == null
+						? "" : Text.removeTags(widget.getText()),
+					widget == null || widget.getName() == null
+						? "" : Text.removeTags(widget.getName()));
+			}
+			if (itemName != null && !itemName.isEmpty()
+				&& nodeCatalog.find(ResourceNodeCatalog.KIND_INTERFACE, itemName,
+					ResourceNodeCatalog.ANY_OPTION) != null)
+			{
+				checkNodeRule(event, ResourceNodeCatalog.KIND_INTERFACE, itemName,
+					ResourceNodeCatalog.ANY_OPTION);
+				return;
+			}
+			// If this widget carries no item id, continue into the existing make-verb
+			// fallback. The debug record above supplies the stable component evidence
+			// needed for a later exact mapping; no label is guessed here.
+		}
 
 		// Bank: discriminate on option text (the bank-side panels are not the inventory group).
 		if (optionLower.startsWith("withdraw"))
@@ -1642,10 +1743,22 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 		}
 
 		// Locked usage: only the disposal options survive; equip/drink/use all fall here.
-		if (config.itemUsageMode() == LockState.LOCKED && !FORCED_DROP_ALLOWED.contains(optionLower))
+		if (config.itemUsageMode() == LockState.LOCKED
+			&& !isLockedItemDisposalOption(optionLower))
 		{
 			blockIfLockedItem(event, itemName);
 		}
+	}
+
+	/**
+	 * Menu Entry Swapper only changes which genuine item operation is promoted to
+	 * left-click. Keeping Drop allowed here means an explicit per-item left-click
+	 * Drop choice works without Bronzeman reading or copying another plugin's config.
+	 */
+	static boolean isLockedItemDisposalOption(String option)
+	{
+		return option != null
+			&& FORCED_DROP_ALLOWED.contains(option.toLowerCase(Locale.ROOT));
 	}
 
 	/** "Use" with an inventory item selected: a locked item can't be used on anything. */
@@ -1806,16 +1919,24 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	/** @return true when the event was consumed (blocked). */
 	private boolean checkNodeRule(MenuOptionClicked event, String kind, String name, String option)
 	{
+		return checkNodeRule(event, kind, name, option, -1);
+	}
+
+	/** @return true when the event was consumed (blocked). */
+	private boolean checkNodeRule(MenuOptionClicked event, String kind, String name, String option,
+		int targetId)
+	{
 		// Data-string mismatches (an option or name that differs from the wiki-sourced value)
 		// fail silently and look exactly like "the restriction is ignored", so log the lookup.
 		// Click path only: the hide path calls evaluateNodeRule many times per frame.
 		if (log.isDebugEnabled())
 		{
-			ResourceNodeCatalog.Rule rule = nodeCatalog.find(kind, name, option);
-			log.debug("node lookup kind={} name='{}' option='{}' -> {}",
-				kind, name, option, rule == null ? "NO RULE" : "rule[" + rule.category + "]");
+			ResourceNodeCatalog.Rule rule = nodeCatalog.find(kind, name, option, targetId);
+			log.debug("node lookup kind={} name='{}' option='{}' targetId={} -> {}",
+				kind, name, option, targetId,
+				rule == null ? "NO RULE" : "rule[" + rule.category + "]");
 		}
-		List<String> missing = evaluateNodeRule(kind, name, option);
+		List<String> missing = evaluateNodeRule(kind, name, option, targetId);
 		if (missing == null)
 		{
 			return false;
@@ -1834,7 +1955,12 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	 */
 	private List<String> evaluateNodeRule(String kind, String name, String option)
 	{
-		ResourceNodeCatalog.Rule rule = nodeCatalog.find(kind, name, option);
+		return evaluateNodeRule(kind, name, option, -1);
+	}
+
+	private List<String> evaluateNodeRule(String kind, String name, String option, int targetId)
+	{
+		ResourceNodeCatalog.Rule rule = nodeCatalog.find(kind, name, option, targetId);
 		if (rule == null)
 		{
 			return null;
@@ -1848,12 +1974,34 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 		{
 			return evaluateFishingRule(rule);
 		}
+		if ("hunter-salamanders".equals(rule.category))
+		{
+			return evaluateSalamanderRule(targetId);
+		}
+		if ("hunter-birds".equals(rule.category))
+		{
+			return evaluateAreaTrapRule(rule, true);
+		}
+		if ("hunter-chins".equals(rule.category))
+		{
+			return evaluateAreaTrapRule(rule, false);
+		}
+		if ("hunter-butterflies".equals(rule.category)
+			|| "hunter-implings".equals(rule.category))
+		{
+			return evaluateHunterNetRule(rule);
+		}
+		if ("runecrafting".equals(rule.category))
+		{
+			return evaluateRunecraftingRule(rule);
+		}
 
 		boolean forceAllInGroups = false;
 		Set<String> excludedRoles;
-		if ("thieving-stalls".equals(rule.category))
+		if ("thieving-stalls".equals(rule.category)
+			|| "thieving-chests".equals(rule.category))
 		{
-			// Stalls carry one any-of loot group; the mode dial forces all-of for "All items".
+			// Stalls/chests carry one any-of loot group; the mode dial forces all-of for "All".
 			StallThievingMode mode = config.stallThievingMode();
 			if (mode == StallThievingMode.OFF)
 			{
@@ -1874,6 +2022,152 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 		List<String> missing = rule.missingRequirements(
 			effectiveOwnedCards(), excludedRoles, forceAllInGroups);
 		return missing.isEmpty() ? null : missing;
+	}
+
+	private List<String> evaluateSalamanderRule(int objectId)
+	{
+		HunterMode mode = config.hunterMode();
+		if (mode == HunterMode.OFF)
+		{
+			return null;
+		}
+
+		List<String> required = new ArrayList<>(List.of("Rope", "Small fishing net"));
+		HunterTrapType trap = HunterTrapType.fromObjectId(objectId);
+		if (mode == HunterMode.ALL_CARDS && trap != null)
+		{
+			required.add(trap.getCardName());
+		}
+		return missingOwnedCards(required);
+	}
+
+	private List<String> evaluateAreaTrapRule(ResourceNodeCatalog.Rule rule, boolean bird)
+	{
+		HunterMode mode = config.hunterMode();
+		if (mode == HunterMode.OFF)
+		{
+			return null;
+		}
+
+		List<String> missing = rule.missingRequirements(
+			effectiveOwnedCards(), Collections.emptySet(), false);
+		if (mode == HunterMode.ALL_CARDS)
+		{
+			addMissingCards(missing, bird
+				? HunterAreaSpecies.birdCards(currentRegionId())
+				: HunterAreaSpecies.chinchompaCards(currentRegionId()));
+		}
+		return missing.isEmpty() ? null : missing;
+	}
+
+	private List<String> evaluateHunterNetRule(ResourceNodeCatalog.Rule rule)
+	{
+		HunterMode mode = config.hunterMode();
+		if (mode == HunterMode.OFF)
+		{
+			return null;
+		}
+		Set<String> excluded = mode == HunterMode.TOOLS_ONLY
+			? Set.of("output") : Collections.emptySet();
+		List<String> missing = rule.missingRequirements(
+			effectiveOwnedCards(), excluded, false);
+		return missing.isEmpty() ? null : missing;
+	}
+
+	private List<String> evaluateRunecraftingRule(ResourceNodeCatalog.Rule rule)
+	{
+		RunecraftingMode mode = config.runecraftingMode();
+		if (mode == RunecraftingMode.OFF)
+		{
+			return null;
+		}
+
+		// GotR supplies Guardian essence and portal access. Those are not the normal
+		// altar inputs, so only the resulting rune card belongs to the strict mode.
+		if (client.getVarbitValue(VarbitID.GOTR_IS_PLAYING) != 0)
+		{
+			if (mode == RunecraftingMode.TALISMAN)
+			{
+				return null;
+			}
+			List<String> missing = rule.missingRequirements(
+				effectiveOwnedCards(), Set.of("essence", "talisman"), false);
+			return missing.isEmpty() ? null : missing;
+		}
+
+		Set<String> excluded = new HashSet<>();
+		excluded.add("essence");
+		if (mode == RunecraftingMode.TALISMAN)
+		{
+			excluded.add("rune");
+		}
+		List<String> missing = rule.missingRequirements(
+			effectiveOwnedCards(), excluded, false);
+
+		ResourceNodeCatalog.CardGroup essenceGroup = null;
+		for (ResourceNodeCatalog.CardGroup group : rule.groups)
+		{
+			if ("essence".equals(group.role))
+			{
+				essenceGroup = group;
+				break;
+			}
+		}
+		if (essenceGroup == null)
+		{
+			return missing.isEmpty() ? null : missing;
+		}
+
+		boolean foundCarriedEssence = false;
+		for (int i = 0; i < essenceGroup.lowerCards.size(); i++)
+		{
+			if (inventoryItemNamesLower.contains(essenceGroup.lowerCards.get(i)))
+			{
+				foundCarriedEssence = true;
+				addMissingCard(missing, essenceGroup.displayCards.get(i));
+			}
+		}
+		if (!foundCarriedEssence && !essenceGroup.isSatisfied(effectiveOwnedCards()))
+		{
+			// Essence may be entirely inside pouches, where the client exposes no item
+			// variant at click time. Preserve the existing any-valid-essence fallback.
+			missing.add(String.join(" / ", essenceGroup.displayCards));
+		}
+		return missing.isEmpty() ? null : missing;
+	}
+
+	private int currentRegionId()
+	{
+		Player local = client.getLocalPlayer();
+		return local == null ? -1 : local.getWorldLocation().getRegionID();
+	}
+
+	private List<String> missingOwnedCards(List<String> cards)
+	{
+		List<String> missing = new ArrayList<>();
+		for (String card : cards)
+		{
+			addMissingCard(missing, card);
+		}
+		return missing.isEmpty() ? null : missing;
+	}
+
+	private void addMissingCard(List<String> missing, String card)
+	{
+		if (card != null && !isLootExempt(card)
+			&& !effectiveOwnedCards().contains(card.toLowerCase(Locale.ROOT))
+			&& !missing.contains(card))
+		{
+			missing.add(card);
+		}
+	}
+
+	private void addMissingCards(List<String> missing, List<String> cards)
+	{
+		for (String card : cards)
+		{
+			addMissingCard(missing, card);
+		}
 	}
 
 	/**
@@ -2029,24 +2323,12 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 			case "farming-compost":
 				return config.compostMode() == CardRequirement.CARD_REQUIRED
 					? Collections.emptySet() : null;
-			case "hunter-chins":
-				return config.restrictChins() ? Collections.emptySet() : null;
 			case "hunter-rumours":
 				return config.restrictHunterRumours() ? Collections.emptySet() : null;
 			case "quest-cots":
 				// CotS guard marking waives itself while the quest is actually running -
 				// quest progression is the permit, no toggle.
 				return questNpcIndex.isCotsInProgress() ? null : Collections.emptySet();
-			case "runecrafting":
-				switch (config.runecraftingMode())
-				{
-					case TALISMAN:
-						return Set.of("rune");
-					case TALISMAN_RUNES:
-						return Collections.emptySet();
-					default:
-						return null;
-				}
 			case "farming-rake":
 				switch (config.farmingRakeMode())
 				{
@@ -2091,43 +2373,12 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 				}
 				return excluded;
 			}
-			case "hunter-birds":
-			case "hunter-butterflies":
-				switch (config.hunterBirdsMode())
-				{
-					case NET_ONLY:
-						return Set.of("creature", "extra");
-					case ALL_DROPS:
-						return Collections.emptySet();
-					default:
-						return null;
-				}
-			case "hunter-implings":
-				switch (config.implingMode())
-				{
-					case NET_ONLY:
-						return Set.of("extra");
-					case BOTH:
-						return Collections.emptySet();
-					default:
-						return null;
-				}
-			case "hunter-salamanders":
-				switch (config.salamanderMode())
-				{
-					case ROPE_NET:
-						return Set.of("creature");
-					case ITEMS_SALLY:
-						return Collections.emptySet();
-					default:
-						return null;
-				}
 			case "hunter-pitfalls":
-				switch (config.pitfallMode())
+				switch (config.hunterMode())
 				{
-					case TOOLS:
-						return Set.of("creature");
-					case ALL:
+					case TOOLS_ONLY:
+						return Set.of("monster", "loot");
+					case ALL_CARDS:
 						return Collections.emptySet();
 					default:
 						return null;
@@ -2235,13 +2486,16 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 				break;
 			}
 			case "herblore":
-				if (!config.restrictHerblore())
+			{
+				HerbloreMode mode = config.herbloreMode();
+				if (mode == HerbloreMode.OFF)
 				{
 					return false;
 				}
-				enforceInputs = true;
-				enforceOutput = true;
+				enforceInputs = mode.enforcesInputs();
+				enforceOutput = mode.enforcesOutput(recipe.herbloreStage);
 				break;
+			}
 			default:
 				enforceInputs = true;
 				enforceOutput = true;
@@ -2323,10 +2577,6 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	 */
 	private boolean isLmsBypassed()
 	{
-		if (!config.allowInLms())
-		{
-			return false;
-		}
 		if (client.getVarbitValue(VarbitID.BR_INGAME) == 1)
 		{
 			return true;
@@ -2551,28 +2801,13 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 		{
 			return true;
 		}
-		return exemptSet().contains(needle);
+		return exemptions().containsEntity(needle);
 	}
 
-	/** Lower-cased, dose-stripped exempt names; rebuilt only when the config string changes. */
-	private Set<String> exemptSet()
+	/** Cached exact/wildcard exemptions, rebuilt only when the config string changes. */
+	private ExemptionList.Snapshot exemptions()
 	{
-		String raw = config.lootExemptNames();
-		if (!raw.equals(lootExemptRaw))
-		{
-			Set<String> exempt = new HashSet<>();
-			for (String entry : raw.split(","))
-			{
-				String trimmed = CardNames.stripDoseSuffix(entry.trim().toLowerCase(Locale.ROOT));
-				if (!trimmed.isEmpty())
-				{
-					exempt.add(trimmed);
-				}
-			}
-			lootExemptSet = exempt;
-			lootExemptRaw = raw;
-		}
-		return lootExemptSet;
+		return exemptionList.resolve(config.lootExemptNames());
 	}
 
 	/**
@@ -2584,7 +2819,7 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	private Set<String> effectiveOwnedCards()
 	{
 		Set<String> owned = collectionReader.getOwnedCardNamesLowerCase();
-		Set<String> exempt = exemptSet();
+		Set<String> exempt = exemptions().getCardNamesLowerCase();
 		// Extra unlocks offered by a sibling plugin (a party mode, say). Folded in here with the
 		// exempt list so every lock check in the plugin honours them in one place, and cached by
 		// identity like the rest - the store hands back the same instance until it changes.
@@ -2881,6 +3116,16 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 		}
 		configManager.unsetConfiguration(BronzemanTcgConfig.GROUP, "restrictCooking");
 		configManager.unsetConfiguration(BronzemanTcgConfig.GROUP, "restrictBurntFood");
+
+		// Herblore's old toggle enforced every input and output. An explicit opt-out
+		// remains Off; everyone else receives the equivalent Require All default.
+		if ("false".equals(configManager.getConfiguration(
+			BronzemanTcgConfig.GROUP, "restrictHerblore")))
+		{
+			configManager.setConfiguration(BronzemanTcgConfig.GROUP, "herbloreMode",
+				HerbloreMode.OFF.name());
+		}
+		configManager.unsetConfiguration(BronzemanTcgConfig.GROUP, "restrictHerblore");
 	}
 
 	/**
@@ -2910,6 +3155,62 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 			configManager.setConfiguration(BronzemanTcgConfig.GROUP, "fishingMode",
 				FishingRestrictionMode.ALL_CATCHES.name());
 		}
+	}
+
+	/**
+	 * Consolidates six per-method Hunter controls into one shared difficulty dial.
+	 * A fully explicit opt-out stays off; an explicitly selected strict bird,
+	 * salamander or pitfall mode stays strict. Mixed/ordinary configurations use the
+	 * new Tools Only default, since no single value can preserve six independent choices.
+	 */
+	private void migrateHunterMode()
+	{
+		if (config.hunterModeMigrated())
+		{
+			return;
+		}
+		configManager.setConfiguration(BronzemanTcgConfig.GROUP, "hunterModeMigrated", true);
+
+		String birds = configManager.getConfiguration(BronzemanTcgConfig.GROUP, "hunterBirdsMode");
+		String butterflies = configManager.getConfiguration(BronzemanTcgConfig.GROUP, "butterflyMode");
+		String implings = configManager.getConfiguration(BronzemanTcgConfig.GROUP, "implingMode");
+		String chins = configManager.getConfiguration(BronzemanTcgConfig.GROUP, "restrictChins");
+		String salamanders = configManager.getConfiguration(BronzemanTcgConfig.GROUP, "salamanderMode");
+		String pitfalls = configManager.getConfiguration(BronzemanTcgConfig.GROUP, "pitfallMode");
+
+		boolean allOff = "OFF".equals(birds)
+			&& "OFF".equals(butterflies)
+			&& "OFF".equals(implings)
+			&& "false".equals(chins)
+			&& "OFF".equals(salamanders)
+			&& "OFF".equals(pitfalls);
+		boolean explicitlyStrict = "ALL_DROPS".equals(birds)
+			|| "ITEMS_SALLY".equals(salamanders)
+			|| "ALL".equals(pitfalls);
+		if (allOff)
+		{
+			configManager.setConfiguration(BronzemanTcgConfig.GROUP, "hunterMode",
+				HunterMode.OFF.name());
+		}
+		else if (explicitlyStrict)
+		{
+			configManager.setConfiguration(BronzemanTcgConfig.GROUP, "hunterMode",
+				HunterMode.ALL_CARDS.name());
+		}
+
+		configManager.unsetConfiguration(BronzemanTcgConfig.GROUP, "hunterBirdsMode");
+		configManager.unsetConfiguration(BronzemanTcgConfig.GROUP, "butterflyMode");
+		configManager.unsetConfiguration(BronzemanTcgConfig.GROUP, "implingMode");
+		configManager.unsetConfiguration(BronzemanTcgConfig.GROUP, "restrictChins");
+		configManager.unsetConfiguration(BronzemanTcgConfig.GROUP, "salamanderMode");
+		configManager.unsetConfiguration(BronzemanTcgConfig.GROUP, "pitfallMode");
+	}
+
+	/** Retired choices are now unconditional: feedback is on and LMS always bypasses. */
+	private void removeRetiredGeneralSettings()
+	{
+		configManager.unsetConfiguration(BronzemanTcgConfig.GROUP, "chatFeedback");
+		configManager.unsetConfiguration(BronzemanTcgConfig.GROUP, "allowInLms");
 	}
 
 	private void migrateExemptList()
@@ -2978,10 +3279,6 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 
 	private void sendBlockedMessage(String entityName)
 	{
-		if (!config.chatFeedback())
-		{
-			return;
-		}
 		long now = System.currentTimeMillis();
 		if (now - lastBlockMessageMs < CHAT_THROTTLE_MS)
 		{
@@ -3010,10 +3307,6 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 		if (missingCards.size() == 1)
 		{
 			sendBlockedMessage(missingCards.get(0));
-			return;
-		}
-		if (!config.chatFeedback())
-		{
 			return;
 		}
 		long now = System.currentTimeMillis();

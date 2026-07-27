@@ -4459,19 +4459,13 @@
 			"requiredCardGroups": [
 				[
 					"Bird snare"
-				],
-				[
-					"Crimson swift",
-					"Golden warbler",
-					"Tropical wagtail"
 				]
 			],
 			"groupRoles": [
-				"",
-				"creature"
+				"tool"
 			],
 			"requireAll": true,
-			"notes": "FLAG(kind): laying is an INVENTORY item option ('Bird snare' -> 'Lay'), not one of the 4 schema kinds; kind set to 'object' as best-fit, plugin likely needs inventory-item handling. FLAG(model): bird NPCs have NO 'Catch' option - you lay the snare, birds are trapped automatically, then Check the collapsed trap. 'All Bird Drops' mode cannot be attached to the lay action because the target bird is unknowable at lay time (same problem as chinchompa box traps). See report for per-bird card mapping (Crimson swift / Golden warbler / Tropical wagtail have creature cards; Copper longtail / Cerulean twitch do NOT)."
+			"notes": "Tools Only requires Bird snare. All Cards adds the reviewed area's bird Monster card where one exists plus guaranteed Bones, Raw bird meat and the normal feather; rumour-only Tailfeathers are excluded in code."
 		},
 		{
 			"category": "hunter-butterflies",
@@ -4490,11 +4484,11 @@
 				]
 			],
 			"groupRoles": [
-				"",
-				"extra"
+				"tool",
+				"tool"
 			],
 			"requireAll": true,
-			"notes": "Net-only base mode = net group (magic net counts). 'With jar' mode adds the Butterfly jar group. 'All Butterfly Drops' mode would add this species' own creature card, but NO butterfly/moth creature card exists in Card.json (only '<name> mix' and, for moths, '<name> wing') - a per-species creature requirement is impossible; see report."
+			"notes": "Both modes require either net card plus Butterfly jar, including bare-handed catches. No butterfly or moth Monster cards exist."
 		},
 		{
 			"category": "hunter-butterflies",
@@ -4513,11 +4507,11 @@
 				]
 			],
 			"groupRoles": [
-				"",
-				"extra"
+				"tool",
+				"tool"
 			],
 			"requireAll": true,
-			"notes": "Net-only base mode = net group (magic net counts). 'With jar' mode adds the Butterfly jar group. 'All Butterfly Drops' mode would add this species' own creature card, but NO butterfly/moth creature card exists in Card.json (only '<name> mix' and, for moths, '<name> wing') - a per-species creature requirement is impossible; see report."
+			"notes": "Both modes require either net card plus Butterfly jar, including bare-handed catches. No butterfly or moth Monster cards exist."
 		},
 		{
 			"category": "hunter-butterflies",
@@ -4536,11 +4530,11 @@
 				]
 			],
 			"groupRoles": [
-				"",
-				"extra"
+				"tool",
+				"tool"
 			],
 			"requireAll": true,
-			"notes": "Net-only base mode = net group (magic net counts). 'With jar' mode adds the Butterfly jar group. 'All Butterfly Drops' mode would add this species' own creature card, but NO butterfly/moth creature card exists in Card.json (only '<name> mix' and, for moths, '<name> wing') - a per-species creature requirement is impossible; see report."
+			"notes": "Both modes require either net card plus Butterfly jar, including bare-handed catches. No butterfly or moth Monster cards exist."
 		},
 		{
 			"category": "hunter-butterflies",
@@ -4559,11 +4553,11 @@
 				]
 			],
 			"groupRoles": [
-				"",
-				"extra"
+				"tool",
+				"tool"
 			],
 			"requireAll": true,
-			"notes": "Net-only base mode = net group (magic net counts). 'With jar' mode adds the Butterfly jar group. 'All Butterfly Drops' mode would add this species' own creature card, but NO butterfly/moth creature card exists in Card.json (only '<name> mix' and, for moths, '<name> wing') - a per-species creature requirement is impossible; see report."
+			"notes": "Both modes require either net card plus Butterfly jar, including bare-handed catches. No butterfly or moth Monster cards exist."
 		},
 		{
 			"category": "hunter-butterflies",
@@ -4582,11 +4576,11 @@
 				]
 			],
 			"groupRoles": [
-				"",
-				"extra"
+				"tool",
+				"tool"
 			],
 			"requireAll": true,
-			"notes": "Net-only base mode = net group (magic net counts). 'With jar' mode adds the Butterfly jar group. 'All Butterfly Drops' mode would add this species' own creature card, but NO butterfly/moth creature card exists in Card.json (only '<name> mix' and, for moths, '<name> wing') - a per-species creature requirement is impossible; see report."
+			"notes": "Both modes require either net card plus Butterfly jar, including bare-handed catches. No butterfly or moth Monster cards exist."
 		},
 		{
 			"category": "hunter-butterflies",
@@ -4605,11 +4599,11 @@
 				]
 			],
 			"groupRoles": [
-				"",
-				"extra"
+				"tool",
+				"tool"
 			],
 			"requireAll": true,
-			"notes": "Net-only base mode = net group (magic net counts). 'With jar' mode adds the Butterfly jar group. 'All Butterfly Drops' mode would add this species' own creature card, but NO butterfly/moth creature card exists in Card.json (only '<name> mix' and, for moths, '<name> wing') - a per-species creature requirement is impossible; see report."
+			"notes": "Both modes require either net card plus Butterfly jar, including bare-handed catches. No butterfly or moth Monster cards exist."
 		},
 		{
 			"category": "hunter-chins",
@@ -4621,25 +4615,13 @@
 			"requiredCardGroups": [
 				[
 					"Box trap"
-				],
-				[
-					"Chinchompa",
-					"Red chinchompa",
-					"Black chinchompa"
-				],
-				[
-					"Chinchompa",
-					"Red chinchompa",
-					"Black chinchompa"
 				]
 			],
 			"groupRoles": [
-				"",
-				"extra",
-				"creature"
+				"tool"
 			],
 			"requireAll": true,
-			"notes": "FLAG(kind): laying is an INVENTORY item option ('Box trap' -> 'Lay'), not one of the 4 schema kinds; kind set to 'object' as best-fit. DISCUSSION: a laid box trap cannot know which chinchompa will enter it, so an exact per-species card requirement is impossible at lay time. Proposed 'All Chinchompa Drops' mode uses a single any-of group of the three chin cards (grey chinchompa's caught item is the base 'Chinchompa' card). Alternative: key the species off the hunting area/region instead of the trap. Grey chinchompa == card 'Chinchompa'."
+			"notes": "Tools Only requires Box trap. All Cards adds both the reviewed area's Hunter Monster card and the corresponding caught chinchompa item card in code."
 		},
 		{
 			"category": "hunter-implings",
@@ -4650,19 +4632,22 @@
 			],
 			"requiredCardGroups": [
 				[
-					"Butterfly net",
 					"Magic butterfly net"
 				],
 				[
 					"Impling jar"
+				],
+				[
+					"Baby impling jar"
 				]
 			],
 			"groupRoles": [
-				"",
-				"extra"
+				"tool",
+				"tool",
+				"output"
 			],
 			"requireAll": true,
-			"notes": "Net-only mode = net group. 'Both' mode adds the Impling jar group (jar is mandatory in Puro-Puro, optional overworld). Barehanded catching (10 levels above net requirement) uses the SAME 'Catch' option, so the rule still keys on 'catch'. Per-impling '<name> impling jar' cards all exist if an 'all drops' mode is desired later."
+			"notes": "Tools Only requires Magic butterfly net + Impling jar even when catching bare-handed. All Cards additionally requires this impling's filled-jar card."
 		},
 		{
 			"category": "hunter-implings",
@@ -4673,19 +4658,22 @@
 			],
 			"requiredCardGroups": [
 				[
-					"Butterfly net",
 					"Magic butterfly net"
 				],
 				[
 					"Impling jar"
+				],
+				[
+					"Crystal impling jar"
 				]
 			],
 			"groupRoles": [
-				"",
-				"extra"
+				"tool",
+				"tool",
+				"output"
 			],
 			"requireAll": true,
-			"notes": "Net-only mode = net group. 'Both' mode adds the Impling jar group (jar is mandatory in Puro-Puro, optional overworld). Barehanded catching (10 levels above net requirement) uses the SAME 'Catch' option, so the rule still keys on 'catch'. Per-impling '<name> impling jar' cards all exist if an 'all drops' mode is desired later."
+			"notes": "Tools Only requires Magic butterfly net + Impling jar even when catching bare-handed. All Cards additionally requires this impling's filled-jar card."
 		},
 		{
 			"category": "hunter-implings",
@@ -4696,19 +4684,22 @@
 			],
 			"requiredCardGroups": [
 				[
-					"Butterfly net",
 					"Magic butterfly net"
 				],
 				[
 					"Impling jar"
+				],
+				[
+					"Dragon impling jar"
 				]
 			],
 			"groupRoles": [
-				"",
-				"extra"
+				"tool",
+				"tool",
+				"output"
 			],
 			"requireAll": true,
-			"notes": "Net-only mode = net group. 'Both' mode adds the Impling jar group (jar is mandatory in Puro-Puro, optional overworld). Barehanded catching (10 levels above net requirement) uses the SAME 'Catch' option, so the rule still keys on 'catch'. Per-impling '<name> impling jar' cards all exist if an 'all drops' mode is desired later."
+			"notes": "Tools Only requires Magic butterfly net + Impling jar even when catching bare-handed. All Cards additionally requires this impling's filled-jar card."
 		},
 		{
 			"category": "hunter-implings",
@@ -4719,19 +4710,22 @@
 			],
 			"requiredCardGroups": [
 				[
-					"Butterfly net",
 					"Magic butterfly net"
 				],
 				[
 					"Impling jar"
+				],
+				[
+					"Earth impling jar"
 				]
 			],
 			"groupRoles": [
-				"",
-				"extra"
+				"tool",
+				"tool",
+				"output"
 			],
 			"requireAll": true,
-			"notes": "Net-only mode = net group. 'Both' mode adds the Impling jar group (jar is mandatory in Puro-Puro, optional overworld). Barehanded catching (10 levels above net requirement) uses the SAME 'Catch' option, so the rule still keys on 'catch'. Per-impling '<name> impling jar' cards all exist if an 'all drops' mode is desired later."
+			"notes": "Tools Only requires Magic butterfly net + Impling jar even when catching bare-handed. All Cards additionally requires this impling's filled-jar card."
 		},
 		{
 			"category": "hunter-implings",
@@ -4742,19 +4736,22 @@
 			],
 			"requiredCardGroups": [
 				[
-					"Butterfly net",
 					"Magic butterfly net"
 				],
 				[
 					"Impling jar"
+				],
+				[
+					"Eclectic impling jar"
 				]
 			],
 			"groupRoles": [
-				"",
-				"extra"
+				"tool",
+				"tool",
+				"output"
 			],
 			"requireAll": true,
-			"notes": "Net-only mode = net group. 'Both' mode adds the Impling jar group (jar is mandatory in Puro-Puro, optional overworld). Barehanded catching (10 levels above net requirement) uses the SAME 'Catch' option, so the rule still keys on 'catch'. Per-impling '<name> impling jar' cards all exist if an 'all drops' mode is desired later."
+			"notes": "Tools Only requires Magic butterfly net + Impling jar even when catching bare-handed. All Cards additionally requires this impling's filled-jar card."
 		},
 		{
 			"category": "hunter-implings",
@@ -4765,19 +4762,22 @@
 			],
 			"requiredCardGroups": [
 				[
-					"Butterfly net",
 					"Magic butterfly net"
 				],
 				[
 					"Impling jar"
+				],
+				[
+					"Essence impling jar"
 				]
 			],
 			"groupRoles": [
-				"",
-				"extra"
+				"tool",
+				"tool",
+				"output"
 			],
 			"requireAll": true,
-			"notes": "Net-only mode = net group. 'Both' mode adds the Impling jar group (jar is mandatory in Puro-Puro, optional overworld). Barehanded catching (10 levels above net requirement) uses the SAME 'Catch' option, so the rule still keys on 'catch'. Per-impling '<name> impling jar' cards all exist if an 'all drops' mode is desired later."
+			"notes": "Tools Only requires Magic butterfly net + Impling jar even when catching bare-handed. All Cards additionally requires this impling's filled-jar card."
 		},
 		{
 			"category": "hunter-implings",
@@ -4788,19 +4788,22 @@
 			],
 			"requiredCardGroups": [
 				[
-					"Butterfly net",
 					"Magic butterfly net"
 				],
 				[
 					"Impling jar"
+				],
+				[
+					"Gourmet impling jar"
 				]
 			],
 			"groupRoles": [
-				"",
-				"extra"
+				"tool",
+				"tool",
+				"output"
 			],
 			"requireAll": true,
-			"notes": "Net-only mode = net group. 'Both' mode adds the Impling jar group (jar is mandatory in Puro-Puro, optional overworld). Barehanded catching (10 levels above net requirement) uses the SAME 'Catch' option, so the rule still keys on 'catch'. Per-impling '<name> impling jar' cards all exist if an 'all drops' mode is desired later."
+			"notes": "Tools Only requires Magic butterfly net + Impling jar even when catching bare-handed. All Cards additionally requires this impling's filled-jar card."
 		},
 		{
 			"category": "hunter-implings",
@@ -4811,19 +4814,22 @@
 			],
 			"requiredCardGroups": [
 				[
-					"Butterfly net",
 					"Magic butterfly net"
 				],
 				[
 					"Impling jar"
+				],
+				[
+					"Lucky impling jar"
 				]
 			],
 			"groupRoles": [
-				"",
-				"extra"
+				"tool",
+				"tool",
+				"output"
 			],
 			"requireAll": true,
-			"notes": "Net-only mode = net group. 'Both' mode adds the Impling jar group (jar is mandatory in Puro-Puro, optional overworld). Barehanded catching (10 levels above net requirement) uses the SAME 'Catch' option, so the rule still keys on 'catch'. Per-impling '<name> impling jar' cards all exist if an 'all drops' mode is desired later."
+			"notes": "Tools Only requires Magic butterfly net + Impling jar even when catching bare-handed. All Cards additionally requires this impling's filled-jar card."
 		},
 		{
 			"category": "hunter-implings",
@@ -4834,19 +4840,22 @@
 			],
 			"requiredCardGroups": [
 				[
-					"Butterfly net",
 					"Magic butterfly net"
 				],
 				[
 					"Impling jar"
+				],
+				[
+					"Magpie impling jar"
 				]
 			],
 			"groupRoles": [
-				"",
-				"extra"
+				"tool",
+				"tool",
+				"output"
 			],
 			"requireAll": true,
-			"notes": "Net-only mode = net group. 'Both' mode adds the Impling jar group (jar is mandatory in Puro-Puro, optional overworld). Barehanded catching (10 levels above net requirement) uses the SAME 'Catch' option, so the rule still keys on 'catch'. Per-impling '<name> impling jar' cards all exist if an 'all drops' mode is desired later."
+			"notes": "Tools Only requires Magic butterfly net + Impling jar even when catching bare-handed. All Cards additionally requires this impling's filled-jar card."
 		},
 		{
 			"category": "hunter-implings",
@@ -4857,19 +4866,22 @@
 			],
 			"requiredCardGroups": [
 				[
-					"Butterfly net",
 					"Magic butterfly net"
 				],
 				[
 					"Impling jar"
+				],
+				[
+					"Nature impling jar"
 				]
 			],
 			"groupRoles": [
-				"",
-				"extra"
+				"tool",
+				"tool",
+				"output"
 			],
 			"requireAll": true,
-			"notes": "Net-only mode = net group. 'Both' mode adds the Impling jar group (jar is mandatory in Puro-Puro, optional overworld). Barehanded catching (10 levels above net requirement) uses the SAME 'Catch' option, so the rule still keys on 'catch'. Per-impling '<name> impling jar' cards all exist if an 'all drops' mode is desired later."
+			"notes": "Tools Only requires Magic butterfly net + Impling jar even when catching bare-handed. All Cards additionally requires this impling's filled-jar card."
 		},
 		{
 			"category": "hunter-implings",
@@ -4880,19 +4892,22 @@
 			],
 			"requiredCardGroups": [
 				[
-					"Butterfly net",
 					"Magic butterfly net"
 				],
 				[
 					"Impling jar"
+				],
+				[
+					"Ninja impling jar"
 				]
 			],
 			"groupRoles": [
-				"",
-				"extra"
+				"tool",
+				"tool",
+				"output"
 			],
 			"requireAll": true,
-			"notes": "Net-only mode = net group. 'Both' mode adds the Impling jar group (jar is mandatory in Puro-Puro, optional overworld). Barehanded catching (10 levels above net requirement) uses the SAME 'Catch' option, so the rule still keys on 'catch'. Per-impling '<name> impling jar' cards all exist if an 'all drops' mode is desired later."
+			"notes": "Tools Only requires Magic butterfly net + Impling jar even when catching bare-handed. All Cards additionally requires this impling's filled-jar card."
 		},
 		{
 			"category": "hunter-implings",
@@ -4903,19 +4918,44 @@
 			],
 			"requiredCardGroups": [
 				[
-					"Butterfly net",
 					"Magic butterfly net"
 				],
 				[
 					"Impling jar"
+				],
+				[
+					"Young impling jar"
 				]
 			],
 			"groupRoles": [
-				"",
-				"extra"
+				"tool",
+				"tool",
+				"output"
 			],
 			"requireAll": true,
-			"notes": "Net-only mode = net group. 'Both' mode adds the Impling jar group (jar is mandatory in Puro-Puro, optional overworld). Barehanded catching (10 levels above net requirement) uses the SAME 'Catch' option, so the rule still keys on 'catch'. Per-impling '<name> impling jar' cards all exist if an 'all drops' mode is desired later."
+			"notes": "Tools Only requires Magic butterfly net + Impling jar even when catching bare-handed. All Cards additionally requires this impling's filled-jar card."
+		},
+		{
+			"category": "hunter-salamanders",
+			"kind": "object",
+			"name": "Young tree",
+			"options": [
+				"set-trap"
+			],
+			"requiredCardGroups": [
+				[
+					"Rope"
+				],
+				[
+					"Small fishing net"
+				]
+			],
+			"groupRoles": [
+				"tool",
+				"tool"
+			],
+			"requireAll": true,
+			"notes": "Tools Only requires Rope + Small fishing net. All Cards adds the exact caught salamander item card from RuneLite's distinct unset-tree ObjectID."
 		},
 		{
 			"category": "hunter-pitfalls",
@@ -4929,35 +4969,28 @@
 					"Teasing stick"
 				],
 				[
-					"Knife"
-				],
-				[
-					"Logs",
-					"Oak logs",
-					"Willow logs",
-					"Teak logs",
-					"Maple logs",
-					"Mahogany logs",
-					"Yew logs",
-					"Magic logs"
-				],
-				[
 					"Horned graahk"
+				],
+				[
+					"Big bones"
+				],
+				[
+					"Raw graahk"
 				]
 			],
 			"groupRoles": [
-				"",
-				"",
-				"",
-				"creature"
+				"tool",
+				"monster",
+				"loot",
+				"loot"
 			],
 			"requireAll": true,
-			"notes": "Pitfall: tease the animal (option 'Tease') to lure it into the spiked pit; building the pit consumes Knife + any logs (redwood/arctic pine excluded). Items-only base mode = Teasing stick group AND Knife group AND logs group (any-of the 8 standard firemaking logs). 'All' mode adds the animal's own creature card group. AXE IS OPTIONAL (only cuts nearby trees for extra logs) so it is intentionally NOT required - see report for the axe card list if the owner still wants it. Larupia & Kyatt are also pitfall/deadfall creatures but have NO creature card, so they are excluded."
+			"notes": "All Cards includes the Monster card and guaranteed ordinary loot only. Graahk fur variants and the rumour-only Graahk horn spur are excluded."
 		},
 		{
 			"category": "hunter-pitfalls",
 			"kind": "npc",
-			"name": "Moonlight antelope",
+			"name": "Spined larupia",
 			"options": [
 				"tease"
 			],
@@ -4966,30 +4999,45 @@
 					"Teasing stick"
 				],
 				[
-					"Knife"
+					"Big bones"
 				],
 				[
-					"Logs",
-					"Oak logs",
-					"Willow logs",
-					"Teak logs",
-					"Maple logs",
-					"Mahogany logs",
-					"Yew logs",
-					"Magic logs"
-				],
-				[
-					"Moonlight antelope"
+					"Raw larupia"
 				]
 			],
 			"groupRoles": [
-				"",
-				"",
-				"",
-				"creature"
+				"tool",
+				"loot",
+				"loot"
 			],
 			"requireAll": true,
-			"notes": "Pitfall: tease the animal (option 'Tease') to lure it into the spiked pit; building the pit consumes Knife + any logs (redwood/arctic pine excluded). Items-only base mode = Teasing stick group AND Knife group AND logs group (any-of the 8 standard firemaking logs). 'All' mode adds the animal's own creature card group. AXE IS OPTIONAL (only cuts nearby trees for extra logs) so it is intentionally NOT required - see report for the axe card list if the owner still wants it. Larupia & Kyatt are also pitfall/deadfall creatures but have NO creature card, so they are excluded."
+			"notes": "No Spined larupia Monster card exists. Fur variants and the rumour-only Larupia ear are excluded."
+		},
+		{
+			"category": "hunter-pitfalls",
+			"kind": "npc",
+			"name": "Sabre-toothed kyatt",
+			"options": [
+				"tease"
+			],
+			"requiredCardGroups": [
+				[
+					"Teasing stick"
+				],
+				[
+					"Big bones"
+				],
+				[
+					"Raw kyatt"
+				]
+			],
+			"groupRoles": [
+				"tool",
+				"loot",
+				"loot"
+			],
+			"requireAll": true,
+			"notes": "No Sabre-toothed kyatt Monster card exists. Fur variants and the rumour-only Kyatt tooth chip are excluded."
 		},
 		{
 			"category": "hunter-pitfalls",
@@ -5003,30 +5051,73 @@
 					"Teasing stick"
 				],
 				[
-					"Knife"
-				],
-				[
-					"Logs",
-					"Oak logs",
-					"Willow logs",
-					"Teak logs",
-					"Maple logs",
-					"Mahogany logs",
-					"Yew logs",
-					"Magic logs"
-				],
-				[
 					"Sunlight antelope"
+				],
+				[
+					"Big bones"
+				],
+				[
+					"Raw sunlight antelope"
+				],
+				[
+					"Sunlight antelope antler"
+				],
+				[
+					"Sunlight antelope fur"
+				],
+				[
+					"Sunfire splinters"
 				]
 			],
 			"groupRoles": [
-				"",
-				"",
-				"",
-				"creature"
+				"tool",
+				"monster",
+				"loot",
+				"loot",
+				"loot",
+				"loot",
+				"loot"
 			],
 			"requireAll": true,
-			"notes": "Pitfall: tease the animal (option 'Tease') to lure it into the spiked pit; building the pit consumes Knife + any logs (redwood/arctic pine excluded). Items-only base mode = Teasing stick group AND Knife group AND logs group (any-of the 8 standard firemaking logs). 'All' mode adds the animal's own creature card group. AXE IS OPTIONAL (only cuts nearby trees for extra logs) so it is intentionally NOT required - see report for the axe card list if the owner still wants it. Larupia & Kyatt are also pitfall/deadfall creatures but have NO creature card, so they are excluded."
+			"notes": "All normal outputs listed here are guaranteed. The rumour-only Antelope hoof shard is excluded."
+		},
+		{
+			"category": "hunter-pitfalls",
+			"kind": "npc",
+			"name": "Moonlight antelope",
+			"options": [
+				"tease"
+			],
+			"requiredCardGroups": [
+				[
+					"Teasing stick"
+				],
+				[
+					"Moonlight antelope"
+				],
+				[
+					"Big bones"
+				],
+				[
+					"Raw moonlight antelope"
+				],
+				[
+					"Moonlight antelope antler"
+				],
+				[
+					"Moonlight antelope fur"
+				]
+			],
+			"groupRoles": [
+				"tool",
+				"monster",
+				"loot",
+				"loot",
+				"loot",
+				"loot"
+			],
+			"requireAll": true,
+			"notes": "All normal outputs listed here are guaranteed. The rumour-only Antelope hoof shard is excluded."
 		},
 		{
 			"category": "hunter-rumours",
@@ -5303,136 +5394,6 @@
 			],
 			"requireAll": true,
 			"notes": "novice-tier rumour master. Requires ALL cards for every assignable creature that HAS a card. Excluded (no matching card in Card.json): Sapphire glacialis, Spined larupia, Snowy knight, Prickly kebbit, Black warlock, Razor-backed kebbit, Sabre-toothed kebbit, Sabre-toothed kyatt, Sunlight moth, Herbiboar, Moonlight moth. Judgment mappings used: Spotted kebbit->'Spotted kebbit fur', Grey chinchompa->'Chinchompa', Pyre fox->'Raw pyre fox' (caught items)."
-		},
-		{
-			"category": "hunter-salamanders",
-			"kind": "object",
-			"name": "Young tree",
-			"options": [
-				"set-trap"
-			],
-			"requiredCardGroups": [
-				[
-					"Rope"
-				],
-				[
-					"Small fishing net"
-				],
-				[
-					"Swamp lizard"
-				]
-			],
-			"groupRoles": [
-				"",
-				"",
-				"creature"
-			],
-			"requireAll": true,
-			"notes": "Net-trap object is 'Young tree', option 'Set-trap'; each salamander area has its own Young tree - node distinguished by the 'Swamp lizard' add-on. Rope+Net base mode = Rope group AND Small fishing net group. 'Items+Sally' mode adds the salamander's own card group. Object name for the Varlamore Tecu salamander should be re-verified in-game."
-		},
-		{
-			"category": "hunter-salamanders",
-			"kind": "object",
-			"name": "Young tree",
-			"options": [
-				"set-trap"
-			],
-			"requiredCardGroups": [
-				[
-					"Rope"
-				],
-				[
-					"Small fishing net"
-				],
-				[
-					"Orange salamander"
-				]
-			],
-			"groupRoles": [
-				"",
-				"",
-				"creature"
-			],
-			"requireAll": true,
-			"notes": "Net-trap object is 'Young tree', option 'Set-trap'; each salamander area has its own Young tree - node distinguished by the 'Orange salamander' add-on. Rope+Net base mode = Rope group AND Small fishing net group. 'Items+Sally' mode adds the salamander's own card group. Object name for the Varlamore Tecu salamander should be re-verified in-game."
-		},
-		{
-			"category": "hunter-salamanders",
-			"kind": "object",
-			"name": "Young tree",
-			"options": [
-				"set-trap"
-			],
-			"requiredCardGroups": [
-				[
-					"Rope"
-				],
-				[
-					"Small fishing net"
-				],
-				[
-					"Red salamander"
-				]
-			],
-			"groupRoles": [
-				"",
-				"",
-				"creature"
-			],
-			"requireAll": true,
-			"notes": "Net-trap object is 'Young tree', option 'Set-trap'; each salamander area has its own Young tree - node distinguished by the 'Red salamander' add-on. Rope+Net base mode = Rope group AND Small fishing net group. 'Items+Sally' mode adds the salamander's own card group. Object name for the Varlamore Tecu salamander should be re-verified in-game."
-		},
-		{
-			"category": "hunter-salamanders",
-			"kind": "object",
-			"name": "Young tree",
-			"options": [
-				"set-trap"
-			],
-			"requiredCardGroups": [
-				[
-					"Rope"
-				],
-				[
-					"Small fishing net"
-				],
-				[
-					"Black salamander"
-				]
-			],
-			"groupRoles": [
-				"",
-				"",
-				"creature"
-			],
-			"requireAll": true,
-			"notes": "Net-trap object is 'Young tree', option 'Set-trap'; each salamander area has its own Young tree - node distinguished by the 'Black salamander' add-on. Rope+Net base mode = Rope group AND Small fishing net group. 'Items+Sally' mode adds the salamander's own card group. Object name for the Varlamore Tecu salamander should be re-verified in-game."
-		},
-		{
-			"category": "hunter-salamanders",
-			"kind": "object",
-			"name": "Young tree",
-			"options": [
-				"set-trap"
-			],
-			"requiredCardGroups": [
-				[
-					"Rope"
-				],
-				[
-					"Small fishing net"
-				],
-				[
-					"Tecu salamander"
-				]
-			],
-			"groupRoles": [
-				"",
-				"",
-				"creature"
-			],
-			"requireAll": true,
-			"notes": "Net-trap object is 'Young tree', option 'Set-trap'; each salamander area has its own Young tree - node distinguished by the 'Tecu salamander' add-on. Rope+Net base mode = Rope group AND Small fishing net group. 'Items+Sally' mode adds the salamander's own card group. Object name for the Varlamore Tecu salamander should be re-verified in-game."
 		},
 		{
 			"category": "mining",
@@ -11500,6 +11461,562 @@
 			"notes": "Vegetable stall (Miscellania/Etceteria/Port Roberts). Any-of: player must own >=1 of these cards to steal. Loot with no card excluded: none."
 		},
 		{
+			"category": "thieving-chests",
+			"kind": "object",
+			"name": "Underwater chest",
+			"objectIds": [
+				30971
+			],
+			"options": [
+				"search"
+			],
+			"requiredCardGroups": [
+				[
+					"Mermaid's tear",
+					"Glistening tear",
+					"Numulite",
+					"Unidentified small fossil",
+					"Unidentified medium fossil",
+					"Unidentified large fossil",
+					"Unidentified rare fossil"
+				]
+			],
+			"groupRoles": [
+				"loot"
+			],
+			"requireAll": false,
+			"notes": "Chest (Underwater); searchable open-state ObjectID FOSSIL_CHEST_OPEN. Plain OSRS Wiki page audited 2026-07-26."
+		},
+		{
+			"category": "thieving-chests",
+			"kind": "object",
+			"name": "10 coin chest",
+			"objectIds": [
+				11735
+			],
+			"options": [
+				"search for traps"
+			],
+			"requiredCardGroups": [
+				[
+					"Coins"
+				]
+			],
+			"groupRoles": [
+				"loot"
+			],
+			"requireAll": false,
+			"notes": "Chest (10 coins); ObjectID TRAPCHEST1. Plain OSRS Wiki page audited 2026-07-26."
+		},
+		{
+			"category": "thieving-chests",
+			"kind": "object",
+			"name": "Nature rune chest",
+			"objectIds": [
+				11736
+			],
+			"options": [
+				"search for traps"
+			],
+			"requiredCardGroups": [
+				[
+					"Nature rune",
+					"Coins"
+				]
+			],
+			"groupRoles": [
+				"loot"
+			],
+			"requireAll": false,
+			"notes": "Chest (nature runes); ObjectID TRAPCHEST2. Plain OSRS Wiki page audited 2026-07-26."
+		},
+		{
+			"category": "thieving-chests",
+			"kind": "object",
+			"name": "Isle of Souls chest",
+			"objectIds": [
+				40739
+			],
+			"options": [
+				"picklock"
+			],
+			"requiredCardGroups": [
+				[
+					"Coins",
+					"Feather",
+					"Chocolate bar",
+					"Bird snare",
+					"Box trap",
+					"Grimy guam leaf",
+					"Grimy lantadyme",
+					"Grimy ranarr weed",
+					"Uncut sapphire",
+					"Uncut emerald",
+					"Uncut ruby",
+					"Uncut diamond",
+					"Mithril pickaxe",
+					"Mithril axe",
+					"Adamant scimitar",
+					"Mind rune",
+					"Nature rune",
+					"Death rune",
+					"Dark key"
+				]
+			],
+			"groupRoles": [
+				"loot"
+			],
+			"requireAll": false,
+			"notes": "Chest (Isle of Souls Dungeon); clue scroll excluded (no card). Plain OSRS Wiki page audited 2026-07-26."
+		},
+		{
+			"category": "thieving-chests",
+			"kind": "object",
+			"name": "Rusty pirate chest",
+			"objectIds": [
+				60511,
+				60512
+			],
+			"options": [
+				"picklock"
+			],
+			"requiredCardGroups": [
+				[
+					"Medallion fragment",
+					"Steel dagger",
+					"Steel scimitar",
+					"Bronze cannonball",
+					"Iron cannonball",
+					"Steel cannonball",
+					"Uncut sapphire",
+					"Uncut emerald",
+					"Uncut ruby",
+					"Uncut diamond",
+					"Elkhorn frag",
+					"Pillar frag",
+					"Umbral frag",
+					"Coins",
+					"Silver bar",
+					"Gold bar",
+					"Mind rune",
+					"Sapphire necklace",
+					"Emerald necklace"
+				]
+			],
+			"groupRoles": [
+				"loot"
+			],
+			"requireAll": false,
+			"notes": "Rusty chest; Medallion fragment#1 folds to its card name; clue excluded. Plain OSRS Wiki page audited 2026-07-26."
+		},
+		{
+			"category": "thieving-chests",
+			"kind": "object",
+			"name": "Aldarin Villas chest",
+			"objectIds": [
+				54773
+			],
+			"options": [
+				"picklock"
+			],
+			"requiredCardGroups": [
+				[
+					"Coins",
+					"Silver bar",
+					"Gold bar",
+					"Uncut sapphire",
+					"Uncut emerald",
+					"Uncut ruby",
+					"Uncut diamond",
+					"Spinach roll",
+					"Blessed bone shards",
+					"Eclipse red",
+					"Limpwurt seed",
+					"Strawberry seed",
+					"Marrentill seed",
+					"Jangerberry seed",
+					"Tarromin seed",
+					"Wildblood seed",
+					"Watermelon seed",
+					"Harralander seed",
+					"Snape grass seed",
+					"Ranarr seed",
+					"Whiteberry seed",
+					"Mushroom spore",
+					"Toadflax seed",
+					"Belladonna seed",
+					"Irit seed",
+					"Poison ivy seed",
+					"Avantoe seed",
+					"Cactus seed",
+					"Kwuarm seed",
+					"Potato cactus seed",
+					"Snapdragon seed",
+					"Cadantine seed",
+					"Lantadyme seed",
+					"Dwarf weed seed",
+					"Torstol seed"
+				]
+			],
+			"groupRoles": [
+				"loot"
+			],
+			"requireAll": false,
+			"notes": "Chest (Aldarin Villas); clue scroll excluded (no card). Plain OSRS Wiki page audited 2026-07-26."
+		},
+		{
+			"category": "thieving-chests",
+			"kind": "object",
+			"name": "50 coin chest",
+			"objectIds": [
+				11737
+			],
+			"options": [
+				"search for traps"
+			],
+			"requiredCardGroups": [
+				[
+					"Coins"
+				]
+			],
+			"groupRoles": [
+				"loot"
+			],
+			"requireAll": false,
+			"notes": "Chest (50 coins); ObjectID TRAPCHEST3. Plain OSRS Wiki page audited 2026-07-26."
+		},
+		{
+			"category": "thieving-chests",
+			"kind": "object",
+			"name": "Steel arrowtips chest",
+			"objectIds": [
+				11742
+			],
+			"options": [
+				"search for traps"
+			],
+			"requiredCardGroups": [
+				[
+					"Coins"
+				]
+			],
+			"groupRoles": [
+				"loot"
+			],
+			"requireAll": false,
+			"notes": "Chest (steel arrowtips); Steel arrowtips has no card. Plain OSRS Wiki page audited 2026-07-26."
+		},
+		{
+			"category": "thieving-chests",
+			"kind": "object",
+			"name": "Dorgesh-Kaan average chest",
+			"objectIds": [
+				22697,
+				22698
+			],
+			"options": [
+				"pick-lock"
+			],
+			"requiredCardGroups": [
+				[
+					"Coins",
+					"Oil lantern",
+					"Bullseye lantern",
+					"Mining helmet",
+					"Cave goblin wire",
+					"Rope",
+					"Frog-leather body",
+					"Frog-leather chaps",
+					"Newcomer map",
+					"Bone bolts",
+					"Dorgeshuun crossbow",
+					"Bone dagger",
+					"Hammer",
+					"Big bones",
+					"Ham hood",
+					"Ham logo",
+					"Ham shirt",
+					"Ham robe",
+					"Ham gloves",
+					"Ham cloak",
+					"Ham boots",
+					"Spade",
+					"Bucket",
+					"Air rune",
+					"Mind rune",
+					"Water rune",
+					"Earth rune",
+					"Fire rune",
+					"Body rune",
+					"Cosmic rune",
+					"Chaos rune",
+					"Law rune",
+					"Nature rune",
+					"Death rune",
+					"Dorgesh-kaan sphere",
+					"Unpowered orb",
+					"Empty light orb",
+					"Light orb",
+					"Air talisman",
+					"Water talisman",
+					"Earth talisman",
+					"Fire talisman"
+				]
+			],
+			"groupRoles": [
+				"loot"
+			],
+			"requireAll": false,
+			"notes": "Chest (Dorgesh-Kaan Average); easy clue excluded (no card). Plain OSRS Wiki page audited 2026-07-26."
+		},
+		{
+			"category": "thieving-chests",
+			"kind": "object",
+			"name": "Tarnished pirate chest",
+			"objectIds": [
+				60514,
+				60515
+			],
+			"options": [
+				"picklock"
+			],
+			"requiredCardGroups": [
+				[
+					"Mithril dagger",
+					"Mithril scimitar",
+					"Iron cannonball",
+					"Steel cannonball",
+					"Mithril cannonball",
+					"Uncut sapphire",
+					"Uncut emerald",
+					"Uncut ruby",
+					"Uncut diamond",
+					"Pillar frag",
+					"Elkhorn frag",
+					"Umbral frag",
+					"Coins",
+					"Silver bar",
+					"Gold bar",
+					"Chaos rune",
+					"Emerald necklace",
+					"Ruby necklace"
+				]
+			],
+			"groupRoles": [
+				"loot"
+			],
+			"requireAll": false,
+			"notes": "Tarnished chest; clue scroll excluded (no card). Plain OSRS Wiki page audited 2026-07-26."
+		},
+		{
+			"category": "thieving-chests",
+			"kind": "object",
+			"name": "Blood rune chest",
+			"objectIds": [
+				11738
+			],
+			"options": [
+				"search for traps"
+			],
+			"requiredCardGroups": [
+				[
+					"Blood rune",
+					"Coins"
+				]
+			],
+			"groupRoles": [
+				"loot"
+			],
+			"requireAll": false,
+			"notes": "Chest (blood runes); ObjectID TRAPCHEST4. Plain OSRS Wiki page audited 2026-07-26."
+		},
+		{
+			"category": "thieving-chests",
+			"kind": "object",
+			"name": "Stone chest",
+			"objectIds": [
+				34429
+			],
+			"options": [
+				"picklock"
+			],
+			"requiredCardGroups": [
+				[
+					"Limpwurt seed",
+					"Strawberry seed",
+					"Marrentill seed",
+					"Jangerberry seed",
+					"Tarromin seed",
+					"Wildblood seed",
+					"Watermelon seed",
+					"Harralander seed",
+					"Snape grass seed",
+					"Ranarr seed",
+					"Whiteberry seed",
+					"Mushroom spore",
+					"Toadflax seed",
+					"Belladonna seed",
+					"Irit seed",
+					"Poison ivy seed",
+					"Avantoe seed",
+					"Cactus seed",
+					"Kwuarm seed",
+					"Potato cactus seed",
+					"Snapdragon seed",
+					"Cadantine seed",
+					"Lantadyme seed",
+					"Dwarf weed seed",
+					"Torstol seed",
+					"Coins",
+					"Xerician fabric",
+					"Lizardman fang",
+					"Uncut sapphire",
+					"Uncut ruby",
+					"Xeric's talisman"
+				]
+			],
+			"groupRoles": [
+				"loot"
+			],
+			"requireAll": false,
+			"notes": "Stone chest; bolt tips and clue scroll excluded (no cards); inert Xeric's talisman folds to the base card. Plain OSRS Wiki page audited 2026-07-26."
+		},
+		{
+			"category": "thieving-chests",
+			"kind": "object",
+			"name": "Ardougne Castle chest",
+			"objectIds": [
+				11739
+			],
+			"options": [
+				"search for traps"
+			],
+			"requiredCardGroups": [
+				[
+					"Coins",
+					"Raw shark",
+					"Adamantite ore",
+					"Uncut sapphire"
+				]
+			],
+			"groupRoles": [
+				"loot"
+			],
+			"requireAll": false,
+			"notes": "Chest (Ardougne Castle); ObjectID TRAPCHEST5. Plain OSRS Wiki page audited 2026-07-26."
+		},
+		{
+			"category": "thieving-chests",
+			"kind": "object",
+			"name": "Reinforced pirate chest",
+			"objectIds": [
+				60517,
+				60518
+			],
+			"options": [
+				"picklock"
+			],
+			"requiredCardGroups": [
+				[
+					"Adamant dagger",
+					"Adamant scimitar",
+					"Steel cannonball",
+					"Mithril cannonball",
+					"Adamant cannonball",
+					"Uncut sapphire",
+					"Uncut emerald",
+					"Uncut ruby",
+					"Uncut diamond",
+					"Umbral frag",
+					"Elkhorn frag",
+					"Pillar frag",
+					"Coins",
+					"Silver bar",
+					"Gold bar",
+					"Death rune",
+					"Ruby necklace",
+					"Diamond necklace"
+				]
+			],
+			"groupRoles": [
+				"loot"
+			],
+			"requireAll": false,
+			"notes": "Reinforced chest; clue scroll excluded (no card). Plain OSRS Wiki page audited 2026-07-26."
+		},
+		{
+			"category": "thieving-chests",
+			"kind": "object",
+			"name": "Dorgesh-Kaan rich chest",
+			"objectIds": [
+				22681
+			],
+			"options": [
+				"pick-lock"
+			],
+			"requiredCardGroups": [
+				[
+					"Uncut sapphire",
+					"Uncut emerald",
+					"Uncut ruby",
+					"Uncut diamond",
+					"Uncut opal",
+					"Uncut jade",
+					"Uncut red topaz",
+					"Bullseye lantern",
+					"Mining helmet",
+					"Frog-leather chaps",
+					"Frog-leather body",
+					"Iron bar",
+					"Cave goblin wire",
+					"Light orb",
+					"Empty light orb"
+				]
+			],
+			"groupRoles": [
+				"loot"
+			],
+			"requireAll": false,
+			"notes": "Chest (Dorgesh-Kaan Rich). Plain OSRS Wiki page audited 2026-07-26."
+		},
+		{
+			"category": "thieving-chests",
+			"kind": "object",
+			"name": "Rogues' Castle chest",
+			"objectIds": [
+				26757
+			],
+			"options": [
+				"search for traps"
+			],
+			"requiredCardGroups": [
+				[
+					"Nature rune",
+					"Red spiders' eggs",
+					"Law rune",
+					"Coal",
+					"Coins",
+					"Vile ashes",
+					"Uncut diamond",
+					"Uncut emerald",
+					"Blighted ancient ice sack",
+					"Iron ore",
+					"Chaos rune",
+					"Death rune",
+					"Blighted manta ray",
+					"Blighted anglerfish",
+					"Uncut sapphire",
+					"Prayer potion",
+					"Dragonstone"
+				]
+			],
+			"groupRoles": [
+				"loot"
+			],
+			"requireAll": false,
+			"notes": "Chest (Rogues' Castle); Prayer potion dose folded; clue excluded. Plain OSRS Wiki page audited 2026-07-26."
+		},
+		{
 			"category": "woodcutting",
 			"kind": "object",
 			"name": "Dead tree",
@@ -11516,6 +12033,19 @@
 			"category": "woodcutting",
 			"kind": "object",
 			"name": "Dying tree",
+			"options": [
+				"chop down"
+			],
+			"requiredCards": [
+				"Logs"
+			],
+			"requireAll": true,
+			"notes": "Dying trees in Varrock next to Agi course."
+		},
+		{
+			"category": "woodcutting",
+			"kind": "object",
+			"name": "Jungle tree",
 			"options": [
 				"chop down"
 			],

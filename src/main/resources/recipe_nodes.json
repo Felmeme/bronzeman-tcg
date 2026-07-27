@@ -5575,6 +5575,7 @@
 		},
 		{
 			"category": "herblore",
+			"stage": "unfinished",
 			"inputs": [
 				[
 					"Guam leaf"
@@ -5584,17 +5585,39 @@
 				]
 			],
 			"output": "Guam potion",
+			"notes": "Standard unfinished potion; source: OSRS Wiki Herblore table.",
 			"trigger": {
 				"kind": "item-on-item",
 				"name": "Guam leaf",
 				"targets": [
 					"vial of water"
 				]
-			},
-			"notes": "Add clean herb to a vial of water = unfinished potion."
+			}
 		},
 		{
 			"category": "herblore",
+			"stage": "unfinished",
+			"inputs": [
+				[
+					"Guam leaf"
+				],
+				[
+					"Vial of water"
+				]
+			],
+			"output": "Guam potion",
+			"notes": "Standard unfinished potion; source: OSRS Wiki Herblore table.",
+			"trigger": {
+				"kind": "interface",
+				"name": "Guam potion (unf)",
+				"targets": [
+					"vial of water"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "unfinished",
 			"inputs": [
 				[
 					"Marrentill"
@@ -5604,17 +5627,39 @@
 				]
 			],
 			"output": "Marrentill potion",
+			"notes": "Standard unfinished potion; source: OSRS Wiki Herblore table.",
 			"trigger": {
 				"kind": "item-on-item",
 				"name": "Marrentill",
 				"targets": [
 					"vial of water"
 				]
-			},
-			"notes": "Add clean herb to a vial of water = unfinished potion."
+			}
 		},
 		{
 			"category": "herblore",
+			"stage": "unfinished",
+			"inputs": [
+				[
+					"Marrentill"
+				],
+				[
+					"Vial of water"
+				]
+			],
+			"output": "Marrentill potion",
+			"notes": "Standard unfinished potion; source: OSRS Wiki Herblore table.",
+			"trigger": {
+				"kind": "interface",
+				"name": "Marrentill potion (unf)",
+				"targets": [
+					"vial of water"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "unfinished",
 			"inputs": [
 				[
 					"Tarromin"
@@ -5624,17 +5669,39 @@
 				]
 			],
 			"output": "Tarromin potion",
+			"notes": "Standard unfinished potion; source: OSRS Wiki Herblore table.",
 			"trigger": {
 				"kind": "item-on-item",
 				"name": "Tarromin",
 				"targets": [
 					"vial of water"
 				]
-			},
-			"notes": "Add clean herb to a vial of water = unfinished potion."
+			}
 		},
 		{
 			"category": "herblore",
+			"stage": "unfinished",
+			"inputs": [
+				[
+					"Tarromin"
+				],
+				[
+					"Vial of water"
+				]
+			],
+			"output": "Tarromin potion",
+			"notes": "Standard unfinished potion; source: OSRS Wiki Herblore table.",
+			"trigger": {
+				"kind": "interface",
+				"name": "Tarromin potion (unf)",
+				"targets": [
+					"vial of water"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "unfinished",
 			"inputs": [
 				[
 					"Harralander"
@@ -5644,17 +5711,39 @@
 				]
 			],
 			"output": "Harralander potion",
+			"notes": "Standard unfinished potion; source: OSRS Wiki Herblore table.",
 			"trigger": {
 				"kind": "item-on-item",
 				"name": "Harralander",
 				"targets": [
 					"vial of water"
 				]
-			},
-			"notes": "Add clean herb to a vial of water = unfinished potion."
+			}
 		},
 		{
 			"category": "herblore",
+			"stage": "unfinished",
+			"inputs": [
+				[
+					"Harralander"
+				],
+				[
+					"Vial of water"
+				]
+			],
+			"output": "Harralander potion",
+			"notes": "Standard unfinished potion; source: OSRS Wiki Herblore table.",
+			"trigger": {
+				"kind": "interface",
+				"name": "Harralander potion (unf)",
+				"targets": [
+					"vial of water"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "unfinished",
 			"inputs": [
 				[
 					"Ranarr weed"
@@ -5664,17 +5753,39 @@
 				]
 			],
 			"output": "Ranarr potion",
+			"notes": "Standard unfinished potion; source: OSRS Wiki Herblore table.",
 			"trigger": {
 				"kind": "item-on-item",
 				"name": "Ranarr weed",
 				"targets": [
 					"vial of water"
 				]
-			},
-			"notes": "Add clean herb to a vial of water = unfinished potion."
+			}
 		},
 		{
 			"category": "herblore",
+			"stage": "unfinished",
+			"inputs": [
+				[
+					"Ranarr weed"
+				],
+				[
+					"Vial of water"
+				]
+			],
+			"output": "Ranarr potion",
+			"notes": "Standard unfinished potion; source: OSRS Wiki Herblore table.",
+			"trigger": {
+				"kind": "interface",
+				"name": "Ranarr potion (unf)",
+				"targets": [
+					"vial of water"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "unfinished",
 			"inputs": [
 				[
 					"Toadflax"
@@ -5684,17 +5795,39 @@
 				]
 			],
 			"output": "Toadflax potion",
+			"notes": "Standard unfinished potion; source: OSRS Wiki Herblore table.",
 			"trigger": {
 				"kind": "item-on-item",
 				"name": "Toadflax",
 				"targets": [
 					"vial of water"
 				]
-			},
-			"notes": "Add clean herb to a vial of water = unfinished potion."
+			}
 		},
 		{
 			"category": "herblore",
+			"stage": "unfinished",
+			"inputs": [
+				[
+					"Toadflax"
+				],
+				[
+					"Vial of water"
+				]
+			],
+			"output": "Toadflax potion",
+			"notes": "Standard unfinished potion; source: OSRS Wiki Herblore table.",
+			"trigger": {
+				"kind": "interface",
+				"name": "Toadflax potion (unf)",
+				"targets": [
+					"vial of water"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "unfinished",
 			"inputs": [
 				[
 					"Irit leaf"
@@ -5704,17 +5837,39 @@
 				]
 			],
 			"output": "Irit potion",
+			"notes": "Standard unfinished potion; source: OSRS Wiki Herblore table.",
 			"trigger": {
 				"kind": "item-on-item",
 				"name": "Irit leaf",
 				"targets": [
 					"vial of water"
 				]
-			},
-			"notes": "Add clean herb to a vial of water = unfinished potion."
+			}
 		},
 		{
 			"category": "herblore",
+			"stage": "unfinished",
+			"inputs": [
+				[
+					"Irit leaf"
+				],
+				[
+					"Vial of water"
+				]
+			],
+			"output": "Irit potion",
+			"notes": "Standard unfinished potion; source: OSRS Wiki Herblore table.",
+			"trigger": {
+				"kind": "interface",
+				"name": "Irit potion (unf)",
+				"targets": [
+					"vial of water"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "unfinished",
 			"inputs": [
 				[
 					"Avantoe"
@@ -5724,17 +5879,39 @@
 				]
 			],
 			"output": "Avantoe potion",
+			"notes": "Standard unfinished potion; source: OSRS Wiki Herblore table.",
 			"trigger": {
 				"kind": "item-on-item",
 				"name": "Avantoe",
 				"targets": [
 					"vial of water"
 				]
-			},
-			"notes": "Add clean herb to a vial of water = unfinished potion."
+			}
 		},
 		{
 			"category": "herblore",
+			"stage": "unfinished",
+			"inputs": [
+				[
+					"Avantoe"
+				],
+				[
+					"Vial of water"
+				]
+			],
+			"output": "Avantoe potion",
+			"notes": "Standard unfinished potion; source: OSRS Wiki Herblore table.",
+			"trigger": {
+				"kind": "interface",
+				"name": "Avantoe potion (unf)",
+				"targets": [
+					"vial of water"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "unfinished",
 			"inputs": [
 				[
 					"Kwuarm"
@@ -5744,117 +5921,39 @@
 				]
 			],
 			"output": "Kwuarm potion",
+			"notes": "Standard unfinished potion; source: OSRS Wiki Herblore table.",
 			"trigger": {
 				"kind": "item-on-item",
 				"name": "Kwuarm",
 				"targets": [
 					"vial of water"
 				]
-			},
-			"notes": "Add clean herb to a vial of water = unfinished potion."
+			}
 		},
 		{
 			"category": "herblore",
+			"stage": "unfinished",
 			"inputs": [
 				[
-					"Snapdragon"
+					"Kwuarm"
 				],
 				[
 					"Vial of water"
 				]
 			],
-			"output": "Snapdragon potion",
+			"output": "Kwuarm potion",
+			"notes": "Standard unfinished potion; source: OSRS Wiki Herblore table.",
 			"trigger": {
-				"kind": "item-on-item",
-				"name": "Snapdragon",
+				"kind": "interface",
+				"name": "Kwuarm potion (unf)",
 				"targets": [
 					"vial of water"
 				]
-			},
-			"notes": "Add clean herb to a vial of water = unfinished potion."
+			}
 		},
 		{
 			"category": "herblore",
-			"inputs": [
-				[
-					"Cadantine"
-				],
-				[
-					"Vial of water"
-				]
-			],
-			"output": "Cadantine potion",
-			"trigger": {
-				"kind": "item-on-item",
-				"name": "Cadantine",
-				"targets": [
-					"vial of water"
-				]
-			},
-			"notes": "Add clean herb to a vial of water = unfinished potion."
-		},
-		{
-			"category": "herblore",
-			"inputs": [
-				[
-					"Lantadyme"
-				],
-				[
-					"Vial of water"
-				]
-			],
-			"output": "Lantadyme potion",
-			"trigger": {
-				"kind": "item-on-item",
-				"name": "Lantadyme",
-				"targets": [
-					"vial of water"
-				]
-			},
-			"notes": "Add clean herb to a vial of water = unfinished potion."
-		},
-		{
-			"category": "herblore",
-			"inputs": [
-				[
-					"Dwarf weed"
-				],
-				[
-					"Vial of water"
-				]
-			],
-			"output": "Dwarf weed potion",
-			"trigger": {
-				"kind": "item-on-item",
-				"name": "Dwarf weed",
-				"targets": [
-					"vial of water"
-				]
-			},
-			"notes": "Add clean herb to a vial of water = unfinished potion."
-		},
-		{
-			"category": "herblore",
-			"inputs": [
-				[
-					"Torstol"
-				],
-				[
-					"Vial of water"
-				]
-			],
-			"output": "Torstol potion",
-			"trigger": {
-				"kind": "item-on-item",
-				"name": "Torstol",
-				"targets": [
-					"vial of water"
-				]
-			},
-			"notes": "Add clean herb to a vial of water = unfinished potion."
-		},
-		{
-			"category": "herblore",
+			"stage": "unfinished",
 			"inputs": [
 				[
 					"Huasca"
@@ -5864,17 +5963,501 @@
 				]
 			],
 			"output": "Huasca potion",
+			"notes": "Standard unfinished potion; source: OSRS Wiki Herblore table.",
 			"trigger": {
 				"kind": "item-on-item",
 				"name": "Huasca",
 				"targets": [
 					"vial of water"
 				]
-			},
-			"notes": "Add clean herb to a vial of water = unfinished potion."
+			}
 		},
 		{
 			"category": "herblore",
+			"stage": "unfinished",
+			"inputs": [
+				[
+					"Huasca"
+				],
+				[
+					"Vial of water"
+				]
+			],
+			"output": "Huasca potion",
+			"notes": "Standard unfinished potion; source: OSRS Wiki Herblore table.",
+			"trigger": {
+				"kind": "interface",
+				"name": "Huasca potion (unf)",
+				"targets": [
+					"vial of water"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "unfinished",
+			"inputs": [
+				[
+					"Snapdragon"
+				],
+				[
+					"Vial of water"
+				]
+			],
+			"output": "Snapdragon potion",
+			"notes": "Standard unfinished potion; source: OSRS Wiki Herblore table.",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Snapdragon",
+				"targets": [
+					"vial of water"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "unfinished",
+			"inputs": [
+				[
+					"Snapdragon"
+				],
+				[
+					"Vial of water"
+				]
+			],
+			"output": "Snapdragon potion",
+			"notes": "Standard unfinished potion; source: OSRS Wiki Herblore table.",
+			"trigger": {
+				"kind": "interface",
+				"name": "Snapdragon potion (unf)",
+				"targets": [
+					"vial of water"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "unfinished",
+			"inputs": [
+				[
+					"Cadantine"
+				],
+				[
+					"Vial of water"
+				]
+			],
+			"output": "Cadantine potion",
+			"notes": "Standard unfinished potion; source: OSRS Wiki Herblore table.",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Cadantine",
+				"targets": [
+					"vial of water"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "unfinished",
+			"inputs": [
+				[
+					"Cadantine"
+				],
+				[
+					"Vial of water"
+				]
+			],
+			"output": "Cadantine potion",
+			"notes": "Standard unfinished potion; source: OSRS Wiki Herblore table.",
+			"trigger": {
+				"kind": "interface",
+				"name": "Cadantine potion (unf)",
+				"targets": [
+					"vial of water"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "unfinished",
+			"inputs": [
+				[
+					"Lantadyme"
+				],
+				[
+					"Vial of water"
+				]
+			],
+			"output": "Lantadyme potion",
+			"notes": "Standard unfinished potion; source: OSRS Wiki Herblore table.",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Lantadyme",
+				"targets": [
+					"vial of water"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "unfinished",
+			"inputs": [
+				[
+					"Lantadyme"
+				],
+				[
+					"Vial of water"
+				]
+			],
+			"output": "Lantadyme potion",
+			"notes": "Standard unfinished potion; source: OSRS Wiki Herblore table.",
+			"trigger": {
+				"kind": "interface",
+				"name": "Lantadyme potion (unf)",
+				"targets": [
+					"vial of water"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "unfinished",
+			"inputs": [
+				[
+					"Dwarf weed"
+				],
+				[
+					"Vial of water"
+				]
+			],
+			"output": "Dwarf weed potion",
+			"notes": "Standard unfinished potion; source: OSRS Wiki Herblore table.",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Dwarf weed",
+				"targets": [
+					"vial of water"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "unfinished",
+			"inputs": [
+				[
+					"Dwarf weed"
+				],
+				[
+					"Vial of water"
+				]
+			],
+			"output": "Dwarf weed potion",
+			"notes": "Standard unfinished potion; source: OSRS Wiki Herblore table.",
+			"trigger": {
+				"kind": "interface",
+				"name": "Dwarf weed potion (unf)",
+				"targets": [
+					"vial of water"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "unfinished",
+			"inputs": [
+				[
+					"Torstol"
+				],
+				[
+					"Vial of water"
+				]
+			],
+			"output": "Torstol potion",
+			"notes": "Standard unfinished potion; source: OSRS Wiki Herblore table.",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Torstol",
+				"targets": [
+					"vial of water"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "unfinished",
+			"inputs": [
+				[
+					"Torstol"
+				],
+				[
+					"Vial of water"
+				]
+			],
+			"output": "Torstol potion",
+			"notes": "Standard unfinished potion; source: OSRS Wiki Herblore table.",
+			"trigger": {
+				"kind": "interface",
+				"name": "Torstol potion (unf)",
+				"targets": [
+					"vial of water"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "unfinished",
+			"inputs": [
+				[
+					"Toadflax"
+				],
+				[
+					"Coconut milk"
+				]
+			],
+			"output": "Toadflax potion",
+			"notes": "Antidote+ unfinished potion.",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Toadflax",
+				"targets": [
+					"coconut milk"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "unfinished",
+			"inputs": [
+				[
+					"Toadflax"
+				],
+				[
+					"Coconut milk"
+				]
+			],
+			"output": "Toadflax potion",
+			"notes": "Antidote+ unfinished potion.",
+			"trigger": {
+				"kind": "interface",
+				"name": "Toadflax potion (unf)",
+				"targets": [
+					"coconut milk"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "unfinished",
+			"inputs": [
+				[
+					"Irit leaf"
+				],
+				[
+					"Coconut milk"
+				]
+			],
+			"output": "Irit potion",
+			"notes": "Antidote++ unfinished potion.",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Irit leaf",
+				"targets": [
+					"coconut milk"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "unfinished",
+			"inputs": [
+				[
+					"Irit leaf"
+				],
+				[
+					"Coconut milk"
+				]
+			],
+			"output": "Irit potion",
+			"notes": "Antidote++ unfinished potion.",
+			"trigger": {
+				"kind": "interface",
+				"name": "Irit potion (unf)",
+				"targets": [
+					"coconut milk"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "unfinished",
+			"inputs": [
+				[
+					"Cadantine"
+				],
+				[
+					"Vial of blood"
+				]
+			],
+			"output": "Cadantine blood potion",
+			"notes": "Bastion/Battlemage unfinished potion.",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Cadantine",
+				"targets": [
+					"vial of blood"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "unfinished",
+			"inputs": [
+				[
+					"Cadantine"
+				],
+				[
+					"Vial of blood"
+				]
+			],
+			"output": "Cadantine blood potion",
+			"notes": "Bastion/Battlemage unfinished potion.",
+			"trigger": {
+				"kind": "interface",
+				"name": "Cadantine blood potion (unf)",
+				"targets": [
+					"vial of blood"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "unfinished",
+			"inputs": [
+				[
+					"Elkhorn coral"
+				],
+				[
+					"Vial of water"
+				]
+			],
+			"output": "Elkhorn potion",
+			"notes": "Varlamore unfinished potion; source: OSRS Wiki Herblore table.",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Elkhorn coral",
+				"targets": [
+					"vial of water"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "unfinished",
+			"inputs": [
+				[
+					"Elkhorn coral"
+				],
+				[
+					"Vial of water"
+				]
+			],
+			"output": "Elkhorn potion",
+			"notes": "Varlamore unfinished potion; source: OSRS Wiki Herblore table.",
+			"trigger": {
+				"kind": "interface",
+				"name": "Elkhorn potion (unf)",
+				"targets": [
+					"vial of water"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "unfinished",
+			"inputs": [
+				[
+					"Pillar coral"
+				],
+				[
+					"Vial of water"
+				]
+			],
+			"output": "Pillar potion",
+			"notes": "Varlamore unfinished potion; source: OSRS Wiki Herblore table.",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Pillar coral",
+				"targets": [
+					"vial of water"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "unfinished",
+			"inputs": [
+				[
+					"Pillar coral"
+				],
+				[
+					"Vial of water"
+				]
+			],
+			"output": "Pillar potion",
+			"notes": "Varlamore unfinished potion; source: OSRS Wiki Herblore table.",
+			"trigger": {
+				"kind": "interface",
+				"name": "Pillar potion (unf)",
+				"targets": [
+					"vial of water"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "unfinished",
+			"inputs": [
+				[
+					"Umbral coral"
+				],
+				[
+					"Vial of water"
+				]
+			],
+			"output": "Umbral potion",
+			"notes": "Varlamore unfinished potion; source: OSRS Wiki Herblore table.",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Umbral coral",
+				"targets": [
+					"vial of water"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "unfinished",
+			"inputs": [
+				[
+					"Umbral coral"
+				],
+				[
+					"Vial of water"
+				]
+			],
+			"output": "Umbral potion",
+			"notes": "Varlamore unfinished potion; source: OSRS Wiki Herblore table.",
+			"trigger": {
+				"kind": "interface",
+				"name": "Umbral potion (unf)",
+				"targets": [
+					"vial of water"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "finished",
 			"inputs": [
 				[
 					"Guam potion"
@@ -5884,17 +6467,39 @@
 				]
 			],
 			"output": "Attack potion",
+			"notes": "Standard finished potion; source: OSRS Wiki Herblore table. Card names are dose-less.",
 			"trigger": {
 				"kind": "item-on-item",
 				"name": "Eye of newt",
 				"targets": [
-					"guam potion"
+					"guam potion (unf)"
 				]
-			},
-			"notes": "Attack potion. Add secondary to unfinished potion. Card names are dose-less."
+			}
 		},
 		{
 			"category": "herblore",
+			"stage": "finished",
+			"inputs": [
+				[
+					"Guam potion"
+				],
+				[
+					"Eye of newt"
+				]
+			],
+			"output": "Attack potion",
+			"notes": "Standard finished potion; source: OSRS Wiki Herblore table. Card names are dose-less.",
+			"trigger": {
+				"kind": "interface",
+				"name": "Attack potion",
+				"targets": [
+					"eye of newt"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "finished",
 			"inputs": [
 				[
 					"Marrentill potion"
@@ -5903,18 +6508,40 @@
 					"Unicorn horn dust"
 				]
 			],
-			"output": "Antipoison potion",
+			"output": "Antipoison",
+			"notes": "Standard finished potion; source: OSRS Wiki Herblore table. Card names are dose-less.",
 			"trigger": {
 				"kind": "item-on-item",
 				"name": "Unicorn horn dust",
 				"targets": [
-					"marrentill potion"
+					"marrentill potion (unf)"
 				]
-			},
-			"notes": "Antipoison. Add secondary to unfinished potion. Card names are dose-less."
+			}
 		},
 		{
 			"category": "herblore",
+			"stage": "finished",
+			"inputs": [
+				[
+					"Marrentill potion"
+				],
+				[
+					"Unicorn horn dust"
+				]
+			],
+			"output": "Antipoison",
+			"notes": "Standard finished potion; source: OSRS Wiki Herblore table. Card names are dose-less.",
+			"trigger": {
+				"kind": "interface",
+				"name": "Antipoison",
+				"targets": [
+					"unicorn horn dust"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "finished",
 			"inputs": [
 				[
 					"Tarromin potion"
@@ -5924,17 +6551,123 @@
 				]
 			],
 			"output": "Strength potion",
+			"notes": "Standard finished potion; source: OSRS Wiki Herblore table. Card names are dose-less.",
 			"trigger": {
 				"kind": "item-on-item",
 				"name": "Limpwurt root",
 				"targets": [
-					"tarromin potion"
+					"tarromin potion (unf)"
 				]
-			},
-			"notes": "Strength potion. Add secondary to unfinished potion. Card names are dose-less."
+			}
 		},
 		{
 			"category": "herblore",
+			"stage": "finished",
+			"inputs": [
+				[
+					"Tarromin potion"
+				],
+				[
+					"Limpwurt root"
+				]
+			],
+			"output": "Strength potion",
+			"notes": "Standard finished potion; source: OSRS Wiki Herblore table. Card names are dose-less.",
+			"trigger": {
+				"kind": "interface",
+				"name": "Strength potion",
+				"targets": [
+					"limpwurt root"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "finished",
+			"inputs": [
+				[
+					"Tarromin potion"
+				],
+				[
+					"Ashes"
+				]
+			],
+			"output": null,
+			"notes": "Standard finished potion; source: OSRS Wiki Herblore table. Card names are dose-less.",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Ashes",
+				"targets": [
+					"tarromin potion (unf)"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "finished",
+			"inputs": [
+				[
+					"Tarromin potion"
+				],
+				[
+					"Ashes"
+				]
+			],
+			"output": null,
+			"notes": "Standard finished potion; source: OSRS Wiki Herblore table. Card names are dose-less.",
+			"trigger": {
+				"kind": "interface",
+				"name": "Serum 207",
+				"targets": [
+					"ashes"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "finished",
+			"inputs": [
+				[
+					"Harralander potion"
+				],
+				[
+					"Volcanic ash"
+				]
+			],
+			"output": "Compost potion",
+			"notes": "Standard finished potion; source: OSRS Wiki Herblore table. Card names are dose-less.",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Volcanic ash",
+				"targets": [
+					"harralander potion (unf)"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "finished",
+			"inputs": [
+				[
+					"Harralander potion"
+				],
+				[
+					"Volcanic ash"
+				]
+			],
+			"output": "Compost potion",
+			"notes": "Standard finished potion; source: OSRS Wiki Herblore table. Card names are dose-less.",
+			"trigger": {
+				"kind": "interface",
+				"name": "Compost potion",
+				"targets": [
+					"volcanic ash"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "finished",
 			"inputs": [
 				[
 					"Harralander potion"
@@ -5944,17 +6677,75 @@
 				]
 			],
 			"output": "Restore potion",
+			"notes": "Standard finished potion; source: OSRS Wiki Herblore table. Card names are dose-less.",
 			"trigger": {
 				"kind": "item-on-item",
 				"name": "Red spiders' eggs",
 				"targets": [
-					"harralander potion"
+					"harralander potion (unf)"
 				]
-			},
-			"notes": "Stat restore. Add secondary to unfinished potion. Card names are dose-less."
+			}
 		},
 		{
 			"category": "herblore",
+			"stage": "finished",
+			"inputs": [
+				[
+					"Harralander potion"
+				],
+				[
+					"Red spiders' eggs"
+				]
+			],
+			"output": "Restore potion",
+			"notes": "Standard finished potion; source: OSRS Wiki Herblore table. Card names are dose-less.",
+			"trigger": {
+				"kind": "interface",
+				"name": "Restore potion",
+				"targets": [
+					"red spiders' eggs"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "finished",
+			"inputs": [
+				[
+					"Harralander potion"
+				]
+			],
+			"output": null,
+			"notes": "Standard finished potion; source: OSRS Wiki Herblore table. Card names are dose-less.",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Blamish snail slime",
+				"targets": [
+					"harralander potion (unf)"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "finished",
+			"inputs": [
+				[
+					"Harralander potion"
+				]
+			],
+			"output": null,
+			"notes": "Standard finished potion; source: OSRS Wiki Herblore table. Card names are dose-less.",
+			"trigger": {
+				"kind": "interface",
+				"name": "Blamish oil",
+				"targets": [
+					"blamish snail slime"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "finished",
 			"inputs": [
 				[
 					"Harralander potion"
@@ -5964,37 +6755,39 @@
 				]
 			],
 			"output": "Energy potion",
+			"notes": "Standard finished potion; source: OSRS Wiki Herblore table. Card names are dose-less.",
 			"trigger": {
 				"kind": "item-on-item",
 				"name": "Chocolate dust",
 				"targets": [
-					"harralander potion"
+					"harralander potion (unf)"
 				]
-			},
-			"notes": "Energy potion. Add secondary to unfinished potion. Card names are dose-less."
+			}
 		},
 		{
 			"category": "herblore",
+			"stage": "finished",
 			"inputs": [
 				[
 					"Harralander potion"
 				],
 				[
-					"Goat horn dust"
+					"Chocolate dust"
 				]
 			],
-			"output": "Combat potion",
+			"output": "Energy potion",
+			"notes": "Standard finished potion; source: OSRS Wiki Herblore table. Card names are dose-less.",
 			"trigger": {
-				"kind": "item-on-item",
-				"name": "Goat horn dust",
+				"kind": "interface",
+				"name": "Energy potion",
 				"targets": [
-					"harralander potion"
+					"chocolate dust"
 				]
-			},
-			"notes": "Combat potion. Add secondary to unfinished potion. Card names are dose-less."
+			}
 		},
 		{
 			"category": "herblore",
+			"stage": "finished",
 			"inputs": [
 				[
 					"Ranarr potion"
@@ -6004,37 +6797,39 @@
 				]
 			],
 			"output": "Defence potion",
+			"notes": "Standard finished potion; source: OSRS Wiki Herblore table. Card names are dose-less.",
 			"trigger": {
 				"kind": "item-on-item",
 				"name": "White berries",
 				"targets": [
-					"ranarr potion"
+					"ranarr potion (unf)"
 				]
-			},
-			"notes": "Defence potion. Add secondary to unfinished potion. Card names are dose-less."
+			}
 		},
 		{
 			"category": "herblore",
+			"stage": "finished",
 			"inputs": [
 				[
 					"Ranarr potion"
 				],
 				[
-					"Snape grass"
+					"White berries"
 				]
 			],
-			"output": "Prayer potion",
+			"output": "Defence potion",
+			"notes": "Standard finished potion; source: OSRS Wiki Herblore table. Card names are dose-less.",
 			"trigger": {
-				"kind": "item-on-item",
-				"name": "Snape grass",
+				"kind": "interface",
+				"name": "Defence potion",
 				"targets": [
-					"ranarr potion"
+					"white berries"
 				]
-			},
-			"notes": "Prayer potion. Add secondary to unfinished potion. Card names are dose-less."
+			}
 		},
 		{
 			"category": "herblore",
+			"stage": "finished",
 			"inputs": [
 				[
 					"Toadflax potion"
@@ -6044,37 +6839,123 @@
 				]
 			],
 			"output": "Agility potion",
+			"notes": "Standard finished potion; source: OSRS Wiki Herblore table. Card names are dose-less.",
 			"trigger": {
 				"kind": "item-on-item",
 				"name": "Toad's legs",
 				"targets": [
-					"toadflax potion"
+					"toadflax potion (unf)"
 				]
-			},
-			"notes": "Agility potion. Add secondary to unfinished potion. Card names are dose-less."
+			}
 		},
 		{
 			"category": "herblore",
+			"stage": "finished",
 			"inputs": [
 				[
 					"Toadflax potion"
 				],
 				[
-					"Crushed nest"
+					"Toad's legs"
 				]
 			],
-			"output": "Saradomin brew",
+			"output": "Agility potion",
+			"notes": "Standard finished potion; source: OSRS Wiki Herblore table. Card names are dose-less.",
 			"trigger": {
-				"kind": "item-on-item",
-				"name": "Crushed nest",
+				"kind": "interface",
+				"name": "Agility potion",
 				"targets": [
-					"toadflax potion"
+					"toad's legs"
 				]
-			},
-			"notes": "Saradomin brew. Add secondary to unfinished potion. Card names are dose-less."
+			}
 		},
 		{
 			"category": "herblore",
+			"stage": "finished",
+			"inputs": [
+				[
+					"Harralander potion"
+				],
+				[
+					"Goat horn dust"
+				]
+			],
+			"output": "Combat potion",
+			"notes": "Standard finished potion; source: OSRS Wiki Herblore table. Card names are dose-less.",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Goat horn dust",
+				"targets": [
+					"harralander potion (unf)"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "finished",
+			"inputs": [
+				[
+					"Harralander potion"
+				],
+				[
+					"Goat horn dust"
+				]
+			],
+			"output": "Combat potion",
+			"notes": "Standard finished potion; source: OSRS Wiki Herblore table. Card names are dose-less.",
+			"trigger": {
+				"kind": "interface",
+				"name": "Combat potion",
+				"targets": [
+					"goat horn dust"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "finished",
+			"inputs": [
+				[
+					"Ranarr potion"
+				],
+				[
+					"Snape grass"
+				]
+			],
+			"output": "Prayer potion",
+			"notes": "Standard finished potion; source: OSRS Wiki Herblore table. Card names are dose-less.",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Snape grass",
+				"targets": [
+					"ranarr potion (unf)"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "finished",
+			"inputs": [
+				[
+					"Ranarr potion"
+				],
+				[
+					"Snape grass"
+				]
+			],
+			"output": "Prayer potion",
+			"notes": "Standard finished potion; source: OSRS Wiki Herblore table. Card names are dose-less.",
+			"trigger": {
+				"kind": "interface",
+				"name": "Prayer potion",
+				"targets": [
+					"snape grass"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "finished",
 			"inputs": [
 				[
 					"Irit potion"
@@ -6084,17 +6965,117 @@
 				]
 			],
 			"output": "Super attack",
+			"notes": "Standard finished potion; source: OSRS Wiki Herblore table. Card names are dose-less.",
 			"trigger": {
 				"kind": "item-on-item",
 				"name": "Eye of newt",
 				"targets": [
-					"irit potion"
+					"irit potion (unf)"
 				]
-			},
-			"notes": "Super attack. Add secondary to unfinished potion. Card names are dose-less."
+			}
 		},
 		{
 			"category": "herblore",
+			"stage": "finished",
+			"inputs": [
+				[
+					"Irit potion"
+				],
+				[
+					"Eye of newt"
+				]
+			],
+			"output": "Super attack",
+			"notes": "Standard finished potion; source: OSRS Wiki Herblore table. Card names are dose-less.",
+			"trigger": {
+				"kind": "interface",
+				"name": "Super attack",
+				"targets": [
+					"eye of newt"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "finished",
+			"inputs": [
+				[
+					"Toadflax potion"
+				]
+			],
+			"output": null,
+			"notes": "Standard finished potion; source: OSRS Wiki Herblore table. Card names are dose-less.",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Pharmakos berries",
+				"targets": [
+					"toadflax potion (unf)"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "finished",
+			"inputs": [
+				[
+					"Toadflax potion"
+				]
+			],
+			"output": null,
+			"notes": "Standard finished potion; source: OSRS Wiki Herblore table. Card names are dose-less.",
+			"trigger": {
+				"kind": "interface",
+				"name": "Goblin potion",
+				"targets": [
+					"pharmakos berries"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "finished",
+			"inputs": [
+				[
+					"Irit potion"
+				],
+				[
+					"Unicorn horn dust"
+				]
+			],
+			"output": "Superantipoison",
+			"notes": "Standard finished potion; source: OSRS Wiki Herblore table. Card names are dose-less.",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Unicorn horn dust",
+				"targets": [
+					"irit potion (unf)"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "finished",
+			"inputs": [
+				[
+					"Irit potion"
+				],
+				[
+					"Unicorn horn dust"
+				]
+			],
+			"output": "Superantipoison",
+			"notes": "Standard finished potion; source: OSRS Wiki Herblore table. Card names are dose-less.",
+			"trigger": {
+				"kind": "interface",
+				"name": "Superantipoison",
+				"targets": [
+					"unicorn horn dust"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "finished",
 			"inputs": [
 				[
 					"Avantoe potion"
@@ -6104,17 +7085,39 @@
 				]
 			],
 			"output": "Fishing potion",
+			"notes": "Standard finished potion; source: OSRS Wiki Herblore table. Card names are dose-less.",
 			"trigger": {
 				"kind": "item-on-item",
 				"name": "Snape grass",
 				"targets": [
-					"avantoe potion"
+					"avantoe potion (unf)"
 				]
-			},
-			"notes": "Fishing potion. Add secondary to unfinished potion. Card names are dose-less."
+			}
 		},
 		{
 			"category": "herblore",
+			"stage": "finished",
+			"inputs": [
+				[
+					"Avantoe potion"
+				],
+				[
+					"Snape grass"
+				]
+			],
+			"output": "Fishing potion",
+			"notes": "Standard finished potion; source: OSRS Wiki Herblore table. Card names are dose-less.",
+			"trigger": {
+				"kind": "interface",
+				"name": "Fishing potion",
+				"targets": [
+					"snape grass"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "finished",
 			"inputs": [
 				[
 					"Avantoe potion"
@@ -6124,17 +7127,75 @@
 				]
 			],
 			"output": "Super energy",
+			"notes": "Standard finished potion; source: OSRS Wiki Herblore table. Card names are dose-less.",
 			"trigger": {
 				"kind": "item-on-item",
 				"name": "Mort myre fungus",
 				"targets": [
-					"avantoe potion"
+					"avantoe potion (unf)"
 				]
-			},
-			"notes": "Super energy. Add secondary to unfinished potion. Card names are dose-less."
+			}
 		},
 		{
 			"category": "herblore",
+			"stage": "finished",
+			"inputs": [
+				[
+					"Avantoe potion"
+				],
+				[
+					"Mort myre fungus"
+				]
+			],
+			"output": "Super energy",
+			"notes": "Standard finished potion; source: OSRS Wiki Herblore table. Card names are dose-less.",
+			"trigger": {
+				"kind": "interface",
+				"name": "Super energy",
+				"targets": [
+					"mort myre fungus"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "finished",
+			"inputs": [
+				[
+					"Tarromin potion"
+				]
+			],
+			"output": null,
+			"notes": "Standard finished potion; source: OSRS Wiki Herblore table. Card names are dose-less.",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Shrunk ogleroot",
+				"targets": [
+					"tarromin potion (unf)"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "finished",
+			"inputs": [
+				[
+					"Tarromin potion"
+				]
+			],
+			"output": null,
+			"notes": "Standard finished potion; source: OSRS Wiki Herblore table. Card names are dose-less.",
+			"trigger": {
+				"kind": "interface",
+				"name": "Shrink-me-quick",
+				"targets": [
+					"shrunk ogleroot"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "finished",
 			"inputs": [
 				[
 					"Avantoe potion"
@@ -6144,17 +7205,81 @@
 				]
 			],
 			"output": "Hunter potion",
+			"notes": "Standard finished potion; source: OSRS Wiki Herblore table. Card names are dose-less.",
 			"trigger": {
 				"kind": "item-on-item",
 				"name": "Kebbit teeth dust",
 				"targets": [
-					"avantoe potion"
+					"avantoe potion (unf)"
 				]
-			},
-			"notes": "Hunter potion. Add secondary to unfinished potion. Card names are dose-less."
+			}
 		},
 		{
 			"category": "herblore",
+			"stage": "finished",
+			"inputs": [
+				[
+					"Avantoe potion"
+				],
+				[
+					"Kebbit teeth dust"
+				]
+			],
+			"output": "Hunter potion",
+			"notes": "Standard finished potion; source: OSRS Wiki Herblore table. Card names are dose-less.",
+			"trigger": {
+				"kind": "interface",
+				"name": "Hunter potion",
+				"targets": [
+					"kebbit teeth dust"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "finished",
+			"inputs": [
+				[
+					"Harralander potion"
+				],
+				[
+					"Aldarium"
+				]
+			],
+			"output": "Goading potion",
+			"notes": "Standard finished potion; source: OSRS Wiki Herblore table. Card names are dose-less.",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Aldarium",
+				"targets": [
+					"harralander potion (unf)"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "finished",
+			"inputs": [
+				[
+					"Harralander potion"
+				],
+				[
+					"Aldarium"
+				]
+			],
+			"output": "Goading potion",
+			"notes": "Standard finished potion; source: OSRS Wiki Herblore table. Card names are dose-less.",
+			"trigger": {
+				"kind": "interface",
+				"name": "Goading potion",
+				"targets": [
+					"aldarium"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "finished",
 			"inputs": [
 				[
 					"Kwuarm potion"
@@ -6164,97 +7289,249 @@
 				]
 			],
 			"output": "Super strength",
+			"notes": "Standard finished potion; source: OSRS Wiki Herblore table. Card names are dose-less.",
 			"trigger": {
 				"kind": "item-on-item",
 				"name": "Limpwurt root",
 				"targets": [
-					"kwuarm potion"
+					"kwuarm potion (unf)"
 				]
-			},
-			"notes": "Super strength. Add secondary to unfinished potion. Card names are dose-less."
+			}
 		},
 		{
 			"category": "herblore",
+			"stage": "finished",
 			"inputs": [
 				[
-					"Lantadyme potion"
+					"Kwuarm potion"
 				],
 				[
-					"Potato cactus"
+					"Limpwurt root"
 				]
 			],
-			"output": "Magic potion",
+			"output": "Super strength",
+			"notes": "Standard finished potion; source: OSRS Wiki Herblore table. Card names are dose-less.",
 			"trigger": {
-				"kind": "item-on-item",
-				"name": "Potato cactus",
+				"kind": "interface",
+				"name": "Super strength",
 				"targets": [
-					"lantadyme potion"
+					"limpwurt root"
 				]
-			},
-			"notes": "Magic potion. Add secondary to unfinished potion. Card names are dose-less."
+			}
 		},
 		{
 			"category": "herblore",
+			"stage": "finished",
 			"inputs": [
 				[
-					"Lantadyme potion"
+					"Elkhorn potion"
+				],
+				[
+					"Squid paste"
+				]
+			],
+			"output": "Haemostatic poultice",
+			"notes": "Standard finished potion; source: OSRS Wiki Herblore table. Card names are dose-less.",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Squid paste",
+				"targets": [
+					"elkhorn potion (unf)"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "finished",
+			"inputs": [
+				[
+					"Elkhorn potion"
+				],
+				[
+					"Squid paste"
+				]
+			],
+			"output": "Haemostatic poultice",
+			"notes": "Standard finished potion; source: OSRS Wiki Herblore table. Card names are dose-less.",
+			"trigger": {
+				"kind": "interface",
+				"name": "Haemostatic poultice",
+				"targets": [
+					"squid paste"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "upgrade",
+			"inputs": [
+				[
+					"Haemostatic poultice"
+				],
+				[
+					"Cotton yarn"
+				]
+			],
+			"output": "Haemostatic dressing",
+			"notes": "Two-item standard Herblore upgrade; source: OSRS Wiki Herblore table.",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Cotton yarn",
+				"targets": [
+					"haemostatic poultice"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "upgrade",
+			"inputs": [
+				[
+					"Haemostatic poultice"
+				],
+				[
+					"Cotton yarn"
+				]
+			],
+			"output": "Haemostatic dressing",
+			"notes": "Two-item standard Herblore upgrade; source: OSRS Wiki Herblore table.",
+			"trigger": {
+				"kind": "interface",
+				"name": "Haemostatic dressing",
+				"targets": [
+					"cotton yarn"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "finished",
+			"inputs": [
+				[
+					"Huasca potion"
+				],
+				[
+					"Aldarium"
+				]
+			],
+			"output": "Prayer regeneration potion",
+			"notes": "Standard finished potion; source: OSRS Wiki Herblore table. Card names are dose-less.",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Aldarium",
+				"targets": [
+					"huasca potion (unf)"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "finished",
+			"inputs": [
+				[
+					"Huasca potion"
+				],
+				[
+					"Aldarium"
+				]
+			],
+			"output": "Prayer regeneration potion",
+			"notes": "Standard finished potion; source: OSRS Wiki Herblore table. Card names are dose-less.",
+			"trigger": {
+				"kind": "interface",
+				"name": "Prayer regeneration potion",
+				"targets": [
+					"aldarium"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "finished",
+			"inputs": [
+				[
+					"Kwuarm potion"
 				],
 				[
 					"Dragon scale dust"
 				]
 			],
-			"output": "Antifire potion",
+			"output": "Weapon poison",
+			"notes": "Standard finished potion; source: OSRS Wiki Herblore table. Card names are dose-less.",
 			"trigger": {
 				"kind": "item-on-item",
 				"name": "Dragon scale dust",
 				"targets": [
-					"lantadyme potion"
+					"kwuarm potion (unf)"
 				]
-			},
-			"notes": "Antifire potion. Add secondary to unfinished potion. Card names are dose-less."
+			}
 		},
 		{
 			"category": "herblore",
+			"stage": "finished",
 			"inputs": [
 				[
-					"Cadantine potion"
+					"Kwuarm potion"
 				],
 				[
-					"White berries"
+					"Dragon scale dust"
 				]
 			],
-			"output": "Super defence",
+			"output": "Weapon poison",
+			"notes": "Standard finished potion; source: OSRS Wiki Herblore table. Card names are dose-less.",
 			"trigger": {
-				"kind": "item-on-item",
-				"name": "White berries",
+				"kind": "interface",
+				"name": "Weapon poison",
 				"targets": [
-					"cadantine potion"
+					"dragon scale dust"
 				]
-			},
-			"notes": "Super defence. Add secondary to unfinished potion. Card names are dose-less."
+			}
 		},
 		{
 			"category": "herblore",
+			"stage": "finished",
 			"inputs": [
 				[
-					"Dwarf weed potion"
+					"Pillar potion"
 				],
 				[
-					"Wine of zamorak"
+					"Haddock eye"
 				]
 			],
-			"output": "Ranging potion",
+			"output": "Super fishing potion",
+			"notes": "Standard finished potion; source: OSRS Wiki Herblore table. Card names are dose-less.",
 			"trigger": {
 				"kind": "item-on-item",
-				"name": "Wine of zamorak",
+				"name": "Haddock eye",
 				"targets": [
-					"dwarf weed potion"
+					"pillar potion (unf)"
 				]
-			},
-			"notes": "Ranging potion. Add secondary to unfinished potion. Card names are dose-less."
+			}
 		},
 		{
 			"category": "herblore",
+			"stage": "finished",
+			"inputs": [
+				[
+					"Pillar potion"
+				],
+				[
+					"Haddock eye"
+				]
+			],
+			"output": "Super fishing potion",
+			"notes": "Standard finished potion; source: OSRS Wiki Herblore table. Card names are dose-less.",
+			"trigger": {
+				"kind": "interface",
+				"name": "Super fishing potion",
+				"targets": [
+					"haddock eye"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "finished",
 			"inputs": [
 				[
 					"Snapdragon potion"
@@ -6264,65 +7541,501 @@
 				]
 			],
 			"output": "Super restore",
+			"notes": "Standard finished potion; source: OSRS Wiki Herblore table. Card names are dose-less.",
 			"trigger": {
 				"kind": "item-on-item",
 				"name": "Red spiders' eggs",
 				"targets": [
-					"snapdragon potion"
+					"snapdragon potion (unf)"
 				]
-			},
-			"notes": "Super restore. Add secondary to unfinished potion. Card names are dose-less."
+			}
 		},
 		{
 			"category": "herblore",
+			"stage": "finished",
 			"inputs": [
 				[
-					"Torstol potion"
+					"Snapdragon potion"
 				],
 				[
-					"Jangerberries"
+					"Red spiders' eggs"
 				]
 			],
-			"output": "Zamorak brew",
+			"output": "Super restore",
+			"notes": "Standard finished potion; source: OSRS Wiki Herblore table. Card names are dose-less.",
 			"trigger": {
-				"kind": "item-on-item",
-				"name": "Jangerberries",
+				"kind": "interface",
+				"name": "Super restore",
 				"targets": [
-					"torstol potion"
+					"red spiders' eggs"
 				]
-			},
-			"notes": "Zamorak brew. Add secondary to unfinished potion. Card names are dose-less."
+			}
 		},
 		{
 			"category": "herblore",
+			"stage": "upgrade",
 			"inputs": [
 				[
-					"Torstol"
+					"Super energy"
 				],
+				[
+					"Yellow fin"
+				]
+			],
+			"output": "Extreme energy potion",
+			"notes": "Two-item standard Herblore upgrade; source: OSRS Wiki Herblore table.",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Yellow fin",
+				"targets": [
+					"super energy"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "upgrade",
+			"inputs": [
+				[
+					"Super energy"
+				],
+				[
+					"Yellow fin"
+				]
+			],
+			"output": "Extreme energy potion",
+			"notes": "Two-item standard Herblore upgrade; source: OSRS Wiki Herblore table.",
+			"trigger": {
+				"kind": "interface",
+				"name": "Extreme energy potion",
+				"targets": [
+					"yellow fin"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "finished",
+			"inputs": [
+				[
+					"Cadantine potion"
+				],
+				[
+					"White berries"
+				]
+			],
+			"output": "Super defence",
+			"notes": "Standard finished potion; source: OSRS Wiki Herblore table. Card names are dose-less.",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "White berries",
+				"targets": [
+					"cadantine potion (unf)"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "finished",
+			"inputs": [
+				[
+					"Cadantine potion"
+				],
+				[
+					"White berries"
+				]
+			],
+			"output": "Super defence",
+			"notes": "Standard finished potion; source: OSRS Wiki Herblore table. Card names are dose-less.",
+			"trigger": {
+				"kind": "interface",
+				"name": "Super defence",
+				"targets": [
+					"white berries"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "finished",
+			"inputs": [
+				[
+					"Pillar potion"
+				],
+				[
+					"Crab paste"
+				]
+			],
+			"output": "Super hunter potion",
+			"notes": "Standard finished potion; source: OSRS Wiki Herblore table. Card names are dose-less.",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Crab paste",
+				"targets": [
+					"pillar potion (unf)"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "finished",
+			"inputs": [
+				[
+					"Pillar potion"
+				],
+				[
+					"Crab paste"
+				]
+			],
+			"output": "Super hunter potion",
+			"notes": "Standard finished potion; source: OSRS Wiki Herblore table. Card names are dose-less.",
+			"trigger": {
+				"kind": "interface",
+				"name": "Super hunter potion",
+				"targets": [
+					"crab paste"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "finished",
+			"inputs": [
+				[
+					"Toadflax potion"
+				],
+				[
+					"Yew roots"
+				]
+			],
+			"output": "Antidote+",
+			"notes": "Standard finished potion; source: OSRS Wiki Herblore table. Card names are dose-less.",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Yew roots",
+				"targets": [
+					"toadflax potion (unf)"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "finished",
+			"inputs": [
+				[
+					"Toadflax potion"
+				],
+				[
+					"Yew roots"
+				]
+			],
+			"output": "Antidote+",
+			"notes": "Standard finished potion; source: OSRS Wiki Herblore table. Card names are dose-less.",
+			"trigger": {
+				"kind": "interface",
+				"name": "Antidote+",
+				"targets": [
+					"yew roots"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "finished",
+			"inputs": [
+				[
+					"Lantadyme potion"
+				],
+				[
+					"Dragon scale dust"
+				]
+			],
+			"output": "Antifire potion",
+			"notes": "Standard finished potion; source: OSRS Wiki Herblore table. Card names are dose-less.",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Dragon scale dust",
+				"targets": [
+					"lantadyme potion (unf)"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "finished",
+			"inputs": [
+				[
+					"Lantadyme potion"
+				],
+				[
+					"Dragon scale dust"
+				]
+			],
+			"output": "Antifire potion",
+			"notes": "Standard finished potion; source: OSRS Wiki Herblore table. Card names are dose-less.",
+			"trigger": {
+				"kind": "interface",
+				"name": "Antifire potion",
+				"targets": [
+					"dragon scale dust"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "upgrade",
+			"inputs": [
 				[
 					"Super attack"
 				],
 				[
-					"Super strength"
-				],
-				[
-					"Super defence"
+					"Crystal dust"
 				]
 			],
-			"output": "Super combat potion",
+			"output": "Divine super attack potion",
+			"notes": "Two-item standard Herblore upgrade; source: OSRS Wiki Herblore table.",
 			"trigger": {
 				"kind": "item-on-item",
-				"name": "Torstol",
+				"name": "Crystal dust",
 				"targets": [
-					"super attack",
-					"super strength",
-					"super defence"
+					"super attack"
 				]
-			},
-			"notes": "Super combat: Torstol + (4)-dose super attack/strength/defence."
+			}
 		},
 		{
 			"category": "herblore",
+			"stage": "upgrade",
+			"inputs": [
+				[
+					"Super attack"
+				],
+				[
+					"Crystal dust"
+				]
+			],
+			"output": "Divine super attack potion",
+			"notes": "Two-item standard Herblore upgrade; source: OSRS Wiki Herblore table.",
+			"trigger": {
+				"kind": "interface",
+				"name": "Divine super attack potion",
+				"targets": [
+					"crystal dust"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "upgrade",
+			"inputs": [
+				[
+					"Super defence"
+				],
+				[
+					"Crystal dust"
+				]
+			],
+			"output": "Divine super defence potion",
+			"notes": "Two-item standard Herblore upgrade; source: OSRS Wiki Herblore table.",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Crystal dust",
+				"targets": [
+					"super defence"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "upgrade",
+			"inputs": [
+				[
+					"Super defence"
+				],
+				[
+					"Crystal dust"
+				]
+			],
+			"output": "Divine super defence potion",
+			"notes": "Two-item standard Herblore upgrade; source: OSRS Wiki Herblore table.",
+			"trigger": {
+				"kind": "interface",
+				"name": "Divine super defence potion",
+				"targets": [
+					"crystal dust"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "upgrade",
+			"inputs": [
+				[
+					"Super strength"
+				],
+				[
+					"Crystal dust"
+				]
+			],
+			"output": "Divine super strength potion",
+			"notes": "Two-item standard Herblore upgrade; source: OSRS Wiki Herblore table.",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Crystal dust",
+				"targets": [
+					"super strength"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "upgrade",
+			"inputs": [
+				[
+					"Super strength"
+				],
+				[
+					"Crystal dust"
+				]
+			],
+			"output": "Divine super strength potion",
+			"notes": "Two-item standard Herblore upgrade; source: OSRS Wiki Herblore table.",
+			"trigger": {
+				"kind": "interface",
+				"name": "Divine super strength potion",
+				"targets": [
+					"crystal dust"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "finished",
+			"inputs": [
+				[
+					"Dwarf weed potion"
+				],
+				[
+					"Wine of zamorak"
+				]
+			],
+			"output": "Ranging potion",
+			"notes": "Standard finished potion; source: OSRS Wiki Herblore table. Card names are dose-less.",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Wine of zamorak",
+				"targets": [
+					"dwarf weed potion (unf)"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "finished",
+			"inputs": [
+				[
+					"Dwarf weed potion"
+				],
+				[
+					"Wine of zamorak"
+				]
+			],
+			"output": "Ranging potion",
+			"notes": "Standard finished potion; source: OSRS Wiki Herblore table. Card names are dose-less.",
+			"trigger": {
+				"kind": "interface",
+				"name": "Ranging potion",
+				"targets": [
+					"wine of zamorak"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "upgrade",
+			"inputs": [
+				[
+					"Ranging potion"
+				],
+				[
+					"Crystal dust"
+				]
+			],
+			"output": "Divine ranging potion",
+			"notes": "Two-item standard Herblore upgrade; source: OSRS Wiki Herblore table.",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Crystal dust",
+				"targets": [
+					"ranging potion"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "upgrade",
+			"inputs": [
+				[
+					"Ranging potion"
+				],
+				[
+					"Crystal dust"
+				]
+			],
+			"output": "Divine ranging potion",
+			"notes": "Two-item standard Herblore upgrade; source: OSRS Wiki Herblore table.",
+			"trigger": {
+				"kind": "interface",
+				"name": "Divine ranging potion",
+				"targets": [
+					"crystal dust"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "finished",
+			"inputs": [
+				[
+					"Lantadyme potion"
+				],
+				[
+					"Potato cactus"
+				]
+			],
+			"output": "Magic potion",
+			"notes": "Standard finished potion; source: OSRS Wiki Herblore table. Card names are dose-less.",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Potato cactus",
+				"targets": [
+					"lantadyme potion (unf)"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "finished",
+			"inputs": [
+				[
+					"Lantadyme potion"
+				],
+				[
+					"Potato cactus"
+				]
+			],
+			"output": "Magic potion",
+			"notes": "Standard finished potion; source: OSRS Wiki Herblore table. Card names are dose-less.",
+			"trigger": {
+				"kind": "interface",
+				"name": "Magic potion",
+				"targets": [
+					"potato cactus"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "upgrade",
 			"inputs": [
 				[
 					"Super energy"
@@ -6332,14 +8045,967 @@
 				]
 			],
 			"output": "Stamina potion",
+			"notes": "Two-item standard Herblore upgrade; source: OSRS Wiki Herblore table.",
 			"trigger": {
 				"kind": "item-on-item",
 				"name": "Amylase crystal",
 				"targets": [
 					"super energy"
 				]
-			},
-			"notes": "Stamina potion: super energy + amylase crystal."
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "upgrade",
+			"inputs": [
+				[
+					"Super energy"
+				],
+				[
+					"Amylase crystal"
+				]
+			],
+			"output": "Stamina potion",
+			"notes": "Two-item standard Herblore upgrade; source: OSRS Wiki Herblore table.",
+			"trigger": {
+				"kind": "interface",
+				"name": "Stamina potion",
+				"targets": [
+					"amylase crystal"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "finished",
+			"inputs": [
+				[
+					"Torstol potion"
+				],
+				[
+					"Jangerberries"
+				]
+			],
+			"output": "Zamorak brew",
+			"notes": "Standard finished potion; source: OSRS Wiki Herblore table. Card names are dose-less.",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Jangerberries",
+				"targets": [
+					"torstol potion (unf)"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "finished",
+			"inputs": [
+				[
+					"Torstol potion"
+				],
+				[
+					"Jangerberries"
+				]
+			],
+			"output": "Zamorak brew",
+			"notes": "Standard finished potion; source: OSRS Wiki Herblore table. Card names are dose-less.",
+			"trigger": {
+				"kind": "interface",
+				"name": "Zamorak brew",
+				"targets": [
+					"jangerberries"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "upgrade",
+			"inputs": [
+				[
+					"Magic potion"
+				],
+				[
+					"Crystal dust"
+				]
+			],
+			"output": "Divine magic potion",
+			"notes": "Two-item standard Herblore upgrade; source: OSRS Wiki Herblore table.",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Crystal dust",
+				"targets": [
+					"magic potion"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "upgrade",
+			"inputs": [
+				[
+					"Magic potion"
+				],
+				[
+					"Crystal dust"
+				]
+			],
+			"output": "Divine magic potion",
+			"notes": "Two-item standard Herblore upgrade; source: OSRS Wiki Herblore table.",
+			"trigger": {
+				"kind": "interface",
+				"name": "Divine magic potion",
+				"targets": [
+					"crystal dust"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "finished",
+			"inputs": [
+				[
+					"Irit potion"
+				],
+				[
+					"Magic roots"
+				]
+			],
+			"output": "Antidote++",
+			"notes": "Standard finished potion; source: OSRS Wiki Herblore table. Card names are dose-less.",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Magic roots",
+				"targets": [
+					"irit potion (unf)"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "finished",
+			"inputs": [
+				[
+					"Irit potion"
+				],
+				[
+					"Magic roots"
+				]
+			],
+			"output": "Antidote++",
+			"notes": "Standard finished potion; source: OSRS Wiki Herblore table. Card names are dose-less.",
+			"trigger": {
+				"kind": "interface",
+				"name": "Antidote++",
+				"targets": [
+					"magic roots"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "finished",
+			"inputs": [
+				[
+					"Cadantine blood potion"
+				],
+				[
+					"Wine of zamorak"
+				]
+			],
+			"output": "Bastion potion",
+			"notes": "Standard finished potion; source: OSRS Wiki Herblore table. Card names are dose-less.",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Wine of zamorak",
+				"targets": [
+					"cadantine blood potion (unf)"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "finished",
+			"inputs": [
+				[
+					"Cadantine blood potion"
+				],
+				[
+					"Wine of zamorak"
+				]
+			],
+			"output": "Bastion potion",
+			"notes": "Standard finished potion; source: OSRS Wiki Herblore table. Card names are dose-less.",
+			"trigger": {
+				"kind": "interface",
+				"name": "Bastion potion",
+				"targets": [
+					"wine of zamorak"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "finished",
+			"inputs": [
+				[
+					"Cadantine blood potion"
+				],
+				[
+					"Potato cactus"
+				]
+			],
+			"output": "Battlemage potion",
+			"notes": "Standard finished potion; source: OSRS Wiki Herblore table. Card names are dose-less.",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Potato cactus",
+				"targets": [
+					"cadantine blood potion (unf)"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "finished",
+			"inputs": [
+				[
+					"Cadantine blood potion"
+				],
+				[
+					"Potato cactus"
+				]
+			],
+			"output": "Battlemage potion",
+			"notes": "Standard finished potion; source: OSRS Wiki Herblore table. Card names are dose-less.",
+			"trigger": {
+				"kind": "interface",
+				"name": "Battlemage potion",
+				"targets": [
+					"potato cactus"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "finished",
+			"inputs": [
+				[
+					"Toadflax potion"
+				],
+				[
+					"Crushed nest"
+				]
+			],
+			"output": "Saradomin brew",
+			"notes": "Standard finished potion; source: OSRS Wiki Herblore table. Card names are dose-less.",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Crushed nest",
+				"targets": [
+					"toadflax potion (unf)"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "finished",
+			"inputs": [
+				[
+					"Toadflax potion"
+				],
+				[
+					"Crushed nest"
+				]
+			],
+			"output": "Saradomin brew",
+			"notes": "Standard finished potion; source: OSRS Wiki Herblore table. Card names are dose-less.",
+			"trigger": {
+				"kind": "interface",
+				"name": "Saradomin brew",
+				"targets": [
+					"crushed nest"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "finished",
+			"inputs": [
+				[
+					"Torstol potion"
+				],
+				[
+					"Demonic tallow"
+				]
+			],
+			"output": "Surge potion",
+			"notes": "Standard finished potion; source: OSRS Wiki Herblore table. Card names are dose-less.",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Demonic tallow",
+				"targets": [
+					"torstol potion (unf)"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "finished",
+			"inputs": [
+				[
+					"Torstol potion"
+				],
+				[
+					"Demonic tallow"
+				]
+			],
+			"output": "Surge potion",
+			"notes": "Standard finished potion; source: OSRS Wiki Herblore table. Card names are dose-less.",
+			"trigger": {
+				"kind": "interface",
+				"name": "Surge potion",
+				"targets": [
+					"demonic tallow"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "upgrade",
+			"inputs": [
+				[
+					"Antifire potion"
+				],
+				[
+					"Lava scale shard"
+				]
+			],
+			"output": "Extended antifire",
+			"notes": "Two-item standard Herblore upgrade; source: OSRS Wiki Herblore table.",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Lava scale shard",
+				"targets": [
+					"antifire potion"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "upgrade",
+			"inputs": [
+				[
+					"Antifire potion"
+				],
+				[
+					"Lava scale shard"
+				]
+			],
+			"output": "Extended antifire",
+			"notes": "Two-item standard Herblore upgrade; source: OSRS Wiki Herblore table.",
+			"trigger": {
+				"kind": "interface",
+				"name": "Extended antifire",
+				"targets": [
+					"lava scale shard"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "finished",
+			"inputs": [
+				[
+					"Dwarf weed potion"
+				],
+				[
+					"Nihil dust"
+				]
+			],
+			"output": "Ancient brew",
+			"notes": "Standard finished potion; source: OSRS Wiki Herblore table. Card names are dose-less.",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Nihil dust",
+				"targets": [
+					"dwarf weed potion (unf)"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "finished",
+			"inputs": [
+				[
+					"Dwarf weed potion"
+				],
+				[
+					"Nihil dust"
+				]
+			],
+			"output": "Ancient brew",
+			"notes": "Standard finished potion; source: OSRS Wiki Herblore table. Card names are dose-less.",
+			"trigger": {
+				"kind": "interface",
+				"name": "Ancient brew",
+				"targets": [
+					"nihil dust"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "upgrade",
+			"inputs": [
+				[
+					"Stamina potion"
+				],
+				[
+					"Marlin scales"
+				]
+			],
+			"output": "Extended stamina potion",
+			"notes": "Two-item standard Herblore upgrade; source: OSRS Wiki Herblore table.",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Marlin scales",
+				"targets": [
+					"stamina potion"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "upgrade",
+			"inputs": [
+				[
+					"Stamina potion"
+				],
+				[
+					"Marlin scales"
+				]
+			],
+			"output": "Extended stamina potion",
+			"notes": "Two-item standard Herblore upgrade; source: OSRS Wiki Herblore table.",
+			"trigger": {
+				"kind": "interface",
+				"name": "Extended stamina potion",
+				"targets": [
+					"marlin scales"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "upgrade",
+			"inputs": [
+				[
+					"Bastion potion"
+				],
+				[
+					"Crystal dust"
+				]
+			],
+			"output": "Divine bastion potion",
+			"notes": "Two-item standard Herblore upgrade; source: OSRS Wiki Herblore table.",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Crystal dust",
+				"targets": [
+					"bastion potion"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "upgrade",
+			"inputs": [
+				[
+					"Bastion potion"
+				],
+				[
+					"Crystal dust"
+				]
+			],
+			"output": "Divine bastion potion",
+			"notes": "Two-item standard Herblore upgrade; source: OSRS Wiki Herblore table.",
+			"trigger": {
+				"kind": "interface",
+				"name": "Divine bastion potion",
+				"targets": [
+					"crystal dust"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "upgrade",
+			"inputs": [
+				[
+					"Battlemage potion"
+				],
+				[
+					"Crystal dust"
+				]
+			],
+			"output": "Divine battlemage potion",
+			"notes": "Two-item standard Herblore upgrade; source: OSRS Wiki Herblore table.",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Crystal dust",
+				"targets": [
+					"battlemage potion"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "upgrade",
+			"inputs": [
+				[
+					"Battlemage potion"
+				],
+				[
+					"Crystal dust"
+				]
+			],
+			"output": "Divine battlemage potion",
+			"notes": "Two-item standard Herblore upgrade; source: OSRS Wiki Herblore table.",
+			"trigger": {
+				"kind": "interface",
+				"name": "Divine battlemage potion",
+				"targets": [
+					"crystal dust"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "upgrade",
+			"inputs": [
+				[
+					"Antidote++"
+				],
+				[
+					"Zulrah's scales"
+				]
+			],
+			"output": "Anti-venom",
+			"notes": "Two-item standard Herblore upgrade; source: OSRS Wiki Herblore table.",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Zulrah's scales",
+				"targets": [
+					"antidote++"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "upgrade",
+			"inputs": [
+				[
+					"Antidote++"
+				],
+				[
+					"Zulrah's scales"
+				]
+			],
+			"output": "Anti-venom",
+			"notes": "Two-item standard Herblore upgrade; source: OSRS Wiki Herblore table.",
+			"trigger": {
+				"kind": "interface",
+				"name": "Anti-venom",
+				"targets": [
+					"zulrah's scales"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "finished",
+			"inputs": [
+				[
+					"Dwarf weed potion"
+				],
+				[
+					"Lily of the sands"
+				]
+			],
+			"output": "Menaphite remedy",
+			"notes": "Standard finished potion; source: OSRS Wiki Herblore table. Card names are dose-less.",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Lily of the sands",
+				"targets": [
+					"dwarf weed potion (unf)"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "finished",
+			"inputs": [
+				[
+					"Dwarf weed potion"
+				],
+				[
+					"Lily of the sands"
+				]
+			],
+			"output": "Menaphite remedy",
+			"notes": "Standard finished potion; source: OSRS Wiki Herblore table. Card names are dose-less.",
+			"trigger": {
+				"kind": "interface",
+				"name": "Menaphite remedy",
+				"targets": [
+					"lily of the sands"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "finished",
+			"inputs": [
+				[
+					"Umbral potion"
+				],
+				[
+					"Rainbow crab paste"
+				]
+			],
+			"output": "Armadyl brew",
+			"notes": "Standard finished potion; source: OSRS Wiki Herblore table. Card names are dose-less.",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Rainbow crab paste",
+				"targets": [
+					"umbral potion (unf)"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "finished",
+			"inputs": [
+				[
+					"Umbral potion"
+				],
+				[
+					"Rainbow crab paste"
+				]
+			],
+			"output": "Armadyl brew",
+			"notes": "Standard finished potion; source: OSRS Wiki Herblore table. Card names are dose-less.",
+			"trigger": {
+				"kind": "interface",
+				"name": "Armadyl brew",
+				"targets": [
+					"rainbow crab paste"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "upgrade",
+			"inputs": [
+				[
+					"Super attack"
+				],
+				[
+					"Super strength"
+				],
+				[
+					"Super defence"
+				],
+				[
+					"Torstol"
+				]
+			],
+			"output": "Super combat potion",
+			"notes": "Super combat potion; all three four-dose super potions and Torstol are required.",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Torstol",
+				"targets": [
+					"super attack",
+					"super strength",
+					"super defence"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "upgrade",
+			"inputs": [
+				[
+					"Super attack"
+				],
+				[
+					"Super strength"
+				],
+				[
+					"Super defence"
+				],
+				[
+					"Torstol"
+				]
+			],
+			"output": "Super combat potion",
+			"notes": "Super combat potion; all three four-dose super potions and Torstol are required.",
+			"trigger": {
+				"kind": "interface",
+				"name": "Super combat potion",
+				"targets": [
+					"torstol"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "upgrade",
+			"inputs": [
+				[
+					"Ancient brew"
+				],
+				[
+					"Ancient essence"
+				]
+			],
+			"output": "Forgotten brew",
+			"notes": "Two-item standard Herblore upgrade; source: OSRS Wiki Herblore table.",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Ancient essence",
+				"targets": [
+					"ancient brew"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "upgrade",
+			"inputs": [
+				[
+					"Ancient brew"
+				],
+				[
+					"Ancient essence"
+				]
+			],
+			"output": "Forgotten brew",
+			"notes": "Two-item standard Herblore upgrade; source: OSRS Wiki Herblore table.",
+			"trigger": {
+				"kind": "interface",
+				"name": "Forgotten brew",
+				"targets": [
+					"ancient essence"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "upgrade",
+			"inputs": [
+				[
+					"Antifire potion"
+				],
+				[
+					"Crushed superior dragon bones"
+				]
+			],
+			"output": "Super antifire potion",
+			"notes": "Two-item standard Herblore upgrade; source: OSRS Wiki Herblore table.",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Crushed superior dragon bones",
+				"targets": [
+					"antifire potion"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "upgrade",
+			"inputs": [
+				[
+					"Antifire potion"
+				],
+				[
+					"Crushed superior dragon bones"
+				]
+			],
+			"output": "Super antifire potion",
+			"notes": "Two-item standard Herblore upgrade; source: OSRS Wiki Herblore table.",
+			"trigger": {
+				"kind": "interface",
+				"name": "Super antifire potion",
+				"targets": [
+					"crushed superior dragon bones"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "upgrade",
+			"inputs": [
+				[
+					"Anti-venom"
+				],
+				[
+					"Torstol"
+				]
+			],
+			"output": "Anti-venom+",
+			"notes": "Two-item standard Herblore upgrade; source: OSRS Wiki Herblore table.",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Torstol",
+				"targets": [
+					"anti-venom"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "upgrade",
+			"inputs": [
+				[
+					"Anti-venom"
+				],
+				[
+					"Torstol"
+				]
+			],
+			"output": "Anti-venom+",
+			"notes": "Two-item standard Herblore upgrade; source: OSRS Wiki Herblore table.",
+			"trigger": {
+				"kind": "interface",
+				"name": "Anti-venom+",
+				"targets": [
+					"torstol"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "upgrade",
+			"inputs": [
+				[
+					"Anti-venom+"
+				]
+			],
+			"output": "Extended anti-venom+",
+			"notes": "Two-item standard Herblore upgrade; source: OSRS Wiki Herblore table.",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Araxyte venom sac",
+				"targets": [
+					"anti-venom+"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "upgrade",
+			"inputs": [
+				[
+					"Anti-venom+"
+				]
+			],
+			"output": "Extended anti-venom+",
+			"notes": "Two-item standard Herblore upgrade; source: OSRS Wiki Herblore table.",
+			"trigger": {
+				"kind": "interface",
+				"name": "Extended anti-venom+",
+				"targets": [
+					"araxyte venom sac"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "upgrade",
+			"inputs": [
+				[
+					"Super combat potion"
+				],
+				[
+					"Crystal dust"
+				]
+			],
+			"output": "Divine super combat potion",
+			"notes": "Two-item standard Herblore upgrade; source: OSRS Wiki Herblore table.",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Crystal dust",
+				"targets": [
+					"super combat potion"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "upgrade",
+			"inputs": [
+				[
+					"Super combat potion"
+				],
+				[
+					"Crystal dust"
+				]
+			],
+			"output": "Divine super combat potion",
+			"notes": "Two-item standard Herblore upgrade; source: OSRS Wiki Herblore table.",
+			"trigger": {
+				"kind": "interface",
+				"name": "Divine super combat potion",
+				"targets": [
+					"crystal dust"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "upgrade",
+			"inputs": [
+				[
+					"Super antifire potion"
+				],
+				[
+					"Lava scale shard"
+				]
+			],
+			"output": "Extended super antifire",
+			"notes": "Two-item standard Herblore upgrade; source: OSRS Wiki Herblore table.",
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Lava scale shard",
+				"targets": [
+					"super antifire potion"
+				]
+			}
+		},
+		{
+			"category": "herblore",
+			"stage": "upgrade",
+			"inputs": [
+				[
+					"Super antifire potion"
+				],
+				[
+					"Lava scale shard"
+				]
+			],
+			"output": "Extended super antifire",
+			"notes": "Two-item standard Herblore upgrade; source: OSRS Wiki Herblore table.",
+			"trigger": {
+				"kind": "interface",
+				"name": "Extended super antifire",
+				"targets": [
+					"lava scale shard"
+				]
+			}
 		},
 		{
 			"category": "fletching",

@@ -1,0 +1,675 @@
+﻿{
+    "source":  "https://oldschool.runescape.wiki/w/Herblore",
+    "scope":  "Standard potion table; Mastering Mixology excluded",
+    "recipes":  [
+                    {
+                        "level":  3,
+                        "output":  "Imp repellent",
+                        "ingredients":  [
+                                            "Anchovy oil",
+                                            "Flowers ( various )"
+                                        ],
+                        "source":  "OSRS Wiki Herblore table"
+                    },
+                    {
+                        "level":  3,
+                        "output":  "Attack potion",
+                        "ingredients":  [
+                                            "Vial of water",
+                                            "Guam leaf",
+                                            "Eye of newt"
+                                        ],
+                        "source":  "OSRS Wiki Herblore table"
+                    },
+                    {
+                        "level":  5,
+                        "output":  "Antipoison",
+                        "ingredients":  [
+                                            "Vial of water",
+                                            "Marrentill",
+                                            "Unicorn horn dust"
+                                        ],
+                        "source":  "OSRS Wiki Herblore table"
+                    },
+                    {
+                        "level":  8,
+                        "output":  "Relicym\u0027s balm",
+                        "ingredients":  [
+                                            "Vial of water",
+                                            "Rogue\u0027s purse",
+                                            "Snake weed"
+                                        ],
+                        "source":  "OSRS Wiki Herblore table"
+                    },
+                    {
+                        "level":  12,
+                        "output":  "Strength potion",
+                        "ingredients":  [
+                                            "Vial of water",
+                                            "Tarromin",
+                                            "Limpwurt root"
+                                        ],
+                        "source":  "OSRS Wiki Herblore table"
+                    },
+                    {
+                        "level":  15,
+                        "output":  "Serum 207",
+                        "ingredients":  [
+                                            "Vial of water",
+                                            "Tarromin",
+                                            "Ashes"
+                                        ],
+                        "source":  "OSRS Wiki Herblore table"
+                    },
+                    {
+                        "level":  18,
+                        "output":  "Guthix rest tea",
+                        "ingredients":  [
+                                            "Cup of hot water",
+                                            "Harralander",
+                                            "Guam leaves x2 Marrentill"
+                                        ],
+                        "source":  "OSRS Wiki Herblore table"
+                    },
+                    {
+                        "level":  22,
+                        "output":  "Compost potion",
+                        "ingredients":  [
+                                            "Vial of water",
+                                            "Harralander",
+                                            "Volcanic ash"
+                                        ],
+                        "source":  "OSRS Wiki Herblore table"
+                    },
+                    {
+                        "level":  22,
+                        "output":  "Restore potion",
+                        "ingredients":  [
+                                            "Vial of water",
+                                            "Harralander",
+                                            "Red spiders\u0027 eggs"
+                                        ],
+                        "source":  "OSRS Wiki Herblore table"
+                    },
+                    {
+                        "level":  22,
+                        "output":  "Guthix balance",
+                        "ingredients":  [
+                                            "Restore potion",
+                                            "Garlic",
+                                            "Silver dust"
+                                        ],
+                        "source":  "OSRS Wiki Herblore table"
+                    },
+                    {
+                        "level":  25,
+                        "output":  "Blamish oil",
+                        "ingredients":  [
+                                            "Vial of water",
+                                            "Harralander",
+                                            "Blamish snail slime"
+                                        ],
+                        "source":  "OSRS Wiki Herblore table"
+                    },
+                    {
+                        "level":  26,
+                        "output":  "Energy potion",
+                        "ingredients":  [
+                                            "Vial of water",
+                                            "Harralander",
+                                            "Chocolate dust"
+                                        ],
+                        "source":  "OSRS Wiki Herblore table"
+                    },
+                    {
+                        "level":  30,
+                        "output":  "Defence potion",
+                        "ingredients":  [
+                                            "Vial of water",
+                                            "Ranarr weed",
+                                            "White berries"
+                                        ],
+                        "source":  "OSRS Wiki Herblore table"
+                    },
+                    {
+                        "level":  34,
+                        "output":  "Agility potion",
+                        "ingredients":  [
+                                            "Vial of water",
+                                            "Toadflax",
+                                            "Toad\u0027s legs"
+                                        ],
+                        "source":  "OSRS Wiki Herblore table"
+                    },
+                    {
+                        "level":  36,
+                        "output":  "Combat potion",
+                        "ingredients":  [
+                                            "Vial of water",
+                                            "Harralander",
+                                            "Goat horn dust"
+                                        ],
+                        "source":  "OSRS Wiki Herblore table"
+                    },
+                    {
+                        "level":  38,
+                        "output":  "Prayer potion",
+                        "ingredients":  [
+                                            "Vial of water",
+                                            "Ranarr weed",
+                                            "Snape grass"
+                                        ],
+                        "source":  "OSRS Wiki Herblore table"
+                    },
+                    {
+                        "level":  45,
+                        "output":  "Super attack",
+                        "ingredients":  [
+                                            "Vial of water",
+                                            "Irit leaf",
+                                            "Eye of newt"
+                                        ],
+                        "source":  "OSRS Wiki Herblore table"
+                    },
+                    {
+                        "level":  47,
+                        "output":  "Goblin potion",
+                        "ingredients":  [
+                                            "Vial of water",
+                                            "Toadflax",
+                                            "Pharmakos berries"
+                                        ],
+                        "source":  "OSRS Wiki Herblore table"
+                    },
+                    {
+                        "level":  48,
+                        "output":  "Superantipoison",
+                        "ingredients":  [
+                                            "Vial of water",
+                                            "Irit leaf",
+                                            "Unicorn horn dust"
+                                        ],
+                        "source":  "OSRS Wiki Herblore table"
+                    },
+                    {
+                        "level":  50,
+                        "output":  "Fishing potion",
+                        "ingredients":  [
+                                            "Vial of water",
+                                            "Avantoe",
+                                            "Snape grass"
+                                        ],
+                        "source":  "OSRS Wiki Herblore table"
+                    },
+                    {
+                        "level":  52,
+                        "output":  "Super energy",
+                        "ingredients":  [
+                                            "Vial of water",
+                                            "Avantoe",
+                                            "Mort myre fungus"
+                                        ],
+                        "source":  "OSRS Wiki Herblore table"
+                    },
+                    {
+                        "level":  52,
+                        "output":  "Shrink-me-quick",
+                        "ingredients":  [
+                                            "Vial of water",
+                                            "Tarromin",
+                                            "Shrunk ogleroot"
+                                        ],
+                        "source":  "OSRS Wiki Herblore table"
+                    },
+                    {
+                        "level":  53,
+                        "output":  "Hunter potion",
+                        "ingredients":  [
+                                            "Vial of water",
+                                            "Avantoe",
+                                            "Kebbit teeth dust"
+                                        ],
+                        "source":  "OSRS Wiki Herblore table"
+                    },
+                    {
+                        "level":  54,
+                        "output":  "Goading potion",
+                        "ingredients":  [
+                                            "Vial of water",
+                                            "Harralander",
+                                            "Aldarium"
+                                        ],
+                        "source":  "OSRS Wiki Herblore table"
+                    },
+                    {
+                        "level":  55,
+                        "output":  "Super strength",
+                        "ingredients":  [
+                                            "Vial of water",
+                                            "Kwuarm",
+                                            "Limpwurt root"
+                                        ],
+                        "source":  "OSRS Wiki Herblore table"
+                    },
+                    {
+                        "level":  56,
+                        "output":  "Haemostatic poultice",
+                        "ingredients":  [
+                                            "Vial of water",
+                                            "Elkhorn coral",
+                                            "Squid paste"
+                                        ],
+                        "source":  "OSRS Wiki Herblore table"
+                    },
+                    {
+                        "level":  56,
+                        "output":  "Haemostatic dressing",
+                        "ingredients":  [
+                                            "Haemostatic poultice",
+                                            "Cotton yarn"
+                                        ],
+                        "source":  "OSRS Wiki Herblore table"
+                    },
+                    {
+                        "level":  57,
+                        "output":  "Magic essence",
+                        "ingredients":  [
+                                            "Vial of water",
+                                            "Star flower",
+                                            "Gorak claw powder"
+                                        ],
+                        "source":  "OSRS Wiki Herblore table"
+                    },
+                    {
+                        "level":  58,
+                        "output":  "Prayer regeneration potion",
+                        "ingredients":  [
+                                            "Vial of water",
+                                            "Huasca",
+                                            "Aldarium"
+                                        ],
+                        "source":  "OSRS Wiki Herblore table"
+                    },
+                    {
+                        "level":  60,
+                        "output":  "Weapon poison",
+                        "ingredients":  [
+                                            "Vial of water",
+                                            "Kwuarm",
+                                            "Dragon scale dust"
+                                        ],
+                        "source":  "OSRS Wiki Herblore table"
+                    },
+                    {
+                        "level":  62,
+                        "output":  "Super fishing potion",
+                        "ingredients":  [
+                                            "Vial of water",
+                                            "Pillar coral",
+                                            "Haddock eye"
+                                        ],
+                        "source":  "OSRS Wiki Herblore table"
+                    },
+                    {
+                        "level":  63,
+                        "output":  "Super restore",
+                        "ingredients":  [
+                                            "Vial of water",
+                                            "Snapdragon",
+                                            "Red spiders\u0027 eggs"
+                                        ],
+                        "source":  "OSRS Wiki Herblore table"
+                    },
+                    {
+                        "level":  65,
+                        "output":  "Sanfew serum",
+                        "ingredients":  [
+                                            "Super restore",
+                                            "Unicorn horn dust",
+                                            "Snake weed Nail beast nails"
+                                        ],
+                        "source":  "OSRS Wiki Herblore table"
+                    },
+                    {
+                        "level":  66,
+                        "output":  "Extreme energy potion",
+                        "ingredients":  [
+                                            "Super energy",
+                                            "Yellow fin"
+                                        ],
+                        "source":  "OSRS Wiki Herblore table"
+                    },
+                    {
+                        "level":  66,
+                        "output":  "Super defence",
+                        "ingredients":  [
+                                            "Vial of water",
+                                            "Cadantine",
+                                            "White berries"
+                                        ],
+                        "source":  "OSRS Wiki Herblore table"
+                    },
+                    {
+                        "level":  67,
+                        "output":  "Super hunter potion",
+                        "ingredients":  [
+                                            "Vial of water",
+                                            "Pillar coral",
+                                            "Crab paste"
+                                        ],
+                        "source":  "OSRS Wiki Herblore table"
+                    },
+                    {
+                        "level":  68,
+                        "output":  "Antidote+",
+                        "ingredients":  [
+                                            "Coconut milk",
+                                            "Toadflax",
+                                            "Yew roots"
+                                        ],
+                        "source":  "OSRS Wiki Herblore table"
+                    },
+                    {
+                        "level":  69,
+                        "output":  "Antifire potion",
+                        "ingredients":  [
+                                            "Vial of water",
+                                            "Lantadyme",
+                                            "Dragon scale dust"
+                                        ],
+                        "source":  "OSRS Wiki Herblore table"
+                    },
+                    {
+                        "level":  70,
+                        "output":  "Divine super attack potion",
+                        "ingredients":  [
+                                            "Super attack",
+                                            "Crystal dust"
+                                        ],
+                        "source":  "OSRS Wiki Herblore table"
+                    },
+                    {
+                        "level":  70,
+                        "output":  "Divine super defence potion",
+                        "ingredients":  [
+                                            "Super defence",
+                                            "Crystal dust"
+                                        ],
+                        "source":  "OSRS Wiki Herblore table"
+                    },
+                    {
+                        "level":  70,
+                        "output":  "Divine super strength potion",
+                        "ingredients":  [
+                                            "Super strength",
+                                            "Crystal dust"
+                                        ],
+                        "source":  "OSRS Wiki Herblore table"
+                    },
+                    {
+                        "level":  72,
+                        "output":  "Ranging potion",
+                        "ingredients":  [
+                                            "Vial of water",
+                                            "Dwarf weed",
+                                            "Wine of zamorak"
+                                        ],
+                        "source":  "OSRS Wiki Herblore table"
+                    },
+                    {
+                        "level":  73,
+                        "output":  "Weapon poison+",
+                        "ingredients":  [
+                                            "Coconut milk",
+                                            "Cactus spine",
+                                            "Red spiders\u0027 eggs"
+                                        ],
+                        "source":  "OSRS Wiki Herblore table"
+                    },
+                    {
+                        "level":  74,
+                        "output":  "Divine ranging potion",
+                        "ingredients":  [
+                                            "Ranging potion",
+                                            "Crystal dust"
+                                        ],
+                        "source":  "OSRS Wiki Herblore table"
+                    },
+                    {
+                        "level":  76,
+                        "output":  "Magic potion",
+                        "ingredients":  [
+                                            "Vial of water",
+                                            "Lantadyme",
+                                            "Potato cactus"
+                                        ],
+                        "source":  "OSRS Wiki Herblore table"
+                    },
+                    {
+                        "level":  77,
+                        "output":  "Stamina potion",
+                        "ingredients":  [
+                                            "Super energy",
+                                            "Amylase crystal"
+                                        ],
+                        "source":  "OSRS Wiki Herblore table"
+                    },
+                    {
+                        "level":  78,
+                        "output":  "Zamorak brew",
+                        "ingredients":  [
+                                            "Vial of water",
+                                            "Torstol",
+                                            "Jangerberries"
+                                        ],
+                        "source":  "OSRS Wiki Herblore table"
+                    },
+                    {
+                        "level":  78,
+                        "output":  "Divine magic potion",
+                        "ingredients":  [
+                                            "Magic potion",
+                                            "Crystal dust"
+                                        ],
+                        "source":  "OSRS Wiki Herblore table"
+                    },
+                    {
+                        "level":  79,
+                        "output":  "Antidote++",
+                        "ingredients":  [
+                                            "Coconut milk",
+                                            "Irit leaf",
+                                            "Magic roots"
+                                        ],
+                        "source":  "OSRS Wiki Herblore table"
+                    },
+                    {
+                        "level":  80,
+                        "output":  "Bastion potion",
+                        "ingredients":  [
+                                            "Vial of blood",
+                                            "Cadantine",
+                                            "Wine of zamorak"
+                                        ],
+                        "source":  "OSRS Wiki Herblore table"
+                    },
+                    {
+                        "level":  80,
+                        "output":  "Battlemage potion",
+                        "ingredients":  [
+                                            "Vial of blood",
+                                            "Cadantine",
+                                            "Potato cactus"
+                                        ],
+                        "source":  "OSRS Wiki Herblore table"
+                    },
+                    {
+                        "level":  81,
+                        "output":  "Saradomin brew",
+                        "ingredients":  [
+                                            "Vial of water",
+                                            "Toadflax",
+                                            "Crushed nest"
+                                        ],
+                        "source":  "OSRS Wiki Herblore table"
+                    },
+                    {
+                        "level":  81,
+                        "output":  "Surge potion",
+                        "ingredients":  [
+                                            "Vial of water",
+                                            "Torstol",
+                                            "Demonic tallow"
+                                        ],
+                        "source":  "OSRS Wiki Herblore table"
+                    },
+                    {
+                        "level":  82,
+                        "output":  "Weapon poison++",
+                        "ingredients":  [
+                                            "Coconut milk",
+                                            "Cave nightshade Nightshade",
+                                            "Poison ivy berries"
+                                        ],
+                        "source":  "OSRS Wiki Herblore table"
+                    },
+                    {
+                        "level":  84,
+                        "output":  "Extended antifire",
+                        "ingredients":  [
+                                            "Antifire potion",
+                                            "Lava scale shard"
+                                        ],
+                        "source":  "OSRS Wiki Herblore table"
+                    },
+                    {
+                        "level":  85,
+                        "output":  "Ancient brew",
+                        "ingredients":  [
+                                            "Vial of water",
+                                            "Dwarf weed",
+                                            "Nihil dust"
+                                        ],
+                        "source":  "OSRS Wiki Herblore table"
+                    },
+                    {
+                        "level":  85,
+                        "output":  "Extended stamina potion",
+                        "ingredients":  [
+                                            "Stamina potion",
+                                            "Marlin scales"
+                                        ],
+                        "source":  "OSRS Wiki Herblore table"
+                    },
+                    {
+                        "level":  86,
+                        "output":  "Divine bastion potion",
+                        "ingredients":  [
+                                            "Bastion potion",
+                                            "Crystal dust"
+                                        ],
+                        "source":  "OSRS Wiki Herblore table"
+                    },
+                    {
+                        "level":  86,
+                        "output":  "Divine battlemage potion",
+                        "ingredients":  [
+                                            "Battlemage potion",
+                                            "Crystal dust"
+                                        ],
+                        "source":  "OSRS Wiki Herblore table"
+                    },
+                    {
+                        "level":  87,
+                        "output":  "Anti-venom",
+                        "ingredients":  [
+                                            "Antidote++",
+                                            "Zulrah\u0027s scales"
+                                        ],
+                        "source":  "OSRS Wiki Herblore table"
+                    },
+                    {
+                        "level":  88,
+                        "output":  "Menaphite remedy",
+                        "ingredients":  [
+                                            "Vial of water",
+                                            "Dwarf weed",
+                                            "Lily of the sands"
+                                        ],
+                        "source":  "OSRS Wiki Herblore table"
+                    },
+                    {
+                        "level":  89,
+                        "output":  "Armadyl brew",
+                        "ingredients":  [
+                                            "Vial of water",
+                                            "Umbral coral",
+                                            "Rainbow crab paste"
+                                        ],
+                        "source":  "OSRS Wiki Herblore table"
+                    },
+                    {
+                        "level":  90,
+                        "output":  "Super combat potion",
+                        "ingredients":  [
+                                            "Super attack Super strength Super defence",
+                                            "Torstol"
+                                        ],
+                        "source":  "OSRS Wiki Herblore table"
+                    },
+                    {
+                        "level":  91,
+                        "output":  "Forgotten brew",
+                        "ingredients":  [
+                                            "Ancient brew",
+                                            "Ancient essence"
+                                        ],
+                        "source":  "OSRS Wiki Herblore table"
+                    },
+                    {
+                        "level":  92,
+                        "output":  "Super antifire potion",
+                        "ingredients":  [
+                                            "Antifire potion",
+                                            "Crushed superior dragon bones"
+                                        ],
+                        "source":  "OSRS Wiki Herblore table"
+                    },
+                    {
+                        "level":  94,
+                        "output":  "Anti-venom+",
+                        "ingredients":  [
+                                            "Anti-venom",
+                                            "Torstol"
+                                        ],
+                        "source":  "OSRS Wiki Herblore table"
+                    },
+                    {
+                        "level":  94,
+                        "output":  "Extended anti-venom+",
+                        "ingredients":  [
+                                            "Anti-venom+",
+                                            "Araxyte venom sac"
+                                        ],
+                        "source":  "OSRS Wiki Herblore table"
+                    },
+                    {
+                        "level":  97,
+                        "output":  "Divine super combat potion",
+                        "ingredients":  [
+                                            "Super combat potion",
+                                            "Crystal dust"
+                                        ],
+                        "source":  "OSRS Wiki Herblore table"
+                    },
+                    {
+                        "level":  98,
+                        "output":  "Extended super antifire",
+                        "ingredients":  [
+                                            "Super antifire potion",
+                                            "Lava scale shard"
+                                        ],
+                        "source":  "OSRS Wiki Herblore table"
+                    }
+                ]
+}
