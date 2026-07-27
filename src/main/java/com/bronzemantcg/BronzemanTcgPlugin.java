@@ -107,12 +107,6 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	// survives because it routes through a different MenuAction entirely.
 	private static final Set<String> FORCED_DROP_ALLOWED = new HashSet<>(List.of(
 		"drop", "destroy"));
-	// Other Hub plugins that also gate actions on the OSRS TCG collection. Running one
-	// alongside us means two independent rule sets fighting over the same menu entries,
-	// so the welcome message points it out rather than trying to reconcile them. Matched
-	// on PluginDescriptor.name(); add display names here as they appear.
-	private static final Set<String> CONFLICTING_PLUGINS = new HashSet<>(List.of(
-		"TCG Locked"));
 	// osrs-tcg's PluginDescriptor name - the collection this plugin is built around.
 	// Checked via PluginManager rather than through its stored data, so this stays
 	// valid whichever way we end up reading the collection.
@@ -490,7 +484,7 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	}
 
 	/**
-	 * Drives both the delayed greeting and the recurring conflict reminder. Ticks only
+	 * Drives both the delayed greeting and recurring health notices. Ticks only
 	 * arrive while logged in, so a logged-out session never counts down.
 	 */
 	private void tickWelcomeTimers()
@@ -543,8 +537,6 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	private void showWelcomeMessage()
 	{
 		welcomeShown = true;
-		// Scheduled unconditionally: a conflicting plugin enabled mid-session should
-		// still get picked up at the next reminder.
 		reminderTicks = REMINDER_TICKS;
 		requiredPluginTicks = REQUIRED_PLUGIN_TICKS;
 
@@ -567,7 +559,6 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 			warnCollectionUnreadable();
 		}
 		warnRequiredPluginDisabled();
-		warnConflictingPlugins();
 	}
 
 	/** Re-checks periodically, so both notices keep surfacing while they still apply. */
@@ -576,7 +567,6 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 		reminderTicks = REMINDER_TICKS;
 		warnCollectionUnreadable();
 		// warnRequiredPluginDisabled() deliberately absent - it runs on its own faster timer.
-		warnConflictingPlugins();
 	}
 
 	/**
@@ -632,43 +622,6 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 			}
 		}
 		return false;
-	}
-
-	/**
-	 * Another plugin gating the same actions produces blocks this plugin can't explain,
-	 * so the player is told where to look rather than left guessing. Opt-out, since
-	 * anyone running both on purpose doesn't need reminding every half hour.
-	 */
-	private void warnConflictingPlugins()
-	{
-		if (!config.showConflictMessage())
-		{
-			return;
-		}
-		for (String name : activeConflictingPlugins())
-		{
-			queueChat("[Bronzeman TCG] - TCG Locked Plugin Detected! Please note, '" + name + "' is also enabled. "
-				+ "Double check your settings on both plugins to make sure everything works!"
-				+ " Disable this message in Bronzeman TCG Settings.");
-		}
-	}
-
-	/** Display names of enabled plugins we know conflict with this one. */
-	private List<String> activeConflictingPlugins()
-	{
-		List<String> found = new ArrayList<>();
-		for (Plugin plugin : pluginManager.getPlugins())
-		{
-			PluginDescriptor descriptor = plugin.getClass().getAnnotation(PluginDescriptor.class);
-			// Installed-but-disabled plugins don't touch menus, so they aren't worth a warning.
-			if (descriptor != null
-				&& CONFLICTING_PLUGINS.contains(descriptor.name())
-				&& pluginManager.isPluginEnabled(plugin))
-			{
-				found.add(descriptor.name());
-			}
-		}
-		return found;
 	}
 
 	/**

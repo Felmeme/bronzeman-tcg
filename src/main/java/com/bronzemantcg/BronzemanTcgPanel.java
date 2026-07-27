@@ -4,10 +4,12 @@ import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Container;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.FlowLayout;
+import java.awt.Image;
 import java.awt.Insets;
 import java.awt.LayoutManager;
 import java.awt.event.MouseAdapter;
@@ -32,6 +34,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -46,6 +49,7 @@ import net.runelite.client.ui.PluginPanel;
 import net.runelite.client.ui.components.IconTextField;
 import net.runelite.client.ui.components.materialtabs.MaterialTab;
 import net.runelite.client.ui.components.materialtabs.MaterialTabGroup;
+import net.runelite.client.util.ImageUtil;
 
 /**
  * Sidebar panel: card search, collection progress, and collapsible readiness checklists
@@ -146,8 +150,7 @@ class BronzemanTcgPanel extends PluginPanel
 	private MaterialTab sharedCardsTab;
 
 	private final JPanel importantUnlocksPanel = sectionBody();
-	private final JPanel importantUnlocksFilters = new JPanel(
-		new FlowLayout(FlowLayout.LEFT, 4, 0));
+	private final JPanel importantUnlocksFilters = new JPanel();
 
 	private final JCheckBox showLockedImportant = new JCheckBox("Show locked");
 
@@ -282,6 +285,8 @@ class BronzemanTcgPanel extends PluginPanel
 		importantUnlocksPanel.add(Box.createVerticalStrut(4));
 		importantUnlocksPanel.add(importantUnlocksList);
 
+		add(createPlaceholderBanner());
+		add(Box.createVerticalStrut(8));
 		add(searchBar);
 		add(Box.createVerticalStrut(4));
 		add(searchResults);
@@ -298,7 +303,7 @@ class BronzemanTcgPanel extends PluginPanel
 		addTab("PvM", pvmPanel, PanelTab.PVM);
 		addTab("Rumours", rumoursList, PanelTab.RUMOURS);
 		addTab("Recent Unlocks", recentUnlocksPanel, PanelTab.RECENT);
-		addTab("Important Unlocks", importantUnlocksPanel, PanelTab.IMPORTANT);
+		addTab("Collection", importantUnlocksPanel, PanelTab.IMPORTANT);
 		sharedCardsTab = addTab("Shared Cards", sharedCardsList, PanelTab.SHARED);
 		sharedCardsTab.setVisible(false);
 		tabs.select(tabs.getTab(0));
@@ -323,6 +328,29 @@ class BronzemanTcgPanel extends PluginPanel
 		});
 		tabs.addTab(tab);
 		return tab;
+	}
+
+	private static JPanel createPlaceholderBanner()
+	{
+		Color bronze = new Color(153, 102, 51);
+		JPanel banner = row(new BorderLayout(8, 0));
+		banner.setBackground(ColorScheme.DARKER_GRAY_COLOR);
+		banner.setBorder(BorderFactory.createCompoundBorder(
+			BorderFactory.createLineBorder(bronze),
+			BorderFactory.createEmptyBorder(4, 8, 4, 8)));
+		banner.setPreferredSize(new Dimension(PluginPanel.PANEL_WIDTH - 20, 46));
+		banner.setMaximumSize(new Dimension(Integer.MAX_VALUE, 46));
+
+		Image helmet = ImageUtil.loadImageResource(
+			BronzemanTcgPanel.class, "/panel_icon.png")
+			.getScaledInstance(24, 36, Image.SCALE_SMOOTH);
+		banner.add(new JLabel(new ImageIcon(helmet)), BorderLayout.WEST);
+
+		JLabel title = new JLabel("Bronzeman TCG");
+		title.setForeground(Color.WHITE);
+		title.setFont(title.getFont().deriveFont(Font.BOLD, 16f));
+		banner.add(title, BorderLayout.CENTER);
+		return banner;
 	}
 
 	private void updateSharedTabVisibility(boolean visible)
@@ -472,7 +500,9 @@ class BronzemanTcgPanel extends PluginPanel
 		boolean questStateChanged = first
 			|| !previous.completedQuests.equals(next.completedQuests);
 		snapshot = next;
-		updateSharedTabVisibility(!next.shared.isEmpty());
+		// Party-sharing controls whether this view exists. The Recent Unlocks
+		// "Show shared" preference only filters that tab and must not affect this one.
+		updateSharedTabVisibility(config.acceptSharedUnlocks());
 
 		if (ownedChanged)
 		{
@@ -914,9 +944,19 @@ class BronzemanTcgPanel extends PluginPanel
 	private JPanel clickableProgressRow(String label, int have, int total,
 		boolean complete, Runnable action)
 	{
-		JPanel row = progressRow(label, have, total, complete);
-		row.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		row.addMouseListener(new MouseAdapter()
+		JPanel row = compactProgressRow(label, have, total, complete);
+		makeClickable(row, action);
+		return row;
+	}
+
+	/**
+	 * Swing mouse events do not bubble from labels and progress bars to their parent
+	 * panel, so bind the same action to every visible part of an expandable row.
+	 */
+	private static void makeClickable(Component component, Runnable action)
+	{
+		component.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		component.addMouseListener(new MouseAdapter()
 		{
 			@Override
 			public void mouseClicked(MouseEvent event)
@@ -924,7 +964,13 @@ class BronzemanTcgPanel extends PluginPanel
 				action.run();
 			}
 		});
-		return row;
+		if (component instanceof Container)
+		{
+			for (Component child : ((Container) component).getComponents())
+			{
+				makeClickable(child, action);
+			}
+		}
 	}
 
 	private static String nestedKey(String parent, String child)
@@ -1027,7 +1073,7 @@ class BronzemanTcgPanel extends PluginPanel
 		}
 		if (categories.isEmpty())
 		{
-			sharedCardsList.add(mutedRow("No shared cards currently available"));
+			sharedCardsList.add(mutedRow("No shared cards currently available, check your party is correctly synced in TCG Locked Side Panel."));
 		}
 		sharedCardsList.revalidate();
 		sharedCardsList.repaint();
@@ -1040,7 +1086,7 @@ class BronzemanTcgPanel extends PluginPanel
 		for (ImportantUnlocksCatalog.Category source : importantUnlocksCatalog.getCategories())
 		{
 			List<String> items = sharedMatches(source.items, shared, assigned);
-			Map<String, List<String>> subcategories = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
+			Map<String, List<String>> subcategories = new LinkedHashMap<>();
 			for (ImportantUnlocksCatalog.Subcategory subcategory : source.subcategories)
 			{
 				List<String> matches = sharedMatches(subcategory.items, shared, assigned);
@@ -1082,7 +1128,6 @@ class BronzemanTcgPanel extends PluginPanel
 		{
 			result.add(new SharedCategory("Other Items", otherItems, Collections.emptyMap()));
 		}
-		result.sort(Comparator.comparing(category -> category.name, String.CASE_INSENSITIVE_ORDER));
 		return result;
 	}
 
@@ -1098,7 +1143,6 @@ class BronzemanTcgPanel extends PluginPanel
 				matches.add(candidate);
 			}
 		}
-		sortCardNames(matches);
 		return matches;
 	}
 
@@ -1111,17 +1155,13 @@ class BronzemanTcgPanel extends PluginPanel
 	{
 		boolean expanded = expandedSharedCategories.contains(category.name);
 		JPanel row = collapsibleCountRow(category.name, category.size(), expanded, 0);
-		row.addMouseListener(new MouseAdapter()
+		makeClickable(row, () ->
 		{
-			@Override
-			public void mouseClicked(MouseEvent event)
+			if (!expandedSharedCategories.remove(category.name))
 			{
-				if (!expandedSharedCategories.remove(category.name))
-				{
-					expandedSharedCategories.add(category.name);
-				}
-				refreshSharedCards();
+				expandedSharedCategories.add(category.name);
 			}
+			refreshSharedCards();
 		});
 		return row;
 	}
@@ -1131,17 +1171,13 @@ class BronzemanTcgPanel extends PluginPanel
 		String key = importantSubcategoryKey(category, subcategory);
 		boolean expanded = expandedSharedSubcategories.contains(key);
 		JPanel row = collapsibleCountRow(subcategory, count, expanded, 2);
-		row.addMouseListener(new MouseAdapter()
+		makeClickable(row, () ->
 		{
-			@Override
-			public void mouseClicked(MouseEvent event)
+			if (!expandedSharedSubcategories.remove(key))
 			{
-				if (!expandedSharedSubcategories.remove(key))
-				{
-					expandedSharedSubcategories.add(key);
-				}
-				refreshSharedCards();
+				expandedSharedSubcategories.add(key);
 			}
+			refreshSharedCards();
 		});
 		return row;
 	}
@@ -1242,12 +1278,21 @@ class BronzemanTcgPanel extends PluginPanel
 		importantUnlocksFilters.setOpaque(false);
 		importantUnlocksFilters.setAlignmentX(Component.LEFT_ALIGNMENT);
 		importantUnlocksFilters.setMaximumSize(new Dimension(Integer.MAX_VALUE, 30));
+		importantUnlocksFilters.setLayout(
+			new BoxLayout(importantUnlocksFilters, BoxLayout.X_AXIS));
 
-		for (JCheckBox checkBox : new JCheckBox[]{showLockedImportant, showUnlockedImportant})
+		JCheckBox[] checkBoxes = {showLockedImportant, showUnlockedImportant};
+		for (int index = 0; index < checkBoxes.length; index++)
 		{
+			JCheckBox checkBox = checkBoxes[index];
 			checkBox.setOpaque(false);
 			checkBox.setForeground(Color.WHITE);
 			checkBox.setFocusable(false);
+			checkBox.setMargin(new Insets(0, 0, 0, 0));
+			if (index > 0)
+			{
+				importantUnlocksFilters.add(Box.createHorizontalStrut(8));
+			}
 			importantUnlocksFilters.add(checkBox);
 			checkBox.addActionListener(event -> updateImportantUnlockFilters());
 		}
@@ -1378,20 +1423,15 @@ class BronzemanTcgPanel extends PluginPanel
 	private JPanel importantCategoryRow(ImportantUnlocksCatalog.Category category, int have)
 	{
 		boolean expanded = expandedImportantCategories.contains(category.name);
-		JPanel row = progressRow((expanded ? "▼ " : "▶ ") + category.name,
+		JPanel row = compactProgressRow((expanded ? "▼ " : "▶ ") + category.name,
 			have, category.allItems.size());
-		row.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		row.addMouseListener(new MouseAdapter()
+		makeClickable(row, () ->
 		{
-			@Override
-			public void mouseClicked(MouseEvent e)
+			if (!expandedImportantCategories.remove(category.name))
 			{
-				if (!expandedImportantCategories.remove(category.name))
-				{
-					expandedImportantCategories.add(category.name);
-				}
-				refreshImportantUnlocks();
+				expandedImportantCategories.add(category.name);
 			}
+			refreshImportantUnlocks();
 		});
 		return row;
 	}
@@ -1401,20 +1441,16 @@ class BronzemanTcgPanel extends PluginPanel
 	{
 		String key = importantSubcategoryKey(category.name, subcategory.name);
 		boolean expanded = expandedImportantSubcategories.contains(key);
-		JPanel row = progressRow("  " + (expanded ? "\u25bc " : "\u25b6 ") + subcategory.name,
+		JPanel row = compactProgressRow("  " + (expanded ? "\u25bc " : "\u25b6 ")
+				+ subcategory.name,
 			have, subcategory.items.size());
-		row.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		row.addMouseListener(new MouseAdapter()
+		makeClickable(row, () ->
 		{
-			@Override
-			public void mouseClicked(MouseEvent event)
+			if (!expandedImportantSubcategories.remove(key))
 			{
-				if (!expandedImportantSubcategories.remove(key))
-				{
-					expandedImportantSubcategories.add(key);
-				}
-				refreshImportantUnlocks();
+				expandedImportantSubcategories.add(key);
 			}
+			refreshImportantUnlocks();
 		});
 		return row;
 	}
@@ -1645,7 +1681,10 @@ class BronzemanTcgPanel extends PluginPanel
 	{
 		int have = entry.satisfiedCount(owned);
 		int total = entry.requirements.size();
-		JPanel row = progressRow(entry.name + (entry.miniquest ? " (mini)" : ""), have, Math.max(total, 0));
+		boolean expanded = expandedNames.contains(entry.name);
+		String label = (expanded ? "\u25bc " : "\u25b6 ") + entry.name
+			+ (entry.miniquest ? " (mini)" : "");
+		JPanel row = compactProgressRow(label, have, Math.max(total, 0));
 		if (!entry.notes.isEmpty())
 		{
 			row.setToolTipText(entry.notes);
@@ -1654,18 +1693,13 @@ class BronzemanTcgPanel extends PluginPanel
 		{
 			row.setToolTipText("No card-backed requirements - always completable");
 		}
-		row.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		row.addMouseListener(new MouseAdapter()
+		makeClickable(row, () ->
 		{
-			@Override
-			public void mouseClicked(MouseEvent e)
+			if (!expandedNames.remove(entry.name))
 			{
-				if (!expandedNames.remove(entry.name))
-				{
-					expandedNames.add(entry.name);
-				}
-				refresh.run();
+				expandedNames.add(entry.name);
 			}
+			refresh.run();
 		});
 		return row;
 	}
@@ -1956,6 +1990,47 @@ class BronzemanTcgPanel extends PluginPanel
 		bar.setForeground(complete ? UNLOCKED : ColorScheme.BRAND_ORANGE);
 		bar.setBackground(ColorScheme.DARKER_GRAY_COLOR);
 		row.add(bar, BorderLayout.SOUTH);
+		return row;
+	}
+
+	/**
+	 * Compact hierarchy row for expandable tab content: the title gets the flexible
+	 * space, while a small progress bar and an accurate x/y count stay aligned right.
+	 */
+	private static JPanel compactProgressRow(String label, int done, int total)
+	{
+		return compactProgressRow(label, done, total, done >= total);
+	}
+
+	private static JPanel compactProgressRow(String label, int done, int total,
+		boolean complete)
+	{
+		JPanel row = row(new BorderLayout(6, 0));
+		row.setBackground(ColorScheme.DARK_GRAY_COLOR);
+		row.setBorder(BorderFactory.createEmptyBorder(4, 0, 4, 4));
+
+		JLabel text = new JLabel(label);
+		text.setForeground(Color.WHITE);
+		text.setToolTipText(label.replace("\u25bc ", "").replace("\u25b6 ", "").trim());
+		row.add(text, BorderLayout.CENTER);
+
+		JPanel progress = new JPanel(new BorderLayout(6, 0));
+		progress.setOpaque(false);
+
+		JProgressBar bar = new JProgressBar(0, Math.max(total, 1));
+		bar.setValue(total == 0 && complete ? 1 : done);
+		bar.setPreferredSize(new Dimension(48, 6));
+		bar.setForeground(complete ? UNLOCKED : ColorScheme.BRAND_ORANGE);
+		bar.setBackground(ColorScheme.DARKER_GRAY_COLOR);
+		progress.add(bar, BorderLayout.CENTER);
+
+		JLabel count = new JLabel(done + "/" + total);
+		count.setForeground(ColorScheme.LIGHT_GRAY_COLOR);
+		count.setHorizontalAlignment(JLabel.RIGHT);
+		count.setPreferredSize(new Dimension(38, 16));
+		progress.add(count, BorderLayout.EAST);
+
+		row.add(progress, BorderLayout.EAST);
 		return row;
 	}
 
