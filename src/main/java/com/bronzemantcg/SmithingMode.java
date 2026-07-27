@@ -3,7 +3,7 @@ package com.bronzemantcg;
 /** Config dropdown; see BronzemanTcgConfig for the behaviour of each mode. */
 public enum SmithingMode
 {
-	OFF("No Card Needed"),
+	OFF("No Restrictions"),
 	BARS("Input Only"),
 	BOTH("Input + Output");
 

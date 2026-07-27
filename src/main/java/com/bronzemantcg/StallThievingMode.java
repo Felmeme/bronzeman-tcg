@@ -7,7 +7,7 @@ package com.bronzemantcg;
  */
 public enum StallThievingMode
 {
-	OFF("Off"),
+	OFF("No Restrictions"),
 	ANY_OF("Any Of"),
 	REQUIRE_ALL("All");
 

@@ -3,7 +3,7 @@ package com.bronzemantcg;
 /** One shared difficulty setting for ordinary Hunter methods. */
 public enum HunterMode
 {
-	OFF("Off"),
+	OFF("No Restrictions"),
 	TOOLS_ONLY("Tools Only"),
 	ALL_CARDS("All Cards");
 

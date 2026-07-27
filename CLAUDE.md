@@ -1,5 +1,36 @@
 # Bronzeman TCG — RuneLite plugin
 
+## NEXT SESSION (2026-07-27)
+- **v0.2.12 is committed and pushed** at
+  `71ccc0f923608f9b4834d3291df73a99e74464f4`; the Plugin Hub PR is waiting
+  to merge. Do not amend that release commit unless the owner explicitly
+  decides to replace the Hub hash. Suggested next patch version is 0.2.13;
+  0.3.0 remains reserved for completion of the full skills sweep.
+- **Start with the focused Herblore owner pass.** Test one unfinished potion
+  and one finished potion through both direct item use and Make-X, then walk
+  Off / Input Only / Require Unfinished / Require All. Capture one unfinished
+  and one finished `interface product` debug line. The eight uncertain
+  multi-stage recipes remain deliberately excluded.
+- After Herblore, the shortest useful checks are Stalls & Chests (Any Of /
+  All plus one Picklock and one Pick-lock chest), GotR player feedback, and
+  the deferred Sailing owner/player pass. Hunter and ordinary Runecrafting
+  passed on 2026-07-27; Fishing and Slayer are now feedback-led.
+- **Final 0.2.12 polish:** `showLockedMenuOptions` keeps its stable keyName,
+  is displayed as `Unhide Mouseover Options`, and now defaults false. The
+  side panel uses 10px horizontal padding, 2px dividers, 5px separation
+  between quest/main-category blocks, compact subcategory dividers, and
+  filled green bars for completed 0/0 entries.
+- **Quest corrections:** The Lost Tribe has two any-of groups (12 card-backed
+  pickaxes; 9 card-backed light sources). The Ribbiting Tale has one any-of
+  group (12 valid Woodcutting axes) plus Cuthbert. `QuestCatalog.Requirement`
+  already means OR within a group and AND between groups; do not add new
+  completion machinery. The Cuthbert fought-name alias remains a separate
+  attack-enforcement backlog item.
+- Keep the established cadence: inspect existing code and primary RuneLite
+  sources first, give the owner a concise plan/quiz before implementation,
+  avoid guessed menu strings, and use cached/local research before network
+  work. The owner manually tests and commits.
+
 ## HANDOFF NOTES (2026-07-12, written for the next assistant taking over)
 - **Stall thieving + LMS bypass: BUILT (2026-07-15), need in-game verify.**
   Stalls: 26 nodes (category "thieving-stalls") + StallThievingMode dropdown
@@ -363,8 +394,8 @@ salamanders. Pitfall Tease needs only Teasing stick in Tools, then Monster card
 where one exists plus guaranteed ordinary loot in All; knife/logs, optional fur
 and rumour parts are excluded. `scripts/rebuild_hunter_data.js` regenerates and
 validates the 26 ordinary rules. Chat feedback and the LMS bypass are now
-unconditional; `Show locked menu options` defaults on for non-NPC restrictions,
-while NPC visibility remains owned by NPC Locks. TCG Locked Party Sharing and
+unconditional; `Unhide Mouseover Options` defaults off for non-NPC
+restrictions, while NPC visibility remains owned by NPC Locks. TCG Locked Party Sharing and
 Conflict plugins message live under External Plugins. Herblore is rebuilt from
 `docs/herblore_actions.json` by `scripts/rebuild_herblore_data.js`: 82 verified
 standard recipes, with eight uncertain multi-stage recipes explicitly excluded

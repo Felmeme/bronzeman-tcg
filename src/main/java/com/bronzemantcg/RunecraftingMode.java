@@ -3,9 +3,9 @@ package com.bronzemantcg;
 /** Config dropdown; see BronzemanTcgConfig for the behaviour of each mode. */
 public enum RunecraftingMode
 {
-	OFF("Off"),
-	TALISMAN("Talisman"),
-	TALISMAN_RUNES("Talisman and Runes");
+	OFF("No Restrictions"),
+	TALISMAN("Input Only"),
+	TALISMAN_RUNES("Input + Output");
 
 	private final String label;
 

@@ -39,6 +39,7 @@ import net.runelite.api.events.MenuOptionClicked;
 import net.runelite.api.events.PlayerChanged;
 import net.runelite.api.events.PlayerDespawned;
 import net.runelite.api.events.PlayerSpawned;
+import net.runelite.api.events.PostMenuSort;
 import net.runelite.api.events.ScriptPostFired;
 import net.runelite.api.events.WidgetLoaded;
 import net.runelite.api.gameval.InterfaceID;
@@ -429,6 +430,7 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 				contentCatalog,
 				monsterAreaCatalog,
 				collectionReader,
+				sharedUnlockStore,
 				recentUnlocksTracker,
 				importantUnlocksCatalog,
 				config,
@@ -762,6 +764,16 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 			return false;
 		}
 		String optionLower = option.toLowerCase(Locale.ROOT);
+		int menuGroup = WidgetUtil.componentToInterface(entry.getParam1());
+
+		// Menu Entry Swapper promotes genuine inventory operations only after the menu has
+		// assembled. Removing Wear/Drink/Use entries here prevents a configured Drop operation
+		// from being promoted reliably. Keep inventory options present and let the click path
+		// consume every locked action except the explicit Drop/Destroy disposal choices.
+		if (isInventoryMenuVisibilityExempt(type, menuGroup))
+		{
+			return false;
+		}
 
 		switch (type)
 		{
@@ -861,7 +873,6 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 			case CC_OP:
 			case CC_OP_LOW_PRIORITY:
 			{
-				int menuGroup = WidgetUtil.componentToInterface(entry.getParam1());
 				// Shop menus mirror the click blocks exactly: Buy needs unlocked Coins and
 				// the item's card; Sell only needs Coins (selling is disposal, item-free).
 				if (menuGroup == InterfaceID.SHOPMAIN && optionLower.startsWith("buy"))
@@ -1208,12 +1219,18 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 			// player never saw arrive, so the offer is simply dropped.
 			return;
 		}
-		// Menus read effectiveOwnedCards() on demand and the ~3s sweep re-applies item marks, so a
-		// change needs no explicit refresh. The panel is left alone deliberately: it reports this
-		// player's own collection, which shared cards do not change. Nor are they fed to the
-		// unlocks tracker - they are not cards this player pulled, and listing them as recent
-		// unlocks would misreport their progress.
-		sharedUnlockStore.put((String) source, (List<?>) names);
+		// Menus read effectiveOwnedCards() on demand and the ~3s sweep re-applies item marks.
+		// The panel additionally shows the live shared set and an explicitly labelled shared
+		// history, so refresh only when either current state or that history changes.
+		boolean changed = sharedUnlockStore.put((String) source, (List<?>) names);
+		Set<String> sharedOnly = new HashSet<>(
+			sharedUnlockStore.getSharedCardNamesLowerCase());
+		sharedOnly.removeAll(collectionReader.getOwnedCardNamesLowerCase());
+		boolean newSharedUnlock = recentUnlocksTracker.updateShared(sharedOnly);
+		if (changed || newSharedUnlock)
+		{
+			refreshVisiblePanel();
+		}
 	}
 
 	/**
@@ -1748,6 +1765,92 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 		{
 			blockIfLockedItem(event, itemName);
 		}
+	}
+
+	static boolean isInventoryMenuVisibilityExempt(MenuAction type, int menuGroup)
+	{
+		if (menuGroup != InterfaceID.INVENTORY)
+		{
+			return false;
+		}
+		return type == MenuAction.WIDGET_TARGET
+			|| type == MenuAction.CC_OP
+			|| type == MenuAction.CC_OP_LOW_PRIORITY;
+	}
+
+	/**
+	 * Inventory entries must survive MenuEntryAdded so Menu Entry Swapper can see the complete
+	 * operation list. Its own PostMenuSort subscriber runs at the default priority; this lower
+	 * priority pass removes the blocked operations only after the configured left-click swap has
+	 * been applied, preserving a promoted Drop entry.
+	 */
+	@Subscribe(priority = -1.0f)
+	public void onPostMenuSort(PostMenuSort event)
+	{
+		if (isEnforcementBypassed() || config.showLockedMenuOptions())
+		{
+			return;
+		}
+		MenuEntry[] entries = client.getMenu().getMenuEntries();
+		List<MenuEntry> visible = new ArrayList<>(entries.length);
+		boolean changed = false;
+		for (MenuEntry entry : entries)
+		{
+			if (shouldHideInventoryEntryAfterSort(entry))
+			{
+				changed = true;
+			}
+			else
+			{
+				visible.add(entry);
+			}
+		}
+		if (changed)
+		{
+			client.getMenu().setMenuEntries(visible.toArray(new MenuEntry[0]));
+		}
+	}
+
+	private boolean shouldHideInventoryEntryAfterSort(MenuEntry entry)
+	{
+		MenuAction type = entry.getType();
+		int menuGroup = WidgetUtil.componentToInterface(entry.getParam1());
+		if (!isInventoryMenuVisibilityExempt(type, menuGroup))
+		{
+			return false;
+		}
+
+		String option = Text.removeTags(entry.getOption()).trim();
+		if (option.isEmpty())
+		{
+			return false;
+		}
+		if (type == MenuAction.WIDGET_TARGET)
+		{
+			String itemName = Text.removeTags(entry.getTarget()).trim();
+			return shouldHideLockedInventoryOption(option,
+				!itemName.isEmpty() && isBlockedItemName(itemName));
+		}
+		if (!entry.isItemOp() || entry.getItemId() <= 0)
+		{
+			return false;
+		}
+		String itemName = itemManager.getItemComposition(entry.getItemId()).getName();
+		if (itemName == null || itemName.isEmpty())
+		{
+			return false;
+		}
+		if (evaluateNodeRule(ResourceNodeCatalog.KIND_INVENTORY, itemName, option) != null)
+		{
+			return true;
+		}
+		return shouldHideLockedInventoryOption(option,
+			config.itemUsageMode() == LockState.LOCKED && isBlockedItemName(itemName));
+	}
+
+	static boolean shouldHideLockedInventoryOption(String option, boolean blocked)
+	{
+		return blocked && !isLockedItemDisposalOption(option);
 	}
 
 	/**

@@ -3,10 +3,10 @@ package com.bronzemantcg;
 /** Config dropdown; see BronzemanTcgConfig for the behaviour of each mode. */
 public enum ThievingMode
 {
-	OFF("Off"),
-	COINS_POUCH("Coins + Pouch"),
-	NPC_ONLY("Coins + Pouch + NPC"),
-	NPC_AND_LOOT("All");
+	OFF("No Restrictions"),
+	COINS_POUCH("Coins+Pouch"),
+	NPC_ONLY("Coins+Pouch+NPC"),
+	NPC_AND_LOOT("Require All");
 
 	private final String label;
 

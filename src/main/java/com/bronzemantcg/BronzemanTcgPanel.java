@@ -71,6 +71,7 @@ class BronzemanTcgPanel extends PluginPanel
 	private static final String SLAYER_SHOW_UNLOCKED_KEY = "slayerShowUnlocked";
 	private static final String PVM_SHOW_LOCKED_KEY = "pvmShowLocked";
 	private static final String PVM_SHOW_UNLOCKED_KEY = "pvmShowUnlocked";
+	private static final String RECENT_SHOW_SHARED_KEY = "recentShowShared";
 
 	private final TrackedMonsterCatalog monsterCatalog;
 	private final TrackedItemCatalog itemCatalog;
@@ -79,6 +80,7 @@ class BronzemanTcgPanel extends PluginPanel
 	private final ContentCatalog contentCatalog;
 	private final MonsterAreaCatalog monsterAreaCatalog;
 	private final TcgCollectionReader collectionReader;
+	private final SharedUnlockStore sharedUnlockStore;
 	private final RecentUnlocksTracker recentUnlocksTracker;
 	private final ImportantUnlocksCatalog importantUnlocksCatalog;
 	private final BronzemanTcgConfig config;
@@ -135,7 +137,13 @@ class BronzemanTcgPanel extends PluginPanel
 
 	private final JPanel recentUnlocksPanel = sectionBody();
 	private final IconTextField recentUnlocksSearchBar = new IconTextField();
+	private final JCheckBox showSharedRecent = new JCheckBox("Show shared");
 	private final JPanel recentUnlocksList = sectionBody();
+
+	private final JPanel sharedCardsList = sectionBody();
+	private final Set<String> expandedSharedCategories = new HashSet<>();
+	private final Set<String> expandedSharedSubcategories = new HashSet<>();
+	private MaterialTab sharedCardsTab;
 
 	private final JPanel importantUnlocksPanel = sectionBody();
 	private final JPanel importantUnlocksFilters = new JPanel(
@@ -157,6 +165,7 @@ class BronzemanTcgPanel extends PluginPanel
 			ContentCatalog contentCatalog,
 			MonsterAreaCatalog monsterAreaCatalog,
 			TcgCollectionReader collectionReader,
+			SharedUnlockStore sharedUnlockStore,
 			RecentUnlocksTracker recentUnlocksTracker,
 			ImportantUnlocksCatalog importantUnlocksCatalog,
 			BronzemanTcgConfig config,
@@ -170,6 +179,7 @@ class BronzemanTcgPanel extends PluginPanel
 		this.contentCatalog = contentCatalog;
 		this.monsterAreaCatalog = monsterAreaCatalog;
 		this.collectionReader = collectionReader;
+		this.sharedUnlockStore = sharedUnlockStore;
 		this.recentUnlocksTracker = recentUnlocksTracker;
 		this.importantUnlocksCatalog = importantUnlocksCatalog;
 		this.config = config;
@@ -237,6 +247,17 @@ class BronzemanTcgPanel extends PluginPanel
 		});
 		recentUnlocksPanel.add(recentUnlocksSearchBar);
 		recentUnlocksPanel.add(Box.createVerticalStrut(4));
+		showSharedRecent.setSelected(getSavedBoolean(RECENT_SHOW_SHARED_KEY, false));
+		showSharedRecent.setOpaque(false);
+		showSharedRecent.addActionListener(event ->
+		{
+			configManager.setConfiguration(BronzemanTcgConfig.GROUP,
+				RECENT_SHOW_SHARED_KEY, showSharedRecent.isSelected());
+			dirtyTabs.add(PanelTab.RECENT);
+			renderSelectedTab();
+		});
+		recentUnlocksPanel.add(showSharedRecent);
+		recentUnlocksPanel.add(Box.createVerticalStrut(4));
 		recentUnlocksPanel.add(recentUnlocksList);
 
 		configureQuestFilters();
@@ -278,6 +299,8 @@ class BronzemanTcgPanel extends PluginPanel
 		addTab("Rumours", rumoursList, PanelTab.RUMOURS);
 		addTab("Recent Unlocks", recentUnlocksPanel, PanelTab.RECENT);
 		addTab("Important Unlocks", importantUnlocksPanel, PanelTab.IMPORTANT);
+		sharedCardsTab = addTab("Shared Cards", sharedCardsList, PanelTab.SHARED);
+		sharedCardsTab.setVisible(false);
 		tabs.select(tabs.getTab(0));
 		add(tabs);
 		add(Box.createVerticalStrut(4));
@@ -285,7 +308,7 @@ class BronzemanTcgPanel extends PluginPanel
 
 	}
 
-	private void addTab(String title, JPanel content, PanelTab panelTab)
+	private MaterialTab addTab(String title, JPanel content, PanelTab panelTab)
 	{
 		content.setAlignmentX(Component.LEFT_ALIGNMENT);
 		tabDisplay.addCard(panelTab, content);
@@ -299,6 +322,24 @@ class BronzemanTcgPanel extends PluginPanel
 			return true;
 		});
 		tabs.addTab(tab);
+		return tab;
+	}
+
+	private void updateSharedTabVisibility(boolean visible)
+	{
+		if (sharedCardsTab == null || sharedCardsTab.isVisible() == visible)
+		{
+			return;
+		}
+		sharedCardsTab.setVisible(visible);
+		if (!visible && selectedTab == PanelTab.SHARED)
+		{
+			selectedTab = PanelTab.QUESTS;
+			tabDisplay.showCard(PanelTab.QUESTS);
+			tabs.select(tabs.getTab(0));
+		}
+		tabs.revalidate();
+		tabs.repaint();
 	}
 
 	/**
@@ -358,10 +399,15 @@ class BronzemanTcgPanel extends PluginPanel
 
 		Set<String> owned = Collections.unmodifiableSet(
 			new HashSet<>(collectionReader.getOwnedCardNamesLowerCase()));
+		Set<String> shared = new HashSet<>(sharedUnlockStore.getSharedCardNamesLowerCase());
+		shared.removeAll(owned);
+		Set<String> visibleShared = config.acceptSharedUnlocks()
+			? Collections.unmodifiableSet(shared) : Collections.emptySet();
 		boolean includeSlayerSuperiors = config.restrictSlayerSuperiors();
 		Set<String> completed = completedQuestNames;
 
-		return new PanelSnapshot(data, owned, recentUnlocksTracker.getRecent(),
+		return new PanelSnapshot(data, owned, visibleShared, recentUnlocksTracker.getRecent(),
+			recentUnlocksTracker.getSharedRecent(),
 			includeSlayerSuperiors, completed,
 			countUnlocked(monsterCatalog.getEntityToCards(), owned),
 			countUnlocked(itemCatalog.getEntityToCards(), owned));
@@ -418,12 +464,15 @@ class BronzemanTcgPanel extends PluginPanel
 		PanelSnapshot previous = snapshot;
 		boolean first = previous == null;
 		boolean ownedChanged = first || !previous.owned.equals(next.owned);
-		boolean recentChanged = first || !sameUnlocks(previous.recentUnlocks, next.recentUnlocks);
+		boolean sharedChanged = first || !previous.shared.equals(next.shared);
+		boolean recentChanged = first || !sameUnlocks(previous.recentUnlocks, next.recentUnlocks)
+			|| !sameUnlocks(previous.sharedRecentUnlocks, next.sharedRecentUnlocks);
 		boolean slayerChanged = first
 			|| previous.includeSlayerSuperiors != next.includeSlayerSuperiors;
 		boolean questStateChanged = first
 			|| !previous.completedQuests.equals(next.completedQuests);
 		snapshot = next;
+		updateSharedTabVisibility(!next.shared.isEmpty());
 
 		if (ownedChanged)
 		{
@@ -434,6 +483,10 @@ class BronzemanTcgPanel extends PluginPanel
 		if (recentChanged)
 		{
 			dirtyTabs.add(PanelTab.RECENT);
+		}
+		if (sharedChanged)
+		{
+			dirtyTabs.add(PanelTab.SHARED);
 		}
 		if (slayerChanged)
 		{
@@ -472,6 +525,9 @@ class BronzemanTcgPanel extends PluginPanel
 				break;
 			case IMPORTANT:
 				refreshImportantUnlocks();
+				break;
+			case SHARED:
+				refreshSharedCards();
 				break;
 			default:
 				break;
@@ -909,12 +965,20 @@ class BronzemanTcgPanel extends PluginPanel
 		}
 		String query = recentUnlocksSearchBar.getText() == null ? ""
 			: recentUnlocksSearchBar.getText().trim().toLowerCase(Locale.ROOT);
-		for (RecentUnlocksTracker.Unlock unlock : snapshot.recentUnlocks)
+		List<RecentUnlocksTracker.Unlock> unlocks = new ArrayList<>(snapshot.recentUnlocks);
+		if (showSharedRecent.isSelected())
+		{
+			unlocks.addAll(snapshot.sharedRecentUnlocks);
+			unlocks.sort(Comparator.comparingLong(
+				(RecentUnlocksTracker.Unlock unlock) -> unlock.time).reversed()
+				.thenComparing(unlock -> unlock.name));
+		}
+		for (RecentUnlocksTracker.Unlock unlock : unlocks)
 		{
 			String name = displayCardName(unlock.name);
 			if (query.isEmpty() || name.toLowerCase(Locale.ROOT).contains(query))
 			{
-				recentUnlocksList.add(recentUnlockRow(name, unlock.time));
+				recentUnlocksList.add(recentUnlockRow(name, unlock.time, unlock.shared));
 			}
 		}
 		if (recentUnlocksList.getComponentCount() == 0)
@@ -924,6 +988,177 @@ class BronzemanTcgPanel extends PluginPanel
 		}
 		recentUnlocksList.revalidate();
 		recentUnlocksList.repaint();
+	}
+
+	private void refreshSharedCards()
+	{
+		sharedCardsList.removeAll();
+		List<SharedCategory> categories = buildSharedCategories(snapshot.shared);
+		for (int index = 0; index < categories.size(); index++)
+		{
+			SharedCategory category = categories.get(index);
+			if (index > 0)
+			{
+				addSpacedDivider(sharedCardsList);
+			}
+			sharedCardsList.add(sharedCategoryRow(category));
+			if (!expandedSharedCategories.contains(category.name))
+			{
+				continue;
+			}
+			for (String card : category.items)
+			{
+				sharedCardsList.add(statusRow("  " + displayCardName(card), true, null));
+			}
+			for (Map.Entry<String, List<String>> entry : category.subcategories.entrySet())
+			{
+				String key = importantSubcategoryKey(category.name, entry.getKey());
+				sharedCardsList.add(sharedSubcategoryRow(category.name, entry.getKey(),
+					entry.getValue().size()));
+				if (expandedSharedSubcategories.contains(key))
+				{
+					for (String card : entry.getValue())
+					{
+						sharedCardsList.add(statusRow(
+							"    " + displayCardName(card), true, null));
+					}
+				}
+			}
+		}
+		if (categories.isEmpty())
+		{
+			sharedCardsList.add(mutedRow("No shared cards currently available"));
+		}
+		sharedCardsList.revalidate();
+		sharedCardsList.repaint();
+	}
+
+	private List<SharedCategory> buildSharedCategories(Set<String> shared)
+	{
+		Set<String> assigned = new HashSet<>();
+		List<SharedCategory> result = new ArrayList<>();
+		for (ImportantUnlocksCatalog.Category source : importantUnlocksCatalog.getCategories())
+		{
+			List<String> items = sharedMatches(source.items, shared, assigned);
+			Map<String, List<String>> subcategories = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
+			for (ImportantUnlocksCatalog.Subcategory subcategory : source.subcategories)
+			{
+				List<String> matches = sharedMatches(subcategory.items, shared, assigned);
+				if (!matches.isEmpty())
+				{
+					subcategories.put(subcategory.name, matches);
+				}
+			}
+			if (!items.isEmpty() || !subcategories.isEmpty())
+			{
+				result.add(new SharedCategory(source.name, items, subcategories));
+			}
+		}
+
+		List<String> monsters = new ArrayList<>();
+		List<String> otherItems = new ArrayList<>();
+		for (String card : shared)
+		{
+			if (assigned.contains(card))
+			{
+				continue;
+			}
+			if (monsterCatalog.findDisplayCardName(card) != null)
+			{
+				monsters.add(card);
+			}
+			else
+			{
+				otherItems.add(card);
+			}
+		}
+		sortCardNames(monsters);
+		sortCardNames(otherItems);
+		if (!monsters.isEmpty())
+		{
+			result.add(new SharedCategory("Monsters", monsters, Collections.emptyMap()));
+		}
+		if (!otherItems.isEmpty())
+		{
+			result.add(new SharedCategory("Other Items", otherItems, Collections.emptyMap()));
+		}
+		result.sort(Comparator.comparing(category -> category.name, String.CASE_INSENSITIVE_ORDER));
+		return result;
+	}
+
+	private List<String> sharedMatches(List<String> candidates, Set<String> shared,
+		Set<String> assigned)
+	{
+		List<String> matches = new ArrayList<>();
+		for (String candidate : candidates)
+		{
+			String normalized = candidate.toLowerCase(Locale.ROOT);
+			if (shared.contains(normalized) && assigned.add(normalized))
+			{
+				matches.add(candidate);
+			}
+		}
+		sortCardNames(matches);
+		return matches;
+	}
+
+	private void sortCardNames(List<String> cards)
+	{
+		cards.sort(Comparator.comparing(this::displayCardName, String.CASE_INSENSITIVE_ORDER));
+	}
+
+	private JPanel sharedCategoryRow(SharedCategory category)
+	{
+		boolean expanded = expandedSharedCategories.contains(category.name);
+		JPanel row = collapsibleCountRow(category.name, category.size(), expanded, 0);
+		row.addMouseListener(new MouseAdapter()
+		{
+			@Override
+			public void mouseClicked(MouseEvent event)
+			{
+				if (!expandedSharedCategories.remove(category.name))
+				{
+					expandedSharedCategories.add(category.name);
+				}
+				refreshSharedCards();
+			}
+		});
+		return row;
+	}
+
+	private JPanel sharedSubcategoryRow(String category, String subcategory, int count)
+	{
+		String key = importantSubcategoryKey(category, subcategory);
+		boolean expanded = expandedSharedSubcategories.contains(key);
+		JPanel row = collapsibleCountRow(subcategory, count, expanded, 2);
+		row.addMouseListener(new MouseAdapter()
+		{
+			@Override
+			public void mouseClicked(MouseEvent event)
+			{
+				if (!expandedSharedSubcategories.remove(key))
+				{
+					expandedSharedSubcategories.add(key);
+				}
+				refreshSharedCards();
+			}
+		});
+		return row;
+	}
+
+	private static JPanel collapsibleCountRow(String label, int count, boolean expanded, int indent)
+	{
+		JPanel row = row(new BorderLayout(6, 0));
+		row.setBackground(ColorScheme.DARK_GRAY_COLOR);
+		row.setBorder(BorderFactory.createEmptyBorder(4, indent, 4, 4));
+		row.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		JLabel name = new JLabel((expanded ? "▼ " : "▶ ") + label);
+		name.setForeground(Color.WHITE);
+		row.add(name, BorderLayout.CENTER);
+		JLabel total = new JLabel(Integer.toString(count));
+		total.setForeground(ColorScheme.LIGHT_GRAY_COLOR);
+		row.add(total, BorderLayout.EAST);
+		return row;
 	}
 
 	private void configureQuestFilters()
@@ -1564,7 +1799,7 @@ class BronzemanTcgPanel extends PluginPanel
 		{
 			RecentUnlocksTracker.Unlock a = first.get(i);
 			RecentUnlocksTracker.Unlock b = second.get(i);
-			if (a.time != b.time || !a.name.equals(b.name))
+			if (a.time != b.time || a.shared != b.shared || !a.name.equals(b.name))
 			{
 				return false;
 			}
@@ -1649,7 +1884,7 @@ class BronzemanTcgPanel extends PluginPanel
 		return row;
 	}
 
-	private static JPanel recentUnlockRow(String name, long time)
+	private static JPanel recentUnlockRow(String name, long time, boolean shared)
 	{
 		JPanel row = row(new BorderLayout(6, 0));
 		row.setBackground(ColorScheme.DARKER_GRAY_COLOR);
@@ -1659,12 +1894,14 @@ class BronzemanTcgPanel extends PluginPanel
 		nameLabel.setForeground(Color.WHITE);
 		row.add(nameLabel, BorderLayout.CENTER);
 
-		JLabel status = new JLabel("✓");
-		status.setForeground(UNLOCKED);
-		status.setFont(status.getFont().deriveFont(Font.BOLD));
+		JLabel status = new JLabel(shared ? "Shared" : "✓");
+		status.setForeground(shared ? ColorScheme.LIGHT_GRAY_COLOR : UNLOCKED);
+		status.setFont(shared
+			? status.getFont().deriveFont(10f) : status.getFont().deriveFont(Font.BOLD));
 		row.add(status, BorderLayout.EAST);
 
-		JLabel when = new JLabel("Unlocked " + UNLOCK_TIME_FORMAT.format(Instant.ofEpochMilli(time)));
+		JLabel when = new JLabel((shared ? "Shared " : "Unlocked ")
+			+ UNLOCK_TIME_FORMAT.format(Instant.ofEpochMilli(time)));
 		when.setForeground(ColorScheme.LIGHT_GRAY_COLOR);
 		when.setFont(when.getFont().deriveFont(11f));
 		row.add(when, BorderLayout.SOUTH);
@@ -1749,7 +1986,8 @@ class BronzemanTcgPanel extends PluginPanel
 		PVM,
 		RUMOURS,
 		RECENT,
-		IMPORTANT
+		IMPORTANT,
+		SHARED
 	}
 
 	/**
@@ -1911,25 +2149,55 @@ class BronzemanTcgPanel extends PluginPanel
 	{
 		private final PreparedData data;
 		private final Set<String> owned;
+		private final Set<String> shared;
 		private final List<RecentUnlocksTracker.Unlock> recentUnlocks;
+		private final List<RecentUnlocksTracker.Unlock> sharedRecentUnlocks;
 		private final boolean includeSlayerSuperiors;
 		private final Set<String> completedQuests;
 		private final int unlockedMonsters;
 		private final int unlockedItems;
 
-		private PanelSnapshot(PreparedData data, Set<String> owned,
+		private PanelSnapshot(PreparedData data, Set<String> owned, Set<String> shared,
 			List<RecentUnlocksTracker.Unlock> recentUnlocks,
+			List<RecentUnlocksTracker.Unlock> sharedRecentUnlocks,
 			boolean includeSlayerSuperiors, Set<String> completedQuests,
 			int unlockedMonsters,
 			int unlockedItems)
 		{
 			this.data = data;
 			this.owned = owned;
+			this.shared = shared;
 			this.recentUnlocks = recentUnlocks;
+			this.sharedRecentUnlocks = sharedRecentUnlocks;
 			this.includeSlayerSuperiors = includeSlayerSuperiors;
 			this.completedQuests = completedQuests;
 			this.unlockedMonsters = unlockedMonsters;
 			this.unlockedItems = unlockedItems;
+		}
+	}
+
+	private static class SharedCategory
+	{
+		private final String name;
+		private final List<String> items;
+		private final Map<String, List<String>> subcategories;
+
+		private SharedCategory(String name, List<String> items,
+			Map<String, List<String>> subcategories)
+		{
+			this.name = name;
+			this.items = items;
+			this.subcategories = subcategories;
+		}
+
+		private int size()
+		{
+			int count = items.size();
+			for (List<String> values : subcategories.values())
+			{
+				count += values.size();
+			}
+			return count;
 		}
 	}
 

@@ -3,9 +3,9 @@ package com.bronzemantcg;
 /** Config dropdown and enforcement policy for ordinary Herblore recipes. */
 public enum HerbloreMode
 {
-	OFF("Off"),
+	OFF("No Restrictions"),
 	INPUT_ONLY("Input Only"),
-	REQUIRE_UNFINISHED("Require Unfinished"),
+	REQUIRE_UNFINISHED("Input + Pots"),
 	REQUIRE_ALL("Require All");
 
 	private final String label;

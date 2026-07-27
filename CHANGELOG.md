@@ -20,7 +20,8 @@ the same commit as each release.
   object IDs keep visually identical chests separate, while the shared setting
   remains Off / Any Of / All.
 - Locked non-NPC menu options can remain visible while their clicks are still
-  blocked, making the missing-card feedback easier to discover.
+  blocked, making the missing-card feedback easier to discover. The opt-in
+  setting is now named Unhide Mouseover Options and defaults off.
 - Herblore now has Off / Input Only / Require Unfinished / Require All modes.
   Its 82 verified recipes are enforced consistently on both immediate
   item-on-item mixing and the Make-X interface.
@@ -36,6 +37,11 @@ the same commit as each release.
   the Rift correctly ignores ordinary talisman and essence requirements.
 - Sailing's dedicated interfaces now use widget item IDs when available and
   produce focused debug evidence when an interaction still needs mapping.
+- The Lost Tribe now requires any card-backed pickaxe plus any card-backed
+  light source. The Ribbiting Tale now requires any valid Woodcutting axe plus
+  Cuthbert's card.
+- Side-panel quest and Important Unlocks lists have clearer spacing and
+  dividers. Completed 0/0 entries now display a filled green progress bar.
 
 ## v0.2.11 — 2026-07-25
 

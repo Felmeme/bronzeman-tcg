@@ -10,7 +10,7 @@ public enum FishingRestrictionMode
 {
 	OFF("No Restrictions"),
 	TOOL_ONLY("Tools Only"),
-	CARD_REQUIRED("Tools + Any Fish"),
+	CARD_REQUIRED("Tools + Any of"),
 	ALL_CATCHES("Tools + Fish");
 
 	private final String label;

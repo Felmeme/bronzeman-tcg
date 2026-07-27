@@ -4,7 +4,7 @@ package com.bronzemantcg;
 public enum SlayerMode
 {
 	OFF("No Restrictions"),
-	MASTER("Require Slayer Master"),
+	MASTER("Master Cards Only"),
 	FULL("Full Task List");
 
 	private final String label;

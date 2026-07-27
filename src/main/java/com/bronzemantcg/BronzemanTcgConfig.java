@@ -344,10 +344,10 @@ public interface BronzemanTcgConfig extends Config
 
 	@ConfigItem(
 		keyName = "showLockedMenuOptions",
-		name = "Unhide Mouseover Options",
-		description = "Keep blocked options visible for resources, ground items, shops and "
-			+ "inventory interactions."
+		name = "Show Mouseover Options",
+		description = "Keep blocked options visible for resources, ground items and shops."
 			+ "<br>The click is still blocked and chat explains which cards are missing."
+			+ "<br>Inventory options always remain visible so Menu Entry Swapper choices work."
 			+ "<br>NPC options continue to follow the separate NPC Locks setting.",
 		section = generalSettings,
 		position = 10
