@@ -23,7 +23,8 @@ public interface BronzemanTcgConfig extends Config
 	@ConfigSection(
 			name = "Visuals",
 			description = "How locked NPCs and items are shown in the game world.",
-			position = 2
+			position = 2,
+			closedByDefault = true
 	)
 	String visualsSection = "visualsSection";
 
@@ -37,49 +38,56 @@ public interface BronzemanTcgConfig extends Config
 	@ConfigSection(
 			name = "Cooking",
 			description = "Cooking raw food requires the cooked (and optionally burnt) item cards.",
-			position = 3
+			position = 3,
+			closedByDefault = true
 	)
 	String cookingSection = "cookingSection";
 
 	@ConfigSection(
 			name = "Crafting",
 			description = "Crafting and enchanting require the input and output item cards.",
-			position = 4
+			position = 4,
+			closedByDefault = true
 	)
 	String craftingSection = "craftingSection";
 
 	@ConfigSection(
 			name = "Farming",
 			description = "Patch and compost restrictions.",
-			position = 5
+			position = 5,
+			closedByDefault = true
 	)
 	String farmingSection = "farmingSection";
 
 	@ConfigSection(
 			name = "Firemaking",
 			description = "Lighting fires requires the log (and optionally Tinderbox) cards.",
-			position = 6
+			position = 6,
+			closedByDefault = true
 	)
 	String firemakingSection = "firemakingSection";
 
 	@ConfigSection(
 			name = "Fishing",
 			description = "Fishing restrictions.",
-			position = 7
+			position = 7,
+			closedByDefault = true
 	)
 	String fishingSection = "fishingSection";
 
 	@ConfigSection(
 			name = "Fletching",
 			description = "Fletching restrictions.",
-			position = 8
+			position = 8,
+			closedByDefault = true
 	)
 	String fletchingSection = "fletchingSection";
 
 	@ConfigSection(
 			name = "Herblore",
 			description = "Herblore restrictions.",
-			position = 9
+			position = 9,
+			closedByDefault = true
 	)
 	String herbloreSection = "herbloreSection";
 
@@ -87,28 +95,32 @@ public interface BronzemanTcgConfig extends Config
 			name = "Hunter",
 			description = "Choose whether Hunter methods require no cards, their tools, or all "
 				+ "relevant tool, creature and guaranteed-loot cards.",
-			position = 10
+			position = 10,
+			closedByDefault = true
 	)
 	String hunterSection = "hunterSection";
 
 	@ConfigSection(
 			name = "Mining",
 			description = "Mining restrictions.",
-			position = 11
+			position = 11,
+			closedByDefault = true
 	)
 	String miningSection = "miningSection";
 
 	@ConfigSection(
 			name = "Runecrafting",
 			description = "Runecrafting restrictions.",
-			position = 12
+			position = 12,
+			closedByDefault = true
 	)
 	String runecraftingSection = "runecraftingSection";
 
 	@ConfigSection(
 			name = "Sailing",
 			description = "Boat upgrade and salvaging restrictions.",
-			position = 13
+			position = 13,
+			closedByDefault = true
 	)
 	String sailingSection = "sailingSection";
 
@@ -116,28 +128,32 @@ public interface BronzemanTcgConfig extends Config
 	@ConfigSection(
 			name = "Slayer",
 			description = "Slayer master restrictions.",
-			position = 14
+			position = 14,
+			closedByDefault = true
 	)
 	String slayerSection = "slayerSection";
 
 	@ConfigSection(
 			name = "Smithing",
 			description = "Smelting bars and smithing items require ore, bar and product cards.",
-			position = 15
+			position = 15,
+			closedByDefault = true
 	)
 	String smithingSection = "smithingSection";
 
 	@ConfigSection(
 			name = "Thieving",
 			description = "Pickpocketing restrictions.",
-			position = 16
+			position = 16,
+			closedByDefault = true
 	)
 	String thievingSection = "thievingSection";
 
 	@ConfigSection(
 			name = "Woodcutting",
 			description = "Woodcutting restrictions.",
-			position = 17
+			position = 17,
+			closedByDefault = true
 	)
 	String woodcuttingSection = "woodcuttingSection";
 

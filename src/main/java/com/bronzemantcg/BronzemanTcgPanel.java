@@ -9,19 +9,26 @@ import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.Insets;
 import java.awt.LayoutManager;
+import java.awt.Rectangle;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
+import java.lang.reflect.Method;
 import java.time.Instant;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.ArrayDeque;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.EnumMap;
 import java.util.EnumSet;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -29,26 +36,37 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
+import java.util.Deque;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.atomic.AtomicBoolean;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import javax.swing.JColorChooser;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
+import javax.swing.JScrollPane;
+import javax.swing.JSpinner;
+import javax.swing.JTextField;
+import javax.swing.SpinnerNumberModel;
+import javax.swing.Scrollable;
 import javax.swing.SwingUtilities;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.client.config.ConfigManager;
+import net.runelite.client.config.ConfigItem;
+import net.runelite.client.config.Range;
+import net.runelite.client.game.ItemManager;
 import net.runelite.client.ui.ColorScheme;
 import net.runelite.client.ui.PluginPanel;
 import net.runelite.client.ui.components.IconTextField;
-import net.runelite.client.ui.components.materialtabs.MaterialTab;
-import net.runelite.client.ui.components.materialtabs.MaterialTabGroup;
+import net.runelite.client.util.AsyncBufferedImage;
 import net.runelite.client.util.ImageUtil;
 
 /**
@@ -87,6 +105,8 @@ class BronzemanTcgPanel extends PluginPanel
 	private final SharedUnlockStore sharedUnlockStore;
 	private final RecentUnlocksTracker recentUnlocksTracker;
 	private final ImportantUnlocksCatalog importantUnlocksCatalog;
+	private final CardKnowledgeCatalog cardKnowledgeCatalog;
+	private final ItemManager itemManager;
 	private final BronzemanTcgConfig config;
 	private final ConfigManager configManager;
 	private final ScheduledExecutorService executor;
@@ -97,18 +117,19 @@ class BronzemanTcgPanel extends PluginPanel
 	private volatile boolean disposed;
 	private PanelSnapshot snapshot;
 	private PanelTab selectedTab = PanelTab.QUESTS;
+	private PanelTab lastContentTab = PanelTab.QUESTS;
 
 	private final IconTextField searchBar = new IconTextField();
 	private final JPanel searchResults = sectionBody();
 	private final JPanel progressList = sectionBody();
 
-	// One list per tab. MaterialTabGroup swaps the selected list into tabDisplay, so the
-	// old per-section collapse state is gone - a tab is either shown or it isn't.
-	// MaterialTabGroup normally removes and re-adds the selected panel on every click,
-	// forcing Swing to lay out hundreds of rows again. Keep every panel attached and let
-	// CardLayout switch visibility instead.
+	// Every view remains attached and CardLayout switches visibility, avoiding a full
+	// Swing rebuild when the bronze navigation buttons change selection.
 	private final SelectedCardPanel tabDisplay = new SelectedCardPanel();
-	private final MaterialTabGroup tabs = new MaterialTabGroup();
+	private final JScrollPane contentScroll;
+	private final JPanel navigationGrid = sectionBody();
+	private final Map<PanelTab, JButton> navigationButtons = new EnumMap<>(PanelTab.class);
+	private boolean sharedCardsVisible;
 
 	private final JPanel questPanel = sectionBody();
 	private final JPanel questFilters = new JPanel(new FlowLayout(FlowLayout.LEFT, 4, 0));
@@ -147,7 +168,9 @@ class BronzemanTcgPanel extends PluginPanel
 	private final JPanel sharedCardsList = sectionBody();
 	private final Set<String> expandedSharedCategories = new HashSet<>();
 	private final Set<String> expandedSharedSubcategories = new HashSet<>();
-	private MaterialTab sharedCardsTab;
+	private final JPanel settingsList = sectionBody();
+	private final Set<String> expandedSettingsCategories = new HashSet<>();
+	private final Set<String> expandedSettingsSections = new HashSet<>();
 
 	private final JPanel importantUnlocksPanel = sectionBody();
 	private final JPanel importantUnlocksFilters = new JPanel();
@@ -159,6 +182,11 @@ class BronzemanTcgPanel extends PluginPanel
 	private final JPanel importantUnlocksList = sectionBody();
 	private final Set<String> expandedImportantCategories = new HashSet<>();
 	private final Set<String> expandedImportantSubcategories = new HashSet<>();
+	private final JPanel collectionView = new JPanel(new CardLayout());
+	private final JPanel collectionDetailPanel = sectionBody();
+	private int collectionListScrollPosition;
+	private final Deque<String> collectionCardHistory = new ArrayDeque<>();
+	private final Set<String> expandedKnowledgeSections = new HashSet<>();
 
 	BronzemanTcgPanel(
 			TrackedMonsterCatalog monsterCatalog,
@@ -171,6 +199,8 @@ class BronzemanTcgPanel extends PluginPanel
 			SharedUnlockStore sharedUnlockStore,
 			RecentUnlocksTracker recentUnlocksTracker,
 			ImportantUnlocksCatalog importantUnlocksCatalog,
+			CardKnowledgeCatalog cardKnowledgeCatalog,
+			ItemManager itemManager,
 			BronzemanTcgConfig config,
 			ConfigManager configManager,
 			ScheduledExecutorService executor)
@@ -185,11 +215,13 @@ class BronzemanTcgPanel extends PluginPanel
 		this.sharedUnlockStore = sharedUnlockStore;
 		this.recentUnlocksTracker = recentUnlocksTracker;
 		this.importantUnlocksCatalog = importantUnlocksCatalog;
+		this.cardKnowledgeCatalog = cardKnowledgeCatalog;
+		this.itemManager = itemManager;
 		this.config = config;
 		this.configManager = configManager;
 		this.executor = executor;
 
-		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+		setLayout(new BorderLayout(0, 8));
 		setBorder(BorderFactory.createEmptyBorder(8, 10, 8, 10));
 
 		searchBar.setIcon(IconTextField.Icon.SEARCH);
@@ -219,10 +251,8 @@ class BronzemanTcgPanel extends PluginPanel
 		searchBar.setAlignmentX(Component.LEFT_ALIGNMENT);
 		searchResults.setAlignmentX(Component.LEFT_ALIGNMENT);
 		progressList.setAlignmentX(Component.LEFT_ALIGNMENT);
-		tabs.setAlignmentX(Component.LEFT_ALIGNMENT);
 		tabDisplay.setAlignmentX(Component.LEFT_ALIGNMENT);
 		tabDisplay.setBackground(ColorScheme.DARK_GRAY_COLOR);
-		tabs.setLayout(new WrapLayout(FlowLayout.CENTER, 4, 0));
 
 		recentUnlocksSearchBar.setIcon(IconTextField.Icon.SEARCH);
 		recentUnlocksSearchBar.setToolTipText("Search recent unlocks");
@@ -284,53 +314,55 @@ class BronzemanTcgPanel extends PluginPanel
 		importantUnlocksPanel.add(importantUnlocksFilters);
 		importantUnlocksPanel.add(Box.createVerticalStrut(4));
 		importantUnlocksPanel.add(importantUnlocksList);
+		collectionView.setBackground(ColorScheme.DARK_GRAY_COLOR);
+		collectionView.add(importantUnlocksPanel, "list");
+		collectionView.add(collectionDetailPanel, "detail");
 
-		add(createPlaceholderBanner());
-		add(Box.createVerticalStrut(8));
-		add(searchBar);
-		add(Box.createVerticalStrut(4));
-		add(searchResults);
-
-		add(sectionHeader("Progress"));
-		add(progressList);
-
-		// WrapLayout preserves full labels in the fixed-width sidebar.
-		add(Box.createVerticalStrut(10));
 		progressList.add(mutedRow("Loading collection..."));
 		questList.add(mutedRow("Loading quests..."));
-		addTab("Quests", questPanel, PanelTab.QUESTS);
-		addTab("Slayer", slayerPanel, PanelTab.SLAYER);
-		addTab("PvM", pvmPanel, PanelTab.PVM);
-		addTab("Rumours", rumoursList, PanelTab.RUMOURS);
-		addTab("Recent Unlocks", recentUnlocksPanel, PanelTab.RECENT);
-		addTab("Collection", importantUnlocksPanel, PanelTab.IMPORTANT);
-		sharedCardsTab = addTab("Shared Cards", sharedCardsList, PanelTab.SHARED);
-		sharedCardsTab.setVisible(false);
-		tabs.select(tabs.getTab(0));
-		add(tabs);
-		add(Box.createVerticalStrut(4));
-		add(tabDisplay);
+		addView(questPanel, PanelTab.QUESTS);
+		addView(slayerPanel, PanelTab.SLAYER);
+		addView(pvmPanel, PanelTab.PVM);
+		addView(rumoursList, PanelTab.RUMOURS);
+		addView(recentUnlocksPanel, PanelTab.RECENT);
+		addView(collectionView, PanelTab.IMPORTANT);
+		addView(sharedCardsList, PanelTab.SHARED);
+		addView(settingsList, PanelTab.SETTINGS);
 
+		JPanel header = sectionBody();
+		header.add(createPlaceholderBanner());
+		header.add(Box.createVerticalStrut(8));
+		header.add(searchBar);
+		header.add(Box.createVerticalStrut(4));
+		header.add(searchResults);
+		header.add(Box.createVerticalStrut(6));
+		header.add(navigationGrid);
+		rebuildNavigationGrid();
+		add(header, BorderLayout.NORTH);
+
+		contentScroll = new JScrollPane(tabDisplay,
+			JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
+			JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		contentScroll.setBorder(null);
+		contentScroll.getViewport().setBackground(ColorScheme.DARK_GRAY_COLOR);
+		contentScroll.getVerticalScrollBar().setUnitIncrement(16);
+		contentScroll.setPreferredSize(new Dimension(PluginPanel.PANEL_WIDTH - 20, 320));
+		add(contentScroll, BorderLayout.CENTER);
+
+		JPanel footer = sectionBody();
+		footer.add(sectionHeader("Overall Progress"));
+		footer.add(progressList);
+		add(footer, BorderLayout.SOUTH);
+		selectTab(PanelTab.QUESTS);
 	}
 
-	private MaterialTab addTab(String title, JPanel content, PanelTab panelTab)
+	private void addView(JPanel content, PanelTab panelTab)
 	{
 		content.setAlignmentX(Component.LEFT_ALIGNMENT);
 		tabDisplay.addCard(panelTab, content);
-		MaterialTab tab = new MaterialTab(title, tabs, content);
-		tab.setOnSelectEvent(() ->
-		{
-			selectedTab = panelTab;
-			tabDisplay.showCard(panelTab);
-			// Let the selected card paint before a dirty tab creates its rows.
-			SwingUtilities.invokeLater(this::renderSelectedTab);
-			return true;
-		});
-		tabs.addTab(tab);
-		return tab;
 	}
 
-	private static JPanel createPlaceholderBanner()
+	private JPanel createPlaceholderBanner()
 	{
 		Color bronze = new Color(153, 102, 51);
 		JPanel banner = row(new BorderLayout(8, 0));
@@ -344,30 +376,133 @@ class BronzemanTcgPanel extends PluginPanel
 		Image helmet = ImageUtil.loadImageResource(
 			BronzemanTcgPanel.class, "/panel_icon.png")
 			.getScaledInstance(24, 36, Image.SCALE_SMOOTH);
-		banner.add(new JLabel(new ImageIcon(helmet)), BorderLayout.WEST);
+		JPanel identity = row(new BorderLayout(8, 0));
+		identity.setOpaque(false);
+		identity.add(new JLabel(new ImageIcon(helmet)), BorderLayout.WEST);
 
 		JLabel title = new JLabel("Bronzeman TCG");
 		title.setForeground(Color.WHITE);
 		title.setFont(title.getFont().deriveFont(Font.BOLD, 16f));
-		banner.add(title, BorderLayout.CENTER);
+		identity.add(title, BorderLayout.CENTER);
+		makeClickable(identity, () -> selectTab(lastContentTab));
+		banner.add(identity, BorderLayout.CENTER);
+
+		JButton settings = new JButton("\u2699");
+		settings.setToolTipText("Settings");
+		settings.setFocusable(false);
+		settings.setForeground(Color.WHITE);
+		settings.setBackground(ColorScheme.DARK_GRAY_COLOR);
+		settings.setBorder(BorderFactory.createLineBorder(bronze));
+		settings.setPreferredSize(new Dimension(32, 32));
+		settings.addActionListener(event -> selectTab(
+			selectedTab == PanelTab.SETTINGS ? lastContentTab : PanelTab.SETTINGS));
+		banner.add(settings, BorderLayout.EAST);
 		return banner;
+	}
+
+	private void rebuildNavigationGrid()
+	{
+		navigationGrid.removeAll();
+		navigationButtons.clear();
+		addNavigationPair("Quests", PanelTab.QUESTS, "Slayer", PanelTab.SLAYER);
+		addNavigationPair("PvM", PanelTab.PVM, "Rumours", PanelTab.RUMOURS);
+		addNavigationPair("Recent", PanelTab.RECENT, "Collection", PanelTab.IMPORTANT);
+		if (sharedCardsVisible)
+		{
+			JPanel sharedRow = row(new BorderLayout());
+			sharedRow.add(navigationButton("Shared Cards", PanelTab.SHARED),
+				BorderLayout.CENTER);
+			navigationGrid.add(sharedRow);
+			navigationGrid.add(Box.createVerticalStrut(6));
+		}
+		updateNavigationSelection();
+		navigationGrid.revalidate();
+		navigationGrid.repaint();
+	}
+
+	private void addNavigationPair(String leftLabel, PanelTab leftTab,
+		String rightLabel, PanelTab rightTab)
+	{
+		JPanel pair = row(new GridLayout(1, 2, 6, 0));
+		pair.add(navigationButton(leftLabel, leftTab));
+		pair.add(navigationButton(rightLabel, rightTab));
+		navigationGrid.add(pair);
+		navigationGrid.add(Box.createVerticalStrut(6));
+	}
+
+	private JButton navigationButton(String label, PanelTab tab)
+	{
+		Color bronze = new Color(153, 102, 51);
+		JButton button = new JButton(label);
+		button.setFocusable(false);
+		button.setForeground(Color.WHITE);
+		button.setBackground(ColorScheme.DARKER_GRAY_COLOR);
+		button.setBorder(BorderFactory.createLineBorder(bronze));
+		button.setPreferredSize(new Dimension(0, 30));
+		button.addActionListener(event -> selectTab(tab));
+		button.addMouseListener(new MouseAdapter()
+		{
+			@Override
+			public void mouseEntered(MouseEvent event)
+			{
+				if (selectedTab != tab)
+				{
+					button.setBackground(ColorScheme.DARK_GRAY_COLOR);
+				}
+			}
+
+			@Override
+			public void mouseExited(MouseEvent event)
+			{
+				updateNavigationButton(button, tab);
+			}
+		});
+		navigationButtons.put(tab, button);
+		return button;
+	}
+
+	private void selectTab(PanelTab tab)
+	{
+		if (tab != PanelTab.SETTINGS)
+		{
+			lastContentTab = tab;
+		}
+		selectedTab = tab;
+		tabDisplay.showCard(tab);
+		updateNavigationSelection();
+		SwingUtilities.invokeLater(this::renderSelectedTab);
+	}
+
+	private void updateNavigationSelection()
+	{
+		for (Map.Entry<PanelTab, JButton> entry : navigationButtons.entrySet())
+		{
+			updateNavigationButton(entry.getValue(), entry.getKey());
+		}
+	}
+
+	private void updateNavigationButton(JButton button, PanelTab tab)
+	{
+		button.setBackground(selectedTab == tab
+			? new Color(92, 65, 38) : ColorScheme.DARKER_GRAY_COLOR);
 	}
 
 	private void updateSharedTabVisibility(boolean visible)
 	{
-		if (sharedCardsTab == null || sharedCardsTab.isVisible() == visible)
+		if (sharedCardsVisible == visible)
 		{
 			return;
 		}
-		sharedCardsTab.setVisible(visible);
+		sharedCardsVisible = visible;
+		if (!visible && lastContentTab == PanelTab.SHARED)
+		{
+			lastContentTab = PanelTab.QUESTS;
+		}
 		if (!visible && selectedTab == PanelTab.SHARED)
 		{
-			selectedTab = PanelTab.QUESTS;
-			tabDisplay.showCard(PanelTab.QUESTS);
-			tabs.select(tabs.getTab(0));
+			selectTab(PanelTab.QUESTS);
 		}
-		tabs.revalidate();
-		tabs.repaint();
+		rebuildNavigationGrid();
 	}
 
 	/**
@@ -559,6 +694,9 @@ class BronzemanTcgPanel extends PluginPanel
 			case SHARED:
 				refreshSharedCards();
 				break;
+			case SETTINGS:
+				refreshSettings();
+				break;
 			default:
 				break;
 		}
@@ -632,6 +770,10 @@ class BronzemanTcgPanel extends PluginPanel
 		{
 			if (hasVisibleSlayerContent(master))
 			{
+				if (visible)
+				{
+					slayerList.add(Box.createVerticalStrut(5));
+				}
 				addSlayerMaster(master);
 				visible = true;
 			}
@@ -666,9 +808,8 @@ class BronzemanTcgPanel extends PluginPanel
 		}
 
 		int have = satisfiedRequirements(superiors, snapshot.owned);
-		String arrow = expandedGlobalSuperiors ? "\u25bc " : "\u25b6 ";
-		slayerList.add(clickableProgressRow(arrow + "Superior Creatures",
-			have, superiors.size(), () ->
+		slayerList.add(clickableProgressRow("Superior Creatures",
+			have, superiors.size(), expandedGlobalSuperiors, false, () ->
 			{
 				expandedGlobalSuperiors = !expandedGlobalSuperiors;
 				refreshSlayer();
@@ -692,8 +833,8 @@ class BronzemanTcgPanel extends PluginPanel
 		boolean expanded = expandedSlayer.contains(master.name);
 		int have = master.satisfiedCount(snapshot.owned, snapshot.includeSlayerSuperiors);
 		int total = master.requirementCount(snapshot.includeSlayerSuperiors);
-		String arrow = expanded ? "\u25bc " : "\u25b6 ";
-		slayerList.add(clickableProgressRow(arrow + master.name, have, total, () ->
+		slayerList.add(clickableProgressRow(master.name, have, total,
+			expanded, false, () ->
 		{
 			if (!expandedSlayer.remove(master.name))
 			{
@@ -714,12 +855,12 @@ class BronzemanTcgPanel extends PluginPanel
 			}
 			String key = nestedKey(master.name, task.label);
 			boolean taskExpanded = expandedSlayerTasks.contains(key);
-			String taskArrow = taskExpanded ? "\u25bc " : "\u25b6 ";
 			if (task.locationSpecific)
 			{
 				int locationsOwned = satisfiedRequirements(task.requirements, snapshot.owned);
 				slayerList.add(clickableProgressRow(
-					"  " + taskArrow + task.label, locationsOwned, task.requirements.size(),
+					task.label, locationsOwned, task.requirements.size(),
+					taskExpanded, true,
 					() ->
 					{
 						if (!expandedSlayerTasks.remove(key))
@@ -734,8 +875,8 @@ class BronzemanTcgPanel extends PluginPanel
 				QuestCatalog.Requirement requirement = task.requirements.get(0);
 				int variantsOwned = countOwned(requirement.displayCards, snapshot.owned);
 				slayerList.add(clickableProgressRow(
-					"  " + taskArrow + task.label,
-					variantsOwned, requirement.displayCards.size(), variantsOwned > 0, () ->
+					task.label, variantsOwned, requirement.displayCards.size(),
+					variantsOwned > 0, taskExpanded, true, () ->
 					{
 						if (!expandedSlayerTasks.remove(key))
 						{
@@ -778,10 +919,9 @@ class BronzemanTcgPanel extends PluginPanel
 			String key = master.name;
 			boolean superiorExpanded = expandedSlayerSuperiorGroups.contains(key);
 			int superiorHave = satisfiedRequirements(master.superiors, snapshot.owned);
-			String superiorArrow = superiorExpanded ? "\u25bc " : "\u25b6 ";
 			slayerList.add(clickableProgressRow(
-				"  " + superiorArrow + "Superior Creatures",
-				superiorHave, master.superiors.size(), () ->
+				"Superior Creatures", superiorHave, master.superiors.size(),
+				superiorExpanded, true, () ->
 				{
 					if (!expandedSlayerSuperiorGroups.remove(key))
 					{
@@ -818,6 +958,10 @@ class BronzemanTcgPanel extends PluginPanel
 		{
 			return false;
 		}
+		if (contentList.getComponentCount() > 0)
+		{
+			contentList.add(Box.createVerticalStrut(5));
+		}
 
 		boolean expanded = expandedPvmSections.contains(sectionName);
 		int ready = 0;
@@ -828,8 +972,8 @@ class BronzemanTcgPanel extends PluginPanel
 				ready++;
 			}
 		}
-		String arrow = expanded ? "\u25bc " : "\u25b6 ";
-		contentList.add(clickableProgressRow(arrow + sectionName, ready, entries.size(), () ->
+		contentList.add(clickableProgressRow(sectionName, ready, entries.size(),
+			expanded, false, () ->
 		{
 			if (!expandedPvmSections.remove(sectionName))
 			{
@@ -850,9 +994,9 @@ class BronzemanTcgPanel extends PluginPanel
 			}
 			String key = nestedKey(sectionName, entry.name);
 			boolean groupExpanded = expandedPvmGroups.contains(key);
-			String groupArrow = groupExpanded ? "\u25bc " : "\u25b6 ";
-			contentList.add(clickableProgressRow("  " + groupArrow + entry.name,
-				entry.satisfiedCount(snapshot.owned), entry.requirements.size(), () ->
+			contentList.add(clickableProgressRow(entry.name,
+				entry.satisfiedCount(snapshot.owned), entry.requirements.size(),
+				groupExpanded, true, () ->
 				{
 					if (!expandedPvmGroups.remove(key))
 					{
@@ -936,15 +1080,17 @@ class BronzemanTcgPanel extends PluginPanel
 		return unlocked ? showUnlockedPvm.isSelected() : showLockedPvm.isSelected();
 	}
 
-	private JPanel clickableProgressRow(String label, int have, int total, Runnable action)
+	private JPanel clickableProgressRow(String label, int have, int total,
+		boolean expanded, boolean nested, Runnable action)
 	{
-		return clickableProgressRow(label, have, total, have >= total, action);
+		return clickableProgressRow(label, have, total, have >= total,
+			expanded, nested, action);
 	}
 
 	private JPanel clickableProgressRow(String label, int have, int total,
-		boolean complete, Runnable action)
+		boolean complete, boolean expanded, boolean nested, Runnable action)
 	{
-		JPanel row = compactProgressRow(label, have, total, complete);
+		JPanel row = hierarchyProgressRow(label, have, total, complete, expanded, nested);
 		makeClickable(row, action);
 		return row;
 	}
@@ -996,7 +1142,7 @@ class BronzemanTcgPanel extends PluginPanel
 	{
 		refreshChecklist(rumoursList, "masters ready",
 			snapshot.data.rumours, snapshot.owned, expandedRumours,
-			this::refreshRumours, "No rumour data bundled", false);
+			this::refreshRumours, "No rumour data bundled", true);
 	}
 
 	private void refreshRecentUnlocks()
@@ -1045,7 +1191,7 @@ class BronzemanTcgPanel extends PluginPanel
 			SharedCategory category = categories.get(index);
 			if (index > 0)
 			{
-				addSpacedDivider(sharedCardsList);
+				sharedCardsList.add(Box.createVerticalStrut(5));
 			}
 			sharedCardsList.add(sharedCategoryRow(category));
 			if (!expandedSharedCategories.contains(category.name))
@@ -1073,7 +1219,9 @@ class BronzemanTcgPanel extends PluginPanel
 		}
 		if (categories.isEmpty())
 		{
-			sharedCardsList.add(mutedRow("No shared cards currently available, check your party is correctly synced in TCG Locked Side Panel."));
+			sharedCardsList.add(mutedRow("No shared cards currently available,"
+					+ "<br> check your party is correctly synced "
+					+ "<br> in TCG Locked Side Panel."));
 		}
 		sharedCardsList.revalidate();
 		sharedCardsList.repaint();
@@ -1154,7 +1302,8 @@ class BronzemanTcgPanel extends PluginPanel
 	private JPanel sharedCategoryRow(SharedCategory category)
 	{
 		boolean expanded = expandedSharedCategories.contains(category.name);
-		JPanel row = collapsibleCountRow(category.name, category.size(), expanded, 0);
+		JPanel row = hierarchyCountRow(
+			category.name, category.size(), expanded, false);
 		makeClickable(row, () ->
 		{
 			if (!expandedSharedCategories.remove(category.name))
@@ -1170,7 +1319,7 @@ class BronzemanTcgPanel extends PluginPanel
 	{
 		String key = importantSubcategoryKey(category, subcategory);
 		boolean expanded = expandedSharedSubcategories.contains(key);
-		JPanel row = collapsibleCountRow(subcategory, count, expanded, 2);
+		JPanel row = hierarchyCountRow(subcategory, count, expanded, true);
 		makeClickable(row, () ->
 		{
 			if (!expandedSharedSubcategories.remove(key))
@@ -1182,19 +1331,279 @@ class BronzemanTcgPanel extends PluginPanel
 		return row;
 	}
 
-	private static JPanel collapsibleCountRow(String label, int count, boolean expanded, int indent)
+	private static JPanel hierarchyCountRow(String label, int count,
+		boolean expanded, boolean nested)
 	{
 		JPanel row = row(new BorderLayout(6, 0));
-		row.setBackground(ColorScheme.DARK_GRAY_COLOR);
-		row.setBorder(BorderFactory.createEmptyBorder(4, indent, 4, 4));
-		row.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		JLabel name = new JLabel((expanded ? "▼ " : "▶ ") + label);
+		styleHierarchyRow(row, expanded, nested);
+		JLabel name = new JLabel(label);
 		name.setForeground(Color.WHITE);
 		row.add(name, BorderLayout.CENTER);
 		JLabel total = new JLabel(Integer.toString(count));
 		total.setForeground(ColorScheme.LIGHT_GRAY_COLOR);
+		if (nested)
+		{
+			total.setFont(total.getFont().deriveFont(11f));
+		}
 		row.add(total, BorderLayout.EAST);
 		return row;
+	}
+
+	// ------------------------------------------------------------------ side-panel settings
+
+	private void refreshSettings()
+	{
+		settingsList.removeAll();
+		List<SettingsCategory> categories = settingsCategories();
+		for (int categoryIndex = 0; categoryIndex < categories.size(); categoryIndex++)
+		{
+			SettingsCategory category = categories.get(categoryIndex);
+			if (categoryIndex > 0)
+			{
+				settingsList.add(Box.createVerticalStrut(5));
+			}
+			boolean categoryExpanded = expandedSettingsCategories.contains(category.name);
+			JPanel categoryRow = hierarchyLabelRow(
+				category.name, categoryExpanded, false);
+			makeClickable(categoryRow, () ->
+			{
+				toggleExpanded(expandedSettingsCategories, category.name);
+				refreshSettings();
+			});
+			settingsList.add(categoryRow);
+			if (!categoryExpanded)
+			{
+				continue;
+			}
+
+			for (SettingsSection section : category.sections)
+			{
+				settingsList.add(Box.createVerticalStrut(3));
+				boolean sectionExpanded = expandedSettingsSections.contains(section.key);
+				JPanel sectionRow = hierarchyLabelRow(
+					section.name, sectionExpanded, true);
+				makeClickable(sectionRow, () ->
+				{
+					toggleExpanded(expandedSettingsSections, section.key);
+					refreshSettings();
+				});
+				settingsList.add(sectionRow);
+				if (!sectionExpanded)
+				{
+					continue;
+				}
+				settingsList.add(listDivider());
+				for (Method method : section.items)
+				{
+					settingsList.add(settingControl(method));
+				}
+			}
+		}
+		settingsList.revalidate();
+		settingsList.repaint();
+	}
+
+	private static JPanel hierarchyLabelRow(String label, boolean expanded, boolean nested)
+	{
+		JPanel row = row(new BorderLayout());
+		styleHierarchyRow(row, expanded, nested);
+		JLabel name = new JLabel(label);
+		name.setForeground(Color.WHITE);
+		row.add(name, BorderLayout.CENTER);
+		return row;
+	}
+
+	private List<SettingsCategory> settingsCategories()
+	{
+		Map<String, List<Method>> bySection = new HashMap<>();
+		for (Method method : BronzemanTcgConfig.class.getMethods())
+		{
+			ConfigItem item = method.getAnnotation(ConfigItem.class);
+			if (item == null || item.hidden())
+			{
+				continue;
+			}
+			bySection.computeIfAbsent(item.section(), ignored -> new ArrayList<>()).add(method);
+		}
+		for (List<Method> methods : bySection.values())
+		{
+			methods.sort(Comparator.comparingInt(
+				method -> method.getAnnotation(ConfigItem.class).position()));
+		}
+
+		List<SettingsCategory> categories = new ArrayList<>();
+		categories.add(settingsCategory("Gathering", bySection,
+			settingsSection("Farming", BronzemanTcgConfig.farmingSection),
+			settingsSection("Fishing", BronzemanTcgConfig.fishingSection),
+			settingsSection("Hunter", BronzemanTcgConfig.hunterSection),
+			settingsSection("Mining", BronzemanTcgConfig.miningSection),
+			settingsSection("Thieving", BronzemanTcgConfig.thievingSection),
+			settingsSection("Woodcutting", BronzemanTcgConfig.woodcuttingSection)));
+		categories.add(settingsCategory("Production", bySection,
+			settingsSection("Cooking", BronzemanTcgConfig.cookingSection),
+			settingsSection("Crafting", BronzemanTcgConfig.craftingSection),
+			settingsSection("Firemaking", BronzemanTcgConfig.firemakingSection),
+			settingsSection("Fletching", BronzemanTcgConfig.fletchingSection),
+			settingsSection("Herblore", BronzemanTcgConfig.herbloreSection),
+			settingsSection("Runecrafting", BronzemanTcgConfig.runecraftingSection),
+			settingsSection("Smithing", BronzemanTcgConfig.smithingSection)));
+		categories.add(settingsCategory("Other", bySection,
+			settingsSection("General", ""),
+			settingsSection("Sailing", BronzemanTcgConfig.sailingSection),
+			settingsSection("Slayer", BronzemanTcgConfig.slayerSection),
+			settingsSection("Visuals", BronzemanTcgConfig.visualsSection),
+			settingsSection("External Plugins", BronzemanTcgConfig.externalPluginsSection)));
+		return categories;
+	}
+
+	private static SettingsCategory settingsCategory(String name,
+		Map<String, List<Method>> bySection, SettingsSection... definitions)
+	{
+		List<SettingsSection> sections = new ArrayList<>();
+		for (SettingsSection definition : definitions)
+		{
+			List<Method> methods = bySection.getOrDefault(definition.key, Collections.emptyList());
+			if (!methods.isEmpty())
+			{
+				sections.add(new SettingsSection(definition.name, definition.key, methods));
+			}
+		}
+		return new SettingsCategory(name, sections);
+	}
+
+	private static SettingsSection settingsSection(String name, String key)
+	{
+		return new SettingsSection(name, key, Collections.emptyList());
+	}
+
+	private JPanel settingControl(Method method)
+	{
+		ConfigItem item = method.getAnnotation(ConfigItem.class);
+		Object value;
+		try
+		{
+			value = method.invoke(config);
+		}
+		catch (ReflectiveOperationException ex)
+		{
+			log.warn("Could not read side-panel setting {}", item.keyName(), ex);
+			JPanel unavailable = settingRow();
+			unavailable.add(mutedRow(item.name() + " (unavailable)"));
+			return unavailable;
+		}
+
+		String tooltip = item.description().replace("<br>", " ");
+		if (value instanceof Boolean)
+		{
+			JCheckBox checkBox = new JCheckBox(item.name(), (Boolean) value);
+			styleSettingComponent(checkBox, tooltip);
+			checkBox.addActionListener(event ->
+				saveSetting(item.keyName(), checkBox.isSelected()));
+			JPanel row = settingRow();
+			row.add(checkBox);
+			return row;
+		}
+
+		JPanel row = settingRow();
+		JLabel label = new JLabel(item.name());
+		label.setForeground(Color.WHITE);
+		label.setToolTipText(tooltip);
+		row.add(label);
+		row.add(Box.createVerticalStrut(3));
+
+		if (value instanceof Enum)
+		{
+			Object[] values = value.getClass().getEnumConstants();
+			JComboBox<Object> combo = new JComboBox<>(values);
+			combo.setSelectedItem(value);
+			styleSettingComponent(combo, tooltip);
+			combo.addActionListener(event ->
+				saveSetting(item.keyName(), ((Enum<?>) combo.getSelectedItem()).name()));
+			row.add(combo);
+		}
+		else if (value instanceof Integer)
+		{
+			Range range = method.getAnnotation(Range.class);
+			int min = range == null ? Integer.MIN_VALUE : range.min();
+			int max = range == null ? Integer.MAX_VALUE : range.max();
+			JSpinner spinner = new JSpinner(
+				new SpinnerNumberModel(((Integer) value).intValue(), min, max, 1));
+			styleSettingComponent(spinner, tooltip);
+			spinner.addChangeListener(event ->
+				saveSetting(item.keyName(), spinner.getValue()));
+			row.add(spinner);
+		}
+		else if (value instanceof Color)
+		{
+			JButton colour = new JButton("Choose colour");
+			colour.setBackground((Color) value);
+			styleSettingComponent(colour, tooltip);
+			colour.addActionListener(event ->
+			{
+				Color selected = JColorChooser.showDialog(this, item.name(),
+					colour.getBackground());
+				if (selected != null)
+				{
+					colour.setBackground(selected);
+					saveSetting(item.keyName(), selected);
+				}
+			});
+			row.add(colour);
+		}
+		else
+		{
+			JTextField text = new JTextField(value == null ? "" : value.toString());
+			styleSettingComponent(text, tooltip);
+			Runnable save = () -> saveSetting(item.keyName(), text.getText());
+			text.addActionListener(event -> save.run());
+			text.addFocusListener(new FocusAdapter()
+			{
+				@Override
+				public void focusLost(FocusEvent event)
+				{
+					save.run();
+				}
+			});
+			row.add(text);
+		}
+		return row;
+	}
+
+	private static JPanel settingRow()
+	{
+		JPanel row = sectionBody();
+		row.setBackground(ColorScheme.DARKER_GRAY_COLOR);
+		row.setBorder(BorderFactory.createEmptyBorder(5, 18, 5, 4));
+		return row;
+	}
+
+	private static void styleSettingComponent(Component component, String tooltip)
+	{
+		if (component instanceof javax.swing.JComponent)
+		{
+			javax.swing.JComponent swing = (javax.swing.JComponent) component;
+			swing.setToolTipText(tooltip);
+			swing.setMaximumSize(new Dimension(Integer.MAX_VALUE, 26));
+			swing.setAlignmentX(Component.LEFT_ALIGNMENT);
+		}
+		if (component instanceof JCheckBox)
+		{
+			((JCheckBox) component).setOpaque(false);
+			((JCheckBox) component).setForeground(Color.WHITE);
+		}
+	}
+
+	private void saveSetting(String key, Object value)
+	{
+		configManager.setConfiguration(BronzemanTcgConfig.GROUP, key, value);
+	}
+
+	private static void toggleExpanded(Set<String> expanded, String key)
+	{
+		if (!expanded.remove(key))
+		{
+			expanded.add(key);
+		}
 	}
 
 	private void configureQuestFilters()
@@ -1206,6 +1615,7 @@ class BronzemanTcgPanel extends PluginPanel
 		questFilters.setOpaque(false);
 		questFilters.setAlignmentX(Component.LEFT_ALIGNMENT);
 		questFilters.setMaximumSize(new Dimension(Integer.MAX_VALUE, 52));
+		questFilters.setLayout(new BoxLayout(questFilters, BoxLayout.Y_AXIS));
 
 		for (JCheckBox checkBox : new JCheckBox[]{
 			hideCompletedQuests, hideIncompletableQuests})
@@ -1213,6 +1623,8 @@ class BronzemanTcgPanel extends PluginPanel
 			checkBox.setOpaque(false);
 			checkBox.setForeground(Color.WHITE);
 			checkBox.setFocusable(false);
+			checkBox.setMargin(new Insets(0, 0, 0, 0));
+			checkBox.setAlignmentX(Component.LEFT_ALIGNMENT);
 			questFilters.add(checkBox);
 			checkBox.addActionListener(event -> updateQuestFilters());
 		}
@@ -1240,13 +1652,16 @@ class BronzemanTcgPanel extends PluginPanel
 
 		filterPanel.setOpaque(false);
 		filterPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
-		filterPanel.setMaximumSize(new Dimension(Integer.MAX_VALUE, 30));
+		filterPanel.setMaximumSize(new Dimension(Integer.MAX_VALUE, 48));
+		filterPanel.setLayout(new BoxLayout(filterPanel, BoxLayout.Y_AXIS));
 
 		for (JCheckBox checkBox : new JCheckBox[]{showLocked, showUnlocked})
 		{
 			checkBox.setOpaque(false);
 			checkBox.setForeground(Color.WHITE);
 			checkBox.setFocusable(false);
+			checkBox.setMargin(new Insets(0, 0, 0, 0));
+			checkBox.setAlignmentX(Component.LEFT_ALIGNMENT);
 			filterPanel.add(checkBox);
 			checkBox.addActionListener(event ->
 				updateVisibilityFilters(showLocked, showUnlocked,
@@ -1277,9 +1692,9 @@ class BronzemanTcgPanel extends PluginPanel
 
 		importantUnlocksFilters.setOpaque(false);
 		importantUnlocksFilters.setAlignmentX(Component.LEFT_ALIGNMENT);
-		importantUnlocksFilters.setMaximumSize(new Dimension(Integer.MAX_VALUE, 30));
+		importantUnlocksFilters.setMaximumSize(new Dimension(Integer.MAX_VALUE, 48));
 		importantUnlocksFilters.setLayout(
-			new BoxLayout(importantUnlocksFilters, BoxLayout.X_AXIS));
+			new BoxLayout(importantUnlocksFilters, BoxLayout.Y_AXIS));
 
 		JCheckBox[] checkBoxes = {showLockedImportant, showUnlockedImportant};
 		for (int index = 0; index < checkBoxes.length; index++)
@@ -1289,10 +1704,7 @@ class BronzemanTcgPanel extends PluginPanel
 			checkBox.setForeground(Color.WHITE);
 			checkBox.setFocusable(false);
 			checkBox.setMargin(new Insets(0, 0, 0, 0));
-			if (index > 0)
-			{
-				importantUnlocksFilters.add(Box.createHorizontalStrut(8));
-			}
+			checkBox.setAlignmentX(Component.LEFT_ALIGNMENT);
 			importantUnlocksFilters.add(checkBox);
 			checkBox.addActionListener(event -> updateImportantUnlockFilters());
 		}
@@ -1356,7 +1768,7 @@ class BronzemanTcgPanel extends PluginPanel
 
 			if (visibleCategories > 0)
 			{
-				addSpacedDivider(importantUnlocksList);
+				importantUnlocksList.add(Box.createVerticalStrut(5));
 			}
 			visibleCategories++;
 			int have = countOwned(category.allItems, owned);
@@ -1366,8 +1778,8 @@ class BronzemanTcgPanel extends PluginPanel
 				for (String card : visibleItems)
 				{
 					boolean unlocked = owned.contains(card.toLowerCase(Locale.ROOT));
-					importantUnlocksList.add(statusRow("  " + displayCardName(card),
-						unlocked, null));
+					importantUnlocksList.add(collectionCardRow(
+						"  " + displayCardName(card), card, unlocked));
 				}
 				int visibleSubcategoryIndex = 0;
 				for (Map.Entry<ImportantUnlocksCatalog.Subcategory, List<String>> entry
@@ -1375,7 +1787,7 @@ class BronzemanTcgPanel extends PluginPanel
 				{
 					if (visibleSubcategoryIndex > 0)
 					{
-						importantUnlocksList.add(listDivider());
+						importantUnlocksList.add(Box.createVerticalStrut(3));
 					}
 					visibleSubcategoryIndex++;
 					ImportantUnlocksCatalog.Subcategory subcategory = entry.getKey();
@@ -1387,8 +1799,8 @@ class BronzemanTcgPanel extends PluginPanel
 						for (String card : entry.getValue())
 						{
 							boolean unlocked = owned.contains(card.toLowerCase(Locale.ROOT));
-							importantUnlocksList.add(statusRow(
-								"    " + displayCardName(card), unlocked, null));
+							importantUnlocksList.add(collectionCardRow(
+								"    " + displayCardName(card), card, unlocked));
 						}
 					}
 				}
@@ -1404,6 +1816,404 @@ class BronzemanTcgPanel extends PluginPanel
 		}
 		importantUnlocksList.revalidate();
 		importantUnlocksList.repaint();
+	}
+
+	private JPanel collectionCardRow(String label, String cardName, boolean unlocked)
+	{
+		JPanel cardRow = statusRow(label, unlocked, null);
+		makeClickable(cardRow, () -> openCollectionCard(cardName));
+		cardRow.setToolTipText("View " + displayCardName(cardName));
+		return cardRow;
+	}
+
+	private void openCollectionCard(String cardName)
+	{
+		if (collectionCardHistory.isEmpty())
+		{
+			collectionListScrollPosition = contentScroll.getVerticalScrollBar().getValue();
+		}
+		if (collectionCardHistory.isEmpty()
+			|| !collectionCardHistory.peekLast().equalsIgnoreCase(cardName))
+		{
+			collectionCardHistory.addLast(cardName);
+		}
+		renderCollectionCard(cardName, true);
+	}
+
+	private void renderCollectionCard(String cardName, boolean snapToTop)
+	{
+		int currentScrollPosition = contentScroll.getVerticalScrollBar().getValue();
+		CardKnowledgeCatalog.Card card = cardKnowledgeCatalog.find(cardName);
+		collectionDetailPanel.removeAll();
+		if (card == null)
+		{
+			collectionDetailPanel.add(collectionBackButton());
+			collectionDetailPanel.add(mutedRow("No card information is available."));
+		}
+		else
+		{
+			collectionDetailPanel.add(collectionBackButton());
+			collectionDetailPanel.add(Box.createVerticalStrut(8));
+			collectionDetailPanel.add(collectionCardHeader(card));
+			collectionDetailPanel.add(Box.createVerticalStrut(8));
+			addDetailField(collectionDetailPanel, "Status",
+				snapshot.owned.contains(card.name.toLowerCase(Locale.ROOT))
+					? "Unlocked" : "Locked");
+			addDetailField(collectionDetailPanel, "Type",
+				card.isResource() ? "Resource" : "Monster");
+			if (!card.categoryLabels().isEmpty())
+			{
+				addDetailField(collectionDetailPanel, "Categories",
+					String.join(", ", card.categoryLabels()));
+			}
+			if (card.combatLevel != null && card.combatLevel > 0)
+			{
+				addDetailField(collectionDetailPanel, "Combat level",
+					String.valueOf(card.combatLevel));
+			}
+			if (card.slayerLevel != null && card.slayerLevel > 0)
+			{
+				addDetailField(collectionDetailPanel, "Slayer level",
+					String.valueOf(card.slayerLevel));
+			}
+			if (card.examine != null && !card.examine.isEmpty())
+			{
+				collectionDetailPanel.add(sectionHeader("Examine"));
+				collectionDetailPanel.add(wrappedDetailText(card.examine));
+			}
+			if (card.isResource())
+			{
+				addResourceDetails(card);
+			}
+			else
+			{
+				addCollectionPreview(card);
+			}
+		}
+		collectionDetailPanel.revalidate();
+		collectionDetailPanel.repaint();
+		((CardLayout) collectionView.getLayout()).show(collectionView, "detail");
+		collectionView.revalidate();
+		collectionView.repaint();
+		SwingUtilities.invokeLater(() -> contentScroll.getVerticalScrollBar()
+			.setValue(snapToTop ? 0 : currentScrollPosition));
+	}
+
+	private JButton collectionBackButton()
+	{
+		JButton back = new JButton(collectionCardHistory.size() > 1
+			? "\u2190 Back" : "\u2190 Back to Collection");
+		back.setFocusable(false);
+		back.setForeground(Color.WHITE);
+		back.setBackground(ColorScheme.DARKER_GRAY_COLOR);
+		back.setBorder(BorderFactory.createCompoundBorder(
+			BorderFactory.createLineBorder(new Color(153, 102, 51)),
+			BorderFactory.createEmptyBorder(5, 8, 5, 8)));
+		back.setAlignmentX(Component.LEFT_ALIGNMENT);
+		back.addActionListener(event ->
+		{
+			if (collectionCardHistory.size() > 1)
+			{
+				collectionCardHistory.removeLast();
+				renderCollectionCard(collectionCardHistory.peekLast(), true);
+				return;
+			}
+			collectionCardHistory.clear();
+			((CardLayout) collectionView.getLayout()).show(collectionView, "list");
+			collectionView.revalidate();
+			collectionView.repaint();
+			SwingUtilities.invokeLater(() ->
+				contentScroll.getVerticalScrollBar().setValue(collectionListScrollPosition));
+		});
+		return back;
+	}
+
+	private JPanel collectionCardHeader(CardKnowledgeCatalog.Card card)
+	{
+		JPanel header = row(new BorderLayout(8, 0));
+		header.setBackground(ColorScheme.DARKER_GRAY_COLOR);
+		header.setBorder(BorderFactory.createCompoundBorder(
+			BorderFactory.createLineBorder(new Color(153, 102, 51)),
+			BorderFactory.createEmptyBorder(6, 8, 6, 8)));
+
+		if (card.isResource() && card.primaryId() >= 0)
+		{
+			JLabel image = new JLabel();
+			image.setPreferredSize(new Dimension(36, 36));
+			AsyncBufferedImage sprite = itemManager.getImage(card.primaryId());
+			sprite.addTo(image);
+			header.add(image, BorderLayout.WEST);
+		}
+
+		JLabel title = new JLabel("<html>" + escapeHtml(card.name) + "</html>");
+		title.setForeground(Color.WHITE);
+		title.setFont(title.getFont().deriveFont(Font.BOLD, 15f));
+		header.add(title, BorderLayout.CENTER);
+		return header;
+	}
+
+	private void addResourceDetails(CardKnowledgeCatalog.Card card)
+	{
+		CardKnowledgeCatalog.Sources sources = card.sources;
+		if (sources == null)
+		{
+			collectionDetailPanel.add(mutedRow("No source information available."));
+			return;
+		}
+
+		List<CardKnowledgeCatalog.MonsterSource> monsters = new ArrayList<>();
+		if (sources.monsters != null)
+		{
+			monsters.addAll(sources.monsters);
+		}
+		if (sources.rareDropTable != null)
+		{
+			monsters.addAll(sources.rareDropTable);
+		}
+		addKnowledgeSection(card.name, "Monster sources", monsters.size(), body ->
+		{
+			for (CardKnowledgeCatalog.MonsterSource source : monsters)
+			{
+				String detail = source.fraction == null || source.fraction.isEmpty()
+					? source.rarity : source.rarity + " \u00b7 " + source.fraction;
+				if (!source.confirmedByMonsterDrops)
+				{
+					detail += " \u00b7 one-sided";
+				}
+				body.add(linkedKnowledgeRow(source.card, detail));
+			}
+		});
+
+		if (sources.gathering != null)
+		{
+			addKnowledgeSection(card.name, "Gathering", 1, body ->
+			{
+				CardKnowledgeCatalog.Gathering gathering = sources.gathering;
+				addDetailField(body, "Method", valueOrDash(gathering.method));
+				addDetailField(body, "Skill", levelLabel(gathering.skill, gathering.level));
+				addDetailField(body, "Tool", valueOrDash(gathering.tool));
+				if (gathering.xp != null)
+				{
+					addDetailField(body, "XP", formatNumber(gathering.xp));
+				}
+			});
+		}
+
+		if (sources.production != null)
+		{
+			int cardIngredients = 0;
+			int hiddenIngredients = 0;
+			for (CardKnowledgeCatalog.Ingredient ingredient : sources.production.ingredients)
+			{
+				if (ingredient.hasCard)
+				{
+					cardIngredients++;
+				}
+				else
+				{
+					hiddenIngredients++;
+				}
+			}
+			final int shown = cardIngredients;
+			final int hidden = hiddenIngredients;
+			addKnowledgeSection(card.name, "Production", shown + hidden, body ->
+			{
+				CardKnowledgeCatalog.Production production = sources.production;
+				addDetailField(body, "Skill", levelLabel(production.skill, production.level));
+				if (production.facilities != null)
+				{
+					addDetailField(body, "Facility", production.facilities);
+				}
+				if (production.tools != null && !production.tools.isEmpty())
+				{
+					addDetailField(body, "Tools", String.join(", ", production.tools));
+				}
+				for (CardKnowledgeCatalog.Ingredient ingredient : production.ingredients)
+				{
+					if (ingredient.hasCard)
+					{
+						body.add(linkedKnowledgeRow(ingredient.item,
+							"×" + formatNumber(ingredient.quantity)));
+					}
+				}
+				if (hidden > 0)
+				{
+					body.add(mutedRow(hidden + " non-card ingredient"
+						+ (hidden == 1 ? "" : "s") + " hidden"));
+				}
+			});
+		}
+
+		addKnowledgeSection(card.name, "Used in", safeSize(sources.usedIn), body ->
+		{
+			for (CardKnowledgeCatalog.UsedIn usage : sources.usedIn)
+			{
+				body.add(linkedKnowledgeRow(usage.card,
+					"×" + formatNumber(usage.quantity)));
+			}
+		});
+		addTextKnowledgeSection(card.name, "Ground spawns", sources.spawns);
+		addKnowledgeSection(card.name, "Shops", safeSize(sources.shops), body ->
+		{
+			for (CardKnowledgeCatalog.Shop shop : sources.shops)
+			{
+				String price = shop.price == null ? "" : formatNumber(shop.price)
+					+ (shop.currency == null ? "" : " " + shop.currency);
+				body.add(plainKnowledgeRow(shop.seller, price));
+			}
+		});
+		addTextKnowledgeSection(card.name, "Clue rewards", sources.clueTiers);
+	}
+
+	private void addTextKnowledgeSection(String cardName, String title, List<String> values)
+	{
+		addKnowledgeSection(cardName, title, safeSize(values), body ->
+		{
+			for (String value : values)
+			{
+				body.add(plainKnowledgeRow(value, ""));
+			}
+		});
+	}
+
+	private void addKnowledgeSection(String cardName, String title, int count,
+		java.util.function.Consumer<JPanel> bodyBuilder)
+	{
+		if (count == 0)
+		{
+			return;
+		}
+		String key = cardName + "\0" + title;
+		boolean expanded = expandedKnowledgeSections.contains(key);
+		JPanel heading = hierarchyProgressRow(title, count, count, true, expanded, false);
+		makeClickable(heading, () ->
+		{
+			if (!expandedKnowledgeSections.remove(key))
+			{
+				expandedKnowledgeSections.add(key);
+			}
+			renderCollectionCard(cardName, false);
+		});
+		collectionDetailPanel.add(Box.createVerticalStrut(5));
+		collectionDetailPanel.add(heading);
+		if (expanded)
+		{
+			JPanel body = sectionBody();
+			body.setBorder(BorderFactory.createEmptyBorder(3, 5, 2, 0));
+			bodyBuilder.accept(body);
+			collectionDetailPanel.add(body);
+		}
+	}
+
+	private JPanel linkedKnowledgeRow(String cardName, String detail)
+	{
+		JPanel item = plainKnowledgeRow(displayCardName(cardName), detail);
+		makeClickable(item, () -> openCollectionCard(cardName));
+		item.setToolTipText("View " + displayCardName(cardName));
+		return item;
+	}
+
+	private static JPanel plainKnowledgeRow(String label, String detail)
+	{
+		JPanel item = row(new BorderLayout(5, 0));
+		item.setBackground(Color.BLACK);
+		item.setBorder(BorderFactory.createEmptyBorder(4, 6, 4, 6));
+		JLabel name = new JLabel(label);
+		name.setForeground(Color.WHITE);
+		item.add(name, BorderLayout.CENTER);
+		if (detail != null && !detail.isEmpty())
+		{
+			JLabel value = new JLabel(detail);
+			value.setForeground(ColorScheme.LIGHT_GRAY_COLOR);
+			value.setFont(value.getFont().deriveFont(10f));
+			item.add(value, BorderLayout.EAST);
+		}
+		return item;
+	}
+
+	private static String levelLabel(String skill, Integer level)
+	{
+		String name = valueOrDash(skill);
+		return level == null || level <= 0 ? name : name + " " + level;
+	}
+
+	private static String valueOrDash(String value)
+	{
+		return value == null || value.trim().isEmpty() ? "\u2014" : value;
+	}
+
+	private static String formatNumber(Number number)
+	{
+		if (number == null)
+		{
+			return "";
+		}
+		double value = number.doubleValue();
+		return value == Math.rint(value)
+			? String.valueOf(number.longValue()) : String.valueOf(value);
+	}
+
+	private void addCollectionPreview(CardKnowledgeCatalog.Card card)
+	{
+		if (card.isResource() && card.sources != null)
+		{
+			int monsterSources = safeSize(card.sources.monsters)
+				+ safeSize(card.sources.rareDropTable);
+			int locations = safeSize(card.sources.spawns);
+			int clues = safeSize(card.sources.clueTiers);
+			if (monsterSources + locations + clues > 0)
+			{
+				collectionDetailPanel.add(sectionHeader("Information available"));
+				addDetailField(collectionDetailPanel, "Monster sources",
+					String.valueOf(monsterSources));
+				addDetailField(collectionDetailPanel, "Ground spawns",
+					String.valueOf(locations));
+				addDetailField(collectionDetailPanel, "Clue tiers",
+					String.valueOf(clues));
+			}
+		}
+		else if (!card.isResource() && card.drops != null && !card.drops.isEmpty())
+		{
+			collectionDetailPanel.add(sectionHeader("Information available"));
+			addDetailField(collectionDetailPanel, "Card drops",
+				String.valueOf(card.drops.size()));
+		}
+	}
+
+	private static void addDetailField(JPanel target, String label, String value)
+	{
+		JPanel field = row(new BorderLayout(6, 0));
+		field.setBackground(ColorScheme.DARKER_GRAY_COLOR);
+		field.setBorder(BorderFactory.createEmptyBorder(4, 6, 4, 6));
+		JLabel name = new JLabel(label);
+		name.setForeground(ColorScheme.LIGHT_GRAY_COLOR);
+		field.add(name, BorderLayout.WEST);
+		JLabel detail = new JLabel(value);
+		detail.setForeground(Color.WHITE);
+		field.add(detail, BorderLayout.EAST);
+		target.add(field);
+		target.add(Box.createVerticalStrut(2));
+	}
+
+	private static JLabel wrappedDetailText(String text)
+	{
+		JLabel label = new JLabel("<html><body style='width:175px'>"
+			+ escapeHtml(text) + "</body></html>");
+		label.setForeground(Color.WHITE);
+		label.setBorder(BorderFactory.createEmptyBorder(3, 6, 6, 6));
+		label.setAlignmentX(Component.LEFT_ALIGNMENT);
+		return label;
+	}
+
+	private static int safeSize(List<?> values)
+	{
+		return values == null ? 0 : values.size();
+	}
+
+	private static String escapeHtml(String text)
+	{
+		return text.replace("&", "&amp;").replace("<", "&lt;")
+			.replace(">", "&gt;").replace("\"", "&quot;");
 	}
 
 	private List<String> visibleImportantItems(List<String> items, Set<String> owned)
@@ -1423,8 +2233,9 @@ class BronzemanTcgPanel extends PluginPanel
 	private JPanel importantCategoryRow(ImportantUnlocksCatalog.Category category, int have)
 	{
 		boolean expanded = expandedImportantCategories.contains(category.name);
-		JPanel row = compactProgressRow((expanded ? "▼ " : "▶ ") + category.name,
-			have, category.allItems.size());
+		JPanel row = hierarchyProgressRow(category.name,
+			have, category.allItems.size(), have >= category.allItems.size(),
+			expanded, false);
 		makeClickable(row, () ->
 		{
 			if (!expandedImportantCategories.remove(category.name))
@@ -1441,9 +2252,9 @@ class BronzemanTcgPanel extends PluginPanel
 	{
 		String key = importantSubcategoryKey(category.name, subcategory.name);
 		boolean expanded = expandedImportantSubcategories.contains(key);
-		JPanel row = compactProgressRow("  " + (expanded ? "\u25bc " : "\u25b6 ")
-				+ subcategory.name,
-			have, subcategory.items.size());
+		JPanel row = hierarchyProgressRow(subcategory.name,
+			have, subcategory.items.size(), have >= subcategory.items.size(),
+			expanded, true);
 		makeClickable(row, () ->
 		{
 			if (!expandedImportantSubcategories.remove(key))
@@ -1656,7 +2467,7 @@ class BronzemanTcgPanel extends PluginPanel
 		{
 			if (showEntryDividers && entryIndex > 0)
 			{
-				addSpacedDivider(container);
+				container.add(Box.createVerticalStrut(5));
 			}
 			entryIndex++;
 			container.add(checklistRow(entry, owned, expandedNames, refresh));
@@ -1682,9 +2493,9 @@ class BronzemanTcgPanel extends PluginPanel
 		int have = entry.satisfiedCount(owned);
 		int total = entry.requirements.size();
 		boolean expanded = expandedNames.contains(entry.name);
-		String label = (expanded ? "\u25bc " : "\u25b6 ") + entry.name
-			+ (entry.miniquest ? " (mini)" : "");
-		JPanel row = compactProgressRow(label, have, Math.max(total, 0));
+		String label = entry.name + (entry.miniquest ? " (mini)" : "");
+		JPanel row = hierarchyProgressRow(label, have, Math.max(total, 0),
+			have >= total, expanded, false);
 		if (!entry.notes.isEmpty())
 		{
 			row.setToolTipText(entry.notes);
@@ -1710,7 +2521,6 @@ class BronzemanTcgPanel extends PluginPanel
 			? ": " + String.join(" / ", requirement.displayCards)
 			: "";
 		JPanel row = statusRow("  " + requirement.label + alternatives, have, null);
-		row.setBackground(ColorScheme.DARK_GRAY_COLOR);
 		return row;
 	}
 
@@ -1767,6 +2577,7 @@ class BronzemanTcgPanel extends PluginPanel
 
 		progressList.add(progressRow("NPCs unlocked",
 			current.unlockedMonsters, monsterCatalog.size()));
+		progressList.add(Box.createVerticalStrut(5));
 		progressList.add(progressRow("Items unlocked",
 			current.unlockedItems, itemCatalog.size()));
 
@@ -1980,9 +2791,15 @@ class BronzemanTcgPanel extends PluginPanel
 		row.setBackground(ColorScheme.DARK_GRAY_COLOR);
 		row.setBorder(BorderFactory.createEmptyBorder(3, 0, 3, 0));
 
-		JLabel text = new JLabel(label + "  " + done + "/" + total);
+		JPanel labels = new JPanel(new BorderLayout(6, 0));
+		labels.setOpaque(false);
+		JLabel text = new JLabel(label);
 		text.setForeground(Color.WHITE);
-		row.add(text, BorderLayout.NORTH);
+		labels.add(text, BorderLayout.CENTER);
+		JLabel count = new JLabel(done + "/" + total);
+		count.setForeground(ColorScheme.LIGHT_GRAY_COLOR);
+		labels.add(count, BorderLayout.EAST);
+		row.add(labels, BorderLayout.NORTH);
 
 		JProgressBar bar = new JProgressBar(0, Math.max(total, 1));
 		bar.setValue(total == 0 && complete ? 1 : done);
@@ -1993,25 +2810,15 @@ class BronzemanTcgPanel extends PluginPanel
 		return row;
 	}
 
-	/**
-	 * Compact hierarchy row for expandable tab content: the title gets the flexible
-	 * space, while a small progress bar and an accurate x/y count stay aligned right.
-	 */
-	private static JPanel compactProgressRow(String label, int done, int total)
-	{
-		return compactProgressRow(label, done, total, done >= total);
-	}
-
-	private static JPanel compactProgressRow(String label, int done, int total,
-		boolean complete)
+	private static JPanel hierarchyProgressRow(String label, int done, int total,
+		boolean complete, boolean expanded, boolean nested)
 	{
 		JPanel row = row(new BorderLayout(6, 0));
-		row.setBackground(ColorScheme.DARK_GRAY_COLOR);
-		row.setBorder(BorderFactory.createEmptyBorder(4, 0, 4, 4));
+		styleHierarchyRow(row, expanded, nested);
 
 		JLabel text = new JLabel(label);
 		text.setForeground(Color.WHITE);
-		text.setToolTipText(label.replace("\u25bc ", "").replace("\u25b6 ", "").trim());
+		text.setToolTipText(label);
 		row.add(text, BorderLayout.CENTER);
 
 		JPanel progress = new JPanel(new BorderLayout(6, 0));
@@ -2019,19 +2826,37 @@ class BronzemanTcgPanel extends PluginPanel
 
 		JProgressBar bar = new JProgressBar(0, Math.max(total, 1));
 		bar.setValue(total == 0 && complete ? 1 : done);
-		bar.setPreferredSize(new Dimension(48, 6));
+		bar.setPreferredSize(new Dimension(nested ? 32 : 42, 6));
 		bar.setForeground(complete ? UNLOCKED : ColorScheme.BRAND_ORANGE);
-		bar.setBackground(ColorScheme.DARKER_GRAY_COLOR);
+		bar.setBackground(new Color(82, 82, 82));
 		progress.add(bar, BorderLayout.CENTER);
 
 		JLabel count = new JLabel(done + "/" + total);
 		count.setForeground(ColorScheme.LIGHT_GRAY_COLOR);
 		count.setHorizontalAlignment(JLabel.RIGHT);
-		count.setPreferredSize(new Dimension(38, 16));
+		count.setPreferredSize(new Dimension(46, 16));
+		if (nested)
+		{
+			count.setFont(count.getFont().deriveFont(11f));
+		}
 		progress.add(count, BorderLayout.EAST);
 
 		row.add(progress, BorderLayout.EAST);
 		return row;
+	}
+
+	private static void styleHierarchyRow(JPanel row, boolean expanded, boolean nested)
+	{
+		Color bronze = nested ? new Color(138, 94, 52) : new Color(153, 102, 51);
+		Color background = expanded ? new Color(62, 50, 40)
+			: ColorScheme.DARKER_GRAY_COLOR;
+		int verticalPadding = nested ? 3 : 5;
+		int leftPadding = nested ? 10 : 7;
+		row.setBackground(background);
+		row.setBorder(BorderFactory.createCompoundBorder(
+			BorderFactory.createLineBorder(bronze),
+			BorderFactory.createEmptyBorder(
+				verticalPadding, leftPadding, verticalPadding, nested ? 5 : 7)));
 	}
 
 	private static String display(String lowerName)
@@ -2062,7 +2887,8 @@ class BronzemanTcgPanel extends PluginPanel
 		RUMOURS,
 		RECENT,
 		IMPORTANT,
-		SHARED
+		SHARED,
+		SETTINGS
 	}
 
 	/**
@@ -2070,7 +2896,7 @@ class BronzemanTcgPanel extends PluginPanel
 	 * card. The sidebar should instead follow the visible card so shorter tabs do not
 	 * inherit a long hidden tab's scroll height.
 	 */
-	private static class SelectedCardPanel extends JPanel
+	private static class SelectedCardPanel extends JPanel implements Scrollable
 	{
 		private final CardLayout cardLayout = new CardLayout();
 		private final Map<PanelTab, Component> cards = new EnumMap<>(PanelTab.class);
@@ -2110,6 +2936,38 @@ class BronzemanTcgPanel extends PluginPanel
 			Insets insets = getInsets();
 			return new Dimension(size.width + insets.left + insets.right,
 				size.height + insets.top + insets.bottom);
+		}
+
+		@Override
+		public Dimension getPreferredScrollableViewportSize()
+		{
+			return getPreferredSize();
+		}
+
+		@Override
+		public int getScrollableUnitIncrement(Rectangle visibleRect,
+			int orientation, int direction)
+		{
+			return 16;
+		}
+
+		@Override
+		public int getScrollableBlockIncrement(Rectangle visibleRect,
+			int orientation, int direction)
+		{
+			return Math.max(visibleRect.height - 32, 16);
+		}
+
+		@Override
+		public boolean getScrollableTracksViewportWidth()
+		{
+			return true;
+		}
+
+		@Override
+		public boolean getScrollableTracksViewportHeight()
+		{
+			return false;
 		}
 	}
 
@@ -2273,6 +3131,33 @@ class BronzemanTcgPanel extends PluginPanel
 				count += values.size();
 			}
 			return count;
+		}
+	}
+
+	private static class SettingsCategory
+	{
+		private final String name;
+		private final List<SettingsSection> sections;
+
+		private SettingsCategory(String name, List<SettingsSection> sections)
+		{
+			this.name = name;
+			this.sections = sections;
+		}
+
+	}
+
+	private static class SettingsSection
+	{
+		private final String name;
+		private final String key;
+		private final List<Method> items;
+
+		private SettingsSection(String name, String key, List<Method> items)
+		{
+			this.name = name;
+			this.key = key;
+			this.items = items;
 		}
 	}
 

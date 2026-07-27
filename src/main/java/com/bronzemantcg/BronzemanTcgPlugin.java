@@ -212,6 +212,9 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	private ImportantUnlocksCatalog importantUnlocksCatalog;
 
 	@Inject
+	private CardKnowledgeCatalog cardKnowledgeCatalog;
+
+	@Inject
 	private TrackedMonsterCatalog monsterCatalog;
 
 	@Inject
@@ -427,6 +430,8 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 				sharedUnlockStore,
 				recentUnlocksTracker,
 				importantUnlocksCatalog,
+				cardKnowledgeCatalog,
+				itemManager,
 				config,
 				configManager,
 				executor);
