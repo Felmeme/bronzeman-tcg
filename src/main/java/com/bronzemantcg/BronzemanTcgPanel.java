@@ -103,6 +103,8 @@ class BronzemanTcgPanel extends PluginPanel
 	private PanelSnapshot snapshot;
 	private PanelTab selectedTab = PanelTab.PLANNER;
 	private volatile Map<String, Integer> skillLevels = Collections.emptyMap();
+	private volatile String currentArea = "Unknown";
+	private volatile List<String> nearbyUnlockedCombat = Collections.emptyList();
 
 	private final IconTextField searchBar = new IconTextField();
 	private final JPanel searchResults = sectionBody();
@@ -430,6 +432,13 @@ class BronzemanTcgPanel extends PluginPanel
 			: Collections.unmodifiableMap(new HashMap<>(levels));
 	}
 
+	void updateLocationContext(String area, List<String> nearbyCombat)
+	{
+		currentArea = area == null ? "Unknown" : area;
+		nearbyUnlockedCombat = nearbyCombat == null ? Collections.emptyList()
+			: Collections.unmodifiableList(new ArrayList<>(nearbyCombat));
+	}
+
 	/** Stop queued work from touching a panel that has been removed from the toolbar. */
 	void dispose()
 	{
@@ -463,7 +472,7 @@ class BronzemanTcgPanel extends PluginPanel
 				collectionReader.getFoilCardNamesLowerCase()));
 		}
 		CardcorePlanner.Plan plan = planner.evaluate(plannerOwned, completed, skills,
-			collectionReader.getCredits());
+			collectionReader.getCredits(), currentArea, nearbyUnlockedCombat);
 
 		return new PanelSnapshot(data, owned, visibleShared, recentUnlocksTracker.getRecent(),
 			recentUnlocksTracker.getSharedRecent(),
@@ -531,7 +540,9 @@ class BronzemanTcgPanel extends PluginPanel
 		boolean questStateChanged = first
 			|| !previous.completedQuests.equals(next.completedQuests);
 		boolean plannerChanged = first || questStateChanged || ownedChanged
-			|| !previous.skillLevels.equals(next.skillLevels);
+			|| !previous.skillLevels.equals(next.skillLevels)
+			|| !previous.plan.currentArea.equals(next.plan.currentArea)
+			|| !previous.plan.nearbyUnlockedCombat.equals(next.plan.nearbyUnlockedCombat);
 		snapshot = next;
 		// Party-sharing controls whether this view exists. The Recent Unlocks
 		// "Show shared" preference only filters that tab and must not affect this one.
@@ -622,6 +633,19 @@ class BronzemanTcgPanel extends PluginPanel
 		plannerList.add(preset);
 		plannerList.add(Box.createVerticalStrut(6));
 		CardcorePlanner.Plan plan = snapshot.plan;
+		plannerList.add(mutedRow("Current area: " + plan.currentArea));
+		plannerList.add(sectionHeader("Nearby unlocked combat"));
+		if (plan.nearbyUnlockedCombat.isEmpty())
+		{
+			plannerList.add(mutedRow("No attackable card-unlocked NPCs detected within 20 tiles."));
+		}
+		else
+		{
+			for (String npc : plan.nearbyUnlockedCombat)
+			{
+				plannerList.add(mutedRow("  - " + npc));
+			}
+		}
 		plannerList.add(sectionHeader("Next actions"));
 		if (plan.recommendations.isEmpty())
 		{

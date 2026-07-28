@@ -916,6 +916,7 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 			questStateInitialized = true;
 		}
 		target.updateSkillLevels(captureSkillLevels());
+		target.updateLocationContext(captureCurrentArea(), captureNearbyUnlockedCombat());
 		SwingUtilities.invokeLater(() ->
 		{
 			if (target.isShowing())
@@ -956,6 +957,60 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 			levels.put(skill.getName().toLowerCase(Locale.ROOT), client.getRealSkillLevel(skill));
 		}
 		return Collections.unmodifiableMap(levels);
+	}
+
+	private String captureCurrentArea()
+	{
+		Player player = client.getLocalPlayer();
+		if (player == null) return "Unknown";
+		int x = player.getWorldLocation().getX();
+		int y = player.getWorldLocation().getY();
+		if (y >= 3520 && x >= 2940 && x <= 3400) return "Wilderness";
+		if (x >= 3150 && x <= 3310 && y >= 3370 && y <= 3525) return "Varrock";
+		if (x >= 3070 && x < 3155 && y >= 3140 && y <= 3315) return "Draynor";
+		if (x >= 3155 && x <= 3265 && y >= 3140 && y <= 3350) return "Lumbridge";
+		if (x >= 2920 && x <= 3075 && y >= 3280 && y <= 3445) return "Falador";
+		if (x >= 2500 && x <= 2700 && y >= 3230 && y <= 3375) return "Ardougne";
+		if (x >= 1670 && x <= 1825 && y >= 3450 && y <= 3650) return "Hosidius";
+		if (x >= 3150 && x <= 3500 && y >= 2800 && y < 3200) return "Desert";
+		if (x >= 3400 && y >= 3150 && y <= 3600) return "Morytania";
+		if (x >= 2400 && x <= 2850 && y >= 3550 && y <= 4100) return "Fremennik";
+		if (x >= 1200 && x <= 2100 && y >= 3300 && y <= 4100) return "Kourend";
+		if (x >= 1350 && x <= 1800 && y >= 2950 && y < 3300) return "Varlamore";
+		return "Other";
+	}
+
+	private List<String> captureNearbyUnlockedCombat()
+	{
+		Player player = client.getLocalPlayer();
+		WorldView worldView = client.getTopLevelWorldView();
+		if (player == null || worldView == null) return Collections.emptyList();
+		Map<String, Integer> nearby = new HashMap<>();
+		for (NPC npc : worldView.npcs())
+		{
+			if (npc == null || npc.getWorldLocation().distanceTo(player.getWorldLocation()) > 20) continue;
+			NPCComposition composition = npc.getTransformedComposition();
+			if (composition == null || composition.getName() == null || composition.getActions() == null) continue;
+			boolean attackable = false;
+			for (String action : composition.getActions())
+			{
+				if (action != null && "attack".equalsIgnoreCase(action)) attackable = true;
+			}
+			String name = Text.removeTags(composition.getName()).trim();
+			if (attackable && isUnlocked(monsterCatalog, name))
+			{
+				nearby.put(name, Math.max(nearby.getOrDefault(name, -1), composition.getCombatLevel()));
+			}
+		}
+		List<Map.Entry<String, Integer>> entries = new ArrayList<>(nearby.entrySet());
+		entries.sort((a, b) -> Integer.compare(b.getValue(), a.getValue()));
+		List<String> result = new ArrayList<>();
+		for (int i = 0; i < Math.min(8, entries.size()); i++)
+		{
+			Map.Entry<String, Integer> entry = entries.get(i);
+			result.add(entry.getKey() + " (level " + entry.getValue() + ")");
+		}
+		return result;
 	}
 
 	@Subscribe

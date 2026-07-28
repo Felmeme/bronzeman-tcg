@@ -54,6 +54,12 @@ final class CardcorePlanner
 	Plan evaluate(Set<String> owned, Set<String> completed, Map<String, Integer> skills,
 		long credits)
 	{
+		return evaluate(owned, completed, skills, credits, "Unknown", Collections.emptyList());
+	}
+
+	Plan evaluate(Set<String> owned, Set<String> completed, Map<String, Integer> skills,
+		long credits, String currentArea, List<String> nearbyUnlockedCombat)
+	{
 		List<Recommendation> recommendations = new ArrayList<>();
 		if (credits >= 2_500L)
 		{
@@ -171,7 +177,8 @@ final class CardcorePlanner
 		addBestOwned(fireLoadout, owned, "Prayer restore", "Super restore", "Prayer potion");
 
 		recommendations.sort((left, right) -> Integer.compare(
-			recommendationPriority(right), recommendationPriority(left)));
+			recommendationPriority(right) + areaPriority(right, currentArea),
+			recommendationPriority(left) + areaPriority(left, currentArea)));
 		// A missing random card is not an actionable route step. Keep skill/quest preparation
 		// when its cards are already legal, but do not fill the live plan with things the
 		// player can only unlock by getting lucky from a future pack.
@@ -185,7 +192,24 @@ final class CardcorePlanner
 		return new Plan(Collections.unmodifiableList(recommendations), fireCardsHave,
 			fireCardsTotal, Collections.unmodifiableList(fireBlockers), barrowsDone,
 			BARROWS_GLOVE_QUESTS.size(), Collections.unmodifiableList(watchList),
-			Collections.unmodifiableList(fireLoadout), credits);
+			Collections.unmodifiableList(fireLoadout), credits, currentArea,
+			Collections.unmodifiableList(new ArrayList<>(nearbyUnlockedCombat)));
+	}
+
+	private static int areaPriority(Recommendation recommendation, String area)
+	{
+		String title = key(recommendation.title);
+		switch (key(area))
+		{
+			case "varrock": return title.contains("museum") || title.contains("varrock dummies") ? 180 : 0;
+			case "draynor": return title.contains("agility") ? 180 : 0;
+			case "ardougne": return title.contains("hazeel") || title.contains("thieving") ? 160 : 0;
+			case "hosidius": return title.contains("fruit stall") || title.contains("thieving") ? 160 : 0;
+			case "desert": return title.contains("cactus") || title.contains("panning") ? 160 : 0;
+			case "falador": return title.contains("motherlode") ? 160 : 0;
+			case "kourend": return title.contains("wintertodt") || title.contains("fruit stall") ? 150 : 0;
+			default: return 0;
+		}
 	}
 
 	private static boolean hasRandomCardBlocker(List<String> blockers)
@@ -638,11 +662,14 @@ final class CardcorePlanner
 		final List<String> highImpactWatchList;
 		final List<String> fireLoadout;
 		final long credits;
+		final String currentArea;
+		final List<String> nearbyUnlockedCombat;
 
 		private Plan(List<Recommendation> recommendations, int fireCardsHave,
 			int fireCardsTotal, List<String> fireBlockers, int barrowsQuestsDone,
 			int barrowsQuestsTotal, List<String> highImpactWatchList,
-			List<String> fireLoadout, long credits)
+			List<String> fireLoadout, long credits, String currentArea,
+			List<String> nearbyUnlockedCombat)
 		{
 			this.recommendations = recommendations;
 			this.fireCardsHave = fireCardsHave;
@@ -653,6 +680,8 @@ final class CardcorePlanner
 			this.highImpactWatchList = highImpactWatchList;
 			this.fireLoadout = fireLoadout;
 			this.credits = credits;
+			this.currentArea = currentArea;
+			this.nearbyUnlockedCombat = nearbyUnlockedCombat;
 		}
 	}
 

@@ -143,4 +143,17 @@ public class CardcorePlannerTest
 		assertTrue(unlocked.recommendations.stream()
 			.anyMatch(r -> r.title.contains("Big-net") && r.ready));
 	}
+
+	@Test
+	public void currentAreaBoostsLocalLegalRouteAndCarriesNearbyCombat()
+	{
+		Map<String, Integer> skills = new HashMap<>();
+		skills.put("agility", 12);
+		CardcorePlanner.Plan plan = planner.evaluate(Collections.emptySet(),
+			Collections.emptySet(), skills, 0L, "Draynor",
+			Collections.singletonList("Goblin (level 2)"));
+		assertEquals("Train Agility to 20", plan.recommendations.get(0).title);
+		assertEquals("Draynor", plan.currentArea);
+		assertEquals("Goblin (level 2)", plan.nearbyUnlockedCombat.get(0));
+	}
 }
