@@ -328,6 +328,8 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	private Set<String> carriedFishingInputs = Collections.emptySet();
 	private Set<String> inventoryItemNamesLower = Collections.emptySet();
 	private Set<String> bankItemNamesLower = Collections.emptySet();
+	private Map<String, Integer> bankItemQuantities = Collections.emptyMap();
+	private boolean bankSnapshotFresh;
 	// The item-on-item pair that most recently opened a "make" interface. Some menus
 	// label every tier identically ("Crossbow stock"), so the product name alone can't
 	// say which item is being made - but the material used to open the menu can.
@@ -914,11 +916,16 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 		if (!questStateInitialized || tickCounter % 25 == 0)
 		{
 			target.updateCompletedQuests(captureCompletedQuests());
+			target.updateStartedQuests(captureStartedQuests());
 			questStateInitialized = true;
 		}
 		target.updateSkillLevels(captureSkillLevels());
-		target.updateLocationContext(captureCurrentArea(), captureNearbyUnlockedCombat());
-		target.updatePossessedItems(capturePossessedItems());
+		Player locationPlayer = client.getLocalPlayer();
+		int currentX = locationPlayer == null ? -1 : locationPlayer.getWorldLocation().getX();
+		int currentY = locationPlayer == null ? -1 : locationPlayer.getWorldLocation().getY();
+		target.updateLocationContext(captureCurrentArea(), currentX, currentY,
+			captureNearbyUnlockedCombat());
+		target.updatePossessedItems(capturePossessedQuantities(), bankSnapshotFresh);
 		SwingUtilities.invokeLater(() ->
 		{
 			if (target.isShowing())
@@ -944,6 +951,20 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 			}
 		}
 		return Collections.unmodifiableSet(completed);
+	}
+
+	private Set<String> captureStartedQuests()
+	{
+		if (client.getGameState() != GameState.LOGGED_IN) return Collections.emptySet();
+		Set<String> started = new HashSet<>();
+		for (Quest quest : Quest.values())
+		{
+			if (quest.getState(client) == QuestState.IN_PROGRESS)
+			{
+				started.add(quest.getName().toLowerCase(Locale.ROOT));
+			}
+		}
+		return Collections.unmodifiableSet(started);
 	}
 
 	/** Read real levels on the client thread for planner prerequisite checks. */
@@ -1528,15 +1549,48 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 		if (event.getContainerId() == InventoryID.BANK)
 		{
 			bankItemNamesLower = collectItemNamesLower(event.getItemContainer());
+			bankItemQuantities = collectItemQuantities(event.getItemContainer());
+			bankSnapshotFresh = true;
 		}
 	}
 
-	private Set<String> capturePossessedItems()
+	private Map<String, Integer> capturePossessedQuantities()
 	{
-		Set<String> possessed = new HashSet<>(bankItemNamesLower);
-		possessed.addAll(collectItemNamesLower(client.getItemContainer(InventoryID.INV)));
-		possessed.addAll(collectItemNamesLower(client.getItemContainer(InventoryID.WORN)));
-		return Collections.unmodifiableSet(possessed);
+		Map<String, Integer> possessed = new HashMap<>(bankItemQuantities);
+		mergeQuantities(possessed, collectItemQuantities(client.getItemContainer(InventoryID.INV)));
+		mergeQuantities(possessed, collectItemQuantities(client.getItemContainer(InventoryID.WORN)));
+		return Collections.unmodifiableMap(possessed);
+	}
+
+	private Map<String, Integer> collectItemQuantities(ItemContainer container)
+	{
+		if (container == null) return Collections.emptyMap();
+		Map<String, Integer> quantities = new HashMap<>();
+		for (Item item : container.getItems())
+		{
+			if (item.getId() < 0) continue;
+			String display = itemManager.getItemComposition(item.getId()).getName();
+			if (display == null) continue;
+			String lower = display.toLowerCase(Locale.ROOT);
+			String normalized = CardNames.stripDoseSuffix(lower);
+			int amount = Math.max(1, item.getQuantity());
+			int open = lower.lastIndexOf('(');
+			if (open > 0 && lower.endsWith(")"))
+			{
+				try { amount *= Integer.parseInt(lower.substring(open + 1, lower.length() - 1)); }
+				catch (NumberFormatException ignored) { }
+			}
+			quantities.merge(normalized, amount, Integer::sum);
+		}
+		return quantities;
+	}
+
+	private static void mergeQuantities(Map<String, Integer> target, Map<String, Integer> source)
+	{
+		for (Map.Entry<String, Integer> entry : source.entrySet())
+		{
+			target.merge(entry.getKey(), entry.getValue(), Integer::sum);
+		}
 	}
 
 	private void refreshCarriedTools()

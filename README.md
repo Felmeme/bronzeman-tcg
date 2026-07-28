@@ -5,7 +5,10 @@
 
 ## Optional goal planner
 
-- Live recommendations recalculated from owned cards, completed quests and real levels.
+- Live recommendations recalculated from owned cards, completed/started quests, real levels,
+  current region, nearby unlocked NPCs, inventory/equipment, and the latest bank snapshot.
+- Quantity-aware quest preparation (including potion doses), ordinary quest skill/prerequisite
+  gates, item-source hints, safe-combat labels, travel access gates, and regional trip clusters.
 - Fire Cape readiness for all Fight Caves monster cards plus baseline Ranged, Prayer
   and Hitpoints targets.
 - A Barrows-gloves dependency chain that prioritizes the closest card-, skill- and

@@ -104,8 +104,12 @@ class BronzemanTcgPanel extends PluginPanel
 	private PanelTab selectedTab = PanelTab.PLANNER;
 	private volatile Map<String, Integer> skillLevels = Collections.emptyMap();
 	private volatile String currentArea = "Unknown";
+	private volatile int currentX = -1;
+	private volatile int currentY = -1;
 	private volatile List<String> nearbyUnlockedCombat = Collections.emptyList();
 	private volatile Set<String> possessedItems = Collections.emptySet();
+	private volatile Map<String, Integer> possessedQuantities = Collections.emptyMap();
+	private volatile boolean bankSnapshotFresh;
 
 	private final IconTextField searchBar = new IconTextField();
 	private final JPanel searchResults = sectionBody();
@@ -127,6 +131,7 @@ class BronzemanTcgPanel extends PluginPanel
 	private final JPanel questList = sectionBody();
 	private final Set<String> expandedQuests = new HashSet<>();
 	private volatile Set<String> completedQuestNames = Collections.emptySet();
+	private volatile Set<String> startedQuestNames = Collections.emptySet();
 
 	private final JPanel slayerPanel = sectionBody();
 	private final JPanel slayerFilters = new JPanel(new FlowLayout(FlowLayout.LEFT, 4, 0));
@@ -426,6 +431,12 @@ class BronzemanTcgPanel extends PluginPanel
 			? Collections.emptySet() : Collections.unmodifiableSet(new HashSet<>(completed));
 	}
 
+	void updateStartedQuests(Set<String> started)
+	{
+		startedQuestNames = started == null ? Collections.emptySet()
+			: Collections.unmodifiableSet(new HashSet<>(started));
+	}
+
 	/** Receives a real-level snapshot captured on RuneLite's client thread. */
 	void updateSkillLevels(Map<String, Integer> levels)
 	{
@@ -433,17 +444,21 @@ class BronzemanTcgPanel extends PluginPanel
 			: Collections.unmodifiableMap(new HashMap<>(levels));
 	}
 
-	void updateLocationContext(String area, List<String> nearbyCombat)
+	void updateLocationContext(String area, int x, int y, List<String> nearbyCombat)
 	{
 		currentArea = area == null ? "Unknown" : area;
+		currentX = x;
+		currentY = y;
 		nearbyUnlockedCombat = nearbyCombat == null ? Collections.emptyList()
 			: Collections.unmodifiableList(new ArrayList<>(nearbyCombat));
 	}
 
-	void updatePossessedItems(Set<String> items)
+	void updatePossessedItems(Map<String, Integer> quantities, boolean bankFresh)
 	{
-		possessedItems = items == null ? Collections.emptySet()
-			: Collections.unmodifiableSet(new HashSet<>(items));
+		possessedQuantities = quantities == null ? Collections.emptyMap()
+			: Collections.unmodifiableMap(new HashMap<>(quantities));
+		possessedItems = Collections.unmodifiableSet(new HashSet<>(possessedQuantities.keySet()));
+		bankSnapshotFresh = bankFresh;
 	}
 
 	/** Stop queued work from touching a panel that has been removed from the toolbar. */
@@ -470,6 +485,7 @@ class BronzemanTcgPanel extends PluginPanel
 			? Collections.unmodifiableSet(shared) : Collections.emptySet();
 		boolean includeSlayerSuperiors = config.restrictSlayerSuperiors();
 		Set<String> completed = completedQuestNames;
+		Set<String> started = startedQuestNames;
 		Map<String, Integer> skills = skillLevels;
 		Set<String> plannerOwned = new HashSet<>(owned);
 		plannerOwned.addAll(visibleShared);
@@ -479,7 +495,8 @@ class BronzemanTcgPanel extends PluginPanel
 				collectionReader.getFoilCardNamesLowerCase()));
 		}
 		CardcorePlanner.Plan plan = planner.evaluate(plannerOwned, completed, skills,
-			collectionReader.getCredits(), currentArea, nearbyUnlockedCombat, possessedItems);
+			collectionReader.getCredits(), currentArea, nearbyUnlockedCombat, possessedItems,
+			possessedQuantities, bankSnapshotFresh, started, currentX, currentY);
 
 		return new PanelSnapshot(data, owned, visibleShared, recentUnlocksTracker.getRecent(),
 			recentUnlocksTracker.getSharedRecent(),
@@ -549,7 +566,9 @@ class BronzemanTcgPanel extends PluginPanel
 		boolean plannerChanged = first || questStateChanged || ownedChanged
 			|| !previous.skillLevels.equals(next.skillLevels)
 			|| !previous.plan.currentArea.equals(next.plan.currentArea)
-			|| !previous.plan.nearbyUnlockedCombat.equals(next.plan.nearbyUnlockedCombat);
+			|| !previous.plan.nearbyUnlockedCombat.equals(next.plan.nearbyUnlockedCombat)
+			|| previous.plan.bankSnapshotFresh != next.plan.bankSnapshotFresh
+			|| !previous.plan.tripPlan.equals(next.plan.tripPlan);
 		snapshot = next;
 		// Party-sharing controls whether this view exists. The Recent Unlocks
 		// "Show shared" preference only filters that tab and must not affect this one.
@@ -641,7 +660,9 @@ class BronzemanTcgPanel extends PluginPanel
 		plannerList.add(Box.createVerticalStrut(6));
 		CardcorePlanner.Plan plan = snapshot.plan;
 		plannerList.add(mutedRow("Current area: " + plan.currentArea));
-		plannerList.add(mutedRow("Item readiness uses inventory, equipment, and the latest bank snapshot. Open your bank once after login."));
+		plannerList.add(mutedRow(plan.bankSnapshotFresh
+			? "Bank snapshot: current for this login; quantities and potion doses are included."
+			: "Bank snapshot: STALE/UNKNOWN - open your bank once before trusting item-ready routes."));
 		plannerList.add(sectionHeader("Nearby unlocked combat"));
 		if (plan.nearbyUnlockedCombat.isEmpty())
 		{
@@ -658,6 +679,11 @@ class BronzemanTcgPanel extends PluginPanel
 		for (String idea : plan.opportunityIdeas)
 		{
 			plannerList.add(mutedRow("  - " + idea));
+		}
+		plannerList.add(sectionHeader("Efficient trip cluster"));
+		for (String trip : plan.tripPlan)
+		{
+			plannerList.add(mutedRow("  - " + trip));
 		}
 		plannerList.add(sectionHeader("Next actions"));
 		if (plan.recommendations.isEmpty())

@@ -68,6 +68,17 @@ final class CardcorePlanner
 		long credits, String currentArea, List<String> nearbyUnlockedCombat,
 		Set<String> possessed)
 	{
+		Map<String, Integer> quantities = new HashMap<>();
+		for (String item : possessed) quantities.put(item, 1);
+		return evaluate(owned, completed, skills, credits, currentArea, nearbyUnlockedCombat,
+			possessed, quantities, true, Collections.emptySet(), -1, -1);
+	}
+
+	Plan evaluate(Set<String> owned, Set<String> completed, Map<String, Integer> skills,
+		long credits, String currentArea, List<String> nearbyUnlockedCombat,
+		Set<String> possessed, Map<String, Integer> quantities, boolean bankFresh,
+		Set<String> started, int currentX, int currentY)
+	{
 		List<Recommendation> recommendations = new ArrayList<>();
 		if (credits >= 2_500L)
 		{
@@ -93,30 +104,34 @@ final class CardcorePlanner
 		}
 		addOpeningRecommendations(recommendations, owned, possessed, completed, skills);
 
-		QuestCatalog.QuestEntry packQuest = bestPackQuest(owned, completed);
+		QuestCatalog.QuestEntry packQuest = bestPackQuest(owned, completed, skills);
 		if (packQuest != null)
 		{
-			List<String> physical = missingPhysicalQuestItems(packQuest, owned, possessed);
-			recommendations.add(new Recommendation((physical.isEmpty() ? "Prioritize " : "Prepare ")
+			List<String> physical = missingPhysicalQuestItems(packQuest, owned, quantities);
+			String packVerb = started.contains(key(packQuest.name)) && physical.isEmpty()
+				? "Continue " : physical.isEmpty() ? "Prioritize " : "Prepare ";
+			recommendations.add(new Recommendation(packVerb
 				+ packQuest.name + " for XP levels",
 				packQuestReason(packQuest.name) + " Travel: "
-					+ travelHint(packQuest.name, currentArea, possessed, completed),
+					+ travelHint(packQuest.name, currentArea, possessed, completed, started, currentX, currentY),
 				physical.isEmpty() ? Collections.singletonList("Required carded items detected") : physical,
 				physical.isEmpty()));
 		}
 
-		GoalQuest nextQuest = nextBarrowsQuest(owned, completed, skills, possessed);
+		GoalQuest nextQuest = nextBarrowsQuest(owned, completed, skills, possessed, quantities);
 		if (nextQuest != null)
 		{
 			QuestCatalog.QuestEntry quest = questsByName.get(key(nextQuest.name));
-			List<String> blockers = blockers(nextQuest, quest, owned, completed, skills, possessed);
+			List<String> blockers = blockers(nextQuest, quest, owned, completed, skills, possessed, quantities);
+			String questVerb = blockers.isEmpty() && started.contains(key(nextQuest.name))
+				? "Continue " : blockers.isEmpty() ? "Do " : "Prepare ";
 			recommendations.add(new Recommendation(
-				(blockers.isEmpty() ? "Do " : "Prepare ") + nextQuest.name,
+				questVerb + nextQuest.name,
 				blockers.isEmpty()
 					? "This is the next card-, skill-, and prerequisite-ready step toward Barrows gloves. Travel: "
-						+ travelHint(nextQuest.name, currentArea, possessed, completed)
+						+ travelHint(nextQuest.name, currentArea, possessed, completed, started, currentX, currentY)
 					: "Closest outstanding Barrows-gloves dependency. Travel: "
-						+ travelHint(nextQuest.name, currentArea, possessed, completed),
+						+ travelHint(nextQuest.name, currentArea, possessed, completed, started, currentX, currentY),
 				blockers, blockers.isEmpty()));
 		}
 
@@ -124,7 +139,9 @@ final class CardcorePlanner
 		for (QuestCatalog.QuestEntry quest : questsByName.values())
 		{
 			if (!completed.contains(key(quest.name))
-				&& quest.satisfiedCount(owned) == quest.requirements.size())
+				&& quest.satisfiedCount(owned) == quest.requirements.size()
+				&& ordinaryQuestBlockers(quest.name, completed, skills).isEmpty()
+				&& missingPhysicalQuestItems(quest, owned, quantities).isEmpty())
 			{
 				cardReady.add(quest);
 			}
@@ -138,7 +155,7 @@ final class CardcorePlanner
 				names.add(cardReady.get(i).name);
 			}
 			recommendations.add(new Recommendation("Review card-ready quests",
-				"These have all catalogued card requirements, but may still need normal quest prerequisites.",
+				"These pass card, ordinary skill/prerequisite, and currently observed physical-item checks.",
 				names, true));
 		}
 
@@ -189,8 +206,9 @@ final class CardcorePlanner
 		addBestPossessed(fireLoadout, owned, possessed, "Food", "Saradomin brew", "Manta ray",
 			"Shark", "Monkfish", "Lobster");
 		addBestPossessed(fireLoadout, owned, possessed, "Prayer restore", "Super restore", "Prayer potion");
+		List<String> classifiedCombat = classifyNearbyCombat(nearbyUnlockedCombat, skills);
 		List<String> opportunityIdeas = buildOpportunityIdeas(owned, possessed, completed, skills,
-			nearbyUnlockedCombat);
+			classifiedCombat);
 
 		recommendations.sort((left, right) -> Integer.compare(
 			recommendationPriority(right) + areaPriority(right, currentArea),
@@ -204,22 +222,94 @@ final class CardcorePlanner
 		{
 			recommendations = new ArrayList<>(recommendations.subList(0, 10));
 		}
+		List<String> tripPlan = buildTripPlan(recommendations, currentArea, currentX, currentY);
 
 		return new Plan(Collections.unmodifiableList(recommendations), fireCardsHave,
 			fireCardsTotal, Collections.unmodifiableList(fireBlockers), barrowsDone,
 			BARROWS_GLOVE_QUESTS.size(), Collections.unmodifiableList(watchList),
 			Collections.unmodifiableList(fireLoadout), credits, currentArea,
-			Collections.unmodifiableList(new ArrayList<>(nearbyUnlockedCombat)),
-			Collections.unmodifiableList(opportunityIdeas));
+			Collections.unmodifiableList(classifiedCombat),
+			Collections.unmodifiableList(opportunityIdeas), bankFresh,
+			Collections.unmodifiableList(tripPlan));
+	}
+
+	private static List<String> classifyNearbyCombat(List<String> nearby, Map<String, Integer> skills)
+	{
+		int combat = estimatedCombatLevel(skills);
+		List<String> result = new ArrayList<>();
+		for (String entry : nearby)
+		{
+			java.util.regex.Matcher matcher = java.util.regex.Pattern.compile("\\(level (\\d+)\\)").matcher(entry);
+			int level = matcher.find() ? Integer.parseInt(matcher.group(1)) : 999;
+			String safety = level <= combat + 3 ? "reasonable" : level <= combat + 10 ? "caution" : "risky";
+			result.add(entry + " [" + safety + " at combat ~" + combat + "]");
+		}
+		return result;
+	}
+
+	private static int estimatedCombatLevel(Map<String, Integer> skills)
+	{
+		double base = 0.25 * (level(skills, "defence") + level(skills, "hitpoints")
+			+ Math.floor(level(skills, "prayer") / 2.0));
+		double melee = 0.325 * (level(skills, "attack") + level(skills, "strength"));
+		double ranged = 0.325 * Math.floor(level(skills, "ranged") * 1.5);
+		double magic = 0.325 * Math.floor(level(skills, "magic") * 1.5);
+		return (int) Math.floor(base + Math.max(melee, Math.max(ranged, magic)));
+	}
+
+	private static List<String> buildTripPlan(List<Recommendation> recommendations,
+		String currentArea, int x, int y)
+	{
+		Map<String, List<String>> byArea = new LinkedHashMap<>();
+		for (Recommendation recommendation : recommendations)
+		{
+			String area = recommendationArea(recommendation.title);
+			if (area != null) byArea.computeIfAbsent(area, ignored -> new ArrayList<>()).add(recommendation.title);
+		}
+		List<String> result = new ArrayList<>();
+		for (Map.Entry<String, List<String>> entry : byArea.entrySet())
+		{
+			if (entry.getValue().size() >= 2 || key(entry.getKey()).equals(key(currentArea)))
+			{
+				result.add(entry.getKey() + approximateDistance(entry.getKey(), x, y) + ": "
+					+ String.join(" -> ", entry.getValue()));
+			}
+		}
+		if (result.isEmpty() && !recommendations.isEmpty())
+		{
+			result.add("Do the top legal action first; no multi-objective regional cluster is available yet.");
+		}
+		return result.size() > 3 ? new ArrayList<>(result.subList(0, 3)) : result;
+	}
+
+	private static String recommendationArea(String title)
+	{
+		String lower = key(title);
+		if (lower.contains("museum") || lower.contains("varrock dummies")) return "Varrock";
+		if (lower.contains("agility")) return "Draynor";
+		if (lower.contains("hazeel") || lower.contains("fruit stall") || lower.contains("thieving")) return "Ardougne";
+		if (lower.contains("specimen") || lower.contains("panning")) return "Varrock";
+		if (lower.contains("cactus")) return "Desert";
+		if (lower.contains("motherlode")) return "Falador";
+		for (String quest : PACK_QUEST_SCORES.keySet())
+		{
+			if (lower.contains(quest)) return questArea(quest);
+		}
+		return null;
 	}
 
 	private static List<String> buildOpportunityIdeas(Set<String> owned, Set<String> possessed, Set<String> completed,
 		Map<String, Integer> skills, List<String> nearbyCombat)
 	{
 		List<String> ideas = new ArrayList<>();
-		if (!nearbyCombat.isEmpty())
+		String safeNearby = null;
+		for (String target : nearbyCombat)
 		{
-			ideas.add("Fight nearby " + nearbyCombat.get(0)
+			if (target.contains("[reasonable")) { safeNearby = target; break; }
+		}
+		if (safeNearby != null)
+		{
+			ideas.add("Fight nearby " + safeNearby
 				+ " with legal gear for immediate kill credits.");
 		}
 		if (hasAny(owned, "Rabbit", "Bunny"))
@@ -325,7 +415,8 @@ final class CardcorePlanner
 		return 500;
 	}
 
-	private QuestCatalog.QuestEntry bestPackQuest(Set<String> owned, Set<String> completed)
+	private QuestCatalog.QuestEntry bestPackQuest(Set<String> owned, Set<String> completed,
+		Map<String, Integer> skills)
 	{
 		QuestCatalog.QuestEntry best = null;
 		int bestScore = Integer.MIN_VALUE;
@@ -333,7 +424,8 @@ final class CardcorePlanner
 		{
 			QuestCatalog.QuestEntry quest = questsByName.get(candidate.getKey());
 			if (quest == null || completed.contains(candidate.getKey())
-				|| quest.satisfiedCount(owned) != quest.requirements.size())
+				|| quest.satisfiedCount(owned) != quest.requirements.size()
+				|| !ordinaryQuestBlockers(quest.name, completed, skills).isEmpty())
 			{
 				continue;
 			}
@@ -344,6 +436,53 @@ final class CardcorePlanner
 			}
 		}
 		return best;
+	}
+
+	/** Requirements the TCG card catalogue cannot express. Keep this deliberately
+	 * conservative: a quest is promoted as executable only after these are met. */
+	private static List<String> ordinaryQuestBlockers(String quest, Set<String> completed,
+		Map<String, Integer> skills)
+	{
+		List<String> blockers = new ArrayList<>();
+		switch (key(quest))
+		{
+			case "sea slug":
+				addSkillBlocker(blockers, skills, "firemaking", 30);
+				break;
+			case "the grand tree":
+				addSkillBlocker(blockers, skills, "agility", 25);
+				break;
+			case "jungle potion":
+				addQuestPrerequisite(blockers, completed, "Druidic Ritual");
+				addSkillBlocker(blockers, skills, "herblore", 3);
+				break;
+			case "the lost tribe":
+				addQuestPrerequisite(blockers, completed, "Goblin Diplomacy");
+				addQuestPrerequisite(blockers, completed, "Rune Mysteries");
+				addSkillBlocker(blockers, skills, "agility", 13);
+				addSkillBlocker(blockers, skills, "thieving", 13);
+				addSkillBlocker(blockers, skills, "mining", 17);
+				break;
+			case "tribal totem":
+				addSkillBlocker(blockers, skills, "thieving", 21);
+				break;
+			case "ethically acquired antiquities":
+				addQuestPrerequisite(blockers, completed, "Children of the Sun");
+				addSkillBlocker(blockers, skills, "thieving", 25);
+				break;
+			default:
+				break;
+		}
+		return blockers;
+	}
+
+	private static void addQuestPrerequisite(List<String> blockers, Set<String> completed,
+		String prerequisite)
+	{
+		if (!completed.contains(key(prerequisite)))
+		{
+			blockers.add("Complete " + prerequisite);
+		}
 	}
 
 	private static String packQuestReason(String quest)
@@ -568,7 +707,7 @@ final class CardcorePlanner
 	}
 
 	private GoalQuest nextBarrowsQuest(Set<String> owned, Set<String> completed,
-		Map<String, Integer> skills, Set<String> possessed)
+		Map<String, Integer> skills, Set<String> possessed, Map<String, Integer> quantities)
 	{
 		GoalQuest best = null;
 		int bestScore = Integer.MAX_VALUE;
@@ -592,7 +731,7 @@ final class CardcorePlanner
 				continue;
 			}
 			QuestCatalog.QuestEntry quest = questsByName.get(key(goal.name));
-			int score = blockers(goal, quest, owned, completed, skills, possessed).size() * 100 + goal.order;
+			int score = blockers(goal, quest, owned, completed, skills, possessed, quantities).size() * 100 + goal.order;
 			if (score < bestScore)
 			{
 				best = goal;
@@ -614,7 +753,7 @@ final class CardcorePlanner
 
 	private static List<String> blockers(GoalQuest goal, QuestCatalog.QuestEntry quest,
 		Set<String> owned, Set<String> completed, Map<String, Integer> skills,
-		Set<String> possessed)
+		Set<String> possessed, Map<String, Integer> quantities)
 	{
 		List<String> blockers = new ArrayList<>();
 		for (String prerequisite : goal.prerequisites)
@@ -637,9 +776,11 @@ final class CardcorePlanner
 					blockers.add("Card: " + requirement.label);
 				}
 				else if (!requirement.label.toLowerCase(Locale.ROOT).endsWith("(enemy)")
-					&& !requirement.isSatisfied(possessed))
+					&& quantityForRequirement(requirement, quantities) < requiredQuantity(requirement.label))
 				{
-					blockers.add("Acquire item: " + requirement.label);
+					int need = requiredQuantity(requirement.label);
+					blockers.add("Acquire item: " + requirement.label + " (have "
+						+ quantityForRequirement(requirement, quantities) + ", need " + need + ")");
 				}
 			}
 		}
@@ -647,28 +788,67 @@ final class CardcorePlanner
 	}
 
 	private static List<String> missingPhysicalQuestItems(QuestCatalog.QuestEntry quest,
-		Set<String> owned, Set<String> possessed)
+		Set<String> owned, Map<String, Integer> quantities)
 	{
 		List<String> missing = new ArrayList<>();
 		for (QuestCatalog.Requirement requirement : quest.requirements)
 		{
 			if (requirement.isSatisfied(owned)
 				&& !requirement.label.toLowerCase(Locale.ROOT).endsWith("(enemy)")
-				&& !requirement.isSatisfied(possessed))
+				&& quantityForRequirement(requirement, quantities) < requiredQuantity(requirement.label))
 			{
-				missing.add("Acquire item: " + requirement.label);
+				missing.add("Acquire item: " + requirement.label + " (have "
+					+ quantityForRequirement(requirement, quantities) + ", need "
+					+ requiredQuantity(requirement.label) + ") - " + acquisitionHint(requirement.label));
 			}
 		}
 		return missing;
 	}
 
+	private static int quantityForRequirement(QuestCatalog.Requirement requirement,
+		Map<String, Integer> quantities)
+	{
+		int best = 0;
+		for (String card : requirement.lowerCards)
+		{
+			best = Math.max(best, quantities.getOrDefault(CardNames.stripDoseSuffix(card), 0));
+		}
+		return best;
+	}
+
+	private static int requiredQuantity(String label)
+	{
+		String lower = key(label);
+		java.util.regex.Matcher x = java.util.regex.Pattern.compile("(?:x|×)\\s*(\\d+)|(\\d+)\\s*(?:x|×)")
+			.matcher(lower);
+		if (x.find()) return Integer.parseInt(x.group(1) != null ? x.group(1) : x.group(2));
+		if (lower.contains("3 bucket") && lower.contains("milk")) return 3;
+		return 1;
+	}
+
+	private static String acquisitionHint(String item)
+	{
+		switch (key(item).replaceAll("\\s*\\(.*", ""))
+		{
+			case "spade": return "use a nearby spawn or Farming/general shop";
+			case "knife": return "take the Lumbridge Castle kitchen spawn";
+			case "hammer": return "use a general-store or workshop spawn";
+			case "rope": return "buy from Ned in Draynor when Coins are legal, or obtain a spawn/drop";
+			case "bucket": case "bucket of water": return "use a general-store spawn and fill it at a sink";
+			case "eye of newt": return "buy from a magic shop when Coins are legal";
+			default: return "check the item card's Sources entry before travelling";
+		}
+	}
+
 	private static String travelHint(String quest, String currentArea,
-		Set<String> possessed, Set<String> completed)
+		Set<String> possessed, Set<String> completed, Set<String> started,
+		int currentX, int currentY)
 	{
 		String destination = questArea(quest);
+		String distance = approximateDistance(destination, currentX, currentY);
 		if (key(destination).equals(key(currentArea)))
 		{
-			return "you are already in the " + destination + " region.";
+			return "you are already in the " + destination + " region" + distance + ".";
 		}
 		if ("Morytania".equals(destination) && !completed.contains(key("Priest in Peril")))
 		{
@@ -680,7 +860,7 @@ final class CardcorePlanner
 		}
 		if ("Karamja".equals(destination))
 		{
-			return "use the cardless TzHaar Fight Pit minigame teleport, or the Port Sarim boat when legal.";
+			return "use the cardless TzHaar Fight Pit minigame teleport if its shared cooldown is ready, or the Port Sarim boat when legal.";
 		}
 		if ("Kourend".equals(destination) || "Hosidius".equals(destination))
 		{
@@ -690,7 +870,13 @@ final class CardcorePlanner
 		{
 			return possessed.contains(key("ring of dueling"))
 				? "use your Ring of dueling to Castle Wars, then walk north/east."
-				: "use the cardless Castle Wars minigame teleport, then walk.";
+				: "use the cardless Castle Wars minigame teleport if its shared cooldown is ready, then walk.";
+		}
+		if ("Varlamore".equals(destination))
+		{
+			return completed.contains(key("Children of the Sun"))
+				? "travel from Varrock with Regulus Cento, then use Varlamore's local transport network."
+				: "Varlamore routing is blocked until Children of the Sun is complete.";
 		}
 		if ("Desert".equals(destination))
 		{
@@ -704,7 +890,32 @@ final class CardcorePlanner
 		{
 			return "use your Chronicle and walk north.";
 		}
-		return "walk from " + currentArea + "; no mandatory transport card is known for this step.";
+		return "walk from " + currentArea + distance + "; no mandatory transport card is known for this step.";
+	}
+
+	private static String approximateDistance(String area, int x, int y)
+	{
+		int[] target = areaCoordinate(area);
+		if (x < 0 || y < 0 || target == null) return "";
+		return " (~" + Math.max(Math.abs(x - target[0]), Math.abs(y - target[1])) + " direct tiles)";
+	}
+
+	private static int[] areaCoordinate(String area)
+	{
+		switch (area)
+		{
+			case "Lumbridge": return new int[]{3222, 3218};
+			case "Varrock": return new int[]{3210, 3424};
+			case "Ardougne": return new int[]{2662, 3305};
+			case "Gnome": return new int[]{2525, 3167};
+			case "Falador": return new int[]{2965, 3379};
+			case "Taverley": return new int[]{2895, 3465};
+			case "Morytania": return new int[]{3440, 3485};
+			case "Desert": return new int[]{3300, 3100};
+			case "Karamja": return new int[]{2925, 3170};
+			case "Varlamore": return new int[]{1680, 3100};
+			default: return null;
+		}
 	}
 
 	private static String questArea(String quest)
@@ -714,9 +925,14 @@ final class CardcorePlanner
 			case "cook's assistant": case "the restless ghost": case "recipe for disaster":
 				return "Lumbridge";
 			case "demon slayer": case "gertrude's cat": case "the dig site":
+			case "romeo & juliet": case "romeo and juliet":
 				return "Varrock";
 			case "hazeel cult": case "sea slug": case "plague city": case "biohazard":
+			case "tribal totem":
 				return "Ardougne";
+			case "jungle potion": return "Karamja";
+			case "the lost tribe": return "Lumbridge";
+			case "ethically acquired antiquities": return "Varlamore";
 			case "waterfall quest": case "tree gnome village": case "the grand tree":
 			case "monkey madness i": return "Gnome";
 			case "the knight's sword": case "doric's quest": return "Falador";
@@ -830,12 +1046,15 @@ final class CardcorePlanner
 		final String currentArea;
 		final List<String> nearbyUnlockedCombat;
 		final List<String> opportunityIdeas;
+		final boolean bankSnapshotFresh;
+		final List<String> tripPlan;
 
 		private Plan(List<Recommendation> recommendations, int fireCardsHave,
 			int fireCardsTotal, List<String> fireBlockers, int barrowsQuestsDone,
 			int barrowsQuestsTotal, List<String> highImpactWatchList,
 			List<String> fireLoadout, long credits, String currentArea,
-			List<String> nearbyUnlockedCombat, List<String> opportunityIdeas)
+			List<String> nearbyUnlockedCombat, List<String> opportunityIdeas,
+			boolean bankSnapshotFresh, List<String> tripPlan)
 		{
 			this.recommendations = recommendations;
 			this.fireCardsHave = fireCardsHave;
@@ -849,6 +1068,8 @@ final class CardcorePlanner
 			this.currentArea = currentArea;
 			this.nearbyUnlockedCombat = nearbyUnlockedCombat;
 			this.opportunityIdeas = opportunityIdeas;
+			this.bankSnapshotFresh = bankSnapshotFresh;
+			this.tripPlan = tripPlan;
 		}
 	}
 

@@ -165,7 +165,7 @@ public class CardcorePlannerTest
 			Collections.singletonList("Goblin (level 2)"));
 		assertEquals("Train Agility to 20", plan.recommendations.get(0).title);
 		assertEquals("Draynor", plan.currentArea);
-		assertEquals("Goblin (level 2)", plan.nearbyUnlockedCombat.get(0));
+		assertTrue(plan.nearbyUnlockedCombat.get(0).startsWith("Goblin (level 2) [reasonable"));
 	}
 
 	@Test
@@ -194,6 +194,38 @@ public class CardcorePlannerTest
 			Collections.emptySet());
 		assertTrue(plan.recommendations.stream().anyMatch(r ->
 			r.title.equals("Prepare X Marks the Spot for XP levels")
-				&& r.blockers.contains("Acquire item: Spade")));
+				&& r.blockers.stream().anyMatch(b -> b.startsWith("Acquire item: Spade"))));
+	}
+
+	@Test
+	public void currentEarlyAccountSimulationStaysLegalAndPackFocused()
+	{
+		Set<String> cards = new HashSet<>();
+		Collections.addAll(cards, "rabbit", "bunny", "ring of dueling", "prayer potion",
+			"dragon pickaxe", "air tiara", "glassblowing pipe", "oak blackjack");
+		Map<String, Integer> skills = new HashMap<>();
+		skills.put("attack", 8);
+		skills.put("hitpoints", 10);
+		skills.put("prayer", 9);
+		skills.put("agility", 30);
+		skills.put("slayer", 9);
+		skills.put("hunter", 9);
+
+		CardcorePlanner.Plan opening = planner.evaluate(cards, Collections.emptySet(), skills,
+			641L, "Varrock", Collections.singletonList("Rabbit (level 2)"),
+			Collections.emptySet(), Collections.emptyMap(), false,
+			Collections.emptySet(), 3210, 3424);
+		assertTrue(opening.recommendations.stream().anyMatch(r -> r.title.equals("Do Hazeel Cult")));
+		assertTrue(opening.opportunityIdeas.stream().anyMatch(i -> i.startsWith("Rabbit/Bunny")));
+		assertFalse(opening.recommendations.stream().anyMatch(r ->
+			r.title.contains("Jungle Potion") || r.title.contains("The Lost Tribe")
+				|| r.title.contains("Tribal Totem") || r.title.contains("Ethically Acquired")));
+		assertFalse(opening.bankSnapshotFresh);
+
+		Map<String, Integer> afterThieving = new HashMap<>(skills);
+		afterThieving.put("thieving", 25);
+		CardcorePlanner.Plan packEarned = planner.evaluate(cards,
+			Collections.singleton("hazeel cult"), afterThieving, 2_500L);
+		assertEquals("Open 1 pack now", packEarned.recommendations.get(0).title);
 	}
 }
