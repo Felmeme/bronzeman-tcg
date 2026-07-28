@@ -79,6 +79,17 @@ final class CardcorePlanner
 		Set<String> possessed, Map<String, Integer> quantities, boolean bankFresh,
 		Set<String> started, int currentX, int currentY)
 	{
+		return evaluate(owned, completed, skills, credits, currentArea, nearbyUnlockedCombat,
+			possessed, quantities, bankFresh, started, currentX, currentY,
+			Collections.emptyMap(), TcgCollectionReader.RewardRates.DEFAULT);
+	}
+
+	Plan evaluate(Set<String> owned, Set<String> completed, Map<String, Integer> skills,
+		long credits, String currentArea, List<String> nearbyUnlockedCombat,
+		Set<String> possessed, Map<String, Integer> quantities, boolean bankFresh,
+		Set<String> started, int currentX, int currentY, Map<String, Integer> skillXp,
+		TcgCollectionReader.RewardRates rewardRates)
+	{
 		List<Recommendation> recommendations = new ArrayList<>();
 		if (credits >= 2_500L)
 		{
@@ -210,14 +221,20 @@ final class CardcorePlanner
 		List<String> opportunityIdeas = buildOpportunityIdeas(owned, possessed, completed, skills,
 			classifiedCombat);
 
-		recommendations.sort((left, right) -> Integer.compare(
-			recommendationPriority(right) + areaPriority(right, currentArea),
-			recommendationPriority(left) + areaPriority(left, currentArea)));
 		// A missing random card is not an actionable route step. Keep skill/quest preparation
 		// when its cards are already legal, but do not fill the live plan with things the
 		// player can only unlock by getting lucky from a future pack.
 		recommendations.removeIf(recommendation -> !recommendation.ready
 			&& hasRandomCardBlocker(recommendation.blockers));
+		List<Recommendation> scored = new ArrayList<>();
+		for (Recommendation recommendation : recommendations)
+		{
+			scored.add(recommendation.withEstimate(estimateAction(recommendation, skills,
+				skillXp, credits, rewardRates, currentArea, currentX, currentY)));
+		}
+		recommendations = scored;
+		recommendations.sort((left, right) -> Integer.compare(right.estimate.score,
+			left.estimate.score));
 		if (recommendations.size() > 10)
 		{
 			recommendations = new ArrayList<>(recommendations.subList(0, 10));
@@ -413,6 +430,233 @@ final class CardcorePlanner
 		if (title.contains("specimen") || title.contains("cactus")) return 650;
 		if (title.startsWith("prepare ")) return 600;
 		return 500;
+	}
+
+	private static ActionEstimate estimateAction(Recommendation recommendation,
+		Map<String, Integer> skills, Map<String, Integer> skillXp, long credits,
+		TcgCollectionReader.RewardRates rates, String currentArea, int x, int y)
+	{
+		if (!recommendation.ready)
+		{
+			return new ActionEstimate(-10_000 + recommendationPriority(recommendation), 0, -1,
+				"Preparation only; a requirement is still missing.");
+		}
+		String title = key(recommendation.title);
+		if (title.startsWith("open "))
+		{
+			return new ActionEstimate(1_000_000, 0, 0,
+				"Pack is already funded; opening it expands the legal action space immediately.");
+		}
+
+		CreditProjection projection = projectionFor(title, skills, skillXp, rates);
+		int travel = estimateTravelMinutes(recommendationArea(recommendation.title), currentArea, x, y);
+		long needed = credits >= 2_500L ? 0L : 2_500L - credits;
+		int minutesToPack;
+		if (projection.oneTimeMinutes > 0)
+		{
+			minutesToPack = projection.oneTimeCredits >= needed
+				? travel + projection.oneTimeMinutes : -1;
+		}
+		else
+		{
+			minutesToPack = projection.creditsPerHour <= 0 ? -1
+				: travel + (int) Math.ceil(needed * 60.0d / projection.creditsPerHour);
+		}
+		int strategic = recommendationPriority(recommendation)
+			+ areaPriority(recommendation, currentArea)
+			+ goalValue(title) - travel * 12;
+		int score = strategic + projection.creditsPerHour / 8;
+		String explanation = projection.explanation + (travel > 0
+			? " Estimated travel: ~" + travel + " min." : " Already local or travel is negligible.");
+		return new ActionEstimate(score, projection.creditsPerHour, minutesToPack, explanation);
+	}
+
+	private static CreditProjection projectionFor(String title, Map<String, Integer> skills,
+		Map<String, Integer> skillXp, TcgCollectionReader.RewardRates rates)
+	{
+		if (title.contains("varrock museum quiz"))
+		{
+			long reward = creditsForXp("hunter", 1_000, skills, skillXp, rates, true)
+				+ creditsForXp("slayer", 1_000, skills, skillXp, rates, true);
+			return oneTimeProjection(reward, 5, "Two 1,000-XP rewards plus early Hunter/Slayer level bonuses.");
+		}
+		if (title.contains("hazeel cult"))
+		{
+			long reward = creditsForXp("thieving", 1_500, skills, skillXp, rates, true);
+			return oneTimeProjection(reward, 12, "1,500 Thieving XP plus all crossed level bonuses.");
+		}
+		if (title.contains("restless ghost"))
+		{
+			long reward = creditsForXp("prayer", 1_125, skills, skillXp, rates, true);
+			return oneTimeProjection(reward, 10, "1,125 Prayer XP plus crossed level bonuses and goal progress.");
+		}
+		Map<String, Integer> questReward = questXpReward(title);
+		if (!questReward.isEmpty())
+		{
+			long reward = 0L;
+			for (Map.Entry<String, Integer> xp : questReward.entrySet())
+			{
+				reward += creditsForXp(xp.getKey(), xp.getValue(), skills, skillXp, rates,
+					!isCombatSkill(xp.getKey()));
+			}
+			return oneTimeProjection(reward, questDurationMinutes(title),
+				"Quest reward projection includes exact crossed-level bonuses.");
+		}
+
+		String skill = null;
+		int xpPerHour = 0;
+		int horizonMinutes = 30;
+		if (title.contains("thieving") || title.contains("fruit stalls") || title.contains("wealthy citizens"))
+		{
+			skill = "thieving";
+			int level = level(skills, skill);
+			xpPerHour = level < 5 ? 5_000 : level < 15 ? 12_000 : level < 25 ? 20_000 : 35_000;
+		}
+		else if (title.contains("agility")) { skill = "agility"; xpPerHour = 9_000; }
+		else if (title.contains("specimen")) { skill = "mining"; xpPerHour = 2_000; }
+		else if (title.contains("panning")) { skill = "mining"; xpPerHour = 3_000; }
+		else if (title.contains("big-net")) { skill = "fishing"; xpPerHour = 8_000; }
+		else if (title.contains("motherlode")) { skill = "smithing"; xpPerHour = 5_000; }
+		else if (title.contains("cactus")) { skill = "woodcutting"; xpPerHour = 3_000; }
+		else if (title.contains("wintertodt")) { skill = "firemaking"; xpPerHour = 180_000; }
+		else if (title.contains("varrock dummies")) { skill = "attack"; xpPerHour = 2_500; }
+		if (skill != null)
+		{
+			int gain = xpPerHour * horizonMinutes / 60;
+			long reward = creditsForXp(skill, gain, skills, skillXp, rates, !isCombatSkill(skill));
+			int cph = (int) Math.min(Integer.MAX_VALUE, reward * 60L / horizonMinutes);
+			return new CreditProjection(cph, 0L, 0, "~" + xpPerHour + " XP/hr; 30-minute projection includes level bonuses"
+				+ (isCombatSkill(skill) ? " (combat XP itself gives no chunk credits)." : " and non-combat XP credits."));
+		}
+
+		if (title.startsWith("farm "))
+		{
+			int targetLevel = title.contains("rabbit") || title.contains("bunny") ? 2 : 10;
+			int killsPerHour = targetLevel <= 2 ? 100 : 60;
+			long killCredits = Math.round(targetLevel * rates.killMultiplier) * killsPerHour;
+			long strengthLevels = creditsForXp("strength", 2_500, skills, skillXp, rates, false) * 2L;
+			return new CreditProjection((int) Math.min(Integer.MAX_VALUE, killCredits + strengthLevels), 0L, 0,
+				"~" + killsPerHour + " kills/hr × " + Math.round(targetLevel * rates.killMultiplier)
+					+ " credits/kill, plus projected combat level bonuses.");
+		}
+		return new CreditProjection(0, 0L, 0, "Strategic/access value only; no reliable credit rate is available.");
+	}
+
+	private static CreditProjection oneTimeProjection(long credits, int minutes, String explanation)
+	{
+		int cph = minutes <= 0 ? 0 : (int) Math.min(Integer.MAX_VALUE, credits * 60L / minutes);
+		return new CreditProjection(cph, credits, minutes,
+			"~" + credits + " credits in ~" + minutes + " min. " + explanation);
+	}
+
+	private static long creditsForXp(String skill, int gainedXp, Map<String, Integer> skills,
+		Map<String, Integer> skillXp, TcgCollectionReader.RewardRates rates, boolean chunkCredits)
+	{
+		int currentXp = skillXp.getOrDefault(key(skill), xpForLevel(level(skills, skill)));
+		int before = levelForXp(currentXp);
+		int after = levelForXp(Math.max(0, currentXp + gainedXp));
+		long credits = 0L;
+		for (int next = before + 1; next <= after; next++)
+		{
+			credits += Math.round(levelUpReward(next) * rates.levelMultiplier);
+		}
+		if (chunkCredits)
+		{
+			long chunks = (rates.uncreditedXp + gainedXp) / 1_000L;
+			credits += Math.round(chunks * 100.0d * rates.xpMultiplier);
+		}
+		return credits;
+	}
+
+	private static int levelUpReward(int level)
+	{
+		if (level <= 2) return 1_250;
+		if (level >= 99) return 25_000;
+		double progress = (level - 2.0d) / 97.0d;
+		double curve = Math.pow(progress, 2.5d);
+		return (int) Math.round(1_250.0d * Math.pow(20.0d, curve));
+	}
+
+	private static int xpForLevel(int target)
+	{
+		if (target <= 1) return 0;
+		int points = 0;
+		for (int level = 1; level < target; level++)
+		{
+			points += Math.floor(level + 300.0d * Math.pow(2.0d, level / 7.0d));
+		}
+		return points / 4;
+	}
+
+	private static int levelForXp(int xp)
+	{
+		int level = 1;
+		while (level < 126 && xpForLevel(level + 1) <= xp) level++;
+		return level;
+	}
+
+	private static boolean isCombatSkill(String skill)
+	{
+		String normalized = key(skill);
+		return normalized.equals("attack") || normalized.equals("strength")
+			|| normalized.equals("defence") || normalized.equals("hitpoints")
+			|| normalized.equals("ranged") || normalized.equals("magic");
+	}
+
+	private static Map<String, Integer> questXpReward(String title)
+	{
+		Map<String, Integer> rewards = new LinkedHashMap<>();
+		if (title.contains("waterfall quest")) { rewards.put("attack", 13_750); rewards.put("strength", 13_750); }
+		else if (title.contains("knight's sword")) rewards.put("smithing", 12_725);
+		else if (title.contains("witch's house")) rewards.put("hitpoints", 6_325);
+		else if (title.contains("sea slug")) rewards.put("fishing", 7_175);
+		else if (title.contains("fight arena")) rewards.put("attack", 12_175);
+		else if (title.contains("grand tree")) { rewards.put("attack", 18_400); rewards.put("agility", 7_900); rewards.put("magic", 2_150); }
+		else if (title.contains("tree gnome village")) rewards.put("attack", 11_450);
+		else if (title.contains("x marks the spot")) rewards.put("agility", 300);
+		return rewards;
+	}
+
+	private static int questDurationMinutes(String title)
+	{
+		if (title.contains("x marks")) return 8;
+		if (title.contains("restless ghost")) return 10;
+		if (title.contains("knight's sword")) return 20;
+		if (title.contains("waterfall")) return 25;
+		return 30;
+	}
+
+	private static int goalValue(String title)
+	{
+		if (title.contains("restless ghost") || title.contains("recipe for disaster")) return 500;
+		if (title.contains("grand tree") || title.contains("tree gnome")) return 350;
+		if (title.contains("prayer") || title.contains("ranged")) return 250;
+		return 0;
+	}
+
+	private static int estimateTravelMinutes(String destination, String currentArea, int x, int y)
+	{
+		if (destination == null || key(destination).equals(key(currentArea))) return 0;
+		int[] target = areaCoordinate(destination);
+		if (target == null || x < 0 || y < 0) return 5;
+		int tiles = Math.max(Math.abs(x - target[0]), Math.abs(y - target[1]));
+		return Math.max(2, (int) Math.ceil(tiles / 110.0d));
+	}
+
+	private static final class CreditProjection
+	{
+		private final int creditsPerHour;
+		private final long oneTimeCredits;
+		private final int oneTimeMinutes;
+		private final String explanation;
+		private CreditProjection(int creditsPerHour, long oneTimeCredits,
+			int oneTimeMinutes, String explanation)
+		{
+			this.creditsPerHour = Math.max(0, creditsPerHour);
+			this.oneTimeCredits = Math.max(0L, oneTimeCredits);
+			this.oneTimeMinutes = Math.max(0, oneTimeMinutes);
+			this.explanation = explanation;
+		}
 	}
 
 	private QuestCatalog.QuestEntry bestPackQuest(Set<String> owned, Set<String> completed,
@@ -1080,13 +1324,44 @@ final class CardcorePlanner
 		final String reason;
 		final List<String> blockers;
 		final boolean ready;
+		final ActionEstimate estimate;
 
 		private Recommendation(String title, String reason, List<String> blockers, boolean ready)
+		{
+			this(title, reason, blockers, ready, ActionEstimate.UNSCORED);
+		}
+
+		private Recommendation(String title, String reason, List<String> blockers, boolean ready,
+			ActionEstimate estimate)
 		{
 			this.title = title;
 			this.reason = reason;
 			this.blockers = Collections.unmodifiableList(new ArrayList<>(blockers));
 			this.ready = ready;
+			this.estimate = estimate;
+		}
+
+		private Recommendation withEstimate(ActionEstimate estimate)
+		{
+			return new Recommendation(title, reason, blockers, ready, estimate);
+		}
+	}
+
+	static final class ActionEstimate
+	{
+		private static final ActionEstimate UNSCORED = new ActionEstimate(0, 0, -1, "");
+		final int score;
+		final int creditsPerHour;
+		final int minutesToPack;
+		final String explanation;
+
+		private ActionEstimate(int score, int creditsPerHour, int minutesToPack,
+			String explanation)
+		{
+			this.score = score;
+			this.creditsPerHour = creditsPerHour;
+			this.minutesToPack = minutesToPack;
+			this.explanation = explanation;
 		}
 	}
 

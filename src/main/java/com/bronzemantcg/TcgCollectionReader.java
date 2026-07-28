@@ -48,6 +48,7 @@ public class TcgCollectionReader
 	private Set<String> cachedFoilLowerCaseNames = Collections.emptySet();
 	private long lastFoilRefreshMs = 0L;
 	private long cachedCredits;
+	private RewardRates cachedRewardRates = RewardRates.DEFAULT;
 
 	@Inject
 	public TcgCollectionReader(ConfigManager configManager, Gson gson)
@@ -81,6 +82,7 @@ public class TcgCollectionReader
 				String raw = configManager.getRSProfileConfiguration(TCG_CONFIG_GROUP, TCG_STATE_KEY);
 				TcgStateDto dto = gson.fromJson(TcgStateDecoder.decode(raw), TcgStateDto.class);
 				cachedCredits = dto == null ? 0L : dto.credits();
+				cachedRewardRates = RewardRates.from(dto);
 				Set<String> foils = new HashSet<>();
 				List<TcgStateDto.OwnedCardInstanceDto> instances = dto == null ? null : dto.instances();
 				if (instances != null)
@@ -109,6 +111,13 @@ public class TcgCollectionReader
 	{
 		getFoilCardNamesLowerCase();
 		return cachedCredits;
+	}
+
+	/** Exact economy tuning and partial XP chunk from the installed OSRS TCG state. */
+	public synchronized RewardRates getRewardRates()
+	{
+		getFoilCardNamesLowerCase();
+		return cachedRewardRates;
 	}
 
 	/** False when osrs-tcg has no readable state (not installed, no data yet, or decode failure). */
@@ -170,6 +179,39 @@ public class TcgCollectionReader
 		lastFoilRefreshMs = 0L;
 		cachedFoilLowerCaseNames = Collections.emptySet();
 		cachedCredits = 0L;
+		cachedRewardRates = RewardRates.DEFAULT;
+	}
+
+	static final class RewardRates
+	{
+		static final RewardRates DEFAULT = new RewardRates(1.0d, 1.0d, 1.0d, 0L);
+		final double killMultiplier;
+		final double levelMultiplier;
+		final double xpMultiplier;
+		final long uncreditedXp;
+
+		private RewardRates(double killMultiplier, double levelMultiplier,
+			double xpMultiplier, long uncreditedXp)
+		{
+			this.killMultiplier = sane(killMultiplier);
+			this.levelMultiplier = sane(levelMultiplier);
+			this.xpMultiplier = sane(xpMultiplier);
+			this.uncreditedXp = Math.max(0L, uncreditedXp);
+		}
+
+		private static RewardRates from(TcgStateDto dto)
+		{
+			if (dto == null) return DEFAULT;
+			long pool = dto.skillCreditBaseline == null ? 0L
+				: dto.skillCreditBaseline.uncreditedXp;
+			return new RewardRates(dto.killCreditMultiplier, dto.levelUpCreditMultiplier,
+				dto.xpCreditMultiplier, pool);
+		}
+
+		private static double sane(double value)
+		{
+			return Double.isFinite(value) && value >= 0.0d ? value : 1.0d;
+		}
 	}
 
 	private void refresh()

@@ -920,6 +920,7 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 			questStateInitialized = true;
 		}
 		target.updateSkillLevels(captureSkillLevels());
+		target.updateSkillExperiences(captureSkillExperiences());
 		Player locationPlayer = client.getLocalPlayer();
 		int currentX = locationPlayer == null ? -1 : locationPlayer.getWorldLocation().getX();
 		int currentY = locationPlayer == null ? -1 : locationPlayer.getWorldLocation().getY();
@@ -980,6 +981,21 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 			levels.put(skill.getName().toLowerCase(Locale.ROOT), client.getRealSkillLevel(skill));
 		}
 		return Collections.unmodifiableMap(levels);
+	}
+
+	private Map<String, Integer> captureSkillExperiences()
+	{
+		if (client.getGameState() != GameState.LOGGED_IN)
+		{
+			return Collections.emptyMap();
+		}
+		Map<String, Integer> experiences = new HashMap<>();
+		for (Skill skill : Skill.values())
+		{
+			experiences.put(skill.getName().toLowerCase(Locale.ROOT),
+				client.getSkillExperience(skill));
+		}
+		return Collections.unmodifiableMap(experiences);
 	}
 
 	private String captureCurrentArea()

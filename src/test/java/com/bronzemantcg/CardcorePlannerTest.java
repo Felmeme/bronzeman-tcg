@@ -28,7 +28,8 @@ public class CardcorePlannerTest
 			Collections.emptySet(), skills);
 
 		assertEquals("Complete the Varrock Museum quiz", plan.recommendations.get(0).title);
-		assertEquals("Train Agility to 20", plan.recommendations.get(1).title);
+		assertTrue(plan.recommendations.stream().anyMatch(r -> r.title.equals("Train Agility to 20")));
+		assertTrue(plan.recommendations.get(0).estimate.creditsPerHour > 0);
 		assertEquals(0, plan.barrowsQuestsDone);
 		assertFalse(plan.fireBlockers.isEmpty());
 		assertFalse(profile.getRules().isEmpty());
@@ -87,7 +88,10 @@ public class CardcorePlannerTest
 		skills.put("slayer", 9);
 		CardcorePlanner.Plan plan = planner.evaluate(Collections.emptySet(),
 			Collections.emptySet(), skills);
-		assertEquals("Train Agility to 20", plan.recommendations.get(0).title);
+		assertFalse(plan.recommendations.stream()
+			.anyMatch(r -> r.title.contains("Varrock Museum quiz")));
+		assertTrue(plan.recommendations.stream()
+			.anyMatch(r -> r.title.equals("Train Agility to 20")));
 	}
 
 	@Test
@@ -104,12 +108,16 @@ public class CardcorePlannerTest
 	@Test
 	public void latestTcgSchemaExposesCardEntriesFoilsAndCredits()
 	{
-		String json = "{\"credits\":641,\"openedPacks\":31,\"cardEntries\":["
+		String json = "{\"credits\":641,\"openedPacks\":31,"
+			+ "\"killCreditMultiplier\":1.0,\"levelUpCreditMultiplier\":1.0,"
+			+ "\"xpCreditMultiplier\":1.0,\"skillCreditBaseline\":{\"uncreditedXp\":328},"
+			+ "\"cardEntries\":["
 			+ "{\"cardName\":\"Torva full helm\",\"variants\":[{\"foil\":true}]}]}";
 		TcgStateDto state = new Gson().fromJson(json, TcgStateDto.class);
 		assertEquals(641L, state.credits());
 		assertEquals("Torva full helm", state.instances().get(0).cardName);
 		assertTrue(state.instances().get(0).foil);
+		assertEquals(328L, state.skillCreditBaseline.uncreditedXp);
 	}
 
 	@Test
@@ -163,7 +171,8 @@ public class CardcorePlannerTest
 		CardcorePlanner.Plan plan = planner.evaluate(Collections.emptySet(),
 			Collections.emptySet(), skills, 0L, "Draynor",
 			Collections.singletonList("Goblin (level 2)"));
-		assertEquals("Train Agility to 20", plan.recommendations.get(0).title);
+		assertTrue(plan.recommendations.stream()
+			.anyMatch(r -> r.title.equals("Train Agility to 20")));
 		assertEquals("Draynor", plan.currentArea);
 		assertTrue(plan.nearbyUnlockedCombat.get(0).startsWith("Goblin (level 2) [reasonable"));
 	}
@@ -227,5 +236,30 @@ public class CardcorePlannerTest
 		CardcorePlanner.Plan packEarned = planner.evaluate(cards,
 			Collections.singleton("hazeel cult"), afterThieving, 2_500L);
 		assertEquals("Open 1 pack now", packEarned.recommendations.get(0).title);
+	}
+
+	@Test
+	public void liveXpOptimizerEstimatesCurrentThievingTimeToPack()
+	{
+		Map<String, Integer> skills = new HashMap<>();
+		skills.put("agility", 31);
+		skills.put("thieving", 11);
+		skills.put("hunter", 9);
+		skills.put("slayer", 9);
+		Map<String, Integer> xp = new HashMap<>();
+		xp.put("thieving", 1_500);
+		Set<String> completed = new HashSet<>();
+		Collections.addAll(completed, "the restless ghost", "hazeel cult");
+
+		CardcorePlanner.Plan plan = planner.evaluate(Collections.emptySet(), completed,
+			skills, 1_584L, "Ardougne", Collections.emptyList(), Collections.emptySet(),
+			Collections.emptyMap(), true, Collections.emptySet(), 2662, 3305, xp,
+			TcgCollectionReader.RewardRates.DEFAULT);
+		CardcorePlanner.Recommendation thieving = plan.recommendations.stream()
+			.filter(r -> r.title.contains("Thieving toward 25"))
+			.findFirst().orElseThrow(AssertionError::new);
+		assertTrue(thieving.estimate.creditsPerHour > 0);
+		assertTrue(thieving.estimate.minutesToPack > 0);
+		assertTrue(thieving.estimate.minutesToPack <= 10);
 	}
 }

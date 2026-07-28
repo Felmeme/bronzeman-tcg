@@ -9,6 +9,9 @@
   current region, nearby unlocked NPCs, inventory/equipment, and the latest bank snapshot.
 - Quantity-aware quest preparation (including potion doses), ordinary quest skill/prerequisite
   gates, item-source hints, safe-combat labels, travel access gates, and regional trip clusters.
+- Explainable action scores using the installed TCG reward multipliers, exact skill XP,
+  early level-up rewards, repeatable XP/kill rates, travel time, goal value, and estimated
+  minutes to the next 2,500-credit pack.
 - Fire Cape readiness for all Fight Caves monster cards plus baseline Ranged, Prayer
   and Hitpoints targets.
 - A Barrows-gloves dependency chain that prioritizes the closest card-, skill- and

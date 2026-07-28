@@ -103,6 +103,7 @@ class BronzemanTcgPanel extends PluginPanel
 	private PanelSnapshot snapshot;
 	private PanelTab selectedTab = PanelTab.PLANNER;
 	private volatile Map<String, Integer> skillLevels = Collections.emptyMap();
+	private volatile Map<String, Integer> skillExperiences = Collections.emptyMap();
 	private volatile String currentArea = "Unknown";
 	private volatile int currentX = -1;
 	private volatile int currentY = -1;
@@ -444,6 +445,12 @@ class BronzemanTcgPanel extends PluginPanel
 			: Collections.unmodifiableMap(new HashMap<>(levels));
 	}
 
+	void updateSkillExperiences(Map<String, Integer> experiences)
+	{
+		skillExperiences = experiences == null ? Collections.emptyMap()
+			: Collections.unmodifiableMap(new HashMap<>(experiences));
+	}
+
 	void updateLocationContext(String area, int x, int y, List<String> nearbyCombat)
 	{
 		currentArea = area == null ? "Unknown" : area;
@@ -487,6 +494,7 @@ class BronzemanTcgPanel extends PluginPanel
 		Set<String> completed = completedQuestNames;
 		Set<String> started = startedQuestNames;
 		Map<String, Integer> skills = skillLevels;
+		Map<String, Integer> skillXp = skillExperiences;
 		Set<String> plannerOwned = new HashSet<>(owned);
 		plannerOwned.addAll(visibleShared);
 		if (config.enableFoilCascades())
@@ -496,11 +504,12 @@ class BronzemanTcgPanel extends PluginPanel
 		}
 		CardcorePlanner.Plan plan = planner.evaluate(plannerOwned, completed, skills,
 			collectionReader.getCredits(), currentArea, nearbyUnlockedCombat, possessedItems,
-			possessedQuantities, bankSnapshotFresh, started, currentX, currentY);
+			possessedQuantities, bankSnapshotFresh, started, currentX, currentY,
+			skillXp, collectionReader.getRewardRates());
 
 		return new PanelSnapshot(data, owned, visibleShared, recentUnlocksTracker.getRecent(),
 			recentUnlocksTracker.getSharedRecent(),
-			includeSlayerSuperiors, completed, skills, plan,
+			includeSlayerSuperiors, completed, skills, skillXp, plan,
 			countUnlocked(monsterCatalog.getEntityToCards(), owned),
 			countUnlocked(itemCatalog.getEntityToCards(), owned));
 	}
@@ -565,6 +574,8 @@ class BronzemanTcgPanel extends PluginPanel
 			|| !previous.completedQuests.equals(next.completedQuests);
 		boolean plannerChanged = first || questStateChanged || ownedChanged
 			|| !previous.skillLevels.equals(next.skillLevels)
+			|| !previous.skillExperiences.equals(next.skillExperiences)
+			|| previous.plan.credits != next.plan.credits
 			|| !previous.plan.currentArea.equals(next.plan.currentArea)
 			|| !previous.plan.nearbyUnlockedCombat.equals(next.plan.nearbyUnlockedCombat)
 			|| previous.plan.bankSnapshotFresh != next.plan.bankSnapshotFresh
@@ -818,6 +829,19 @@ class BronzemanTcgPanel extends PluginPanel
 		panel.add(title, BorderLayout.NORTH);
 
 		String body = recommendation.reason;
+		if (!recommendation.estimate.explanation.isEmpty())
+		{
+			body += "<br><font color='#f0c75e'>Score " + recommendation.estimate.score;
+			if (recommendation.estimate.creditsPerHour > 0)
+			{
+				body += " | ~" + recommendation.estimate.creditsPerHour + " credits/hr";
+			}
+			if (recommendation.estimate.minutesToPack >= 0)
+			{
+				body += " | next pack ~" + recommendation.estimate.minutesToPack + " min";
+			}
+			body += "</font><br>" + recommendation.estimate.explanation;
+		}
 		if (!recommendation.blockers.isEmpty())
 		{
 			body += "<br><font color='#b8b8b8'>" + String.join("<br>", recommendation.blockers)
@@ -2508,6 +2532,7 @@ class BronzemanTcgPanel extends PluginPanel
 		private final boolean includeSlayerSuperiors;
 		private final Set<String> completedQuests;
 		private final Map<String, Integer> skillLevels;
+		private final Map<String, Integer> skillExperiences;
 		private final CardcorePlanner.Plan plan;
 		private final int unlockedMonsters;
 		private final int unlockedItems;
@@ -2516,7 +2541,8 @@ class BronzemanTcgPanel extends PluginPanel
 			List<RecentUnlocksTracker.Unlock> recentUnlocks,
 			List<RecentUnlocksTracker.Unlock> sharedRecentUnlocks,
 			boolean includeSlayerSuperiors, Set<String> completedQuests,
-			Map<String, Integer> skillLevels, CardcorePlanner.Plan plan,
+			Map<String, Integer> skillLevels, Map<String, Integer> skillExperiences,
+			CardcorePlanner.Plan plan,
 			int unlockedMonsters,
 			int unlockedItems)
 		{
@@ -2528,6 +2554,7 @@ class BronzemanTcgPanel extends PluginPanel
 			this.includeSlayerSuperiors = includeSlayerSuperiors;
 			this.completedQuests = completedQuests;
 			this.skillLevels = skillLevels;
+			this.skillExperiences = skillExperiences;
 			this.plan = plan;
 			this.unlockedMonsters = unlockedMonsters;
 			this.unlockedItems = unlockedItems;

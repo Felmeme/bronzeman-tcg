@@ -24,6 +24,10 @@ public class TcgStateDto
 	public List<CardEntryDto> cardEntries;
 	public long credits;
 	public long openedPacks;
+	public double killCreditMultiplier = 1.0d;
+	public double levelUpCreditMultiplier = 1.0d;
+	public double xpCreditMultiplier = 1.0d;
+	public SkillCreditBaselineDto skillCreditBaseline;
 
 	public List<OwnedCardInstanceDto> instances()
 	{
@@ -79,6 +83,12 @@ public class TcgStateDto
 	{
 		public long credits;
 		public long openedPacks;
+	}
+
+	public static class SkillCreditBaselineDto
+	{
+		public java.util.Map<String, Integer> skillXp;
+		public long uncreditedXp;
 	}
 
 	public static class OwnedCardInstanceDto
