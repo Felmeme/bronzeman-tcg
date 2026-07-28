@@ -185,6 +185,8 @@ class BronzemanTcgPanel extends PluginPanel
 	private final JPanel collectionView = new JPanel(new CardLayout());
 	private final JPanel collectionDetailPanel = sectionBody();
 	private int collectionListScrollPosition;
+	private int collectionReturnScrollPosition;
+	private PanelTab collectionReturnTab = PanelTab.IMPORTANT;
 	private final Deque<String> collectionCardHistory = new ArrayDeque<>();
 	private final Set<String> expandedKnowledgeSections = new HashSet<>();
 
@@ -463,6 +465,12 @@ class BronzemanTcgPanel extends PluginPanel
 
 	private void selectTab(PanelTab tab)
 	{
+		if (selectedTab == PanelTab.IMPORTANT && tab != PanelTab.IMPORTANT
+			&& !collectionCardHistory.isEmpty())
+		{
+			collectionCardHistory.clear();
+			((CardLayout) collectionView.getLayout()).show(collectionView, "list");
+		}
 		if (tab != PanelTab.SETTINGS)
 		{
 			lastContentTab = tab;
@@ -820,8 +828,8 @@ class BronzemanTcgPanel extends PluginPanel
 			{
 				if (hasVisibleSlayerCards(superior.displayCards))
 				{
-					slayerList.add(statusRow("  " + superior.label,
-						superior.isSatisfied(snapshot.owned), null));
+					slayerList.add(requirementRow(superior,
+						superior.isSatisfied(snapshot.owned), "  "));
 				}
 			}
 		}
@@ -898,16 +906,16 @@ class BronzemanTcgPanel extends PluginPanel
 				}
 				if (task.locationSpecific)
 				{
-					slayerList.add(statusRow("    " + requirement.label,
-						requirement.isSatisfied(snapshot.owned), null));
+					slayerList.add(requirementRow(requirement,
+						requirement.isSatisfied(snapshot.owned), "    "));
 				}
 				for (String card : requirement.displayCards)
 				{
 					if (isSlayerCardVisible(card))
 					{
 						String indent = task.locationSpecific ? "      " : "    ";
-						slayerList.add(statusRow(indent + displayCardName(card),
-							snapshot.owned.contains(card.toLowerCase(Locale.ROOT)), null));
+						slayerList.add(linkedStatusRow(indent + displayCardName(card),
+							card, snapshot.owned.contains(card.toLowerCase(Locale.ROOT))));
 					}
 				}
 			}
@@ -935,8 +943,8 @@ class BronzemanTcgPanel extends PluginPanel
 				{
 					if (hasVisibleSlayerCards(superior.displayCards))
 					{
-						slayerList.add(statusRow("    " + superior.label,
-							superior.isSatisfied(snapshot.owned), null));
+						slayerList.add(requirementRow(superior,
+							superior.isSatisfied(snapshot.owned), "    "));
 					}
 				}
 			}
@@ -1011,8 +1019,7 @@ class BronzemanTcgPanel extends PluginPanel
 					boolean unlocked = requirement.isSatisfied(snapshot.owned);
 					if (isPvmEntryVisible(unlocked))
 					{
-						contentList.add(statusRow("    " + requirement.label,
-							unlocked, null));
+						contentList.add(requirementRow(requirement, unlocked, "    "));
 					}
 				}
 			}
@@ -1170,7 +1177,9 @@ class BronzemanTcgPanel extends PluginPanel
 			String name = displayCardName(unlock.name);
 			if (query.isEmpty() || name.toLowerCase(Locale.ROOT).contains(query))
 			{
-				recentUnlocksList.add(recentUnlockRow(name, unlock.time, unlock.shared));
+				JPanel unlockRow = recentUnlockRow(name, unlock.time, unlock.shared);
+				makeClickable(unlockRow, () -> openCollectionCard(unlock.name));
+				recentUnlocksList.add(unlockRow);
 			}
 		}
 		if (recentUnlocksList.getComponentCount() == 0)
@@ -1200,7 +1209,8 @@ class BronzemanTcgPanel extends PluginPanel
 			}
 			for (String card : category.items)
 			{
-				sharedCardsList.add(statusRow("  " + displayCardName(card), true, null));
+				sharedCardsList.add(collectionCardRow(
+					"  " + displayCardName(card), card, true));
 			}
 			for (Map.Entry<String, List<String>> entry : category.subcategories.entrySet())
 			{
@@ -1211,8 +1221,8 @@ class BronzemanTcgPanel extends PluginPanel
 				{
 					for (String card : entry.getValue())
 					{
-						sharedCardsList.add(statusRow(
-							"    " + displayCardName(card), true, null));
+						sharedCardsList.add(collectionCardRow(
+							"    " + displayCardName(card), card, true));
 					}
 				}
 			}
@@ -1830,7 +1840,17 @@ class BronzemanTcgPanel extends PluginPanel
 	{
 		if (collectionCardHistory.isEmpty())
 		{
-			collectionListScrollPosition = contentScroll.getVerticalScrollBar().getValue();
+			collectionReturnTab = selectedTab;
+			collectionReturnScrollPosition =
+				contentScroll.getVerticalScrollBar().getValue();
+			if (selectedTab == PanelTab.IMPORTANT)
+			{
+				collectionListScrollPosition = collectionReturnScrollPosition;
+			}
+			else
+			{
+				selectTab(PanelTab.IMPORTANT);
+			}
 		}
 		if (collectionCardHistory.isEmpty()
 			|| !collectionCardHistory.peekLast().equalsIgnoreCase(cardName))
@@ -1887,8 +1907,9 @@ class BronzemanTcgPanel extends PluginPanel
 			}
 			else
 			{
-				addCollectionPreview(card);
+				addMonsterDetails(card);
 			}
+			addQuestRelationships(card);
 		}
 		collectionDetailPanel.revalidate();
 		collectionDetailPanel.repaint();
@@ -1901,8 +1922,10 @@ class BronzemanTcgPanel extends PluginPanel
 
 	private JButton collectionBackButton()
 	{
+		String destination = collectionReturnTab == PanelTab.IMPORTANT
+			? "Collection" : panelTabLabel(collectionReturnTab);
 		JButton back = new JButton(collectionCardHistory.size() > 1
-			? "\u2190 Back" : "\u2190 Back to Collection");
+			? "\u2190 Back" : "\u2190 Back to " + destination);
 		back.setFocusable(false);
 		back.setForeground(Color.WHITE);
 		back.setBackground(ColorScheme.DARKER_GRAY_COLOR);
@@ -1919,13 +1942,45 @@ class BronzemanTcgPanel extends PluginPanel
 				return;
 			}
 			collectionCardHistory.clear();
-			((CardLayout) collectionView.getLayout()).show(collectionView, "list");
-			collectionView.revalidate();
-			collectionView.repaint();
-			SwingUtilities.invokeLater(() ->
-				contentScroll.getVerticalScrollBar().setValue(collectionListScrollPosition));
+			if (collectionReturnTab == PanelTab.IMPORTANT)
+			{
+				((CardLayout) collectionView.getLayout()).show(collectionView, "list");
+				collectionView.revalidate();
+				collectionView.repaint();
+				SwingUtilities.invokeLater(() -> contentScroll.getVerticalScrollBar()
+					.setValue(collectionListScrollPosition));
+			}
+			else
+			{
+				PanelTab returnTab = collectionReturnTab;
+				int returnScroll = collectionReturnScrollPosition;
+				selectTab(returnTab);
+				SwingUtilities.invokeLater(() ->
+					contentScroll.getVerticalScrollBar().setValue(returnScroll));
+			}
 		});
 		return back;
+	}
+
+	private static String panelTabLabel(PanelTab tab)
+	{
+		switch (tab)
+		{
+			case QUESTS:
+				return "Quests";
+			case SLAYER:
+				return "Slayer";
+			case PVM:
+				return "PvM";
+			case RUMOURS:
+				return "Rumours";
+			case RECENT:
+				return "Recent";
+			case SHARED:
+				return "Shared Cards";
+			default:
+				return "Collection";
+		}
 	}
 
 	private JPanel collectionCardHeader(CardKnowledgeCatalog.Card card)
@@ -1961,6 +2016,15 @@ class BronzemanTcgPanel extends PluginPanel
 			return;
 		}
 
+		addKnowledgeSection(card.name, "Used in", safeSize(sources.usedIn), body ->
+		{
+			for (CardKnowledgeCatalog.UsedIn usage : sources.usedIn)
+			{
+				body.add(linkedKnowledgeRow(usage.card,
+					"x" + formatNumber(usage.quantity)));
+			}
+		});
+
 		List<CardKnowledgeCatalog.MonsterSource> monsters = new ArrayList<>();
 		if (sources.monsters != null)
 		{
@@ -1970,7 +2034,7 @@ class BronzemanTcgPanel extends PluginPanel
 		{
 			monsters.addAll(sources.rareDropTable);
 		}
-		addKnowledgeSection(card.name, "Monster sources", monsters.size(), body ->
+		addKnowledgeSection(card.name, "Monster drops", monsters.size(), body ->
 		{
 			for (CardKnowledgeCatalog.MonsterSource source : monsters)
 			{
@@ -1983,21 +2047,6 @@ class BronzemanTcgPanel extends PluginPanel
 				body.add(linkedKnowledgeRow(source.card, detail));
 			}
 		});
-
-		if (sources.gathering != null)
-		{
-			addKnowledgeSection(card.name, "Gathering", 1, body ->
-			{
-				CardKnowledgeCatalog.Gathering gathering = sources.gathering;
-				addDetailField(body, "Method", valueOrDash(gathering.method));
-				addDetailField(body, "Skill", levelLabel(gathering.skill, gathering.level));
-				addDetailField(body, "Tool", valueOrDash(gathering.tool));
-				if (gathering.xp != null)
-				{
-					addDetailField(body, "XP", formatNumber(gathering.xp));
-				}
-			});
-		}
 
 		if (sources.production != null)
 		{
@@ -2033,7 +2082,7 @@ class BronzemanTcgPanel extends PluginPanel
 					if (ingredient.hasCard)
 					{
 						body.add(linkedKnowledgeRow(ingredient.item,
-							"×" + formatNumber(ingredient.quantity)));
+							"x" + formatNumber(ingredient.quantity)));
 					}
 				}
 				if (hidden > 0)
@@ -2044,14 +2093,21 @@ class BronzemanTcgPanel extends PluginPanel
 			});
 		}
 
-		addKnowledgeSection(card.name, "Used in", safeSize(sources.usedIn), body ->
+		if (sources.gathering != null)
 		{
-			for (CardKnowledgeCatalog.UsedIn usage : sources.usedIn)
+			addKnowledgeSection(card.name, "Gathering", 1, body ->
 			{
-				body.add(linkedKnowledgeRow(usage.card,
-					"×" + formatNumber(usage.quantity)));
-			}
-		});
+				CardKnowledgeCatalog.Gathering gathering = sources.gathering;
+				addDetailField(body, "Method", valueOrDash(gathering.method));
+				addDetailField(body, "Skill", levelLabel(gathering.skill, gathering.level));
+				addDetailField(body, "Tool", valueOrDash(gathering.tool));
+				if (gathering.xp != null)
+				{
+					addDetailField(body, "XP", formatNumber(gathering.xp));
+				}
+			});
+		}
+
 		addTextKnowledgeSection(card.name, "Ground spawns", sources.spawns);
 		addKnowledgeSection(card.name, "Shops", safeSize(sources.shops), body ->
 		{
@@ -2063,6 +2119,58 @@ class BronzemanTcgPanel extends PluginPanel
 			}
 		});
 		addTextKnowledgeSection(card.name, "Clue rewards", sources.clueTiers);
+	}
+
+	private void addMonsterDetails(CardKnowledgeCatalog.Card card)
+	{
+		List<CardKnowledgeCatalog.Drop> drops =
+			card.drops == null ? Collections.emptyList() : card.drops;
+		if (drops.isEmpty())
+		{
+			collectionDetailPanel.add(mutedRow("No card drops available."));
+			return;
+		}
+
+		addKnowledgeSection(card.name, "Drops", drops.size(), body ->
+		{
+			for (CardKnowledgeCatalog.Drop drop : drops)
+			{
+				StringBuilder detail = new StringBuilder();
+				if (drop.rarity != null && !drop.rarity.isEmpty())
+				{
+					detail.append(drop.rarity);
+				}
+				if (drop.fraction != null && !drop.fraction.isEmpty())
+				{
+					if (detail.length() > 0)
+					{
+						detail.append(" \u00b7 ");
+					}
+					detail.append(drop.fraction);
+				}
+				if (drop.fromRdt)
+				{
+					if (detail.length() > 0)
+					{
+						detail.append(" \u00b7 ");
+					}
+					detail.append("RDT");
+				}
+				body.add(linkedKnowledgeRow(drop.card, detail.toString()));
+			}
+		});
+	}
+
+	private void addQuestRelationships(CardKnowledgeCatalog.Card card)
+	{
+		List<String> quests = questCatalog.getQuestsForCard(card.name);
+		addKnowledgeSection(card.name, "Quests", quests.size(), body ->
+		{
+			for (String quest : quests)
+			{
+				body.add(plainKnowledgeRow(quest, ""));
+			}
+		});
 	}
 
 	private void addTextKnowledgeSection(String cardName, String title, List<String> values)
@@ -2151,33 +2259,6 @@ class BronzemanTcgPanel extends PluginPanel
 		double value = number.doubleValue();
 		return value == Math.rint(value)
 			? String.valueOf(number.longValue()) : String.valueOf(value);
-	}
-
-	private void addCollectionPreview(CardKnowledgeCatalog.Card card)
-	{
-		if (card.isResource() && card.sources != null)
-		{
-			int monsterSources = safeSize(card.sources.monsters)
-				+ safeSize(card.sources.rareDropTable);
-			int locations = safeSize(card.sources.spawns);
-			int clues = safeSize(card.sources.clueTiers);
-			if (monsterSources + locations + clues > 0)
-			{
-				collectionDetailPanel.add(sectionHeader("Information available"));
-				addDetailField(collectionDetailPanel, "Monster sources",
-					String.valueOf(monsterSources));
-				addDetailField(collectionDetailPanel, "Ground spawns",
-					String.valueOf(locations));
-				addDetailField(collectionDetailPanel, "Clue tiers",
-					String.valueOf(clues));
-			}
-		}
-		else if (!card.isResource() && card.drops != null && !card.drops.isEmpty())
-		{
-			collectionDetailPanel.add(sectionHeader("Information available"));
-			addDetailField(collectionDetailPanel, "Card drops",
-				String.valueOf(card.drops.size()));
-		}
 	}
 
 	private static void addDetailField(JPanel target, String label, String value)
@@ -2481,6 +2562,12 @@ class BronzemanTcgPanel extends PluginPanel
 				{
 					container.add(mutedRow("  No card-backed requirements"));
 				}
+				if (!entry.notes.isEmpty())
+				{
+					JLabel notes = wrappedDetailText(entry.notes);
+					notes.setForeground(ColorScheme.LIGHT_GRAY_COLOR);
+					container.add(notes);
+				}
 			}
 		}
 		container.revalidate();
@@ -2517,11 +2604,35 @@ class BronzemanTcgPanel extends PluginPanel
 
 	private JPanel requirementRow(QuestCatalog.Requirement requirement, boolean have)
 	{
+		return requirementRow(requirement, have, "  ");
+	}
+
+	private JPanel requirementRow(QuestCatalog.Requirement requirement, boolean have,
+		String indent)
+	{
 		String alternatives = requirement.displayCards.size() > 1
 			? ": " + String.join(" / ", requirement.displayCards)
 			: "";
-		JPanel row = statusRow("  " + requirement.label + alternatives, have, null);
+		JPanel row = statusRow(indent + requirement.label + alternatives, have, null);
+		if (requirement.displayCards.size() == 1)
+		{
+			String card = requirement.displayCards.get(0);
+			makeClickable(row, () -> openCollectionCard(card));
+			row.setToolTipText("View " + displayCardName(card));
+		}
+		else
+		{
+			row.setToolTipText("Multiple alternative cards");
+		}
 		return row;
+	}
+
+	private JPanel linkedStatusRow(String label, String card, boolean unlocked)
+	{
+		JPanel result = statusRow(label, unlocked, null);
+		makeClickable(result, () -> openCollectionCard(card));
+		result.setToolTipText("View " + displayCardName(card));
+		return result;
 	}
 
 	// ------------------------------------------------------------------ search
@@ -2552,8 +2663,15 @@ class BronzemanTcgPanel extends PluginPanel
 				if (++shown <= MAX_SEARCH_RESULTS)
 				{
 					boolean unlocked = ownsAny(snapshot.owned, entry.cards);
-					searchResults.add(statusRow(entry.displayName, unlocked,
-						unlocked ? null : String.join(" / ", entry.cards)));
+					JPanel result = statusRow(entry.displayName, unlocked,
+						unlocked ? null : String.join(" / ", entry.cards));
+					if (entry.cards.size() == 1)
+					{
+						String card = entry.cards.iterator().next();
+						makeClickable(result, () -> openCollectionCard(card));
+						result.setToolTipText("View " + displayCardName(card));
+					}
+					searchResults.add(result);
 				}
 			}
 			if (matches > MAX_SEARCH_RESULTS)

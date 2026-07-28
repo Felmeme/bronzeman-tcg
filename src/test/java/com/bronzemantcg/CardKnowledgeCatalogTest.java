@@ -17,5 +17,11 @@ public class CardKnowledgeCatalogTest
 		Assert.assertEquals(379, lobster.primaryId());
 		Assert.assertNotNull(lobster.sources);
 		Assert.assertEquals("Cooking", lobster.sources.production.skill);
+
+		CardKnowledgeCatalog.Card vorkath = catalog.find("Vorkath");
+		Assert.assertNotNull(vorkath);
+		Assert.assertFalse(vorkath.isResource());
+		Assert.assertEquals(76, vorkath.drops.size());
+		Assert.assertNotNull(catalog.find(vorkath.drops.get(0).card));
 	}
 }

@@ -31,6 +31,7 @@ public class QuestCatalog
 	// Quest name -> kill-required monster CARD names, miniquests included (unlike the
 	// panel list, which hides them). Feeds QuestNpcIndex's quest-state override.
 	private Map<String, List<String>> questMonsterCards = Collections.emptyMap();
+	private Map<String, List<String>> cardQuests = Collections.emptyMap();
 
 	@Inject
 	public QuestCatalog(Gson gson)
@@ -46,6 +47,16 @@ public class QuestCatalog
 	public Map<String, List<String>> getQuestMonsterCards()
 	{
 		return questMonsterCards;
+	}
+
+	public List<String> getQuestsForCard(String cardName)
+	{
+		if (cardName == null)
+		{
+			return Collections.emptyList();
+		}
+		return cardQuests.getOrDefault(
+			cardName.toLowerCase(Locale.ROOT), Collections.emptyList());
 	}
 
 	public int size()
@@ -70,6 +81,7 @@ public class QuestCatalog
 			}
 			List<QuestEntry> loaded = new ArrayList<>();
 			Map<String, List<String>> monsterMap = new HashMap<>();
+			Map<String, List<String>> questsByCard = new HashMap<>();
 			for (QuestDto dto : snapshot.quests)
 			{
 				if (dto == null || dto.name == null || dto.name.trim().isEmpty())
@@ -96,6 +108,7 @@ public class QuestCatalog
 							? dto.groupLabels.get(i).trim()
 							: cards.get(0);
 						requirements.add(new Requirement(label, cards));
+						indexQuestCards(questsByCard, dto.name.trim(), cards);
 					}
 				}
 				if (dto.monsterCards != null)
@@ -106,6 +119,8 @@ public class QuestCatalog
 						{
 							requirements.add(new Requirement(monster.trim() + " (enemy)",
 								Collections.singletonList(monster.trim())));
+							indexQuestCards(questsByCard, dto.name.trim(),
+								Collections.singletonList(monster.trim()));
 						}
 					}
 				}
@@ -121,11 +136,37 @@ public class QuestCatalog
 			loaded.sort((a, b) -> a.name.compareToIgnoreCase(b.name));
 			quests = Collections.unmodifiableList(loaded);
 			questMonsterCards = Collections.unmodifiableMap(monsterMap);
+			Map<String, List<String>> immutableCardQuests = new HashMap<>();
+			for (Map.Entry<String, List<String>> entry : questsByCard.entrySet())
+			{
+				entry.getValue().sort(String.CASE_INSENSITIVE_ORDER);
+				immutableCardQuests.put(entry.getKey(),
+					Collections.unmodifiableList(entry.getValue()));
+			}
+			cardQuests = Collections.unmodifiableMap(immutableCardQuests);
 			log.info("Loaded {} quests from card-requirement snapshot", quests.size());
 		}
 		catch (IOException ex)
 		{
 			log.warn("Failed to load quest_cards.json", ex);
+		}
+	}
+
+	private static void indexQuestCards(Map<String, List<String>> questsByCard,
+		String questName, List<String> cards)
+	{
+		for (String card : cards)
+		{
+			if (card == null || card.trim().isEmpty())
+			{
+				continue;
+			}
+			List<String> quests = questsByCard.computeIfAbsent(
+				card.trim().toLowerCase(Locale.ROOT), ignored -> new ArrayList<>());
+			if (!quests.contains(questName))
+			{
+				quests.add(questName);
+			}
 		}
 	}
 
