@@ -14,7 +14,28 @@ import java.util.List;
  */
 public class TcgStateDto
 {
+	/** Legacy schema. */
 	public List<OwnedCardInstanceDto> cardInstances;
+	/** Current schema. */
+	public CollectionStateDto collectionState;
+	public EconomyStateDto economyState;
+
+	public List<OwnedCardInstanceDto> instances()
+	{
+		return collectionState != null && collectionState.instances != null
+			? collectionState.instances : cardInstances;
+	}
+
+	public static class CollectionStateDto
+	{
+		public List<OwnedCardInstanceDto> instances;
+	}
+
+	public static class EconomyStateDto
+	{
+		public long credits;
+		public long openedPacks;
+	}
 
 	public static class OwnedCardInstanceDto
 	{

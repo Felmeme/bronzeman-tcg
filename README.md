@@ -1,5 +1,36 @@
 # Bronzeman TCG
 
+> Bronzeman TCG reads OSRS TCG collection updates locally through RuneLite's
+> plugin-message API and enforces player-selected card restrictions.
+
+## Optional goal planner
+
+- Live recommendations recalculated from owned cards, completed quests and real levels.
+- Fire Cape readiness for all Fight Caves monster cards plus baseline Ranged, Prayer
+  and Hitpoints targets.
+- A Barrows-gloves dependency chain that prioritizes the closest card-, skill- and
+  prerequisite-ready quest.
+- A card-ready quest shortlist for opportunities outside the two primary goals.
+- An independently summarized Cardcore reference profile based on published creator
+  episodes, with sourced rules, routing principles and a live high-impact-card watch list.
+- One-click reference enforcement preset, opt-in foil-inheritance audit, source-linked route
+  playbook, legal Fire Cape loadout suggestions and new-card impact messages.
+- Foil-aware collection/search status plus an automatic, profile-local unlock journal.
+- No screen capture, automation, clicks or account-data upload.
+
+The planner and foil cascades are disabled by default. The profile is advisory: it
+drives explanations and priorities only after the player enables Goal Planner.
+The inherited Bronzeman restriction toggles remain individually configurable. In
+particular, Faux's series rules allow collecting and banking locked items while
+forbidding their use, so leave ground-loot collection enabled and configure item
+use/equipment restrictions to match that interpretation.
+
+See [the Faux Cardcore analysis](docs/FAUX_CARDCORE_ANALYSIS.md) for the extracted
+rules, episode-by-episode route logic and timestamped video evidence.
+
+Additional community strategy sources and their evidence status are documented in
+[CARDCORE_STRATEGY_SOURCES.md](docs/CARDCORE_STRATEGY_SOURCES.md).
+
 A card-collection challenge mode for RuneLite, driven by the
 [OSRS TCG](https://runelite.net/plugin-hub/show/osrs-tcg) plugin's gacha collection:
 **almost everything you do is locked until you pull the matching card.**

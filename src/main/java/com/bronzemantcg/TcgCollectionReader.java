@@ -45,6 +45,9 @@ public class TcgCollectionReader
 	private long lastRefreshMs = 0L;
 	// Null until the first API payload lands; non-null means the API path is live.
 	private Set<String> apiOwnedLowerCaseNames;
+	private Set<String> cachedFoilLowerCaseNames = Collections.emptySet();
+	private long lastFoilRefreshMs = 0L;
+	private long cachedCredits;
 
 	@Inject
 	public TcgCollectionReader(ConfigManager configManager, Gson gson)
@@ -65,6 +68,48 @@ public class TcgCollectionReader
 		}
 		ensureFresh();
 		return cachedOwnedLowerCaseNames;
+	}
+
+	/** Foils stay distinct in persisted TCG state even though the live names API collapses them. */
+	public synchronized Set<String> getFoilCardNamesLowerCase()
+	{
+		if (System.currentTimeMillis() - lastFoilRefreshMs >= CACHE_MILLIS)
+		{
+			lastFoilRefreshMs = System.currentTimeMillis();
+			try
+			{
+				String raw = configManager.getRSProfileConfiguration(TCG_CONFIG_GROUP, TCG_STATE_KEY);
+				TcgStateDto dto = gson.fromJson(TcgStateDecoder.decode(raw), TcgStateDto.class);
+				cachedCredits = dto != null && dto.economyState != null
+					? dto.economyState.credits : 0L;
+				Set<String> foils = new HashSet<>();
+				List<TcgStateDto.OwnedCardInstanceDto> instances = dto == null ? null : dto.instances();
+				if (instances != null)
+				{
+					for (TcgStateDto.OwnedCardInstanceDto instance : instances)
+					{
+						if (instance != null && instance.foil && instance.cardName != null)
+						{
+							foils.add(instance.cardName.trim().toLowerCase(Locale.ROOT));
+						}
+					}
+				}
+				cachedFoilLowerCaseNames = Collections.unmodifiableSet(foils);
+			}
+			catch (Exception ex)
+			{
+				log.debug("Could not read foil state", ex);
+				cachedFoilLowerCaseNames = Collections.emptySet();
+			}
+		}
+		return cachedFoilLowerCaseNames;
+	}
+
+	/** Current credits from persisted OSRS TCG state, or zero when unavailable. */
+	public synchronized long getCredits()
+	{
+		getFoilCardNamesLowerCase();
+		return cachedCredits;
 	}
 
 	/** False when osrs-tcg has no readable state (not installed, no data yet, or decode failure). */
@@ -123,6 +168,9 @@ public class TcgCollectionReader
 	{
 		lastRefreshMs = 0L;
 		apiOwnedLowerCaseNames = null;
+		lastFoilRefreshMs = 0L;
+		cachedFoilLowerCaseNames = Collections.emptySet();
+		cachedCredits = 0L;
 	}
 
 	private void refresh()
@@ -140,7 +188,8 @@ public class TcgCollectionReader
 			}
 
 			TcgStateDto dto = gson.fromJson(json, TcgStateDto.class);
-			if (dto == null || dto.cardInstances == null)
+			List<TcgStateDto.OwnedCardInstanceDto> instances = dto == null ? null : dto.instances();
+			if (instances == null)
 			{
 				cachedOwnedLowerCaseNames = Collections.emptySet();
 				stateAvailable = false;
@@ -149,7 +198,7 @@ public class TcgCollectionReader
 			stateAvailable = true;
 
 			Set<String> names = new HashSet<>();
-			for (TcgStateDto.OwnedCardInstanceDto instance : dto.cardInstances)
+			for (TcgStateDto.OwnedCardInstanceDto instance : instances)
 			{
 				if (instance != null && instance.cardName != null && !instance.cardName.trim().isEmpty())
 				{

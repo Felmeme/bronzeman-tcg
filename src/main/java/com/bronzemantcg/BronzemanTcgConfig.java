@@ -35,6 +35,13 @@ public interface BronzemanTcgConfig extends Config
 	String externalPluginsSection = "externalPluginsSection";
 
 	@ConfigSection(
+		name = "Goal Planner (optional)",
+		description = "Read-only Cardcore routes, milestones, and opt-in foil rulings.",
+		position = 2
+	)
+	String plannerSection = "plannerSection";
+
+	@ConfigSection(
 			name = "Cooking",
 			description = "Cooking raw food requires the cooked (and optionally burnt) item cards.",
 			position = 3
@@ -177,6 +184,30 @@ public interface BronzemanTcgConfig extends Config
 	//----------------
 	//General Settings
 	//----------------
+	@ConfigItem(
+		keyName = "enableGoalPlanner",
+		name = "Enable goal planner",
+		description = "Show goal routes, Fire Cape and Barrows Gloves planning. This never performs game actions.",
+		section = plannerSection,
+		position = 0
+	)
+	default boolean enableGoalPlanner()
+	{
+		return false;
+	}
+
+	@ConfigItem(
+		keyName = "enableFoilCascades",
+		name = "Enable foil cascades",
+		description = "Apply optional downward equipment-category foil rulings. Off preserves exact-card behavior.",
+		section = plannerSection,
+		position = 1
+	)
+	default boolean enableFoilCascades()
+	{
+		return false;
+	}
+
 	@ConfigItem(
 		keyName = "npcVisibilityMode",
 		name = "NPC Locks",

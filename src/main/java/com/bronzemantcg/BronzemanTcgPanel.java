@@ -22,6 +22,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.EnumMap;
 import java.util.EnumSet;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -36,6 +37,7 @@ import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JCheckBox;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
@@ -87,6 +89,9 @@ class BronzemanTcgPanel extends PluginPanel
 	private final SharedUnlockStore sharedUnlockStore;
 	private final RecentUnlocksTracker recentUnlocksTracker;
 	private final ImportantUnlocksCatalog importantUnlocksCatalog;
+	private final CardcorePlanner planner;
+	private final FauxCardcoreProfile fauxProfile;
+	private final FoilUnlockCatalog foilUnlockCatalog;
 	private final BronzemanTcgConfig config;
 	private final ConfigManager configManager;
 	private final ScheduledExecutorService executor;
@@ -96,11 +101,13 @@ class BronzemanTcgPanel extends PluginPanel
 	private volatile PreparedData preparedData;
 	private volatile boolean disposed;
 	private PanelSnapshot snapshot;
-	private PanelTab selectedTab = PanelTab.QUESTS;
+	private PanelTab selectedTab = PanelTab.PLANNER;
+	private volatile Map<String, Integer> skillLevels = Collections.emptyMap();
 
 	private final IconTextField searchBar = new IconTextField();
 	private final JPanel searchResults = sectionBody();
 	private final JPanel progressList = sectionBody();
+	private final JPanel plannerList = sectionBody();
 
 	// One list per tab. MaterialTabGroup swaps the selected list into tabDisplay, so the
 	// old per-section collapse state is gone - a tab is either shown or it isn't.
@@ -171,6 +178,8 @@ class BronzemanTcgPanel extends PluginPanel
 			SharedUnlockStore sharedUnlockStore,
 			RecentUnlocksTracker recentUnlocksTracker,
 			ImportantUnlocksCatalog importantUnlocksCatalog,
+			FauxCardcoreProfile fauxProfile,
+			FoilUnlockCatalog foilUnlockCatalog,
 			BronzemanTcgConfig config,
 			ConfigManager configManager,
 			ScheduledExecutorService executor)
@@ -185,6 +194,9 @@ class BronzemanTcgPanel extends PluginPanel
 		this.sharedUnlockStore = sharedUnlockStore;
 		this.recentUnlocksTracker = recentUnlocksTracker;
 		this.importantUnlocksCatalog = importantUnlocksCatalog;
+		this.fauxProfile = fauxProfile;
+		this.foilUnlockCatalog = foilUnlockCatalog;
+		this.planner = new CardcorePlanner(questCatalog, contentCatalog, fauxProfile);
 		this.config = config;
 		this.configManager = configManager;
 		this.executor = executor;
@@ -297,7 +309,9 @@ class BronzemanTcgPanel extends PluginPanel
 		// WrapLayout preserves full labels in the fixed-width sidebar.
 		add(Box.createVerticalStrut(10));
 		progressList.add(mutedRow("Loading collection..."));
+		plannerList.add(mutedRow("Building route..."));
 		questList.add(mutedRow("Loading quests..."));
+		addTab("Planner", plannerList, PanelTab.PLANNER);
 		addTab("Quests", questPanel, PanelTab.QUESTS);
 		addTab("Slayer", slayerPanel, PanelTab.SLAYER);
 		addTab("PvM", pvmPanel, PanelTab.PVM);
@@ -346,7 +360,7 @@ class BronzemanTcgPanel extends PluginPanel
 			.getScaledInstance(24, 36, Image.SCALE_SMOOTH);
 		banner.add(new JLabel(new ImageIcon(helmet)), BorderLayout.WEST);
 
-		JLabel title = new JLabel("Bronzeman TCG");
+		JLabel title = new JLabel("Cardcore Planner");
 		title.setForeground(Color.WHITE);
 		title.setFont(title.getFont().deriveFont(Font.BOLD, 16f));
 		banner.add(title, BorderLayout.CENTER);
@@ -362,8 +376,8 @@ class BronzemanTcgPanel extends PluginPanel
 		sharedCardsTab.setVisible(visible);
 		if (!visible && selectedTab == PanelTab.SHARED)
 		{
-			selectedTab = PanelTab.QUESTS;
-			tabDisplay.showCard(PanelTab.QUESTS);
+			selectedTab = PanelTab.PLANNER;
+			tabDisplay.showCard(PanelTab.PLANNER);
 			tabs.select(tabs.getTab(0));
 		}
 		tabs.revalidate();
@@ -409,6 +423,13 @@ class BronzemanTcgPanel extends PluginPanel
 			? Collections.emptySet() : Collections.unmodifiableSet(new HashSet<>(completed));
 	}
 
+	/** Receives a real-level snapshot captured on RuneLite's client thread. */
+	void updateSkillLevels(Map<String, Integer> levels)
+	{
+		skillLevels = levels == null ? Collections.emptyMap()
+			: Collections.unmodifiableMap(new HashMap<>(levels));
+	}
+
 	/** Stop queued work from touching a panel that has been removed from the toolbar. */
 	void dispose()
 	{
@@ -433,10 +454,20 @@ class BronzemanTcgPanel extends PluginPanel
 			? Collections.unmodifiableSet(shared) : Collections.emptySet();
 		boolean includeSlayerSuperiors = config.restrictSlayerSuperiors();
 		Set<String> completed = completedQuestNames;
+		Map<String, Integer> skills = skillLevels;
+		Set<String> plannerOwned = new HashSet<>(owned);
+		plannerOwned.addAll(visibleShared);
+		if (config.enableFoilCascades())
+		{
+			plannerOwned.addAll(foilUnlockCatalog.inheritedItemNames(
+				collectionReader.getFoilCardNamesLowerCase()));
+		}
+		CardcorePlanner.Plan plan = planner.evaluate(plannerOwned, completed, skills,
+			collectionReader.getCredits());
 
 		return new PanelSnapshot(data, owned, visibleShared, recentUnlocksTracker.getRecent(),
 			recentUnlocksTracker.getSharedRecent(),
-			includeSlayerSuperiors, completed,
+			includeSlayerSuperiors, completed, skills, plan,
 			countUnlocked(monsterCatalog.getEntityToCards(), owned),
 			countUnlocked(itemCatalog.getEntityToCards(), owned));
 	}
@@ -499,6 +530,8 @@ class BronzemanTcgPanel extends PluginPanel
 			|| previous.includeSlayerSuperiors != next.includeSlayerSuperiors;
 		boolean questStateChanged = first
 			|| !previous.completedQuests.equals(next.completedQuests);
+		boolean plannerChanged = first || questStateChanged || ownedChanged
+			|| !previous.skillLevels.equals(next.skillLevels);
 		snapshot = next;
 		// Party-sharing controls whether this view exists. The Recent Unlocks
 		// "Show shared" preference only filters that tab and must not affect this one.
@@ -526,6 +559,10 @@ class BronzemanTcgPanel extends PluginPanel
 		{
 			dirtyTabs.add(PanelTab.QUESTS);
 		}
+		if (plannerChanged)
+		{
+			dirtyTabs.add(PanelTab.PLANNER);
+		}
 		renderSelectedTab();
 	}
 
@@ -538,6 +575,9 @@ class BronzemanTcgPanel extends PluginPanel
 
 		switch (selectedTab)
 		{
+			case PLANNER:
+				refreshPlanner();
+				break;
 			case QUESTS:
 				refreshQuests();
 				break;
@@ -562,6 +602,168 @@ class BronzemanTcgPanel extends PluginPanel
 			default:
 				break;
 		}
+	}
+
+	private void refreshPlanner()
+	{
+		plannerList.removeAll();
+		if (!config.enableGoalPlanner())
+		{
+			plannerList.add(sectionHeader("Optional goal planner"));
+			plannerList.add(mutedRow("Enable Goal Planner in Bronzeman TCG settings to use routes and milestones."));
+			plannerList.revalidate();
+			plannerList.repaint();
+			return;
+		}
+		JButton preset = new JButton("Apply reference rules preset");
+		preset.setAlignmentX(Component.LEFT_ALIGNMENT);
+		preset.setToolTipText("Allow collecting/banking locked items while keeping their use and combat card-gated.");
+		preset.addActionListener(event -> applyReferencePreset(preset));
+		plannerList.add(preset);
+		plannerList.add(Box.createVerticalStrut(6));
+		CardcorePlanner.Plan plan = snapshot.plan;
+		plannerList.add(sectionHeader("Next actions"));
+		if (plan.recommendations.isEmpty())
+		{
+			plannerList.add(mutedRow("No recommendation available yet."));
+		}
+		else
+		{
+			int rank = 1;
+			for (CardcorePlanner.Recommendation recommendation : plan.recommendations)
+			{
+				plannerList.add(recommendationRow(rank++, recommendation));
+				plannerList.add(Box.createVerticalStrut(4));
+			}
+		}
+
+		plannerList.add(sectionHeader("Goals"));
+		plannerList.add(mutedRow("Pack credits: " + plan.credits + " / 2,500 ("
+			+ (plan.credits / 2_500L) + " packs ready)"));
+		plannerList.add(progressRow("Fight Caves cards", plan.fireCardsHave,
+			plan.fireCardsTotal));
+		plannerList.add(progressRow("Barrows-glove quest chain", plan.barrowsQuestsDone,
+			plan.barrowsQuestsTotal));
+		if (!plan.fireBlockers.isEmpty())
+		{
+			plannerList.add(mutedRow("Fire Cape blockers:"));
+			for (int i = 0; i < Math.min(10, plan.fireBlockers.size()); i++)
+			{
+				plannerList.add(mutedRow("  - " + plan.fireBlockers.get(i)));
+			}
+			if (plan.fireBlockers.size() > 10)
+			{
+				plannerList.add(mutedRow("  ...and " + (plan.fireBlockers.size() - 10) + " more"));
+			}
+		}
+		plannerList.add(sectionHeader("Best legal Fire Cape card loadout"));
+		for (String item : plan.fireLoadout)
+		{
+			plannerList.add(mutedRow("  - " + item));
+		}
+
+		plannerList.add(sectionHeader("Route playbook"));
+		for (FauxCardcoreProfile.Entry route : fauxProfile.getRoutes())
+		{
+			JLabel row = mutedRow("  - " + route.title + ": " + route.detail);
+			row.setToolTipText("Evidence: " + route.sourceUrl);
+			plannerList.add(row);
+		}
+
+		plannerList.add(sectionHeader("Faux high-impact watch list"));
+		if (plan.highImpactWatchList.isEmpty())
+		{
+			plannerList.add(mutedRow("All transcript-derived priority cards owned."));
+		}
+		else
+		{
+			for (int i = 0; i < Math.min(8, plan.highImpactWatchList.size()); i++)
+			{
+				plannerList.add(mutedRow("  - " + plan.highImpactWatchList.get(i)));
+			}
+		}
+
+		plannerList.add(sectionHeader("Foil unlock audit"));
+		List<FoilUnlockCatalog.FoilSummary> foilSummaries = config.enableFoilCascades()
+			? foilUnlockCatalog.summarize(collectionReader.getFoilCardNamesLowerCase())
+			: Collections.emptyList();
+		if (foilSummaries.isEmpty())
+		{
+			plannerList.add(mutedRow(config.enableFoilCascades()
+				? "No configured foil cascades are currently active."
+				: "Foil cascades are disabled in settings (exact-card behavior)."));
+		}
+		else
+		{
+			for (FoilUnlockCatalog.FoilSummary summary : foilSummaries)
+			{
+				plannerList.add(mutedRow(displayName(summary.card) + " -> "
+					+ String.join(", ", summary.slots) + " (" + summary.inheritedItems + " items)"));
+			}
+		}
+		plannerList.add(sectionHeader(fauxProfile.getProfileName() + " rules"));
+		for (FauxCardcoreProfile.Entry rule : fauxProfile.getRules())
+		{
+			JLabel row = mutedRow("  - " + rule.title);
+			row.setToolTipText("<html><div style='width:260px'>" + rule.detail
+				+ "<br>Evidence: " + rule.sourceUrl + "</div></html>");
+			plannerList.add(row);
+		}
+		plannerList.revalidate();
+		plannerList.repaint();
+	}
+
+	private void applyReferencePreset(JButton button)
+	{
+		configManager.setConfiguration(BronzemanTcgConfig.GROUP, "npcVisibilityMode",
+			NpcVisibilityMode.PREVENT_COMBAT.name());
+		configManager.setConfiguration(BronzemanTcgConfig.GROUP, "groundItemsMode",
+			LockState.UNLOCKED.name());
+		configManager.setConfiguration(BronzemanTcgConfig.GROUP, "itemUsageMode",
+			LockState.LOCKED.name());
+		configManager.setConfiguration(BronzemanTcgConfig.GROUP, "foodSettingsMode",
+			FoodSettingsMode.LOCKED.name());
+		configManager.setConfiguration(BronzemanTcgConfig.GROUP, "bankingMode",
+			BankingMode.DEPOSIT_ONLY.name());
+		configManager.setConfiguration(BronzemanTcgConfig.GROUP, "grandExchangeMode",
+			LockState.LOCKED.name());
+		configManager.setConfiguration(BronzemanTcgConfig.GROUP, "coinMode",
+			LockState.LOCKED.name());
+		configManager.setConfiguration(BronzemanTcgConfig.GROUP, "thievingMode",
+			ThievingMode.OFF.name());
+		button.setText("Reference rules applied");
+	}
+
+	private static String displayName(String lower)
+	{
+		if (lower == null || lower.isEmpty())
+		{
+			return "";
+		}
+		return Character.toUpperCase(lower.charAt(0)) + lower.substring(1);
+	}
+
+	private static JPanel recommendationRow(int rank, CardcorePlanner.Recommendation recommendation)
+	{
+		JPanel panel = row(new BorderLayout(6, 3));
+		panel.setBackground(ColorScheme.DARKER_GRAY_COLOR);
+		panel.setBorder(BorderFactory.createEmptyBorder(6, 6, 6, 6));
+
+		JLabel title = new JLabel(rank + ". " + recommendation.title);
+		title.setForeground(recommendation.ready ? UNLOCKED : Color.WHITE);
+		title.setFont(title.getFont().deriveFont(Font.BOLD));
+		panel.add(title, BorderLayout.NORTH);
+
+		String body = recommendation.reason;
+		if (!recommendation.blockers.isEmpty())
+		{
+			body += "<br><font color='#b8b8b8'>" + String.join("<br>", recommendation.blockers)
+				+ "</font>";
+		}
+		JLabel details = new JLabel("<html><div style='width:190px'>" + body + "</div></html>");
+		details.setForeground(ColorScheme.LIGHT_GRAY_COLOR);
+		panel.add(details, BorderLayout.CENTER);
+		return panel;
 	}
 
 	// ------------------------------------------------------------------ collapsible checklists
@@ -915,7 +1117,7 @@ class BronzemanTcgPanel extends PluginPanel
 
 	private boolean isSlayerCardVisible(String card)
 	{
-		boolean unlocked = snapshot.owned.contains(card.toLowerCase(Locale.ROOT));
+		boolean unlocked = isCardUnlocked(card, snapshot.owned);
 		return unlocked ? showUnlockedSlayer.isSelected() : showLockedSlayer.isSelected();
 	}
 
@@ -1365,7 +1567,7 @@ class BronzemanTcgPanel extends PluginPanel
 			{
 				for (String card : visibleItems)
 				{
-					boolean unlocked = owned.contains(card.toLowerCase(Locale.ROOT));
+					boolean unlocked = isCardUnlocked(card, owned);
 					importantUnlocksList.add(statusRow("  " + displayCardName(card),
 						unlocked, null));
 				}
@@ -1386,7 +1588,7 @@ class BronzemanTcgPanel extends PluginPanel
 					{
 						for (String card : entry.getValue())
 						{
-							boolean unlocked = owned.contains(card.toLowerCase(Locale.ROOT));
+							boolean unlocked = isCardUnlocked(card, owned);
 							importantUnlocksList.add(statusRow(
 								"    " + displayCardName(card), unlocked, null));
 						}
@@ -1411,7 +1613,7 @@ class BronzemanTcgPanel extends PluginPanel
 		List<String> visible = new ArrayList<>();
 		for (String card : items)
 		{
-			boolean unlocked = owned.contains(card.toLowerCase(Locale.ROOT));
+			boolean unlocked = isCardUnlocked(card, owned);
 			if (shouldShowImportantItem(unlocked))
 			{
 				visible.add(card);
@@ -2054,8 +2256,21 @@ class BronzemanTcgPanel extends PluginPanel
 		return monsterName == null ? display(cardName) : monsterName;
 	}
 
+	private boolean isCardUnlocked(String cardName, Set<String> owned)
+	{
+		String lower = cardName == null ? "" : cardName.trim().toLowerCase(Locale.ROOT);
+		if (owned.contains(lower))
+		{
+			return true;
+		}
+		String item = itemCatalog.findDisplayCardName(lower);
+		return config.enableFoilCascades() && item != null && foilUnlockCatalog.isUnlockedByFoil(item,
+			collectionReader.getFoilCardNamesLowerCase());
+	}
+
 	private enum PanelTab
 	{
+		PLANNER,
 		QUESTS,
 		SLAYER,
 		PVM,
@@ -2229,6 +2444,8 @@ class BronzemanTcgPanel extends PluginPanel
 		private final List<RecentUnlocksTracker.Unlock> sharedRecentUnlocks;
 		private final boolean includeSlayerSuperiors;
 		private final Set<String> completedQuests;
+		private final Map<String, Integer> skillLevels;
+		private final CardcorePlanner.Plan plan;
 		private final int unlockedMonsters;
 		private final int unlockedItems;
 
@@ -2236,6 +2453,7 @@ class BronzemanTcgPanel extends PluginPanel
 			List<RecentUnlocksTracker.Unlock> recentUnlocks,
 			List<RecentUnlocksTracker.Unlock> sharedRecentUnlocks,
 			boolean includeSlayerSuperiors, Set<String> completedQuests,
+			Map<String, Integer> skillLevels, CardcorePlanner.Plan plan,
 			int unlockedMonsters,
 			int unlockedItems)
 		{
@@ -2246,6 +2464,8 @@ class BronzemanTcgPanel extends PluginPanel
 			this.sharedRecentUnlocks = sharedRecentUnlocks;
 			this.includeSlayerSuperiors = includeSlayerSuperiors;
 			this.completedQuests = completedQuests;
+			this.skillLevels = skillLevels;
+			this.plan = plan;
 			this.unlockedMonsters = unlockedMonsters;
 			this.unlockedItems = unlockedItems;
 		}

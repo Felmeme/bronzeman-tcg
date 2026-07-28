@@ -30,6 +30,7 @@ import net.runelite.api.Quest;
 import net.runelite.api.QuestState;
 import net.runelite.api.Renderable;
 import net.runelite.api.ScriptID;
+import net.runelite.api.Skill;
 import net.runelite.api.WorldView;
 import net.runelite.api.events.GameStateChanged;
 import net.runelite.api.events.GameTick;
@@ -85,7 +86,7 @@ import net.runelite.client.util.Text;
 @Slf4j
 @PluginDescriptor(
 	name = "Bronzeman TCG",
-	description = "Account restriction settings to work alongside the OSRS TCG Plugin.",
+	description = "Account restrictions for OSRS TCG with optional goal planning.",
 	tags = {"bronzeman", "tcg", "restriction", "ironman", "challenge"}
 )
 public class BronzemanTcgPlugin extends Plugin implements RenderCallback
@@ -210,6 +211,12 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 
 	@Inject
 	private ImportantUnlocksCatalog importantUnlocksCatalog;
+
+	@Inject
+	private FauxCardcoreProfile fauxCardcoreProfile;
+
+	@Inject
+	private FoilUnlockCatalog foilUnlockCatalog;
 
 	@Inject
 	private TrackedMonsterCatalog monsterCatalog;
@@ -427,6 +434,8 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 				sharedUnlockStore,
 				recentUnlocksTracker,
 				importantUnlocksCatalog,
+				fauxCardcoreProfile,
+				foilUnlockCatalog,
 				config,
 				configManager,
 				executor);
@@ -906,6 +915,7 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 			target.updateCompletedQuests(captureCompletedQuests());
 			questStateInitialized = true;
 		}
+		target.updateSkillLevels(captureSkillLevels());
 		SwingUtilities.invokeLater(() ->
 		{
 			if (target.isShowing())
@@ -931,6 +941,21 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 			}
 		}
 		return Collections.unmodifiableSet(completed);
+	}
+
+	/** Read real levels on the client thread for planner prerequisite checks. */
+	private Map<String, Integer> captureSkillLevels()
+	{
+		if (client.getGameState() != GameState.LOGGED_IN)
+		{
+			return Collections.emptyMap();
+		}
+		Map<String, Integer> levels = new HashMap<>();
+		for (Skill skill : Skill.values())
+		{
+			levels.put(skill.getName().toLowerCase(Locale.ROOT), client.getRealSkillLevel(skill));
+		}
+		return Collections.unmodifiableMap(levels);
 	}
 
 	@Subscribe
@@ -1210,14 +1235,25 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 			return;
 		}
 		boolean firstPayload = !collectionReader.hasApiData();
+		Set<String> before = firstPayload ? Collections.emptySet()
+			: new HashSet<>(collectionReader.getOwnedCardNamesLowerCase());
 		collectionReader.onApiOwnedNames((List<?>) names);
 		if (firstPayload)
 		{
 			recentUnlocksTracker.resetBaseline();
 		}
-		if (recentUnlocksTracker.update(collectionReader.getOwnedCardNamesLowerCase(), true))
+		Set<String> after = collectionReader.getOwnedCardNamesLowerCase();
+		if (recentUnlocksTracker.update(after, true))
 		{
 			refreshVisiblePanel();
+			for (String card : after)
+			{
+				if (!before.contains(card))
+				{
+					queueChat("[Cardcore] New card: " + itemCatalog.getDisplayCardName(card)
+						+ " - " + describeCardImpact(card));
+				}
+			}
 		}
 		if (firstPayload && collectionReader.hasApiData())
 		{
@@ -2790,7 +2826,32 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 				return true;
 			}
 		}
+		if (catalog == itemCatalog && config.enableFoilCascades()
+			&& foilUnlockCatalog.isUnlockedByFoil(entityName, collectionReader.getFoilCardNamesLowerCase()))
+		{
+			return true;
+		}
 		return false;
+	}
+
+	private static String describeCardImpact(String card)
+	{
+		String lower = card == null ? "" : card.toLowerCase(Locale.ROOT);
+		if (lower.contains("talisman") || lower.contains("rune"))
+		{
+			return "opens magic, teleport, Runecraft, or quest routing options; check Planner.";
+		}
+		if (lower.contains("axe") || lower.contains("pickaxe") || lower.contains("net")
+			|| lower.equals("knife") || lower.equals("tinderbox") || lower.equals("spade"))
+		{
+			return "high-impact utility unlock; a new skill or gathering route may now be legal.";
+		}
+		if (lower.contains("potion") || lower.contains("restore") || lower.contains("brew")
+			|| lower.contains("shark") || lower.contains("manta"))
+		{
+			return "improves the legal Fire Cape supply pool.";
+		}
+		return "route and quest readiness have been recalculated in the Planner tab.";
 	}
 
 	private boolean isRestrictedNpcInteraction(MenuOptionClicked event, String npcName)

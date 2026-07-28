@@ -1,0 +1,135 @@
+{
+  "profileName": "Cardcore reference preset (episodes 1-10)",
+  "rules": [
+    {
+      "title": "Cards gate item use",
+      "detail": "An item may be collected and banked without its card, but it cannot be used or provide a direct benefit until unlocked.",
+      "sourceUrl": "https://www.youtube.com/watch?v=VhZ3usP25gE&t=122s"
+    },
+    {
+      "title": "Cards gate combat targets",
+      "detail": "Only attack an NPC when its card is owned. Talking to NPCs is allowed; mandatory quest enemies still require their cards.",
+      "sourceUrl": "https://www.youtube.com/watch?v=VhZ3usP25gE&t=156s"
+    },
+    {
+      "title": "Uncarded content is free",
+      "detail": "If an NPC or item has no card in the catalogue, it is fair game. Verify the catalogue before relying on this exception.",
+      "sourceUrl": "https://www.youtube.com/watch?v=L9gkCEhDM3A&t=1385s"
+    },
+    {
+      "title": "Cards do not grant items",
+      "detail": "The account remains Hardcore Ironman: pull the card, then obtain the item through a legal spawn, drop, shop or production chain.",
+      "sourceUrl": "https://www.youtube.com/watch?v=q1l89TiTQ8s&t=358s"
+    },
+    {
+      "title": "Only duplicates are sold",
+      "detail": "Unique cards remain in the collection. Only duplicate cards may be exchanged for credits.",
+      "sourceUrl": "https://www.youtube.com/watch?v=7ECW6yWbtIE&t=454s"
+    },
+    {
+      "title": "Quest use counts as use",
+      "detail": "Handing in or otherwise consuming an item during a quest requires its card. Valid substitutes may replace a missing requirement.",
+      "sourceUrl": "https://www.youtube.com/watch?v=0w8Lh0GOBD4&t=424s"
+    },
+    {
+      "title": "Foil item families",
+      "detail": "A foil unlocks every lower-tier item in the same equipment category. A top-tier foil covers the entire slot beneath it; for example, foil Torva full helm unlocks every helmet.",
+      "sourceUrl": "https://www.youtube.com/watch?v=VhZ3usP25gE&t=393s"
+    },
+    {
+      "title": "Foil boss and pet exceptions",
+      "detail": "A foil boss unlocks that boss's collection-log uniques. A foil pet unlocks the pet family. A foil quest boss does not unlock every quest ingredient.",
+      "sourceUrl": "https://www.youtube.com/watch?v=0w8Lh0GOBD4&t=500s"
+    },
+    {
+      "title": "Harder ruling wins",
+      "detail": "When a new edge case has no precedent, choose the more difficult reasonable interpretation and record it for consistency.",
+      "sourceUrl": "https://www.youtube.com/watch?v=0w8Lh0GOBD4&t=524s"
+    },
+    {
+      "title": "Proportional integrity penalty",
+      "detail": "If a locked action materially helps progression, repay the advantage with a proportional sacrifice before using the reward.",
+      "sourceUrl": "https://www.youtube.com/watch?v=L9gkCEhDM3A&t=275s"
+    },
+    {
+      "title": "Mystic Cards cosmetic exception",
+      "detail": "The Mystic Cards cosmetic is whitelisted for Cardcore identity because it offers no gameplay benefit.",
+      "sourceUrl": "https://www.youtube.com/watch?v=afBgcgy8n-A&t=69s"
+    }
+  ],
+  "principles": [
+    {
+      "title": "Unlock whole skills first",
+      "detail": "Basic tools, gatherers and production inputs create many levels, credits and future acquisition paths.",
+      "sourceUrl": "https://www.youtube.com/watch?v=7ECW6yWbtIE&t=399s"
+    },
+    {
+      "title": "Value obtainable cards",
+      "detail": "A rare card is dormant without a legal acquisition path. Rank a common tool, rune, NPC or spawn above inaccessible endgame equipment.",
+      "sourceUrl": "https://www.youtube.com/watch?v=0w8Lh0GOBD4&t=124s"
+    },
+    {
+      "title": "Prefer multi-benefit grinds",
+      "detail": "Favor legal activities that combine XP credits, level bonuses, kill credits, useful drops, clues or quest progress.",
+      "sourceUrl": "https://www.youtube.com/watch?v=L9gkCEhDM3A&t=131s"
+    },
+    {
+      "title": "Quest for access and XP",
+      "detail": "Prioritize quests that open transport, grant large XP rewards, provide quest points or expose an important item source.",
+      "sourceUrl": "https://www.youtube.com/watch?v=KLYnVnnL-50&t=9s"
+    },
+    {
+      "title": "Bank future value",
+      "detail": "Keep legal loot and produced-but-locked outputs so a later card can activate an already-stocked supply.",
+      "sourceUrl": "https://www.youtube.com/watch?v=q1l89TiTQ8s&t=374s"
+    }
+  ],
+  "highImpactCards": [
+    "Coins",
+    "Small fishing net",
+    "Bronze axe",
+    "Iron axe",
+    "Bronze pickaxe",
+    "Spade",
+    "Knife",
+    "Tinderbox",
+    "Air talisman",
+    "Mind rune",
+    "Nature rune",
+    "Hammer",
+    "Rake",
+    "Shortbow",
+    "Bronze arrow"
+    ,"Cup of tea"
+    ,"Brutus"
+    ,"Gemstone crab"
+    ,"Prayer potion"
+  ],
+  "routes": [
+    {
+      "title": "Zero-card start",
+      "detail": "Use safe Agility for initial credits, open packs, then immediately pivot when a card unlocks an entire skill or combat-credit target.",
+      "sourceUrl": "https://www.youtube.com/watch?v=q1l89TiTQ8s&t=190s"
+    },
+    {
+      "title": "Free transport layer",
+      "detail": "Use home/minigame teleports while coins are locked; prioritize Quetzal and gnome-glider quest access, and use Castle Wars/F2P Ferox routing when useful.",
+      "sourceUrl": "https://www.youtube.com/watch?v=KLYnVnnL-50&t=9s"
+    },
+    {
+      "title": "Fire Cape build",
+      "detail": "Seek a legal ranged weapon and ammunition, sustainable food, Prayer training, every Fight Caves monster card, and an obtainable gear set.",
+      "sourceUrl": "https://www.youtube.com/watch?v=q1l89TiTQ8s&t=250s"
+    },
+    {
+      "title": "Community first-hour route",
+      "detail": "Stop Draynor Agility at 20, take Attack to 8 on Varrock dummies, complete free XP quests, then pivot into Thieving or the highest safe carded combat target.",
+      "sourceUrl": "https://www.osrstcgexchange.com/blog/getting-started"
+    },
+    {
+      "title": "Credit-engine selection",
+      "detail": "Use fast non-combat XP for steady credits; for combat, farm the highest-combat-level target that is carded, safe and sustainable rather than chasing combat XP alone.",
+      "sourceUrl": "https://www.osrstcgexchange.com/blog/how-credits-work"
+    }
+  ]
+}
