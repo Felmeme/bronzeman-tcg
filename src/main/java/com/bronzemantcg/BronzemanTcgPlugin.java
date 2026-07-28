@@ -1025,6 +1025,7 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 		WorldView worldView = client.getTopLevelWorldView();
 		if (player == null || worldView == null) return Collections.emptyList();
 		Map<String, Integer> nearby = new HashMap<>();
+		Map<String, Integer> nearestDistance = new HashMap<>();
 		for (NPC npc : worldView.npcs())
 		{
 			if (npc == null || npc.getWorldLocation().distanceTo(player.getWorldLocation()) > 20) continue;
@@ -1039,6 +1040,8 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 			if (attackable && isUnlocked(monsterCatalog, name))
 			{
 				nearby.put(name, Math.max(nearby.getOrDefault(name, -1), composition.getCombatLevel()));
+				int distance = npc.getWorldLocation().distanceTo(player.getWorldLocation());
+				nearestDistance.put(name, Math.min(nearestDistance.getOrDefault(name, 999), distance));
 			}
 		}
 		List<Map.Entry<String, Integer>> entries = new ArrayList<>(nearby.entrySet());
@@ -1047,7 +1050,8 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 		for (int i = 0; i < Math.min(8, entries.size()); i++)
 		{
 			Map.Entry<String, Integer> entry = entries.get(i);
-			result.add(entry.getKey() + " (level " + entry.getValue() + ")");
+			result.add(entry.getKey() + " (level " + entry.getValue() + ") ["
+				+ nearestDistance.getOrDefault(entry.getKey(), 20) + " tiles]");
 		}
 		return result;
 	}

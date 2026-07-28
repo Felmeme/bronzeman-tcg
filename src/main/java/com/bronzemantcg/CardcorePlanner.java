@@ -217,7 +217,8 @@ final class CardcorePlanner
 		addBestPossessed(fireLoadout, owned, possessed, "Food", "Saradomin brew", "Manta ray",
 			"Shark", "Monkfish", "Lobster");
 		addBestPossessed(fireLoadout, owned, possessed, "Prayer restore", "Super restore", "Prayer potion");
-		List<String> classifiedCombat = classifyNearbyCombat(nearbyUnlockedCombat, skills);
+		List<String> classifiedCombat = rankNearbyCombat(nearbyUnlockedCombat, skills,
+			owned, possessed, rewardRates);
 		List<String> opportunityIdeas = buildOpportunityIdeas(owned, possessed, completed, skills,
 			classifiedCombat);
 
@@ -250,18 +251,79 @@ final class CardcorePlanner
 			Collections.unmodifiableList(tripPlan));
 	}
 
-	private static List<String> classifyNearbyCombat(List<String> nearby, Map<String, Integer> skills)
+	private static List<String> rankNearbyCombat(List<String> nearby, Map<String, Integer> skills,
+		Set<String> owned, Set<String> possessed, TcgCollectionReader.RewardRates rates)
 	{
 		int combat = estimatedCombatLevel(skills);
-		List<String> result = new ArrayList<>();
+		String setup = bestLegalCombatSetup(owned, possessed, skills);
+		int power = combatPower(skills, setup);
+		List<CombatEstimate> estimates = new ArrayList<>();
 		for (String entry : nearby)
 		{
 			java.util.regex.Matcher matcher = java.util.regex.Pattern.compile("\\(level (\\d+)\\)").matcher(entry);
 			int level = matcher.find() ? Integer.parseInt(matcher.group(1)) : 999;
+			java.util.regex.Matcher distanceMatcher = java.util.regex.Pattern.compile("\\[(\\d+) tiles]").matcher(entry);
+			int distance = distanceMatcher.find() ? Integer.parseInt(distanceMatcher.group(1)) : 20;
 			String safety = level <= combat + 3 ? "reasonable" : level <= combat + 10 ? "caution" : "risky";
-			result.add(entry + " [" + safety + " at combat ~" + combat + "]");
+			int killsPerHour = Math.max(8, Math.min(120,
+				(int) Math.round(70.0d * power / Math.max(4.0d, level + 5.0d))));
+			if ("caution".equals(safety)) killsPerHour = (int) Math.round(killsPerHour * 0.65d);
+			if ("risky".equals(safety)) killsPerHour = (int) Math.round(killsPerHour * 0.25d);
+			killsPerHour = Math.max(2, killsPerHour - distance / 2);
+			int creditsPerKill = Math.max(0, (int) Math.round(level * rates.killMultiplier));
+			int creditsPerHour = killsPerHour * creditsPerKill;
+			int score = creditsPerHour - distance * 2
+				- ("risky".equals(safety) ? 5_000 : "caution".equals(safety) ? 500 : 0);
+			estimates.add(new CombatEstimate(score, entry + " — " + safety
+				+ " | ~" + killsPerHour + " kills/hr | ~" + creditsPerHour
+				+ " credits/hr | " + setup));
 		}
+		estimates.sort((a, b) -> Integer.compare(b.score, a.score));
+		List<String> result = new ArrayList<>();
+		for (int i = 0; i < Math.min(8, estimates.size()); i++) result.add(estimates.get(i).label);
 		return result;
+	}
+
+	private static String bestLegalCombatSetup(Set<String> owned, Set<String> possessed,
+		Map<String, Integer> skills)
+	{
+		String[][] melee = {
+			{"dragon scimitar", "60"}, {"rune scimitar", "40"}, {"adamant scimitar", "30"},
+			{"mithril scimitar", "20"}, {"black scimitar", "10"}, {"steel scimitar", "5"},
+			{"iron scimitar", "1"}, {"bronze scimitar", "1"}, {"steel sword", "5"},
+			{"iron sword", "1"}, {"bronze sword", "1"}
+		};
+		int attack = level(skills, "attack");
+		for (String[] candidate : melee)
+		{
+			if (attack >= Integer.parseInt(candidate[1]) && owned.contains(candidate[0])
+				&& possessed.contains(candidate[0]))
+				return display(candidate[0]) + " (detected legal melee)";
+		}
+		if (level(skills, "ranged") >= 20 && owned.contains("willow longbow")
+			&& possessed.contains("willow longbow")
+			&& hasAny(owned, "bronze arrow", "iron arrow", "steel arrow", "mithril arrow",
+				"adamant arrow", "rune arrow")
+			&& hasAny(possessed, "bronze arrow", "iron arrow", "steel arrow", "mithril arrow",
+				"adamant arrow", "rune arrow"))
+			return "Willow longbow + detected arrows";
+		return "fists (no stronger usable weapon detected)";
+	}
+
+	private static int combatPower(Map<String, Integer> skills, String setup)
+	{
+		int melee = level(skills, "attack") + level(skills, "strength");
+		int ranged = level(skills, "ranged") * 2;
+		int magic = level(skills, "magic") * 2;
+		int weaponBonus = setup.startsWith("fists") ? 0 : setup.startsWith("Willow") ? 8 : 6;
+		return Math.max(4, Math.max(melee + weaponBonus, Math.max(ranged, magic)));
+	}
+
+	private static final class CombatEstimate
+	{
+		private final int score;
+		private final String label;
+		private CombatEstimate(int score, String label) { this.score = score; this.label = label; }
 	}
 
 	private static int estimatedCombatLevel(Map<String, Integer> skills)
@@ -322,7 +384,7 @@ final class CardcorePlanner
 		String safeNearby = null;
 		for (String target : nearbyCombat)
 		{
-			if (target.contains("[reasonable")) { safeNearby = target; break; }
+			if (target.contains("— reasonable")) { safeNearby = target; break; }
 		}
 		if (safeNearby != null)
 		{

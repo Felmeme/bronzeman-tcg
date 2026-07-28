@@ -823,12 +823,13 @@ class BronzemanTcgPanel extends PluginPanel
 		panel.setBackground(ColorScheme.DARKER_GRAY_COLOR);
 		panel.setBorder(BorderFactory.createEmptyBorder(6, 6, 6, 6));
 
-		JLabel title = new JLabel(rank + ". " + recommendation.title);
+		JLabel title = new JLabel("<html><div style='width:205px'>" + rank + ". "
+			+ escapeHtml(recommendation.title) + "</div></html>");
 		title.setForeground(recommendation.ready ? UNLOCKED : Color.WHITE);
 		title.setFont(title.getFont().deriveFont(Font.BOLD));
 		panel.add(title, BorderLayout.NORTH);
 
-		String body = recommendation.reason;
+		String body = escapeHtml(recommendation.reason);
 		if (!recommendation.estimate.explanation.isEmpty())
 		{
 			body += "<br><font color='#f0c75e'>Score " + recommendation.estimate.score;
@@ -840,12 +841,13 @@ class BronzemanTcgPanel extends PluginPanel
 			{
 				body += " | next pack ~" + recommendation.estimate.minutesToPack + " min";
 			}
-			body += "</font><br>" + recommendation.estimate.explanation;
+			body += "</font><br>" + escapeHtml(recommendation.estimate.explanation);
 		}
 		if (!recommendation.blockers.isEmpty())
 		{
-			body += "<br><font color='#b8b8b8'>" + String.join("<br>", recommendation.blockers)
-				+ "</font>";
+			List<String> escapedBlockers = new ArrayList<>();
+			for (String blocker : recommendation.blockers) escapedBlockers.add(escapeHtml(blocker));
+			body += "<br><font color='#b8b8b8'>" + String.join("<br>", escapedBlockers) + "</font>";
 		}
 		JLabel details = new JLabel("<html><div style='width:190px'>" + body + "</div></html>");
 		details.setForeground(ColorScheme.LIGHT_GRAY_COLOR);
@@ -2233,11 +2235,19 @@ class BronzemanTcgPanel extends PluginPanel
 
 	private static JLabel mutedRow(String text)
 	{
-		JLabel label = new JLabel(text);
+		JLabel label = new JLabel("<html><div style='width:210px'>" + escapeHtml(text)
+			+ "</div></html>");
 		label.setForeground(ColorScheme.LIGHT_GRAY_COLOR);
 		label.setBorder(BorderFactory.createEmptyBorder(3, 6, 3, 6));
 		label.setAlignmentX(Component.LEFT_ALIGNMENT);
 		return label;
+	}
+
+	private static String escapeHtml(String text)
+	{
+		if (text == null) return "";
+		return text.replace("&", "&amp;").replace("<", "&lt;")
+			.replace(">", "&gt;").replace("\"", "&quot;").replace("'", "&#39;");
 	}
 
 	private static JPanel listDivider()

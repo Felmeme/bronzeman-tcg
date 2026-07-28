@@ -174,7 +174,8 @@ public class CardcorePlannerTest
 		assertTrue(plan.recommendations.stream()
 			.anyMatch(r -> r.title.equals("Train Agility to 20")));
 		assertEquals("Draynor", plan.currentArea);
-		assertTrue(plan.nearbyUnlockedCombat.get(0).startsWith("Goblin (level 2) [reasonable"));
+		assertTrue(plan.nearbyUnlockedCombat.get(0).startsWith("Goblin (level 2) — reasonable"));
+		assertTrue(plan.nearbyUnlockedCombat.get(0).contains("credits/hr"));
 	}
 
 	@Test
@@ -261,5 +262,21 @@ public class CardcorePlannerTest
 		assertTrue(thieving.estimate.creditsPerHour > 0);
 		assertTrue(thieving.estimate.minutesToPack > 0);
 		assertTrue(thieving.estimate.minutesToPack <= 10);
+	}
+
+	@Test
+	public void nearbyCombatRanksSafeEfficientTargetAndDetectedWeaponFirst()
+	{
+		Map<String, Integer> skills = new HashMap<>();
+		skills.put("attack", 8);
+		skills.put("strength", 5);
+		skills.put("hitpoints", 10);
+		CardcorePlanner.Plan plan = planner.evaluate(Collections.singleton("iron scimitar"),
+			Collections.emptySet(), skills, 0L, "Lumbridge",
+			java.util.Arrays.asList("Dark wizard (level 20) [4 tiles]",
+				"Goblin (level 2) [8 tiles]"), Collections.singleton("iron scimitar"));
+		assertTrue(plan.nearbyUnlockedCombat.get(0).startsWith("Goblin (level 2)"));
+		assertTrue(plan.nearbyUnlockedCombat.get(0).contains("Iron scimitar"));
+		assertTrue(plan.nearbyUnlockedCombat.get(1).contains("risky"));
 	}
 }
