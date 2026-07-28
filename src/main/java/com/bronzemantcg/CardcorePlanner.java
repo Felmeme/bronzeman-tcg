@@ -549,8 +549,9 @@ final class CardcorePlanner
 		if (thieving < 25)
 		{
 			recommendations.add(new Recommendation("Build Thieving toward 25 cardlessly",
-				"H.A.M. members and stalls have no activity card under the community rules. Bank or destroy locked loot; do not use it until its card is owned.",
-				Arrays.asList("CARDLESS: H.A.M. members from level 1", "Cake stalls from level 5",
+				"Men/women, stalls, and H.A.M. members have no activity card under the community rules. Bank or destroy locked loot; do not use it until its card is owned.",
+				Arrays.asList("CARDLESS: men/women from level 1", "Cake stalls from level 5",
+					"H.A.M. members from level 15",
 					"Target 25 Thieving for fruit stalls"), true));
 		}
 
