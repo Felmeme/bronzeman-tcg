@@ -96,21 +96,27 @@ final class CardcorePlanner
 		QuestCatalog.QuestEntry packQuest = bestPackQuest(owned, completed);
 		if (packQuest != null)
 		{
-			recommendations.add(new Recommendation("Prioritize " + packQuest.name + " for XP levels",
-				packQuestReason(packQuest.name),
-				Collections.singletonList("All catalogued cards are owned; verify ordinary prerequisites in Quests"), true));
+			List<String> physical = missingPhysicalQuestItems(packQuest, owned, possessed);
+			recommendations.add(new Recommendation((physical.isEmpty() ? "Prioritize " : "Prepare ")
+				+ packQuest.name + " for XP levels",
+				packQuestReason(packQuest.name) + " Travel: "
+					+ travelHint(packQuest.name, currentArea, possessed, completed),
+				physical.isEmpty() ? Collections.singletonList("Required carded items detected") : physical,
+				physical.isEmpty()));
 		}
 
-		GoalQuest nextQuest = nextBarrowsQuest(owned, completed, skills);
+		GoalQuest nextQuest = nextBarrowsQuest(owned, completed, skills, possessed);
 		if (nextQuest != null)
 		{
 			QuestCatalog.QuestEntry quest = questsByName.get(key(nextQuest.name));
-			List<String> blockers = blockers(nextQuest, quest, owned, completed, skills);
+			List<String> blockers = blockers(nextQuest, quest, owned, completed, skills, possessed);
 			recommendations.add(new Recommendation(
 				(blockers.isEmpty() ? "Do " : "Prepare ") + nextQuest.name,
 				blockers.isEmpty()
-					? "This is the next card-, skill-, and prerequisite-ready step toward Barrows gloves."
-					: "Closest outstanding Barrows-gloves dependency.",
+					? "This is the next card-, skill-, and prerequisite-ready step toward Barrows gloves. Travel: "
+						+ travelHint(nextQuest.name, currentArea, possessed, completed)
+					: "Closest outstanding Barrows-gloves dependency. Travel: "
+						+ travelHint(nextQuest.name, currentArea, possessed, completed),
 				blockers, blockers.isEmpty()));
 		}
 
@@ -562,7 +568,7 @@ final class CardcorePlanner
 	}
 
 	private GoalQuest nextBarrowsQuest(Set<String> owned, Set<String> completed,
-		Map<String, Integer> skills)
+		Map<String, Integer> skills, Set<String> possessed)
 	{
 		GoalQuest best = null;
 		int bestScore = Integer.MAX_VALUE;
@@ -586,7 +592,7 @@ final class CardcorePlanner
 				continue;
 			}
 			QuestCatalog.QuestEntry quest = questsByName.get(key(goal.name));
-			int score = blockers(goal, quest, owned, completed, skills).size() * 100 + goal.order;
+			int score = blockers(goal, quest, owned, completed, skills, possessed).size() * 100 + goal.order;
 			if (score < bestScore)
 			{
 				best = goal;
@@ -607,7 +613,8 @@ final class CardcorePlanner
 	}
 
 	private static List<String> blockers(GoalQuest goal, QuestCatalog.QuestEntry quest,
-		Set<String> owned, Set<String> completed, Map<String, Integer> skills)
+		Set<String> owned, Set<String> completed, Map<String, Integer> skills,
+		Set<String> possessed)
 	{
 		List<String> blockers = new ArrayList<>();
 		for (String prerequisite : goal.prerequisites)
@@ -629,9 +636,96 @@ final class CardcorePlanner
 				{
 					blockers.add("Card: " + requirement.label);
 				}
+				else if (!requirement.label.toLowerCase(Locale.ROOT).endsWith("(enemy)")
+					&& !requirement.isSatisfied(possessed))
+				{
+					blockers.add("Acquire item: " + requirement.label);
+				}
 			}
 		}
 		return blockers;
+	}
+
+	private static List<String> missingPhysicalQuestItems(QuestCatalog.QuestEntry quest,
+		Set<String> owned, Set<String> possessed)
+	{
+		List<String> missing = new ArrayList<>();
+		for (QuestCatalog.Requirement requirement : quest.requirements)
+		{
+			if (requirement.isSatisfied(owned)
+				&& !requirement.label.toLowerCase(Locale.ROOT).endsWith("(enemy)")
+				&& !requirement.isSatisfied(possessed))
+			{
+				missing.add("Acquire item: " + requirement.label);
+			}
+		}
+		return missing;
+	}
+
+	private static String travelHint(String quest, String currentArea,
+		Set<String> possessed, Set<String> completed)
+	{
+		String destination = questArea(quest);
+		if (key(destination).equals(key(currentArea)))
+		{
+			return "you are already in the " + destination + " region.";
+		}
+		if ("Morytania".equals(destination) && !completed.contains(key("Priest in Peril")))
+		{
+			return "Morytania is access-locked; complete Priest in Peril first.";
+		}
+		if ("Fossil Island".equals(destination) && !completed.contains(key("Bone Voyage")))
+		{
+			return "Fossil Island is access-locked; complete Bone Voyage first.";
+		}
+		if ("Karamja".equals(destination))
+		{
+			return "use the cardless TzHaar Fight Pit minigame teleport, or the Port Sarim boat when legal.";
+		}
+		if ("Kourend".equals(destination) || "Hosidius".equals(destination))
+		{
+			return "take Veos's free Port Sarim boat, then walk; no teleport item is required.";
+		}
+		if ("Ardougne".equals(destination) || "Gnome".equals(destination))
+		{
+			return possessed.contains(key("ring of dueling"))
+				? "use your Ring of dueling to Castle Wars, then walk north/east."
+				: "use the cardless Castle Wars minigame teleport, then walk.";
+		}
+		if ("Desert".equals(destination))
+		{
+			return "walk through the northern Al Kharid opening or use the free Tempoross ferry.";
+		}
+		if ("Lumbridge".equals(destination))
+		{
+			return "use the cardless Lumbridge Home Teleport when available, otherwise walk.";
+		}
+		if ("Varrock".equals(destination) && possessed.contains(key("chronicle")))
+		{
+			return "use your Chronicle and walk north.";
+		}
+		return "walk from " + currentArea + "; no mandatory transport card is known for this step.";
+	}
+
+	private static String questArea(String quest)
+	{
+		switch (key(quest))
+		{
+			case "cook's assistant": case "the restless ghost": case "recipe for disaster":
+				return "Lumbridge";
+			case "demon slayer": case "gertrude's cat": case "the dig site":
+				return "Varrock";
+			case "hazeel cult": case "sea slug": case "plague city": case "biohazard":
+				return "Ardougne";
+			case "waterfall quest": case "tree gnome village": case "the grand tree":
+			case "monkey madness i": return "Gnome";
+			case "the knight's sword": case "doric's quest": return "Falador";
+			case "witch's house": return "Taverley";
+			case "priest in peril": case "nature spirit": return "Morytania";
+			case "the golem": case "shadow of the storm": return "Desert";
+			case "bone voyage": return "Fossil Island";
+			default: return "Other";
+		}
 	}
 
 	private static void addSkillBlocker(List<String> blockers, Map<String, Integer> skills,

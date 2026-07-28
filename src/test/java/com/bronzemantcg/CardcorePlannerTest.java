@@ -181,4 +181,19 @@ public class CardcorePlannerTest
 		assertFalse(plan.recommendations.stream()
 			.anyMatch(r -> r.title.contains("panning")));
 	}
+
+	@Test
+	public void questWithLegalButMissingItemBecomesPreparationStep()
+	{
+		Map<String, Integer> skills = new HashMap<>();
+		skills.put("agility", 20);
+		skills.put("hunter", 9);
+		skills.put("slayer", 9);
+		CardcorePlanner.Plan plan = planner.evaluate(Collections.singleton("spade"),
+			Collections.emptySet(), skills, 0L, "Lumbridge", Collections.emptyList(),
+			Collections.emptySet());
+		assertTrue(plan.recommendations.stream().anyMatch(r ->
+			r.title.equals("Prepare X Marks the Spot for XP levels")
+				&& r.blockers.contains("Acquire item: Spade")));
+	}
 }
