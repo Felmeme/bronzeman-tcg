@@ -1,34 +1,45 @@
 package com.bronzemantcg;
 
+import static com.bronzemantcg.PanelComponents.addSpacedDivider;
+import static com.bronzemantcg.PanelComponents.hierarchyProgressRow;
+import static com.bronzemantcg.PanelComponents.listDivider;
+import static com.bronzemantcg.PanelComponents.makeClickable;
+import static com.bronzemantcg.PanelComponents.mutedRow;
+import static com.bronzemantcg.PanelComponents.progressRow;
+import static com.bronzemantcg.PanelComponents.recentUnlockRow;
+import static com.bronzemantcg.PanelComponents.row;
+import static com.bronzemantcg.PanelComponents.sectionBody;
+import static com.bronzemantcg.PanelComponents.sectionHeader;
+import static com.bronzemantcg.PanelComponents.statusRow;
+import static com.bronzemantcg.PanelComponents.styleHierarchyRow;
+import static com.bronzemantcg.SidePanelModels.mergeSlayerRequirement;
+import static com.bronzemantcg.SidePanelModels.satisfiedRequirements;
+import static com.bronzemantcg.SidePanelModels.PanelSnapshot;
+import static com.bronzemantcg.SidePanelModels.PreparedData;
+import static com.bronzemantcg.SidePanelModels.SearchEntry;
+import static com.bronzemantcg.SidePanelModels.SharedCategory;
+import static com.bronzemantcg.SidePanelModels.SlayerMasterEntry;
+import static com.bronzemantcg.SidePanelModels.SlayerTaskBuilder;
+import static com.bronzemantcg.SidePanelModels.SlayerTaskEntry;
+
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Component;
-import java.awt.Container;
-import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.Insets;
-import java.awt.LayoutManager;
-import java.awt.Rectangle;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.FocusAdapter;
-import java.awt.event.FocusEvent;
-import java.lang.reflect.Method;
-import java.time.Instant;
-import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.ArrayDeque;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.EnumMap;
 import java.util.EnumSet;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -45,28 +56,18 @@ import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
-import javax.swing.JColorChooser;
-import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JProgressBar;
 import javax.swing.JScrollPane;
-import javax.swing.JSpinner;
-import javax.swing.JTextField;
-import javax.swing.SpinnerNumberModel;
-import javax.swing.Scrollable;
 import javax.swing.SwingUtilities;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.client.config.ConfigManager;
-import net.runelite.client.config.ConfigItem;
-import net.runelite.client.config.Range;
 import net.runelite.client.game.ItemManager;
 import net.runelite.client.ui.ColorScheme;
 import net.runelite.client.ui.PluginPanel;
 import net.runelite.client.ui.components.IconTextField;
-import net.runelite.client.util.AsyncBufferedImage;
 import net.runelite.client.util.ImageUtil;
 
 /**
@@ -81,10 +82,6 @@ import net.runelite.client.util.ImageUtil;
 class BronzemanTcgPanel extends PluginPanel
 {
 	private static final int MAX_SEARCH_RESULTS = 20;
-	private static final Color UNLOCKED = ColorScheme.PROGRESS_COMPLETE_COLOR;
-	private static final Color LOCKED = ColorScheme.PROGRESS_ERROR_COLOR;
-	private static final DateTimeFormatter UNLOCK_TIME_FORMAT = DateTimeFormatter
-		.ofPattern("d MMM, HH:mm").withZone(ZoneId.systemDefault());
 	private static final String IMPORTANT_SHOW_LOCKED_KEY = "importantShowLocked";
 	private static final String IMPORTANT_SHOW_UNLOCKED_KEY = "importantShowUnlocked";
 	private static final String QUEST_HIDE_COMPLETED_KEY = "questHideCompleted";
@@ -106,7 +103,6 @@ class BronzemanTcgPanel extends PluginPanel
 	private final RecentUnlocksTracker recentUnlocksTracker;
 	private final ImportantUnlocksCatalog importantUnlocksCatalog;
 	private final CardKnowledgeCatalog cardKnowledgeCatalog;
-	private final ItemManager itemManager;
 	private final BronzemanTcgConfig config;
 	private final ConfigManager configManager;
 	private final ScheduledExecutorService executor;
@@ -125,7 +121,8 @@ class BronzemanTcgPanel extends PluginPanel
 
 	// Every view remains attached and CardLayout switches visibility, avoiding a full
 	// Swing rebuild when the bronze navigation buttons change selection.
-	private final SelectedCardPanel tabDisplay = new SelectedCardPanel();
+	private final PanelCardDeck<PanelTab> tabDisplay =
+		new PanelCardDeck<>(PanelTab.class);
 	private final JScrollPane contentScroll;
 	private final JPanel navigationGrid = sectionBody();
 	private final Map<PanelTab, JButton> navigationButtons = new EnumMap<>(PanelTab.class);
@@ -168,9 +165,7 @@ class BronzemanTcgPanel extends PluginPanel
 	private final JPanel sharedCardsList = sectionBody();
 	private final Set<String> expandedSharedCategories = new HashSet<>();
 	private final Set<String> expandedSharedSubcategories = new HashSet<>();
-	private final JPanel settingsList = sectionBody();
-	private final Set<String> expandedSettingsCategories = new HashSet<>();
-	private final Set<String> expandedSettingsSections = new HashSet<>();
+	private final SidePanelSettings sidePanelSettings;
 
 	private final JPanel importantUnlocksPanel = sectionBody();
 	private final JPanel importantUnlocksFilters = new JPanel();
@@ -183,12 +178,11 @@ class BronzemanTcgPanel extends PluginPanel
 	private final Set<String> expandedImportantCategories = new HashSet<>();
 	private final Set<String> expandedImportantSubcategories = new HashSet<>();
 	private final JPanel collectionView = new JPanel(new CardLayout());
-	private final JPanel collectionDetailPanel = sectionBody();
+	private final CardDetailPanel cardDetailPanel;
 	private int collectionListScrollPosition;
 	private int collectionReturnScrollPosition;
 	private PanelTab collectionReturnTab = PanelTab.IMPORTANT;
 	private final Deque<String> collectionCardHistory = new ArrayDeque<>();
-	private final Set<String> expandedKnowledgeSections = new HashSet<>();
 
 	BronzemanTcgPanel(
 			TrackedMonsterCatalog monsterCatalog,
@@ -218,10 +212,12 @@ class BronzemanTcgPanel extends PluginPanel
 		this.recentUnlocksTracker = recentUnlocksTracker;
 		this.importantUnlocksCatalog = importantUnlocksCatalog;
 		this.cardKnowledgeCatalog = cardKnowledgeCatalog;
-		this.itemManager = itemManager;
 		this.config = config;
 		this.configManager = configManager;
 		this.executor = executor;
+		this.cardDetailPanel = new CardDetailPanel(itemManager, questCatalog,
+			this::displayCardName, this::openCollectionCard);
+		this.sidePanelSettings = new SidePanelSettings(config, configManager);
 
 		setLayout(new BorderLayout(0, 8));
 		setBorder(BorderFactory.createEmptyBorder(8, 10, 8, 10));
@@ -318,7 +314,7 @@ class BronzemanTcgPanel extends PluginPanel
 		importantUnlocksPanel.add(importantUnlocksList);
 		collectionView.setBackground(ColorScheme.DARK_GRAY_COLOR);
 		collectionView.add(importantUnlocksPanel, "list");
-		collectionView.add(collectionDetailPanel, "detail");
+		collectionView.add(cardDetailPanel.component(), "detail");
 
 		progressList.add(mutedRow("Loading collection..."));
 		questList.add(mutedRow("Loading quests..."));
@@ -329,7 +325,7 @@ class BronzemanTcgPanel extends PluginPanel
 		addView(recentUnlocksPanel, PanelTab.RECENT);
 		addView(collectionView, PanelTab.IMPORTANT);
 		addView(sharedCardsList, PanelTab.SHARED);
-		addView(settingsList, PanelTab.SETTINGS);
+		addView(sidePanelSettings.component(), PanelTab.SETTINGS);
 
 		JPanel header = sectionBody();
 		header.add(createPlaceholderBanner());
@@ -703,7 +699,7 @@ class BronzemanTcgPanel extends PluginPanel
 				refreshSharedCards();
 				break;
 			case SETTINGS:
-				refreshSettings();
+				sidePanelSettings.refresh();
 				break;
 			default:
 				break;
@@ -1102,47 +1098,9 @@ class BronzemanTcgPanel extends PluginPanel
 		return row;
 	}
 
-	/**
-	 * Swing mouse events do not bubble from labels and progress bars to their parent
-	 * panel, so bind the same action to every visible part of an expandable row.
-	 */
-	private static void makeClickable(Component component, Runnable action)
-	{
-		component.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		component.addMouseListener(new MouseAdapter()
-		{
-			@Override
-			public void mouseClicked(MouseEvent event)
-			{
-				action.run();
-			}
-		});
-		if (component instanceof Container)
-		{
-			for (Component child : ((Container) component).getComponents())
-			{
-				makeClickable(child, action);
-			}
-		}
-	}
-
 	private static String nestedKey(String parent, String child)
 	{
 		return parent + "\0" + child;
-	}
-
-	private static int satisfiedRequirements(List<QuestCatalog.Requirement> requirements,
-		Set<String> owned)
-	{
-		int count = 0;
-		for (QuestCatalog.Requirement requirement : requirements)
-		{
-			if (requirement.isSatisfied(owned))
-			{
-				count++;
-			}
-		}
-		return count;
 	}
 
 	private void refreshRumours()
@@ -1357,263 +1315,6 @@ class BronzemanTcgPanel extends PluginPanel
 		}
 		row.add(total, BorderLayout.EAST);
 		return row;
-	}
-
-	// ------------------------------------------------------------------ side-panel settings
-
-	private void refreshSettings()
-	{
-		settingsList.removeAll();
-		List<SettingsCategory> categories = settingsCategories();
-		for (int categoryIndex = 0; categoryIndex < categories.size(); categoryIndex++)
-		{
-			SettingsCategory category = categories.get(categoryIndex);
-			if (categoryIndex > 0)
-			{
-				settingsList.add(Box.createVerticalStrut(5));
-			}
-			boolean categoryExpanded = expandedSettingsCategories.contains(category.name);
-			JPanel categoryRow = hierarchyLabelRow(
-				category.name, categoryExpanded, false);
-			makeClickable(categoryRow, () ->
-			{
-				toggleExpanded(expandedSettingsCategories, category.name);
-				refreshSettings();
-			});
-			settingsList.add(categoryRow);
-			if (!categoryExpanded)
-			{
-				continue;
-			}
-
-			for (SettingsSection section : category.sections)
-			{
-				settingsList.add(Box.createVerticalStrut(3));
-				boolean sectionExpanded = expandedSettingsSections.contains(section.key);
-				JPanel sectionRow = hierarchyLabelRow(
-					section.name, sectionExpanded, true);
-				makeClickable(sectionRow, () ->
-				{
-					toggleExpanded(expandedSettingsSections, section.key);
-					refreshSettings();
-				});
-				settingsList.add(sectionRow);
-				if (!sectionExpanded)
-				{
-					continue;
-				}
-				settingsList.add(listDivider());
-				for (Method method : section.items)
-				{
-					settingsList.add(settingControl(method));
-				}
-			}
-		}
-		settingsList.revalidate();
-		settingsList.repaint();
-	}
-
-	private static JPanel hierarchyLabelRow(String label, boolean expanded, boolean nested)
-	{
-		JPanel row = row(new BorderLayout());
-		styleHierarchyRow(row, expanded, nested);
-		JLabel name = new JLabel(label);
-		name.setForeground(Color.WHITE);
-		row.add(name, BorderLayout.CENTER);
-		return row;
-	}
-
-	private List<SettingsCategory> settingsCategories()
-	{
-		Map<String, List<Method>> bySection = new HashMap<>();
-		for (Method method : BronzemanTcgConfig.class.getMethods())
-		{
-			ConfigItem item = method.getAnnotation(ConfigItem.class);
-			if (item == null || item.hidden())
-			{
-				continue;
-			}
-			bySection.computeIfAbsent(item.section(), ignored -> new ArrayList<>()).add(method);
-		}
-		for (List<Method> methods : bySection.values())
-		{
-			methods.sort(Comparator.comparingInt(
-				method -> method.getAnnotation(ConfigItem.class).position()));
-		}
-
-		List<SettingsCategory> categories = new ArrayList<>();
-		categories.add(settingsCategory("Gathering", bySection,
-			settingsSection("Farming", BronzemanTcgConfig.farmingSection),
-			settingsSection("Fishing", BronzemanTcgConfig.fishingSection),
-			settingsSection("Hunter", BronzemanTcgConfig.hunterSection),
-			settingsSection("Mining", BronzemanTcgConfig.miningSection),
-			settingsSection("Thieving", BronzemanTcgConfig.thievingSection),
-			settingsSection("Woodcutting", BronzemanTcgConfig.woodcuttingSection)));
-		categories.add(settingsCategory("Production", bySection,
-			settingsSection("Cooking", BronzemanTcgConfig.cookingSection),
-			settingsSection("Crafting", BronzemanTcgConfig.craftingSection),
-			settingsSection("Firemaking", BronzemanTcgConfig.firemakingSection),
-			settingsSection("Fletching", BronzemanTcgConfig.fletchingSection),
-			settingsSection("Herblore", BronzemanTcgConfig.herbloreSection),
-			settingsSection("Runecrafting", BronzemanTcgConfig.runecraftingSection),
-			settingsSection("Smithing", BronzemanTcgConfig.smithingSection)));
-		categories.add(settingsCategory("Other", bySection,
-			settingsSection("General", ""),
-			settingsSection("Sailing", BronzemanTcgConfig.sailingSection),
-			settingsSection("Slayer", BronzemanTcgConfig.slayerSection),
-			settingsSection("Visuals", BronzemanTcgConfig.visualsSection),
-			settingsSection("External Plugins", BronzemanTcgConfig.externalPluginsSection)));
-		return categories;
-	}
-
-	private static SettingsCategory settingsCategory(String name,
-		Map<String, List<Method>> bySection, SettingsSection... definitions)
-	{
-		List<SettingsSection> sections = new ArrayList<>();
-		for (SettingsSection definition : definitions)
-		{
-			List<Method> methods = bySection.getOrDefault(definition.key, Collections.emptyList());
-			if (!methods.isEmpty())
-			{
-				sections.add(new SettingsSection(definition.name, definition.key, methods));
-			}
-		}
-		return new SettingsCategory(name, sections);
-	}
-
-	private static SettingsSection settingsSection(String name, String key)
-	{
-		return new SettingsSection(name, key, Collections.emptyList());
-	}
-
-	private JPanel settingControl(Method method)
-	{
-		ConfigItem item = method.getAnnotation(ConfigItem.class);
-		Object value;
-		try
-		{
-			value = method.invoke(config);
-		}
-		catch (ReflectiveOperationException ex)
-		{
-			log.warn("Could not read side-panel setting {}", item.keyName(), ex);
-			JPanel unavailable = settingRow();
-			unavailable.add(mutedRow(item.name() + " (unavailable)"));
-			return unavailable;
-		}
-
-		String tooltip = item.description().replace("<br>", " ");
-		if (value instanceof Boolean)
-		{
-			JCheckBox checkBox = new JCheckBox(item.name(), (Boolean) value);
-			styleSettingComponent(checkBox, tooltip);
-			checkBox.addActionListener(event ->
-				saveSetting(item.keyName(), checkBox.isSelected()));
-			JPanel row = settingRow();
-			row.add(checkBox);
-			return row;
-		}
-
-		JPanel row = settingRow();
-		JLabel label = new JLabel(item.name());
-		label.setForeground(Color.WHITE);
-		label.setToolTipText(tooltip);
-		row.add(label);
-		row.add(Box.createVerticalStrut(3));
-
-		if (value instanceof Enum)
-		{
-			Object[] values = value.getClass().getEnumConstants();
-			JComboBox<Object> combo = new JComboBox<>(values);
-			combo.setSelectedItem(value);
-			styleSettingComponent(combo, tooltip);
-			combo.addActionListener(event ->
-				saveSetting(item.keyName(), ((Enum<?>) combo.getSelectedItem()).name()));
-			row.add(combo);
-		}
-		else if (value instanceof Integer)
-		{
-			Range range = method.getAnnotation(Range.class);
-			int min = range == null ? Integer.MIN_VALUE : range.min();
-			int max = range == null ? Integer.MAX_VALUE : range.max();
-			JSpinner spinner = new JSpinner(
-				new SpinnerNumberModel(((Integer) value).intValue(), min, max, 1));
-			styleSettingComponent(spinner, tooltip);
-			spinner.addChangeListener(event ->
-				saveSetting(item.keyName(), spinner.getValue()));
-			row.add(spinner);
-		}
-		else if (value instanceof Color)
-		{
-			JButton colour = new JButton("Choose colour");
-			colour.setBackground((Color) value);
-			styleSettingComponent(colour, tooltip);
-			colour.addActionListener(event ->
-			{
-				Color selected = JColorChooser.showDialog(this, item.name(),
-					colour.getBackground());
-				if (selected != null)
-				{
-					colour.setBackground(selected);
-					saveSetting(item.keyName(), selected);
-				}
-			});
-			row.add(colour);
-		}
-		else
-		{
-			JTextField text = new JTextField(value == null ? "" : value.toString());
-			styleSettingComponent(text, tooltip);
-			Runnable save = () -> saveSetting(item.keyName(), text.getText());
-			text.addActionListener(event -> save.run());
-			text.addFocusListener(new FocusAdapter()
-			{
-				@Override
-				public void focusLost(FocusEvent event)
-				{
-					save.run();
-				}
-			});
-			row.add(text);
-		}
-		return row;
-	}
-
-	private static JPanel settingRow()
-	{
-		JPanel row = sectionBody();
-		row.setBackground(ColorScheme.DARKER_GRAY_COLOR);
-		row.setBorder(BorderFactory.createEmptyBorder(5, 18, 5, 4));
-		return row;
-	}
-
-	private static void styleSettingComponent(Component component, String tooltip)
-	{
-		if (component instanceof javax.swing.JComponent)
-		{
-			javax.swing.JComponent swing = (javax.swing.JComponent) component;
-			swing.setToolTipText(tooltip);
-			swing.setMaximumSize(new Dimension(Integer.MAX_VALUE, 26));
-			swing.setAlignmentX(Component.LEFT_ALIGNMENT);
-		}
-		if (component instanceof JCheckBox)
-		{
-			((JCheckBox) component).setOpaque(false);
-			((JCheckBox) component).setForeground(Color.WHITE);
-		}
-	}
-
-	private void saveSetting(String key, Object value)
-	{
-		configManager.setConfiguration(BronzemanTcgConfig.GROUP, key, value);
-	}
-
-	private static void toggleExpanded(Set<String> expanded, String key)
-	{
-		if (!expanded.remove(key))
-		{
-			expanded.add(key);
-		}
 	}
 
 	private void configureQuestFilters()
@@ -1864,55 +1565,8 @@ class BronzemanTcgPanel extends PluginPanel
 	{
 		int currentScrollPosition = contentScroll.getVerticalScrollBar().getValue();
 		CardKnowledgeCatalog.Card card = cardKnowledgeCatalog.find(cardName);
-		collectionDetailPanel.removeAll();
-		if (card == null)
-		{
-			collectionDetailPanel.add(collectionBackButton());
-			collectionDetailPanel.add(mutedRow("No card information is available."));
-		}
-		else
-		{
-			collectionDetailPanel.add(collectionBackButton());
-			collectionDetailPanel.add(Box.createVerticalStrut(8));
-			collectionDetailPanel.add(collectionCardHeader(card));
-			collectionDetailPanel.add(Box.createVerticalStrut(8));
-			addDetailField(collectionDetailPanel, "Status",
-				snapshot.owned.contains(card.name.toLowerCase(Locale.ROOT))
-					? "Unlocked" : "Locked");
-			addDetailField(collectionDetailPanel, "Type",
-				card.isResource() ? "Resource" : "Monster");
-			if (!card.categoryLabels().isEmpty())
-			{
-				addDetailField(collectionDetailPanel, "Categories",
-					String.join(", ", card.categoryLabels()));
-			}
-			if (card.combatLevel != null && card.combatLevel > 0)
-			{
-				addDetailField(collectionDetailPanel, "Combat level",
-					String.valueOf(card.combatLevel));
-			}
-			if (card.slayerLevel != null && card.slayerLevel > 0)
-			{
-				addDetailField(collectionDetailPanel, "Slayer level",
-					String.valueOf(card.slayerLevel));
-			}
-			if (card.examine != null && !card.examine.isEmpty())
-			{
-				collectionDetailPanel.add(sectionHeader("Examine"));
-				collectionDetailPanel.add(wrappedDetailText(card.examine));
-			}
-			if (card.isResource())
-			{
-				addResourceDetails(card);
-			}
-			else
-			{
-				addMonsterDetails(card);
-			}
-			addQuestRelationships(card);
-		}
-		collectionDetailPanel.revalidate();
-		collectionDetailPanel.repaint();
+		cardDetailPanel.render(card, snapshot.owned, collectionBackButton(),
+			name -> renderCollectionCard(name, false));
 		((CardLayout) collectionView.getLayout()).show(collectionView, "detail");
 		collectionView.revalidate();
 		collectionView.repaint();
@@ -1981,299 +1635,6 @@ class BronzemanTcgPanel extends PluginPanel
 			default:
 				return "Collection";
 		}
-	}
-
-	private JPanel collectionCardHeader(CardKnowledgeCatalog.Card card)
-	{
-		JPanel header = row(new BorderLayout(8, 0));
-		header.setBackground(ColorScheme.DARKER_GRAY_COLOR);
-		header.setBorder(BorderFactory.createCompoundBorder(
-			BorderFactory.createLineBorder(new Color(153, 102, 51)),
-			BorderFactory.createEmptyBorder(6, 8, 6, 8)));
-
-		if (card.isResource() && card.primaryId() >= 0)
-		{
-			JLabel image = new JLabel();
-			image.setPreferredSize(new Dimension(36, 36));
-			AsyncBufferedImage sprite = itemManager.getImage(card.primaryId());
-			sprite.addTo(image);
-			header.add(image, BorderLayout.WEST);
-		}
-
-		JLabel title = new JLabel("<html>" + escapeHtml(card.name) + "</html>");
-		title.setForeground(Color.WHITE);
-		title.setFont(title.getFont().deriveFont(Font.BOLD, 15f));
-		header.add(title, BorderLayout.CENTER);
-		return header;
-	}
-
-	private void addResourceDetails(CardKnowledgeCatalog.Card card)
-	{
-		CardKnowledgeCatalog.Sources sources = card.sources;
-		if (sources == null)
-		{
-			collectionDetailPanel.add(mutedRow("No source information available."));
-			return;
-		}
-
-		addKnowledgeSection(card.name, "Used in", safeSize(sources.usedIn), body ->
-		{
-			for (CardKnowledgeCatalog.UsedIn usage : sources.usedIn)
-			{
-				body.add(linkedKnowledgeRow(usage.card,
-					"x" + formatNumber(usage.quantity)));
-			}
-		});
-
-		List<CardKnowledgeCatalog.MonsterSource> monsters = new ArrayList<>();
-		if (sources.monsters != null)
-		{
-			monsters.addAll(sources.monsters);
-		}
-		if (sources.rareDropTable != null)
-		{
-			monsters.addAll(sources.rareDropTable);
-		}
-		addKnowledgeSection(card.name, "Monster drops", monsters.size(), body ->
-		{
-			for (CardKnowledgeCatalog.MonsterSource source : monsters)
-			{
-				String detail = source.fraction == null || source.fraction.isEmpty()
-					? source.rarity : source.rarity + " \u00b7 " + source.fraction;
-				if (!source.confirmedByMonsterDrops)
-				{
-					detail += " \u00b7 one-sided";
-				}
-				body.add(linkedKnowledgeRow(source.card, detail));
-			}
-		});
-
-		if (sources.production != null)
-		{
-			int cardIngredients = 0;
-			int hiddenIngredients = 0;
-			for (CardKnowledgeCatalog.Ingredient ingredient : sources.production.ingredients)
-			{
-				if (ingredient.hasCard)
-				{
-					cardIngredients++;
-				}
-				else
-				{
-					hiddenIngredients++;
-				}
-			}
-			final int shown = cardIngredients;
-			final int hidden = hiddenIngredients;
-			addKnowledgeSection(card.name, "Production", shown + hidden, body ->
-			{
-				CardKnowledgeCatalog.Production production = sources.production;
-				addDetailField(body, "Skill", levelLabel(production.skill, production.level));
-				if (production.facilities != null)
-				{
-					addDetailField(body, "Facility", production.facilities);
-				}
-				if (production.tools != null && !production.tools.isEmpty())
-				{
-					addDetailField(body, "Tools", String.join(", ", production.tools));
-				}
-				for (CardKnowledgeCatalog.Ingredient ingredient : production.ingredients)
-				{
-					if (ingredient.hasCard)
-					{
-						body.add(linkedKnowledgeRow(ingredient.item,
-							"x" + formatNumber(ingredient.quantity)));
-					}
-				}
-				if (hidden > 0)
-				{
-					body.add(mutedRow(hidden + " non-card ingredient"
-						+ (hidden == 1 ? "" : "s") + " hidden"));
-				}
-			});
-		}
-
-		if (sources.gathering != null)
-		{
-			addKnowledgeSection(card.name, "Gathering", 1, body ->
-			{
-				CardKnowledgeCatalog.Gathering gathering = sources.gathering;
-				addDetailField(body, "Method", valueOrDash(gathering.method));
-				addDetailField(body, "Skill", levelLabel(gathering.skill, gathering.level));
-				addDetailField(body, "Tool", valueOrDash(gathering.tool));
-				if (gathering.xp != null)
-				{
-					addDetailField(body, "XP", formatNumber(gathering.xp));
-				}
-			});
-		}
-
-		addTextKnowledgeSection(card.name, "Ground spawns", sources.spawns);
-		addKnowledgeSection(card.name, "Shops", safeSize(sources.shops), body ->
-		{
-			for (CardKnowledgeCatalog.Shop shop : sources.shops)
-			{
-				String price = shop.price == null ? "" : formatNumber(shop.price)
-					+ (shop.currency == null ? "" : " " + shop.currency);
-				body.add(plainKnowledgeRow(shop.seller, price));
-			}
-		});
-		addTextKnowledgeSection(card.name, "Clue rewards", sources.clueTiers);
-	}
-
-	private void addMonsterDetails(CardKnowledgeCatalog.Card card)
-	{
-		List<CardKnowledgeCatalog.Drop> drops =
-			card.drops == null ? Collections.emptyList() : card.drops;
-		if (drops.isEmpty())
-		{
-			collectionDetailPanel.add(mutedRow("No card drops available."));
-			return;
-		}
-
-		addKnowledgeSection(card.name, "Drops", drops.size(), body ->
-		{
-			for (CardKnowledgeCatalog.Drop drop : drops)
-			{
-				StringBuilder detail = new StringBuilder();
-				if (drop.rarity != null && !drop.rarity.isEmpty())
-				{
-					detail.append(drop.rarity);
-				}
-				if (drop.fraction != null && !drop.fraction.isEmpty())
-				{
-					if (detail.length() > 0)
-					{
-						detail.append(" \u00b7 ");
-					}
-					detail.append(drop.fraction);
-				}
-				if (drop.fromRdt)
-				{
-					if (detail.length() > 0)
-					{
-						detail.append(" \u00b7 ");
-					}
-					detail.append("RDT");
-				}
-				body.add(linkedKnowledgeRow(drop.card, detail.toString()));
-			}
-		});
-	}
-
-	private void addQuestRelationships(CardKnowledgeCatalog.Card card)
-	{
-		List<String> quests = questCatalog.getQuestsForCard(card.name);
-		addKnowledgeSection(card.name, "Quests", quests.size(), body ->
-		{
-			for (String quest : quests)
-			{
-				body.add(plainKnowledgeRow(quest, ""));
-			}
-		});
-	}
-
-	private void addTextKnowledgeSection(String cardName, String title, List<String> values)
-	{
-		addKnowledgeSection(cardName, title, safeSize(values), body ->
-		{
-			for (String value : values)
-			{
-				body.add(plainKnowledgeRow(value, ""));
-			}
-		});
-	}
-
-	private void addKnowledgeSection(String cardName, String title, int count,
-		java.util.function.Consumer<JPanel> bodyBuilder)
-	{
-		if (count == 0)
-		{
-			return;
-		}
-		String key = cardName + "\0" + title;
-		boolean expanded = expandedKnowledgeSections.contains(key);
-		JPanel heading = hierarchyProgressRow(title, count, count, true, expanded, false);
-		makeClickable(heading, () ->
-		{
-			if (!expandedKnowledgeSections.remove(key))
-			{
-				expandedKnowledgeSections.add(key);
-			}
-			renderCollectionCard(cardName, false);
-		});
-		collectionDetailPanel.add(Box.createVerticalStrut(5));
-		collectionDetailPanel.add(heading);
-		if (expanded)
-		{
-			JPanel body = sectionBody();
-			body.setBorder(BorderFactory.createEmptyBorder(3, 5, 2, 0));
-			bodyBuilder.accept(body);
-			collectionDetailPanel.add(body);
-		}
-	}
-
-	private JPanel linkedKnowledgeRow(String cardName, String detail)
-	{
-		JPanel item = plainKnowledgeRow(displayCardName(cardName), detail);
-		makeClickable(item, () -> openCollectionCard(cardName));
-		item.setToolTipText("View " + displayCardName(cardName));
-		return item;
-	}
-
-	private static JPanel plainKnowledgeRow(String label, String detail)
-	{
-		JPanel item = row(new BorderLayout(5, 0));
-		item.setBackground(Color.BLACK);
-		item.setBorder(BorderFactory.createEmptyBorder(4, 6, 4, 6));
-		JLabel name = new JLabel(label);
-		name.setForeground(Color.WHITE);
-		item.add(name, BorderLayout.CENTER);
-		if (detail != null && !detail.isEmpty())
-		{
-			JLabel value = new JLabel(detail);
-			value.setForeground(ColorScheme.LIGHT_GRAY_COLOR);
-			value.setFont(value.getFont().deriveFont(10f));
-			item.add(value, BorderLayout.EAST);
-		}
-		return item;
-	}
-
-	private static String levelLabel(String skill, Integer level)
-	{
-		String name = valueOrDash(skill);
-		return level == null || level <= 0 ? name : name + " " + level;
-	}
-
-	private static String valueOrDash(String value)
-	{
-		return value == null || value.trim().isEmpty() ? "\u2014" : value;
-	}
-
-	private static String formatNumber(Number number)
-	{
-		if (number == null)
-		{
-			return "";
-		}
-		double value = number.doubleValue();
-		return value == Math.rint(value)
-			? String.valueOf(number.longValue()) : String.valueOf(value);
-	}
-
-	private static void addDetailField(JPanel target, String label, String value)
-	{
-		JPanel field = row(new BorderLayout(6, 0));
-		field.setBackground(ColorScheme.DARKER_GRAY_COLOR);
-		field.setBorder(BorderFactory.createEmptyBorder(4, 6, 4, 6));
-		JLabel name = new JLabel(label);
-		name.setForeground(ColorScheme.LIGHT_GRAY_COLOR);
-		field.add(name, BorderLayout.WEST);
-		JLabel detail = new JLabel(value);
-		detail.setForeground(Color.WHITE);
-		field.add(detail, BorderLayout.EAST);
-		target.add(field);
-		target.add(Box.createVerticalStrut(2));
 	}
 
 	private static JLabel wrappedDetailText(String text)
@@ -2453,30 +1814,6 @@ class BronzemanTcgPanel extends PluginPanel
 			default:
 				return display(masterName);
 		}
-	}
-
-	private static void mergeSlayerRequirement(
-		Map<String, QuestCatalog.Requirement> requirements,
-		QuestCatalog.Requirement incoming)
-	{
-		QuestCatalog.Requirement existing = requirements.get(incoming.label);
-		if (existing == null)
-		{
-			requirements.put(incoming.label, incoming);
-			return;
-		}
-
-		Map<String, String> cards = new LinkedHashMap<>();
-		for (String card : existing.displayCards)
-		{
-			cards.put(card.toLowerCase(Locale.ROOT), card);
-		}
-		for (String card : incoming.displayCards)
-		{
-			cards.putIfAbsent(card.toLowerCase(Locale.ROOT), card);
-		}
-		requirements.put(existing.label,
-			new QuestCatalog.Requirement(existing.label, new ArrayList<>(cards.values())));
 	}
 
 	private static List<QuestCatalog.Requirement> buildGlobalSuperiors(
@@ -2782,201 +2119,6 @@ class BronzemanTcgPanel extends PluginPanel
 		return false;
 	}
 
-	// ------------------------------------------------------------------ widgets
-
-	/**
-	 * Row container for a BoxLayout column: height tracks the live preferred height, so
-	 * rows never stretch or jitter when a list is rebuilt. Fixing this at construction
-	 * time (the old setMaximumSize call) froze a height computed before layout settled.
-	 */
-	private static JPanel row(LayoutManager layout)
-	{
-		JPanel panel = new JPanel(layout)
-		{
-			@Override
-			public Dimension getMaximumSize()
-			{
-				return new Dimension(Integer.MAX_VALUE, getPreferredSize().height);
-			}
-		};
-		panel.setAlignmentX(Component.LEFT_ALIGNMENT);
-		return panel;
-	}
-
-	private static JPanel sectionBody()
-	{
-		JPanel panel = new JPanel();
-		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-		panel.setBackground(ColorScheme.DARK_GRAY_COLOR);
-		panel.setAlignmentX(Component.LEFT_ALIGNMENT);
-		return panel;
-	}
-
-	private static JLabel sectionHeader(String title)
-	{
-		JLabel label = new JLabel(title);
-		label.setFont(label.getFont().deriveFont(Font.BOLD));
-		label.setForeground(ColorScheme.BRAND_ORANGE);
-		label.setBorder(BorderFactory.createEmptyBorder(10, 0, 4, 0));
-		label.setAlignmentX(Component.LEFT_ALIGNMENT);
-		return label;
-	}
-
-	private static JPanel statusRow(String name, boolean unlocked, String missingCards)
-	{
-		JPanel row = row(new BorderLayout(6, 0));
-		row.setBackground(ColorScheme.DARKER_GRAY_COLOR);
-		row.setBorder(BorderFactory.createEmptyBorder(4, 6, 4, 6));
-
-		JLabel nameLabel = new JLabel(name);
-		nameLabel.setForeground(Color.WHITE);
-		row.add(nameLabel, BorderLayout.CENTER);
-
-		JLabel status = new JLabel(unlocked ? "✓" : "✗");
-		status.setForeground(unlocked ? UNLOCKED : LOCKED);
-		status.setFont(status.getFont().deriveFont(Font.BOLD));
-		row.add(status, BorderLayout.EAST);
-
-		if (missingCards != null && !missingCards.isEmpty())
-		{
-			JLabel needs = new JLabel("needs: " + missingCards);
-			needs.setForeground(ColorScheme.LIGHT_GRAY_COLOR);
-			needs.setFont(needs.getFont().deriveFont(11f));
-			row.add(needs, BorderLayout.SOUTH);
-		}
-		return row;
-	}
-
-	private static JPanel recentUnlockRow(String name, long time, boolean shared)
-	{
-		JPanel row = row(new BorderLayout(6, 0));
-		row.setBackground(ColorScheme.DARKER_GRAY_COLOR);
-		row.setBorder(BorderFactory.createEmptyBorder(4, 6, 4, 6));
-
-		JLabel nameLabel = new JLabel(name);
-		nameLabel.setForeground(Color.WHITE);
-		row.add(nameLabel, BorderLayout.CENTER);
-
-		JLabel status = new JLabel(shared ? "Shared" : "✓");
-		status.setForeground(shared ? ColorScheme.LIGHT_GRAY_COLOR : UNLOCKED);
-		status.setFont(shared
-			? status.getFont().deriveFont(10f) : status.getFont().deriveFont(Font.BOLD));
-		row.add(status, BorderLayout.EAST);
-
-		JLabel when = new JLabel((shared ? "Shared " : "Unlocked ")
-			+ UNLOCK_TIME_FORMAT.format(Instant.ofEpochMilli(time)));
-		when.setForeground(ColorScheme.LIGHT_GRAY_COLOR);
-		when.setFont(when.getFont().deriveFont(11f));
-		row.add(when, BorderLayout.SOUTH);
-		return row;
-	}
-
-	private static JLabel mutedRow(String text)
-	{
-		JLabel label = new JLabel(text);
-		label.setForeground(ColorScheme.LIGHT_GRAY_COLOR);
-		label.setBorder(BorderFactory.createEmptyBorder(3, 6, 3, 6));
-		label.setAlignmentX(Component.LEFT_ALIGNMENT);
-		return label;
-	}
-
-	private static JPanel listDivider()
-	{
-		JPanel divider = new JPanel();
-		divider.setBackground(ColorScheme.DARKER_GRAY_COLOR);
-		divider.setPreferredSize(new Dimension(PluginPanel.PANEL_WIDTH - 20, 2));
-		divider.setMinimumSize(new Dimension(0, 2));
-		divider.setMaximumSize(new Dimension(Integer.MAX_VALUE, 2));
-		divider.setAlignmentX(Component.LEFT_ALIGNMENT);
-		return divider;
-	}
-
-	private static void addSpacedDivider(JPanel container)
-	{
-		container.add(Box.createVerticalStrut(2));
-		container.add(listDivider());
-		container.add(Box.createVerticalStrut(3));
-	}
-
-	private static JPanel progressRow(String label, int done, int total)
-	{
-		return progressRow(label, done, total, done >= total);
-	}
-
-	private static JPanel progressRow(String label, int done, int total, boolean complete)
-	{
-		JPanel row = row(new BorderLayout(0, 2));
-		row.setBackground(ColorScheme.DARK_GRAY_COLOR);
-		row.setBorder(BorderFactory.createEmptyBorder(3, 0, 3, 0));
-
-		JPanel labels = new JPanel(new BorderLayout(6, 0));
-		labels.setOpaque(false);
-		JLabel text = new JLabel(label);
-		text.setForeground(Color.WHITE);
-		labels.add(text, BorderLayout.CENTER);
-		JLabel count = new JLabel(done + "/" + total);
-		count.setForeground(ColorScheme.LIGHT_GRAY_COLOR);
-		labels.add(count, BorderLayout.EAST);
-		row.add(labels, BorderLayout.NORTH);
-
-		JProgressBar bar = new JProgressBar(0, Math.max(total, 1));
-		bar.setValue(total == 0 && complete ? 1 : done);
-		bar.setPreferredSize(new Dimension(PluginPanel.PANEL_WIDTH - 20, 6));
-		bar.setForeground(complete ? UNLOCKED : ColorScheme.BRAND_ORANGE);
-		bar.setBackground(ColorScheme.DARKER_GRAY_COLOR);
-		row.add(bar, BorderLayout.SOUTH);
-		return row;
-	}
-
-	private static JPanel hierarchyProgressRow(String label, int done, int total,
-		boolean complete, boolean expanded, boolean nested)
-	{
-		JPanel row = row(new BorderLayout(6, 0));
-		styleHierarchyRow(row, expanded, nested);
-
-		JLabel text = new JLabel(label);
-		text.setForeground(Color.WHITE);
-		text.setToolTipText(label);
-		row.add(text, BorderLayout.CENTER);
-
-		JPanel progress = new JPanel(new BorderLayout(6, 0));
-		progress.setOpaque(false);
-
-		JProgressBar bar = new JProgressBar(0, Math.max(total, 1));
-		bar.setValue(total == 0 && complete ? 1 : done);
-		bar.setPreferredSize(new Dimension(nested ? 32 : 42, 6));
-		bar.setForeground(complete ? UNLOCKED : ColorScheme.BRAND_ORANGE);
-		bar.setBackground(new Color(82, 82, 82));
-		progress.add(bar, BorderLayout.CENTER);
-
-		JLabel count = new JLabel(done + "/" + total);
-		count.setForeground(ColorScheme.LIGHT_GRAY_COLOR);
-		count.setHorizontalAlignment(JLabel.RIGHT);
-		count.setPreferredSize(new Dimension(46, 16));
-		if (nested)
-		{
-			count.setFont(count.getFont().deriveFont(11f));
-		}
-		progress.add(count, BorderLayout.EAST);
-
-		row.add(progress, BorderLayout.EAST);
-		return row;
-	}
-
-	private static void styleHierarchyRow(JPanel row, boolean expanded, boolean nested)
-	{
-		Color bronze = nested ? new Color(138, 94, 52) : new Color(153, 102, 51);
-		Color background = expanded ? new Color(62, 50, 40)
-			: ColorScheme.DARKER_GRAY_COLOR;
-		int verticalPadding = nested ? 3 : 5;
-		int leftPadding = nested ? 10 : 7;
-		row.setBackground(background);
-		row.setBorder(BorderFactory.createCompoundBorder(
-			BorderFactory.createLineBorder(bronze),
-			BorderFactory.createEmptyBorder(
-				verticalPadding, leftPadding, verticalPadding, nested ? 5 : 7)));
-	}
-
 	private static String display(String lowerName)
 	{
 		if (lowerName.isEmpty())
@@ -3014,283 +2156,5 @@ class BronzemanTcgPanel extends PluginPanel
 	 * card. The sidebar should instead follow the visible card so shorter tabs do not
 	 * inherit a long hidden tab's scroll height.
 	 */
-	private static class SelectedCardPanel extends JPanel implements Scrollable
-	{
-		private final CardLayout cardLayout = new CardLayout();
-		private final Map<PanelTab, Component> cards = new EnumMap<>(PanelTab.class);
-		private Component selected;
-
-		private SelectedCardPanel()
-		{
-			setLayout(cardLayout);
-		}
-
-		private void addCard(PanelTab key, Component component)
-		{
-			cards.put(key, component);
-			add(component, key.name());
-			if (selected == null)
-			{
-				selected = component;
-			}
-		}
-
-		private void showCard(PanelTab key)
-		{
-			selected = cards.get(key);
-			cardLayout.show(this, key.name());
-			revalidate();
-			repaint();
-		}
-
-		@Override
-		public Dimension getPreferredSize()
-		{
-			if (selected == null)
-			{
-				return super.getPreferredSize();
-			}
-			Dimension size = selected.getPreferredSize();
-			Insets insets = getInsets();
-			return new Dimension(size.width + insets.left + insets.right,
-				size.height + insets.top + insets.bottom);
-		}
-
-		@Override
-		public Dimension getPreferredScrollableViewportSize()
-		{
-			return getPreferredSize();
-		}
-
-		@Override
-		public int getScrollableUnitIncrement(Rectangle visibleRect,
-			int orientation, int direction)
-		{
-			return 16;
-		}
-
-		@Override
-		public int getScrollableBlockIncrement(Rectangle visibleRect,
-			int orientation, int direction)
-		{
-			return Math.max(visibleRect.height - 32, 16);
-		}
-
-		@Override
-		public boolean getScrollableTracksViewportWidth()
-		{
-			return true;
-		}
-
-		@Override
-		public boolean getScrollableTracksViewportHeight()
-		{
-			return false;
-		}
-	}
-
-	/** Immutable catalog-derived data built once on the background executor. */
-	private static class PreparedData
-	{
-		private final List<QuestCatalog.QuestEntry> quests;
-		private final List<QuestCatalog.QuestEntry> contents;
-		private final List<QuestCatalog.QuestEntry> areas;
-		private final List<SlayerMasterEntry> slayer;
-		private final List<QuestCatalog.Requirement> allSuperiors;
-		private final List<QuestCatalog.QuestEntry> rumours;
-		private final List<SearchEntry> searchEntries;
-
-		private PreparedData(List<QuestCatalog.QuestEntry> quests,
-			List<QuestCatalog.QuestEntry> contents,
-			List<QuestCatalog.QuestEntry> areas,
-			List<SlayerMasterEntry> slayer,
-			List<QuestCatalog.Requirement> allSuperiors,
-			List<QuestCatalog.QuestEntry> rumours,
-			List<SearchEntry> searchEntries)
-		{
-			this.quests = quests;
-			this.contents = contents;
-			this.areas = areas;
-			this.slayer = slayer;
-			this.allSuperiors = allSuperiors;
-			this.rumours = rumours;
-			this.searchEntries = Collections.unmodifiableList(searchEntries);
-		}
-	}
-
-	private static class SlayerMasterEntry
-	{
-		private final String name;
-		private final List<SlayerTaskEntry> tasks;
-		private final List<QuestCatalog.Requirement> superiors;
-
-		private SlayerMasterEntry(String name, List<SlayerTaskEntry> tasks,
-			List<QuestCatalog.Requirement> superiors)
-		{
-			this.name = name;
-			this.tasks = Collections.unmodifiableList(new ArrayList<>(tasks));
-			this.superiors = Collections.unmodifiableList(new ArrayList<>(superiors));
-		}
-
-		private int satisfiedCount(Set<String> owned, boolean includeSuperiors)
-		{
-			int count = 0;
-			for (SlayerTaskEntry task : tasks)
-			{
-				count += satisfiedRequirements(task.requirements, owned);
-			}
-			return count + (includeSuperiors
-				? satisfiedRequirements(superiors, owned) : 0);
-		}
-
-		private int requirementCount(boolean includeSuperiors)
-		{
-			int count = 0;
-			for (SlayerTaskEntry task : tasks)
-			{
-				count += task.requirements.size();
-			}
-			return count + (includeSuperiors ? superiors.size() : 0);
-		}
-	}
-
-	private static class SlayerTaskEntry
-	{
-		private final String label;
-		private final boolean locationSpecific;
-		private final List<QuestCatalog.Requirement> requirements;
-
-		private SlayerTaskEntry(String label, boolean locationSpecific,
-			List<QuestCatalog.Requirement> requirements)
-		{
-			this.label = label;
-			this.locationSpecific = locationSpecific;
-			this.requirements = Collections.unmodifiableList(
-				new ArrayList<>(requirements));
-		}
-	}
-
-	private static class SlayerTaskBuilder
-	{
-		private final String label;
-		private final boolean locationSpecific;
-		private final Map<String, QuestCatalog.Requirement> requirements =
-			new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
-
-		private SlayerTaskBuilder(String label, boolean locationSpecific)
-		{
-			this.label = label;
-			this.locationSpecific = locationSpecific;
-		}
-
-		private void add(QuestCatalog.Requirement requirement)
-		{
-			mergeSlayerRequirement(requirements, requirement);
-		}
-
-		private SlayerTaskEntry build()
-		{
-			return new SlayerTaskEntry(label, locationSpecific,
-				new ArrayList<>(requirements.values()));
-		}
-	}
-
-	/** Immutable player-state snapshot passed from the executor to Swing. */
-	private static class PanelSnapshot
-	{
-		private final PreparedData data;
-		private final Set<String> owned;
-		private final Set<String> shared;
-		private final List<RecentUnlocksTracker.Unlock> recentUnlocks;
-		private final List<RecentUnlocksTracker.Unlock> sharedRecentUnlocks;
-		private final boolean includeSlayerSuperiors;
-		private final Set<String> completedQuests;
-		private final int unlockedMonsters;
-		private final int unlockedItems;
-
-		private PanelSnapshot(PreparedData data, Set<String> owned, Set<String> shared,
-			List<RecentUnlocksTracker.Unlock> recentUnlocks,
-			List<RecentUnlocksTracker.Unlock> sharedRecentUnlocks,
-			boolean includeSlayerSuperiors, Set<String> completedQuests,
-			int unlockedMonsters,
-			int unlockedItems)
-		{
-			this.data = data;
-			this.owned = owned;
-			this.shared = shared;
-			this.recentUnlocks = recentUnlocks;
-			this.sharedRecentUnlocks = sharedRecentUnlocks;
-			this.includeSlayerSuperiors = includeSlayerSuperiors;
-			this.completedQuests = completedQuests;
-			this.unlockedMonsters = unlockedMonsters;
-			this.unlockedItems = unlockedItems;
-		}
-	}
-
-	private static class SharedCategory
-	{
-		private final String name;
-		private final List<String> items;
-		private final Map<String, List<String>> subcategories;
-
-		private SharedCategory(String name, List<String> items,
-			Map<String, List<String>> subcategories)
-		{
-			this.name = name;
-			this.items = items;
-			this.subcategories = subcategories;
-		}
-
-		private int size()
-		{
-			int count = items.size();
-			for (List<String> values : subcategories.values())
-			{
-				count += values.size();
-			}
-			return count;
-		}
-	}
-
-	private static class SettingsCategory
-	{
-		private final String name;
-		private final List<SettingsSection> sections;
-
-		private SettingsCategory(String name, List<SettingsSection> sections)
-		{
-			this.name = name;
-			this.sections = sections;
-		}
-
-	}
-
-	private static class SettingsSection
-	{
-		private final String name;
-		private final String key;
-		private final List<Method> items;
-
-		private SettingsSection(String name, String key, List<Method> items)
-		{
-			this.name = name;
-			this.key = key;
-			this.items = items;
-		}
-	}
-
-	private static class SearchEntry
-	{
-		private final String searchName;
-		private final String displayName;
-		private final Set<String> cards;
-
-		private SearchEntry(String searchName, String displayName, Set<String> cards)
-		{
-			this.searchName = searchName;
-			this.displayName = displayName;
-			this.cards = cards;
-		}
-	}
 
 }
