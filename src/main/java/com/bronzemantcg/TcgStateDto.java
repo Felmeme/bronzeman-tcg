@@ -1,6 +1,7 @@
 package com.bronzemantcg;
 
 import java.util.List;
+import java.util.ArrayList;
 
 /**
  * Deliberately minimal mirror of osrs-tcg's persisted TcgState JSON shape
@@ -19,11 +20,54 @@ public class TcgStateDto
 	/** Current schema. */
 	public CollectionStateDto collectionState;
 	public EconomyStateDto economyState;
+	/** Current v2 schema used by OSRS TCG 2026-07. */
+	public List<CardEntryDto> cardEntries;
+	public long credits;
+	public long openedPacks;
 
 	public List<OwnedCardInstanceDto> instances()
 	{
-		return collectionState != null && collectionState.instances != null
-			? collectionState.instances : cardInstances;
+		if (collectionState != null && collectionState.instances != null)
+		{
+			return collectionState.instances;
+		}
+		if (cardInstances != null)
+		{
+			return cardInstances;
+		}
+		if (cardEntries == null)
+		{
+			return null;
+		}
+		List<OwnedCardInstanceDto> flattened = new ArrayList<>();
+		for (CardEntryDto entry : cardEntries)
+		{
+			if (entry == null || entry.cardName == null || entry.variants == null) continue;
+			for (CardVariantDto variant : entry.variants)
+			{
+				OwnedCardInstanceDto instance = new OwnedCardInstanceDto();
+				instance.cardName = entry.cardName;
+				instance.foil = variant != null && variant.foil;
+				flattened.add(instance);
+			}
+		}
+		return flattened;
+	}
+
+	public long credits()
+	{
+		return economyState != null ? economyState.credits : credits;
+	}
+
+	public static class CardEntryDto
+	{
+		public String cardName;
+		public List<CardVariantDto> variants;
+	}
+
+	public static class CardVariantDto
+	{
+		public boolean foil;
 	}
 
 	public static class CollectionStateDto

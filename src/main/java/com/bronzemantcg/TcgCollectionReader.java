@@ -80,8 +80,7 @@ public class TcgCollectionReader
 			{
 				String raw = configManager.getRSProfileConfiguration(TCG_CONFIG_GROUP, TCG_STATE_KEY);
 				TcgStateDto dto = gson.fromJson(TcgStateDecoder.decode(raw), TcgStateDto.class);
-				cachedCredits = dto != null && dto.economyState != null
-					? dto.economyState.credits : 0L;
+				cachedCredits = dto == null ? 0L : dto.credits();
 				Set<String> foils = new HashSet<>();
 				List<TcgStateDto.OwnedCardInstanceDto> instances = dto == null ? null : dto.instances();
 				if (instances != null)

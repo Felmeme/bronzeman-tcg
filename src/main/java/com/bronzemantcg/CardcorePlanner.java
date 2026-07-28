@@ -175,6 +175,8 @@ final class CardcorePlanner
 		addBestOwned(fireLoadout, owned, "Food", "Saradomin brew", "Manta ray",
 			"Shark", "Monkfish", "Lobster");
 		addBestOwned(fireLoadout, owned, "Prayer restore", "Super restore", "Prayer potion");
+		List<String> opportunityIdeas = buildOpportunityIdeas(owned, completed, skills,
+			nearbyUnlockedCombat);
 
 		recommendations.sort((left, right) -> Integer.compare(
 			recommendationPriority(right) + areaPriority(right, currentArea),
@@ -193,7 +195,55 @@ final class CardcorePlanner
 			fireCardsTotal, Collections.unmodifiableList(fireBlockers), barrowsDone,
 			BARROWS_GLOVE_QUESTS.size(), Collections.unmodifiableList(watchList),
 			Collections.unmodifiableList(fireLoadout), credits, currentArea,
-			Collections.unmodifiableList(new ArrayList<>(nearbyUnlockedCombat)));
+			Collections.unmodifiableList(new ArrayList<>(nearbyUnlockedCombat)),
+			Collections.unmodifiableList(opportunityIdeas));
+	}
+
+	private static List<String> buildOpportunityIdeas(Set<String> owned, Set<String> completed,
+		Map<String, Integer> skills, List<String> nearbyCombat)
+	{
+		List<String> ideas = new ArrayList<>();
+		if (!nearbyCombat.isEmpty())
+		{
+			ideas.add("Fight nearby " + nearbyCombat.get(0)
+				+ " with legal gear for immediate kill credits.");
+		}
+		if (hasAny(owned, "Rabbit", "Bunny"))
+		{
+			ideas.add("Rabbit/Bunny is unlocked: punch or kick them for safe early combat levels and kill credits.");
+		}
+		if (owned.contains(key("ring of dueling")))
+		{
+			ideas.add("Ring of dueling unlocks fast Castle Wars and Ferox routing; use it to cluster distant tasks.");
+		}
+		if (owned.contains(key("prayer potion")))
+		{
+			ideas.add("Prayer potion is a major Fire Cape supply unlock; preserve doses while building Ranged and 43 Prayer.");
+		}
+		if (owned.contains(key("dragon pickaxe")) && level(skills, "mining") < 61)
+		{
+			ideas.add(level(skills, "mining") < 6
+				? "Dragon pickaxe is banked potential: use cardless specimen trays to 6 Mining first."
+				: "Dragon pickaxe is unlocked for 61 Mining; prioritize legal Mining XP when it also earns pack credits.");
+		}
+		if (owned.contains(key("air tiara"))
+			&& hasAny(owned, "rune essence", "pure essence"))
+		{
+			ideas.add("Air tiara plus essence makes level-1 Runecraft legal and adds another non-combat credit engine.");
+		}
+		if (owned.contains(key("glassblowing pipe")) && hasAny(owned, "molten glass"))
+		{
+			ideas.add("Glassblowing pipe plus molten glass opens low-requirement Crafting XP and level bonuses.");
+		}
+		if (owned.contains(key("oak blackjack")) && level(skills, "thieving") < 30)
+		{
+			ideas.add("Oak blackjack becomes useful after The Feud and 30 Thieving; your cardless Thieving ladder works toward it.");
+		}
+		if (ideas.isEmpty())
+		{
+			ideas.add("Use the first legal Next Action for one pack, then reassess new pulls rather than over-grinding one skill.");
+		}
+		return ideas.size() > 6 ? new ArrayList<>(ideas.subList(0, 6)) : ideas;
 	}
 
 	private static int areaPriority(Recommendation recommendation, String area)
@@ -441,7 +491,7 @@ final class CardcorePlanner
 	private static String bestCombatCreditTarget(Set<String> owned)
 	{
 		String[] targets = {"Gemstone crab", "King sand crab", "Ammonite crab",
-			"Rock crab", "Sand crab", "Brutus"};
+			"Rock crab", "Sand crab", "Brutus", "Rabbit", "Bunny"};
 		for (String target : targets)
 		{
 			if (owned.contains(key(target)))
@@ -664,12 +714,13 @@ final class CardcorePlanner
 		final long credits;
 		final String currentArea;
 		final List<String> nearbyUnlockedCombat;
+		final List<String> opportunityIdeas;
 
 		private Plan(List<Recommendation> recommendations, int fireCardsHave,
 			int fireCardsTotal, List<String> fireBlockers, int barrowsQuestsDone,
 			int barrowsQuestsTotal, List<String> highImpactWatchList,
 			List<String> fireLoadout, long credits, String currentArea,
-			List<String> nearbyUnlockedCombat)
+			List<String> nearbyUnlockedCombat, List<String> opportunityIdeas)
 		{
 			this.recommendations = recommendations;
 			this.fireCardsHave = fireCardsHave;
@@ -682,6 +733,7 @@ final class CardcorePlanner
 			this.credits = credits;
 			this.currentArea = currentArea;
 			this.nearbyUnlockedCombat = nearbyUnlockedCombat;
+			this.opportunityIdeas = opportunityIdeas;
 		}
 	}
 

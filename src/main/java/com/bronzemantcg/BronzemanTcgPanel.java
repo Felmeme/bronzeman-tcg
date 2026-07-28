@@ -646,6 +646,11 @@ class BronzemanTcgPanel extends PluginPanel
 				plannerList.add(mutedRow("  - " + npc));
 			}
 		}
+		plannerList.add(sectionHeader("Unlocked pivots"));
+		for (String idea : plan.opportunityIdeas)
+		{
+			plannerList.add(mutedRow("  - " + idea));
+		}
 		plannerList.add(sectionHeader("Next actions"));
 		if (plan.recommendations.isEmpty())
 		{

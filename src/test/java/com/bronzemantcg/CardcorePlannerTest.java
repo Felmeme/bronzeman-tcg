@@ -102,6 +102,17 @@ public class CardcorePlannerTest
 	}
 
 	@Test
+	public void latestTcgSchemaExposesCardEntriesFoilsAndCredits()
+	{
+		String json = "{\"credits\":641,\"openedPacks\":31,\"cardEntries\":["
+			+ "{\"cardName\":\"Torva full helm\",\"variants\":[{\"foil\":true}]}]}";
+		TcgStateDto state = new Gson().fromJson(json, TcgStateDto.class);
+		assertEquals(641L, state.credits());
+		assertEquals("Torva full helm", state.instances().get(0).cardName);
+		assertTrue(state.instances().get(0).foil);
+	}
+
+	@Test
 	public void cactusIsHiddenWithoutASlashItemCard()
 	{
 		Map<String, Integer> skills = new HashMap<>();
