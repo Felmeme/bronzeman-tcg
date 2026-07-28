@@ -167,4 +167,18 @@ public class CardcorePlannerTest
 		assertEquals("Draynor", plan.currentArea);
 		assertEquals("Goblin (level 2)", plan.nearbyUnlockedCombat.get(0));
 	}
+
+	@Test
+	public void unlockedCardWithoutPhysicalItemDoesNotEnableMethod()
+	{
+		Map<String, Integer> skills = new HashMap<>();
+		skills.put("agility", 20);
+		skills.put("hunter", 9);
+		skills.put("slayer", 9);
+		CardcorePlanner.Plan plan = planner.evaluate(Collections.singleton("cup of tea"),
+			Collections.emptySet(), skills, 0L, "Varrock", Collections.emptyList(),
+			Collections.emptySet());
+		assertFalse(plan.recommendations.stream()
+			.anyMatch(r -> r.title.contains("panning")));
+	}
 }

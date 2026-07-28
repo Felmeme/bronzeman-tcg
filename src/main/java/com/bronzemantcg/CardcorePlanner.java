@@ -60,6 +60,14 @@ final class CardcorePlanner
 	Plan evaluate(Set<String> owned, Set<String> completed, Map<String, Integer> skills,
 		long credits, String currentArea, List<String> nearbyUnlockedCombat)
 	{
+		return evaluate(owned, completed, skills, credits, currentArea,
+			nearbyUnlockedCombat, owned);
+	}
+
+	Plan evaluate(Set<String> owned, Set<String> completed, Map<String, Integer> skills,
+		long credits, String currentArea, List<String> nearbyUnlockedCombat,
+		Set<String> possessed)
+	{
 		List<Recommendation> recommendations = new ArrayList<>();
 		if (credits >= 2_500L)
 		{
@@ -83,7 +91,7 @@ final class CardcorePlanner
 				"Use the Draynor Village rooftop course. It is a cardless action and earns non-combat XP credits.",
 				Arrays.asList("CARDLESS: no item, NPC, or resource card", (20 - agility) + " Agility levels"), true));
 		}
-		addOpeningRecommendations(recommendations, owned, completed, skills);
+		addOpeningRecommendations(recommendations, owned, possessed, completed, skills);
 
 		QuestCatalog.QuestEntry packQuest = bestPackQuest(owned, completed);
 		if (packQuest != null)
@@ -164,18 +172,18 @@ final class CardcorePlanner
 		}
 
 		List<String> fireLoadout = new ArrayList<>();
-		addBestOwned(fireLoadout, owned, "Weapon", "Toxic blowpipe", "Rune crossbow",
+		addBestPossessed(fireLoadout, owned, possessed, "Weapon", "Toxic blowpipe", "Rune crossbow",
 			"Magic shortbow", "Dorgeshuun crossbow", "Shortbow");
-		addBestOwned(fireLoadout, owned, "Ammunition", "Amethyst dart", "Rune bolt",
+		addBestPossessed(fireLoadout, owned, possessed, "Ammunition", "Amethyst dart", "Rune bolt",
 			"Broad bolt", "Rune arrow", "Bronze arrow");
-		addBestOwned(fireLoadout, owned, "Body", "Armadyl chestplate", "Karil's leathertop",
+		addBestPossessed(fireLoadout, owned, possessed, "Body", "Armadyl chestplate", "Karil's leathertop",
 			"Black d'hide body", "Red d'hide body", "Green d'hide body");
-		addBestOwned(fireLoadout, owned, "Legs", "Armadyl chainskirt", "Karil's leatherskirt",
+		addBestPossessed(fireLoadout, owned, possessed, "Legs", "Armadyl chainskirt", "Karil's leatherskirt",
 			"Black d'hide chaps", "Red d'hide chaps", "Green d'hide chaps");
-		addBestOwned(fireLoadout, owned, "Food", "Saradomin brew", "Manta ray",
+		addBestPossessed(fireLoadout, owned, possessed, "Food", "Saradomin brew", "Manta ray",
 			"Shark", "Monkfish", "Lobster");
-		addBestOwned(fireLoadout, owned, "Prayer restore", "Super restore", "Prayer potion");
-		List<String> opportunityIdeas = buildOpportunityIdeas(owned, completed, skills,
+		addBestPossessed(fireLoadout, owned, possessed, "Prayer restore", "Super restore", "Prayer potion");
+		List<String> opportunityIdeas = buildOpportunityIdeas(owned, possessed, completed, skills,
 			nearbyUnlockedCombat);
 
 		recommendations.sort((left, right) -> Integer.compare(
@@ -199,7 +207,7 @@ final class CardcorePlanner
 			Collections.unmodifiableList(opportunityIdeas));
 	}
 
-	private static List<String> buildOpportunityIdeas(Set<String> owned, Set<String> completed,
+	private static List<String> buildOpportunityIdeas(Set<String> owned, Set<String> possessed, Set<String> completed,
 		Map<String, Integer> skills, List<String> nearbyCombat)
 	{
 		List<String> ideas = new ArrayList<>();
@@ -212,26 +220,38 @@ final class CardcorePlanner
 		{
 			ideas.add("Rabbit/Bunny is unlocked: punch or kick them for safe early combat levels and kill credits.");
 		}
-		if (owned.contains(key("ring of dueling")))
+		if (possessed.contains(key("ring of dueling")))
 		{
 			ideas.add("Ring of dueling unlocks fast Castle Wars and Ferox routing; use it to cluster distant tasks.");
 		}
-		if (owned.contains(key("prayer potion")))
+		else if (owned.contains(key("ring of dueling")))
+		{
+			ideas.add("Ring of dueling card is unlocked, but no ring is detected; obtain one before using that travel route.");
+		}
+		if (possessed.contains(key("prayer potion")))
 		{
 			ideas.add("Prayer potion is a major Fire Cape supply unlock; preserve doses while building Ranged and 43 Prayer.");
 		}
-		if (owned.contains(key("dragon pickaxe")) && level(skills, "mining") < 61)
+		else if (owned.contains(key("prayer potion")))
+		{
+			ideas.add("Prayer potion card is unlocked, but no potion is detected; treat it as an acquisition goal, not Fire Cape supplies yet.");
+		}
+		if (possessed.contains(key("dragon pickaxe")) && level(skills, "mining") < 61)
 		{
 			ideas.add(level(skills, "mining") < 6
 				? "Dragon pickaxe is banked potential: use cardless specimen trays to 6 Mining first."
 				: "Dragon pickaxe is unlocked for 61 Mining; prioritize legal Mining XP when it also earns pack credits.");
 		}
-		if (owned.contains(key("air tiara"))
-			&& hasAny(owned, "rune essence", "pure essence"))
+		else if (owned.contains(key("dragon pickaxe")) && level(skills, "mining") < 61)
+		{
+			ideas.add("Dragon pickaxe card is unlocked, but the item is not detected; train Mining only when useful while seeking the actual pickaxe.");
+		}
+		if (possessed.contains(key("air tiara"))
+			&& hasAny(possessed, "rune essence", "pure essence"))
 		{
 			ideas.add("Air tiara plus essence makes level-1 Runecraft legal and adds another non-combat credit engine.");
 		}
-		if (owned.contains(key("glassblowing pipe")) && hasAny(owned, "molten glass"))
+		if (possessed.contains(key("glassblowing pipe")) && hasAny(possessed, "molten glass"))
 		{
 			ideas.add("Glassblowing pipe plus molten glass opens low-requirement Crafting XP and level bonuses.");
 		}
@@ -357,7 +377,7 @@ final class CardcorePlanner
 	}
 
 	private static void addOpeningRecommendations(List<Recommendation> recommendations,
-		Set<String> owned, Set<String> completed, Map<String, Integer> skills)
+		Set<String> owned, Set<String> possessed, Set<String> completed, Map<String, Integer> skills)
 	{
 		int attack = level(skills, "attack");
 		if (attack < 8)
@@ -396,7 +416,7 @@ final class CardcorePlanner
 				"Zero-card fallback that activates a pulled steel-or-higher pickaxe and earns early level bonuses.",
 				Arrays.asList("CARDLESS: no quest or item needed", (6 - mining) + " Mining levels"), true));
 		}
-		if (owned.contains(key("cup of tea")) && (level(skills, "mining") < 10
+		if (possessed.contains(key("cup of tea")) && (level(skills, "mining") < 10
 			|| level(skills, "fishing") < 10))
 		{
 			recommendations.add(new Recommendation("Use Digsite panning for two skills",
@@ -406,7 +426,7 @@ final class CardcorePlanner
 		if (level(skills, "woodcutting") < 6
 			&& !hasAny(owned, "bronze axe", "iron axe"))
 		{
-			String slash = firstOwned(owned, "Knife", "Clan vexillum", "Bronze sword",
+			String slash = firstPossessedLegal(owned, possessed, "Knife", "Clan vexillum", "Bronze sword",
 				"Iron sword", "Steel sword", "Bronze scimitar", "Iron scimitar", "Steel scimitar");
 			List<String> blockers = slash == null
 				? Collections.singletonList("CARD NEEDED: Knife or another owned slash weapon")
@@ -437,10 +457,10 @@ final class CardcorePlanner
 		}
 
 		int firemaking = level(skills, "firemaking");
-		if (firemaking >= 50 && hasAny(owned, "bronze axe", "iron axe", "steel axe",
+		if (firemaking >= 50 && hasAny(possessed, "bronze axe", "iron axe", "steel axe",
 			"black axe", "mithril axe", "adamant axe", "rune axe", "dragon axe"))
 		{
-			String food = firstOwned(owned, "Cake", "Lobster", "Swordfish", "Monkfish",
+			String food = firstPossessedLegal(owned, possessed, "Cake", "Lobster", "Swordfish", "Monkfish",
 				"Shark", "Manta ray", "Saradomin brew");
 			recommendations.add(new Recommendation("Evaluate Wintertodt for credits",
 				"High Firemaking XP can turn each group round into roughly a pack while banking useful rewards.",
@@ -450,13 +470,13 @@ final class CardcorePlanner
 				food != null));
 		}
 
-		addCardGatedFreeXp(recommendations, owned, completed, skills);
+		addCardGatedFreeXp(recommendations, owned, possessed, completed, skills);
 	}
 
 	private static void addCardGatedFreeXp(List<Recommendation> recommendations,
-		Set<String> owned, Set<String> completed, Map<String, Integer> skills)
+		Set<String> owned, Set<String> possessed, Set<String> completed, Map<String, Integer> skills)
 	{
-		if (level(skills, "fishing") < 20 && owned.contains(key("Big fishing net")))
+		if (level(skills, "fishing") < 20 && possessed.contains(key("Big fishing net")))
 		{
 			recommendations.add(new Recommendation("Big-net fish at Civitas from level 1",
 				"The spot has no skill requirement, but the Big fishing net card is mandatory. Keep catches locked unless their cards are owned.",
@@ -464,8 +484,8 @@ final class CardcorePlanner
 		}
 		if (level(skills, "smithing") < 15)
 		{
-			String hammer = firstOwned(owned, "Hammer", "Imcando hammer");
-			String pickaxe = firstOwned(owned, "Bronze pickaxe", "Iron pickaxe", "Steel pickaxe",
+			String hammer = firstPossessedLegal(owned, possessed, "Hammer", "Imcando hammer");
+			String pickaxe = firstPossessedLegal(owned, possessed, "Bronze pickaxe", "Iron pickaxe", "Steel pickaxe",
 				"Black pickaxe", "Mithril pickaxe", "Adamant pickaxe", "Rune pickaxe", "Dragon pickaxe");
 			if (hammer != null && pickaxe != null)
 			{
@@ -514,11 +534,12 @@ final class CardcorePlanner
 		return false;
 	}
 
-	private static String firstOwned(Set<String> owned, String... cards)
+	private static String firstPossessedLegal(Set<String> owned, Set<String> possessed,
+		String... cards)
 	{
 		for (String card : cards)
 		{
-			if (owned.contains(key(card)))
+			if (owned.contains(key(card)) && possessed.contains(key(card)))
 			{
 				return card;
 			}
@@ -526,18 +547,18 @@ final class CardcorePlanner
 		return null;
 	}
 
-	private static void addBestOwned(List<String> result, Set<String> owned, String slot,
-		String... candidates)
+	private static void addBestPossessed(List<String> result, Set<String> owned,
+		Set<String> possessed, String slot, String... candidates)
 	{
 		for (String candidate : candidates)
 		{
-			if (owned.contains(key(candidate)))
+			if (owned.contains(key(candidate)) && possessed.contains(key(candidate)))
 			{
 				result.add(slot + ": " + candidate);
 				return;
 			}
 		}
-		result.add(slot + ": no preferred card yet");
+		result.add(slot + ": no detected legal item yet");
 	}
 
 	private GoalQuest nextBarrowsQuest(Set<String> owned, Set<String> completed,

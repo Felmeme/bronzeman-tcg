@@ -105,6 +105,7 @@ class BronzemanTcgPanel extends PluginPanel
 	private volatile Map<String, Integer> skillLevels = Collections.emptyMap();
 	private volatile String currentArea = "Unknown";
 	private volatile List<String> nearbyUnlockedCombat = Collections.emptyList();
+	private volatile Set<String> possessedItems = Collections.emptySet();
 
 	private final IconTextField searchBar = new IconTextField();
 	private final JPanel searchResults = sectionBody();
@@ -439,6 +440,12 @@ class BronzemanTcgPanel extends PluginPanel
 			: Collections.unmodifiableList(new ArrayList<>(nearbyCombat));
 	}
 
+	void updatePossessedItems(Set<String> items)
+	{
+		possessedItems = items == null ? Collections.emptySet()
+			: Collections.unmodifiableSet(new HashSet<>(items));
+	}
+
 	/** Stop queued work from touching a panel that has been removed from the toolbar. */
 	void dispose()
 	{
@@ -472,7 +479,7 @@ class BronzemanTcgPanel extends PluginPanel
 				collectionReader.getFoilCardNamesLowerCase()));
 		}
 		CardcorePlanner.Plan plan = planner.evaluate(plannerOwned, completed, skills,
-			collectionReader.getCredits(), currentArea, nearbyUnlockedCombat);
+			collectionReader.getCredits(), currentArea, nearbyUnlockedCombat, possessedItems);
 
 		return new PanelSnapshot(data, owned, visibleShared, recentUnlocksTracker.getRecent(),
 			recentUnlocksTracker.getSharedRecent(),
@@ -634,6 +641,7 @@ class BronzemanTcgPanel extends PluginPanel
 		plannerList.add(Box.createVerticalStrut(6));
 		CardcorePlanner.Plan plan = snapshot.plan;
 		plannerList.add(mutedRow("Current area: " + plan.currentArea));
+		plannerList.add(mutedRow("Item readiness uses inventory, equipment, and the latest bank snapshot. Open your bank once after login."));
 		plannerList.add(sectionHeader("Nearby unlocked combat"));
 		if (plan.nearbyUnlockedCombat.isEmpty())
 		{

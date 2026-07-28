@@ -327,6 +327,7 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	// item name here so bait, feathers and future spot-specific inputs stay data-driven.
 	private Set<String> carriedFishingInputs = Collections.emptySet();
 	private Set<String> inventoryItemNamesLower = Collections.emptySet();
+	private Set<String> bankItemNamesLower = Collections.emptySet();
 	// The item-on-item pair that most recently opened a "make" interface. Some menus
 	// label every tier identically ("Crossbow stock"), so the product name alone can't
 	// say which item is being made - but the material used to open the menu can.
@@ -917,6 +918,7 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 		}
 		target.updateSkillLevels(captureSkillLevels());
 		target.updateLocationContext(captureCurrentArea(), captureNearbyUnlockedCombat());
+		target.updatePossessedItems(capturePossessedItems());
 		SwingUtilities.invokeLater(() ->
 		{
 			if (target.isShowing())
@@ -1523,6 +1525,18 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 		{
 			refreshCarriedTools();
 		}
+		if (event.getContainerId() == InventoryID.BANK)
+		{
+			bankItemNamesLower = collectItemNamesLower(event.getItemContainer());
+		}
+	}
+
+	private Set<String> capturePossessedItems()
+	{
+		Set<String> possessed = new HashSet<>(bankItemNamesLower);
+		possessed.addAll(collectItemNamesLower(client.getItemContainer(InventoryID.INV)));
+		possessed.addAll(collectItemNamesLower(client.getItemContainer(InventoryID.WORN)));
+		return Collections.unmodifiableSet(possessed);
 	}
 
 	private void refreshCarriedTools()
