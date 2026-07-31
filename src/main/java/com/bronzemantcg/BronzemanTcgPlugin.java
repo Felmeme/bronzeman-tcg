@@ -639,7 +639,12 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 		{
 			return true;
 		}
-		String name = resolveNpcName((NPC) renderable);
+		NPC npc = (NPC) renderable;
+		if (NpcRestrictionPolicy.isCardRestrictionExempt(npc.getId()))
+		{
+			return true;
+		}
+		String name = resolveNpcName(npc);
 		if (name == null || name.isEmpty())
 		{
 			return true;
@@ -741,6 +746,10 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 				{
 					return false;
 				}
+				if (NpcRestrictionPolicy.isCardRestrictionExempt(npc.getId()))
+				{
+					return false;
+				}
 				// Fishing restrictions remain click-only. Fishing spots have several valid
 				// methods and the owner wants those choices visible even while their cards
 				// are locked; selecting one still runs the normal blocking path below.
@@ -826,21 +835,15 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 			case CC_OP:
 			case CC_OP_LOW_PRIORITY:
 			{
-				// Shop menus mirror the click blocks exactly: Buy needs unlocked Coins and
-				// the item's card; Sell only needs Coins (selling is disposal, item-free).
+				// A standard shop interface does not identify its currency reliably. Gate the
+				// acquired item only; assuming Coins false-blocks Tokkul and other currency shops.
 				if (menuGroup == InterfaceID.SHOPMAIN && optionLower.startsWith("buy"))
 				{
-					if (isBlockedItemName("Coins"))
-					{
-						return true;
-					}
 					return entry.getItemId() > 0
 						&& isBlockedItemName(itemManager.getItemComposition(entry.getItemId()).getName());
 				}
-				if (menuGroup == InterfaceID.SHOPSIDE && optionLower.startsWith("sell"))
-				{
-					return isBlockedItemName("Coins");
-				}
+				// Selling is disposal and never acquires the shop's currency card directly.
+				// Leave it visible and unrestricted.
 				// Otherwise inventory item ops only; bank/interface menus stay consume-only.
 				if (!entry.isItemOp() || entry.getItemId() <= 0
 					|| menuGroup != InterfaceID.INVENTORY)
@@ -936,15 +939,14 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	@Subscribe
 	public void onConfigChanged(ConfigChanged event)
 	{
-		// Unlocking item usage also switches Item Marking off - faded sprites would
-		// otherwise linger on items that are now fully usable. One-shot courtesy, not
-		// a hard link: the player can turn marking back on afterwards.
+		// Item Usage temporarily controls whether marks are active, but it must not overwrite
+		// the player's chosen visual mode. Refresh immediately in both directions so returning
+		// to Card Required restores the indicators without a relog or another setting change.
 		if (BronzemanTcgConfig.GROUP.equals(event.getGroup())
-			&& "itemUsageMode".equals(event.getKey())
-			&& LockState.UNLOCKED.name().equals(event.getNewValue()))
+			&& ("itemUsageMode".equals(event.getKey())
+				|| "lockedItemMarkMode".equals(event.getKey())))
 		{
-			configManager.setConfiguration(BronzemanTcgConfig.GROUP, "lockedItemMarkMode",
-				LockedItemMarkMode.OFF.name());
+			scheduleLockedItemMarks();
 		}
 
 		// Duelist City Mode flipped: sweep every player in view right away rather than
@@ -1299,6 +1301,10 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 
 	private void handleNpcInteraction(MenuOptionClicked event, NPC npc)
 	{
+		if (NpcRestrictionPolicy.isCardRestrictionExempt(npc.getId()))
+		{
+			return;
+		}
 		String npcName = resolveNpcName(npc);
 		if (npcName == null || npcName.isEmpty())
 		{
@@ -1610,11 +1616,9 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 
 		if (group == InterfaceID.SHOPMAIN)
 		{
-			// Shops refuse locked items unconditionally; the exempt list is the escape hatch.
-			// Buying also spends Coins, so locked Coins (Coin Settings) block the purchase
-			// too - blockIfLockedItem short-circuits through the same exemption logic.
-			if (optionLower.startsWith("buy")
-				&& !blockIfLockedItem(event, "Coins"))
+			// RuneLite exposes the shop interface and acquired item, but not one dependable
+			// currency identity for every shop. Gate the acquired item without assuming Coins.
+			if (optionLower.startsWith("buy"))
 			{
 				blockIfLockedItem(event, itemOpName(event, entry));
 			}
@@ -1623,12 +1627,7 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 
 		if (group == InterfaceID.SHOPSIDE)
 		{
-			// Selling yields Coins, so locked Coins block sales; the sold item itself is
-			// never gated (disposing of items is always allowed).
-			if (optionLower.startsWith("sell"))
-			{
-				blockIfLockedItem(event, "Coins");
-			}
+			// Selling is disposal. Do not guess which currency the shop will return.
 			return;
 		}
 
@@ -2699,8 +2698,8 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	 */
 	private void applyLockedItemMarks()
 	{
-		boolean marking = config.lockedItemMarkMode() != LockedItemMarkMode.OFF
-			&& !isEnforcementBypassed();
+		boolean marking = isLockedItemMarkingActive(config.itemUsageMode(),
+			config.lockedItemMarkMode(), isEnforcementBypassed());
 		for (int componentId : LOCKED_MARK_CONTAINERS)
 		{
 			Widget container = client.getWidget(componentId);
@@ -2751,7 +2750,17 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	/** The icon overlay's entry point: lock state plus the shared stand-down check. */
 	boolean shouldMarkLocked(int itemId)
 	{
-		return !isEnforcementBypassed() && isItemMarkedLocked(itemId);
+		return isLockedItemMarkingActive(config.itemUsageMode(),
+			config.lockedItemMarkMode(), isEnforcementBypassed())
+			&& isItemMarkedLocked(itemId);
+	}
+
+	static boolean isLockedItemMarkingActive(LockState itemUsageMode,
+		LockedItemMarkMode markMode, boolean enforcementBypassed)
+	{
+		return itemUsageMode == LockState.LOCKED
+			&& markMode != LockedItemMarkMode.OFF
+			&& !enforcementBypassed;
 	}
 
 	private boolean isItemMarkedLocked(int itemId)

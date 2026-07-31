@@ -187,7 +187,7 @@ public interface BronzemanTcgConfig extends Config
 			+ "can't be used on the NPC."
 			+ "<br>'Hide NPCs': locked NPCs are invisible."
 			+ "<br>NPCs of quests you have started are always shown and talkable (Attack still "
-			+ "needs the card); slayer masters follow the Slayer section's own rules.",
+			+ "needs the card)",
 		section = generalSettings,
 		position = 1
 	)
@@ -227,8 +227,6 @@ public interface BronzemanTcgConfig extends Config
 			name = "Item Usage",
 			description = "'Require Card': blocked item actions require their card; Drop and Destroy "
 				+ "remain allowed."
-				+ "<br>For one-click dropping, use Menu Entry Swapper's per-item "
-				+ "'Swap left-click > Drop' option."
 				+ "<br>'No Card Needed': You can freely use items without their card.",
 			section = generalSettings,
 			position = 4
@@ -286,7 +284,7 @@ public interface BronzemanTcgConfig extends Config
 	@ConfigItem(
 		keyName = "coinMode",
 		name = "Coin Settings",
-		description = "'Require Card': a true challenge - anything involving coins needs the card."
+		description = "'Require Card': the Coins item is restricted wherever Bronzeman can identify it."
 			+ "<br>'No Card Needed': Coins are never restricted.",
 		section = generalSettings,
 		position = 8
@@ -299,11 +297,9 @@ public interface BronzemanTcgConfig extends Config
 	@ConfigItem(
 		keyName = "acceptSharedUnlocks",
 		name = "TCG Locked Party Sharing",
-		description = "Let another plugin unlock cards for you, for group play."
-			+ "<br>A party plugin can treat a card owned by any member as owned by everyone;"
-			+ " with this off those cards stay locked here and the group mode has no effect."
-			+ "<br>Only plugins you have installed and set up can offer them, and your own"
-			+ " collection is never changed.",
+		description = "Toggle on for group play while using TCG Locked."
+			+ "<br>Use the `Party` plugin to share the cards you pull with your group members."
+			+ "<br>Use the TCG Locked side panel to sync your group.",
 		section = externalPluginsSection,
 		position = 0
 	)
@@ -330,7 +326,6 @@ public interface BronzemanTcgConfig extends Config
 		name = "Exempt List",
 		description = "Comma-separated and case-insensitive."
 			+ "<br>Use * to match any number of characters, for example Rune* or *potion*."
-			+ "<br>An entry containing only * is ignored to prevent disabling every restriction."
 			+ "<br>Items and NPC names added to the list are never restricted even without their card."
 			+ "<br>For universal items that would otherwise make the game unplayable."
 			+ "<br>Use this list to add exceptions based on things like Foil Card Rules.",
@@ -346,9 +341,7 @@ public interface BronzemanTcgConfig extends Config
 		keyName = "showLockedMenuOptions",
 		name = "Show Mouseover Options",
 		description = "Keep blocked options visible for resources, ground items and shops."
-			+ "<br>The click is still blocked and chat explains which cards are missing."
-			+ "<br>Inventory options always remain visible so Menu Entry Swapper choices work."
-			+ "<br>NPC options continue to follow the separate NPC Locks setting.",
+			+ "<br>The click is still blocked and chat explains which cards are missing.",
 		section = generalSettings,
 		position = 10
 	)
@@ -426,7 +419,7 @@ public interface BronzemanTcgConfig extends Config
 	@ConfigItem(
 		keyName = "cookingMode",
 		name = "Cooking",
-		description = "'No Restrictions' - Cooking will not have extra restrictions."
+		description = "'No Restrictions': Cooking will not have extra restrictions."
 			+ "<br>'Input Only': the raw food's card, e.g. Raw shrimps."
 			+ "<br>'Input + Output': the raw AND cooked food cards, e.g. Raw shrimps and Shrimps.",
 		section = cookingSection,

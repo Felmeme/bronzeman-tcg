@@ -4,6 +4,39 @@ Versioning: 0.MINOR.PATCH — staying on 0.2.x until the full skills sweep is
 complete, then 0.3.0. The runelite-plugin.properties version line is bumped in
 the same commit as each release.
 
+## Unreleased
+
+### Fixes
+- Locked-item indicators now temporarily stand down with unrestricted Item
+  Usage without erasing the selected marking mode, and return immediately when
+  Card Required is restored.
+- Shops no longer assume Coins are the currency. Buying checks the acquired
+  item's card, while selling remains an unrestricted disposal action.
+- Evil Bob's random-event servant is exempted by exact NPC ID so it no longer
+  inherits the unrelated Servant (Burthorpe) card restriction.
+
+## v0.2.13 — 2026-07-27
+
+### New
+- Added a Shared Cards side-panel tab for TCG Locked party sharing, using the
+  same category and subcategory order as Collection.
+- Recent Unlocks can optionally include shared cards while preserving
+  newest-first chronological ordering.
+
+### Fixes
+- The Shared Cards tab now depends only on the TCG Locked Party Sharing
+  setting; the Recent Unlocks filter no longer controls its visibility.
+- RuneLite Menu Entry Swapper can promote left-click Drop while other locked
+  inventory options remain hidden. The related setting is now labelled
+  Show Mouseover Options.
+- Removed the TCG Locked conflict warning and its setting because the plugins
+  can operate together through party sharing.
+- Renamed Important Unlocks to Collection and improved the side panel with a
+  Bronzeman TCG banner, whole-row expansion, clearer progress/count rows and
+  more reliable checkbox layout.
+- Standardised several skill-setting labels, including Runecrafting's
+  Input Only and Input + Output choices.
+
 ## v0.2.12 — 2026-07-26
 
 ### New

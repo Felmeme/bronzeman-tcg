@@ -89,6 +89,10 @@ class BronzemanTcgOverlay extends Overlay
 
 	private boolean isLocked(NPC npc, Set<String> owned, Set<String> shared)
 	{
+		if (NpcRestrictionPolicy.isCardRestrictionExempt(npc.getId()))
+		{
+			return false;
+		}
 		NPCComposition composition = npc.getTransformedComposition();
 		String name = composition != null ? composition.getName() : npc.getName();
 		if (name == null)
