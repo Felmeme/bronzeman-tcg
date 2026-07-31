@@ -45,6 +45,7 @@ import net.runelite.api.events.WidgetLoaded;
 import net.runelite.api.gameval.InterfaceID;
 import net.runelite.api.gameval.InventoryID;
 import net.runelite.api.gameval.VarbitID;
+import net.runelite.api.gameval.VarPlayerID;
 import net.runelite.api.kit.KitType;
 import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetUtil;
@@ -2619,7 +2620,20 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	 */
 	private boolean isEnforcementBypassed()
 	{
-		return isLmsBypassed() || !collectionReader.isStateAvailable();
+		return isTutorialIslandBypassed()
+			|| isLmsBypassed()
+			|| !collectionReader.isStateAvailable();
+	}
+
+	/** Tutorial supplies required items and teaches unrestricted actions; restrictions resume at 1000. */
+	private boolean isTutorialIslandBypassed()
+	{
+		return isTutorialIslandProgress(client.getVarpValue(VarPlayerID.TUTORIAL));
+	}
+
+	static boolean isTutorialIslandProgress(int progress)
+	{
+		return progress > 0 && progress < 1000;
 	}
 
 	/**

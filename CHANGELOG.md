@@ -14,6 +14,8 @@ the same commit as each release.
   item's card, while selling remains an unrestricted disposal action.
 - Evil Bob's random-event servant is exempted by exact NPC ID so it no longer
   inherits the unrelated Servant (Burthorpe) card restriction.
+- All restrictions and locked visuals now stand down automatically while the
+  player is progressing through Tutorial Island.
 
 ## v0.2.13 — 2026-07-27
 
