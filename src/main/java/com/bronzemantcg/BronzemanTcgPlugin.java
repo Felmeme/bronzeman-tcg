@@ -45,6 +45,7 @@ import net.runelite.api.events.WidgetLoaded;
 import net.runelite.api.gameval.InterfaceID;
 import net.runelite.api.gameval.InventoryID;
 import net.runelite.api.gameval.VarbitID;
+import net.runelite.api.gameval.VarPlayerID;
 import net.runelite.api.kit.KitType;
 import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetUtil;
@@ -908,7 +909,7 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 		// five-tick panel refresh.
 		if (!questStateInitialized || tickCounter % 25 == 0)
 		{
-			target.updateCompletedQuests(captureCompletedQuests());
+			target.updateQuestState(captureCompletedQuests(), captureQuestRoute());
 			questStateInitialized = true;
 		}
 		SwingUtilities.invokeLater(() ->
@@ -936,6 +937,23 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 			}
 		}
 		return Collections.unmodifiableSet(completed);
+	}
+
+	/**
+	 * Quest Helper uses BLACKARMGANG >= 4 to identify the Heroes' Quest route.
+	 * Before Shield of Arrav is finished neither branch is authoritative, so the
+	 * panel deliberately accepts either route instead of guessing Phoenix Gang.
+	 */
+	private QuestCatalog.RouteSelection captureQuestRoute()
+	{
+		if (client.getGameState() != GameState.LOGGED_IN
+			|| Quest.SHIELD_OF_ARRAV.getState(client) != QuestState.FINISHED)
+		{
+			return QuestCatalog.RouteSelection.UNKNOWN;
+		}
+		return client.getVarpValue(VarPlayerID.BLACKARMGANG) >= 4
+			? QuestCatalog.RouteSelection.BLACK_ARM
+			: QuestCatalog.RouteSelection.PHOENIX;
 	}
 
 	@Subscribe

@@ -207,10 +207,6 @@ final class PanelComponents
 		count.setForeground(ColorScheme.LIGHT_GRAY_COLOR);
 		count.setHorizontalAlignment(JLabel.RIGHT);
 		count.setPreferredSize(new Dimension(46, 16));
-		if (nested)
-		{
-			count.setFont(count.getFont().deriveFont(11f));
-		}
 		progress.add(count, BorderLayout.EAST);
 
 		row.add(progress, BorderLayout.EAST);

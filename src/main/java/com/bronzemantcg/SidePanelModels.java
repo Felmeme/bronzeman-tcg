@@ -54,6 +54,7 @@ final class SidePanelModels
 	static final class PreparedData
 	{
 		final List<QuestCatalog.QuestEntry> quests;
+		final List<QuestCatalog.QuestEntry> miniquests;
 		final List<QuestCatalog.QuestEntry> contents;
 		final List<QuestCatalog.QuestEntry> areas;
 		final List<SlayerMasterEntry> slayer;
@@ -62,12 +63,14 @@ final class SidePanelModels
 		final List<SearchEntry> searchEntries;
 
 		PreparedData(List<QuestCatalog.QuestEntry> quests,
+			List<QuestCatalog.QuestEntry> miniquests,
 			List<QuestCatalog.QuestEntry> contents, List<QuestCatalog.QuestEntry> areas,
 			List<SlayerMasterEntry> slayer,
 			List<QuestCatalog.Requirement> allSuperiors,
 			List<QuestCatalog.QuestEntry> rumours, List<SearchEntry> searchEntries)
 		{
 			this.quests = quests;
+			this.miniquests = miniquests;
 			this.contents = contents;
 			this.areas = areas;
 			this.slayer = slayer;
@@ -162,6 +165,7 @@ final class SidePanelModels
 		final List<RecentUnlocksTracker.Unlock> sharedRecentUnlocks;
 		final boolean includeSlayerSuperiors;
 		final Set<String> completedQuests;
+		final QuestCatalog.RouteSelection questRoute;
 		final int unlockedMonsters;
 		final int unlockedItems;
 
@@ -169,6 +173,7 @@ final class SidePanelModels
 			List<RecentUnlocksTracker.Unlock> recentUnlocks,
 			List<RecentUnlocksTracker.Unlock> sharedRecentUnlocks,
 			boolean includeSlayerSuperiors, Set<String> completedQuests,
+			QuestCatalog.RouteSelection questRoute,
 			int unlockedMonsters, int unlockedItems)
 		{
 			this.data = data;
@@ -178,6 +183,7 @@ final class SidePanelModels
 			this.sharedRecentUnlocks = sharedRecentUnlocks;
 			this.includeSlayerSuperiors = includeSlayerSuperiors;
 			this.completedQuests = completedQuests;
+			this.questRoute = questRoute;
 			this.unlockedMonsters = unlockedMonsters;
 			this.unlockedItems = unlockedItems;
 		}
