@@ -13,8 +13,9 @@ so you tune the difficulty to taste.
 - **Combat** — attacking an NPC (and casting spells / using items on it) is
   blocked until you own its card. Cards with location variants ("Soldier
   (Yanille)") all unlock the plain NPC name; owning any variant counts.
-- **Loot** — picking up (or telegrabbing) a ground item needs its card, with
-  a configurable exempt list (default: Coins).
+- **Loot** — picking up (or telegrabbing) a ground item needs its card. Coins
+  have their own default-on exemption, and the separate exempt list supports
+  case-insensitive `*` wildcards.
 - **Items** — equipping locked items can be blocked; an optional *forced
   drop* mode reduces locked inventory items to Drop/Examine/Destroy only
   (with an "allow banking" variant where deposits work but withdrawals
@@ -46,15 +47,15 @@ so you tune the difficulty to taste.
 
 ## Visuals & panel
 
-Locked NPCs get a configurable grey outline (colour/width/feather), or can be
-hidden entirely. An optional plain-text overlay shows your OSRS TCG credits
-and cards collected (read-only, displayed with the TCG creator's blessing).
+Locked NPCs get a configurable grey outline or can be hidden entirely. Locked
+inventory items can also be marked without changing their chosen visual mode
+when Item Usage is temporarily unrestricted.
 
-The sidebar panel offers card lookup with lock state, the nearest tracked NPCs around you, 
-collection progress meters per slayer/rumour master, and two readiness checklists: **Quests** 
-(all 206 quests' required item and enemy cards, completable-first with click-to-expand
-checklists) and **PvM Content** (Fight Caves, Inferno, Fortis Colosseum, CoX, ToA, Corrupted Gauntlet, 
-ToB monster rosters).
+The sidebar panel provides overall progress, recent unlocks, Collection and
+TCG Locked Shared Cards views, plus readiness tabs for Quests, Miniquests,
+Slayer, PvM and Rumours. Quest requirements are grouped into Items and Enemies,
+support nested alternatives and route-specific requirements, and count accepted
+shared cards. Quests, Collection and Shared Cards each have focused search.
 
 ## How it works
 

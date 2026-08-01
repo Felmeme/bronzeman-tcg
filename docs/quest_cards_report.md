@@ -1,9 +1,32 @@
 # Quest Cards Build Report
 
 Informational data for the Bronzeman TCG panel: for every OSRS quest, the cards a player
-must own (required item cards + resolvable enemy cards). Generated 2026-07-11.
+must own (required item cards + resolvable enemy cards). Originally generated 2026-07-11;
+substantially rebuilt for v0.2.14 on 2026-08-01.
 
-## Output
+## Current v0.2.14 format
+
+- `quest_cards.json` now uses schema 2: each quest contains `sections`, and
+  each section contains recursive requirements with `ALL`/`ANY` logic.
+- Full quests and miniquests are exposed separately in the panel. Recipe for
+  Disaster and route-sensitive quests can model nested branches without
+  flattening every card into independent requirements.
+- Requirements can carry quantities, enemy/item types, display-only card
+  groups and a Shield of Arrav gang selector used by Heroes' Quest.
+- Accepted TCG Locked shared cards satisfy quest requirements in the panel.
+- The current data was compared with pinned Quest Helper commit
+  `5ea99d5ea9ba3fb096ebe7b5ed02d80883e9819d` (4.16.1). See
+  `quest_helper_requirements_audit.md`, `quest_helper_outlier_audit.md`, the
+  corresponding `*_remaining` reports and the checked-in apply/audit scripts.
+- Approved card-backed corrections were applied. One broad Rag and Bone Man II
+  weapon recommendation remains for review; unresolved cardless labels are
+  retained so they can be revisited after future TCG catalogue updates.
+
+The original generation report below describes the historical schema-1
+baseline and its source limitations. Its old counts are not current schema-2
+coverage statistics.
+
+## Historical schema-1 output
 - `quest_cards.json` — `{"quests":[{name, miniquest, cardGroups, groupLabels, monsterCards, notes}]}`, 206 quests, sorted by name.
 - Every card string is asserted to exact-match `Card.json` (6376 cards) at build time; the emitted JSON is re-parsed to confirm validity. **Validation passed.**
 

@@ -4,7 +4,21 @@ Versioning: 0.MINOR.PATCH — staying on 0.2.x until the full skills sweep is
 complete, then 0.3.0. The runelite-plugin.properties version line is bumped in
 the same commit as each release.
 
-## Unreleased
+## v0.2.14 — 2026-08-01
+
+### New
+- Rebuilt quest readiness from an audited Quest Helper snapshot, including
+  separate Quests and Miniquests, Items and Enemies sections, nested item and
+  spell alternatives, quantities, and gang-specific quest routes.
+- Added search fields for Quests, Collection and Shared Cards.
+- Accepted TCG Locked shared cards now count towards quest requirements.
+- Updated the Plugin Hub and side-panel icons to the Bronzeman card design.
+
+### Changed
+- Quest names sort alphabetically without counting a leading "The".
+- Standardised category, subcategory, requirement and dropdown presentation
+  across the side-panel tabs, with clearer checkbox layouts.
+- Added reproducible Quest Helper audit reports and focused catalog tests.
 
 ### Fixes
 - Locked-item indicators now temporarily stand down with unrestricted Item

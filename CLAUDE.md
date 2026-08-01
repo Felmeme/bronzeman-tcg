@@ -1,31 +1,40 @@
 # Bronzeman TCG — RuneLite plugin
 
-## NEXT SESSION (2026-07-27)
-- **v0.2.12 is committed and pushed** at
-  `71ccc0f923608f9b4834d3291df73a99e74464f4`; the Plugin Hub PR is waiting
-  to merge. Do not amend that release commit unless the owner explicitly
-  decides to replace the Hub hash. Suggested next patch version is 0.2.13;
-  0.3.0 remains reserved for completion of the full skills sweep.
-- **Start with the focused Herblore owner pass.** Test one unfinished potion
-  and one finished potion through both direct item use and Make-X, then walk
-  Off / Input Only / Require Unfinished / Require All. Capture one unfinished
-  and one finished `interface product` debug line. The eight uncertain
-  multi-stage recipes remain deliberately excluded.
-- After Herblore, the shortest useful checks are Stalls & Chests (Any Of /
-  All plus one Picklock and one Pick-lock chest), GotR player feedback, and
-  the deferred Sailing owner/player pass. Hunter and ordinary Runecrafting
-  passed on 2026-07-27; Fishing and Slayer are now feedback-led.
-- **Final 0.2.12 polish:** `showLockedMenuOptions` keeps its stable keyName,
-  is displayed as `Unhide Mouseover Options`, and now defaults false. The
-  side panel uses 10px horizontal padding, 2px dividers, 5px separation
-  between quest/main-category blocks, compact subcategory dividers, and
-  filled green bars for completed 0/0 entries.
-- **Quest corrections:** The Lost Tribe has two any-of groups (12 card-backed
-  pickaxes; 9 card-backed light sources). The Ribbiting Tale has one any-of
-  group (12 valid Woodcutting axes) plus Cuthbert. `QuestCatalog.Requirement`
-  already means OR within a group and AND between groups; do not add new
-  completion machinery. The Cuthbert fought-name alias remains a separate
-  attack-enforcement backlog item.
+## NEXT SESSION (2026-08-01)
+- **v0.2.14 is committed and pushed** at
+  `4cbcad052e9b2c1889d1c1e84cf6222030e4e13d`; `main` and `origin/main` are
+  aligned and the tree was clean immediately after the commit. The release
+  version remains 0.2.14 until the owner deliberately starts the next patch.
+- **v0.2.14 shipped three restriction fixes plus Tutorial Island safety:**
+  locked-item marks return when Item Usage returns to Card Required; shops no
+  longer assume Coins and selling is unrestricted; Evil Bob's random-event
+  servant is exempt by exact NPC ID; restrictions and locked visuals stand
+  down while Tutorial Island progress is between 1 and 999.
+- **Quest tracking was rebuilt from the pinned Quest Helper 4.16.1 export**
+  (`5ea99d5ea9ba3fb096ebe7b5ed02d80883e9819d`). The schema now supports
+  Quests/Miniquests, Items/Enemies sections, nested ALL/ANY requirements,
+  display-only card groups, quantities and Shield of Arrav/Heroes' Quest gang
+  routes. Shared TCG Locked cards count when party sharing is accepted.
+  Alphabetical sorting ignores a leading "The".
+- **Quest audit status:** approved concrete and card-backed outliers are in
+  `quest_cards.json`. The remaining audit has one review candidate (Rag and
+  Bone Man II ranged weapon guidance); 172 unresolved labels are retained for
+  future catalogue changes. Food/combat-supply recommendations were excluded
+  by owner ruling. Regenerate with the checked-in audit/apply scripts rather
+  than hand-merging Quest Helper output.
+- **Panel checkpoint:** Quests, Collection and Shared Cards have search;
+  tabs share bordered category/subcategory rows and black boxed content rows.
+  Quest names keep progress bars, Items/Enemies keep counts only, and nested
+  item dropdowns show labels only and sort to the bottom. Owner manually
+  tested this checkpoint successfully. Before resuming broader 0.3.0 panel or
+  card-browser work, compare the `0.3.0` branch with `main`: selected quest,
+  data and search work was deliberately ported to main without intending to
+  bring every visual/functional branch change with it.
+- **Suggested next version:** decide between a focused 0.2.15 skills/manual-
+  test patch or returning to the 0.3.0 branch. The oldest explicit test debt
+  is the Herblore pass: one unfinished and one finished potion through direct
+  use and Make-X while walking Off / Input Only / Require Unfinished /
+  Require All. GotR and Sailing also still need player evidence.
 - Keep the established cadence: inspect existing code and primary RuneLite
   sources first, give the owner a concise plan/quiz before implementation,
   avoid guessed menu strings, and use cached/local research before network

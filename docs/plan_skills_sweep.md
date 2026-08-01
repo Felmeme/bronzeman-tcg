@@ -16,6 +16,19 @@ Owner decisions:
 Each session: open with that skill's mini-plan + owner quiz (symptoms,
 option strings, difficulty knobs), implement, owner test pass, 0.2.x release.
 
+## Checkpoint after v0.2.14 (2026-08-01)
+
+- Hunter and ordinary Runecrafting passed their owner checks on 2026-07-27.
+- Fishing and Slayer are now feedback-led rather than scheduled rebuilds.
+- Herblore's four-mode rebuild is implemented but still owes the focused
+  unfinished/finished, direct-use/Make-X manual matrix described in CLAUDE.md.
+- Guardians of the Rift has received player reports of ineffective blocking
+  and needs a dedicated evidence-led pass; do not infer its interface strings.
+- Sailing remains implemented but unverified in-game at its dedicated
+  interfaces and salvage interactions.
+- The quest and main-branch side-panel work completed in v0.2.14 does not
+  satisfy the 0.3.0 skills-sweep bar by itself.
+
 ## Phase 1 - BROKEN
 1. **Fishing** - "ALL setting currently not fully blocking spots." Session
    starts with diagnosis: which spots/settings leak (owner to reproduce with

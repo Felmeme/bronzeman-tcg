@@ -26,13 +26,15 @@ Everything downstream is detail on those two verbs: *recognise* the restricted c
 
 The catch: the card collection lives in a *different* plugin — [OSRS TCG](https://github.com/Azderi/osrs-tcg), the gacha pack-opening plugin. Bronzeman TCG has to read that plugin's data without depending on it, because both ship separately on the Plugin Hub and either can be installed without the other.
 
-**ConfigManager as a shared notice board.** Every RuneLite plugin gets to persist small key-value data through a shared service called `ConfigManager`. Think of it as one big notice board the whole client shares, divided into named *groups*. Your plugin's settings live under group `bronzemantcg`; OSRS TCG stores its saved collection under group `osrstcg`, key `state`. Crucially, ConfigManager doesn't police who reads what. So Bronzeman TCG simply asks for someone else's pinned note:
+**The live PluginMessage API.** The preferred path is a small event-bus contract exposed by OSRS TCG. Bronzeman posts `query-owned-names`; OSRS TCG replies with `owned-names` and pushes `owned-names-changed` whenever the collection changes. Every payload contains only `ownedNames`, so unlocks update immediately without coupling either plugin at compile time.
+
+**ConfigManager as the fallback notice board.** Every RuneLite plugin gets to persist small key-value data through a shared service called `ConfigManager`. Think of it as one big notice board the whole client shares, divided into named *groups*. Bronzeman's settings live under group `bronzemantcg`; OSRS TCG stores its saved collection under group `osrstcg`, key `state`. If the live API does not answer, Bronzeman asks for that saved value:
 
 ```java
 String raw = configManager.getRSProfileConfiguration("osrstcg", "state");
 ```
 
-`getRSProfileConfiguration` means "the value scoped to the current RuneScape account profile" — so a different account sees a different collection, which is exactly right. This read-only borrowing is the standard interop pattern for unrelated Hub plugins: no shared code, no compile-time link, just an agreed-upon group and key. If OSRS TCG is not installed, the read returns nothing and we carry on gracefully.
+`getRSProfileConfiguration` means "the value scoped to the current RuneScape account profile" — so a different account sees a different collection. This fallback remains read-only: no shared code, no compile-time link and no writes to OSRS TCG's state.
 
 **Why the value is scrambled, and the decode chain.** The string that comes back isn't JSON — it's `RLTCG_v2:` followed by a wall of base64. OSRS TCG deliberately obfuscates its save so players can't trivially hand-edit their collection. The transform, applied in this order when *saving*, is:
 
@@ -51,9 +53,9 @@ public List<OwnedCardInstanceDto> cardInstances;   // each has: String cardName;
 
 ("DTO" = *Data Transfer Object*, a plain container class whose only job is to receive parsed data.) The parsing is done by **Gson**, Google's JSON library, and Gson's convenient rule is: *fields in the JSON with no matching Java field are silently ignored*. So this tiny class quietly skips dozens of fields we don't care about. There's a scar in the code's history here worth noting: the DTO originally assumed the collection lived under a nested `collectionState.instances[]`, but a real save captured from a live client revealed it's actually a top-level `cardInstances[]`. That's the kind of thing you can only learn by looking at real data, and the fix is recorded in CLAUDE.md.
 
-**The 5-second cache.** Decoding gzip on *every single menu click* would be wasteful — you might click several times a second. So `TcgCollectionReader` decodes at most once every 5 seconds and hands back a cached `Set<String>` of owned card names (lower-cased, so comparison is case-insensitive) the rest of the time. The staleness this introduces is harmless and one-directional: worst case, you pull a card and have to wait up to five seconds before the game lets you act on it. It never wrongly *unlocks* something. The cache is also force-invalidated when the account profile changes (`onRuneScapeProfileChanged`), so one account's collection can never leak into another's.
+**The fallback cache.** Decoding gzip on *every single menu click* would be wasteful, so the persisted-state fallback decodes at most once every five seconds and returns a cached, lower-cased `Set<String>` between refreshes. The PluginMessage path replaces that set immediately when OSRS TCG pushes an update. Both paths are invalidated on profile changes so one account's collection cannot leak into another's.
 
-**Why it fails closed.** This is the single most important design decision in the whole plugin, so it's worth stating plainly. If anything goes wrong reading the collection — OSRS TCG not installed, the save format changed in a future update, corrupt data, a decode exception — the reader does not guess and does not crash. It returns an **empty set**: you own nothing. And because (as the next section shows) "you don't own the card" means "you're blocked," a decode failure locks *everything tracked* and floods the debug log with the reason. For a challenge-mode plugin that's the honest behaviour: breakage should be loud and obvious, never a silent free pass. The alternative — fail *open*, unlock everything on error — would let a quiet format drift secretly disable your entire challenge, and you'd never know. CLAUDE.md explicitly flags this as a decision to discuss before ever reversing.
+**Why unavailable state stands enforcement down.** If neither source can provide a valid collection — OSRS TCG is absent, its format changed, or the fallback state is corrupt — `TcgCollectionReader` marks the state unavailable. The plugin then stands restrictions and locked visuals down and warns the player. This prevents an upstream compatibility problem from locking a user out of every tracked action. A valid collection containing zero cards is different: it is available and restricts normally.
 
 ---
 
@@ -81,7 +83,7 @@ At lookup time, the plugin takes the plain name the game gives it, finds the ent
 
 **Resource nodes and recipes: the same idea, richer rules.** Attacking a monster is a simple "do you own the card" question. Gathering and crafting aren't — chopping an oak needs the *oak logs* card, smelting needs *ore and/or bar*, fishing a spot could yield any of several fish. Two more catalogs handle these, and they share a small rule vocabulary.
 
-`ResourceNodeCatalog` loads `resource_nodes.json` — 89-plus hand-curated rules. Each rule is keyed by `(kind, name, option)`: *kind* is what you clicked (an `npc`, an `object`, an `item-on-object`, an `inventory` item, or a make-`interface` product), *name* is the entity, *option* is the menu verb. Requirements are expressed as **card groups**:
+`ResourceNodeCatalog` loads `resource_nodes.json` — more than 400 hand-curated rules. Each rule is keyed by `(kind, name, option)`: *kind* is what you clicked (an `npc`, an `object`, an `item-on-object`, an `inventory` item, or a make-`interface` product), *name* is the entity, *option* is the menu verb. Requirements are expressed as **card groups**:
 
 > Every group must be satisfied; a group is satisfied by owning **any one** card in it.
 
@@ -119,7 +121,7 @@ The routing works in two tiers. First, a fast check: does the clicked menu entry
 
 - **NPC path** (`handleNpcInteraction`). Resolves the NPC's name — preferring `getTransformedComposition()` so shape-shifting NPCs report their *current* form, then stripping any colour tags. Two checks run. First, attack-style interactions: if the option is "Attack" (or a spell/item-on-NPC, config permitting) and you don't own the card, consume and message. Second, node rules on NPCs cover pickpocketing and slayer/rumour masters, with Master Farmer peeled off to his own dial. Fishing spots are classified first through RuneLite's maintained `FishingSpot.findSpot(npc.getId())`; their rules use the enum group plus the exact menu option instead of the shared NPC name.
 
-- **Ground items** (`GROUND_ITEM_*` and telegrab `WIDGET_TARGET_ON_GROUND_ITEM`). Gated by the `restrictLoot` toggle. Plain clicks only count when the option is "Take"; telegrab always counts (it's always looting). The item's true name comes from `itemManager.getItemComposition(event.getId())`. A user-editable comma-separated **exempt list** (default "Coins") keeps universal drops pickup-able — because in the TCG *everything*, Coins and Bones included, has a card, so blocking with no exemptions would brick a fresh account.
+- **Ground items** (`GROUND_ITEM_*` and telegrab `WIDGET_TARGET_ON_GROUND_ITEM`). Gated by the `restrictLoot` toggle. Plain clicks only count when the option is "Take"; telegrab always counts (it's always looting). The item's true name comes from `itemManager.getItemComposition(event.getId())`. Coins have a dedicated default-on exemption; the separate user list defaults empty and supports case-insensitive `*` wildcards.
 
 - **Game objects** (`GAME_OBJECT_*`) run through the node catalog: trees need their logs card, rocks their ore, and so on.
 
@@ -141,7 +143,7 @@ Blocking is invisible until you click. Two overlay features make locked things *
 
 **Hiding entirely** (`RenderCallbackManager` + `addEntity`). Fully hiding a locked NPC needs a lower-level hook than painting over it. The plugin registers itself as a `RenderCallback` and implements `addEntity(Renderable, boolean)`, which RuneLite calls as it assembles the scene each frame. *Returning `false` keeps that entity out of the scene entirely* — and, importantly, removes its clickbox too, so a hidden monster can't even be clicked. The comment records a real experiment: this hook only fires for NPCs, **not** ground items (verified in-game on the predecessor hook), which is why "hide locked ground items" was tried and removed — the code simply can't do it, so loot relies on the Take-blocking from Section 4 instead. Note the two visual modes are mutually exclusive by design: the outline overlay bails out if hide-mode is on, since there'd be nothing to outline.
 
-**The threading rule.** This is the one piece of concurrency discipline in the plugin, and it's non-negotiable in RuneLite. There are two threads that matter: the **client thread** (where the game runs and where game state is safe to read) and the **Swing EDT** (Event Dispatch Thread, where all UI panels must be built and updated). Reading live game state from the EDT, or touching Swing from the client thread, causes intermittent corruption that's miserable to debug. The sidebar panel obeys the split cleanly: every few game ticks, `onGameTick` reads real quest completion through RuneLite's `Quest` API on the client thread and hands only a frozen set of completed quest names to the panel. Static card catalogs and collection snapshots are prepared on RuneLite's shared executor; Swing rows are created only on the EDT. Large nested Slayer and PvM lists are lazy, so collapsed groups do not create hundreds of hidden components.
+**The threading rule.** This is the one piece of concurrency discipline in the plugin, and it's non-negotiable in RuneLite. There are two threads that matter: the **client thread** (where the game runs and where game state is safe to read) and the **Swing EDT** (Event Dispatch Thread, where all UI panels must be built and updated). Reading live game state from the EDT, or touching Swing from the client thread, causes intermittent corruption that's miserable to debug. The sidebar panel obeys the split cleanly: every few game ticks, `onGameTick` captures quest completion and the Shield of Arrav gang route through RuneLite APIs, then passes immutable state to the panel. Static catalogs and collection snapshots are prepared away from the EDT; Swing rows are created only on the EDT. Nested lists are lazy, so collapsed groups do not create hundreds of hidden components.
 
 ---
 
@@ -151,11 +153,11 @@ Three defaults recur across every layer, and together they define the plugin's c
 
 1. **Untracked means never restricted.** No card exists → the entity can never be unlocked → it must never be locked. `isUnlocked` returns `true` the instant a lookup finds no variants. This is what keeps the plugin from bricking things the TCG doesn't cover.
 
-2. **Decode failure means everything locks, loudly.** Can't read the collection → owned set is empty → everything tracked is blocked and the debug log says why. Breakage is a wall, not a silent unlock. (Section 2.)
+2. **Unavailable collection state means enforcement stands down.** If both the live API and persisted fallback are unavailable, restrictions and locked visuals pause and the player is warned. A valid zero-card collection still restricts normally. (Section 2.)
 
 3. **Unknown data categories restrict by default.** If `resource_nodes.json` ever ships a category this build has no config toggle for, `excludedRolesFor` returns "restrict fully" rather than "ignore." New data is loud, not inert — you find out the plugin needs a new toggle by hitting the restriction, not by silently losing enforcement.
 
-Notice the through-line: **every ambiguity resolves toward the challenge, never away from it** — *except* the one place where resolving toward the challenge would break the base game (untracked entities), where it correctly steps back. That's not three unrelated rules; it's one philosophy applied consistently. In a challenge-mode plugin, a false lock is a minor annoyance you can see and diagnose; a false *unlock* is an invisible hole in the whole point of the mode. The code is built to prefer the annoyance every time.
+Notice the balance: known card-backed actions enforce conservatively, while missing catalogue coverage or unavailable ownership state stands down rather than making the game unusable. Unknown rule categories remain loud so new data cannot silently disable an implemented restriction.
 
 ---
 
