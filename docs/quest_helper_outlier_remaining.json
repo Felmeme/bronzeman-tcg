@@ -1,0 +1,1651 @@
+{
+  "source": {
+    "questHelperCommit": "5ea99d5ea9ba3fb096ebe7b5ed02d80883e9819d",
+    "questHelperVersion": "4.16.1",
+    "questEntriesCompared": 177
+  },
+  "summary": {
+    "candidateGroups": 1,
+    "affectedQuests": 1,
+    "fullyMissingGroups": 1,
+    "partialGroups": 0,
+    "remainingUnresolvedLabels": 210
+  },
+  "categories": {
+    "Weapon/ammo groups": {
+      "groupCount": 1,
+      "quests": [
+        "Rag and Bone Man II"
+      ],
+      "missing": 1,
+      "partial": 0,
+      "questCount": 1
+    }
+  },
+  "groups": [
+    {
+      "quest": "Rag and Bone Man II",
+      "label": "Ranged weapon for killing vultures",
+      "category": "Weapon/ammo groups",
+      "coverage": "missing",
+      "insideAlternative": false,
+      "resolvedCards": [
+        "Crossbow",
+        "Magic shortbow",
+        "Magic longbow",
+        "Yew shortbow",
+        "Yew longbow",
+        "Maple shortbow",
+        "Maple longbow",
+        "Willow shortbow",
+        "Willow longbow",
+        "Oak shortbow",
+        "Oak longbow",
+        "Shortbow",
+        "Longbow"
+      ],
+      "coveredCards": [],
+      "missingCards": [
+        "Crossbow",
+        "Magic shortbow",
+        "Magic longbow",
+        "Yew shortbow",
+        "Yew longbow",
+        "Maple shortbow",
+        "Maple longbow",
+        "Willow shortbow",
+        "Willow longbow",
+        "Oak shortbow",
+        "Oak longbow",
+        "Shortbow",
+        "Longbow"
+      ]
+    }
+  ],
+  "unresolved": [
+    {
+      "quest": "A Kingdom Divided",
+      "label": "Combat gear",
+      "constantNames": []
+    },
+    {
+      "quest": "A Kingdom Divided",
+      "label": "Decent food",
+      "constantNames": []
+    },
+    {
+      "quest": "A Kingdom Divided",
+      "label": "Defence Potion (3) or (4)",
+      "constantNames": [
+        "_4DOSE1DEFENSE",
+        "_3DOSE1DEFENSE"
+      ]
+    },
+    {
+      "quest": "A Kingdom Divided",
+      "label": "Melee combat gear to fight Judge of Yama",
+      "constantNames": []
+    },
+    {
+      "quest": "A Kingdom Divided",
+      "label": "Melee or range gear to fight Xamphur.",
+      "constantNames": []
+    },
+    {
+      "quest": "A Kingdom Divided",
+      "label": "Runes/equipment to cast FIRE bolt or better",
+      "constantNames": []
+    },
+    {
+      "quest": "A Night at the Theatre",
+      "label": "Combat gear",
+      "constantNames": []
+    },
+    {
+      "quest": "A Night at the Theatre",
+      "label": "Ghostspeak amulet",
+      "constantNames": [
+        "AMULET_OF_GHOSTSPEAK",
+        "AMULET_OF_GHOSTSPEAK_ENCHANTED",
+        "MORYTANIA_LEGS_MEDIUM",
+        "MORYTANIA_LEGS_HARD",
+        "MORYTANIA_LEGS_ELITE"
+      ]
+    },
+    {
+      "quest": "A Night at the Theatre",
+      "label": "Ivandis/Blisterwood flail",
+      "constantNames": [
+        "IVANDIS_FLAIL",
+        "BLISTERWOOD_FLAIL"
+      ]
+    },
+    {
+      "quest": "A Porcine of Interest",
+      "label": "Combat gear",
+      "constantNames": []
+    },
+    {
+      "quest": "A Soul's Bane",
+      "label": "Combat gear + food",
+      "constantNames": []
+    },
+    {
+      "quest": "A Tail of Two Cats",
+      "label": "A cat",
+      "constantNames": [
+        "WILEYCATOBJECT_HELL",
+        "WILEYCATOBJECT_LIGHT",
+        "WILEYCATOBJECT",
+        "WILEYCATOBJECT_BROWN",
+        "WILEYCATOBJECT_BLACK",
+        "WILEYCATOBJECT_BROWNGREY",
+        "WILEYCATOBJECT_BLUEGREY",
+        "LAZYCATOBJECT_HELL",
+        "LAZYCATOBJECT_LIGHT",
+        "LAZYCATOBJECT",
+        "LAZYCATOBJECT_BROWN",
+        "LAZYCATOBJECT_BLACK",
+        "LAZYCATOBJECT_BROWNGREY",
+        "LAZYCATOBJECT_BLUEGREY",
+        "GROWNCATOBJECT_HELL",
+        "GROWNCATOBJECT",
+        "GROWNCATOBJECT_LIGHT",
+        "GROWNCATOBJECT_BROWN",
+        "GROWNCATOBJECT_BLACK",
+        "GROWNCATOBJECT_BROWNGREY",
+        "GROWNCATOBJECT_BLUEGREY",
+        "KITTENOBJECT_HELL",
+        "KITTENOBJECT",
+        "KITTENOBJECT_LIGHT",
+        "KITTENOBJECT_BROWN",
+        "KITTENOBJECT_BLACK",
+        "KITTENOBJECT_BROWNGREY",
+        "KITTENOBJECT_BLUEGREY",
+        "OVERGROWNCATOBJECT_HELL",
+        "OVERGROWNCATOBJECT",
+        "OVERGROWNCATOBJECT_LIGHT",
+        "OVERGROWNCATOBJECT_BROWN",
+        "OVERGROWNCATOBJECT_BLACK",
+        "OVERGROWNCATOBJECT_BROWNGREY",
+        "OVERGROWNCATOBJECT_BLUEGREY"
+      ]
+    },
+    {
+      "quest": "A Tail of Two Cats",
+      "label": "Catspeak amulet",
+      "constantNames": [
+        "ICS_LITTLE_AMULET_OF_CATSPEAK"
+      ]
+    },
+    {
+      "quest": "A Tail of Two Cats",
+      "label": "Death runes",
+      "constantNames": [
+        "DEATHRUNE"
+      ]
+    },
+    {
+      "quest": "A Taste of Hope",
+      "label": "Combat gear",
+      "constantNames": []
+    },
+    {
+      "quest": "A Taste of Hope",
+      "label": "Rod of Ivandis",
+      "constantNames": [
+        "BURGH_ROD_COMMAND_FINAL_10",
+        "BURGH_ROD_COMMAND_FINAL_9",
+        "BURGH_ROD_COMMAND_FINAL_8",
+        "BURGH_ROD_COMMAND_FINAL_7",
+        "BURGH_ROD_COMMAND_FINAL_6",
+        "BURGH_ROD_COMMAND_FINAL_5",
+        "BURGH_ROD_COMMAND_FINAL_4",
+        "BURGH_ROD_COMMAND_FINAL_3",
+        "BURGH_ROD_COMMAND_FINAL_2",
+        "BURGH_ROD_COMMAND_FINAL_1"
+      ]
+    },
+    {
+      "quest": "Animal Magnetism",
+      "label": "Ghostspeak amulet",
+      "constantNames": [
+        "AMULET_OF_GHOSTSPEAK"
+      ]
+    },
+    {
+      "quest": "Animal Magnetism",
+      "label": "Holy Symbol",
+      "constantNames": [
+        "BLESSEDSTAR"
+      ]
+    },
+    {
+      "quest": "Animal Magnetism",
+      "label": "Polished Buttons",
+      "constantNames": [
+        "ANMA_P_BUTTONS"
+      ]
+    },
+    {
+      "quest": "Another Slice of H.A.M.",
+      "label": "Magic or ranged combat gear",
+      "constantNames": []
+    },
+    {
+      "quest": "Biohazard",
+      "label": "Gas mask",
+      "constantNames": [
+        "GASMASK"
+      ]
+    },
+    {
+      "quest": "Bone Voyage",
+      "label": "Marrentill potion (unf)",
+      "constantNames": [
+        "MARRENTILLVIAL"
+      ]
+    },
+    {
+      "quest": "Clock Tower",
+      "label": "Bucket of Water or a pair of ice gloves or smiths gloves(i)",
+      "constantNames": [
+        "BUCKET_WATER",
+        "ICE_GLOVES",
+        "SMITHING_UNIFORM_GLOVES_ICE"
+      ]
+    },
+    {
+      "quest": "Contact!",
+      "label": "Combat gear, preferably magic/ranged",
+      "constantNames": []
+    },
+    {
+      "quest": "Contact!",
+      "label": "Prayer potions",
+      "constantNames": [
+        "_4DOSEPRAYERRESTORE",
+        "_3DOSEPRAYERRESTORE",
+        "_2DOSEPRAYERRESTORE",
+        "_1DOSEPRAYERRESTORE",
+        "_4DOSE2RESTORE",
+        "_3DOSE2RESTORE",
+        "_2DOSE2RESTORE",
+        "_1DOSE2RESTORE",
+        "HUNTER_MIX_MOONMOTH_2DOSE",
+        "HUNTER_MIX_MOONMOTH_1DOSE",
+        "BUTTERFLY_JAR_MOONMOTH"
+      ]
+    },
+    {
+      "quest": "Creature of Fenkenstrain",
+      "label": "Armour and weapons defeat a level 51 monster and run past level 72 monsters",
+      "constantNames": []
+    },
+    {
+      "quest": "Creature of Fenkenstrain",
+      "label": "Ghostspeak amulet",
+      "constantNames": [
+        "AMULET_OF_GHOSTSPEAK",
+        "AMULET_OF_GHOSTSPEAK_ENCHANTED",
+        "MORYTANIA_LEGS_MEDIUM",
+        "MORYTANIA_LEGS_HARD",
+        "MORYTANIA_LEGS_ELITE"
+      ]
+    },
+    {
+      "quest": "Current Affairs",
+      "label": "Charcoal",
+      "constantNames": [
+        "CHARCOAL"
+      ]
+    },
+    {
+      "quest": "Death to the Dorgeshuun",
+      "label": "Magic or melee combat gear",
+      "constantNames": []
+    },
+    {
+      "quest": "Defender of Varrock",
+      "label": "Combat gear and food",
+      "constantNames": []
+    },
+    {
+      "quest": "Demon Slayer",
+      "label": "Armour",
+      "constantNames": []
+    },
+    {
+      "quest": "Desert Treasure I",
+      "label": "Charcoal",
+      "constantNames": [
+        "CHARCOAL"
+      ]
+    },
+    {
+      "quest": "Desert Treasure I",
+      "label": "Climbing boots",
+      "constantNames": [
+        "DEATH_CLIMBINGBOOTS",
+        "CLIMBING_BOOTS_G"
+      ]
+    },
+    {
+      "quest": "Desert Treasure I",
+      "label": "Facemask (or other face covering)",
+      "constantNames": [
+        "SLAYER_FACEMASK",
+        "SLAYER_HELM",
+        "SLAYER_HELM_I",
+        "SW_SLAYER_HELM_I",
+        "GASMASK"
+      ]
+    },
+    {
+      "quest": "Desert Treasure I",
+      "label": "Garlic powder",
+      "constantNames": [
+        "FD_CRUSHED_GARLIC"
+      ]
+    },
+    {
+      "quest": "Desert Treasure I",
+      "label": "Ice gloves/smiths gloves(i)",
+      "constantNames": [
+        "ICE_GLOVES",
+        "SMITHING_UNIFORM_GLOVES_ICE"
+      ]
+    },
+    {
+      "quest": "Desert Treasure I",
+      "label": "Spiked boots",
+      "constantNames": [
+        "DEATH_SPIKEDBOOTS"
+      ]
+    },
+    {
+      "quest": "Desert Treasure II - The Fallen Empire",
+      "label": "Blood runes",
+      "constantNames": [
+        "BLOODRUNE"
+      ]
+    },
+    {
+      "quest": "Desert Treasure II - The Fallen Empire",
+      "label": "Combat gear",
+      "constantNames": []
+    },
+    {
+      "quest": "Desert Treasure II - The Fallen Empire",
+      "label": "Death runes",
+      "constantNames": [
+        "DEATHRUNE"
+      ]
+    },
+    {
+      "quest": "Desert Treasure II - The Fallen Empire",
+      "label": "Fire runes",
+      "constantNames": [
+        "FIRERUNE"
+      ]
+    },
+    {
+      "quest": "Desert Treasure II - The Fallen Empire",
+      "label": "Ring of visibility",
+      "constantNames": [
+        "FD_RING_VISIBILITY"
+      ]
+    },
+    {
+      "quest": "Desert Treasure II - The Fallen Empire",
+      "label": "Soul runes",
+      "constantNames": [
+        "SOULRUNE"
+      ]
+    },
+    {
+      "quest": "Devious Minds",
+      "label": "Large/Colossal Pouch (non-degraded)",
+      "constantNames": [
+        "RCU_POUCH_LARGE",
+        "DEVIOUS_GLOWINGPOUCH",
+        "RCU_POUCH_COLOSSAL",
+        "DEVIOUS_GLOWINGPOUCH_COLOSSAL"
+      ]
+    },
+    {
+      "quest": "Dream Mentor",
+      "label": "a third type of food",
+      "constantNames": []
+    },
+    {
+      "quest": "Dream Mentor",
+      "label": "Combat gear",
+      "constantNames": []
+    },
+    {
+      "quest": "Dream Mentor",
+      "label": "Goutweed",
+      "constantNames": [
+        "EADGAR_GOUTWEED_HERB"
+      ]
+    },
+    {
+      "quest": "Dream Mentor",
+      "label": "Seal of passage",
+      "constantNames": [
+        "LUNAR_SEAL_OF_PASSAGE"
+      ]
+    },
+    {
+      "quest": "Dream Mentor",
+      "label": "some other type of food",
+      "constantNames": []
+    },
+    {
+      "quest": "Dream Mentor",
+      "label": "some type of food",
+      "constantNames": []
+    },
+    {
+      "quest": "Eadgar's Ruse",
+      "label": "Climbing boots",
+      "constantNames": [
+        "DEATH_CLIMBINGBOOTS",
+        "CLIMBING_BOOTS_G"
+      ]
+    },
+    {
+      "quest": "Eadgar's Ruse",
+      "label": "Ranarr potion (unf)",
+      "constantNames": [
+        "RANARRVIAL"
+      ]
+    },
+    {
+      "quest": "Elemental Workshop II",
+      "label": "Battered Key",
+      "constantNames": [
+        "ELEMENTAL_WORKSHOP_KEY"
+      ]
+    },
+    {
+      "quest": "Enakhra's Lament",
+      "label": "52 kg of sandstone",
+      "constantNames": []
+    },
+    {
+      "quest": "Enakhra's Lament",
+      "label": "Granite (5kg)",
+      "constantNames": [
+        "ENAKH_GRANITE_MEDIUM"
+      ]
+    },
+    {
+      "quest": "Enakhra's Lament",
+      "label": "Runes for crumble undead spell",
+      "constantNames": []
+    },
+    {
+      "quest": "Enakhra's Lament",
+      "label": "Runes to cast Fire Bolt or stronger",
+      "constantNames": []
+    },
+    {
+      "quest": "Enakhra's Lament",
+      "label": "Runes to cast Wind Bolt or stronger",
+      "constantNames": []
+    },
+    {
+      "quest": "Enlightened Journey",
+      "label": "Sack of potatoes (10)",
+      "constantNames": [
+        "SACK_POTATO_10"
+      ]
+    },
+    {
+      "quest": "Enlightened Journey",
+      "label": "Unlit candle",
+      "constantNames": [
+        "UNLIT_CANDLE",
+        "UNLIT_BLACK_CANDLE"
+      ]
+    },
+    {
+      "quest": "Fairytale I - Growing Pains",
+      "label": "Dramen or lunar staff",
+      "constantNames": [
+        "DRAMEN_STAFF",
+        "LUNAR_MOONCLAN_LIMINAL_STAFF"
+      ]
+    },
+    {
+      "quest": "Fairytale I - Growing Pains",
+      "label": "Draynor skull",
+      "constantNames": [
+        "FAIRY_SKULL"
+      ]
+    },
+    {
+      "quest": "Fairytale I - Growing Pains",
+      "label": "Ghostspeak amulet",
+      "constantNames": [
+        "AMULET_OF_GHOSTSPEAK",
+        "AMULET_OF_GHOSTSPEAK_ENCHANTED",
+        "MORYTANIA_LEGS_MEDIUM",
+        "MORYTANIA_LEGS_HARD",
+        "MORYTANIA_LEGS_ELITE"
+      ]
+    },
+    {
+      "quest": "Fairytale II - Cure a Queen",
+      "label": "Dramen or lunar staff",
+      "constantNames": [
+        "DRAMEN_STAFF",
+        "LUNAR_MOONCLAN_LIMINAL_STAFF"
+      ]
+    },
+    {
+      "quest": "Family Crest",
+      "label": "At least one dose of antipoison or superantipoison",
+      "constantNames": [
+        "ANTIVENOM_4",
+        "ANTIVENOM_3",
+        "ANTIVENOM_2",
+        "ANTIVENOM_1",
+        "ANTIVENOM4",
+        "ANTIVENOM3",
+        "ANTIVENOM2",
+        "ANTIVENOM1",
+        "ANTIDOTE__4",
+        "ANTIDOTE__3",
+        "ANTIDOTE__2",
+        "ANTIDOTE__1",
+        "ANTIDOTE_4",
+        "ANTIDOTE_3",
+        "ANTIDOTE_2",
+        "ANTIDOTE_1",
+        "_4DOSE2ANTIPOISON",
+        "_3DOSE2ANTIPOISON",
+        "_2DOSE2ANTIPOISON",
+        "_1DOSE2ANTIPOISON",
+        "_4DOSEANTIPOISON",
+        "_3DOSEANTIPOISON",
+        "_2DOSEANTIPOISON",
+        "_1DOSEANTIPOISON",
+        "RELICYMS_BALM4",
+        "RELICYMS_BALM3",
+        "RELICYMS_BALM2",
+        "RELICYMS_BALM1",
+        "SANFEW_SALVE_4_DOSE",
+        "SANFEW_SALVE_3_DOSE",
+        "SANFEW_SALVE_2_DOSE",
+        "SANFEW_SALVE_1_DOSE",
+        "BRUTAL_RELICYMS_BALM2",
+        "BRUTAL_RELICYMS_BALM1",
+        "BRUTAL_2DOSEANTIPOISON",
+        "BRUTAL_1DOSEANTIPOISON",
+        "BRUTAL_ANTIDOTE_2",
+        "BRUTAL_ANTIDOTE_1"
+      ]
+    },
+    {
+      "quest": "Family Crest",
+      "label": "Runes for casting each of the 4 blast spells",
+      "constantNames": []
+    },
+    {
+      "quest": "Fishing Contest",
+      "label": "Red Vine Worm",
+      "constantNames": [
+        "RED_VINE_WORM"
+      ]
+    },
+    {
+      "quest": "Forgettable Tale...",
+      "label": "A random item per player",
+      "constantNames": []
+    },
+    {
+      "quest": "Garden of Tranquillity",
+      "label": "Normal/Super/Ultra compost",
+      "constantNames": [
+        "BUCKET_COMPOST",
+        "BUCKET_SUPERCOMPOST",
+        "BUCKET_ULTRACOMPOST"
+      ]
+    },
+    {
+      "quest": "Garden of Tranquillity",
+      "label": "Ring of Charos",
+      "constantNames": [
+        "RING_OF_CHAROS"
+      ]
+    },
+    {
+      "quest": "Getting Ahead",
+      "label": "Any saw",
+      "constantNames": [
+        "POH_SAW",
+        "EYEGLO_CRYSTAL_SAW",
+        "WEARABLE_SAW"
+      ]
+    },
+    {
+      "quest": "Getting Ahead",
+      "label": "You can get all the required items during the quest.",
+      "constantNames": []
+    },
+    {
+      "quest": "Ghosts Ahoy",
+      "label": "Ecto-token, OR 25 Ecto-Tokens and coins to travel by Charter Ship",
+      "constantNames": [
+        "ECTOTOKEN"
+      ]
+    },
+    {
+      "quest": "Ghosts Ahoy",
+      "label": "Ghostspeak amulet",
+      "constantNames": [
+        "AMULET_OF_GHOSTSPEAK"
+      ]
+    },
+    {
+      "quest": "Ghosts Ahoy",
+      "label": "Nettle tea",
+      "constantNames": [
+        "BOWL_NETTLETEA"
+      ]
+    },
+    {
+      "quest": "Goblin Diplomacy",
+      "label": "Orange dye",
+      "constantNames": [
+        "ORANGEDYE"
+      ]
+    },
+    {
+      "quest": "Grim Tales",
+      "label": "Combat gear and food",
+      "constantNames": []
+    },
+    {
+      "quest": "Grim Tales",
+      "label": "Door key",
+      "constantNames": [
+        "WITCHES_DOORKEY"
+      ]
+    },
+    {
+      "quest": "Grim Tales",
+      "label": "Tarromin potion (unf)",
+      "constantNames": [
+        "TARROMINVIAL"
+      ]
+    },
+    {
+      "quest": "Grim Tales",
+      "label": "Watering can with at least 1 use",
+      "constantNames": [
+        "ZEAH_WATERINGCAN",
+        "WATERING_CAN_8",
+        "WATERING_CAN_7",
+        "WATERING_CAN_6",
+        "WATERING_CAN_5",
+        "WATERING_CAN_4",
+        "WATERING_CAN_3",
+        "WATERING_CAN_2",
+        "WATERING_CAN_1"
+      ]
+    },
+    {
+      "quest": "Haunted Mine",
+      "label": "Combat gear",
+      "constantNames": []
+    },
+    {
+      "quest": "Heroes' Quest",
+      "label": "A ranged or magic attack method",
+      "constantNames": []
+    },
+    {
+      "quest": "Heroes' Quest",
+      "label": "Harralander potion (unf)",
+      "constantNames": [
+        "HARRALANDERVIAL"
+      ]
+    },
+    {
+      "quest": "Heroes' Quest",
+      "label": "Ice gloves/Smiths gloves (i)",
+      "constantNames": [
+        "ICE_GLOVES",
+        "SMITHING_UNIFORM_GLOVES_ICE"
+      ]
+    },
+    {
+      "quest": "Holy Grail",
+      "label": "Excalibur",
+      "constantNames": [
+        "EXCALIBUR"
+      ]
+    },
+    {
+      "quest": "Horror from the Deep",
+      "label": "20+ casts of each element spell",
+      "constantNames": []
+    },
+    {
+      "quest": "Icthlarin's Little Helper",
+      "label": "Any cat or kitten",
+      "constantNames": [
+        "WILEYCATOBJECT_HELL",
+        "WILEYCATOBJECT_LIGHT",
+        "WILEYCATOBJECT",
+        "WILEYCATOBJECT_BROWN",
+        "WILEYCATOBJECT_BLACK",
+        "WILEYCATOBJECT_BROWNGREY",
+        "WILEYCATOBJECT_BLUEGREY",
+        "LAZYCATOBJECT_HELL",
+        "LAZYCATOBJECT_LIGHT",
+        "LAZYCATOBJECT",
+        "LAZYCATOBJECT_BROWN",
+        "LAZYCATOBJECT_BLACK",
+        "LAZYCATOBJECT_BROWNGREY",
+        "LAZYCATOBJECT_BLUEGREY",
+        "GROWNCATOBJECT_HELL",
+        "GROWNCATOBJECT",
+        "GROWNCATOBJECT_LIGHT",
+        "GROWNCATOBJECT_BROWN",
+        "GROWNCATOBJECT_BLACK",
+        "GROWNCATOBJECT_BROWNGREY",
+        "GROWNCATOBJECT_BLUEGREY",
+        "KITTENOBJECT_HELL",
+        "KITTENOBJECT",
+        "KITTENOBJECT_LIGHT",
+        "KITTENOBJECT_BROWN",
+        "KITTENOBJECT_BLACK",
+        "KITTENOBJECT_BROWNGREY",
+        "KITTENOBJECT_BLUEGREY",
+        "OVERGROWNCATOBJECT_HELL",
+        "OVERGROWNCATOBJECT",
+        "OVERGROWNCATOBJECT_LIGHT",
+        "OVERGROWNCATOBJECT_BROWN",
+        "OVERGROWNCATOBJECT_BLACK",
+        "OVERGROWNCATOBJECT_BROWNGREY",
+        "OVERGROWNCATOBJECT_BLUEGREY"
+      ]
+    },
+    {
+      "quest": "Icthlarin's Little Helper",
+      "label": "Bucket of sap",
+      "constantNames": [
+        "ICS_LITTLE_SAP_BUCKET"
+      ]
+    },
+    {
+      "quest": "Icthlarin's Little Helper",
+      "label": "Linen",
+      "constantNames": [
+        "ICS_LITTLE_LINEN"
+      ]
+    },
+    {
+      "quest": "Icthlarin's Little Helper",
+      "label": "Waterskin(4), bring a few to avoid drinking it",
+      "constantNames": [
+        "WATER_SKIN4"
+      ]
+    },
+    {
+      "quest": "Imp Catcher",
+      "label": "Black bead",
+      "constantNames": [
+        "BLACK_BEAD"
+      ]
+    },
+    {
+      "quest": "Imp Catcher",
+      "label": "Red bead",
+      "constantNames": [
+        "RED_BEAD"
+      ]
+    },
+    {
+      "quest": "Imp Catcher",
+      "label": "White bead",
+      "constantNames": [
+        "WHITE_BEAD"
+      ]
+    },
+    {
+      "quest": "Imp Catcher",
+      "label": "Yellow bead",
+      "constantNames": [
+        "YELLOW_BEAD"
+      ]
+    },
+    {
+      "quest": "In Search of the Myreque",
+      "label": "Charges in a druid pouch",
+      "constantNames": [
+        "DRUID_POUCH"
+      ]
+    },
+    {
+      "quest": "In Search of the Myreque",
+      "label": "Ring of Charos (a)",
+      "constantNames": [
+        "RING_OF_CHAROS_UNLOCKED"
+      ]
+    },
+    {
+      "quest": "King's Ransom",
+      "label": "Animate rock scroll",
+      "constantNames": [
+        "FAVOUR_ANIMATE_ROCK"
+      ]
+    },
+    {
+      "quest": "King's Ransom",
+      "label": "Any granite",
+      "constantNames": [
+        "ENAKH_GRANITE_SMALL",
+        "ENAKH_GRANITE_MEDIUM",
+        "ENAKH_GRANITE_TINY"
+      ]
+    },
+    {
+      "quest": "Land of the Goblins",
+      "label": "Combat gear",
+      "constantNames": []
+    },
+    {
+      "quest": "Land of the Goblins",
+      "label": "Orange dye",
+      "constantNames": [
+        "ORANGEDYE"
+      ]
+    },
+    {
+      "quest": "Land of the Goblins",
+      "label": "Toadflax potion (unf)",
+      "constantNames": [
+        "TOADFLAXVIAL"
+      ]
+    },
+    {
+      "quest": "Legends' Quest",
+      "label": "Ardrigal",
+      "constantNames": [
+        "ARDRIGAL"
+      ]
+    },
+    {
+      "quest": "Legends' Quest",
+      "label": "Charcoal",
+      "constantNames": [
+        "CHARCOAL"
+      ]
+    },
+    {
+      "quest": "Legends' Quest",
+      "label": "Combat gear, food and potions",
+      "constantNames": []
+    },
+    {
+      "quest": "Legends' Quest",
+      "label": "Fire runes",
+      "constantNames": [
+        "FIRERUNE"
+      ]
+    },
+    {
+      "quest": "Legends' Quest",
+      "label": "Radimus notes",
+      "constantNames": [
+        "THKARAMJAMAP",
+        "THKARAMJAMAPCOMP"
+      ]
+    },
+    {
+      "quest": "Legends' Quest",
+      "label": "Snake weed",
+      "constantNames": [
+        "SNAKE_WEED"
+      ]
+    },
+    {
+      "quest": "Lunar Diplomacy",
+      "label": "Dramen staff",
+      "constantNames": [
+        "DRAMEN_STAFF"
+      ]
+    },
+    {
+      "quest": "Making Friends with My Arm",
+      "label": "Cadava berries",
+      "constantNames": [
+        "CADAVABERRIES"
+      ]
+    },
+    {
+      "quest": "Making Friends with My Arm",
+      "label": "Combat gear, preferably ranged or melee",
+      "constantNames": []
+    },
+    {
+      "quest": "Making History",
+      "label": "Ghostspeak amulet",
+      "constantNames": [
+        "AMULET_OF_GHOSTSPEAK",
+        "AMULET_OF_GHOSTSPEAK_ENCHANTED",
+        "MORYTANIA_LEGS_MEDIUM",
+        "MORYTANIA_LEGS_HARD",
+        "MORYTANIA_LEGS_ELITE"
+      ]
+    },
+    {
+      "quest": "Merlin's Crystal",
+      "label": "Bucket of wax",
+      "constantNames": [
+        "BUCKET_WAX"
+      ]
+    },
+    {
+      "quest": "Merlin's Crystal",
+      "label": "Combat gear + food for Sir Mordred (level 39)",
+      "constantNames": []
+    },
+    {
+      "quest": "Monkey Madness I",
+      "label": "Monkey bones or corpse",
+      "constantNames": [
+        "MM_NORMAL_MONKEY_BONES",
+        "TBWT_MONKEY_CORPSE"
+      ]
+    },
+    {
+      "quest": "Monkey Madness II",
+      "label": "M'speak amulet",
+      "constantNames": [
+        "MM_AMULET_OF_MONKEY_SPEAK"
+      ]
+    },
+    {
+      "quest": "Monkey Madness II",
+      "label": "Monkey talisman",
+      "constantNames": [
+        "MM_MONKEY_TALISMAN"
+      ]
+    },
+    {
+      "quest": "Monkey Madness II",
+      "label": "Ninja greegree",
+      "constantNames": [
+        "MM_MONKEY_GREEGREE_FOR_SMALL_NINJA_MONKEY",
+        "MM_MONKEY_GREEGREE_FOR_MEDIUM_NINJA_MONKEY"
+      ]
+    },
+    {
+      "quest": "Monkey Madness II",
+      "label": "Translation book",
+      "constantNames": [
+        "GRANDTREE_TRANSLATIONBOOK"
+      ]
+    },
+    {
+      "quest": "Mourning's End Part I",
+      "label": "Barrel of coal tar",
+      "constantNames": [
+        "REGICIDE_BARREL_TAR"
+      ]
+    },
+    {
+      "quest": "Mourning's End Part I",
+      "label": "Barrel of naphtha",
+      "constantNames": [
+        "REGICIDE_BARREL_NAPHTHA"
+      ]
+    },
+    {
+      "quest": "Mourning's End Part I",
+      "label": "Ogre bellows",
+      "constantNames": [
+        "EMPTY_OGRE_BELLOWS",
+        "FILLED_OGRE_BELLOW1",
+        "FILLED_OGRE_BELLOW2",
+        "FILLED_OGRE_BELLOW3"
+      ]
+    },
+    {
+      "quest": "Mourning's End Part I",
+      "label": "Rotten apple",
+      "constantNames": [
+        "ROTTENAPPLES"
+      ]
+    },
+    {
+      "quest": "Mourning's End Part II",
+      "label": "Gas mask",
+      "constantNames": [
+        "GASMASK"
+      ]
+    },
+    {
+      "quest": "Mourning's End Part II",
+      "label": "Mourner boots",
+      "constantNames": [
+        "MOURNING_MOURNER_BOOTS"
+      ]
+    },
+    {
+      "quest": "Mourning's End Part II",
+      "label": "Mourner cloak",
+      "constantNames": [
+        "MOURNING_MOURNER_CLOAK"
+      ]
+    },
+    {
+      "quest": "Mourning's End Part II",
+      "label": "Mourner gloves",
+      "constantNames": [
+        "MOURNING_MOURNER_GLOVES"
+      ]
+    },
+    {
+      "quest": "Mourning's End Part II",
+      "label": "Mourner top",
+      "constantNames": [
+        "MOURNING_MOURNER_TOP"
+      ]
+    },
+    {
+      "quest": "Mourning's End Part II",
+      "label": "Mourner trousers",
+      "constantNames": [
+        "MOURNING_MOURNER_LEGS"
+      ]
+    },
+    {
+      "quest": "My Arm's Big Adventure",
+      "label": "Climbing boots",
+      "constantNames": [
+        "DEATH_CLIMBINGBOOTS",
+        "CLIMBING_BOOTS_G"
+      ]
+    },
+    {
+      "quest": "My Arm's Big Adventure",
+      "label": "Ugthanki dung",
+      "constantNames": [
+        "FEUD_CAMEL_POOH_BUCKET"
+      ]
+    },
+    {
+      "quest": "Nature Spirit",
+      "label": "Ghostspeak amulet",
+      "constantNames": [
+        "AMULET_OF_GHOSTSPEAK"
+      ]
+    },
+    {
+      "quest": "Perilous Moons",
+      "label": "Combat armour with high defensive bonuses",
+      "constantNames": []
+    },
+    {
+      "quest": "Plague City",
+      "label": "Dwellberries",
+      "constantNames": [
+        "DWELLBERRIES"
+      ]
+    },
+    {
+      "quest": "Rag and Bone Man II",
+      "label": "Ice coolers",
+      "constantNames": [
+        "SLAYER_ICY_WATER"
+      ]
+    },
+    {
+      "quest": "Ratcatchers",
+      "label": "A non-overgrown cat",
+      "constantNames": [
+        "WILEYCATOBJECT_HELL",
+        "WILEYCATOBJECT_LIGHT",
+        "WILEYCATOBJECT",
+        "WILEYCATOBJECT_BROWN",
+        "WILEYCATOBJECT_BLACK",
+        "WILEYCATOBJECT_BROWNGREY",
+        "WILEYCATOBJECT_BLUEGREY",
+        "LAZYCATOBJECT_HELL",
+        "LAZYCATOBJECT_LIGHT",
+        "LAZYCATOBJECT",
+        "LAZYCATOBJECT_BROWN",
+        "LAZYCATOBJECT_BLACK",
+        "LAZYCATOBJECT_BROWNGREY",
+        "LAZYCATOBJECT_BLUEGREY",
+        "GROWNCATOBJECT_HELL",
+        "GROWNCATOBJECT",
+        "GROWNCATOBJECT_LIGHT",
+        "GROWNCATOBJECT_BROWN",
+        "GROWNCATOBJECT_BLACK",
+        "GROWNCATOBJECT_BROWNGREY",
+        "GROWNCATOBJECT_BLUEGREY",
+        "KITTENOBJECT_HELL",
+        "KITTENOBJECT",
+        "KITTENOBJECT_LIGHT",
+        "KITTENOBJECT_BROWN",
+        "KITTENOBJECT_BLACK",
+        "KITTENOBJECT_BROWNGREY",
+        "KITTENOBJECT_BLUEGREY"
+      ]
+    },
+    {
+      "quest": "Ratcatchers",
+      "label": "Catspeak amulet",
+      "constantNames": [
+        "ICS_LITTLE_AMULET_OF_CATSPEAK",
+        "TWOCATS_AMULETOFCATSPEAK"
+      ]
+    },
+    {
+      "quest": "Ratcatchers",
+      "label": "Empty vial",
+      "constantNames": [
+        "VIAL_EMPTY"
+      ]
+    },
+    {
+      "quest": "Ratcatchers",
+      "label": "Pot of weeds",
+      "constantNames": [
+        "RATCATCHERS_WEEDPOT"
+      ]
+    },
+    {
+      "quest": "Ratcatchers",
+      "label": "Snake charm",
+      "constantNames": [
+        "SNAKE_FLUTE"
+      ]
+    },
+    {
+      "quest": "Romeo & Juliet",
+      "label": "Cadava berries",
+      "constantNames": [
+        "CADAVABERRIES"
+      ]
+    },
+    {
+      "quest": "Roving Elves",
+      "label": "Glarial's pebble (obtainable in quest)",
+      "constantNames": [
+        "GLARIALS_PEBBLE_WATERFALL_QUEST"
+      ]
+    },
+    {
+      "quest": "Roving Elves",
+      "label": "Key (obtainable in quest)",
+      "constantNames": [
+        "GOLRIE_KEY_WATERFALL_QUEST"
+      ]
+    },
+    {
+      "quest": "Royal Trouble",
+      "label": "Combat gear",
+      "constantNames": []
+    },
+    {
+      "quest": "Rum Deal",
+      "label": "Combat gear",
+      "constantNames": []
+    },
+    {
+      "quest": "Scrambled!",
+      "label": "Combat gear",
+      "constantNames": []
+    },
+    {
+      "quest": "Secrets of the North",
+      "label": "Combat Gear",
+      "constantNames": []
+    },
+    {
+      "quest": "Shades of Mort'ton",
+      "label": "Tarromin potion (unf)",
+      "constantNames": [
+        "TARROMINVIAL"
+      ]
+    },
+    {
+      "quest": "Shadow of the Storm",
+      "label": "Silverlight",
+      "constantNames": [
+        "SILVERLIGHT",
+        "AGRITH_SILVERLIGHT_DYED"
+      ]
+    },
+    {
+      "quest": "Sins of the Father",
+      "label": "Combat gear + food",
+      "constantNames": []
+    },
+    {
+      "quest": "Sins of the Father",
+      "label": "Ivandis flail",
+      "constantNames": [
+        "IVANDIS_FLAIL"
+      ]
+    },
+    {
+      "quest": "Song of the Elves",
+      "label": "Gas mask",
+      "constantNames": [
+        "GASMASK"
+      ]
+    },
+    {
+      "quest": "Song of the Elves",
+      "label": "Mourner boots",
+      "constantNames": [
+        "MOURNING_MOURNER_BOOTS"
+      ]
+    },
+    {
+      "quest": "Song of the Elves",
+      "label": "Mourner cloak",
+      "constantNames": [
+        "MOURNING_MOURNER_CLOAK"
+      ]
+    },
+    {
+      "quest": "Song of the Elves",
+      "label": "Mourner gloves",
+      "constantNames": [
+        "MOURNING_MOURNER_GLOVES"
+      ]
+    },
+    {
+      "quest": "Song of the Elves",
+      "label": "Mourner top",
+      "constantNames": [
+        "MOURNING_MOURNER_TOP"
+      ]
+    },
+    {
+      "quest": "Song of the Elves",
+      "label": "Mourner trousers",
+      "constantNames": [
+        "MOURNING_MOURNER_LEGS"
+      ]
+    },
+    {
+      "quest": "Spirits of the Elid",
+      "label": "Crush Weapon Style",
+      "constantNames": []
+    },
+    {
+      "quest": "Spirits of the Elid",
+      "label": "Slash Weapon Style",
+      "constantNames": []
+    },
+    {
+      "quest": "Spirits of the Elid",
+      "label": "Stab Weapon Style",
+      "constantNames": []
+    },
+    {
+      "quest": "Swan Song",
+      "label": "Pot lid",
+      "constantNames": [
+        "POTLID"
+      ]
+    },
+    {
+      "quest": "Tai Bwo Wannai Trio",
+      "label": "Ranged or Magic equipment to kill a level 3 monkey",
+      "constantNames": []
+    },
+    {
+      "quest": "Tale of the Righteous",
+      "label": "Any ranged weapon + ammo",
+      "constantNames": []
+    },
+    {
+      "quest": "Tale of the Righteous",
+      "label": "Runes for a few casts of a combat spell",
+      "constantNames": []
+    },
+    {
+      "quest": "Tears of Guthix",
+      "label": "Sapphire lantern",
+      "constantNames": [
+        "TOG_SAPPHIRE_LANTERN_LIT"
+      ]
+    },
+    {
+      "quest": "The Corsair Curse",
+      "label": "Combat gear + food to defeat Ithoi (level 34), who uses magic",
+      "constantNames": []
+    },
+    {
+      "quest": "The Curse of Arrav",
+      "label": "Dwellberries",
+      "constantNames": [
+        "DWELLBERRIES"
+      ]
+    },
+    {
+      "quest": "The Dig Site",
+      "label": "Charcoal",
+      "constantNames": [
+        "CHARCOAL"
+      ]
+    },
+    {
+      "quest": "The Eyes of Glouphrie",
+      "label": "Bucket of sap",
+      "constantNames": [
+        "ICS_LITTLE_SAP_BUCKET"
+      ]
+    },
+    {
+      "quest": "The Feud",
+      "label": "Combat Gear bring Range or Mage Gear if safe spotting.",
+      "constantNames": []
+    },
+    {
+      "quest": "The Final Dawn",
+      "label": "Melee Combat gear",
+      "constantNames": []
+    },
+    {
+      "quest": "The Fremennik Exiles",
+      "label": "Astral runes",
+      "constantNames": [
+        "ASTRALRUNE"
+      ]
+    },
+    {
+      "quest": "The Fremennik Exiles",
+      "label": "Combat gear",
+      "constantNames": []
+    },
+    {
+      "quest": "The Fremennik Exiles",
+      "label": "Ice gloves or smiths gloves(i)",
+      "constantNames": [
+        "ICE_GLOVES",
+        "SMITHING_UNIFORM_GLOVES_ICE"
+      ]
+    },
+    {
+      "quest": "The Fremennik Exiles",
+      "label": "Pet rock",
+      "constantNames": [
+        "VT_USELESS_ROCK"
+      ]
+    },
+    {
+      "quest": "The Fremennik Exiles",
+      "label": "Seal of passage",
+      "constantNames": [
+        "LUNAR_SEAL_OF_PASSAGE"
+      ]
+    },
+    {
+      "quest": "The Giant Dwarf",
+      "label": "Various ores and bars",
+      "constantNames": []
+    },
+    {
+      "quest": "The Great Brain Robbery",
+      "label": "Diving apparatus",
+      "constantNames": [
+        "HUNDRED_PIRATE_DIVING_BACKPACK"
+      ]
+    },
+    {
+      "quest": "The Great Brain Robbery",
+      "label": "Fishbowl helmet",
+      "constantNames": [
+        "HUNDRED_PIRATE_DIVING_HELMET"
+      ]
+    },
+    {
+      "quest": "The Great Brain Robbery",
+      "label": "Holy symbol",
+      "constantNames": [
+        "BLESSEDSTAR"
+      ]
+    },
+    {
+      "quest": "The Great Brain Robbery",
+      "label": "No pet following you or in your inventory",
+      "constantNames": []
+    },
+    {
+      "quest": "The Great Brain Robbery",
+      "label": "Ring of Charos",
+      "constantNames": [
+        "RING_OF_CHAROS",
+        "RING_OF_CHAROS_UNLOCKED"
+      ]
+    },
+    {
+      "quest": "The Great Brain Robbery",
+      "label": "Wooden cat",
+      "constantNames": [
+        "BRAIN_INV_WOODEN_CAT"
+      ]
+    },
+    {
+      "quest": "The Heart of Darkness",
+      "label": "Combat gear",
+      "constantNames": []
+    },
+    {
+      "quest": "The Heart of Darkness",
+      "label": "Prayer potions",
+      "constantNames": [
+        "_4DOSEPRAYERRESTORE",
+        "_3DOSEPRAYERRESTORE",
+        "_2DOSEPRAYERRESTORE",
+        "_1DOSEPRAYERRESTORE",
+        "_4DOSE2RESTORE",
+        "_3DOSE2RESTORE",
+        "_2DOSE2RESTORE",
+        "_1DOSE2RESTORE",
+        "HUNTER_MIX_MOONMOTH_2DOSE",
+        "HUNTER_MIX_MOONMOTH_1DOSE",
+        "BUTTERFLY_JAR_MOONMOTH"
+      ]
+    },
+    {
+      "quest": "The Path of Glouphrie",
+      "label": "Combat equipment",
+      "constantNames": []
+    },
+    {
+      "quest": "The Path of Glouphrie",
+      "label": "Prayer potions",
+      "constantNames": [
+        "_4DOSEPRAYERRESTORE",
+        "_3DOSEPRAYERRESTORE",
+        "_2DOSEPRAYERRESTORE",
+        "_1DOSEPRAYERRESTORE",
+        "_4DOSE2RESTORE",
+        "_3DOSE2RESTORE",
+        "_2DOSE2RESTORE",
+        "_1DOSE2RESTORE",
+        "HUNTER_MIX_MOONMOTH_2DOSE",
+        "HUNTER_MIX_MOONMOTH_1DOSE",
+        "BUTTERFLY_JAR_MOONMOTH"
+      ]
+    },
+    {
+      "quest": "The Path of Glouphrie",
+      "label": "Tree Gnome Village dungeon key",
+      "constantNames": [
+        "GOLRIE_KEY_WATERFALL_QUEST"
+      ]
+    },
+    {
+      "quest": "The Red Reef",
+      "label": "Combat gear",
+      "constantNames": []
+    },
+    {
+      "quest": "The Red Reef",
+      "label": "Ranged/Mage combat gear to skip boat combat, or a boat with cannons to deal with pirates",
+      "constantNames": []
+    },
+    {
+      "quest": "The Slug Menace",
+      "label": "Commorb (can get another from Sir Tiffy)",
+      "constantNames": [
+        "WANTED_CRYSTAL_BALL",
+        "SLUG2_CRYSTAL_BALL"
+      ]
+    },
+    {
+      "quest": "Throne of Miscellania",
+      "label": "Flowers",
+      "constantNames": [
+        "FLOWERS_WATERFALL_QUEST_RED",
+        "FLOWERS_WATERFALL_QUEST_YELLOW",
+        "FLOWERS_WATERFALL_QUEST_PURPLE",
+        "FLOWERS_WATERFALL_QUEST_ORANGE",
+        "FLOWERS_WATERFALL_QUEST_MIXED",
+        "FLOWERS_WATERFALL_QUEST",
+        "FLOWERS_WATERFALL_QUEST_BLACK",
+        "FLOWERS_WATERFALL_QUEST_WHITE",
+        "BREW_RED_FLOWER",
+        "BREW_BLUE_FLOWER"
+      ]
+    },
+    {
+      "quest": "Tree Gnome Village",
+      "label": "Combat gear (magic is best)",
+      "constantNames": []
+    },
+    {
+      "quest": "Troll Romance",
+      "label": "Bucket of wax",
+      "constantNames": [
+        "BUCKET_WAX"
+      ]
+    },
+    {
+      "quest": "Troll Romance",
+      "label": "Climbing boots",
+      "constantNames": [
+        "DEATH_CLIMBINGBOOTS",
+        "CLIMBING_BOOTS_G"
+      ]
+    },
+    {
+      "quest": "Troll Romance",
+      "label": "Combat gear, food, and potions",
+      "constantNames": []
+    },
+    {
+      "quest": "Troll Stronghold",
+      "label": "Climbing boots",
+      "constantNames": [
+        "DEATH_CLIMBINGBOOTS",
+        "CLIMBING_BOOTS_G"
+      ]
+    },
+    {
+      "quest": "Troubled Tortugans",
+      "label": "Combat gear",
+      "constantNames": []
+    },
+    {
+      "quest": "Troubled Tortugans",
+      "label": "Prayer restore",
+      "constantNames": [
+        "_4DOSEPRAYERRESTORE",
+        "_3DOSEPRAYERRESTORE",
+        "_2DOSEPRAYERRESTORE",
+        "_1DOSEPRAYERRESTORE",
+        "_4DOSE2RESTORE",
+        "_3DOSE2RESTORE",
+        "_2DOSE2RESTORE",
+        "_1DOSE2RESTORE",
+        "HUNTER_MIX_MOONMOTH_2DOSE",
+        "HUNTER_MIX_MOONMOTH_1DOSE",
+        "BUTTERFLY_JAR_MOONMOTH"
+      ]
+    },
+    {
+      "quest": "Twilight's Promise",
+      "label": "Two combat styles",
+      "constantNames": []
+    },
+    {
+      "quest": "Underground Pass",
+      "label": "Combat Equipment",
+      "constantNames": []
+    },
+    {
+      "quest": "Vampyre Slayer",
+      "label": "Combat gear + food to defeat Count Draynor",
+      "constantNames": []
+    },
+    {
+      "quest": "Wanted!",
+      "label": "Combat gear",
+      "constantNames": []
+    },
+    {
+      "quest": "While Guthix Sleeps",
+      "label": "Fire runes",
+      "constantNames": [
+        "FIRERUNE"
+      ]
+    },
+    {
+      "quest": "While Guthix Sleeps",
+      "label": "Lit sapphire lantern",
+      "constantNames": [
+        "TOG_SAPPHIRE_LANTERN_LIT"
+      ]
+    },
+    {
+      "quest": "While Guthix Sleeps",
+      "label": "Magic weapon",
+      "constantNames": []
+    },
+    {
+      "quest": "While Guthix Sleeps",
+      "label": "Melee weapon",
+      "constantNames": []
+    },
+    {
+      "quest": "While Guthix Sleeps",
+      "label": "Ranged weapon",
+      "constantNames": []
+    },
+    {
+      "quest": "While Guthix Sleeps",
+      "label": "Seed dibber (only if not done barb training)",
+      "constantNames": [
+        "DIBBER"
+      ]
+    },
+    {
+      "quest": "Witch's House",
+      "label": "Combat gear and food for monsters up to level 53",
+      "constantNames": []
+    },
+    {
+      "quest": "Zogre Flesh Eaters",
+      "label": "Either brutal arrows or Crumble Undead for fighting Slash Bash",
+      "constantNames": []
+    }
+  ]
+}

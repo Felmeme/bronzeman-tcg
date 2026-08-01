@@ -111,12 +111,19 @@ class BronzemanTcgPanel extends PluginPanel
 	private final MaterialTabGroup tabs = new MaterialTabGroup();
 
 	private final JPanel questPanel = sectionBody();
+	private final IconTextField questSearchBar = new IconTextField();
 	private final JPanel questFilters = new JPanel(new FlowLayout(FlowLayout.LEFT, 4, 0));
 	private final JCheckBox hideCompletedQuests = new JCheckBox("Hide completed");
 	private final JCheckBox hideIncompletableQuests = new JCheckBox("Hide incompletable");
 	private final JPanel questList = sectionBody();
 	private final Set<String> expandedQuests = new HashSet<>();
+	private final Set<String> expandedQuestCategories =
+		new HashSet<>(Collections.singleton("Quests"));
+	private final Set<String> expandedQuestSections = new HashSet<>();
+	private final Set<String> expandedQuestRequirements = new HashSet<>();
 	private volatile Set<String> completedQuestNames = Collections.emptySet();
+	private volatile QuestCatalog.RouteSelection questRoute =
+		QuestCatalog.RouteSelection.UNKNOWN;
 
 	private final JPanel slayerPanel = sectionBody();
 	private final JPanel slayerFilters = new JPanel(new FlowLayout(FlowLayout.LEFT, 4, 0));
@@ -263,6 +270,33 @@ class BronzemanTcgPanel extends PluginPanel
 		recentUnlocksPanel.add(Box.createVerticalStrut(4));
 		recentUnlocksPanel.add(recentUnlocksList);
 
+		questSearchBar.setIcon(IconTextField.Icon.SEARCH);
+		questSearchBar.setToolTipText("Search quests and miniquests");
+		questSearchBar.setMaximumSize(new Dimension(Integer.MAX_VALUE, 28));
+		questSearchBar.setAlignmentX(Component.LEFT_ALIGNMENT);
+		questSearchBar.getDocument().addDocumentListener(new DocumentListener()
+		{
+			@Override
+			public void insertUpdate(DocumentEvent event)
+			{
+				updateQuestSearch();
+			}
+
+			@Override
+			public void removeUpdate(DocumentEvent event)
+			{
+				updateQuestSearch();
+			}
+
+			@Override
+			public void changedUpdate(DocumentEvent event)
+			{
+				updateQuestSearch();
+			}
+		});
+		questPanel.add(questSearchBar);
+		questPanel.add(Box.createVerticalStrut(4));
+
 		configureQuestFilters();
 		questPanel.add(questFilters);
 		questPanel.add(Box.createVerticalStrut(4));
@@ -403,10 +437,11 @@ class BronzemanTcgPanel extends PluginPanel
 	}
 
 	/** Receives an immutable-friendly quest-state snapshot captured on the client thread. */
-	void updateCompletedQuests(Set<String> completed)
+	void updateQuestState(Set<String> completed, QuestCatalog.RouteSelection route)
 	{
 		completedQuestNames = completed == null
 			? Collections.emptySet() : Collections.unmodifiableSet(new HashSet<>(completed));
+		questRoute = route == null ? QuestCatalog.RouteSelection.UNKNOWN : route;
 	}
 
 	/** Stop queued work from touching a panel that has been removed from the toolbar. */
@@ -431,12 +466,15 @@ class BronzemanTcgPanel extends PluginPanel
 		shared.removeAll(owned);
 		Set<String> visibleShared = config.acceptSharedUnlocks()
 			? Collections.unmodifiableSet(shared) : Collections.emptySet();
+		Set<String> questCards = new HashSet<>(owned);
+		questCards.addAll(visibleShared);
 		boolean includeSlayerSuperiors = config.restrictSlayerSuperiors();
 		Set<String> completed = completedQuestNames;
+		QuestCatalog.RouteSelection route = questRoute;
 
 		return new PanelSnapshot(data, owned, visibleShared, recentUnlocksTracker.getRecent(),
 			recentUnlocksTracker.getSharedRecent(),
-			includeSlayerSuperiors, completed,
+			Collections.unmodifiableSet(questCards), includeSlayerSuperiors, completed, route,
 			countUnlocked(monsterCatalog.getEntityToCards(), owned),
 			countUnlocked(itemCatalog.getEntityToCards(), owned));
 	}
@@ -444,6 +482,7 @@ class BronzemanTcgPanel extends PluginPanel
 	private PreparedData prepareStaticData()
 	{
 		List<QuestCatalog.QuestEntry> quests = sortedEntries(questCatalog.getQuests());
+		List<QuestCatalog.QuestEntry> miniquests = sortedEntries(questCatalog.getMiniquests());
 		List<QuestCatalog.QuestEntry> contents = sortedEntries(contentCatalog.getContents());
 		List<QuestCatalog.QuestEntry> areas = buildAreaEntries();
 		List<SlayerMasterEntry> slayer = buildSlayerEntries();
@@ -464,7 +503,7 @@ class BronzemanTcgPanel extends PluginPanel
 			searchEntries.add(new SearchEntry(entry.getKey(), display(entry.getKey()), entry.getValue()));
 		}
 
-		return new PreparedData(quests, contents, areas, slayer, allSuperiors,
+		return new PreparedData(quests, miniquests, contents, areas, slayer, allSuperiors,
 			rumours, searchEntries);
 	}
 
@@ -498,7 +537,9 @@ class BronzemanTcgPanel extends PluginPanel
 		boolean slayerChanged = first
 			|| previous.includeSlayerSuperiors != next.includeSlayerSuperiors;
 		boolean questStateChanged = first
-			|| !previous.completedQuests.equals(next.completedQuests);
+			|| !previous.completedQuests.equals(next.completedQuests)
+			|| !previous.questCards.equals(next.questCards)
+			|| previous.questRoute != next.questRoute;
 		snapshot = next;
 		// Party-sharing controls whether this view exists. The Recent Unlocks
 		// "Show shared" preference only filters that tab and must not affect this one.
@@ -568,27 +609,234 @@ class BronzemanTcgPanel extends PluginPanel
 
 	private void refreshQuests()
 	{
+		questList.removeAll();
+		List<QuestCatalog.QuestEntry> quests = visibleQuests(snapshot.data.quests);
+		List<QuestCatalog.QuestEntry> miniquests = visibleQuests(snapshot.data.miniquests);
+
+		addQuestCategory("Quests", quests, snapshot.data.quests.isEmpty());
+		addSpacedDivider(questList);
+		addQuestCategory("Miniquests", miniquests, snapshot.data.miniquests.isEmpty());
+		questList.revalidate();
+		questList.repaint();
+	}
+
+	private List<QuestCatalog.QuestEntry> visibleQuests(
+		List<QuestCatalog.QuestEntry> source)
+	{
+		String query = questSearchBar.getText() == null ? ""
+			: questSearchBar.getText().trim().toLowerCase(Locale.ROOT);
 		List<QuestCatalog.QuestEntry> visible = new ArrayList<>();
-		for (QuestCatalog.QuestEntry quest : snapshot.data.quests)
+		for (QuestCatalog.QuestEntry quest : source)
 		{
-			boolean completed = snapshot.completedQuests.contains(
-				quest.name.toLowerCase(Locale.ROOT));
-			boolean completable =
-				quest.satisfiedCount(snapshot.owned) == quest.requirements.size();
-			if (hideCompletedQuests.isSelected() && completed)
+			boolean completed = isQuestCompleted(quest.name);
+			boolean completable = quest.satisfiedCount(snapshot.questCards, snapshot.questRoute)
+				== quest.requirements.size();
+			if ((!hideCompletedQuests.isSelected() || !completed)
+				&& (!hideIncompletableQuests.isSelected() || completable)
+				&& (query.isEmpty() || quest.name.toLowerCase(Locale.ROOT).contains(query)))
 			{
-				continue;
+				visible.add(quest);
 			}
-			if (hideIncompletableQuests.isSelected() && !completable)
-			{
-				continue;
-			}
-			visible.add(quest);
 		}
-		refreshChecklist(questList, "quests completable",
-			visible, snapshot.owned, expandedQuests,
-			this::refreshQuests, snapshot.data.quests.isEmpty()
-				? "No quest data bundled" : "No quests match these filters", true);
+		return visible;
+	}
+
+	private boolean isQuestCompleted(String name)
+	{
+		String key = name.toLowerCase(Locale.ROOT);
+		if (snapshot.completedQuests.contains(key))
+		{
+			return true;
+		}
+		return key.endsWith(" (miniquest)") && snapshot.completedQuests.contains(
+			key.substring(0, key.length() - " (miniquest)".length()));
+	}
+
+	private void addQuestCategory(String label, List<QuestCatalog.QuestEntry> entries,
+		boolean dataEmpty)
+	{
+		int completable = 0;
+		for (QuestCatalog.QuestEntry entry : entries)
+		{
+			if (entry.satisfiedCount(snapshot.questCards, snapshot.questRoute)
+				== entry.requirements.size())
+			{
+				completable++;
+			}
+		}
+		boolean expanded = expandedQuestCategories.contains(label);
+		JPanel categoryRow = compactProgressRow(
+			(expanded ? "\u25bc " : "\u25b6 ") + label, completable, entries.size());
+		makeClickable(categoryRow, () ->
+		{
+			if (!expandedQuestCategories.remove(label))
+			{
+				expandedQuestCategories.add(label);
+			}
+			refreshQuests();
+		});
+		questList.add(categoryRow);
+		if (!expanded)
+		{
+			return;
+		}
+		if (entries.isEmpty())
+		{
+			questList.add(mutedRow(dataEmpty
+				? "  No data bundled" : "  No entries match the current filters"));
+			return;
+		}
+		int index = 0;
+		for (QuestCatalog.QuestEntry entry : entries)
+		{
+			if (index++ > 0)
+			{
+				addSpacedDivider(questList);
+			}
+			questList.add(questEntryRow(entry));
+			if (expandedQuests.contains(entry.name))
+			{
+				renderQuestSections(entry);
+			}
+		}
+	}
+
+	private JPanel questEntryRow(QuestCatalog.QuestEntry entry)
+	{
+		int have = entry.satisfiedCount(snapshot.questCards, snapshot.questRoute);
+		int total = entry.requirements.size();
+		boolean expanded = expandedQuests.contains(entry.name);
+		JPanel row = compactProgressRow(
+			(expanded ? "\u25bc " : "\u25b6 ") + entry.name, have, total);
+		row.setBackground(ColorScheme.DARKER_GRAY_COLOR);
+		if (!entry.notes.isEmpty())
+		{
+			row.setToolTipText(entry.notes);
+		}
+		makeClickable(row, () ->
+		{
+			if (!expandedQuests.remove(entry.name))
+			{
+				expandedQuests.add(entry.name);
+			}
+			refreshQuests();
+		});
+		return row;
+	}
+
+	private void renderQuestSections(QuestCatalog.QuestEntry entry)
+	{
+		if (entry.sections.isEmpty())
+		{
+			questList.add(mutedRow("  No card-backed requirements"));
+			return;
+		}
+		for (int sectionIndex = 0; sectionIndex < entry.sections.size(); sectionIndex++)
+		{
+			QuestCatalog.Section section = entry.sections.get(sectionIndex);
+			String label = section.label.isEmpty() ? "Requirements" : section.label;
+			String key = entry.name + "\0section\0" + sectionIndex;
+			boolean expanded = expandedQuestSections.contains(key);
+			int have = section.satisfiedCount(snapshot.questCards, snapshot.questRoute);
+			int total = section.requirements.size();
+			JPanel row = compactProgressRow("  "
+				+ (expanded ? "\u25bc " : "\u25b6 ") + label, have, total);
+			row.setBackground(ColorScheme.DARKER_GRAY_COLOR);
+			makeClickable(row, () ->
+			{
+				if (!expandedQuestSections.remove(key))
+				{
+					expandedQuestSections.add(key);
+				}
+				refreshQuests();
+			});
+			questList.add(row);
+			if (!expanded)
+			{
+				continue;
+			}
+			if (section.requirements.isEmpty())
+			{
+				questList.add(mutedRow("    No card-backed requirements"));
+			}
+			for (int requirementIndex = 0;
+				requirementIndex < section.requirements.size(); requirementIndex++)
+			{
+				renderQuestRequirement(section.requirements.get(requirementIndex),
+					key + "\0requirement\0" + requirementIndex);
+			}
+		}
+	}
+
+	private void renderQuestRequirement(QuestCatalog.Requirement requirement, String key)
+	{
+		boolean expandable = !requirement.children.isEmpty()
+			|| requirement.displayCards.size() > 1;
+		if (!expandable)
+		{
+			questList.add(requirementRow(requirement,
+				requirement.isSatisfied(snapshot.questCards, snapshot.questRoute)));
+			return;
+		}
+		boolean expanded = expandedQuestRequirements.contains(key);
+		int have = requirement.displaySatisfied(snapshot.questCards, snapshot.questRoute);
+		int total = requirement.displayTotal(snapshot.questRoute);
+		JPanel row = compactProgressRow("    "
+			+ (expanded ? "\u25bc " : "\u25b6 ") + requirement.label, have, total);
+		row.setBackground(ColorScheme.DARKER_GRAY_COLOR);
+		makeClickable(row, () ->
+		{
+			if (!expandedQuestRequirements.remove(key))
+			{
+				expandedQuestRequirements.add(key);
+			}
+			refreshQuests();
+		});
+		questList.add(row);
+		if (!expanded)
+		{
+			return;
+		}
+		if (requirement.displayCardsOnly)
+		{
+			Map<String, String> cards = new LinkedHashMap<>();
+			collectRequirementCards(requirement, cards);
+			for (String card : cards.values())
+			{
+				questList.add(statusRow("      " + displayCardName(card),
+					snapshot.questCards.contains(card.toLowerCase(Locale.ROOT)), null));
+			}
+			return;
+		}
+		if (!requirement.children.isEmpty())
+		{
+			for (int index = 0; index < requirement.children.size(); index++)
+			{
+				renderQuestRequirement(requirement.children.get(index),
+					key + "\0child\0" + index);
+			}
+		}
+		else
+		{
+			for (String card : requirement.displayCards)
+			{
+				questList.add(statusRow("      " + displayCardName(card),
+					snapshot.questCards.contains(card.toLowerCase(Locale.ROOT)), null));
+			}
+		}
+	}
+
+	private static void collectRequirementCards(QuestCatalog.Requirement requirement,
+		Map<String, String> cards)
+	{
+		for (String card : requirement.displayCards)
+		{
+			cards.putIfAbsent(card.toLowerCase(Locale.ROOT), card);
+		}
+		for (QuestCatalog.Requirement child : requirement.children)
+		{
+			collectRequirementCards(child, cards);
+		}
 	}
 
 	private void refreshContent()
@@ -1206,6 +1454,7 @@ class BronzemanTcgPanel extends PluginPanel
 		questFilters.setOpaque(false);
 		questFilters.setAlignmentX(Component.LEFT_ALIGNMENT);
 		questFilters.setMaximumSize(new Dimension(Integer.MAX_VALUE, 52));
+		questFilters.setLayout(new BoxLayout(questFilters, BoxLayout.Y_AXIS));
 
 		for (JCheckBox checkBox : new JCheckBox[]{
 			hideCompletedQuests, hideIncompletableQuests})
@@ -1213,8 +1462,20 @@ class BronzemanTcgPanel extends PluginPanel
 			checkBox.setOpaque(false);
 			checkBox.setForeground(Color.WHITE);
 			checkBox.setFocusable(false);
+			checkBox.setMargin(new Insets(0, 0, 0, 0));
+			checkBox.setAlignmentX(Component.LEFT_ALIGNMENT);
 			questFilters.add(checkBox);
 			checkBox.addActionListener(event -> updateQuestFilters());
+		}
+	}
+
+	private void updateQuestSearch()
+	{
+		dirtyTabs.add(PanelTab.QUESTS);
+		if (snapshot != null && selectedTab == PanelTab.QUESTS)
+		{
+			refreshQuests();
+			dirtyTabs.remove(PanelTab.QUESTS);
 		}
 	}
 
@@ -1240,13 +1501,16 @@ class BronzemanTcgPanel extends PluginPanel
 
 		filterPanel.setOpaque(false);
 		filterPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
-		filterPanel.setMaximumSize(new Dimension(Integer.MAX_VALUE, 30));
+		filterPanel.setMaximumSize(new Dimension(Integer.MAX_VALUE, 48));
+		filterPanel.setLayout(new BoxLayout(filterPanel, BoxLayout.Y_AXIS));
 
 		for (JCheckBox checkBox : new JCheckBox[]{showLocked, showUnlocked})
 		{
 			checkBox.setOpaque(false);
 			checkBox.setForeground(Color.WHITE);
 			checkBox.setFocusable(false);
+			checkBox.setMargin(new Insets(0, 0, 0, 0));
+			checkBox.setAlignmentX(Component.LEFT_ALIGNMENT);
 			filterPanel.add(checkBox);
 			checkBox.addActionListener(event ->
 				updateVisibilityFilters(showLocked, showUnlocked,
@@ -1277,9 +1541,9 @@ class BronzemanTcgPanel extends PluginPanel
 
 		importantUnlocksFilters.setOpaque(false);
 		importantUnlocksFilters.setAlignmentX(Component.LEFT_ALIGNMENT);
-		importantUnlocksFilters.setMaximumSize(new Dimension(Integer.MAX_VALUE, 30));
+		importantUnlocksFilters.setMaximumSize(new Dimension(Integer.MAX_VALUE, 48));
 		importantUnlocksFilters.setLayout(
-			new BoxLayout(importantUnlocksFilters, BoxLayout.X_AXIS));
+			new BoxLayout(importantUnlocksFilters, BoxLayout.Y_AXIS));
 
 		JCheckBox[] checkBoxes = {showLockedImportant, showUnlockedImportant};
 		for (int index = 0; index < checkBoxes.length; index++)
@@ -1289,10 +1553,7 @@ class BronzemanTcgPanel extends PluginPanel
 			checkBox.setForeground(Color.WHITE);
 			checkBox.setFocusable(false);
 			checkBox.setMargin(new Insets(0, 0, 0, 0));
-			if (index > 0)
-			{
-				importantUnlocksFilters.add(Box.createHorizontalStrut(8));
-			}
+			checkBox.setAlignmentX(Component.LEFT_ALIGNMENT);
 			importantUnlocksFilters.add(checkBox);
 			checkBox.addActionListener(event -> updateImportantUnlockFilters());
 		}
@@ -1818,8 +2079,14 @@ class BronzemanTcgPanel extends PluginPanel
 		List<QuestCatalog.QuestEntry> entries)
 	{
 		List<QuestCatalog.QuestEntry> sorted = new ArrayList<>(entries);
-		sorted.sort(Comparator.comparing(entry -> entry.name, String.CASE_INSENSITIVE_ORDER));
+		sorted.sort(Comparator.comparing(entry -> questSortName(entry.name),
+			String.CASE_INSENSITIVE_ORDER));
 		return Collections.unmodifiableList(sorted);
+	}
+
+	private static String questSortName(String name)
+	{
+		return name.regionMatches(true, 0, "The ", 0, 4) ? name.substring(4) : name;
 	}
 
 	private static boolean sameUnlocks(List<RecentUnlocksTracker.Unlock> first,
@@ -2117,6 +2384,7 @@ class BronzemanTcgPanel extends PluginPanel
 	private static class PreparedData
 	{
 		private final List<QuestCatalog.QuestEntry> quests;
+		private final List<QuestCatalog.QuestEntry> miniquests;
 		private final List<QuestCatalog.QuestEntry> contents;
 		private final List<QuestCatalog.QuestEntry> areas;
 		private final List<SlayerMasterEntry> slayer;
@@ -2125,6 +2393,7 @@ class BronzemanTcgPanel extends PluginPanel
 		private final List<SearchEntry> searchEntries;
 
 		private PreparedData(List<QuestCatalog.QuestEntry> quests,
+			List<QuestCatalog.QuestEntry> miniquests,
 			List<QuestCatalog.QuestEntry> contents,
 			List<QuestCatalog.QuestEntry> areas,
 			List<SlayerMasterEntry> slayer,
@@ -2133,6 +2402,7 @@ class BronzemanTcgPanel extends PluginPanel
 			List<SearchEntry> searchEntries)
 		{
 			this.quests = quests;
+			this.miniquests = miniquests;
 			this.contents = contents;
 			this.areas = areas;
 			this.slayer = slayer;
@@ -2225,27 +2495,32 @@ class BronzemanTcgPanel extends PluginPanel
 		private final PreparedData data;
 		private final Set<String> owned;
 		private final Set<String> shared;
+		private final Set<String> questCards;
 		private final List<RecentUnlocksTracker.Unlock> recentUnlocks;
 		private final List<RecentUnlocksTracker.Unlock> sharedRecentUnlocks;
 		private final boolean includeSlayerSuperiors;
 		private final Set<String> completedQuests;
+		private final QuestCatalog.RouteSelection questRoute;
 		private final int unlockedMonsters;
 		private final int unlockedItems;
 
 		private PanelSnapshot(PreparedData data, Set<String> owned, Set<String> shared,
 			List<RecentUnlocksTracker.Unlock> recentUnlocks,
 			List<RecentUnlocksTracker.Unlock> sharedRecentUnlocks,
-			boolean includeSlayerSuperiors, Set<String> completedQuests,
+			Set<String> questCards, boolean includeSlayerSuperiors,
+			Set<String> completedQuests, QuestCatalog.RouteSelection questRoute,
 			int unlockedMonsters,
 			int unlockedItems)
 		{
 			this.data = data;
 			this.owned = owned;
 			this.shared = shared;
+			this.questCards = questCards;
 			this.recentUnlocks = recentUnlocks;
 			this.sharedRecentUnlocks = sharedRecentUnlocks;
 			this.includeSlayerSuperiors = includeSlayerSuperiors;
 			this.completedQuests = completedQuests;
+			this.questRoute = questRoute;
 			this.unlockedMonsters = unlockedMonsters;
 			this.unlockedItems = unlockedItems;
 		}

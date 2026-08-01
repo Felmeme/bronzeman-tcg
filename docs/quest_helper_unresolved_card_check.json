@@ -1,0 +1,3674 @@
+{
+  "summary": {
+    "unresolvedLabels": 210,
+    "strongMatches": 9,
+    "possibleMatches": 99,
+    "noPlausibleMatch": 102
+  },
+  "rows": [
+    {
+      "quest": "A Kingdom Divided",
+      "label": "Combat gear",
+      "constantNames": [],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "A Kingdom Divided",
+      "label": "Decent food",
+      "constantNames": [],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "A Kingdom Divided",
+      "label": "Defence Potion (3) or (4)",
+      "constantNames": [
+        "_4DOSE1DEFENSE",
+        "_3DOSE1DEFENSE"
+      ],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Defence potion",
+          "score": 0.86,
+          "reason": "card name appears in label"
+        }
+      ]
+    },
+    {
+      "quest": "A Kingdom Divided",
+      "label": "Melee combat gear to fight Judge of Yama",
+      "constantNames": [],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "A Kingdom Divided",
+      "label": "Melee or range gear to fight Xamphur.",
+      "constantNames": [],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "A Kingdom Divided",
+      "label": "Runes/equipment to cast FIRE bolt or better",
+      "constantNames": [],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "A Night at the Theatre",
+      "label": "Combat gear",
+      "constantNames": [],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "A Night at the Theatre",
+      "label": "Ghostspeak amulet",
+      "constantNames": [
+        "AMULET_OF_GHOSTSPEAK",
+        "AMULET_OF_GHOSTSPEAK_ENCHANTED",
+        "MORYTANIA_LEGS_MEDIUM",
+        "MORYTANIA_LEGS_HARD",
+        "MORYTANIA_LEGS_ELITE"
+      ],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Opal amulet",
+          "score": 0.744,
+          "reason": "approximate"
+        }
+      ]
+    },
+    {
+      "quest": "A Night at the Theatre",
+      "label": "Ivandis/Blisterwood flail",
+      "constantNames": [
+        "IVANDIS_FLAIL",
+        "BLISTERWOOD_FLAIL"
+      ],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "A Porcine of Interest",
+      "label": "Combat gear",
+      "constantNames": [],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "A Soul's Bane",
+      "label": "Combat gear + food",
+      "constantNames": [],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "A Tail of Two Cats",
+      "label": "A cat",
+      "constantNames": [
+        "WILEYCATOBJECT_HELL",
+        "WILEYCATOBJECT_LIGHT",
+        "WILEYCATOBJECT",
+        "WILEYCATOBJECT_BROWN",
+        "WILEYCATOBJECT_BLACK",
+        "WILEYCATOBJECT_BROWNGREY",
+        "WILEYCATOBJECT_BLUEGREY",
+        "LAZYCATOBJECT_HELL",
+        "LAZYCATOBJECT_LIGHT",
+        "LAZYCATOBJECT",
+        "LAZYCATOBJECT_BROWN",
+        "LAZYCATOBJECT_BLACK",
+        "LAZYCATOBJECT_BROWNGREY",
+        "LAZYCATOBJECT_BLUEGREY",
+        "GROWNCATOBJECT_HELL",
+        "GROWNCATOBJECT",
+        "GROWNCATOBJECT_LIGHT",
+        "GROWNCATOBJECT_BROWN",
+        "GROWNCATOBJECT_BLACK",
+        "GROWNCATOBJECT_BROWNGREY",
+        "GROWNCATOBJECT_BLUEGREY",
+        "KITTENOBJECT_HELL",
+        "KITTENOBJECT",
+        "KITTENOBJECT_LIGHT",
+        "KITTENOBJECT_BROWN",
+        "KITTENOBJECT_BLACK",
+        "KITTENOBJECT_BROWNGREY",
+        "KITTENOBJECT_BLUEGREY",
+        "OVERGROWNCATOBJECT_HELL",
+        "OVERGROWNCATOBJECT",
+        "OVERGROWNCATOBJECT_LIGHT",
+        "OVERGROWNCATOBJECT_BROWN",
+        "OVERGROWNCATOBJECT_BLACK",
+        "OVERGROWNCATOBJECT_BROWNGREY",
+        "OVERGROWNCATOBJECT_BLUEGREY"
+      ],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Lazy cat",
+          "score": 0.799,
+          "reason": "approximate"
+        },
+        {
+          "card": "Cat",
+          "score": 0.78,
+          "reason": "approximate"
+        }
+      ]
+    },
+    {
+      "quest": "A Tail of Two Cats",
+      "label": "Catspeak amulet",
+      "constantNames": [
+        "ICS_LITTLE_AMULET_OF_CATSPEAK"
+      ],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "A Tail of Two Cats",
+      "label": "Death runes",
+      "constantNames": [
+        "DEATHRUNE"
+      ],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Death rune",
+          "score": 0.95,
+          "reason": "approximate"
+        }
+      ]
+    },
+    {
+      "quest": "A Taste of Hope",
+      "label": "Combat gear",
+      "constantNames": [],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "A Taste of Hope",
+      "label": "Rod of Ivandis",
+      "constantNames": [
+        "BURGH_ROD_COMMAND_FINAL_10",
+        "BURGH_ROD_COMMAND_FINAL_9",
+        "BURGH_ROD_COMMAND_FINAL_8",
+        "BURGH_ROD_COMMAND_FINAL_7",
+        "BURGH_ROD_COMMAND_FINAL_6",
+        "BURGH_ROD_COMMAND_FINAL_5",
+        "BURGH_ROD_COMMAND_FINAL_4",
+        "BURGH_ROD_COMMAND_FINAL_3",
+        "BURGH_ROD_COMMAND_FINAL_2",
+        "BURGH_ROD_COMMAND_FINAL_1"
+      ],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "Animal Magnetism",
+      "label": "Ghostspeak amulet",
+      "constantNames": [
+        "AMULET_OF_GHOSTSPEAK"
+      ],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Opal amulet",
+          "score": 0.744,
+          "reason": "approximate"
+        }
+      ]
+    },
+    {
+      "quest": "Animal Magnetism",
+      "label": "Holy Symbol",
+      "constantNames": [
+        "BLESSEDSTAR"
+      ],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Unholy symbol",
+          "score": 0.947,
+          "reason": "approximate"
+        },
+        {
+          "card": "Old symbol",
+          "score": 0.887,
+          "reason": "approximate"
+        },
+        {
+          "card": "Holy mould",
+          "score": 0.792,
+          "reason": "approximate"
+        },
+        {
+          "card": "Holy moleys",
+          "score": 0.757,
+          "reason": "approximate"
+        }
+      ]
+    },
+    {
+      "quest": "Animal Magnetism",
+      "label": "Polished Buttons",
+      "constantNames": [
+        "ANMA_P_BUTTONS"
+      ],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "Another Slice of H.A.M.",
+      "label": "Magic or ranged combat gear",
+      "constantNames": [],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "Biohazard",
+      "label": "Gas mask",
+      "constantNames": [
+        "GASMASK"
+      ],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Jonas mask",
+          "score": 0.808,
+          "reason": "approximate"
+        },
+        {
+          "card": "Cat mask",
+          "score": 0.78,
+          "reason": "approximate"
+        },
+        {
+          "card": "Masori mask",
+          "score": 0.767,
+          "reason": "approximate"
+        }
+      ]
+    },
+    {
+      "quest": "Bone Voyage",
+      "label": "Marrentill potion (unf)",
+      "constantNames": [
+        "MARRENTILLVIAL"
+      ],
+      "status": "strong",
+      "strongMatches": [
+        {
+          "card": "Marrentill potion",
+          "score": 1.0,
+          "reason": "normalized exact"
+        }
+      ],
+      "possibleMatches": [
+        {
+          "card": "Marrentill",
+          "score": 0.86,
+          "reason": "card name appears in label"
+        },
+        {
+          "card": "Marrentill tar",
+          "score": 0.804,
+          "reason": "approximate"
+        },
+        {
+          "card": "Egniol potion",
+          "score": 0.763,
+          "reason": "approximate"
+        }
+      ]
+    },
+    {
+      "quest": "Clock Tower",
+      "label": "Bucket of Water or a pair of ice gloves or smiths gloves(i)",
+      "constantNames": [
+        "BUCKET_WATER",
+        "ICE_GLOVES",
+        "SMITHING_UNIFORM_GLOVES_ICE"
+      ],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Bucket",
+          "score": 0.86,
+          "reason": "card name appears in label"
+        },
+        {
+          "card": "Bucket of water",
+          "score": 0.86,
+          "reason": "card name appears in label"
+        },
+        {
+          "card": "Smiths gloves",
+          "score": 0.86,
+          "reason": "card name appears in label"
+        }
+      ]
+    },
+    {
+      "quest": "Contact!",
+      "label": "Combat gear, preferably magic/ranged",
+      "constantNames": [],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "Contact!",
+      "label": "Prayer potions",
+      "constantNames": [
+        "_4DOSEPRAYERRESTORE",
+        "_3DOSEPRAYERRESTORE",
+        "_2DOSEPRAYERRESTORE",
+        "_1DOSEPRAYERRESTORE",
+        "_4DOSE2RESTORE",
+        "_3DOSE2RESTORE",
+        "_2DOSE2RESTORE",
+        "_1DOSE2RESTORE",
+        "HUNTER_MIX_MOONMOTH_2DOSE",
+        "HUNTER_MIX_MOONMOTH_1DOSE",
+        "BUTTERFLY_JAR_MOONMOTH"
+      ],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Prayer potion",
+          "score": 0.95,
+          "reason": "approximate"
+        },
+        {
+          "card": "Prayer book",
+          "score": 0.75,
+          "reason": "approximate"
+        }
+      ]
+    },
+    {
+      "quest": "Creature of Fenkenstrain",
+      "label": "Armour and weapons defeat a level 51 monster and run past level 72 monsters",
+      "constantNames": [],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "Creature of Fenkenstrain",
+      "label": "Ghostspeak amulet",
+      "constantNames": [
+        "AMULET_OF_GHOSTSPEAK",
+        "AMULET_OF_GHOSTSPEAK_ENCHANTED",
+        "MORYTANIA_LEGS_MEDIUM",
+        "MORYTANIA_LEGS_HARD",
+        "MORYTANIA_LEGS_ELITE"
+      ],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Opal amulet",
+          "score": 0.744,
+          "reason": "approximate"
+        }
+      ]
+    },
+    {
+      "quest": "Current Affairs",
+      "label": "Charcoal",
+      "constantNames": [
+        "CHARCOAL"
+      ],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Juniper charcoal",
+          "score": 0.82,
+          "reason": "label appears in card name"
+        }
+      ]
+    },
+    {
+      "quest": "Death to the Dorgeshuun",
+      "label": "Magic or melee combat gear",
+      "constantNames": [],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "Defender of Varrock",
+      "label": "Combat gear and food",
+      "constantNames": [],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "Demon Slayer",
+      "label": "Armour",
+      "constantNames": [],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Bandos armour ornament kit",
+          "score": 0.82,
+          "reason": "label appears in card name"
+        },
+        {
+          "card": "Broken armour",
+          "score": 0.82,
+          "reason": "label appears in card name"
+        },
+        {
+          "card": "Crystal armour seed",
+          "score": 0.82,
+          "reason": "label appears in card name"
+        },
+        {
+          "card": "Damaged armour",
+          "score": 0.82,
+          "reason": "label appears in card name"
+        },
+        {
+          "card": "Moonclan armour",
+          "score": 0.82,
+          "reason": "label appears in card name"
+        }
+      ]
+    },
+    {
+      "quest": "Desert Treasure I",
+      "label": "Charcoal",
+      "constantNames": [
+        "CHARCOAL"
+      ],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Juniper charcoal",
+          "score": 0.82,
+          "reason": "label appears in card name"
+        }
+      ]
+    },
+    {
+      "quest": "Desert Treasure I",
+      "label": "Climbing boots",
+      "constantNames": [
+        "DEATH_CLIMBINGBOOTS",
+        "CLIMBING_BOOTS_G"
+      ],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Rock-climbing boots",
+          "score": 0.82,
+          "reason": "label appears in card name"
+        },
+        {
+          "card": "Climbing rope",
+          "score": 0.771,
+          "reason": "approximate"
+        },
+        {
+          "card": "Fighting boots",
+          "score": 0.744,
+          "reason": "approximate"
+        }
+      ]
+    },
+    {
+      "quest": "Desert Treasure I",
+      "label": "Facemask (or other face covering)",
+      "constantNames": [
+        "SLAYER_FACEMASK",
+        "SLAYER_HELM",
+        "SLAYER_HELM_I",
+        "SW_SLAYER_HELM_I",
+        "GASMASK"
+      ],
+      "status": "strong",
+      "strongMatches": [
+        {
+          "card": "Facemask",
+          "score": 1.0,
+          "reason": "normalized exact"
+        }
+      ],
+      "possibleMatches": []
+    },
+    {
+      "quest": "Desert Treasure I",
+      "label": "Garlic powder",
+      "constantNames": [
+        "FD_CRUSHED_GARLIC"
+      ],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Garlic",
+          "score": 0.86,
+          "reason": "card name appears in label"
+        }
+      ]
+    },
+    {
+      "quest": "Desert Treasure I",
+      "label": "Ice gloves/smiths gloves(i)",
+      "constantNames": [
+        "ICE_GLOVES",
+        "SMITHING_UNIFORM_GLOVES_ICE"
+      ],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Smiths gloves",
+          "score": 0.86,
+          "reason": "card name appears in label"
+        }
+      ]
+    },
+    {
+      "quest": "Desert Treasure I",
+      "label": "Spiked boots",
+      "constantNames": [
+        "DEATH_SPIKEDBOOTS"
+      ],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Spined boots",
+          "score": 0.947,
+          "reason": "approximate"
+        },
+        {
+          "card": "Pink boots",
+          "score": 0.848,
+          "reason": "approximate"
+        },
+        {
+          "card": "Spookier boots",
+          "score": 0.799,
+          "reason": "approximate"
+        },
+        {
+          "card": "Red boots",
+          "score": 0.792,
+          "reason": "approximate"
+        },
+        {
+          "card": "Gilded boots",
+          "score": 0.78,
+          "reason": "approximate"
+        }
+      ]
+    },
+    {
+      "quest": "Desert Treasure II - The Fallen Empire",
+      "label": "Blood runes",
+      "constantNames": [
+        "BLOODRUNE"
+      ],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Blood rune",
+          "score": 0.95,
+          "reason": "approximate"
+        }
+      ]
+    },
+    {
+      "quest": "Desert Treasure II - The Fallen Empire",
+      "label": "Combat gear",
+      "constantNames": [],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "Desert Treasure II - The Fallen Empire",
+      "label": "Death runes",
+      "constantNames": [
+        "DEATHRUNE"
+      ],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Death rune",
+          "score": 0.95,
+          "reason": "approximate"
+        }
+      ]
+    },
+    {
+      "quest": "Desert Treasure II - The Fallen Empire",
+      "label": "Fire runes",
+      "constantNames": [
+        "FIRERUNE"
+      ],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Fire rune",
+          "score": 0.95,
+          "reason": "approximate"
+        },
+        {
+          "card": "Fire rune pack",
+          "score": 0.78,
+          "reason": "approximate"
+        }
+      ]
+    },
+    {
+      "quest": "Desert Treasure II - The Fallen Empire",
+      "label": "Ring of visibility",
+      "constantNames": [
+        "FD_RING_VISIBILITY"
+      ],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "Desert Treasure II - The Fallen Empire",
+      "label": "Soul runes",
+      "constantNames": [
+        "SOULRUNE"
+      ],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Soul rune",
+          "score": 0.95,
+          "reason": "approximate"
+        },
+        {
+          "card": "Soul journey",
+          "score": 0.757,
+          "reason": "approximate"
+        }
+      ]
+    },
+    {
+      "quest": "Devious Minds",
+      "label": "Large/Colossal Pouch (non-degraded)",
+      "constantNames": [
+        "RCU_POUCH_LARGE",
+        "DEVIOUS_GLOWINGPOUCH",
+        "RCU_POUCH_COLOSSAL",
+        "DEVIOUS_GLOWINGPOUCH_COLOSSAL"
+      ],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Colossal pouch",
+          "score": 0.86,
+          "reason": "card name appears in label"
+        },
+        {
+          "card": "Large meat pouch",
+          "score": 0.782,
+          "reason": "approximate"
+        },
+        {
+          "card": "Large pouch",
+          "score": 0.77,
+          "reason": "approximate"
+        },
+        {
+          "card": "Large fur pouch",
+          "score": 0.746,
+          "reason": "approximate"
+        }
+      ]
+    },
+    {
+      "quest": "Dream Mentor",
+      "label": "a third type of food",
+      "constantNames": [],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "Dream Mentor",
+      "label": "Combat gear",
+      "constantNames": [],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "Dream Mentor",
+      "label": "Goutweed",
+      "constantNames": [
+        "EADGAR_GOUTWEED_HERB"
+      ],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "Dream Mentor",
+      "label": "Seal of passage",
+      "constantNames": [
+        "LUNAR_SEAL_OF_PASSAGE"
+      ],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Necklace of passage",
+          "score": 0.795,
+          "reason": "approximate"
+        }
+      ]
+    },
+    {
+      "quest": "Dream Mentor",
+      "label": "some other type of food",
+      "constantNames": [],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "Dream Mentor",
+      "label": "some type of food",
+      "constantNames": [],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "Eadgar's Ruse",
+      "label": "Climbing boots",
+      "constantNames": [
+        "DEATH_CLIMBINGBOOTS",
+        "CLIMBING_BOOTS_G"
+      ],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Rock-climbing boots",
+          "score": 0.82,
+          "reason": "label appears in card name"
+        },
+        {
+          "card": "Climbing rope",
+          "score": 0.771,
+          "reason": "approximate"
+        },
+        {
+          "card": "Fighting boots",
+          "score": 0.744,
+          "reason": "approximate"
+        }
+      ]
+    },
+    {
+      "quest": "Eadgar's Ruse",
+      "label": "Ranarr potion (unf)",
+      "constantNames": [
+        "RANARRVIAL"
+      ],
+      "status": "strong",
+      "strongMatches": [
+        {
+          "card": "Ranarr potion",
+          "score": 1.0,
+          "reason": "normalized exact"
+        }
+      ],
+      "possibleMatches": [
+        {
+          "card": "Prayer potion",
+          "score": 0.799,
+          "reason": "approximate"
+        },
+        {
+          "card": "Ranging potion",
+          "score": 0.771,
+          "reason": "approximate"
+        },
+        {
+          "card": "Stamina potion",
+          "score": 0.771,
+          "reason": "approximate"
+        },
+        {
+          "card": "Antifire potion",
+          "score": 0.744,
+          "reason": "approximate"
+        },
+        {
+          "card": "Tarromin potion",
+          "score": 0.744,
+          "reason": "approximate"
+        }
+      ]
+    },
+    {
+      "quest": "Elemental Workshop II",
+      "label": "Battered Key",
+      "constantNames": [
+        "ELEMENTAL_WORKSHOP_KEY"
+      ],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "Enakhra's Lament",
+      "label": "52 kg of sandstone",
+      "constantNames": [],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Sandstone",
+          "score": 0.86,
+          "reason": "card name appears in label"
+        }
+      ]
+    },
+    {
+      "quest": "Enakhra's Lament",
+      "label": "Granite (5kg)",
+      "constantNames": [
+        "ENAKH_GRANITE_MEDIUM"
+      ],
+      "status": "strong",
+      "strongMatches": [
+        {
+          "card": "Granite",
+          "score": 1.0,
+          "reason": "normalized exact"
+        }
+      ],
+      "possibleMatches": [
+        {
+          "card": "Granite body",
+          "score": 0.82,
+          "reason": "label appears in card name"
+        },
+        {
+          "card": "Granite boots",
+          "score": 0.82,
+          "reason": "label appears in card name"
+        },
+        {
+          "card": "Granite cannonball",
+          "score": 0.82,
+          "reason": "label appears in card name"
+        },
+        {
+          "card": "Granite clamp",
+          "score": 0.82,
+          "reason": "label appears in card name"
+        },
+        {
+          "card": "Granite dust",
+          "score": 0.82,
+          "reason": "label appears in card name"
+        }
+      ]
+    },
+    {
+      "quest": "Enakhra's Lament",
+      "label": "Runes for crumble undead spell",
+      "constantNames": [],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "Enakhra's Lament",
+      "label": "Runes to cast Fire Bolt or stronger",
+      "constantNames": [],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "Enakhra's Lament",
+      "label": "Runes to cast Wind Bolt or stronger",
+      "constantNames": [],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "Enlightened Journey",
+      "label": "Sack of potatoes (10)",
+      "constantNames": [
+        "SACK_POTATO_10"
+      ],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Potatoes",
+          "score": 0.86,
+          "reason": "card name appears in label"
+        },
+        {
+          "card": "Sack of coal",
+          "score": 0.744,
+          "reason": "approximate"
+        }
+      ]
+    },
+    {
+      "quest": "Enlightened Journey",
+      "label": "Unlit candle",
+      "constantNames": [
+        "UNLIT_CANDLE",
+        "UNLIT_BLACK_CANDLE"
+      ],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Lit candle",
+          "score": 0.939,
+          "reason": "approximate"
+        },
+        {
+          "card": "Candle",
+          "score": 0.86,
+          "reason": "card name appears in label"
+        }
+      ]
+    },
+    {
+      "quest": "Fairytale I - Growing Pains",
+      "label": "Dramen or lunar staff",
+      "constantNames": [
+        "DRAMEN_STAFF",
+        "LUNAR_MOONCLAN_LIMINAL_STAFF"
+      ],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Staff",
+          "score": 0.86,
+          "reason": "card name appears in label"
+        }
+      ]
+    },
+    {
+      "quest": "Fairytale I - Growing Pains",
+      "label": "Draynor skull",
+      "constantNames": [
+        "FAIRY_SKULL"
+      ],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "Fairytale I - Growing Pains",
+      "label": "Ghostspeak amulet",
+      "constantNames": [
+        "AMULET_OF_GHOSTSPEAK",
+        "AMULET_OF_GHOSTSPEAK_ENCHANTED",
+        "MORYTANIA_LEGS_MEDIUM",
+        "MORYTANIA_LEGS_HARD",
+        "MORYTANIA_LEGS_ELITE"
+      ],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Opal amulet",
+          "score": 0.744,
+          "reason": "approximate"
+        }
+      ]
+    },
+    {
+      "quest": "Fairytale II - Cure a Queen",
+      "label": "Dramen or lunar staff",
+      "constantNames": [
+        "DRAMEN_STAFF",
+        "LUNAR_MOONCLAN_LIMINAL_STAFF"
+      ],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Staff",
+          "score": 0.86,
+          "reason": "card name appears in label"
+        }
+      ]
+    },
+    {
+      "quest": "Family Crest",
+      "label": "At least one dose of antipoison or superantipoison",
+      "constantNames": [
+        "ANTIVENOM_4",
+        "ANTIVENOM_3",
+        "ANTIVENOM_2",
+        "ANTIVENOM_1",
+        "ANTIVENOM4",
+        "ANTIVENOM3",
+        "ANTIVENOM2",
+        "ANTIVENOM1",
+        "ANTIDOTE__4",
+        "ANTIDOTE__3",
+        "ANTIDOTE__2",
+        "ANTIDOTE__1",
+        "ANTIDOTE_4",
+        "ANTIDOTE_3",
+        "ANTIDOTE_2",
+        "ANTIDOTE_1",
+        "_4DOSE2ANTIPOISON",
+        "_3DOSE2ANTIPOISON",
+        "_2DOSE2ANTIPOISON",
+        "_1DOSE2ANTIPOISON",
+        "_4DOSEANTIPOISON",
+        "_3DOSEANTIPOISON",
+        "_2DOSEANTIPOISON",
+        "_1DOSEANTIPOISON",
+        "RELICYMS_BALM4",
+        "RELICYMS_BALM3",
+        "RELICYMS_BALM2",
+        "RELICYMS_BALM1",
+        "SANFEW_SALVE_4_DOSE",
+        "SANFEW_SALVE_3_DOSE",
+        "SANFEW_SALVE_2_DOSE",
+        "SANFEW_SALVE_1_DOSE",
+        "BRUTAL_RELICYMS_BALM2",
+        "BRUTAL_RELICYMS_BALM1",
+        "BRUTAL_2DOSEANTIPOISON",
+        "BRUTAL_1DOSEANTIPOISON",
+        "BRUTAL_ANTIDOTE_2",
+        "BRUTAL_ANTIDOTE_1"
+      ],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Antipoison",
+          "score": 0.86,
+          "reason": "card name appears in label"
+        },
+        {
+          "card": "Superantipoison",
+          "score": 0.86,
+          "reason": "card name appears in label"
+        }
+      ]
+    },
+    {
+      "quest": "Family Crest",
+      "label": "Runes for casting each of the 4 blast spells",
+      "constantNames": [],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "Fishing Contest",
+      "label": "Red Vine Worm",
+      "constantNames": [
+        "RED_VINE_WORM"
+      ],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "Forgettable Tale...",
+      "label": "A random item per player",
+      "constantNames": [],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "Garden of Tranquillity",
+      "label": "Normal/Super/Ultra compost",
+      "constantNames": [
+        "BUCKET_COMPOST",
+        "BUCKET_SUPERCOMPOST",
+        "BUCKET_ULTRACOMPOST"
+      ],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Compost",
+          "score": 0.86,
+          "reason": "card name appears in label"
+        }
+      ]
+    },
+    {
+      "quest": "Garden of Tranquillity",
+      "label": "Ring of Charos",
+      "constantNames": [
+        "RING_OF_CHAROS"
+      ],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Ring of coins",
+          "score": 0.845,
+          "reason": "approximate"
+        },
+        {
+          "card": "Ring of the gods",
+          "score": 0.763,
+          "reason": "approximate"
+        },
+        {
+          "card": "Ring of nature",
+          "score": 0.744,
+          "reason": "approximate"
+        },
+        {
+          "card": "Ring of recoil",
+          "score": 0.744,
+          "reason": "approximate"
+        }
+      ]
+    },
+    {
+      "quest": "Getting Ahead",
+      "label": "Any saw",
+      "constantNames": [
+        "POH_SAW",
+        "EYEGLO_CRYSTAL_SAW",
+        "WEARABLE_SAW"
+      ],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Amy's saw",
+          "score": 0.83,
+          "reason": "approximate"
+        }
+      ]
+    },
+    {
+      "quest": "Getting Ahead",
+      "label": "You can get all the required items during the quest.",
+      "constantNames": [],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "Ghosts Ahoy",
+      "label": "Ecto-token, OR 25 Ecto-Tokens and coins to travel by Charter Ship",
+      "constantNames": [
+        "ECTOTOKEN"
+      ],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Coins",
+          "score": 0.86,
+          "reason": "card name appears in label"
+        },
+        {
+          "card": "Ecto-token",
+          "score": 0.86,
+          "reason": "card name appears in label"
+        }
+      ]
+    },
+    {
+      "quest": "Ghosts Ahoy",
+      "label": "Ghostspeak amulet",
+      "constantNames": [
+        "AMULET_OF_GHOSTSPEAK"
+      ],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Opal amulet",
+          "score": 0.744,
+          "reason": "approximate"
+        }
+      ]
+    },
+    {
+      "quest": "Ghosts Ahoy",
+      "label": "Nettle tea",
+      "constantNames": [
+        "BOWL_NETTLETEA"
+      ],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "Goblin Diplomacy",
+      "label": "Orange dye",
+      "constantNames": [
+        "ORANGEDYE"
+      ],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Orange",
+          "score": 0.86,
+          "reason": "card name appears in label"
+        },
+        {
+          "card": "Orange cape",
+          "score": 0.792,
+          "reason": "approximate"
+        }
+      ]
+    },
+    {
+      "quest": "Grim Tales",
+      "label": "Combat gear and food",
+      "constantNames": [],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "Grim Tales",
+      "label": "Door key",
+      "constantNames": [
+        "WITCHES_DOORKEY"
+      ],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Dark key",
+          "score": 0.78,
+          "reason": "approximate"
+        },
+        {
+          "card": "Loot key",
+          "score": 0.78,
+          "reason": "approximate"
+        },
+        {
+          "card": "Moon key",
+          "score": 0.78,
+          "reason": "approximate"
+        }
+      ]
+    },
+    {
+      "quest": "Grim Tales",
+      "label": "Tarromin potion (unf)",
+      "constantNames": [
+        "TARROMINVIAL"
+      ],
+      "status": "strong",
+      "strongMatches": [
+        {
+          "card": "Tarromin potion",
+          "score": 1.0,
+          "reason": "normalized exact"
+        }
+      ],
+      "possibleMatches": [
+        {
+          "card": "Tarromin",
+          "score": 0.86,
+          "reason": "card name appears in label"
+        },
+        {
+          "card": "Stamina potion",
+          "score": 0.858,
+          "reason": "approximate"
+        },
+        {
+          "card": "Tarromin tar",
+          "score": 0.771,
+          "reason": "approximate"
+        },
+        {
+          "card": "Kwuarm potion",
+          "score": 0.744,
+          "reason": "approximate"
+        },
+        {
+          "card": "Ranarr potion",
+          "score": 0.744,
+          "reason": "approximate"
+        }
+      ]
+    },
+    {
+      "quest": "Grim Tales",
+      "label": "Watering can with at least 1 use",
+      "constantNames": [
+        "ZEAH_WATERINGCAN",
+        "WATERING_CAN_8",
+        "WATERING_CAN_7",
+        "WATERING_CAN_6",
+        "WATERING_CAN_5",
+        "WATERING_CAN_4",
+        "WATERING_CAN_3",
+        "WATERING_CAN_2",
+        "WATERING_CAN_1"
+      ],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Watering can",
+          "score": 0.86,
+          "reason": "card name appears in label"
+        }
+      ]
+    },
+    {
+      "quest": "Haunted Mine",
+      "label": "Combat gear",
+      "constantNames": [],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "Heroes' Quest",
+      "label": "A ranged or magic attack method",
+      "constantNames": [],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "Heroes' Quest",
+      "label": "Harralander potion (unf)",
+      "constantNames": [
+        "HARRALANDERVIAL"
+      ],
+      "status": "strong",
+      "strongMatches": [
+        {
+          "card": "Harralander potion",
+          "score": 1.0,
+          "reason": "normalized exact"
+        }
+      ],
+      "possibleMatches": [
+        {
+          "card": "Harralander",
+          "score": 0.86,
+          "reason": "card name appears in label"
+        },
+        {
+          "card": "Harralander tar",
+          "score": 0.818,
+          "reason": "approximate"
+        },
+        {
+          "card": "Elder potion",
+          "score": 0.763,
+          "reason": "approximate"
+        }
+      ]
+    },
+    {
+      "quest": "Heroes' Quest",
+      "label": "Ice gloves/Smiths gloves (i)",
+      "constantNames": [
+        "ICE_GLOVES",
+        "SMITHING_UNIFORM_GLOVES_ICE"
+      ],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Smiths gloves",
+          "score": 0.86,
+          "reason": "card name appears in label"
+        }
+      ]
+    },
+    {
+      "quest": "Holy Grail",
+      "label": "Excalibur",
+      "constantNames": [
+        "EXCALIBUR"
+      ],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "Horror from the Deep",
+      "label": "20+ casts of each element spell",
+      "constantNames": [],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "Icthlarin's Little Helper",
+      "label": "Any cat or kitten",
+      "constantNames": [
+        "WILEYCATOBJECT_HELL",
+        "WILEYCATOBJECT_LIGHT",
+        "WILEYCATOBJECT",
+        "WILEYCATOBJECT_BROWN",
+        "WILEYCATOBJECT_BLACK",
+        "WILEYCATOBJECT_BROWNGREY",
+        "WILEYCATOBJECT_BLUEGREY",
+        "LAZYCATOBJECT_HELL",
+        "LAZYCATOBJECT_LIGHT",
+        "LAZYCATOBJECT",
+        "LAZYCATOBJECT_BROWN",
+        "LAZYCATOBJECT_BLACK",
+        "LAZYCATOBJECT_BROWNGREY",
+        "LAZYCATOBJECT_BLUEGREY",
+        "GROWNCATOBJECT_HELL",
+        "GROWNCATOBJECT",
+        "GROWNCATOBJECT_LIGHT",
+        "GROWNCATOBJECT_BROWN",
+        "GROWNCATOBJECT_BLACK",
+        "GROWNCATOBJECT_BROWNGREY",
+        "GROWNCATOBJECT_BLUEGREY",
+        "KITTENOBJECT_HELL",
+        "KITTENOBJECT",
+        "KITTENOBJECT_LIGHT",
+        "KITTENOBJECT_BROWN",
+        "KITTENOBJECT_BLACK",
+        "KITTENOBJECT_BROWNGREY",
+        "KITTENOBJECT_BLUEGREY",
+        "OVERGROWNCATOBJECT_HELL",
+        "OVERGROWNCATOBJECT",
+        "OVERGROWNCATOBJECT_LIGHT",
+        "OVERGROWNCATOBJECT_BROWN",
+        "OVERGROWNCATOBJECT_BLACK",
+        "OVERGROWNCATOBJECT_BROWNGREY",
+        "OVERGROWNCATOBJECT_BLUEGREY"
+      ],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Kitten",
+          "score": 0.86,
+          "reason": "card name appears in label"
+        }
+      ]
+    },
+    {
+      "quest": "Icthlarin's Little Helper",
+      "label": "Bucket of sap",
+      "constantNames": [
+        "ICS_LITTLE_SAP_BUCKET"
+      ],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Bucket of sand",
+          "score": 0.919,
+          "reason": "approximate"
+        },
+        {
+          "card": "Bucket",
+          "score": 0.86,
+          "reason": "card name appears in label"
+        },
+        {
+          "card": "Bucket of slime",
+          "score": 0.816,
+          "reason": "approximate"
+        },
+        {
+          "card": "Bucket of water",
+          "score": 0.816,
+          "reason": "approximate"
+        },
+        {
+          "card": "Bucket of sandworms",
+          "score": 0.78,
+          "reason": "approximate"
+        }
+      ]
+    },
+    {
+      "quest": "Icthlarin's Little Helper",
+      "label": "Linen",
+      "constantNames": [
+        "ICS_LITTLE_LINEN"
+      ],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Bolt of linen",
+          "score": 0.82,
+          "reason": "label appears in card name"
+        },
+        {
+          "card": "Linen yarn",
+          "score": 0.82,
+          "reason": "label appears in card name"
+        }
+      ]
+    },
+    {
+      "quest": "Icthlarin's Little Helper",
+      "label": "Waterskin(4), bring a few to avoid drinking it",
+      "constantNames": [
+        "WATER_SKIN4"
+      ],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Waterskin",
+          "score": 0.86,
+          "reason": "card name appears in label"
+        }
+      ]
+    },
+    {
+      "quest": "Imp Catcher",
+      "label": "Black bead",
+      "constantNames": [
+        "BLACK_BEAD"
+      ],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Black halberd",
+          "score": 0.813,
+          "reason": "approximate"
+        },
+        {
+          "card": "Black beret",
+          "score": 0.792,
+          "reason": "approximate"
+        },
+        {
+          "card": "Black spear",
+          "score": 0.792,
+          "reason": "approximate"
+        },
+        {
+          "card": "Black headband",
+          "score": 0.78,
+          "reason": "approximate"
+        },
+        {
+          "card": "Black axe",
+          "score": 0.767,
+          "reason": "approximate"
+        }
+      ]
+    },
+    {
+      "quest": "Imp Catcher",
+      "label": "Red bead",
+      "constantNames": [
+        "RED_BEAD"
+      ],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "Imp Catcher",
+      "label": "White bead",
+      "constantNames": [
+        "WHITE_BEAD"
+      ],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "White halberd",
+          "score": 0.813,
+          "reason": "approximate"
+        },
+        {
+          "card": "White beret",
+          "score": 0.792,
+          "reason": "approximate"
+        },
+        {
+          "card": "White headband",
+          "score": 0.78,
+          "reason": "approximate"
+        },
+        {
+          "card": "White boater",
+          "score": 0.757,
+          "reason": "approximate"
+        },
+        {
+          "card": "White battleaxe",
+          "score": 0.75,
+          "reason": "approximate"
+        }
+      ]
+    },
+    {
+      "quest": "Imp Catcher",
+      "label": "Yellow bead",
+      "constantNames": [
+        "YELLOW_BEAD"
+      ],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Yellow dye",
+          "score": 0.792,
+          "reason": "approximate"
+        },
+        {
+          "card": "Yellow egg",
+          "score": 0.792,
+          "reason": "approximate"
+        },
+        {
+          "card": "Yellow hat",
+          "score": 0.792,
+          "reason": "approximate"
+        },
+        {
+          "card": "Yellow cape",
+          "score": 0.757,
+          "reason": "approximate"
+        },
+        {
+          "card": "Yellow feather",
+          "score": 0.75,
+          "reason": "approximate"
+        }
+      ]
+    },
+    {
+      "quest": "In Search of the Myreque",
+      "label": "Charges in a druid pouch",
+      "constantNames": [
+        "DRUID_POUCH"
+      ],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "In Search of the Myreque",
+      "label": "Ring of Charos (a)",
+      "constantNames": [
+        "RING_OF_CHAROS_UNLOCKED"
+      ],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Ring of coins",
+          "score": 0.845,
+          "reason": "approximate"
+        },
+        {
+          "card": "Ring of the gods",
+          "score": 0.763,
+          "reason": "approximate"
+        },
+        {
+          "card": "Ring of nature",
+          "score": 0.744,
+          "reason": "approximate"
+        },
+        {
+          "card": "Ring of recoil",
+          "score": 0.744,
+          "reason": "approximate"
+        }
+      ]
+    },
+    {
+      "quest": "King's Ransom",
+      "label": "Animate rock scroll",
+      "constantNames": [
+        "FAVOUR_ANIMATE_ROCK"
+      ],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "King's Ransom",
+      "label": "Any granite",
+      "constantNames": [
+        "ENAKH_GRANITE_SMALL",
+        "ENAKH_GRANITE_MEDIUM",
+        "ENAKH_GRANITE_TINY"
+      ],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Granite",
+          "score": 0.86,
+          "reason": "card name appears in label"
+        }
+      ]
+    },
+    {
+      "quest": "Land of the Goblins",
+      "label": "Combat gear",
+      "constantNames": [],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "Land of the Goblins",
+      "label": "Orange dye",
+      "constantNames": [
+        "ORANGEDYE"
+      ],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Orange",
+          "score": 0.86,
+          "reason": "card name appears in label"
+        },
+        {
+          "card": "Orange cape",
+          "score": 0.792,
+          "reason": "approximate"
+        }
+      ]
+    },
+    {
+      "quest": "Land of the Goblins",
+      "label": "Toadflax potion (unf)",
+      "constantNames": [
+        "TOADFLAXVIAL"
+      ],
+      "status": "strong",
+      "strongMatches": [
+        {
+          "card": "Toadflax potion",
+          "score": 1.0,
+          "reason": "normalized exact"
+        }
+      ],
+      "possibleMatches": [
+        {
+          "card": "Toadflax",
+          "score": 0.86,
+          "reason": "card name appears in label"
+        }
+      ]
+    },
+    {
+      "quest": "Legends' Quest",
+      "label": "Ardrigal",
+      "constantNames": [
+        "ARDRIGAL"
+      ],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "Legends' Quest",
+      "label": "Charcoal",
+      "constantNames": [
+        "CHARCOAL"
+      ],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Juniper charcoal",
+          "score": 0.82,
+          "reason": "label appears in card name"
+        }
+      ]
+    },
+    {
+      "quest": "Legends' Quest",
+      "label": "Combat gear, food and potions",
+      "constantNames": [],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "Legends' Quest",
+      "label": "Fire runes",
+      "constantNames": [
+        "FIRERUNE"
+      ],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Fire rune",
+          "score": 0.95,
+          "reason": "approximate"
+        },
+        {
+          "card": "Fire rune pack",
+          "score": 0.78,
+          "reason": "approximate"
+        }
+      ]
+    },
+    {
+      "quest": "Legends' Quest",
+      "label": "Radimus notes",
+      "constantNames": [
+        "THKARAMJAMAP",
+        "THKARAMJAMAPCOMP"
+      ],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "Legends' Quest",
+      "label": "Snake weed",
+      "constantNames": [
+        "SNAKE_WEED"
+      ],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "Lunar Diplomacy",
+      "label": "Dramen staff",
+      "constantNames": [
+        "DRAMEN_STAFF"
+      ],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Staff",
+          "score": 0.86,
+          "reason": "card name appears in label"
+        },
+        {
+          "card": "Siren's staff",
+          "score": 0.78,
+          "reason": "approximate"
+        },
+        {
+          "card": "Saradomin staff",
+          "score": 0.771,
+          "reason": "approximate"
+        },
+        {
+          "card": "Ancient staff",
+          "score": 0.75,
+          "reason": "approximate"
+        }
+      ]
+    },
+    {
+      "quest": "Making Friends with My Arm",
+      "label": "Cadava berries",
+      "constantNames": [
+        "CADAVABERRIES"
+      ],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Caerula berries",
+          "score": 0.789,
+          "reason": "approximate"
+        }
+      ]
+    },
+    {
+      "quest": "Making Friends with My Arm",
+      "label": "Combat gear, preferably ranged or melee",
+      "constantNames": [],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "Making History",
+      "label": "Ghostspeak amulet",
+      "constantNames": [
+        "AMULET_OF_GHOSTSPEAK",
+        "AMULET_OF_GHOSTSPEAK_ENCHANTED",
+        "MORYTANIA_LEGS_MEDIUM",
+        "MORYTANIA_LEGS_HARD",
+        "MORYTANIA_LEGS_ELITE"
+      ],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Opal amulet",
+          "score": 0.744,
+          "reason": "approximate"
+        }
+      ]
+    },
+    {
+      "quest": "Merlin's Crystal",
+      "label": "Bucket of wax",
+      "constantNames": [
+        "BUCKET_WAX"
+      ],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Bucket of water",
+          "score": 0.887,
+          "reason": "approximate"
+        },
+        {
+          "card": "Bucket",
+          "score": 0.86,
+          "reason": "card name appears in label"
+        },
+        {
+          "card": "Bucket of sand",
+          "score": 0.845,
+          "reason": "approximate"
+        },
+        {
+          "card": "Bucket of milk",
+          "score": 0.771,
+          "reason": "approximate"
+        },
+        {
+          "card": "Bucket of slime",
+          "score": 0.744,
+          "reason": "approximate"
+        }
+      ]
+    },
+    {
+      "quest": "Merlin's Crystal",
+      "label": "Combat gear + food for Sir Mordred (level 39)",
+      "constantNames": [],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "Monkey Madness I",
+      "label": "Monkey bones or corpse",
+      "constantNames": [
+        "MM_NORMAL_MONKEY_BONES",
+        "TBWT_MONKEY_CORPSE"
+      ],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Bones",
+          "score": 0.86,
+          "reason": "card name appears in label"
+        },
+        {
+          "card": "Monkey bones",
+          "score": 0.86,
+          "reason": "card name appears in label"
+        }
+      ]
+    },
+    {
+      "quest": "Monkey Madness II",
+      "label": "M'speak amulet",
+      "constantNames": [
+        "MM_AMULET_OF_MONKEY_SPEAK"
+      ],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Opal amulet",
+          "score": 0.78,
+          "reason": "approximate"
+        },
+        {
+          "card": "Emerald amulet",
+          "score": 0.771,
+          "reason": "approximate"
+        },
+        {
+          "card": "Topaz amulet",
+          "score": 0.75,
+          "reason": "approximate"
+        },
+        {
+          "card": "Sapphire amulet",
+          "score": 0.744,
+          "reason": "approximate"
+        }
+      ]
+    },
+    {
+      "quest": "Monkey Madness II",
+      "label": "Monkey talisman",
+      "constantNames": [
+        "MM_MONKEY_TALISMAN"
+      ],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Body talisman",
+          "score": 0.816,
+          "reason": "approximate"
+        },
+        {
+          "card": "Mind talisman",
+          "score": 0.816,
+          "reason": "approximate"
+        },
+        {
+          "card": "Monkey tail",
+          "score": 0.799,
+          "reason": "approximate"
+        },
+        {
+          "card": "Nature talisman",
+          "score": 0.763,
+          "reason": "approximate"
+        },
+        {
+          "card": "Fire talisman",
+          "score": 0.744,
+          "reason": "approximate"
+        }
+      ]
+    },
+    {
+      "quest": "Monkey Madness II",
+      "label": "Ninja greegree",
+      "constantNames": [
+        "MM_MONKEY_GREEGREE_FOR_SMALL_NINJA_MONKEY",
+        "MM_MONKEY_GREEGREE_FOR_MEDIUM_NINJA_MONKEY"
+      ],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Gorilla greegree",
+          "score": 0.763,
+          "reason": "approximate"
+        }
+      ]
+    },
+    {
+      "quest": "Monkey Madness II",
+      "label": "Translation book",
+      "constantNames": [
+        "GRANDTREE_TRANSLATIONBOOK"
+      ],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "Mourning's End Part I",
+      "label": "Barrel of coal tar",
+      "constantNames": [
+        "REGICIDE_BARREL_TAR"
+      ],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "Mourning's End Part I",
+      "label": "Barrel of naphtha",
+      "constantNames": [
+        "REGICIDE_BARREL_NAPHTHA"
+      ],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "Mourning's End Part I",
+      "label": "Ogre bellows",
+      "constantNames": [
+        "EMPTY_OGRE_BELLOWS",
+        "FILLED_OGRE_BELLOW1",
+        "FILLED_OGRE_BELLOW2",
+        "FILLED_OGRE_BELLOW3"
+      ],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "Mourning's End Part I",
+      "label": "Rotten apple",
+      "constantNames": [
+        "ROTTENAPPLES"
+      ],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "Mourning's End Part II",
+      "label": "Gas mask",
+      "constantNames": [
+        "GASMASK"
+      ],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Jonas mask",
+          "score": 0.808,
+          "reason": "approximate"
+        },
+        {
+          "card": "Cat mask",
+          "score": 0.78,
+          "reason": "approximate"
+        },
+        {
+          "card": "Masori mask",
+          "score": 0.767,
+          "reason": "approximate"
+        }
+      ]
+    },
+    {
+      "quest": "Mourning's End Part II",
+      "label": "Mourner boots",
+      "constantNames": [
+        "MOURNING_MOURNER_BOOTS"
+      ],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Ornate boots",
+          "score": 0.83,
+          "reason": "approximate"
+        },
+        {
+          "card": "Ranger boots",
+          "score": 0.83,
+          "reason": "approximate"
+        },
+        {
+          "card": "Runner boots",
+          "score": 0.83,
+          "reason": "approximate"
+        },
+        {
+          "card": "Rune boots",
+          "score": 0.813,
+          "reason": "approximate"
+        },
+        {
+          "card": "Rogue boots",
+          "score": 0.78,
+          "reason": "approximate"
+        }
+      ]
+    },
+    {
+      "quest": "Mourning's End Part II",
+      "label": "Mourner cloak",
+      "constantNames": [
+        "MOURNING_MOURNER_CLOAK"
+      ],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "Mourning's End Part II",
+      "label": "Mourner gloves",
+      "constantNames": [
+        "MOURNING_MOURNER_GLOVES"
+      ],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Ornate gloves",
+          "score": 0.845,
+          "reason": "approximate"
+        },
+        {
+          "card": "Ranger gloves",
+          "score": 0.845,
+          "reason": "approximate"
+        },
+        {
+          "card": "Rune gloves",
+          "score": 0.83,
+          "reason": "approximate"
+        },
+        {
+          "card": "Rogue gloves",
+          "score": 0.799,
+          "reason": "approximate"
+        },
+        {
+          "card": "Red gloves",
+          "score": 0.78,
+          "reason": "approximate"
+        }
+      ]
+    },
+    {
+      "quest": "Mourning's End Part II",
+      "label": "Mourner top",
+      "constantNames": [
+        "MOURNING_MOURNER_TOP"
+      ],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Ornate top",
+          "score": 0.792,
+          "reason": "approximate"
+        }
+      ]
+    },
+    {
+      "quest": "Mourning's End Part II",
+      "label": "Mourner trousers",
+      "constantNames": [
+        "MOURNING_MOURNER_LEGS"
+      ],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Rogue trousers",
+          "score": 0.83,
+          "reason": "approximate"
+        },
+        {
+          "card": "Carpenter's trousers",
+          "score": 0.773,
+          "reason": "approximate"
+        },
+        {
+          "card": "Nutcracker trousers",
+          "score": 0.773,
+          "reason": "approximate"
+        },
+        {
+          "card": "Clown trousers",
+          "score": 0.763,
+          "reason": "approximate"
+        },
+        {
+          "card": "Clue hunter trousers",
+          "score": 0.752,
+          "reason": "approximate"
+        }
+      ]
+    },
+    {
+      "quest": "My Arm's Big Adventure",
+      "label": "Climbing boots",
+      "constantNames": [
+        "DEATH_CLIMBINGBOOTS",
+        "CLIMBING_BOOTS_G"
+      ],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Rock-climbing boots",
+          "score": 0.82,
+          "reason": "label appears in card name"
+        },
+        {
+          "card": "Climbing rope",
+          "score": 0.771,
+          "reason": "approximate"
+        },
+        {
+          "card": "Fighting boots",
+          "score": 0.744,
+          "reason": "approximate"
+        }
+      ]
+    },
+    {
+      "quest": "My Arm's Big Adventure",
+      "label": "Ugthanki dung",
+      "constantNames": [
+        "FEUD_CAMEL_POOH_BUCKET"
+      ],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "Nature Spirit",
+      "label": "Ghostspeak amulet",
+      "constantNames": [
+        "AMULET_OF_GHOSTSPEAK"
+      ],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Opal amulet",
+          "score": 0.744,
+          "reason": "approximate"
+        }
+      ]
+    },
+    {
+      "quest": "Perilous Moons",
+      "label": "Combat armour with high defensive bonuses",
+      "constantNames": [],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "Plague City",
+      "label": "Dwellberries",
+      "constantNames": [
+        "DWELLBERRIES"
+      ],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "Rag and Bone Man II",
+      "label": "Ice coolers",
+      "constantNames": [
+        "SLAYER_ICY_WATER"
+      ],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Ice cooler",
+          "score": 0.95,
+          "reason": "approximate"
+        }
+      ]
+    },
+    {
+      "quest": "Ratcatchers",
+      "label": "A non-overgrown cat",
+      "constantNames": [
+        "WILEYCATOBJECT_HELL",
+        "WILEYCATOBJECT_LIGHT",
+        "WILEYCATOBJECT",
+        "WILEYCATOBJECT_BROWN",
+        "WILEYCATOBJECT_BLACK",
+        "WILEYCATOBJECT_BROWNGREY",
+        "WILEYCATOBJECT_BLUEGREY",
+        "LAZYCATOBJECT_HELL",
+        "LAZYCATOBJECT_LIGHT",
+        "LAZYCATOBJECT",
+        "LAZYCATOBJECT_BROWN",
+        "LAZYCATOBJECT_BLACK",
+        "LAZYCATOBJECT_BROWNGREY",
+        "LAZYCATOBJECT_BLUEGREY",
+        "GROWNCATOBJECT_HELL",
+        "GROWNCATOBJECT",
+        "GROWNCATOBJECT_LIGHT",
+        "GROWNCATOBJECT_BROWN",
+        "GROWNCATOBJECT_BLACK",
+        "GROWNCATOBJECT_BROWNGREY",
+        "GROWNCATOBJECT_BLUEGREY",
+        "KITTENOBJECT_HELL",
+        "KITTENOBJECT",
+        "KITTENOBJECT_LIGHT",
+        "KITTENOBJECT_BROWN",
+        "KITTENOBJECT_BLACK",
+        "KITTENOBJECT_BROWNGREY",
+        "KITTENOBJECT_BLUEGREY"
+      ],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Overgrown cat",
+          "score": 0.86,
+          "reason": "card name appears in label"
+        }
+      ]
+    },
+    {
+      "quest": "Ratcatchers",
+      "label": "Catspeak amulet",
+      "constantNames": [
+        "ICS_LITTLE_AMULET_OF_CATSPEAK",
+        "TWOCATS_AMULETOFCATSPEAK"
+      ],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "Ratcatchers",
+      "label": "Empty vial",
+      "constantNames": [
+        "VIAL_EMPTY"
+      ],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Empty gourd vial",
+          "score": 0.829,
+          "reason": "approximate"
+        },
+        {
+          "card": "Empty vial pack",
+          "score": 0.82,
+          "reason": "label appears in card name"
+        }
+      ]
+    },
+    {
+      "quest": "Ratcatchers",
+      "label": "Pot of weeds",
+      "constantNames": [
+        "RATCATCHERS_WEEDPOT"
+      ],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Weeds",
+          "score": 0.86,
+          "reason": "card name appears in label"
+        }
+      ]
+    },
+    {
+      "quest": "Ratcatchers",
+      "label": "Snake charm",
+      "constantNames": [
+        "SNAKE_FLUTE"
+      ],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "Romeo & Juliet",
+      "label": "Cadava berries",
+      "constantNames": [
+        "CADAVABERRIES"
+      ],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Caerula berries",
+          "score": 0.789,
+          "reason": "approximate"
+        }
+      ]
+    },
+    {
+      "quest": "Roving Elves",
+      "label": "Glarial's pebble (obtainable in quest)",
+      "constantNames": [
+        "GLARIALS_PEBBLE_WATERFALL_QUEST"
+      ],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "Roving Elves",
+      "label": "Key (obtainable in quest)",
+      "constantNames": [
+        "GOLRIE_KEY_WATERFALL_QUEST"
+      ],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "Royal Trouble",
+      "label": "Combat gear",
+      "constantNames": [],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "Rum Deal",
+      "label": "Combat gear",
+      "constantNames": [],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "Scrambled!",
+      "label": "Combat gear",
+      "constantNames": [],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "Secrets of the North",
+      "label": "Combat Gear",
+      "constantNames": [],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "Shades of Mort'ton",
+      "label": "Tarromin potion (unf)",
+      "constantNames": [
+        "TARROMINVIAL"
+      ],
+      "status": "strong",
+      "strongMatches": [
+        {
+          "card": "Tarromin potion",
+          "score": 1.0,
+          "reason": "normalized exact"
+        }
+      ],
+      "possibleMatches": [
+        {
+          "card": "Tarromin",
+          "score": 0.86,
+          "reason": "card name appears in label"
+        },
+        {
+          "card": "Stamina potion",
+          "score": 0.858,
+          "reason": "approximate"
+        },
+        {
+          "card": "Tarromin tar",
+          "score": 0.771,
+          "reason": "approximate"
+        },
+        {
+          "card": "Kwuarm potion",
+          "score": 0.744,
+          "reason": "approximate"
+        },
+        {
+          "card": "Ranarr potion",
+          "score": 0.744,
+          "reason": "approximate"
+        }
+      ]
+    },
+    {
+      "quest": "Shadow of the Storm",
+      "label": "Silverlight",
+      "constantNames": [
+        "SILVERLIGHT",
+        "AGRITH_SILVERLIGHT_DYED"
+      ],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "Sins of the Father",
+      "label": "Combat gear + food",
+      "constantNames": [],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "Sins of the Father",
+      "label": "Ivandis flail",
+      "constantNames": [
+        "IVANDIS_FLAIL"
+      ],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Verac's flail",
+          "score": 0.75,
+          "reason": "approximate"
+        }
+      ]
+    },
+    {
+      "quest": "Song of the Elves",
+      "label": "Gas mask",
+      "constantNames": [
+        "GASMASK"
+      ],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Jonas mask",
+          "score": 0.808,
+          "reason": "approximate"
+        },
+        {
+          "card": "Cat mask",
+          "score": 0.78,
+          "reason": "approximate"
+        },
+        {
+          "card": "Masori mask",
+          "score": 0.767,
+          "reason": "approximate"
+        }
+      ]
+    },
+    {
+      "quest": "Song of the Elves",
+      "label": "Mourner boots",
+      "constantNames": [
+        "MOURNING_MOURNER_BOOTS"
+      ],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Ornate boots",
+          "score": 0.83,
+          "reason": "approximate"
+        },
+        {
+          "card": "Ranger boots",
+          "score": 0.83,
+          "reason": "approximate"
+        },
+        {
+          "card": "Runner boots",
+          "score": 0.83,
+          "reason": "approximate"
+        },
+        {
+          "card": "Rune boots",
+          "score": 0.813,
+          "reason": "approximate"
+        },
+        {
+          "card": "Rogue boots",
+          "score": 0.78,
+          "reason": "approximate"
+        }
+      ]
+    },
+    {
+      "quest": "Song of the Elves",
+      "label": "Mourner cloak",
+      "constantNames": [
+        "MOURNING_MOURNER_CLOAK"
+      ],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "Song of the Elves",
+      "label": "Mourner gloves",
+      "constantNames": [
+        "MOURNING_MOURNER_GLOVES"
+      ],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Ornate gloves",
+          "score": 0.845,
+          "reason": "approximate"
+        },
+        {
+          "card": "Ranger gloves",
+          "score": 0.845,
+          "reason": "approximate"
+        },
+        {
+          "card": "Rune gloves",
+          "score": 0.83,
+          "reason": "approximate"
+        },
+        {
+          "card": "Rogue gloves",
+          "score": 0.799,
+          "reason": "approximate"
+        },
+        {
+          "card": "Red gloves",
+          "score": 0.78,
+          "reason": "approximate"
+        }
+      ]
+    },
+    {
+      "quest": "Song of the Elves",
+      "label": "Mourner top",
+      "constantNames": [
+        "MOURNING_MOURNER_TOP"
+      ],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Ornate top",
+          "score": 0.792,
+          "reason": "approximate"
+        }
+      ]
+    },
+    {
+      "quest": "Song of the Elves",
+      "label": "Mourner trousers",
+      "constantNames": [
+        "MOURNING_MOURNER_LEGS"
+      ],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Rogue trousers",
+          "score": 0.83,
+          "reason": "approximate"
+        },
+        {
+          "card": "Carpenter's trousers",
+          "score": 0.773,
+          "reason": "approximate"
+        },
+        {
+          "card": "Nutcracker trousers",
+          "score": 0.773,
+          "reason": "approximate"
+        },
+        {
+          "card": "Clown trousers",
+          "score": 0.763,
+          "reason": "approximate"
+        },
+        {
+          "card": "Clue hunter trousers",
+          "score": 0.752,
+          "reason": "approximate"
+        }
+      ]
+    },
+    {
+      "quest": "Spirits of the Elid",
+      "label": "Crush Weapon Style",
+      "constantNames": [],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "Spirits of the Elid",
+      "label": "Slash Weapon Style",
+      "constantNames": [],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "Spirits of the Elid",
+      "label": "Stab Weapon Style",
+      "constantNames": [],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Crystal weapon seed",
+          "score": 0.752,
+          "reason": "approximate"
+        }
+      ]
+    },
+    {
+      "quest": "Swan Song",
+      "label": "Pot lid",
+      "constantNames": [
+        "POTLID"
+      ],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "Tai Bwo Wannai Trio",
+      "label": "Ranged or Magic equipment to kill a level 3 monkey",
+      "constantNames": [],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "Tale of the Righteous",
+      "label": "Any ranged weapon + ammo",
+      "constantNames": [],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "Tale of the Righteous",
+      "label": "Runes for a few casts of a combat spell",
+      "constantNames": [],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "Tears of Guthix",
+      "label": "Sapphire lantern",
+      "constantNames": [
+        "TOG_SAPPHIRE_LANTERN_LIT"
+      ],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Sapphire",
+          "score": 0.86,
+          "reason": "card name appears in label"
+        },
+        {
+          "card": "Sapphire bolts",
+          "score": 0.763,
+          "reason": "approximate"
+        },
+        {
+          "card": "Sapphire necklace",
+          "score": 0.757,
+          "reason": "approximate"
+        }
+      ]
+    },
+    {
+      "quest": "The Corsair Curse",
+      "label": "Combat gear + food to defeat Ithoi (level 34), who uses magic",
+      "constantNames": [],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "The Curse of Arrav",
+      "label": "Dwellberries",
+      "constantNames": [
+        "DWELLBERRIES"
+      ],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "The Dig Site",
+      "label": "Charcoal",
+      "constantNames": [
+        "CHARCOAL"
+      ],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Juniper charcoal",
+          "score": 0.82,
+          "reason": "label appears in card name"
+        }
+      ]
+    },
+    {
+      "quest": "The Eyes of Glouphrie",
+      "label": "Bucket of sap",
+      "constantNames": [
+        "ICS_LITTLE_SAP_BUCKET"
+      ],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Bucket of sand",
+          "score": 0.919,
+          "reason": "approximate"
+        },
+        {
+          "card": "Bucket",
+          "score": 0.86,
+          "reason": "card name appears in label"
+        },
+        {
+          "card": "Bucket of slime",
+          "score": 0.816,
+          "reason": "approximate"
+        },
+        {
+          "card": "Bucket of water",
+          "score": 0.816,
+          "reason": "approximate"
+        },
+        {
+          "card": "Bucket of sandworms",
+          "score": 0.78,
+          "reason": "approximate"
+        }
+      ]
+    },
+    {
+      "quest": "The Feud",
+      "label": "Combat Gear bring Range or Mage Gear if safe spotting.",
+      "constantNames": [],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "The Final Dawn",
+      "label": "Melee Combat gear",
+      "constantNames": [],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "The Fremennik Exiles",
+      "label": "Astral runes",
+      "constantNames": [
+        "ASTRALRUNE"
+      ],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Astral rune",
+          "score": 0.95,
+          "reason": "approximate"
+        }
+      ]
+    },
+    {
+      "quest": "The Fremennik Exiles",
+      "label": "Combat gear",
+      "constantNames": [],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "The Fremennik Exiles",
+      "label": "Ice gloves or smiths gloves(i)",
+      "constantNames": [
+        "ICE_GLOVES",
+        "SMITHING_UNIFORM_GLOVES_ICE"
+      ],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Smiths gloves",
+          "score": 0.86,
+          "reason": "card name appears in label"
+        }
+      ]
+    },
+    {
+      "quest": "The Fremennik Exiles",
+      "label": "Pet rock",
+      "constantNames": [
+        "VT_USELESS_ROCK"
+      ],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "The Fremennik Exiles",
+      "label": "Seal of passage",
+      "constantNames": [
+        "LUNAR_SEAL_OF_PASSAGE"
+      ],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Necklace of passage",
+          "score": 0.795,
+          "reason": "approximate"
+        }
+      ]
+    },
+    {
+      "quest": "The Giant Dwarf",
+      "label": "Various ores and bars",
+      "constantNames": [],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "The Great Brain Robbery",
+      "label": "Diving apparatus",
+      "constantNames": [
+        "HUNDRED_PIRATE_DIVING_BACKPACK"
+      ],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "The Great Brain Robbery",
+      "label": "Fishbowl helmet",
+      "constantNames": [
+        "HUNDRED_PIRATE_DIVING_HELMET"
+      ],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Fishbowl",
+          "score": 0.86,
+          "reason": "card name appears in label"
+        }
+      ]
+    },
+    {
+      "quest": "The Great Brain Robbery",
+      "label": "Holy symbol",
+      "constantNames": [
+        "BLESSEDSTAR"
+      ],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Unholy symbol",
+          "score": 0.947,
+          "reason": "approximate"
+        },
+        {
+          "card": "Old symbol",
+          "score": 0.887,
+          "reason": "approximate"
+        },
+        {
+          "card": "Holy mould",
+          "score": 0.792,
+          "reason": "approximate"
+        },
+        {
+          "card": "Holy moleys",
+          "score": 0.757,
+          "reason": "approximate"
+        }
+      ]
+    },
+    {
+      "quest": "The Great Brain Robbery",
+      "label": "No pet following you or in your inventory",
+      "constantNames": [],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "The Great Brain Robbery",
+      "label": "Ring of Charos",
+      "constantNames": [
+        "RING_OF_CHAROS",
+        "RING_OF_CHAROS_UNLOCKED"
+      ],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Ring of coins",
+          "score": 0.845,
+          "reason": "approximate"
+        },
+        {
+          "card": "Ring of the gods",
+          "score": 0.763,
+          "reason": "approximate"
+        },
+        {
+          "card": "Ring of nature",
+          "score": 0.744,
+          "reason": "approximate"
+        },
+        {
+          "card": "Ring of recoil",
+          "score": 0.744,
+          "reason": "approximate"
+        }
+      ]
+    },
+    {
+      "quest": "The Great Brain Robbery",
+      "label": "Wooden cat",
+      "constantNames": [
+        "BRAIN_INV_WOODEN_CAT"
+      ],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Wooden stock",
+          "score": 0.757,
+          "reason": "approximate"
+        }
+      ]
+    },
+    {
+      "quest": "The Heart of Darkness",
+      "label": "Combat gear",
+      "constantNames": [],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "The Heart of Darkness",
+      "label": "Prayer potions",
+      "constantNames": [
+        "_4DOSEPRAYERRESTORE",
+        "_3DOSEPRAYERRESTORE",
+        "_2DOSEPRAYERRESTORE",
+        "_1DOSEPRAYERRESTORE",
+        "_4DOSE2RESTORE",
+        "_3DOSE2RESTORE",
+        "_2DOSE2RESTORE",
+        "_1DOSE2RESTORE",
+        "HUNTER_MIX_MOONMOTH_2DOSE",
+        "HUNTER_MIX_MOONMOTH_1DOSE",
+        "BUTTERFLY_JAR_MOONMOTH"
+      ],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Prayer potion",
+          "score": 0.95,
+          "reason": "approximate"
+        },
+        {
+          "card": "Prayer book",
+          "score": 0.75,
+          "reason": "approximate"
+        }
+      ]
+    },
+    {
+      "quest": "The Path of Glouphrie",
+      "label": "Combat equipment",
+      "constantNames": [],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "The Path of Glouphrie",
+      "label": "Prayer potions",
+      "constantNames": [
+        "_4DOSEPRAYERRESTORE",
+        "_3DOSEPRAYERRESTORE",
+        "_2DOSEPRAYERRESTORE",
+        "_1DOSEPRAYERRESTORE",
+        "_4DOSE2RESTORE",
+        "_3DOSE2RESTORE",
+        "_2DOSE2RESTORE",
+        "_1DOSE2RESTORE",
+        "HUNTER_MIX_MOONMOTH_2DOSE",
+        "HUNTER_MIX_MOONMOTH_1DOSE",
+        "BUTTERFLY_JAR_MOONMOTH"
+      ],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Prayer potion",
+          "score": 0.95,
+          "reason": "approximate"
+        },
+        {
+          "card": "Prayer book",
+          "score": 0.75,
+          "reason": "approximate"
+        }
+      ]
+    },
+    {
+      "quest": "The Path of Glouphrie",
+      "label": "Tree Gnome Village dungeon key",
+      "constantNames": [
+        "GOLRIE_KEY_WATERFALL_QUEST"
+      ],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "The Red Reef",
+      "label": "Combat gear",
+      "constantNames": [],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "The Red Reef",
+      "label": "Ranged/Mage combat gear to skip boat combat, or a boat with cannons to deal with pirates",
+      "constantNames": [],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "The Slug Menace",
+      "label": "Commorb (can get another from Sir Tiffy)",
+      "constantNames": [
+        "WANTED_CRYSTAL_BALL",
+        "SLUG2_CRYSTAL_BALL"
+      ],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "Throne of Miscellania",
+      "label": "Flowers",
+      "constantNames": [
+        "FLOWERS_WATERFALL_QUEST_RED",
+        "FLOWERS_WATERFALL_QUEST_YELLOW",
+        "FLOWERS_WATERFALL_QUEST_PURPLE",
+        "FLOWERS_WATERFALL_QUEST_ORANGE",
+        "FLOWERS_WATERFALL_QUEST_MIXED",
+        "FLOWERS_WATERFALL_QUEST",
+        "FLOWERS_WATERFALL_QUEST_BLACK",
+        "FLOWERS_WATERFALL_QUEST_WHITE",
+        "BREW_RED_FLOWER",
+        "BREW_BLUE_FLOWER"
+      ],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Assorted flowers",
+          "score": 0.82,
+          "reason": "label appears in card name"
+        },
+        {
+          "card": "Black flowers",
+          "score": 0.82,
+          "reason": "label appears in card name"
+        },
+        {
+          "card": "Blue flowers",
+          "score": 0.82,
+          "reason": "label appears in card name"
+        },
+        {
+          "card": "Gielinor's flora - flowers",
+          "score": 0.82,
+          "reason": "label appears in card name"
+        },
+        {
+          "card": "Mixed flowers",
+          "score": 0.82,
+          "reason": "label appears in card name"
+        }
+      ]
+    },
+    {
+      "quest": "Tree Gnome Village",
+      "label": "Combat gear (magic is best)",
+      "constantNames": [],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "Troll Romance",
+      "label": "Bucket of wax",
+      "constantNames": [
+        "BUCKET_WAX"
+      ],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Bucket of water",
+          "score": 0.887,
+          "reason": "approximate"
+        },
+        {
+          "card": "Bucket",
+          "score": 0.86,
+          "reason": "card name appears in label"
+        },
+        {
+          "card": "Bucket of sand",
+          "score": 0.845,
+          "reason": "approximate"
+        },
+        {
+          "card": "Bucket of milk",
+          "score": 0.771,
+          "reason": "approximate"
+        },
+        {
+          "card": "Bucket of slime",
+          "score": 0.744,
+          "reason": "approximate"
+        }
+      ]
+    },
+    {
+      "quest": "Troll Romance",
+      "label": "Climbing boots",
+      "constantNames": [
+        "DEATH_CLIMBINGBOOTS",
+        "CLIMBING_BOOTS_G"
+      ],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Rock-climbing boots",
+          "score": 0.82,
+          "reason": "label appears in card name"
+        },
+        {
+          "card": "Climbing rope",
+          "score": 0.771,
+          "reason": "approximate"
+        },
+        {
+          "card": "Fighting boots",
+          "score": 0.744,
+          "reason": "approximate"
+        }
+      ]
+    },
+    {
+      "quest": "Troll Romance",
+      "label": "Combat gear, food, and potions",
+      "constantNames": [],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "Troll Stronghold",
+      "label": "Climbing boots",
+      "constantNames": [
+        "DEATH_CLIMBINGBOOTS",
+        "CLIMBING_BOOTS_G"
+      ],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Rock-climbing boots",
+          "score": 0.82,
+          "reason": "label appears in card name"
+        },
+        {
+          "card": "Climbing rope",
+          "score": 0.771,
+          "reason": "approximate"
+        },
+        {
+          "card": "Fighting boots",
+          "score": 0.744,
+          "reason": "approximate"
+        }
+      ]
+    },
+    {
+      "quest": "Troubled Tortugans",
+      "label": "Combat gear",
+      "constantNames": [],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "Troubled Tortugans",
+      "label": "Prayer restore",
+      "constantNames": [
+        "_4DOSEPRAYERRESTORE",
+        "_3DOSEPRAYERRESTORE",
+        "_2DOSEPRAYERRESTORE",
+        "_1DOSEPRAYERRESTORE",
+        "_4DOSE2RESTORE",
+        "_3DOSE2RESTORE",
+        "_2DOSE2RESTORE",
+        "_1DOSE2RESTORE",
+        "HUNTER_MIX_MOONMOTH_2DOSE",
+        "HUNTER_MIX_MOONMOTH_1DOSE",
+        "BUTTERFLY_JAR_MOONMOTH"
+      ],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Super restore",
+          "score": 0.845,
+          "reason": "approximate"
+        }
+      ]
+    },
+    {
+      "quest": "Twilight's Promise",
+      "label": "Two combat styles",
+      "constantNames": [],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "Underground Pass",
+      "label": "Combat Equipment",
+      "constantNames": [],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "Vampyre Slayer",
+      "label": "Combat gear + food to defeat Count Draynor",
+      "constantNames": [],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "Wanted!",
+      "label": "Combat gear",
+      "constantNames": [],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "While Guthix Sleeps",
+      "label": "Fire runes",
+      "constantNames": [
+        "FIRERUNE"
+      ],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Fire rune",
+          "score": 0.95,
+          "reason": "approximate"
+        },
+        {
+          "card": "Fire rune pack",
+          "score": 0.78,
+          "reason": "approximate"
+        }
+      ]
+    },
+    {
+      "quest": "While Guthix Sleeps",
+      "label": "Lit sapphire lantern",
+      "constantNames": [
+        "TOG_SAPPHIRE_LANTERN_LIT"
+      ],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Sapphire",
+          "score": 0.86,
+          "reason": "card name appears in label"
+        }
+      ]
+    },
+    {
+      "quest": "While Guthix Sleeps",
+      "label": "Magic weapon",
+      "constantNames": [],
+      "status": "possible",
+      "strongMatches": [],
+      "possibleMatches": [
+        {
+          "card": "Magic potion",
+          "score": 0.78,
+          "reason": "approximate"
+        },
+        {
+          "card": "Magic fang",
+          "score": 0.757,
+          "reason": "approximate"
+        }
+      ]
+    },
+    {
+      "quest": "While Guthix Sleeps",
+      "label": "Melee weapon",
+      "constantNames": [],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "While Guthix Sleeps",
+      "label": "Ranged weapon",
+      "constantNames": [],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "While Guthix Sleeps",
+      "label": "Seed dibber (only if not done barb training)",
+      "constantNames": [
+        "DIBBER"
+      ],
+      "status": "strong",
+      "strongMatches": [
+        {
+          "card": "Seed dibber",
+          "score": 1.0,
+          "reason": "normalized exact"
+        }
+      ],
+      "possibleMatches": []
+    },
+    {
+      "quest": "Witch's House",
+      "label": "Combat gear and food for monsters up to level 53",
+      "constantNames": [],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    },
+    {
+      "quest": "Zogre Flesh Eaters",
+      "label": "Either brutal arrows or Crumble Undead for fighting Slash Bash",
+      "constantNames": [],
+      "status": "no plausible match",
+      "strongMatches": [],
+      "possibleMatches": []
+    }
+  ]
+}

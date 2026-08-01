@@ -907,7 +907,7 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 		// five-tick panel refresh.
 		if (!questStateInitialized || tickCounter % 25 == 0)
 		{
-			target.updateCompletedQuests(captureCompletedQuests());
+			target.updateQuestState(captureCompletedQuests(), captureQuestRoute());
 			questStateInitialized = true;
 		}
 		SwingUtilities.invokeLater(() ->
@@ -935,6 +935,22 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 			}
 		}
 		return Collections.unmodifiableSet(completed);
+	}
+
+	/**
+	 * Quest Helper identifies the Heroes' Quest route from BLACKARMGANG >= 4.
+	 * Before Shield of Arrav is complete, accept either branch rather than guessing.
+	 */
+	private QuestCatalog.RouteSelection captureQuestRoute()
+	{
+		if (client.getGameState() != GameState.LOGGED_IN
+			|| Quest.SHIELD_OF_ARRAV.getState(client) != QuestState.FINISHED)
+		{
+			return QuestCatalog.RouteSelection.UNKNOWN;
+		}
+		return client.getVarpValue(VarPlayerID.BLACKARMGANG) >= 4
+			? QuestCatalog.RouteSelection.BLACK_ARM
+			: QuestCatalog.RouteSelection.PHOENIX;
 	}
 
 	@Subscribe

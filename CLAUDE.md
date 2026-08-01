@@ -736,6 +736,8 @@ session: mini-plan + quiz first, 0.2.x release after owner test.
   SpriteManager for interface sprites. Custom paintComponent is fair game
   for gradients/rounded rows/banners. Rendering
   study notes: "D:\ClaudeFolder\RuneLite Research\osrs-tcg-overlay-techniques.md".
+- **0.3.0 quest-panel follow-up:** carry the quest-only search field added to
+  main into the redesigned panel when side-panel work resumes.
 - Time Tracking plugin interop: per-patch crop harvest restriction +
   compost-type discrimination by reading its persisted config state
   (same pattern as the osrs-tcg interop).

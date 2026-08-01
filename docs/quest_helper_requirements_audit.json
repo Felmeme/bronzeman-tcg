@@ -1,0 +1,5635 @@
+{
+  "source": {
+    "questHelperCommit": "5ea99d5ea9ba3fb096ebe7b5ed02d80883e9819d",
+    "questHelperVersion": "4.16.1",
+    "questHelperFullQuestEntries": 189,
+    "bronzemanFullQuestEntries": 180,
+    "exactNameMatches": 177
+  },
+  "catalogueDifferences": {
+    "questHelperOnlyNames": [
+      "RFD - Dwarf",
+      "RFD - Evil Dave",
+      "RFD - Finale",
+      "RFD - Lumbridge Guide",
+      "RFD - Monkey Ambassador",
+      "RFD - Pirate Pete",
+      "RFD - Sir Amik Varze",
+      "RFD - Skrach Uglogwee",
+      "RFD - Start",
+      "RFD - Wartface & Bentnoze",
+      "Shield of Arrav - Black Arm Gang",
+      "Shield of Arrav - Phoenix Gang"
+    ],
+    "bronzemanOnlyNames": [
+      "Recipe for Disaster",
+      "Shield of Arrav",
+      "The Blood Moon Rises"
+    ],
+    "knownRepresentationDifferences": {
+      "Recipe for Disaster": [
+        "RFD - Dwarf",
+        "RFD - Evil Dave",
+        "RFD - Finale",
+        "RFD - Lumbridge Guide",
+        "RFD - Monkey Ambassador",
+        "RFD - Pirate Pete",
+        "RFD - Sir Amik Varze",
+        "RFD - Skrach Uglogwee",
+        "RFD - Start",
+        "RFD - Wartface & Bentnoze"
+      ],
+      "Shield of Arrav": [
+        "Shield of Arrav - Black Arm Gang",
+        "Shield of Arrav - Phoenix Gang"
+      ]
+    }
+  },
+  "summary": {
+    "questsWithQuestHelperOnlyMandatoryCandidates": 39,
+    "questHelperOnlyMandatoryCandidateCount": 84,
+    "questsWithQuestHelperOnlyAlternativeCandidates": 13,
+    "questHelperOnlyAlternativeCandidateCount": 28,
+    "questsWithBronzemanOnlyItems": 95,
+    "bronzemanOnlyItemCount": 266,
+    "unresolvedQuestHelperLabelCount": 386
+  },
+  "comparisons": [
+    {
+      "quest": "A Kingdom Divided",
+      "questHelperCardBackedItems": [
+        "Dark essence block",
+        "Molten glass",
+        "Volcanic sulphur"
+      ],
+      "questHelperMandatoryItems": [
+        "Dark essence block",
+        "Molten glass",
+        "Volcanic sulphur"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Chisel",
+        "Dark essence block",
+        "Defence potion",
+        "Molten glass",
+        "Volcanic sulphur"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [
+        "Chisel",
+        "Defence potion"
+      ],
+      "unresolvedQuestHelperLabels": [
+        "Any axe",
+        "Combat gear",
+        "Decent food",
+        "Defence Potion (3) or (4)",
+        "Melee combat gear to fight Judge of Yama",
+        "Melee or range gear to fight Xamphur.",
+        "Runes/equipment to cast FIRE bolt or better"
+      ]
+    },
+    {
+      "quest": "A Night at the Theatre",
+      "questHelperCardBackedItems": [
+        "Saw"
+      ],
+      "questHelperMandatoryItems": [
+        "Saw"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Saw"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [],
+      "unresolvedQuestHelperLabels": [
+        "An axe",
+        "Combat gear",
+        "Food",
+        "Ghostspeak amulet",
+        "Ivandis/Blisterwood flail"
+      ]
+    },
+    {
+      "quest": "A Porcine of Interest",
+      "questHelperCardBackedItems": [
+        "Rope"
+      ],
+      "questHelperMandatoryItems": [
+        "Rope"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Knife",
+        "Rope"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [
+        "Knife"
+      ],
+      "unresolvedQuestHelperLabels": [
+        "A knife or slash weapon",
+        "Combat gear"
+      ]
+    },
+    {
+      "quest": "A Soul's Bane",
+      "questHelperCardBackedItems": [
+        "Rope"
+      ],
+      "questHelperMandatoryItems": [
+        "Rope"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Rope"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [],
+      "unresolvedQuestHelperLabels": [
+        "Combat gear + food"
+      ]
+    },
+    {
+      "quest": "A Tail of Two Cats",
+      "questHelperCardBackedItems": [
+        "Bucket of milk",
+        "Chocolate cake",
+        "Death rune",
+        "Desert robe",
+        "Desert shirt",
+        "Logs",
+        "Potato seed",
+        "Rake",
+        "Seed dibber",
+        "Shears",
+        "Tinderbox",
+        "Vial of water"
+      ],
+      "questHelperMandatoryItems": [
+        "Bucket of milk",
+        "Chocolate cake",
+        "Death rune",
+        "Desert robe",
+        "Desert shirt",
+        "Logs",
+        "Potato seed",
+        "Rake",
+        "Seed dibber",
+        "Shears",
+        "Tinderbox",
+        "Vial of water"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Bucket of milk",
+        "Cat",
+        "Chocolate cake",
+        "Death rune",
+        "Desert robe",
+        "Desert shirt",
+        "Druid's robe",
+        "Druid's robe top",
+        "Kitten",
+        "Logs",
+        "Potato seed",
+        "Rake",
+        "Seed dibber",
+        "Shears",
+        "Tinderbox",
+        "Vial of water"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [
+        "Cat",
+        "Druid's robe",
+        "Druid's robe top",
+        "Kitten"
+      ],
+      "unresolvedQuestHelperLabels": [
+        "A cat",
+        "Catspeak amulet"
+      ]
+    },
+    {
+      "quest": "A Taste of Hope",
+      "questHelperCardBackedItems": [
+        "Air rune",
+        "Chisel",
+        "Coins",
+        "Cosmic rune",
+        "Emerald",
+        "Vial of water"
+      ],
+      "questHelperMandatoryItems": [
+        "Chisel",
+        "Coins",
+        "Emerald",
+        "Vial of water"
+      ],
+      "questHelperAlternativeItems": [
+        "Air rune",
+        "Cosmic rune"
+      ],
+      "bronzemanItemCards": [
+        "Chisel",
+        "Coins",
+        "Emerald",
+        "Knife",
+        "Pestle and mortar",
+        "Vial of water"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [
+        "Air rune",
+        "Cosmic rune"
+      ],
+      "bronzemanOnly": [
+        "Knife",
+        "Pestle and mortar"
+      ],
+      "unresolvedQuestHelperLabels": [
+        "Air staff",
+        "Combat gear",
+        "Emerald enchant tablet",
+        "Rod of Ivandis"
+      ]
+    },
+    {
+      "quest": "Animal Magnetism",
+      "questHelperCardBackedItems": [
+        "Ecto-token",
+        "Hammer",
+        "Hard leather",
+        "Iron bar",
+        "Mithril axe"
+      ],
+      "questHelperMandatoryItems": [
+        "Ecto-token",
+        "Hammer",
+        "Hard leather",
+        "Iron bar",
+        "Mithril axe"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Ecto-token",
+        "Hammer",
+        "Hard leather",
+        "Iron bar",
+        "Mithril axe"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [],
+      "unresolvedQuestHelperLabels": [
+        "Ghostspeak amulet",
+        "Holy Symbol",
+        "Polished Buttons"
+      ]
+    },
+    {
+      "quest": "Another Slice of H.A.M.",
+      "questHelperCardBackedItems": [
+        "Rope",
+        "Tinderbox"
+      ],
+      "questHelperMandatoryItems": [
+        "Rope",
+        "Tinderbox"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [],
+      "questHelperOnlyMandatory": [
+        "Rope",
+        "Tinderbox"
+      ],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [],
+      "unresolvedQuestHelperLabels": [
+        "A light source",
+        "Magic or ranged combat gear"
+      ]
+    },
+    {
+      "quest": "At First Light",
+      "questHelperCardBackedItems": [
+        "Box trap",
+        "Costume needle",
+        "Hammer",
+        "Jerboa tail",
+        "Needle"
+      ],
+      "questHelperMandatoryItems": [
+        "Hammer"
+      ],
+      "questHelperAlternativeItems": [
+        "Box trap",
+        "Costume needle",
+        "Jerboa tail",
+        "Needle"
+      ],
+      "bronzemanItemCards": [
+        "Costume needle",
+        "Hammer",
+        "Imcando hammer",
+        "Jerboa tail",
+        "Needle",
+        "Toy mouse"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [
+        "Box trap"
+      ],
+      "bronzemanOnly": [
+        "Imcando hammer",
+        "Toy mouse"
+      ],
+      "unresolvedQuestHelperLabels": []
+    },
+    {
+      "quest": "Below Ice Mountain",
+      "questHelperCardBackedItems": [
+        "Bread",
+        "Coins",
+        "Cooked meat",
+        "Knife"
+      ],
+      "questHelperMandatoryItems": [
+        "Bread",
+        "Coins",
+        "Cooked meat",
+        "Knife"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Beer",
+        "Bread",
+        "Cooked meat",
+        "Knife"
+      ],
+      "questHelperOnlyMandatory": [
+        "Coins"
+      ],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [
+        "Beer"
+      ],
+      "unresolvedQuestHelperLabels": []
+    },
+    {
+      "quest": "Beneath Cursed Sands",
+      "questHelperCardBackedItems": [
+        "Coal",
+        "Iron bar",
+        "Spade",
+        "Tinderbox"
+      ],
+      "questHelperMandatoryItems": [
+        "Coal",
+        "Iron bar",
+        "Spade",
+        "Tinderbox"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Coal",
+        "Iron bar",
+        "Spade",
+        "Tinderbox"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [],
+      "unresolvedQuestHelperLabels": [
+        "Any cooked or raw meat"
+      ]
+    },
+    {
+      "quest": "Between a Rock...",
+      "questHelperCardBackedItems": [
+        "Gold bar",
+        "Hammer"
+      ],
+      "questHelperMandatoryItems": [
+        "Gold bar",
+        "Hammer"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Coins",
+        "Gold bar",
+        "Hammer"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [
+        "Coins"
+      ],
+      "unresolvedQuestHelperLabels": [
+        "Ammo mould",
+        "Any pickaxe",
+        "Coins for travelling"
+      ]
+    },
+    {
+      "quest": "Big Chompy Bird Hunting",
+      "questHelperCardBackedItems": [
+        "Chisel",
+        "Feather",
+        "Hammer",
+        "Knife",
+        "Wolf bones"
+      ],
+      "questHelperMandatoryItems": [
+        "Chisel",
+        "Feather",
+        "Hammer",
+        "Knife",
+        "Wolf bones"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Cabbage",
+        "Chisel",
+        "Equa leaves",
+        "Feather",
+        "Knife",
+        "Onion",
+        "Potato",
+        "Tomato",
+        "Wolf bones"
+      ],
+      "questHelperOnlyMandatory": [
+        "Hammer"
+      ],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [
+        "Cabbage",
+        "Equa leaves",
+        "Onion",
+        "Potato",
+        "Tomato"
+      ],
+      "unresolvedQuestHelperLabels": [
+        "Any axe"
+      ]
+    },
+    {
+      "quest": "Biohazard",
+      "questHelperCardBackedItems": [],
+      "questHelperMandatoryItems": [],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [],
+      "unresolvedQuestHelperLabels": [
+        "Gas mask"
+      ]
+    },
+    {
+      "quest": "Black Knights' Fortress",
+      "questHelperCardBackedItems": [
+        "Bronze med helm",
+        "Iron chainbody"
+      ],
+      "questHelperMandatoryItems": [
+        "Bronze med helm",
+        "Iron chainbody"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Bronze med helm",
+        "Cabbage",
+        "Iron chainbody"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [
+        "Cabbage"
+      ],
+      "unresolvedQuestHelperLabels": [
+        "Cabbage (NOT from Draynor Manor)"
+      ]
+    },
+    {
+      "quest": "Bone Voyage",
+      "questHelperCardBackedItems": [
+        "Vodka"
+      ],
+      "questHelperMandatoryItems": [
+        "Vodka"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Vodka"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [],
+      "unresolvedQuestHelperLabels": [
+        "Marrentill potion (unf)"
+      ]
+    },
+    {
+      "quest": "Cabin Fever",
+      "questHelperCardBackedItems": [],
+      "questHelperMandatoryItems": [],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [],
+      "unresolvedQuestHelperLabels": []
+    },
+    {
+      "quest": "Children of the Sun",
+      "questHelperCardBackedItems": [],
+      "questHelperMandatoryItems": [],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [],
+      "unresolvedQuestHelperLabels": []
+    },
+    {
+      "quest": "Client of Kourend",
+      "questHelperCardBackedItems": [
+        "Feather"
+      ],
+      "questHelperMandatoryItems": [
+        "Feather"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Feather"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [],
+      "unresolvedQuestHelperLabels": []
+    },
+    {
+      "quest": "Clock Tower",
+      "questHelperCardBackedItems": [],
+      "questHelperMandatoryItems": [],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Bucket of water"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [
+        "Bucket of water"
+      ],
+      "unresolvedQuestHelperLabels": [
+        "Bucket of Water or a pair of ice gloves or smiths gloves(i)"
+      ]
+    },
+    {
+      "quest": "Cold War",
+      "questHelperCardBackedItems": [
+        "Feather",
+        "Hammer",
+        "Leather",
+        "Mahogany plank",
+        "Raw cod",
+        "Silk",
+        "Spade",
+        "Steel nails",
+        "Swamp tar"
+      ],
+      "questHelperMandatoryItems": [
+        "Feather",
+        "Hammer",
+        "Leather",
+        "Mahogany plank",
+        "Raw cod",
+        "Silk",
+        "Spade",
+        "Steel nails",
+        "Swamp tar"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Clockwork",
+        "Feather",
+        "Hammer",
+        "Leather",
+        "Mahogany plank",
+        "Oak plank",
+        "Plank",
+        "Raw cod",
+        "Silk",
+        "Spade",
+        "Steel bar",
+        "Steel nails",
+        "Swamp tar"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [
+        "Clockwork",
+        "Oak plank",
+        "Plank",
+        "Steel bar"
+      ],
+      "unresolvedQuestHelperLabels": [
+        "Clockwork or Steel Bar",
+        "Normal Plank",
+        "Oak Planks (unnoted)"
+      ]
+    },
+    {
+      "quest": "Contact!",
+      "questHelperCardBackedItems": [
+        "Prayer potion",
+        "Tinderbox"
+      ],
+      "questHelperMandatoryItems": [
+        "Prayer potion",
+        "Tinderbox"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Coins",
+        "Tinderbox"
+      ],
+      "questHelperOnlyMandatory": [
+        "Prayer potion"
+      ],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [
+        "Coins"
+      ],
+      "unresolvedQuestHelperLabels": [
+        "A light source",
+        "Combat gear, preferably magic/ranged",
+        "Food"
+      ]
+    },
+    {
+      "quest": "Cook's Assistant",
+      "questHelperCardBackedItems": [
+        "Bucket of milk",
+        "Egg",
+        "Pot of flour"
+      ],
+      "questHelperMandatoryItems": [
+        "Bucket of milk",
+        "Egg",
+        "Pot of flour"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Bucket of milk",
+        "Egg",
+        "Pot of flour"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [],
+      "unresolvedQuestHelperLabels": []
+    },
+    {
+      "quest": "Creature of Fenkenstrain",
+      "questHelperCardBackedItems": [
+        "Air rune",
+        "Bronze wire",
+        "Coins",
+        "Hammer",
+        "Law rune",
+        "Needle",
+        "Silver bar",
+        "Spade",
+        "Thread"
+      ],
+      "questHelperMandatoryItems": [
+        "Bronze wire",
+        "Hammer",
+        "Needle",
+        "Silver bar",
+        "Spade",
+        "Thread"
+      ],
+      "questHelperAlternativeItems": [
+        "Air rune",
+        "Coins",
+        "Law rune"
+      ],
+      "bronzemanItemCards": [
+        "Air rune",
+        "Bronze wire",
+        "Coins",
+        "Law rune",
+        "Needle",
+        "Silver bar",
+        "Spade",
+        "Thread"
+      ],
+      "questHelperOnlyMandatory": [
+        "Hammer"
+      ],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [],
+      "unresolvedQuestHelperLabels": [
+        "Armour and weapons defeat a level 51 monster and run past level 72 monsters",
+        "Coins at least",
+        "Ghostspeak amulet"
+      ]
+    },
+    {
+      "quest": "Current Affairs",
+      "questHelperCardBackedItems": [
+        "Coins"
+      ],
+      "questHelperMandatoryItems": [
+        "Coins"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Coins"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [],
+      "unresolvedQuestHelperLabels": [
+        "Charcoal"
+      ]
+    },
+    {
+      "quest": "Darkness of Hallowvale",
+      "questHelperCardBackedItems": [
+        "Hammer",
+        "Knife",
+        "Plank"
+      ],
+      "questHelperMandatoryItems": [
+        "Hammer",
+        "Knife",
+        "Plank"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Hammer",
+        "Knife",
+        "Plank"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [],
+      "unresolvedQuestHelperLabels": [
+        "Nails"
+      ]
+    },
+    {
+      "quest": "Death on the Isle",
+      "questHelperCardBackedItems": [],
+      "questHelperMandatoryItems": [],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [],
+      "unresolvedQuestHelperLabels": []
+    },
+    {
+      "quest": "Death Plateau",
+      "questHelperCardBackedItems": [
+        "Coins",
+        "Iron bar",
+        "Premade blurb' sp."
+      ],
+      "questHelperMandatoryItems": [
+        "Coins",
+        "Iron bar",
+        "Premade blurb' sp."
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Asgarnian ale",
+        "Bread",
+        "Coins",
+        "Iron bar",
+        "Trout"
+      ],
+      "questHelperOnlyMandatory": [
+        "Premade blurb' sp."
+      ],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [
+        "Asgarnian ale",
+        "Bread",
+        "Trout"
+      ],
+      "unresolvedQuestHelperLabels": [
+        "Bread (UNNOTED)",
+        "Trout (UNNOTED)"
+      ]
+    },
+    {
+      "quest": "Death to the Dorgeshuun",
+      "questHelperCardBackedItems": [
+        "Ham boots",
+        "Ham cloak",
+        "Ham gloves",
+        "Ham hood",
+        "Ham logo",
+        "Ham robe",
+        "Ham shirt",
+        "Tinderbox"
+      ],
+      "questHelperMandatoryItems": [
+        "Ham boots",
+        "Ham cloak",
+        "Ham gloves",
+        "Ham hood",
+        "Ham logo",
+        "Ham robe",
+        "Ham shirt",
+        "Tinderbox"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Ham boots",
+        "Ham cloak",
+        "Ham gloves",
+        "Ham hood",
+        "Ham logo",
+        "Ham robe",
+        "Ham shirt"
+      ],
+      "questHelperOnlyMandatory": [
+        "Tinderbox"
+      ],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [],
+      "unresolvedQuestHelperLabels": [
+        "A light source",
+        "Any pickaxe",
+        "Magic or melee combat gear"
+      ]
+    },
+    {
+      "quest": "Defender of Varrock",
+      "questHelperCardBackedItems": [],
+      "questHelperMandatoryItems": [],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Chaos core"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [
+        "Chaos core"
+      ],
+      "unresolvedQuestHelperLabels": [
+        "Any pickaxe",
+        "Combat gear and food"
+      ]
+    },
+    {
+      "quest": "Demon Slayer",
+      "questHelperCardBackedItems": [
+        "Bucket of water"
+      ],
+      "questHelperMandatoryItems": [
+        "Bucket of water"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Bones",
+        "Bucket of water",
+        "Coins"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [
+        "Bones",
+        "Coins"
+      ],
+      "unresolvedQuestHelperLabels": [
+        "Armour",
+        "Bones (UNNOTED)",
+        "Coin",
+        "Food"
+      ]
+    },
+    {
+      "quest": "Desert Treasure I",
+      "questHelperCardBackedItems": [
+        "Ashes",
+        "Blood rune",
+        "Bones",
+        "Cake",
+        "Coins",
+        "Silver bar",
+        "Spice",
+        "Tinderbox"
+      ],
+      "questHelperMandatoryItems": [
+        "Ashes",
+        "Blood rune",
+        "Bones",
+        "Cake",
+        "Coins",
+        "Silver bar",
+        "Spice",
+        "Tinderbox"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Ashes",
+        "Blood rune",
+        "Bones",
+        "Chocolate bar",
+        "Coins",
+        "Cooking apple",
+        "Facemask",
+        "Lockpick",
+        "Magic logs",
+        "Molten glass",
+        "Pineapple pizza",
+        "Silver bar",
+        "Slayer helmet",
+        "Spice",
+        "Steel bar",
+        "Tinderbox"
+      ],
+      "questHelperOnlyMandatory": [
+        "Cake"
+      ],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [
+        "Chocolate bar",
+        "Cooking apple",
+        "Facemask",
+        "Lockpick",
+        "Magic logs",
+        "Molten glass",
+        "Pineapple pizza",
+        "Slayer helmet",
+        "Steel bar"
+      ],
+      "unresolvedQuestHelperLabels": [
+        "Charcoal",
+        "Climbing boots",
+        "Facemask (or other face covering)",
+        "Garlic powder",
+        "Ice gloves/smiths gloves(i)",
+        "Magic logs (can be noted)",
+        "Many lockpicks",
+        "Molten glass (can be noted)",
+        "Spiked boots",
+        "Steel bar (can be noted)"
+      ]
+    },
+    {
+      "quest": "Desert Treasure II - The Fallen Empire",
+      "questHelperCardBackedItems": [
+        "Air rune",
+        "Blood rune",
+        "Chaos rune",
+        "Death rune",
+        "Facemask",
+        "Fire rune",
+        "Soul rune",
+        "Water rune"
+      ],
+      "questHelperMandatoryItems": [
+        "Air rune",
+        "Blood rune",
+        "Chaos rune",
+        "Death rune",
+        "Facemask",
+        "Fire rune",
+        "Soul rune",
+        "Water rune"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Facemask",
+        "Pestle and mortar",
+        "Tinderbox"
+      ],
+      "questHelperOnlyMandatory": [
+        "Air rune",
+        "Blood rune",
+        "Chaos rune",
+        "Death rune",
+        "Fire rune",
+        "Soul rune",
+        "Water rune"
+      ],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [
+        "Pestle and mortar",
+        "Tinderbox"
+      ],
+      "unresolvedQuestHelperLabels": [
+        "Combat gear",
+        "Ring of visibility"
+      ]
+    },
+    {
+      "quest": "Devious Minds",
+      "questHelperCardBackedItems": [
+        "Bow string",
+        "Mithril 2h sword"
+      ],
+      "questHelperMandatoryItems": [
+        "Bow string",
+        "Mithril 2h sword"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Bow string",
+        "Colossal pouch",
+        "Large pouch",
+        "Mithril 2h sword"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [
+        "Colossal pouch",
+        "Large pouch"
+      ],
+      "unresolvedQuestHelperLabels": [
+        "Large/Colossal Pouch (non-degraded)"
+      ]
+    },
+    {
+      "quest": "Doric's Quest",
+      "questHelperCardBackedItems": [],
+      "questHelperMandatoryItems": [],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Clay",
+        "Copper ore",
+        "Iron ore"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [
+        "Clay",
+        "Copper ore",
+        "Iron ore"
+      ],
+      "unresolvedQuestHelperLabels": [
+        "Clay (UNNOTED)",
+        "Copper ore (UNNOTED)",
+        "Iron ore (UNNOTED)"
+      ]
+    },
+    {
+      "quest": "Dragon Slayer I",
+      "questHelperCardBackedItems": [
+        "Coins",
+        "Hammer",
+        "Lobster pot",
+        "Plank",
+        "Silk",
+        "Steel nails",
+        "Unfired bowl",
+        "Wizard's mind bomb"
+      ],
+      "questHelperMandatoryItems": [
+        "Coins",
+        "Hammer",
+        "Lobster pot",
+        "Plank",
+        "Silk",
+        "Steel nails",
+        "Unfired bowl",
+        "Wizard's mind bomb"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Air rune",
+        "Coins",
+        "Hammer",
+        "Law rune",
+        "Lobster pot",
+        "Plank",
+        "Silk",
+        "Steel nails",
+        "Unfired bowl",
+        "Wizard's mind bomb"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [
+        "Air rune",
+        "Law rune"
+      ],
+      "unresolvedQuestHelperLabels": [
+        "Combat equipment",
+        "Telekinetic grab"
+      ]
+    },
+    {
+      "quest": "Dragon Slayer II",
+      "questHelperCardBackedItems": [
+        "Air rune",
+        "Astral rune",
+        "Blood rune",
+        "Chisel",
+        "Dragonstone",
+        "Fire rune",
+        "Glassblowing pipe",
+        "Hammer",
+        "Molten glass",
+        "Oak plank",
+        "Pestle and mortar",
+        "Saw",
+        "Spade",
+        "Swamp paste",
+        "Tinderbox",
+        "Wrath rune"
+      ],
+      "questHelperMandatoryItems": [
+        "Astral rune",
+        "Chisel",
+        "Dragonstone",
+        "Glassblowing pipe",
+        "Hammer",
+        "Molten glass",
+        "Oak plank",
+        "Pestle and mortar",
+        "Saw",
+        "Spade",
+        "Swamp paste",
+        "Tinderbox"
+      ],
+      "questHelperAlternativeItems": [
+        "Air rune",
+        "Blood rune",
+        "Fire rune",
+        "Wrath rune"
+      ],
+      "bronzemanItemCards": [
+        "Astral rune",
+        "Dragonstone",
+        "Glassblowing pipe",
+        "Hammer",
+        "Machete",
+        "Molten glass",
+        "Oak plank",
+        "Pestle and mortar",
+        "Saw",
+        "Spade",
+        "Swamp paste",
+        "Tinderbox"
+      ],
+      "questHelperOnlyMandatory": [
+        "Chisel"
+      ],
+      "questHelperOnlyAlternatives": [
+        "Air rune",
+        "Blood rune",
+        "Fire rune",
+        "Wrath rune"
+      ],
+      "bronzemanOnly": [
+        "Machete"
+      ],
+      "unresolvedQuestHelperLabels": [
+        "A light source",
+        "Antifire shield",
+        "Any axe",
+        "Any machete",
+        "Any pickaxe",
+        "Catspeak amulet (e)",
+        "Ghostspeak amulet",
+        "Goutweed",
+        "Nails, bring more in case some break",
+        "Seal of passage"
+      ]
+    },
+    {
+      "quest": "Dream Mentor",
+      "questHelperCardBackedItems": [
+        "Astral rune",
+        "Hammer",
+        "Pestle and mortar",
+        "Tinderbox"
+      ],
+      "questHelperMandatoryItems": [
+        "Astral rune",
+        "Hammer",
+        "Pestle and mortar",
+        "Tinderbox"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Astral rune",
+        "Hammer",
+        "Pestle and mortar",
+        "Shark",
+        "Tinderbox"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [
+        "Shark"
+      ],
+      "unresolvedQuestHelperLabels": [
+        "a third type of food",
+        "Combat gear",
+        "Goutweed",
+        "Seal of passage",
+        "some other type of food",
+        "some type of food"
+      ]
+    },
+    {
+      "quest": "Druidic Ritual",
+      "questHelperCardBackedItems": [
+        "Raw bear meat",
+        "Raw beef",
+        "Raw chicken",
+        "Raw rat meat"
+      ],
+      "questHelperMandatoryItems": [
+        "Raw bear meat",
+        "Raw beef",
+        "Raw chicken",
+        "Raw rat meat"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Raw bear meat",
+        "Raw beef",
+        "Raw chicken",
+        "Raw rat meat"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [],
+      "unresolvedQuestHelperLabels": []
+    },
+    {
+      "quest": "Dwarf Cannon",
+      "questHelperCardBackedItems": [
+        "Hammer"
+      ],
+      "questHelperMandatoryItems": [
+        "Hammer"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Hammer"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [],
+      "unresolvedQuestHelperLabels": []
+    },
+    {
+      "quest": "Eadgar's Ruse",
+      "questHelperCardBackedItems": [
+        "Coins",
+        "Grain",
+        "Logs",
+        "Pestle and mortar",
+        "Pineapple chunks",
+        "Raw chicken",
+        "Tinderbox",
+        "Vodka"
+      ],
+      "questHelperMandatoryItems": [
+        "Grain",
+        "Logs",
+        "Pestle and mortar",
+        "Pineapple chunks",
+        "Raw chicken",
+        "Tinderbox",
+        "Vodka"
+      ],
+      "questHelperAlternativeItems": [
+        "Coins"
+      ],
+      "bronzemanItemCards": [
+        "Grain",
+        "Logs",
+        "Pestle and mortar",
+        "Pineapple chunks",
+        "Raw chicken",
+        "Vodka"
+      ],
+      "questHelperOnlyMandatory": [
+        "Tinderbox"
+      ],
+      "questHelperOnlyAlternatives": [
+        "Coins"
+      ],
+      "bronzemanOnly": [],
+      "unresolvedQuestHelperLabels": [
+        "Climbing boots",
+        "Ranarr potion (unf)"
+      ]
+    },
+    {
+      "quest": "Eagles' Peak",
+      "questHelperCardBackedItems": [
+        "Coins",
+        "Swamp tar",
+        "Yellow dye"
+      ],
+      "questHelperMandatoryItems": [
+        "Coins",
+        "Swamp tar",
+        "Yellow dye"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Coins",
+        "Swamp tar",
+        "Yellow dye"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [],
+      "unresolvedQuestHelperLabels": []
+    },
+    {
+      "quest": "Elemental Workshop I",
+      "questHelperCardBackedItems": [
+        "Coal",
+        "Hammer",
+        "Knife",
+        "Leather",
+        "Needle",
+        "Thread"
+      ],
+      "questHelperMandatoryItems": [
+        "Coal",
+        "Hammer",
+        "Knife",
+        "Leather",
+        "Needle",
+        "Thread"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Coal",
+        "Hammer",
+        "Knife",
+        "Leather",
+        "Needle",
+        "Thread"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [],
+      "unresolvedQuestHelperLabels": [
+        "Any pickaxe"
+      ]
+    },
+    {
+      "quest": "Elemental Workshop II",
+      "questHelperCardBackedItems": [
+        "Coal",
+        "Hammer"
+      ],
+      "questHelperMandatoryItems": [
+        "Coal",
+        "Hammer"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Hammer"
+      ],
+      "questHelperOnlyMandatory": [
+        "Coal"
+      ],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [],
+      "unresolvedQuestHelperLabels": [
+        "Any pickaxe",
+        "Battered Key"
+      ]
+    },
+    {
+      "quest": "Enakhra's Lament",
+      "questHelperCardBackedItems": [
+        "Candle",
+        "Chisel",
+        "Coal",
+        "Logs",
+        "Maple logs",
+        "Oak logs",
+        "Soft clay",
+        "Tinderbox",
+        "Willow logs"
+      ],
+      "questHelperMandatoryItems": [
+        "Candle",
+        "Chisel",
+        "Coal",
+        "Logs",
+        "Maple logs",
+        "Oak logs",
+        "Soft clay",
+        "Tinderbox",
+        "Willow logs"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Baked potato",
+        "Bread",
+        "Cake",
+        "Candle",
+        "Chisel",
+        "Chocolate cake",
+        "Coal",
+        "Logs",
+        "Maple logs",
+        "Oak logs",
+        "Sandstone",
+        "Soft clay",
+        "Tinderbox",
+        "Willow logs"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [
+        "Baked potato",
+        "Bread",
+        "Cake",
+        "Chocolate cake",
+        "Sandstone"
+      ],
+      "unresolvedQuestHelperLabels": [
+        "52 kg of sandstone",
+        "Any pickaxe",
+        "Bread or cake",
+        "Granite (5kg)",
+        "Runes for crumble undead spell",
+        "Runes to cast Fire Bolt or stronger",
+        "Runes to cast Wind Bolt or stronger"
+      ]
+    },
+    {
+      "quest": "Enlightened Journey",
+      "questHelperCardBackedItems": [
+        "Ball of wool",
+        "Bowl",
+        "Empty sack",
+        "Logs",
+        "Papyrus",
+        "Red dye",
+        "Silk",
+        "Tinderbox",
+        "Yellow dye"
+      ],
+      "questHelperMandatoryItems": [
+        "Ball of wool",
+        "Bowl",
+        "Empty sack",
+        "Logs",
+        "Papyrus",
+        "Red dye",
+        "Silk",
+        "Tinderbox",
+        "Yellow dye"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Ball of wool",
+        "Bowl",
+        "Candle",
+        "Empty sack",
+        "Papyrus",
+        "Potatoes",
+        "Red dye",
+        "Silk",
+        "Yellow dye"
+      ],
+      "questHelperOnlyMandatory": [
+        "Logs",
+        "Tinderbox"
+      ],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [
+        "Candle",
+        "Potatoes"
+      ],
+      "unresolvedQuestHelperLabels": [
+        "Sack of potatoes (10)",
+        "Unlit candle",
+        "Willow branches"
+      ]
+    },
+    {
+      "quest": "Ernest the Chicken",
+      "questHelperCardBackedItems": [],
+      "questHelperMandatoryItems": [],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Spade"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [
+        "Spade"
+      ],
+      "unresolvedQuestHelperLabels": []
+    },
+    {
+      "quest": "Ethically Acquired Antiquities",
+      "questHelperCardBackedItems": [
+        "Coins"
+      ],
+      "questHelperMandatoryItems": [
+        "Coins"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [],
+      "questHelperOnlyMandatory": [
+        "Coins"
+      ],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [],
+      "unresolvedQuestHelperLabels": []
+    },
+    {
+      "quest": "Fairytale I - Growing Pains",
+      "questHelperCardBackedItems": [
+        "Secateurs",
+        "Spade"
+      ],
+      "questHelperMandatoryItems": [
+        "Secateurs",
+        "Spade"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Secateurs",
+        "Spade"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [],
+      "unresolvedQuestHelperLabels": [
+        "Dramen or lunar staff",
+        "Draynor skull",
+        "Ghostspeak amulet"
+      ]
+    },
+    {
+      "quest": "Fairytale II - Cure a Queen",
+      "questHelperCardBackedItems": [
+        "Pestle and mortar",
+        "Vial of water"
+      ],
+      "questHelperMandatoryItems": [
+        "Pestle and mortar",
+        "Vial of water"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Pestle and mortar",
+        "Vial of water"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [],
+      "unresolvedQuestHelperLabels": [
+        "Dramen or lunar staff"
+      ]
+    },
+    {
+      "quest": "Family Crest",
+      "questHelperCardBackedItems": [
+        "Bass",
+        "Necklace mould",
+        "Ring mould",
+        "Ruby",
+        "Salmon",
+        "Shrimps",
+        "Swordfish",
+        "Tuna"
+      ],
+      "questHelperMandatoryItems": [
+        "Bass",
+        "Necklace mould",
+        "Ring mould",
+        "Ruby",
+        "Salmon",
+        "Shrimps",
+        "Swordfish",
+        "Tuna"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Adamant pickaxe",
+        "Bass",
+        "Necklace mould",
+        "Ring mould",
+        "Ruby",
+        "Rune pickaxe",
+        "Salmon",
+        "Shrimps",
+        "Swordfish",
+        "Tuna"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [
+        "Adamant pickaxe",
+        "Rune pickaxe"
+      ],
+      "unresolvedQuestHelperLabels": [
+        "Any pickaxe",
+        "At least one dose of antipoison or superantipoison",
+        "Runes for casting each of the 4 blast spells"
+      ]
+    },
+    {
+      "quest": "Fight Arena",
+      "questHelperCardBackedItems": [
+        "Coins"
+      ],
+      "questHelperMandatoryItems": [
+        "Coins"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Coins"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [],
+      "unresolvedQuestHelperLabels": []
+    },
+    {
+      "quest": "Fishing Contest",
+      "questHelperCardBackedItems": [
+        "Coins",
+        "Fishing rod",
+        "Garlic",
+        "Spade"
+      ],
+      "questHelperMandatoryItems": [
+        "Coins",
+        "Fishing rod",
+        "Garlic",
+        "Spade"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Coins",
+        "Fishing rod",
+        "Garlic",
+        "Pearl fishing rod",
+        "Spade"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [
+        "Pearl fishing rod"
+      ],
+      "unresolvedQuestHelperLabels": [
+        "Red Vine Worm"
+      ]
+    },
+    {
+      "quest": "Forgettable Tale...",
+      "questHelperCardBackedItems": [
+        "Barley malt",
+        "Beer",
+        "Beer glass",
+        "Bucket of water",
+        "Coins",
+        "Dwarven stout",
+        "Kebab",
+        "Rake",
+        "Seed dibber"
+      ],
+      "questHelperMandatoryItems": [
+        "Barley malt",
+        "Beer",
+        "Beer glass",
+        "Bucket of water",
+        "Coins",
+        "Dwarven stout",
+        "Kebab",
+        "Rake",
+        "Seed dibber"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Barley malt",
+        "Beer",
+        "Beer glass",
+        "Coins",
+        "Kebab",
+        "Rake",
+        "Seed dibber"
+      ],
+      "questHelperOnlyMandatory": [
+        "Bucket of water",
+        "Dwarven stout"
+      ],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [],
+      "unresolvedQuestHelperLabels": [
+        "A random item per player"
+      ]
+    },
+    {
+      "quest": "Garden of Tranquillity",
+      "questHelperCardBackedItems": [
+        "Filled plant pot",
+        "Fishing rod",
+        "Gardening trowel",
+        "Hammer",
+        "Marigold seed",
+        "Pestle and mortar",
+        "Plant cure",
+        "Rake",
+        "Secateurs",
+        "Seed dibber",
+        "Spade",
+        "Watering can"
+      ],
+      "questHelperMandatoryItems": [
+        "Filled plant pot",
+        "Fishing rod",
+        "Gardening trowel",
+        "Hammer",
+        "Marigold seed",
+        "Pestle and mortar",
+        "Plant cure",
+        "Rake",
+        "Secateurs",
+        "Seed dibber",
+        "Spade",
+        "Watering can"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Cabbage seed",
+        "Compost",
+        "Filled plant pot",
+        "Hammer",
+        "Marigold seed",
+        "Onion seed",
+        "Pestle and mortar",
+        "Plant cure",
+        "Pure essence",
+        "Rune essence",
+        "Supercompost",
+        "Ultracompost"
+      ],
+      "questHelperOnlyMandatory": [
+        "Fishing rod",
+        "Gardening trowel",
+        "Rake",
+        "Secateurs",
+        "Seed dibber",
+        "Spade",
+        "Watering can"
+      ],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [
+        "Cabbage seed",
+        "Compost",
+        "Onion seed",
+        "Pure essence",
+        "Rune essence",
+        "Supercompost",
+        "Ultracompost"
+      ],
+      "unresolvedQuestHelperLabels": [
+        "Cabbage seeds (6 to be safe)",
+        "Normal/Super/Ultra compost",
+        "Onion seeds (6 to be safe)",
+        "Ring of Charos",
+        "Rune/Pure essence"
+      ]
+    },
+    {
+      "quest": "Gertrude's Cat",
+      "questHelperCardBackedItems": [
+        "Bucket of milk",
+        "Coins",
+        "Raw sardine"
+      ],
+      "questHelperMandatoryItems": [
+        "Bucket of milk",
+        "Coins",
+        "Raw sardine"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Bucket of milk",
+        "Coins",
+        "Raw sardine"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [],
+      "unresolvedQuestHelperLabels": []
+    },
+    {
+      "quest": "Getting Ahead",
+      "questHelperCardBackedItems": [
+        "Bear fur",
+        "Hammer",
+        "Knife",
+        "Needle",
+        "Plank",
+        "Pot of flour",
+        "Red dye",
+        "Soft clay",
+        "Thread"
+      ],
+      "questHelperMandatoryItems": [
+        "Bear fur",
+        "Hammer",
+        "Knife",
+        "Needle",
+        "Plank",
+        "Pot of flour",
+        "Red dye",
+        "Soft clay",
+        "Thread"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Amy's saw",
+        "Bear fur",
+        "Costume needle",
+        "Fur",
+        "Grey wolf fur",
+        "Hammer",
+        "Imcando hammer",
+        "Knife",
+        "Needle",
+        "Plank",
+        "Pot of flour",
+        "Red dye",
+        "Saw",
+        "Soft clay",
+        "Thread"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [
+        "Amy's saw",
+        "Costume needle",
+        "Fur",
+        "Grey wolf fur",
+        "Imcando hammer",
+        "Saw"
+      ],
+      "unresolvedQuestHelperLabels": [
+        "Any saw",
+        "Nails",
+        "You can get all the required items during the quest."
+      ]
+    },
+    {
+      "quest": "Ghosts Ahoy",
+      "questHelperCardBackedItems": [
+        "Blue dye",
+        "Bucket of milk",
+        "Bucket of slime",
+        "Costume needle",
+        "Knife",
+        "Needle",
+        "Oak longbow",
+        "Red dye",
+        "Silk",
+        "Spade",
+        "Thread",
+        "Yellow dye"
+      ],
+      "questHelperMandatoryItems": [
+        "Blue dye",
+        "Bucket of milk",
+        "Bucket of slime",
+        "Knife",
+        "Oak longbow",
+        "Red dye",
+        "Silk",
+        "Spade",
+        "Yellow dye"
+      ],
+      "questHelperAlternativeItems": [
+        "Costume needle",
+        "Needle",
+        "Thread"
+      ],
+      "bronzemanItemCards": [
+        "Bucket of milk",
+        "Bucket of slime",
+        "Coins",
+        "Costume needle",
+        "Ecto-token",
+        "Knife",
+        "Needle",
+        "Oak longbow",
+        "Silk",
+        "Spade",
+        "Thread"
+      ],
+      "questHelperOnlyMandatory": [
+        "Blue dye",
+        "Red dye",
+        "Yellow dye"
+      ],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [
+        "Coins",
+        "Ecto-token"
+      ],
+      "unresolvedQuestHelperLabels": [
+        "400+ coins",
+        "Ecto-token, OR 25 Ecto-Tokens and coins to travel by Charter Ship",
+        "Ghostspeak amulet",
+        "Nettle tea"
+      ]
+    },
+    {
+      "quest": "Goblin Diplomacy",
+      "questHelperCardBackedItems": [
+        "Blue dye",
+        "Goblin mail"
+      ],
+      "questHelperMandatoryItems": [
+        "Blue dye",
+        "Goblin mail"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Blue dye",
+        "Goblin mail",
+        "Red dye",
+        "Yellow dye"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [
+        "Red dye",
+        "Yellow dye"
+      ],
+      "unresolvedQuestHelperLabels": [
+        "Orange dye"
+      ]
+    },
+    {
+      "quest": "Grim Tales",
+      "questHelperCardBackedItems": [
+        "Seed dibber"
+      ],
+      "questHelperMandatoryItems": [
+        "Seed dibber"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Leather gloves",
+        "Seed dibber",
+        "Tarromin",
+        "Watering can"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [
+        "Leather gloves",
+        "Tarromin",
+        "Watering can"
+      ],
+      "unresolvedQuestHelperLabels": [
+        "Any axe",
+        "Combat gear and food",
+        "Door key",
+        "Tarromin potion (unf)",
+        "Watering can with at least 1 use"
+      ]
+    },
+    {
+      "quest": "Haunted Mine",
+      "questHelperCardBackedItems": [],
+      "questHelperMandatoryItems": [],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Chisel"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [
+        "Chisel"
+      ],
+      "unresolvedQuestHelperLabels": [
+        "Combat gear"
+      ]
+    },
+    {
+      "quest": "Hazeel Cult",
+      "questHelperCardBackedItems": [],
+      "questHelperMandatoryItems": [],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [],
+      "unresolvedQuestHelperLabels": []
+    },
+    {
+      "quest": "Heroes' Quest",
+      "questHelperCardBackedItems": [
+        "Fishing bait",
+        "Fishing rod"
+      ],
+      "questHelperMandatoryItems": [
+        "Fishing bait",
+        "Fishing rod"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Black full helm",
+        "Black platebody",
+        "Black platelegs",
+        "Dusty key",
+        "Fishing bait",
+        "Fishing rod",
+        "Knife"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [
+        "Black full helm",
+        "Black platebody",
+        "Black platelegs",
+        "Dusty key",
+        "Knife"
+      ],
+      "unresolvedQuestHelperLabels": [
+        "A ranged or magic attack method",
+        "Any pickaxe",
+        "Dusty key (obtainable in quest)",
+        "Harralander potion (unf)",
+        "Ice gloves/Smiths gloves (i)"
+      ]
+    },
+    {
+      "quest": "Holy Grail",
+      "questHelperCardBackedItems": [],
+      "questHelperMandatoryItems": [],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [],
+      "unresolvedQuestHelperLabels": [
+        "Excalibur"
+      ]
+    },
+    {
+      "quest": "Horror from the Deep",
+      "questHelperCardBackedItems": [
+        "Air rune",
+        "Earth rune",
+        "Fire rune",
+        "Hammer",
+        "Molten glass",
+        "Plank",
+        "Steel nails",
+        "Swamp tar",
+        "Tinderbox",
+        "Water rune"
+      ],
+      "questHelperMandatoryItems": [
+        "Air rune",
+        "Earth rune",
+        "Fire rune",
+        "Hammer",
+        "Molten glass",
+        "Plank",
+        "Steel nails",
+        "Swamp tar",
+        "Tinderbox",
+        "Water rune"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Air rune",
+        "Earth rune",
+        "Fire rune",
+        "Hammer",
+        "Molten glass",
+        "Plank",
+        "Steel nails",
+        "Swamp tar",
+        "Tinderbox",
+        "Water rune"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [],
+      "unresolvedQuestHelperLabels": [
+        "20+ casts of each element spell",
+        "Any arrow",
+        "Any sword you're willing to lose"
+      ]
+    },
+    {
+      "quest": "Icthlarin's Little Helper",
+      "questHelperCardBackedItems": [
+        "Coins",
+        "Tinderbox",
+        "Willow logs"
+      ],
+      "questHelperMandatoryItems": [
+        "Tinderbox",
+        "Willow logs"
+      ],
+      "questHelperAlternativeItems": [
+        "Coins"
+      ],
+      "bronzemanItemCards": [
+        "Bag of salt",
+        "Bucket",
+        "Cat",
+        "Hellcat",
+        "Kitten",
+        "Overgrown cat",
+        "Pharaoh's sceptre",
+        "Tinderbox",
+        "Waterskin"
+      ],
+      "questHelperOnlyMandatory": [
+        "Willow logs"
+      ],
+      "questHelperOnlyAlternatives": [
+        "Coins"
+      ],
+      "bronzemanOnly": [
+        "Bag of salt",
+        "Bucket",
+        "Cat",
+        "Hellcat",
+        "Kitten",
+        "Overgrown cat",
+        "Pharaoh's sceptre",
+        "Waterskin"
+      ],
+      "unresolvedQuestHelperLabels": [
+        "Any cat or kitten",
+        "Bag of Salt from a Slayer Master, or an empty bucket to get some",
+        "Bucket of sap",
+        "Coins or more for various payments",
+        "Linen",
+        "Waterskin(4), bring a few to avoid drinking it"
+      ]
+    },
+    {
+      "quest": "Imp Catcher",
+      "questHelperCardBackedItems": [],
+      "questHelperMandatoryItems": [],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [],
+      "unresolvedQuestHelperLabels": [
+        "Black bead",
+        "Red bead",
+        "White bead",
+        "Yellow bead"
+      ]
+    },
+    {
+      "quest": "In Aid of the Myreque",
+      "questHelperCardBackedItems": [
+        "Bronze axe",
+        "Coal",
+        "Cosmic rune",
+        "Hammer",
+        "Mithril bar",
+        "Plank",
+        "Raw mackerel",
+        "Rope",
+        "Sapphire",
+        "Silver bar",
+        "Soft clay",
+        "Spade",
+        "Steel bar",
+        "Swamp paste",
+        "Tinderbox",
+        "Water rune"
+      ],
+      "questHelperMandatoryItems": [
+        "Bronze axe",
+        "Coal",
+        "Cosmic rune",
+        "Hammer",
+        "Mithril bar",
+        "Plank",
+        "Raw mackerel",
+        "Rope",
+        "Sapphire",
+        "Silver bar",
+        "Soft clay",
+        "Spade",
+        "Steel bar",
+        "Swamp paste",
+        "Tinderbox",
+        "Water rune"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Bronze axe",
+        "Bucket",
+        "Coal",
+        "Hammer",
+        "Mithril bar",
+        "Plank",
+        "Raw mackerel",
+        "Rope",
+        "Sapphire",
+        "Silver bar",
+        "Soft clay",
+        "Spade",
+        "Steel bar",
+        "Swamp paste",
+        "Tinderbox"
+      ],
+      "questHelperOnlyMandatory": [
+        "Cosmic rune",
+        "Water rune"
+      ],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [
+        "Bucket"
+      ],
+      "unresolvedQuestHelperLabels": [
+        "Any nails",
+        "Any pickaxe",
+        "buckets (Can use 1 but is much slower)",
+        "Food to put in a chest, multiple pieces in case a Ghast eats some",
+        "Raw snail",
+        "Silver weapon (including Silverlight + varieties), blessed axe or Efaritay's Aid to damage vampyres"
+      ]
+    },
+    {
+      "quest": "In Search of the Myreque",
+      "questHelperCardBackedItems": [
+        "Coins",
+        "Hammer",
+        "Plank",
+        "Steel dagger",
+        "Steel longsword",
+        "Steel mace",
+        "Steel nails",
+        "Steel sword",
+        "Steel warhammer"
+      ],
+      "questHelperMandatoryItems": [
+        "Hammer",
+        "Plank",
+        "Steel dagger",
+        "Steel longsword",
+        "Steel mace",
+        "Steel nails",
+        "Steel sword",
+        "Steel warhammer"
+      ],
+      "questHelperAlternativeItems": [
+        "Coins"
+      ],
+      "bronzemanItemCards": [
+        "Coins",
+        "Hammer",
+        "Imcando hammer",
+        "Plank",
+        "Steel dagger",
+        "Steel longsword",
+        "Steel mace",
+        "Steel nails",
+        "Steel sword",
+        "Steel warhammer"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [
+        "Imcando hammer"
+      ],
+      "unresolvedQuestHelperLabels": [
+        "Charges in a druid pouch",
+        "Ring of Charos (a)"
+      ]
+    },
+    {
+      "quest": "Jungle Potion",
+      "questHelperCardBackedItems": [],
+      "questHelperMandatoryItems": [],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [],
+      "unresolvedQuestHelperLabels": []
+    },
+    {
+      "quest": "King's Ransom",
+      "questHelperCardBackedItems": [
+        "Air rune",
+        "Black full helm",
+        "Black platebody",
+        "Black platelegs",
+        "Bronze med helm",
+        "Iron chainbody",
+        "Law rune",
+        "Lockpick"
+      ],
+      "questHelperMandatoryItems": [
+        "Black full helm",
+        "Black platebody",
+        "Black platelegs",
+        "Bronze med helm",
+        "Iron chainbody"
+      ],
+      "questHelperAlternativeItems": [
+        "Air rune",
+        "Law rune",
+        "Lockpick"
+      ],
+      "bronzemanItemCards": [
+        "Bronze med helm",
+        "Granite",
+        "Iron chainbody"
+      ],
+      "questHelperOnlyMandatory": [
+        "Black full helm",
+        "Black platebody",
+        "Black platelegs"
+      ],
+      "questHelperOnlyAlternatives": [
+        "Air rune",
+        "Law rune",
+        "Lockpick"
+      ],
+      "bronzemanOnly": [
+        "Granite"
+      ],
+      "unresolvedQuestHelperLabels": [
+        "Air staff",
+        "Animate rock scroll",
+        "Any granite"
+      ]
+    },
+    {
+      "quest": "Land of the Goblins",
+      "questHelperCardBackedItems": [
+        "Blue dye",
+        "Coins",
+        "Fishing rod",
+        "Goblin mail",
+        "Pestle and mortar",
+        "Purple dye",
+        "Raw slimy eel",
+        "Vial",
+        "Yellow dye"
+      ],
+      "questHelperMandatoryItems": [
+        "Blue dye",
+        "Coins",
+        "Fishing rod",
+        "Goblin mail",
+        "Pestle and mortar",
+        "Purple dye",
+        "Raw slimy eel",
+        "Vial",
+        "Yellow dye"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Blue dye",
+        "Coins",
+        "Fishing rod",
+        "Goblin mail",
+        "Purple dye",
+        "Raw slimy eel",
+        "Yellow dye"
+      ],
+      "questHelperOnlyMandatory": [
+        "Pestle and mortar",
+        "Vial"
+      ],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [],
+      "unresolvedQuestHelperLabels": [
+        "Combat gear",
+        "Light source",
+        "Orange dye",
+        "Toadflax potion (unf)"
+      ]
+    },
+    {
+      "quest": "Legends' Quest",
+      "questHelperCardBackedItems": [
+        "Air rune",
+        "Cosmic rune",
+        "Diamond",
+        "Earth rune",
+        "Emerald",
+        "Fire rune",
+        "Gold bar",
+        "Hammer",
+        "Jade",
+        "Law rune",
+        "Mind rune",
+        "Opal",
+        "Papyrus",
+        "Red topaz",
+        "Rope",
+        "Ruby",
+        "Sapphire",
+        "Soul rune",
+        "Unpowered orb",
+        "Vial of water",
+        "Water rune"
+      ],
+      "questHelperMandatoryItems": [
+        "Cosmic rune",
+        "Diamond",
+        "Earth rune",
+        "Emerald",
+        "Gold bar",
+        "Hammer",
+        "Jade",
+        "Law rune",
+        "Mind rune",
+        "Opal",
+        "Papyrus",
+        "Red topaz",
+        "Rope",
+        "Ruby",
+        "Sapphire",
+        "Soul rune",
+        "Unpowered orb",
+        "Vial of water"
+      ],
+      "questHelperAlternativeItems": [
+        "Air rune",
+        "Fire rune",
+        "Water rune"
+      ],
+      "bronzemanItemCards": [
+        "Dragon axe",
+        "Earth rune",
+        "Gold bar",
+        "Hammer",
+        "Imcando hammer",
+        "Infernal axe",
+        "Law rune",
+        "Lockpick",
+        "Mind rune",
+        "Papyrus",
+        "Rope",
+        "Rune axe",
+        "Soul rune",
+        "Unpowered orb",
+        "Vial of water"
+      ],
+      "questHelperOnlyMandatory": [
+        "Cosmic rune",
+        "Diamond",
+        "Emerald",
+        "Jade",
+        "Opal",
+        "Red topaz",
+        "Ruby",
+        "Sapphire"
+      ],
+      "questHelperOnlyAlternatives": [
+        "Air rune",
+        "Fire rune",
+        "Water rune"
+      ],
+      "bronzemanOnly": [
+        "Dragon axe",
+        "Imcando hammer",
+        "Infernal axe",
+        "Lockpick",
+        "Rune axe"
+      ],
+      "unresolvedQuestHelperLabels": [
+        "A machete",
+        "Any pickaxe",
+        "Ardrigal",
+        "Charcoal",
+        "Combat gear, food and potions",
+        "Lockpick (multiple in case they break)",
+        "Radimus notes",
+        "Rune or Dragon axe",
+        "Snake weed"
+      ]
+    },
+    {
+      "quest": "Lost City",
+      "questHelperCardBackedItems": [
+        "Knife"
+      ],
+      "questHelperMandatoryItems": [
+        "Knife"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Knife"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [],
+      "unresolvedQuestHelperLabels": [
+        "Any axe"
+      ]
+    },
+    {
+      "quest": "Lunar Diplomacy",
+      "questHelperCardBackedItems": [
+        "Bullseye lantern",
+        "Guam leaf",
+        "Hammer",
+        "Marrentill",
+        "Needle",
+        "Pestle and mortar",
+        "Spade",
+        "Thread",
+        "Tinderbox"
+      ],
+      "questHelperMandatoryItems": [
+        "Bullseye lantern",
+        "Guam leaf",
+        "Hammer",
+        "Marrentill",
+        "Needle",
+        "Pestle and mortar",
+        "Spade",
+        "Thread",
+        "Tinderbox"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Bullseye lantern",
+        "Coins",
+        "Guam leaf",
+        "Hammer",
+        "Marrentill",
+        "Needle",
+        "Pestle and mortar",
+        "Spade",
+        "Swamp tar",
+        "Thread",
+        "Tinderbox"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [
+        "Coins",
+        "Swamp tar"
+      ],
+      "unresolvedQuestHelperLabels": [
+        "Access to the Air Altar",
+        "Access to the Earth Altar",
+        "Access to the Fire Altar",
+        "Access to the Water Altar",
+        "Any pickaxe",
+        "Dramen staff"
+      ]
+    },
+    {
+      "quest": "Making Friends with My Arm",
+      "questHelperCardBackedItems": [
+        "Bolt of cloth",
+        "Hammer",
+        "Mahogany plank",
+        "Saw"
+      ],
+      "questHelperMandatoryItems": [
+        "Bolt of cloth",
+        "Hammer",
+        "Mahogany plank",
+        "Saw"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Bolt of cloth",
+        "Bucket of water",
+        "Hammer",
+        "Mahogany plank",
+        "Rope",
+        "Saw"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [
+        "Bucket of water",
+        "Rope"
+      ],
+      "unresolvedQuestHelperLabels": [
+        "Cadava berries",
+        "Combat gear, preferably ranged or melee"
+      ]
+    },
+    {
+      "quest": "Making History",
+      "questHelperCardBackedItems": [
+        "Sapphire amulet",
+        "Spade"
+      ],
+      "questHelperMandatoryItems": [
+        "Sapphire amulet",
+        "Spade"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Sapphire amulet",
+        "Spade"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [],
+      "unresolvedQuestHelperLabels": [
+        "Ghostspeak amulet"
+      ]
+    },
+    {
+      "quest": "Meat and Greet",
+      "questHelperCardBackedItems": [],
+      "questHelperMandatoryItems": [],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [],
+      "unresolvedQuestHelperLabels": []
+    },
+    {
+      "quest": "Merlin's Crystal",
+      "questHelperCardBackedItems": [
+        "Bat bones",
+        "Bread",
+        "Tinderbox"
+      ],
+      "questHelperMandatoryItems": [
+        "Bat bones",
+        "Bread",
+        "Tinderbox"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Bat bones",
+        "Bread",
+        "Tinderbox"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [],
+      "unresolvedQuestHelperLabels": [
+        "Bucket of wax",
+        "Combat gear + food for Sir Mordred (level 39)"
+      ]
+    },
+    {
+      "quest": "Misthalin Mystery",
+      "questHelperCardBackedItems": [],
+      "questHelperMandatoryItems": [],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Bucket",
+        "Knife",
+        "Tinderbox"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [
+        "Bucket",
+        "Knife",
+        "Tinderbox"
+      ],
+      "unresolvedQuestHelperLabels": []
+    },
+    {
+      "quest": "Monk's Friend",
+      "questHelperCardBackedItems": [
+        "Jug of water",
+        "Logs"
+      ],
+      "questHelperMandatoryItems": [
+        "Jug of water",
+        "Logs"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Jug of water",
+        "Logs",
+        "Plank"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [
+        "Plank"
+      ],
+      "unresolvedQuestHelperLabels": []
+    },
+    {
+      "quest": "Monkey Madness I",
+      "questHelperCardBackedItems": [
+        "Ball of wool",
+        "Banana",
+        "Gold bar"
+      ],
+      "questHelperMandatoryItems": [
+        "Ball of wool",
+        "Banana",
+        "Gold bar"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Ball of wool",
+        "Banana",
+        "Gold bar",
+        "Monkey bones"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [
+        "Monkey bones"
+      ],
+      "unresolvedQuestHelperLabels": [
+        "Monkey bones or corpse"
+      ]
+    },
+    {
+      "quest": "Monkey Madness II",
+      "questHelperCardBackedItems": [
+        "Coins",
+        "Grapes",
+        "Lemon",
+        "Logs",
+        "Pestle and mortar"
+      ],
+      "questHelperMandatoryItems": [
+        "Grapes",
+        "Lemon",
+        "Logs",
+        "Pestle and mortar"
+      ],
+      "questHelperAlternativeItems": [
+        "Coins"
+      ],
+      "bronzemanItemCards": [
+        "Chisel",
+        "Grapes",
+        "Hammer",
+        "Lemon",
+        "Logs",
+        "Pestle and mortar"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [
+        "Coins"
+      ],
+      "bronzemanOnly": [
+        "Chisel",
+        "Hammer"
+      ],
+      "unresolvedQuestHelperLabels": [
+        "A lightsource",
+        "Any pickaxe",
+        "Chisel (obtainable in quest)",
+        "Hammer (obtainable in quest)",
+        "M'speak amulet",
+        "Monkey talisman",
+        "Ninja greegree",
+        "Translation book"
+      ]
+    },
+    {
+      "quest": "Mountain Daughter",
+      "questHelperCardBackedItems": [
+        "Rope"
+      ],
+      "questHelperMandatoryItems": [
+        "Rope"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Plank",
+        "Rope",
+        "Staff"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [
+        "Plank",
+        "Staff"
+      ],
+      "unresolvedQuestHelperLabels": [
+        "A staff or a pole",
+        "Almost any gloves",
+        "Any axe",
+        "Any pickaxe",
+        "Any plank"
+      ]
+    },
+    {
+      "quest": "Mourning's End Part I",
+      "questHelperCardBackedItems": [
+        "Bear fur",
+        "Blue dye",
+        "Bucket of water",
+        "Feather",
+        "Green dye",
+        "Leather",
+        "Magic logs",
+        "Red dye",
+        "Silk",
+        "Yellow dye"
+      ],
+      "questHelperMandatoryItems": [
+        "Bear fur",
+        "Blue dye",
+        "Bucket of water",
+        "Feather",
+        "Green dye",
+        "Leather",
+        "Magic logs",
+        "Red dye",
+        "Silk",
+        "Yellow dye"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Bear fur",
+        "Blue dye",
+        "Bucket of water",
+        "Coal",
+        "Feather",
+        "Green dye",
+        "Leather",
+        "Magic logs",
+        "Premade t'd crunch",
+        "Red dye",
+        "Silk",
+        "Toad crunchies",
+        "Yellow dye"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [
+        "Coal",
+        "Premade t'd crunch",
+        "Toad crunchies"
+      ],
+      "unresolvedQuestHelperLabels": [
+        "Barrel of coal tar",
+        "Barrel of coal tar + 10-20 coal",
+        "Barrel of naphtha",
+        "Ogre bellows",
+        "Rotten apple",
+        "Toad crunchies (can be Premade t'd crunch)"
+      ]
+    },
+    {
+      "quest": "Mourning's End Part II",
+      "questHelperCardBackedItems": [
+        "Chisel",
+        "Rope"
+      ],
+      "questHelperMandatoryItems": [
+        "Chisel",
+        "Rope"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Catalytic talisman",
+        "Catalytic tiara",
+        "Chisel",
+        "Death tiara",
+        "Rope"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [
+        "Catalytic talisman",
+        "Catalytic tiara",
+        "Death tiara"
+      ],
+      "unresolvedQuestHelperLabels": [
+        "Access to the Death Altar or 50 items asked of you by a dwarf",
+        "Gas mask",
+        "Mourner boots",
+        "Mourner cloak",
+        "Mourner gloves",
+        "Mourner top",
+        "Mourner trousers"
+      ]
+    },
+    {
+      "quest": "Murder Mystery",
+      "questHelperCardBackedItems": [
+        "Pot"
+      ],
+      "questHelperMandatoryItems": [
+        "Pot"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Pot",
+        "Pot of flour"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [
+        "Pot of flour"
+      ],
+      "unresolvedQuestHelperLabels": []
+    },
+    {
+      "quest": "My Arm's Big Adventure",
+      "questHelperCardBackedItems": [
+        "Bucket",
+        "Rake",
+        "Seed dibber",
+        "Spade",
+        "Supercompost"
+      ],
+      "questHelperMandatoryItems": [
+        "Bucket",
+        "Rake",
+        "Seed dibber",
+        "Spade",
+        "Supercompost"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Bucket"
+      ],
+      "questHelperOnlyMandatory": [
+        "Rake",
+        "Seed dibber",
+        "Spade",
+        "Supercompost"
+      ],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [],
+      "unresolvedQuestHelperLabels": [
+        "Climbing boots",
+        "Ugthanki dung"
+      ]
+    },
+    {
+      "quest": "Nature Spirit",
+      "questHelperCardBackedItems": [
+        "Silver sickle"
+      ],
+      "questHelperMandatoryItems": [
+        "Silver sickle"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Silver sickle"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [],
+      "unresolvedQuestHelperLabels": [
+        "Ghostspeak amulet"
+      ]
+    },
+    {
+      "quest": "Observatory Quest",
+      "questHelperCardBackedItems": [
+        "Bronze bar",
+        "Molten glass",
+        "Plank"
+      ],
+      "questHelperMandatoryItems": [
+        "Bronze bar",
+        "Molten glass",
+        "Plank"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Bronze bar",
+        "Molten glass",
+        "Plank"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [],
+      "unresolvedQuestHelperLabels": []
+    },
+    {
+      "quest": "Olaf's Quest",
+      "questHelperCardBackedItems": [
+        "Spade",
+        "Tinderbox"
+      ],
+      "questHelperMandatoryItems": [
+        "Spade",
+        "Tinderbox"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Rope",
+        "Spade",
+        "Tinderbox"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [
+        "Rope"
+      ],
+      "unresolvedQuestHelperLabels": [
+        "Any axe"
+      ]
+    },
+    {
+      "quest": "One Small Favour",
+      "questHelperCardBackedItems": [
+        "Bowl of hot water",
+        "Bronze bar",
+        "Chisel",
+        "Empty cup",
+        "Guam leaf",
+        "Hammer",
+        "Harralander",
+        "Iron bar",
+        "Marrentill",
+        "Pot",
+        "Steel bar"
+      ],
+      "questHelperMandatoryItems": [
+        "Bowl of hot water",
+        "Bronze bar",
+        "Chisel",
+        "Empty cup",
+        "Guam leaf",
+        "Hammer",
+        "Harralander",
+        "Iron bar",
+        "Marrentill",
+        "Pot",
+        "Steel bar"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Bronze bar",
+        "Chisel",
+        "Hammer",
+        "Imcando hammer",
+        "Iron bar",
+        "Pot",
+        "Soft clay",
+        "Steel bar"
+      ],
+      "questHelperOnlyMandatory": [
+        "Bowl of hot water",
+        "Empty cup",
+        "Guam leaf",
+        "Harralander",
+        "Marrentill"
+      ],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [
+        "Imcando hammer",
+        "Soft clay"
+      ],
+      "unresolvedQuestHelperLabels": []
+    },
+    {
+      "quest": "Pandemonium",
+      "questHelperCardBackedItems": [
+        "Hammer",
+        "Saw"
+      ],
+      "questHelperMandatoryItems": [
+        "Hammer",
+        "Saw"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Hammer",
+        "Saw"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [],
+      "unresolvedQuestHelperLabels": []
+    },
+    {
+      "quest": "Perilous Moons",
+      "questHelperCardBackedItems": [
+        "Big fishing net",
+        "Knife",
+        "Pestle and mortar",
+        "Rope"
+      ],
+      "questHelperMandatoryItems": [
+        "Big fishing net",
+        "Knife",
+        "Pestle and mortar",
+        "Rope"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Big fishing net",
+        "Knife",
+        "Pestle and mortar",
+        "Rope"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [],
+      "unresolvedQuestHelperLabels": [
+        "Combat armour with high defensive bonuses"
+      ]
+    },
+    {
+      "quest": "Pirate's Treasure",
+      "questHelperCardBackedItems": [
+        "Coins",
+        "Spade"
+      ],
+      "questHelperMandatoryItems": [
+        "Coins",
+        "Spade"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Banana",
+        "Coins",
+        "Spade",
+        "White apron"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [
+        "Banana",
+        "White apron"
+      ],
+      "unresolvedQuestHelperLabels": [
+        "Bananas"
+      ]
+    },
+    {
+      "quest": "Plague City",
+      "questHelperCardBackedItems": [
+        "Bucket of milk",
+        "Chocolate dust",
+        "Rope",
+        "Snape grass",
+        "Spade"
+      ],
+      "questHelperMandatoryItems": [
+        "Bucket of milk",
+        "Chocolate dust",
+        "Rope",
+        "Snape grass",
+        "Spade"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Bucket of water",
+        "Rope",
+        "Spade"
+      ],
+      "questHelperOnlyMandatory": [
+        "Bucket of milk",
+        "Chocolate dust",
+        "Snape grass"
+      ],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [
+        "Bucket of water"
+      ],
+      "unresolvedQuestHelperLabels": [
+        "Dwellberries"
+      ]
+    },
+    {
+      "quest": "Priest in Peril",
+      "questHelperCardBackedItems": [
+        "Bucket"
+      ],
+      "questHelperMandatoryItems": [
+        "Bucket"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Bucket",
+        "Pure essence",
+        "Rune essence"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [
+        "Pure essence",
+        "Rune essence"
+      ],
+      "unresolvedQuestHelperLabels": [
+        "Rune or Pure Essence"
+      ]
+    },
+    {
+      "quest": "Prince Ali Rescue",
+      "questHelperCardBackedItems": [
+        "Ashes",
+        "Ball of wool",
+        "Beer",
+        "Bronze bar",
+        "Bucket of water",
+        "Pink skirt",
+        "Pot of flour",
+        "Redberries",
+        "Rope",
+        "Soft clay",
+        "Yellow dye"
+      ],
+      "questHelperMandatoryItems": [
+        "Ashes",
+        "Ball of wool",
+        "Beer",
+        "Bronze bar",
+        "Bucket of water",
+        "Pink skirt",
+        "Pot of flour",
+        "Redberries",
+        "Rope",
+        "Soft clay",
+        "Yellow dye"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Ashes",
+        "Beer",
+        "Bronze bar",
+        "Bucket of water",
+        "Coins",
+        "Jug of water",
+        "Onion",
+        "Pink skirt",
+        "Pot of flour",
+        "Redberries",
+        "Rope",
+        "Soft clay",
+        "Yellow dye"
+      ],
+      "questHelperOnlyMandatory": [
+        "Ball of wool"
+      ],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [
+        "Coins",
+        "Jug of water",
+        "Onion"
+      ],
+      "unresolvedQuestHelperLabels": [
+        "Coins minimum"
+      ]
+    },
+    {
+      "quest": "Prying Times",
+      "questHelperCardBackedItems": [
+        "Captain's log",
+        "Hammer",
+        "Redberry pie",
+        "Steel bar"
+      ],
+      "questHelperMandatoryItems": [
+        "Captain's log",
+        "Hammer",
+        "Redberry pie",
+        "Steel bar"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Captain's log",
+        "Hammer",
+        "Imcando hammer",
+        "Redberry pie",
+        "Steel bar"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [
+        "Imcando hammer"
+      ],
+      "unresolvedQuestHelperLabels": []
+    },
+    {
+      "quest": "Rag and Bone Man I",
+      "questHelperCardBackedItems": [
+        "Coins",
+        "Logs",
+        "Pot",
+        "Tinderbox"
+      ],
+      "questHelperMandatoryItems": [
+        "Coins",
+        "Logs",
+        "Pot",
+        "Tinderbox"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Coins",
+        "Logs",
+        "Pot",
+        "Tinderbox"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [],
+      "unresolvedQuestHelperLabels": []
+    },
+    {
+      "quest": "Rag and Bone Man II",
+      "questHelperCardBackedItems": [
+        "Coins",
+        "Dusty key",
+        "Fishing explosive",
+        "Ice cooler",
+        "Logs",
+        "Mirror shield",
+        "Pot",
+        "Rope",
+        "Tinderbox"
+      ],
+      "questHelperMandatoryItems": [
+        "Coins",
+        "Dusty key",
+        "Fishing explosive",
+        "Ice cooler",
+        "Logs",
+        "Mirror shield",
+        "Pot",
+        "Rope",
+        "Tinderbox"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Dusty key",
+        "Fishing explosive",
+        "Ice cooler",
+        "Logs",
+        "Mirror shield",
+        "Pot",
+        "Rope",
+        "Tinderbox"
+      ],
+      "questHelperOnlyMandatory": [
+        "Coins"
+      ],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [],
+      "unresolvedQuestHelperLabels": [
+        "Any axe",
+        "Light source",
+        "Ranged weapon for killing vultures"
+      ]
+    },
+    {
+      "quest": "Ratcatchers",
+      "questHelperCardBackedItems": [
+        "Bucket of milk",
+        "Cheese",
+        "Coins",
+        "Marrentill",
+        "Red spiders' eggs",
+        "Tinderbox",
+        "Unicorn horn dust"
+      ],
+      "questHelperMandatoryItems": [
+        "Bucket of milk",
+        "Cheese",
+        "Coins",
+        "Marrentill",
+        "Red spiders' eggs",
+        "Tinderbox",
+        "Unicorn horn dust"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Bottomless milk bucket",
+        "Bucket of milk",
+        "Cat",
+        "Cheese",
+        "Coins",
+        "Hellcat",
+        "Marrentill",
+        "Tinderbox",
+        "Unicorn horn dust"
+      ],
+      "questHelperOnlyMandatory": [
+        "Red spiders' eggs"
+      ],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [
+        "Bottomless milk bucket",
+        "Cat",
+        "Hellcat"
+      ],
+      "unresolvedQuestHelperLabels": [
+        "A non-overgrown cat",
+        "Catspeak amulet",
+        "Clean kwuarm",
+        "Empty vial",
+        "Fish or more, raw or cooked",
+        "Pot of weeds",
+        "Snake charm"
+      ]
+    },
+    {
+      "quest": "Recruitment Drive",
+      "questHelperCardBackedItems": [],
+      "questHelperMandatoryItems": [],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [],
+      "unresolvedQuestHelperLabels": []
+    },
+    {
+      "quest": "Regicide",
+      "questHelperCardBackedItems": [
+        "Coal",
+        "Cooked rabbit",
+        "Limestone",
+        "Pestle and mortar",
+        "Pot",
+        "Rope",
+        "Spade",
+        "Strip of cloth",
+        "Tinderbox"
+      ],
+      "questHelperMandatoryItems": [
+        "Coal",
+        "Cooked rabbit",
+        "Limestone",
+        "Pestle and mortar",
+        "Pot",
+        "Rope",
+        "Spade",
+        "Strip of cloth",
+        "Tinderbox"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Coal",
+        "Cooked rabbit",
+        "Limestone",
+        "Limestone brick",
+        "Pestle and mortar",
+        "Pot",
+        "Roast rabbit",
+        "Rope",
+        "Spade",
+        "Strip of cloth",
+        "Tinderbox"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [
+        "Limestone brick",
+        "Roast rabbit"
+      ],
+      "unresolvedQuestHelperLabels": [
+        "Arrows (metal, unpoisoned)",
+        "Bow (not crossbow)",
+        "Gloves which fully cover your hand"
+      ]
+    },
+    {
+      "quest": "Romeo & Juliet",
+      "questHelperCardBackedItems": [],
+      "questHelperMandatoryItems": [],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [],
+      "unresolvedQuestHelperLabels": [
+        "Cadava berries"
+      ]
+    },
+    {
+      "quest": "Roving Elves",
+      "questHelperCardBackedItems": [
+        "Rope",
+        "Spade"
+      ],
+      "questHelperMandatoryItems": [
+        "Rope",
+        "Spade"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Rope",
+        "Spade"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [],
+      "unresolvedQuestHelperLabels": [
+        "Glarial's pebble (obtainable in quest)",
+        "Key (obtainable in quest)"
+      ]
+    },
+    {
+      "quest": "Royal Trouble",
+      "questHelperCardBackedItems": [
+        "Coal"
+      ],
+      "questHelperMandatoryItems": [
+        "Coal"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Coal",
+        "Plank",
+        "Rope"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [
+        "Plank",
+        "Rope"
+      ],
+      "unresolvedQuestHelperLabels": [
+        "Combat gear"
+      ]
+    },
+    {
+      "quest": "Rum Deal",
+      "questHelperCardBackedItems": [
+        "Rake",
+        "Seed dibber",
+        "Slayer gloves"
+      ],
+      "questHelperMandatoryItems": [
+        "Rake",
+        "Seed dibber",
+        "Slayer gloves"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Bucket",
+        "Rake",
+        "Seed dibber"
+      ],
+      "questHelperOnlyMandatory": [
+        "Slayer gloves"
+      ],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [
+        "Bucket"
+      ],
+      "unresolvedQuestHelperLabels": [
+        "Combat gear"
+      ]
+    },
+    {
+      "quest": "Rune Mysteries",
+      "questHelperCardBackedItems": [],
+      "questHelperMandatoryItems": [],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Air talisman"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [
+        "Air talisman"
+      ],
+      "unresolvedQuestHelperLabels": []
+    },
+    {
+      "quest": "Scorpion Catcher",
+      "questHelperCardBackedItems": [
+        "Dusty key"
+      ],
+      "questHelperMandatoryItems": [
+        "Dusty key"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Dusty key"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [],
+      "unresolvedQuestHelperLabels": []
+    },
+    {
+      "quest": "Scrambled!",
+      "questHelperCardBackedItems": [
+        "Bowl of water",
+        "Hammer",
+        "Plank",
+        "Saw"
+      ],
+      "questHelperMandatoryItems": [
+        "Bowl of water",
+        "Hammer",
+        "Plank",
+        "Saw"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Bowl of water",
+        "Hammer",
+        "Plank",
+        "Saw"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [],
+      "unresolvedQuestHelperLabels": [
+        "Combat gear",
+        "Nail"
+      ]
+    },
+    {
+      "quest": "Sea Slug",
+      "questHelperCardBackedItems": [
+        "Swamp paste"
+      ],
+      "questHelperMandatoryItems": [
+        "Swamp paste"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Swamp paste",
+        "Torch"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [
+        "Torch"
+      ],
+      "unresolvedQuestHelperLabels": []
+    },
+    {
+      "quest": "Secrets of the North",
+      "questHelperCardBackedItems": [
+        "Coins",
+        "Lockpick",
+        "Tinderbox"
+      ],
+      "questHelperMandatoryItems": [
+        "Coins",
+        "Lockpick",
+        "Tinderbox"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Coins",
+        "Lockpick",
+        "Tinderbox"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [],
+      "unresolvedQuestHelperLabels": [
+        "Combat Gear",
+        "Food"
+      ]
+    },
+    {
+      "quest": "Shades of Mort'ton",
+      "questHelperCardBackedItems": [
+        "Ashes",
+        "Tinderbox"
+      ],
+      "questHelperMandatoryItems": [
+        "Ashes",
+        "Tinderbox"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Ashes",
+        "Coins",
+        "Hammer",
+        "Logs",
+        "Tarromin",
+        "Tinderbox"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [
+        "Coins",
+        "Hammer",
+        "Logs",
+        "Tarromin"
+      ],
+      "unresolvedQuestHelperLabels": [
+        "A log whose pyre version you can burn",
+        "Coins for building materials, or 18000 if you want to buy a Flamtaer hammer",
+        "Hammer or Flamtaer Hammer",
+        "Tarromin potion (unf)"
+      ]
+    },
+    {
+      "quest": "Shadow of the Storm",
+      "questHelperCardBackedItems": [
+        "Silver bar"
+      ],
+      "questHelperMandatoryItems": [
+        "Silver bar"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Silver bar"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [],
+      "unresolvedQuestHelperLabels": [
+        "pieces of black clothing",
+        "Silverlight"
+      ]
+    },
+    {
+      "quest": "Shadows of Custodia",
+      "questHelperCardBackedItems": [
+        "Fishing rod",
+        "Hammer",
+        "Maple logs",
+        "Willow longbow"
+      ],
+      "questHelperMandatoryItems": [
+        "Fishing rod",
+        "Hammer",
+        "Maple logs",
+        "Willow longbow"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Fishing rod",
+        "Hammer",
+        "Maple logs",
+        "Willow longbow"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [],
+      "unresolvedQuestHelperLabels": []
+    },
+    {
+      "quest": "Sheep Herder",
+      "questHelperCardBackedItems": [
+        "Coins"
+      ],
+      "questHelperMandatoryItems": [
+        "Coins"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Coins"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [],
+      "unresolvedQuestHelperLabels": []
+    },
+    {
+      "quest": "Sheep Shearer",
+      "questHelperCardBackedItems": [
+        "Ball of wool",
+        "Shears"
+      ],
+      "questHelperMandatoryItems": [
+        "Ball of wool",
+        "Shears"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Ball of wool",
+        "Shears",
+        "Wool"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [
+        "Wool"
+      ],
+      "unresolvedQuestHelperLabels": []
+    },
+    {
+      "quest": "Shilo Village",
+      "questHelperCardBackedItems": [
+        "Bones",
+        "Bronze wire",
+        "Chisel",
+        "Rope",
+        "Spade"
+      ],
+      "questHelperMandatoryItems": [
+        "Bones",
+        "Bronze wire",
+        "Chisel",
+        "Rope",
+        "Spade"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Bones",
+        "Bronze wire",
+        "Candle",
+        "Chisel",
+        "Rope",
+        "Spade",
+        "Torch"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [
+        "Candle",
+        "Torch"
+      ],
+      "unresolvedQuestHelperLabels": [
+        "Lit torch or candle"
+      ]
+    },
+    {
+      "quest": "Sins of the Father",
+      "questHelperCardBackedItems": [
+        "Chisel",
+        "Coins",
+        "Cosmic rune",
+        "Fire rune",
+        "Knife",
+        "Ruby",
+        "Vyrewatch legs",
+        "Vyrewatch shoes",
+        "Vyrewatch top"
+      ],
+      "questHelperMandatoryItems": [
+        "Chisel",
+        "Knife",
+        "Ruby"
+      ],
+      "questHelperAlternativeItems": [
+        "Coins",
+        "Cosmic rune",
+        "Fire rune",
+        "Vyrewatch legs",
+        "Vyrewatch shoes",
+        "Vyrewatch top"
+      ],
+      "bronzemanItemCards": [
+        "Chisel",
+        "Enchant ruby or topaz",
+        "Knife",
+        "Ruby"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [
+        "Coins",
+        "Cosmic rune",
+        "Fire rune",
+        "Vyrewatch legs",
+        "Vyrewatch shoes",
+        "Vyrewatch top"
+      ],
+      "bronzemanOnly": [
+        "Enchant ruby or topaz"
+      ],
+      "unresolvedQuestHelperLabels": [
+        "Any axe",
+        "Combat gear + food",
+        "Fire staff",
+        "Ivandis flail",
+        "Ruby enchant tablet"
+      ]
+    },
+    {
+      "quest": "Sleeping Giants",
+      "questHelperCardBackedItems": [
+        "Chisel",
+        "Hammer",
+        "Oak logs",
+        "Wool"
+      ],
+      "questHelperMandatoryItems": [
+        "Chisel",
+        "Hammer",
+        "Oak logs",
+        "Wool"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Bucket of water",
+        "Chisel",
+        "Hammer",
+        "Imcando hammer",
+        "Oak logs",
+        "Wool"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [
+        "Bucket of water",
+        "Imcando hammer"
+      ],
+      "unresolvedQuestHelperLabels": [
+        "Nails"
+      ]
+    },
+    {
+      "quest": "Song of the Elves",
+      "questHelperCardBackedItems": [
+        "Adamant chainbody",
+        "Cabbage",
+        "Cadantine seed",
+        "Hammer",
+        "Limestone brick",
+        "Nature rune",
+        "Pestle and mortar",
+        "Purple dye",
+        "Red dye",
+        "Rope",
+        "Runite bar",
+        "Saw",
+        "Seed dibber",
+        "Silk",
+        "Spade",
+        "Steel full helm",
+        "Steel platebody",
+        "Steel platelegs",
+        "Tinderbox",
+        "Vial of water"
+      ],
+      "questHelperMandatoryItems": [
+        "Adamant chainbody",
+        "Cabbage",
+        "Cadantine seed",
+        "Hammer",
+        "Limestone brick",
+        "Nature rune",
+        "Pestle and mortar",
+        "Purple dye",
+        "Red dye",
+        "Rope",
+        "Runite bar",
+        "Saw",
+        "Seed dibber",
+        "Silk",
+        "Spade",
+        "Steel full helm",
+        "Steel platebody",
+        "Steel platelegs",
+        "Tinderbox",
+        "Vial of water"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Adamant chainbody",
+        "Adamant seeds",
+        "Black dagger",
+        "Black knife",
+        "Cabbage",
+        "Cadantine seed",
+        "Hammer",
+        "Irit leaf",
+        "Limestone brick",
+        "Mithril seeds",
+        "Nature rune",
+        "Ode to eternity",
+        "Pestle and mortar",
+        "Purple dye",
+        "Red dye",
+        "Rope",
+        "Runite bar",
+        "Saw",
+        "Seed dibber",
+        "Silk",
+        "Spade",
+        "Steel full helm",
+        "Steel platebody",
+        "Steel platelegs",
+        "Tinderbox",
+        "Vial of water",
+        "Wine of zamorak",
+        "Zamorak brew"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [
+        "Adamant seeds",
+        "Black dagger",
+        "Black knife",
+        "Irit leaf",
+        "Mithril seeds",
+        "Ode to eternity",
+        "Wine of zamorak",
+        "Zamorak brew"
+      ],
+      "unresolvedQuestHelperLabels": [
+        "Any axe",
+        "Any pickaxe",
+        "Black knife or black dagger",
+        "Gas mask",
+        "Irit leaf or a flower",
+        "Mourner boots",
+        "Mourner cloak",
+        "Mourner gloves",
+        "Mourner top",
+        "Mourner trousers",
+        "Wine of Zamorak or Zamorak brew"
+      ]
+    },
+    {
+      "quest": "Spirits of the Elid",
+      "questHelperCardBackedItems": [
+        "Air rune",
+        "Knife",
+        "Law rune",
+        "Needle",
+        "Rope",
+        "Thread"
+      ],
+      "questHelperMandatoryItems": [
+        "Air rune",
+        "Knife",
+        "Law rune",
+        "Needle",
+        "Rope",
+        "Thread"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Knife",
+        "Needle",
+        "Rope",
+        "Thread"
+      ],
+      "questHelperOnlyMandatory": [
+        "Air rune",
+        "Law rune"
+      ],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [],
+      "unresolvedQuestHelperLabels": [
+        "Any bow",
+        "Any Pickaxe",
+        "Arrows for bow",
+        "Crush Weapon Style",
+        "Light source",
+        "Slash Weapon Style",
+        "Stab Weapon Style"
+      ]
+    },
+    {
+      "quest": "Swan Song",
+      "questHelperCardBackedItems": [
+        "Blood rune",
+        "Bones",
+        "Iron bar",
+        "Lava rune",
+        "Mist rune",
+        "Pot",
+        "Tinderbox"
+      ],
+      "questHelperMandatoryItems": [
+        "Blood rune",
+        "Bones",
+        "Iron bar",
+        "Lava rune",
+        "Mist rune",
+        "Pot",
+        "Tinderbox"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Blood rune",
+        "Bones",
+        "Brown apron",
+        "Hammer",
+        "Iron bar",
+        "Lava rune",
+        "Logs",
+        "Mist rune",
+        "Pot",
+        "Small fishing net",
+        "Tinderbox"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [
+        "Brown apron",
+        "Hammer",
+        "Logs",
+        "Small fishing net"
+      ],
+      "unresolvedQuestHelperLabels": [
+        "Any log",
+        "Hammer (obtainable in quest)",
+        "Pot lid"
+      ]
+    },
+    {
+      "quest": "Tai Bwo Wannai Trio",
+      "questHelperCardBackedItems": [
+        "Agility potion",
+        "Coins",
+        "Hammer",
+        "Knife",
+        "Pestle and mortar",
+        "Raw karambwan",
+        "Sliced banana",
+        "Small fishing net",
+        "Tinderbox"
+      ],
+      "questHelperMandatoryItems": [
+        "Agility potion",
+        "Coins",
+        "Hammer",
+        "Pestle and mortar",
+        "Raw karambwan",
+        "Small fishing net",
+        "Tinderbox"
+      ],
+      "questHelperAlternativeItems": [
+        "Knife",
+        "Sliced banana"
+      ],
+      "bronzemanItemCards": [
+        "Adamant spear",
+        "Agility potion",
+        "Dragon spear",
+        "Iron spear",
+        "Jogre bones",
+        "Knife",
+        "Logs",
+        "Mithril spear",
+        "Pestle and mortar",
+        "Poison karambwan",
+        "Rune spear",
+        "Seaweed",
+        "Sliced banana",
+        "Small fishing net",
+        "Steel spear",
+        "Tinderbox"
+      ],
+      "questHelperOnlyMandatory": [
+        "Coins",
+        "Hammer",
+        "Raw karambwan"
+      ],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [
+        "Adamant spear",
+        "Dragon spear",
+        "Iron spear",
+        "Jogre bones",
+        "Logs",
+        "Mithril spear",
+        "Poison karambwan",
+        "Rune spear",
+        "Seaweed",
+        "Steel spear"
+      ],
+      "unresolvedQuestHelperLabels": [
+        "Any logs to make a fire",
+        "Iron spear or better (You will lose the spear)",
+        "Ranged or Magic equipment to kill a level 3 monkey"
+      ]
+    },
+    {
+      "quest": "Tale of the Righteous",
+      "questHelperCardBackedItems": [
+        "Rope"
+      ],
+      "questHelperMandatoryItems": [
+        "Rope"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Rope"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [],
+      "unresolvedQuestHelperLabels": [
+        "A pickaxe",
+        "Any ranged weapon + ammo",
+        "Runes for a few casts of a combat spell"
+      ]
+    },
+    {
+      "quest": "Tears of Guthix",
+      "questHelperCardBackedItems": [
+        "Chisel",
+        "Rope",
+        "Tinderbox"
+      ],
+      "questHelperMandatoryItems": [
+        "Chisel",
+        "Rope",
+        "Tinderbox"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Chisel",
+        "Rope"
+      ],
+      "questHelperOnlyMandatory": [
+        "Tinderbox"
+      ],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [],
+      "unresolvedQuestHelperLabels": [
+        "Any pickaxe",
+        "Sapphire lantern"
+      ]
+    },
+    {
+      "quest": "Temple of Ikov",
+      "questHelperCardBackedItems": [],
+      "questHelperMandatoryItems": [],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Limpwurt root"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [
+        "Limpwurt root"
+      ],
+      "unresolvedQuestHelperLabels": [
+        "A light source to get the boots of lightness",
+        "Knife to get the boots of lightness",
+        "Limpwurt (unnoted)",
+        "Throwable Weapon",
+        "Yew, magic, or dark bow"
+      ]
+    },
+    {
+      "quest": "Temple of the Eye",
+      "questHelperCardBackedItems": [
+        "Bucket of water",
+        "Chisel"
+      ],
+      "questHelperMandatoryItems": [
+        "Bucket of water",
+        "Chisel"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Bucket of water",
+        "Chisel"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [],
+      "unresolvedQuestHelperLabels": [
+        "Pickaxe"
+      ]
+    },
+    {
+      "quest": "The Ascent of Arceuus",
+      "questHelperCardBackedItems": [],
+      "questHelperMandatoryItems": [],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [],
+      "unresolvedQuestHelperLabels": []
+    },
+    {
+      "quest": "The Corsair Curse",
+      "questHelperCardBackedItems": [],
+      "questHelperMandatoryItems": [],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Spade",
+        "Tinderbox"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [
+        "Spade",
+        "Tinderbox"
+      ],
+      "unresolvedQuestHelperLabels": [
+        "Combat gear + food to defeat Ithoi (level 34), who uses magic"
+      ]
+    },
+    {
+      "quest": "The Curse of Arrav",
+      "questHelperCardBackedItems": [
+        "Insulated boots",
+        "Mith grapple",
+        "Ring of life"
+      ],
+      "questHelperMandatoryItems": [
+        "Insulated boots",
+        "Mith grapple",
+        "Ring of life"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Insulated boots",
+        "Mith grapple",
+        "Ring of life"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [],
+      "unresolvedQuestHelperLabels": [
+        "Any crossbow",
+        "Any pickaxe",
+        "Dwellberries"
+      ]
+    },
+    {
+      "quest": "The Depths of Despair",
+      "questHelperCardBackedItems": [],
+      "questHelperMandatoryItems": [],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [],
+      "unresolvedQuestHelperLabels": []
+    },
+    {
+      "quest": "The Dig Site",
+      "questHelperCardBackedItems": [
+        "Cup of tea",
+        "Opal",
+        "Pestle and mortar",
+        "Rope",
+        "Tinderbox",
+        "Vial"
+      ],
+      "questHelperMandatoryItems": [
+        "Cup of tea",
+        "Opal",
+        "Pestle and mortar",
+        "Rope",
+        "Tinderbox",
+        "Vial"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Cup of tea",
+        "Opal",
+        "Pestle and mortar",
+        "Rope",
+        "Tinderbox",
+        "Vial"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [],
+      "unresolvedQuestHelperLabels": [
+        "Charcoal"
+      ]
+    },
+    {
+      "quest": "The Eyes of Glouphrie",
+      "questHelperCardBackedItems": [
+        "Hammer",
+        "Maple logs",
+        "Mud rune",
+        "Oak logs",
+        "Pestle and mortar",
+        "Saw"
+      ],
+      "questHelperMandatoryItems": [
+        "Hammer",
+        "Maple logs",
+        "Mud rune",
+        "Oak logs",
+        "Pestle and mortar",
+        "Saw"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Bucket",
+        "Hammer",
+        "Maple logs",
+        "Mud rune",
+        "Oak logs",
+        "Pestle and mortar",
+        "Saw"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [
+        "Bucket"
+      ],
+      "unresolvedQuestHelperLabels": [
+        "Bucket of sap"
+      ]
+    },
+    {
+      "quest": "The Feud",
+      "questHelperCardBackedItems": [
+        "Coins"
+      ],
+      "questHelperMandatoryItems": [
+        "Coins"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Barrows gloves",
+        "Beer",
+        "Bucket",
+        "Coins",
+        "Kharidian headpiece",
+        "Slayer gloves"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [
+        "Barrows gloves",
+        "Beer",
+        "Bucket",
+        "Kharidian headpiece",
+        "Slayer gloves"
+      ],
+      "unresolvedQuestHelperLabels": [
+        "Combat Gear bring Range or Mage Gear if safe spotting.",
+        "Leather or Graceful Gloves"
+      ]
+    },
+    {
+      "quest": "The Final Dawn",
+      "questHelperCardBackedItems": [],
+      "questHelperMandatoryItems": [],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Beer",
+        "Bones",
+        "Cooked meat",
+        "Knife"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [
+        "Beer",
+        "Bones",
+        "Cooked meat",
+        "Knife"
+      ],
+      "unresolvedQuestHelperLabels": [
+        "Any type of bone or raw meat",
+        "Melee Combat gear"
+      ]
+    },
+    {
+      "quest": "The Forsaken Tower",
+      "questHelperCardBackedItems": [],
+      "questHelperMandatoryItems": [],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Tinderbox"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [
+        "Tinderbox"
+      ],
+      "unresolvedQuestHelperLabels": []
+    },
+    {
+      "quest": "The Fremennik Exiles",
+      "questHelperCardBackedItems": [
+        "Astral rune",
+        "Coins",
+        "Fishing rod",
+        "Fremennik shield",
+        "Glassblowing pipe",
+        "Hammer",
+        "Keg of beer",
+        "Mirror shield",
+        "Molten glass"
+      ],
+      "questHelperMandatoryItems": [
+        "Astral rune",
+        "Fishing rod",
+        "Fremennik shield",
+        "Glassblowing pipe",
+        "Hammer",
+        "Mirror shield",
+        "Molten glass"
+      ],
+      "questHelperAlternativeItems": [
+        "Coins",
+        "Keg of beer"
+      ],
+      "bronzemanItemCards": [
+        "Astral rune",
+        "Fishing rod",
+        "Fly fishing rod",
+        "Fremennik shield",
+        "Glassblowing pipe",
+        "Hammer",
+        "Mirror shield",
+        "Molten glass"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [
+        "Coins",
+        "Keg of beer"
+      ],
+      "bronzemanOnly": [
+        "Fly fishing rod"
+      ],
+      "unresolvedQuestHelperLabels": [
+        "Any pickaxe",
+        "Combat gear",
+        "Ice gloves or smiths gloves(i)",
+        "Pet rock",
+        "Rune thrownaxe, or a friend to help enter Waterbirth Isle Dungeon",
+        "Seal of passage"
+      ]
+    },
+    {
+      "quest": "The Fremennik Isles",
+      "questHelperCardBackedItems": [],
+      "questHelperMandatoryItems": [],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Coal",
+        "Coins",
+        "Knife",
+        "Mithril ore",
+        "Neitiznot shield",
+        "Raw tuna",
+        "Rope",
+        "Tin ore"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [
+        "Coal",
+        "Coins",
+        "Knife",
+        "Mithril ore",
+        "Neitiznot shield",
+        "Raw tuna",
+        "Rope",
+        "Tin ore"
+      ],
+      "unresolvedQuestHelperLabels": []
+    },
+    {
+      "quest": "The Fremennik Trials",
+      "questHelperCardBackedItems": [
+        "Coins",
+        "Knife",
+        "Tinderbox"
+      ],
+      "questHelperMandatoryItems": [
+        "Coins",
+        "Knife",
+        "Tinderbox"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Beer",
+        "Beer tankard",
+        "Coins",
+        "Raw manta ray",
+        "Raw sea turtle",
+        "Raw shark",
+        "Tinderbox"
+      ],
+      "questHelperOnlyMandatory": [
+        "Knife"
+      ],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [
+        "Beer",
+        "Beer tankard",
+        "Raw manta ray",
+        "Raw sea turtle",
+        "Raw shark"
+      ],
+      "unresolvedQuestHelperLabels": [
+        "Any axe",
+        "Raw shark, manta ray or sea turtle"
+      ]
+    },
+    {
+      "quest": "The Garden of Death",
+      "questHelperCardBackedItems": [],
+      "questHelperMandatoryItems": [],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Secateurs"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [
+        "Secateurs"
+      ],
+      "unresolvedQuestHelperLabels": [
+        "Secateurs (Obtainable in quest)"
+      ]
+    },
+    {
+      "quest": "The Giant Dwarf",
+      "questHelperCardBackedItems": [
+        "Air rune",
+        "Coal",
+        "Coins",
+        "Iron bar",
+        "Law rune",
+        "Logs",
+        "Redberry pie",
+        "Tinderbox"
+      ],
+      "questHelperMandatoryItems": [
+        "Air rune",
+        "Coal",
+        "Coins",
+        "Iron bar",
+        "Law rune",
+        "Logs",
+        "Redberry pie",
+        "Tinderbox"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Coal",
+        "Coins",
+        "Iron bar",
+        "Logs",
+        "Redberry pie",
+        "Sapphire",
+        "Tinderbox"
+      ],
+      "questHelperOnlyMandatory": [
+        "Air rune",
+        "Law rune"
+      ],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [
+        "Sapphire"
+      ],
+      "unresolvedQuestHelperLabels": [
+        "Cut sapphires",
+        "Various ores and bars"
+      ]
+    },
+    {
+      "quest": "The Golem",
+      "questHelperCardBackedItems": [
+        "Papyrus",
+        "Pestle and mortar",
+        "Soft clay",
+        "Vial"
+      ],
+      "questHelperMandatoryItems": [
+        "Papyrus",
+        "Pestle and mortar",
+        "Soft clay",
+        "Vial"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Papyrus",
+        "Pestle and mortar",
+        "Pharaoh's sceptre",
+        "Soft clay",
+        "Vial"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [
+        "Pharaoh's sceptre"
+      ],
+      "unresolvedQuestHelperLabels": []
+    },
+    {
+      "quest": "The Grand Tree",
+      "questHelperCardBackedItems": [],
+      "questHelperMandatoryItems": [],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Coins"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [
+        "Coins"
+      ],
+      "unresolvedQuestHelperLabels": [
+        "Coins to enter the Stronghold if you didn't help Femi previously"
+      ]
+    },
+    {
+      "quest": "The Great Brain Robbery",
+      "questHelperCardBackedItems": [
+        "Fur",
+        "Hammer",
+        "Plank"
+      ],
+      "questHelperMandatoryItems": [
+        "Hammer",
+        "Plank"
+      ],
+      "questHelperAlternativeItems": [
+        "Fur"
+      ],
+      "bronzemanItemCards": [
+        "Hammer",
+        "Plank"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [
+        "Fur"
+      ],
+      "bronzemanOnly": [],
+      "unresolvedQuestHelperLabels": [
+        "Diving apparatus",
+        "Fishbowl helmet",
+        "Holy symbol",
+        "Nails",
+        "No pet following you or in your inventory",
+        "Ring of Charos",
+        "Wooden cat"
+      ]
+    },
+    {
+      "quest": "The Hand in the Sand",
+      "questHelperCardBackedItems": [
+        "Bucket of sand",
+        "Earth rune",
+        "Lantern lens",
+        "Redberries",
+        "Vial",
+        "White berries"
+      ],
+      "questHelperMandatoryItems": [
+        "Bucket of sand",
+        "Earth rune",
+        "Lantern lens",
+        "Redberries",
+        "Vial",
+        "White berries"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Beer",
+        "Bucket of sand",
+        "Coins",
+        "Earth rune",
+        "Lantern lens",
+        "Redberries",
+        "Vial",
+        "White berries"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [
+        "Beer",
+        "Coins"
+      ],
+      "unresolvedQuestHelperLabels": [
+        "Beer or 2 gp",
+        "Coins or more for boat travel"
+      ]
+    },
+    {
+      "quest": "The Heart of Darkness",
+      "questHelperCardBackedItems": [
+        "Coins",
+        "Prayer potion"
+      ],
+      "questHelperMandatoryItems": [
+        "Coins",
+        "Prayer potion"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Coins"
+      ],
+      "questHelperOnlyMandatory": [
+        "Prayer potion"
+      ],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [],
+      "unresolvedQuestHelperLabels": [
+        "Combat gear",
+        "Food"
+      ]
+    },
+    {
+      "quest": "The Ides of Milk",
+      "questHelperCardBackedItems": [],
+      "questHelperMandatoryItems": [],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [],
+      "unresolvedQuestHelperLabels": []
+    },
+    {
+      "quest": "The Knight's Sword",
+      "questHelperCardBackedItems": [
+        "Iron bar",
+        "Redberry pie"
+      ],
+      "questHelperMandatoryItems": [
+        "Iron bar",
+        "Redberry pie"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Iron bar",
+        "Redberry pie"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [],
+      "unresolvedQuestHelperLabels": [
+        "Any pickaxe"
+      ]
+    },
+    {
+      "quest": "The Lost Tribe",
+      "questHelperCardBackedItems": [],
+      "questHelperMandatoryItems": [],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "3rd age pickaxe",
+        "Abyssal lantern",
+        "Adamant pickaxe",
+        "Black pickaxe",
+        "Bronze pickaxe",
+        "Bruma torch",
+        "Bullseye lantern",
+        "Candle lantern",
+        "Crystal pickaxe",
+        "Dragon pickaxe",
+        "Gilded pickaxe",
+        "Infernal pickaxe",
+        "Iron pickaxe",
+        "Lit candle",
+        "Mining helmet",
+        "Mithril pickaxe",
+        "Oil lamp",
+        "Oil lantern",
+        "Rune pickaxe",
+        "Steel pickaxe",
+        "Torch"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [
+        "3rd age pickaxe",
+        "Abyssal lantern",
+        "Adamant pickaxe",
+        "Black pickaxe",
+        "Bronze pickaxe",
+        "Bruma torch",
+        "Bullseye lantern",
+        "Candle lantern",
+        "Crystal pickaxe",
+        "Dragon pickaxe",
+        "Gilded pickaxe",
+        "Infernal pickaxe",
+        "Iron pickaxe",
+        "Lit candle",
+        "Mining helmet",
+        "Mithril pickaxe",
+        "Oil lamp",
+        "Oil lantern",
+        "Rune pickaxe",
+        "Steel pickaxe",
+        "Torch"
+      ],
+      "unresolvedQuestHelperLabels": [
+        "A light source",
+        "Any pickaxe"
+      ]
+    },
+    {
+      "quest": "The Path of Glouphrie",
+      "questHelperCardBackedItems": [
+        "Mith grapple",
+        "Prayer potion"
+      ],
+      "questHelperMandatoryItems": [
+        "Mith grapple",
+        "Prayer potion"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Mith grapple"
+      ],
+      "questHelperOnlyMandatory": [
+        "Prayer potion"
+      ],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [],
+      "unresolvedQuestHelperLabels": [
+        "Any crossbow",
+        "Combat equipment",
+        "Food",
+        "Tree Gnome Village dungeon key"
+      ]
+    },
+    {
+      "quest": "The Queen of Thieves",
+      "questHelperCardBackedItems": [
+        "Stew"
+      ],
+      "questHelperMandatoryItems": [
+        "Stew"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Stew"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [],
+      "unresolvedQuestHelperLabels": []
+    },
+    {
+      "quest": "The Red Reef",
+      "questHelperCardBackedItems": [],
+      "questHelperMandatoryItems": [],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [],
+      "unresolvedQuestHelperLabels": [
+        "Combat gear",
+        "Ranged/Mage combat gear to skip boat combat, or a boat with cannons to deal with pirates"
+      ]
+    },
+    {
+      "quest": "The Restless Ghost",
+      "questHelperCardBackedItems": [],
+      "questHelperMandatoryItems": [],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [],
+      "unresolvedQuestHelperLabels": []
+    },
+    {
+      "quest": "The Ribbiting Tale of a Lily Pad Labour Dispute",
+      "questHelperCardBackedItems": [],
+      "questHelperMandatoryItems": [],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "3rd age axe",
+        "Adamant axe",
+        "Black axe",
+        "Bronze axe",
+        "Crystal axe",
+        "Dragon axe",
+        "Gilded axe",
+        "Infernal axe",
+        "Iron axe",
+        "Mithril axe",
+        "Rune axe",
+        "Steel axe"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [
+        "3rd age axe",
+        "Adamant axe",
+        "Black axe",
+        "Bronze axe",
+        "Crystal axe",
+        "Dragon axe",
+        "Gilded axe",
+        "Infernal axe",
+        "Iron axe",
+        "Mithril axe",
+        "Rune axe",
+        "Steel axe"
+      ],
+      "unresolvedQuestHelperLabels": [
+        "Any axe"
+      ]
+    },
+    {
+      "quest": "The Slug Menace",
+      "questHelperCardBackedItems": [
+        "Chisel",
+        "Swamp paste"
+      ],
+      "questHelperMandatoryItems": [
+        "Chisel",
+        "Swamp paste"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Chisel",
+        "Pure essence",
+        "Rune essence",
+        "Swamp paste"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [
+        "Pure essence",
+        "Rune essence"
+      ],
+      "unresolvedQuestHelperLabels": [
+        "Access to the Air Altar",
+        "Access to the Earth Altar",
+        "Access to the Fire Altar",
+        "Access to the Mind Altar",
+        "Access to the Water Altar",
+        "Commorb (can get another from Sir Tiffy)",
+        "Rune/pure essence, 15 to be safe"
+      ]
+    },
+    {
+      "quest": "The Tourist Trap",
+      "questHelperCardBackedItems": [
+        "Bronze bar",
+        "Desert boots",
+        "Desert robe",
+        "Desert shirt",
+        "Feather",
+        "Hammer"
+      ],
+      "questHelperMandatoryItems": [
+        "Bronze bar",
+        "Desert boots",
+        "Desert robe",
+        "Desert shirt",
+        "Feather",
+        "Hammer"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Bronze bar",
+        "Desert boots",
+        "Desert robe",
+        "Desert shirt",
+        "Feather",
+        "Hammer"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [],
+      "unresolvedQuestHelperLabels": []
+    },
+    {
+      "quest": "Throne of Miscellania",
+      "questHelperCardBackedItems": [
+        "Iron bar",
+        "Logs"
+      ],
+      "questHelperMandatoryItems": [
+        "Iron bar",
+        "Logs"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Iron bar",
+        "Logs"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [],
+      "unresolvedQuestHelperLabels": [
+        "Any non-silver ring you are willing to lose",
+        "Any normal/oak/willow/maple/yew shortbow or longbow (if courting Astrid)",
+        "Cake (if courting Brand)",
+        "Flowers",
+        "One of: a harpoon or lobster pot."
+      ]
+    },
+    {
+      "quest": "Tower of Life",
+      "questHelperCardBackedItems": [
+        "Beer",
+        "Hammer",
+        "Saw"
+      ],
+      "questHelperMandatoryItems": [
+        "Beer",
+        "Hammer",
+        "Saw"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Beer",
+        "Hammer",
+        "Saw"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [],
+      "unresolvedQuestHelperLabels": []
+    },
+    {
+      "quest": "Tree Gnome Village",
+      "questHelperCardBackedItems": [
+        "Logs"
+      ],
+      "questHelperMandatoryItems": [
+        "Logs"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Logs"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [],
+      "unresolvedQuestHelperLabels": [
+        "Combat gear (magic is best)"
+      ]
+    },
+    {
+      "quest": "Tribal Totem",
+      "questHelperCardBackedItems": [],
+      "questHelperMandatoryItems": [],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [],
+      "unresolvedQuestHelperLabels": []
+    },
+    {
+      "quest": "Troll Romance",
+      "questHelperCardBackedItems": [
+        "Cake tin",
+        "Iron bar",
+        "Rope",
+        "Swamp tar"
+      ],
+      "questHelperMandatoryItems": [
+        "Cake tin",
+        "Iron bar",
+        "Rope",
+        "Swamp tar"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Iron bar",
+        "Maple logs",
+        "Rope",
+        "Yew logs"
+      ],
+      "questHelperOnlyMandatory": [
+        "Cake tin",
+        "Swamp tar"
+      ],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [
+        "Maple logs",
+        "Yew logs"
+      ],
+      "unresolvedQuestHelperLabels": [
+        "Bucket of wax",
+        "Climbing boots",
+        "Combat gear, food, and potions",
+        "Maple/yew logs"
+      ]
+    },
+    {
+      "quest": "Troll Stronghold",
+      "questHelperCardBackedItems": [
+        "Coins"
+      ],
+      "questHelperMandatoryItems": [],
+      "questHelperAlternativeItems": [
+        "Coins"
+      ],
+      "bronzemanItemCards": [
+        "Coins"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [],
+      "unresolvedQuestHelperLabels": [
+        "Climbing boots"
+      ]
+    },
+    {
+      "quest": "Troubled Tortugans",
+      "questHelperCardBackedItems": [
+        "Hammer",
+        "Saw"
+      ],
+      "questHelperMandatoryItems": [
+        "Hammer",
+        "Saw"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Hammer",
+        "Saw"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [],
+      "unresolvedQuestHelperLabels": [
+        "Any axe",
+        "Combat gear",
+        "Food",
+        "Prayer restore"
+      ]
+    },
+    {
+      "quest": "Twilight's Promise",
+      "questHelperCardBackedItems": [],
+      "questHelperMandatoryItems": [],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Quetzal feed"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [
+        "Quetzal feed"
+      ],
+      "unresolvedQuestHelperLabels": [
+        "Two combat styles"
+      ]
+    },
+    {
+      "quest": "Underground Pass",
+      "questHelperCardBackedItems": [
+        "Bucket",
+        "Plank",
+        "Spade",
+        "Tinderbox"
+      ],
+      "questHelperMandatoryItems": [
+        "Bucket",
+        "Plank",
+        "Spade",
+        "Tinderbox"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Bucket",
+        "Rope",
+        "Spade",
+        "Tinderbox"
+      ],
+      "questHelperOnlyMandatory": [
+        "Plank"
+      ],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [
+        "Rope"
+      ],
+      "unresolvedQuestHelperLabels": [
+        "Arrows (metal, unpoisoned)",
+        "Bow (not crossbow)",
+        "Combat Equipment",
+        "Rope, multiple in case you fail an agility check"
+      ]
+    },
+    {
+      "quest": "Vampyre Slayer",
+      "questHelperCardBackedItems": [
+        "Beer",
+        "Coins",
+        "Hammer"
+      ],
+      "questHelperMandatoryItems": [
+        "Hammer"
+      ],
+      "questHelperAlternativeItems": [
+        "Beer",
+        "Coins"
+      ],
+      "bronzemanItemCards": [
+        "Beer",
+        "Hammer"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [
+        "Coins"
+      ],
+      "bronzemanOnly": [],
+      "unresolvedQuestHelperLabels": [
+        "Combat gear + food to defeat Count Draynor"
+      ]
+    },
+    {
+      "quest": "Wanted!",
+      "questHelperCardBackedItems": [
+        "Enchanted gem",
+        "Molten glass"
+      ],
+      "questHelperMandatoryItems": [],
+      "questHelperAlternativeItems": [
+        "Enchanted gem",
+        "Molten glass"
+      ],
+      "bronzemanItemCards": [
+        "Coins",
+        "Pure essence",
+        "Rune essence"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [
+        "Enchanted gem",
+        "Molten glass"
+      ],
+      "bronzemanOnly": [
+        "Coins",
+        "Pure essence",
+        "Rune essence"
+      ],
+      "unresolvedQuestHelperLabels": [
+        "10k gp",
+        "20 Pure Essence (UNNOTED)",
+        "20 Rune Essence (UNNOTED)",
+        "A law rune",
+        "A light source",
+        "A rope",
+        "Combat gear"
+      ]
+    },
+    {
+      "quest": "Watchtower",
+      "questHelperCardBackedItems": [
+        "Bat bones",
+        "Coins",
+        "Death rune",
+        "Dragon bones",
+        "Gold bar",
+        "Jangerberries",
+        "Pestle and mortar",
+        "Rope"
+      ],
+      "questHelperMandatoryItems": [
+        "Bat bones",
+        "Coins",
+        "Death rune",
+        "Dragon bones",
+        "Gold bar",
+        "Jangerberries",
+        "Pestle and mortar",
+        "Rope"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Bat bones",
+        "Coins",
+        "Death rune",
+        "Dragon bones",
+        "Gold bar",
+        "Jangerberries",
+        "Pestle and mortar",
+        "Rope",
+        "Tinderbox"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [
+        "Tinderbox"
+      ],
+      "unresolvedQuestHelperLabels": [
+        "A light source",
+        "Any pickaxe",
+        "Guam potion (unf)"
+      ]
+    },
+    {
+      "quest": "Waterfall Quest",
+      "questHelperCardBackedItems": [
+        "Air rune",
+        "Earth rune",
+        "Rope",
+        "Water rune"
+      ],
+      "questHelperMandatoryItems": [
+        "Air rune",
+        "Earth rune",
+        "Rope",
+        "Water rune"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Air rune",
+        "Earth rune",
+        "Rope",
+        "Water rune"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [],
+      "unresolvedQuestHelperLabels": []
+    },
+    {
+      "quest": "What Lies Below",
+      "questHelperCardBackedItems": [
+        "Bowl",
+        "Chaos rune"
+      ],
+      "questHelperMandatoryItems": [
+        "Bowl",
+        "Chaos rune"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Bowl",
+        "Chaos rune"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [],
+      "unresolvedQuestHelperLabels": [
+        "Access to the Chaos Altar"
+      ]
+    },
+    {
+      "quest": "While Guthix Sleeps",
+      "questHelperCardBackedItems": [
+        "Air rune",
+        "Astral rune",
+        "Bronze med helm",
+        "Coins",
+        "Cosmic rune",
+        "Earth rune",
+        "Fire rune",
+        "Iron chainbody",
+        "Knife",
+        "Lantern lens",
+        "Logs",
+        "Unpowered orb",
+        "Water rune"
+      ],
+      "questHelperMandatoryItems": [
+        "Air rune",
+        "Astral rune",
+        "Bronze med helm",
+        "Coins",
+        "Cosmic rune",
+        "Iron chainbody",
+        "Knife",
+        "Lantern lens",
+        "Logs",
+        "Unpowered orb"
+      ],
+      "questHelperAlternativeItems": [
+        "Earth rune",
+        "Fire rune",
+        "Water rune"
+      ],
+      "bronzemanItemCards": [
+        "Air rune",
+        "Bronze med helm",
+        "Death rune",
+        "Earth rune",
+        "Fire rune",
+        "Iron chainbody",
+        "Knife",
+        "Lantern lens",
+        "Law rune",
+        "Mind rune",
+        "Mort myre fungus",
+        "Papyrus",
+        "Restore potion",
+        "Seed dibber",
+        "Snapdragon seed",
+        "Unpowered orb",
+        "Water rune"
+      ],
+      "questHelperOnlyMandatory": [
+        "Astral rune",
+        "Coins",
+        "Cosmic rune",
+        "Logs"
+      ],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [
+        "Death rune",
+        "Law rune",
+        "Mind rune",
+        "Mort myre fungus",
+        "Papyrus",
+        "Restore potion",
+        "Seed dibber",
+        "Snapdragon seed"
+      ],
+      "unresolvedQuestHelperLabels": [
+        "Food",
+        "Lit sapphire lantern",
+        "Magic weapon",
+        "Melee weapon",
+        "Ranged weapon",
+        "Seed dibber (only if not done barb training)"
+      ]
+    },
+    {
+      "quest": "Witch's House",
+      "questHelperCardBackedItems": [
+        "Leather gloves"
+      ],
+      "questHelperMandatoryItems": [
+        "Leather gloves"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Cheese",
+        "Leather gloves"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [
+        "Cheese"
+      ],
+      "unresolvedQuestHelperLabels": [
+        "Cheese (multiple if you mess up)",
+        "Combat gear and food for monsters up to level 53"
+      ]
+    },
+    {
+      "quest": "Witch's Potion",
+      "questHelperCardBackedItems": [
+        "Burnt meat",
+        "Eye of newt",
+        "Onion"
+      ],
+      "questHelperMandatoryItems": [
+        "Burnt meat",
+        "Eye of newt",
+        "Onion"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Burnt meat",
+        "Eye of newt",
+        "Onion"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [],
+      "unresolvedQuestHelperLabels": []
+    },
+    {
+      "quest": "X Marks the Spot",
+      "questHelperCardBackedItems": [
+        "Spade"
+      ],
+      "questHelperMandatoryItems": [
+        "Spade"
+      ],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Spade"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [],
+      "unresolvedQuestHelperLabels": []
+    },
+    {
+      "quest": "Zogre Flesh Eaters",
+      "questHelperCardBackedItems": [],
+      "questHelperMandatoryItems": [],
+      "questHelperAlternativeItems": [],
+      "bronzemanItemCards": [
+        "Comp ogre bow",
+        "Knife"
+      ],
+      "questHelperOnlyMandatory": [],
+      "questHelperOnlyAlternatives": [],
+      "bronzemanOnly": [
+        "Comp ogre bow",
+        "Knife"
+      ],
+      "unresolvedQuestHelperLabels": [
+        "Either brutal arrows or Crumble Undead for fighting Slash Bash"
+      ]
+    }
+  ]
+}
