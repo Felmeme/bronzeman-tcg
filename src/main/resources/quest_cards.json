@@ -67,96 +67,30 @@
 						},
 						{
 							"label": "Fire Bolt or better",
-							"logic": "ANY",
+							"logic": "ALL",
+							"displayCardsOnly": true,
 							"children": [
 								{
-									"label": "Fire Bolt",
-									"logic": "ALL",
-									"children": [
-										{
-											"label": "Fire rune",
-											"cards": [
-												"Fire rune"
-											],
-											"type": "item"
-										},
-										{
-											"label": "Chaos rune",
-											"cards": [
-												"Chaos rune"
-											],
-											"type": "item"
-										}
+									"label": "Fire rune",
+									"cards": [
+										"Fire rune"
 									],
-									"displayCardsOnly": true
+									"type": "item"
 								},
 								{
-									"label": "Fire Blast",
-									"logic": "ALL",
-									"children": [
-										{
-											"label": "Fire rune",
-											"cards": [
-												"Fire rune"
-											],
-											"type": "item"
-										},
-										{
-											"label": "Death rune",
-											"cards": [
-												"Death rune"
-											],
-											"type": "item"
-										}
+									"label": "Catalytic rune",
+									"cards": [
+										"Chaos rune",
+										"Death rune",
+										"Blood rune",
+										"Wrath rune"
 									],
-									"displayCardsOnly": true
-								},
-								{
-									"label": "Fire Wave",
-									"logic": "ALL",
-									"children": [
-										{
-											"label": "Fire rune",
-											"cards": [
-												"Fire rune"
-											],
-											"type": "item"
-										},
-										{
-											"label": "Blood rune",
-											"cards": [
-												"Blood rune"
-											],
-											"type": "item"
-										}
-									],
-									"displayCardsOnly": true
-								},
-								{
-									"label": "Fire Surge",
-									"logic": "ALL",
-									"children": [
-										{
-											"label": "Fire rune",
-											"cards": [
-												"Fire rune"
-											],
-											"type": "item"
-										},
-										{
-											"label": "Wrath rune",
-											"cards": [
-												"Wrath rune"
-											],
-											"type": "item"
-										}
-									],
-									"displayCardsOnly": true
+									"type": "item"
 								}
-							]
-						}
-					]
-				},
+								]
+							}
+						]
+					},
 				{
 					"label": "Enemies",
 					"requirements": [
@@ -356,24 +290,37 @@
 						},
 						{
 							"label": "A knife or slash weapon",
-							"cards": [
-								"Knife",
-								"Dragon scimitar",
-								"Rune scimitar",
-								"Adamant scimitar",
-								"Mithril scimitar",
-								"Steel scimitar",
-								"Iron scimitar",
-								"Bronze scimitar",
-								"Dragon longsword",
-								"Rune longsword",
-								"Adamant longsword",
-								"Mithril longsword",
-								"Steel longsword",
-								"Iron longsword",
-								"Bronze longsword"
-							],
-							"type": "item"
+							"logic": "ALL",
+							"displayCardsOnly": true,
+							"children": [
+								{
+									"label": "Knife",
+									"cards": [
+										"Knife"
+									],
+									"type": "item"
+								},
+								{
+									"label": "Slash weapon",
+									"cards": [
+										"Dragon scimitar",
+										"Rune scimitar",
+										"Adamant scimitar",
+										"Mithril scimitar",
+										"Steel scimitar",
+										"Iron scimitar",
+										"Bronze scimitar",
+										"Dragon longsword",
+										"Rune longsword",
+										"Adamant longsword",
+										"Mithril longsword",
+										"Steel longsword",
+										"Iron longsword",
+										"Bronze longsword"
+									],
+									"type": "item"
+								}
+							]
 						}
 					]
 				},
