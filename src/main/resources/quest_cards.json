@@ -13,7 +13,7 @@
 					"label": "Items",
 					"requirements": [
 						{
-							"label": "Defence potion",
+							"label": "Defence potion (3) or (4)",
 							"cards": [
 								"Defence potion"
 							],
@@ -64,6 +64,96 @@
 								"Bronze axe"
 							],
 							"type": "item"
+						},
+						{
+							"label": "Fire Bolt or better",
+							"logic": "ANY",
+							"children": [
+								{
+									"label": "Fire Bolt",
+									"logic": "ALL",
+									"children": [
+										{
+											"label": "Fire rune",
+											"cards": [
+												"Fire rune"
+											],
+											"type": "item"
+										},
+										{
+											"label": "Chaos rune",
+											"cards": [
+												"Chaos rune"
+											],
+											"type": "item"
+										}
+									],
+									"displayCardsOnly": true
+								},
+								{
+									"label": "Fire Blast",
+									"logic": "ALL",
+									"children": [
+										{
+											"label": "Fire rune",
+											"cards": [
+												"Fire rune"
+											],
+											"type": "item"
+										},
+										{
+											"label": "Death rune",
+											"cards": [
+												"Death rune"
+											],
+											"type": "item"
+										}
+									],
+									"displayCardsOnly": true
+								},
+								{
+									"label": "Fire Wave",
+									"logic": "ALL",
+									"children": [
+										{
+											"label": "Fire rune",
+											"cards": [
+												"Fire rune"
+											],
+											"type": "item"
+										},
+										{
+											"label": "Blood rune",
+											"cards": [
+												"Blood rune"
+											],
+											"type": "item"
+										}
+									],
+									"displayCardsOnly": true
+								},
+								{
+									"label": "Fire Surge",
+									"logic": "ALL",
+									"children": [
+										{
+											"label": "Fire rune",
+											"cards": [
+												"Fire rune"
+											],
+											"type": "item"
+										},
+										{
+											"label": "Wrath rune",
+											"cards": [
+												"Wrath rune"
+											],
+											"type": "item"
+										}
+									],
+									"displayCardsOnly": true
+								}
+							]
 						}
 					]
 				},
@@ -390,10 +480,14 @@
 					"label": "Items",
 					"requirements": [
 						{
-							"label": "Cat / Kitten",
+							"label": "Any cat",
 							"cards": [
 								"Cat",
-								"Kitten"
+								"Kitten",
+								"Overgrown cat",
+								"Lazy cat",
+								"Wily cat",
+								"Hellcat"
 							],
 							"type": "item"
 						},
@@ -1275,6 +1369,13 @@
 								"Vodka"
 							],
 							"type": "item"
+						},
+						{
+							"label": "Marrentill potion (unf)",
+							"cards": [
+								"Marrentill potion"
+							],
+							"type": "item"
 						}
 					]
 				}
@@ -2061,23 +2162,24 @@
 					"label": "Items",
 					"requirements": [
 						{
-							"label": "Bucket of water",
+							"label": "Coins",
 							"cards": [
-								"Bucket of water"
-							],
-							"type": "item"
-						},
-						{
-							"label": "Any water container can be used.",
-							"cards": [
-								"Bones"
+								"Coins"
 							],
 							"type": "item"
 						},
 						{
 							"label": "Bones",
 							"cards": [
-								"Coins"
+								"Bones"
+							],
+							"type": "item",
+							"quantity": 25
+						},
+						{
+							"label": "Bucket of water",
+							"cards": [
+								"Bucket of water"
 							],
 							"type": "item"
 						}
@@ -2204,6 +2306,13 @@
 							"cards": [
 								"Cake",
 								"Chocolate cake"
+							],
+							"type": "item"
+						},
+						{
+							"label": "Garlic powder",
+							"cards": [
+								"Garlic"
 							],
 							"type": "item"
 						}
@@ -3227,6 +3336,13 @@
 								"Tinderbox"
 							],
 							"type": "item"
+						},
+						{
+							"label": "Ranarr potion (unf)",
+							"cards": [
+								"Ranarr potion"
+							],
+							"type": "item"
 						}
 					]
 				}
@@ -3537,6 +3653,214 @@
 								"Bronze pickaxe"
 							],
 							"type": "item"
+						},
+						{
+							"label": "Crumble Undead Runes",
+							"logic": "ALL",
+							"children": [
+								{
+									"label": "Air rune",
+									"cards": [
+										"Air rune"
+									],
+									"type": "item"
+								},
+								{
+									"label": "Earth rune",
+									"cards": [
+										"Earth rune"
+									],
+									"type": "item"
+								},
+								{
+									"label": "Chaos rune",
+									"cards": [
+										"Chaos rune"
+									],
+									"type": "item"
+								}
+							],
+							"displayCardsOnly": true
+						},
+						{
+							"label": "Fire Bolt or stronger",
+							"logic": "ANY",
+							"children": [
+								{
+									"label": "Fire Bolt",
+									"logic": "ALL",
+									"children": [
+										{
+											"label": "Fire rune",
+											"cards": [
+												"Fire rune"
+											],
+											"type": "item"
+										},
+										{
+											"label": "Chaos rune",
+											"cards": [
+												"Chaos rune"
+											],
+											"type": "item"
+										}
+									],
+									"displayCardsOnly": true
+								},
+								{
+									"label": "Fire Blast",
+									"logic": "ALL",
+									"children": [
+										{
+											"label": "Fire rune",
+											"cards": [
+												"Fire rune"
+											],
+											"type": "item"
+										},
+										{
+											"label": "Death rune",
+											"cards": [
+												"Death rune"
+											],
+											"type": "item"
+										}
+									],
+									"displayCardsOnly": true
+								},
+								{
+									"label": "Fire Wave",
+									"logic": "ALL",
+									"children": [
+										{
+											"label": "Fire rune",
+											"cards": [
+												"Fire rune"
+											],
+											"type": "item"
+										},
+										{
+											"label": "Blood rune",
+											"cards": [
+												"Blood rune"
+											],
+											"type": "item"
+										}
+									],
+									"displayCardsOnly": true
+								},
+								{
+									"label": "Fire Surge",
+									"logic": "ALL",
+									"children": [
+										{
+											"label": "Fire rune",
+											"cards": [
+												"Fire rune"
+											],
+											"type": "item"
+										},
+										{
+											"label": "Wrath rune",
+											"cards": [
+												"Wrath rune"
+											],
+											"type": "item"
+										}
+									],
+									"displayCardsOnly": true
+								}
+							]
+						},
+						{
+							"label": "Wind Bolt or stronger",
+							"logic": "ANY",
+							"children": [
+								{
+									"label": "Wind Bolt",
+									"logic": "ALL",
+									"children": [
+										{
+											"label": "Air rune",
+											"cards": [
+												"Air rune"
+											],
+											"type": "item"
+										},
+										{
+											"label": "Chaos rune",
+											"cards": [
+												"Chaos rune"
+											],
+											"type": "item"
+										}
+									],
+									"displayCardsOnly": true
+								},
+								{
+									"label": "Wind Blast",
+									"logic": "ALL",
+									"children": [
+										{
+											"label": "Air rune",
+											"cards": [
+												"Air rune"
+											],
+											"type": "item"
+										},
+										{
+											"label": "Death rune",
+											"cards": [
+												"Death rune"
+											],
+											"type": "item"
+										}
+									],
+									"displayCardsOnly": true
+								},
+								{
+									"label": "Wind Wave",
+									"logic": "ALL",
+									"children": [
+										{
+											"label": "Air rune",
+											"cards": [
+												"Air rune"
+											],
+											"type": "item"
+										},
+										{
+											"label": "Blood rune",
+											"cards": [
+												"Blood rune"
+											],
+											"type": "item"
+										}
+									],
+									"displayCardsOnly": true
+								},
+								{
+									"label": "Wind Surge",
+									"logic": "ALL",
+									"children": [
+										{
+											"label": "Air rune",
+											"cards": [
+												"Air rune"
+											],
+											"type": "item"
+										},
+										{
+											"label": "Wrath rune",
+											"cards": [
+												"Wrath rune"
+											],
+											"type": "item"
+										}
+									],
+									"displayCardsOnly": true
+								}
+							]
 						}
 					]
 				}
@@ -3841,6 +4165,63 @@
 								"Necklace mould"
 							],
 							"type": "item"
+						},
+						{
+							"label": "Antipoison or Superantipoison",
+							"cards": [
+								"Anti-venom",
+								"Anti-venom+",
+								"Antidote+",
+								"Antidote++",
+								"Antipoison",
+								"Antipoison potion",
+								"Superantipoison",
+								"Relicym's balm",
+								"Sanfew serum"
+							],
+							"type": "item"
+						},
+						{
+							"label": "Four Blast Spell Runes",
+							"logic": "ALL",
+							"children": [
+								{
+									"label": "Air rune",
+									"cards": [
+										"Air rune"
+									],
+									"type": "item"
+								},
+								{
+									"label": "Water rune",
+									"cards": [
+										"Water rune"
+									],
+									"type": "item"
+								},
+								{
+									"label": "Earth rune",
+									"cards": [
+										"Earth rune"
+									],
+									"type": "item"
+								},
+								{
+									"label": "Fire rune",
+									"cards": [
+										"Fire rune"
+									],
+									"type": "item"
+								},
+								{
+									"label": "Death rune",
+									"cards": [
+										"Death rune"
+									],
+									"type": "item"
+								}
+							],
+							"displayCardsOnly": true
 						}
 					]
 				},
@@ -4494,9 +4875,9 @@
 					"label": "Items",
 					"requirements": [
 						{
-							"label": "Tarromin",
+							"label": "Tarromin potion (unf)",
 							"cards": [
-								"Tarromin"
+								"Tarromin potion"
 							],
 							"type": "item"
 						},
@@ -4679,6 +5060,20 @@
 								"Jailer"
 							],
 							"type": "enemy"
+						},
+						{
+							"label": "Harralander potion (unf)",
+							"cards": [
+								"Harralander potion"
+							],
+							"type": "item"
+						},
+						{
+							"label": "Smiths gloves",
+							"cards": [
+								"Smiths gloves"
+							],
+							"type": "item"
 						}
 					]
 				},
@@ -4891,34 +5286,6 @@
 					"label": "Items",
 					"requirements": [
 						{
-							"label": "Fire rune",
-							"cards": [
-								"Fire rune"
-							],
-							"type": "item"
-						},
-						{
-							"label": "Air rune",
-							"cards": [
-								"Air rune"
-							],
-							"type": "item"
-						},
-						{
-							"label": "Water rune",
-							"cards": [
-								"Water rune"
-							],
-							"type": "item"
-						},
-						{
-							"label": "Earth rune",
-							"cards": [
-								"Earth rune"
-							],
-							"type": "item"
-						},
-						{
 							"label": "Molten glass",
 							"cards": [
 								"Molten glass"
@@ -4992,6 +5359,48 @@
 								"Bronze arrow"
 							],
 							"type": "item"
+						},
+						{
+							"label": "20+ casts of each elemental spell",
+							"logic": "ALL",
+							"children": [
+								{
+									"label": "Air rune",
+									"cards": [
+										"Air rune"
+									],
+									"type": "item"
+								},
+								{
+									"label": "Water rune",
+									"cards": [
+										"Water rune"
+									],
+									"type": "item"
+								},
+								{
+									"label": "Earth rune",
+									"cards": [
+										"Earth rune"
+									],
+									"type": "item"
+								},
+								{
+									"label": "Fire rune",
+									"cards": [
+										"Fire rune"
+									],
+									"type": "item"
+								},
+								{
+									"label": "Mind rune",
+									"cards": [
+										"Mind rune"
+									],
+									"type": "item"
+								}
+							],
+							"displayCardsOnly": true
 						}
 					]
 				},
@@ -5025,12 +5434,14 @@
 					"label": "Items",
 					"requirements": [
 						{
-							"label": "Cat / Overgrown cat / Hellcat / Kitten",
+							"label": "Any cat or kitten",
 							"cards": [
 								"Cat",
+								"Kitten",
 								"Overgrown cat",
-								"Hellcat",
-								"Kitten"
+								"Lazy cat",
+								"Wily cat",
+								"Hellcat"
 							],
 							"type": "item"
 						},
@@ -5729,6 +6140,13 @@
 							"label": "Light source",
 							"cards": [
 								"Lit candle"
+							],
+							"type": "item"
+						},
+						{
+							"label": "Toadflax potion (unf)",
+							"cards": [
+								"Toadflax potion"
 							],
 							"type": "item"
 						}
@@ -9228,9 +9646,9 @@
 							"type": "item"
 						},
 						{
-							"label": "Tarromin",
+							"label": "Tarromin potion (unf)",
 							"cards": [
-								"Tarromin"
+								"Tarromin potion"
 							],
 							"type": "item"
 						},
@@ -10665,6 +11083,27 @@
 								"Bronze pickaxe"
 							],
 							"type": "item"
+						},
+						{
+							"label": "Sapphire lantern materials",
+							"logic": "ALL",
+							"children": [
+								{
+									"label": "Bullseye lantern",
+									"cards": [
+										"Bullseye lantern"
+									],
+									"type": "item"
+								},
+								{
+									"label": "Sapphire",
+									"cards": [
+										"Sapphire"
+									],
+									"type": "item"
+								}
+							],
+							"displayCardsOnly": true
 						}
 					]
 				}
@@ -11506,6 +11945,13 @@
 								"Rune thrownaxe"
 							],
 							"type": "item"
+						},
+						{
+							"label": "Smiths gloves",
+							"cards": [
+								"Smiths gloves"
+							],
+							"type": "item"
 						}
 					]
 				},
@@ -12156,6 +12602,13 @@
 								"Mithril nails",
 								"Adamantite nails",
 								"Rune nails"
+							],
+							"type": "item"
+						},
+						{
+							"label": "Holy symbol material",
+							"cards": [
+								"Unblessed symbol"
 							],
 							"type": "item"
 						}
@@ -13837,6 +14290,13 @@
 									]
 								}
 							]
+						},
+						{
+							"label": "Fire runes",
+							"cards": [
+								"Fire rune"
+							],
+							"type": "item"
 						}
 					]
 				},
@@ -14027,6 +14487,53 @@
 								"Comp ogre bow"
 							],
 							"type": "item"
+						},
+						{
+							"label": "Brutal arrows or Crumble Undead",
+							"logic": "ANY",
+							"children": [
+								{
+									"label": "Any brutal arrows",
+									"cards": [
+										"Bronze brutal",
+										"Iron brutal",
+										"Steel brutal",
+										"Black brutal",
+										"Mithril brutal",
+										"Adamant brutal",
+										"Rune brutal"
+									],
+									"type": "item"
+								},
+								{
+									"label": "Crumble Undead Runes",
+									"logic": "ALL",
+									"children": [
+										{
+											"label": "Air rune",
+											"cards": [
+												"Air rune"
+											],
+											"type": "item"
+										},
+										{
+											"label": "Earth rune",
+											"cards": [
+												"Earth rune"
+											],
+											"type": "item"
+										},
+										{
+											"label": "Chaos rune",
+											"cards": [
+												"Chaos rune"
+											],
+											"type": "item"
+										}
+									],
+									"displayCardsOnly": true
+								}
+							]
 						}
 					]
 				},

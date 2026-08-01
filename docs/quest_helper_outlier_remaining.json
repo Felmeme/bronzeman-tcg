@@ -9,7 +9,7 @@
     "affectedQuests": 1,
     "fullyMissingGroups": 1,
     "partialGroups": 0,
-    "remainingUnresolvedLabels": 210
+    "remainingUnresolvedLabels": 172
   },
   "categories": {
     "Weapon/ammo groups": {
@@ -75,25 +75,12 @@
     },
     {
       "quest": "A Kingdom Divided",
-      "label": "Defence Potion (3) or (4)",
-      "constantNames": [
-        "_4DOSE1DEFENSE",
-        "_3DOSE1DEFENSE"
-      ]
-    },
-    {
-      "quest": "A Kingdom Divided",
       "label": "Melee combat gear to fight Judge of Yama",
       "constantNames": []
     },
     {
       "quest": "A Kingdom Divided",
       "label": "Melee or range gear to fight Xamphur.",
-      "constantNames": []
-    },
-    {
-      "quest": "A Kingdom Divided",
-      "label": "Runes/equipment to cast FIRE bolt or better",
       "constantNames": []
     },
     {
@@ -132,57 +119,9 @@
     },
     {
       "quest": "A Tail of Two Cats",
-      "label": "A cat",
-      "constantNames": [
-        "WILEYCATOBJECT_HELL",
-        "WILEYCATOBJECT_LIGHT",
-        "WILEYCATOBJECT",
-        "WILEYCATOBJECT_BROWN",
-        "WILEYCATOBJECT_BLACK",
-        "WILEYCATOBJECT_BROWNGREY",
-        "WILEYCATOBJECT_BLUEGREY",
-        "LAZYCATOBJECT_HELL",
-        "LAZYCATOBJECT_LIGHT",
-        "LAZYCATOBJECT",
-        "LAZYCATOBJECT_BROWN",
-        "LAZYCATOBJECT_BLACK",
-        "LAZYCATOBJECT_BROWNGREY",
-        "LAZYCATOBJECT_BLUEGREY",
-        "GROWNCATOBJECT_HELL",
-        "GROWNCATOBJECT",
-        "GROWNCATOBJECT_LIGHT",
-        "GROWNCATOBJECT_BROWN",
-        "GROWNCATOBJECT_BLACK",
-        "GROWNCATOBJECT_BROWNGREY",
-        "GROWNCATOBJECT_BLUEGREY",
-        "KITTENOBJECT_HELL",
-        "KITTENOBJECT",
-        "KITTENOBJECT_LIGHT",
-        "KITTENOBJECT_BROWN",
-        "KITTENOBJECT_BLACK",
-        "KITTENOBJECT_BROWNGREY",
-        "KITTENOBJECT_BLUEGREY",
-        "OVERGROWNCATOBJECT_HELL",
-        "OVERGROWNCATOBJECT",
-        "OVERGROWNCATOBJECT_LIGHT",
-        "OVERGROWNCATOBJECT_BROWN",
-        "OVERGROWNCATOBJECT_BLACK",
-        "OVERGROWNCATOBJECT_BROWNGREY",
-        "OVERGROWNCATOBJECT_BLUEGREY"
-      ]
-    },
-    {
-      "quest": "A Tail of Two Cats",
       "label": "Catspeak amulet",
       "constantNames": [
         "ICS_LITTLE_AMULET_OF_CATSPEAK"
-      ]
-    },
-    {
-      "quest": "A Tail of Two Cats",
-      "label": "Death runes",
-      "constantNames": [
-        "DEATHRUNE"
       ]
     },
     {
@@ -237,22 +176,6 @@
       "label": "Gas mask",
       "constantNames": [
         "GASMASK"
-      ]
-    },
-    {
-      "quest": "Bone Voyage",
-      "label": "Marrentill potion (unf)",
-      "constantNames": [
-        "MARRENTILLVIAL"
-      ]
-    },
-    {
-      "quest": "Clock Tower",
-      "label": "Bucket of Water or a pair of ice gloves or smiths gloves(i)",
-      "constantNames": [
-        "BUCKET_WATER",
-        "ICE_GLOVES",
-        "SMITHING_UNIFORM_GLOVES_ICE"
       ]
     },
     {
@@ -332,24 +255,6 @@
     },
     {
       "quest": "Desert Treasure I",
-      "label": "Facemask (or other face covering)",
-      "constantNames": [
-        "SLAYER_FACEMASK",
-        "SLAYER_HELM",
-        "SLAYER_HELM_I",
-        "SW_SLAYER_HELM_I",
-        "GASMASK"
-      ]
-    },
-    {
-      "quest": "Desert Treasure I",
-      "label": "Garlic powder",
-      "constantNames": [
-        "FD_CRUSHED_GARLIC"
-      ]
-    },
-    {
-      "quest": "Desert Treasure I",
       "label": "Ice gloves/smiths gloves(i)",
       "constantNames": [
         "ICE_GLOVES",
@@ -365,52 +270,14 @@
     },
     {
       "quest": "Desert Treasure II - The Fallen Empire",
-      "label": "Blood runes",
-      "constantNames": [
-        "BLOODRUNE"
-      ]
-    },
-    {
-      "quest": "Desert Treasure II - The Fallen Empire",
       "label": "Combat gear",
       "constantNames": []
-    },
-    {
-      "quest": "Desert Treasure II - The Fallen Empire",
-      "label": "Death runes",
-      "constantNames": [
-        "DEATHRUNE"
-      ]
-    },
-    {
-      "quest": "Desert Treasure II - The Fallen Empire",
-      "label": "Fire runes",
-      "constantNames": [
-        "FIRERUNE"
-      ]
     },
     {
       "quest": "Desert Treasure II - The Fallen Empire",
       "label": "Ring of visibility",
       "constantNames": [
         "FD_RING_VISIBILITY"
-      ]
-    },
-    {
-      "quest": "Desert Treasure II - The Fallen Empire",
-      "label": "Soul runes",
-      "constantNames": [
-        "SOULRUNE"
-      ]
-    },
-    {
-      "quest": "Devious Minds",
-      "label": "Large/Colossal Pouch (non-degraded)",
-      "constantNames": [
-        "RCU_POUCH_LARGE",
-        "DEVIOUS_GLOWINGPOUCH",
-        "RCU_POUCH_COLOSSAL",
-        "DEVIOUS_GLOWINGPOUCH_COLOSSAL"
       ]
     },
     {
@@ -456,13 +323,6 @@
       ]
     },
     {
-      "quest": "Eadgar's Ruse",
-      "label": "Ranarr potion (unf)",
-      "constantNames": [
-        "RANARRVIAL"
-      ]
-    },
-    {
       "quest": "Elemental Workshop II",
       "label": "Battered Key",
       "constantNames": [
@@ -479,36 +339,6 @@
       "label": "Granite (5kg)",
       "constantNames": [
         "ENAKH_GRANITE_MEDIUM"
-      ]
-    },
-    {
-      "quest": "Enakhra's Lament",
-      "label": "Runes for crumble undead spell",
-      "constantNames": []
-    },
-    {
-      "quest": "Enakhra's Lament",
-      "label": "Runes to cast Fire Bolt or stronger",
-      "constantNames": []
-    },
-    {
-      "quest": "Enakhra's Lament",
-      "label": "Runes to cast Wind Bolt or stronger",
-      "constantNames": []
-    },
-    {
-      "quest": "Enlightened Journey",
-      "label": "Sack of potatoes (10)",
-      "constantNames": [
-        "SACK_POTATO_10"
-      ]
-    },
-    {
-      "quest": "Enlightened Journey",
-      "label": "Unlit candle",
-      "constantNames": [
-        "UNLIT_CANDLE",
-        "UNLIT_BLACK_CANDLE"
       ]
     },
     {
@@ -546,55 +376,6 @@
       ]
     },
     {
-      "quest": "Family Crest",
-      "label": "At least one dose of antipoison or superantipoison",
-      "constantNames": [
-        "ANTIVENOM_4",
-        "ANTIVENOM_3",
-        "ANTIVENOM_2",
-        "ANTIVENOM_1",
-        "ANTIVENOM4",
-        "ANTIVENOM3",
-        "ANTIVENOM2",
-        "ANTIVENOM1",
-        "ANTIDOTE__4",
-        "ANTIDOTE__3",
-        "ANTIDOTE__2",
-        "ANTIDOTE__1",
-        "ANTIDOTE_4",
-        "ANTIDOTE_3",
-        "ANTIDOTE_2",
-        "ANTIDOTE_1",
-        "_4DOSE2ANTIPOISON",
-        "_3DOSE2ANTIPOISON",
-        "_2DOSE2ANTIPOISON",
-        "_1DOSE2ANTIPOISON",
-        "_4DOSEANTIPOISON",
-        "_3DOSEANTIPOISON",
-        "_2DOSEANTIPOISON",
-        "_1DOSEANTIPOISON",
-        "RELICYMS_BALM4",
-        "RELICYMS_BALM3",
-        "RELICYMS_BALM2",
-        "RELICYMS_BALM1",
-        "SANFEW_SALVE_4_DOSE",
-        "SANFEW_SALVE_3_DOSE",
-        "SANFEW_SALVE_2_DOSE",
-        "SANFEW_SALVE_1_DOSE",
-        "BRUTAL_RELICYMS_BALM2",
-        "BRUTAL_RELICYMS_BALM1",
-        "BRUTAL_2DOSEANTIPOISON",
-        "BRUTAL_1DOSEANTIPOISON",
-        "BRUTAL_ANTIDOTE_2",
-        "BRUTAL_ANTIDOTE_1"
-      ]
-    },
-    {
-      "quest": "Family Crest",
-      "label": "Runes for casting each of the 4 blast spells",
-      "constantNames": []
-    },
-    {
       "quest": "Fishing Contest",
       "label": "Red Vine Worm",
       "constantNames": [
@@ -624,24 +405,8 @@
     },
     {
       "quest": "Getting Ahead",
-      "label": "Any saw",
-      "constantNames": [
-        "POH_SAW",
-        "EYEGLO_CRYSTAL_SAW",
-        "WEARABLE_SAW"
-      ]
-    },
-    {
-      "quest": "Getting Ahead",
       "label": "You can get all the required items during the quest.",
       "constantNames": []
-    },
-    {
-      "quest": "Ghosts Ahoy",
-      "label": "Ecto-token, OR 25 Ecto-Tokens and coins to travel by Charter Ship",
-      "constantNames": [
-        "ECTOTOKEN"
-      ]
     },
     {
       "quest": "Ghosts Ahoy",
@@ -677,28 +442,6 @@
       ]
     },
     {
-      "quest": "Grim Tales",
-      "label": "Tarromin potion (unf)",
-      "constantNames": [
-        "TARROMINVIAL"
-      ]
-    },
-    {
-      "quest": "Grim Tales",
-      "label": "Watering can with at least 1 use",
-      "constantNames": [
-        "ZEAH_WATERINGCAN",
-        "WATERING_CAN_8",
-        "WATERING_CAN_7",
-        "WATERING_CAN_6",
-        "WATERING_CAN_5",
-        "WATERING_CAN_4",
-        "WATERING_CAN_3",
-        "WATERING_CAN_2",
-        "WATERING_CAN_1"
-      ]
-    },
-    {
       "quest": "Haunted Mine",
       "label": "Combat gear",
       "constantNames": []
@@ -709,71 +452,10 @@
       "constantNames": []
     },
     {
-      "quest": "Heroes' Quest",
-      "label": "Harralander potion (unf)",
-      "constantNames": [
-        "HARRALANDERVIAL"
-      ]
-    },
-    {
-      "quest": "Heroes' Quest",
-      "label": "Ice gloves/Smiths gloves (i)",
-      "constantNames": [
-        "ICE_GLOVES",
-        "SMITHING_UNIFORM_GLOVES_ICE"
-      ]
-    },
-    {
       "quest": "Holy Grail",
       "label": "Excalibur",
       "constantNames": [
         "EXCALIBUR"
-      ]
-    },
-    {
-      "quest": "Horror from the Deep",
-      "label": "20+ casts of each element spell",
-      "constantNames": []
-    },
-    {
-      "quest": "Icthlarin's Little Helper",
-      "label": "Any cat or kitten",
-      "constantNames": [
-        "WILEYCATOBJECT_HELL",
-        "WILEYCATOBJECT_LIGHT",
-        "WILEYCATOBJECT",
-        "WILEYCATOBJECT_BROWN",
-        "WILEYCATOBJECT_BLACK",
-        "WILEYCATOBJECT_BROWNGREY",
-        "WILEYCATOBJECT_BLUEGREY",
-        "LAZYCATOBJECT_HELL",
-        "LAZYCATOBJECT_LIGHT",
-        "LAZYCATOBJECT",
-        "LAZYCATOBJECT_BROWN",
-        "LAZYCATOBJECT_BLACK",
-        "LAZYCATOBJECT_BROWNGREY",
-        "LAZYCATOBJECT_BLUEGREY",
-        "GROWNCATOBJECT_HELL",
-        "GROWNCATOBJECT",
-        "GROWNCATOBJECT_LIGHT",
-        "GROWNCATOBJECT_BROWN",
-        "GROWNCATOBJECT_BLACK",
-        "GROWNCATOBJECT_BROWNGREY",
-        "GROWNCATOBJECT_BLUEGREY",
-        "KITTENOBJECT_HELL",
-        "KITTENOBJECT",
-        "KITTENOBJECT_LIGHT",
-        "KITTENOBJECT_BROWN",
-        "KITTENOBJECT_BLACK",
-        "KITTENOBJECT_BROWNGREY",
-        "KITTENOBJECT_BLUEGREY",
-        "OVERGROWNCATOBJECT_HELL",
-        "OVERGROWNCATOBJECT",
-        "OVERGROWNCATOBJECT_LIGHT",
-        "OVERGROWNCATOBJECT_BROWN",
-        "OVERGROWNCATOBJECT_BLACK",
-        "OVERGROWNCATOBJECT_BROWNGREY",
-        "OVERGROWNCATOBJECT_BLUEGREY"
       ]
     },
     {
@@ -865,13 +547,6 @@
       "label": "Orange dye",
       "constantNames": [
         "ORANGEDYE"
-      ]
-    },
-    {
-      "quest": "Land of the Goblins",
-      "label": "Toadflax potion (unf)",
-      "constantNames": [
-        "TOADFLAXVIAL"
       ]
     },
     {
@@ -1213,13 +888,6 @@
       "constantNames": []
     },
     {
-      "quest": "Shades of Mort'ton",
-      "label": "Tarromin potion (unf)",
-      "constantNames": [
-        "TARROMINVIAL"
-      ]
-    },
-    {
       "quest": "Shadow of the Storm",
       "label": "Silverlight",
       "constantNames": [
@@ -1319,13 +987,6 @@
       "constantNames": []
     },
     {
-      "quest": "Tears of Guthix",
-      "label": "Sapphire lantern",
-      "constantNames": [
-        "TOG_SAPPHIRE_LANTERN_LIT"
-      ]
-    },
-    {
       "quest": "The Corsair Curse",
       "label": "Combat gear + food to defeat Ithoi (level 34), who uses magic",
       "constantNames": []
@@ -1363,23 +1024,8 @@
     },
     {
       "quest": "The Fremennik Exiles",
-      "label": "Astral runes",
-      "constantNames": [
-        "ASTRALRUNE"
-      ]
-    },
-    {
-      "quest": "The Fremennik Exiles",
       "label": "Combat gear",
       "constantNames": []
-    },
-    {
-      "quest": "The Fremennik Exiles",
-      "label": "Ice gloves or smiths gloves(i)",
-      "constantNames": [
-        "ICE_GLOVES",
-        "SMITHING_UNIFORM_GLOVES_ICE"
-      ]
     },
     {
       "quest": "The Fremennik Exiles",
@@ -1412,13 +1058,6 @@
       "label": "Fishbowl helmet",
       "constantNames": [
         "HUNDRED_PIRATE_DIVING_HELMET"
-      ]
-    },
-    {
-      "quest": "The Great Brain Robbery",
-      "label": "Holy symbol",
-      "constantNames": [
-        "BLESSEDSTAR"
       ]
     },
     {
@@ -1603,13 +1242,6 @@
     },
     {
       "quest": "While Guthix Sleeps",
-      "label": "Fire runes",
-      "constantNames": [
-        "FIRERUNE"
-      ]
-    },
-    {
-      "quest": "While Guthix Sleeps",
       "label": "Lit sapphire lantern",
       "constantNames": [
         "TOG_SAPPHIRE_LANTERN_LIT"
@@ -1631,20 +1263,8 @@
       "constantNames": []
     },
     {
-      "quest": "While Guthix Sleeps",
-      "label": "Seed dibber (only if not done barb training)",
-      "constantNames": [
-        "DIBBER"
-      ]
-    },
-    {
       "quest": "Witch's House",
       "label": "Combat gear and food for monsters up to level 53",
-      "constantNames": []
-    },
-    {
-      "quest": "Zogre Flesh Eaters",
-      "label": "Either brutal arrows or Crumble Undead for fighting Slash Bash",
       "constantNames": []
     }
   ]

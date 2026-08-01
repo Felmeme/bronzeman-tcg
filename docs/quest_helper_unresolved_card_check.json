@@ -1,9 +1,9 @@
 {
   "summary": {
-    "unresolvedLabels": 210,
-    "strongMatches": 9,
-    "possibleMatches": 99,
-    "noPlausibleMatch": 102
+    "unresolvedLabels": 172,
+    "strongMatches": 1,
+    "possibleMatches": 76,
+    "noPlausibleMatch": 95
   },
   "rows": [
     {
@@ -24,23 +24,6 @@
     },
     {
       "quest": "A Kingdom Divided",
-      "label": "Defence Potion (3) or (4)",
-      "constantNames": [
-        "_4DOSE1DEFENSE",
-        "_3DOSE1DEFENSE"
-      ],
-      "status": "possible",
-      "strongMatches": [],
-      "possibleMatches": [
-        {
-          "card": "Defence potion",
-          "score": 0.86,
-          "reason": "card name appears in label"
-        }
-      ]
-    },
-    {
-      "quest": "A Kingdom Divided",
       "label": "Melee combat gear to fight Judge of Yama",
       "constantNames": [],
       "status": "no plausible match",
@@ -50,14 +33,6 @@
     {
       "quest": "A Kingdom Divided",
       "label": "Melee or range gear to fight Xamphur.",
-      "constantNames": [],
-      "status": "no plausible match",
-      "strongMatches": [],
-      "possibleMatches": []
-    },
-    {
-      "quest": "A Kingdom Divided",
-      "label": "Runes/equipment to cast FIRE bolt or better",
       "constantNames": [],
       "status": "no plausible match",
       "strongMatches": [],
@@ -120,61 +95,6 @@
     },
     {
       "quest": "A Tail of Two Cats",
-      "label": "A cat",
-      "constantNames": [
-        "WILEYCATOBJECT_HELL",
-        "WILEYCATOBJECT_LIGHT",
-        "WILEYCATOBJECT",
-        "WILEYCATOBJECT_BROWN",
-        "WILEYCATOBJECT_BLACK",
-        "WILEYCATOBJECT_BROWNGREY",
-        "WILEYCATOBJECT_BLUEGREY",
-        "LAZYCATOBJECT_HELL",
-        "LAZYCATOBJECT_LIGHT",
-        "LAZYCATOBJECT",
-        "LAZYCATOBJECT_BROWN",
-        "LAZYCATOBJECT_BLACK",
-        "LAZYCATOBJECT_BROWNGREY",
-        "LAZYCATOBJECT_BLUEGREY",
-        "GROWNCATOBJECT_HELL",
-        "GROWNCATOBJECT",
-        "GROWNCATOBJECT_LIGHT",
-        "GROWNCATOBJECT_BROWN",
-        "GROWNCATOBJECT_BLACK",
-        "GROWNCATOBJECT_BROWNGREY",
-        "GROWNCATOBJECT_BLUEGREY",
-        "KITTENOBJECT_HELL",
-        "KITTENOBJECT",
-        "KITTENOBJECT_LIGHT",
-        "KITTENOBJECT_BROWN",
-        "KITTENOBJECT_BLACK",
-        "KITTENOBJECT_BROWNGREY",
-        "KITTENOBJECT_BLUEGREY",
-        "OVERGROWNCATOBJECT_HELL",
-        "OVERGROWNCATOBJECT",
-        "OVERGROWNCATOBJECT_LIGHT",
-        "OVERGROWNCATOBJECT_BROWN",
-        "OVERGROWNCATOBJECT_BLACK",
-        "OVERGROWNCATOBJECT_BROWNGREY",
-        "OVERGROWNCATOBJECT_BLUEGREY"
-      ],
-      "status": "possible",
-      "strongMatches": [],
-      "possibleMatches": [
-        {
-          "card": "Lazy cat",
-          "score": 0.799,
-          "reason": "approximate"
-        },
-        {
-          "card": "Cat",
-          "score": 0.78,
-          "reason": "approximate"
-        }
-      ]
-    },
-    {
-      "quest": "A Tail of Two Cats",
       "label": "Catspeak amulet",
       "constantNames": [
         "ICS_LITTLE_AMULET_OF_CATSPEAK"
@@ -182,22 +102,6 @@
       "status": "no plausible match",
       "strongMatches": [],
       "possibleMatches": []
-    },
-    {
-      "quest": "A Tail of Two Cats",
-      "label": "Death runes",
-      "constantNames": [
-        "DEATHRUNE"
-      ],
-      "status": "possible",
-      "strongMatches": [],
-      "possibleMatches": [
-        {
-          "card": "Death rune",
-          "score": 0.95,
-          "reason": "approximate"
-        }
-      ]
     },
     {
       "quest": "A Taste of Hope",
@@ -314,66 +218,6 @@
           "card": "Masori mask",
           "score": 0.767,
           "reason": "approximate"
-        }
-      ]
-    },
-    {
-      "quest": "Bone Voyage",
-      "label": "Marrentill potion (unf)",
-      "constantNames": [
-        "MARRENTILLVIAL"
-      ],
-      "status": "strong",
-      "strongMatches": [
-        {
-          "card": "Marrentill potion",
-          "score": 1.0,
-          "reason": "normalized exact"
-        }
-      ],
-      "possibleMatches": [
-        {
-          "card": "Marrentill",
-          "score": 0.86,
-          "reason": "card name appears in label"
-        },
-        {
-          "card": "Marrentill tar",
-          "score": 0.804,
-          "reason": "approximate"
-        },
-        {
-          "card": "Egniol potion",
-          "score": 0.763,
-          "reason": "approximate"
-        }
-      ]
-    },
-    {
-      "quest": "Clock Tower",
-      "label": "Bucket of Water or a pair of ice gloves or smiths gloves(i)",
-      "constantNames": [
-        "BUCKET_WATER",
-        "ICE_GLOVES",
-        "SMITHING_UNIFORM_GLOVES_ICE"
-      ],
-      "status": "possible",
-      "strongMatches": [],
-      "possibleMatches": [
-        {
-          "card": "Bucket",
-          "score": 0.86,
-          "reason": "card name appears in label"
-        },
-        {
-          "card": "Bucket of water",
-          "score": 0.86,
-          "reason": "card name appears in label"
-        },
-        {
-          "card": "Smiths gloves",
-          "score": 0.86,
-          "reason": "card name appears in label"
         }
       ]
     },
@@ -555,42 +399,6 @@
     },
     {
       "quest": "Desert Treasure I",
-      "label": "Facemask (or other face covering)",
-      "constantNames": [
-        "SLAYER_FACEMASK",
-        "SLAYER_HELM",
-        "SLAYER_HELM_I",
-        "SW_SLAYER_HELM_I",
-        "GASMASK"
-      ],
-      "status": "strong",
-      "strongMatches": [
-        {
-          "card": "Facemask",
-          "score": 1.0,
-          "reason": "normalized exact"
-        }
-      ],
-      "possibleMatches": []
-    },
-    {
-      "quest": "Desert Treasure I",
-      "label": "Garlic powder",
-      "constantNames": [
-        "FD_CRUSHED_GARLIC"
-      ],
-      "status": "possible",
-      "strongMatches": [],
-      "possibleMatches": [
-        {
-          "card": "Garlic",
-          "score": 0.86,
-          "reason": "card name appears in label"
-        }
-      ]
-    },
-    {
-      "quest": "Desert Treasure I",
       "label": "Ice gloves/smiths gloves(i)",
       "constantNames": [
         "ICE_GLOVES",
@@ -644,64 +452,11 @@
     },
     {
       "quest": "Desert Treasure II - The Fallen Empire",
-      "label": "Blood runes",
-      "constantNames": [
-        "BLOODRUNE"
-      ],
-      "status": "possible",
-      "strongMatches": [],
-      "possibleMatches": [
-        {
-          "card": "Blood rune",
-          "score": 0.95,
-          "reason": "approximate"
-        }
-      ]
-    },
-    {
-      "quest": "Desert Treasure II - The Fallen Empire",
       "label": "Combat gear",
       "constantNames": [],
       "status": "no plausible match",
       "strongMatches": [],
       "possibleMatches": []
-    },
-    {
-      "quest": "Desert Treasure II - The Fallen Empire",
-      "label": "Death runes",
-      "constantNames": [
-        "DEATHRUNE"
-      ],
-      "status": "possible",
-      "strongMatches": [],
-      "possibleMatches": [
-        {
-          "card": "Death rune",
-          "score": 0.95,
-          "reason": "approximate"
-        }
-      ]
-    },
-    {
-      "quest": "Desert Treasure II - The Fallen Empire",
-      "label": "Fire runes",
-      "constantNames": [
-        "FIRERUNE"
-      ],
-      "status": "possible",
-      "strongMatches": [],
-      "possibleMatches": [
-        {
-          "card": "Fire rune",
-          "score": 0.95,
-          "reason": "approximate"
-        },
-        {
-          "card": "Fire rune pack",
-          "score": 0.78,
-          "reason": "approximate"
-        }
-      ]
     },
     {
       "quest": "Desert Treasure II - The Fallen Empire",
@@ -712,61 +467,6 @@
       "status": "no plausible match",
       "strongMatches": [],
       "possibleMatches": []
-    },
-    {
-      "quest": "Desert Treasure II - The Fallen Empire",
-      "label": "Soul runes",
-      "constantNames": [
-        "SOULRUNE"
-      ],
-      "status": "possible",
-      "strongMatches": [],
-      "possibleMatches": [
-        {
-          "card": "Soul rune",
-          "score": 0.95,
-          "reason": "approximate"
-        },
-        {
-          "card": "Soul journey",
-          "score": 0.757,
-          "reason": "approximate"
-        }
-      ]
-    },
-    {
-      "quest": "Devious Minds",
-      "label": "Large/Colossal Pouch (non-degraded)",
-      "constantNames": [
-        "RCU_POUCH_LARGE",
-        "DEVIOUS_GLOWINGPOUCH",
-        "RCU_POUCH_COLOSSAL",
-        "DEVIOUS_GLOWINGPOUCH_COLOSSAL"
-      ],
-      "status": "possible",
-      "strongMatches": [],
-      "possibleMatches": [
-        {
-          "card": "Colossal pouch",
-          "score": 0.86,
-          "reason": "card name appears in label"
-        },
-        {
-          "card": "Large meat pouch",
-          "score": 0.782,
-          "reason": "approximate"
-        },
-        {
-          "card": "Large pouch",
-          "score": 0.77,
-          "reason": "approximate"
-        },
-        {
-          "card": "Large fur pouch",
-          "score": 0.746,
-          "reason": "approximate"
-        }
-      ]
     },
     {
       "quest": "Dream Mentor",
@@ -854,48 +554,6 @@
       ]
     },
     {
-      "quest": "Eadgar's Ruse",
-      "label": "Ranarr potion (unf)",
-      "constantNames": [
-        "RANARRVIAL"
-      ],
-      "status": "strong",
-      "strongMatches": [
-        {
-          "card": "Ranarr potion",
-          "score": 1.0,
-          "reason": "normalized exact"
-        }
-      ],
-      "possibleMatches": [
-        {
-          "card": "Prayer potion",
-          "score": 0.799,
-          "reason": "approximate"
-        },
-        {
-          "card": "Ranging potion",
-          "score": 0.771,
-          "reason": "approximate"
-        },
-        {
-          "card": "Stamina potion",
-          "score": 0.771,
-          "reason": "approximate"
-        },
-        {
-          "card": "Antifire potion",
-          "score": 0.744,
-          "reason": "approximate"
-        },
-        {
-          "card": "Tarromin potion",
-          "score": 0.744,
-          "reason": "approximate"
-        }
-      ]
-    },
-    {
       "quest": "Elemental Workshop II",
       "label": "Battered Key",
       "constantNames": [
@@ -962,73 +620,6 @@
       ]
     },
     {
-      "quest": "Enakhra's Lament",
-      "label": "Runes for crumble undead spell",
-      "constantNames": [],
-      "status": "no plausible match",
-      "strongMatches": [],
-      "possibleMatches": []
-    },
-    {
-      "quest": "Enakhra's Lament",
-      "label": "Runes to cast Fire Bolt or stronger",
-      "constantNames": [],
-      "status": "no plausible match",
-      "strongMatches": [],
-      "possibleMatches": []
-    },
-    {
-      "quest": "Enakhra's Lament",
-      "label": "Runes to cast Wind Bolt or stronger",
-      "constantNames": [],
-      "status": "no plausible match",
-      "strongMatches": [],
-      "possibleMatches": []
-    },
-    {
-      "quest": "Enlightened Journey",
-      "label": "Sack of potatoes (10)",
-      "constantNames": [
-        "SACK_POTATO_10"
-      ],
-      "status": "possible",
-      "strongMatches": [],
-      "possibleMatches": [
-        {
-          "card": "Potatoes",
-          "score": 0.86,
-          "reason": "card name appears in label"
-        },
-        {
-          "card": "Sack of coal",
-          "score": 0.744,
-          "reason": "approximate"
-        }
-      ]
-    },
-    {
-      "quest": "Enlightened Journey",
-      "label": "Unlit candle",
-      "constantNames": [
-        "UNLIT_CANDLE",
-        "UNLIT_BLACK_CANDLE"
-      ],
-      "status": "possible",
-      "strongMatches": [],
-      "possibleMatches": [
-        {
-          "card": "Lit candle",
-          "score": 0.939,
-          "reason": "approximate"
-        },
-        {
-          "card": "Candle",
-          "score": 0.86,
-          "reason": "card name appears in label"
-        }
-      ]
-    },
-    {
       "quest": "Fairytale I - Growing Pains",
       "label": "Dramen or lunar staff",
       "constantNames": [
@@ -1091,72 +682,6 @@
           "reason": "card name appears in label"
         }
       ]
-    },
-    {
-      "quest": "Family Crest",
-      "label": "At least one dose of antipoison or superantipoison",
-      "constantNames": [
-        "ANTIVENOM_4",
-        "ANTIVENOM_3",
-        "ANTIVENOM_2",
-        "ANTIVENOM_1",
-        "ANTIVENOM4",
-        "ANTIVENOM3",
-        "ANTIVENOM2",
-        "ANTIVENOM1",
-        "ANTIDOTE__4",
-        "ANTIDOTE__3",
-        "ANTIDOTE__2",
-        "ANTIDOTE__1",
-        "ANTIDOTE_4",
-        "ANTIDOTE_3",
-        "ANTIDOTE_2",
-        "ANTIDOTE_1",
-        "_4DOSE2ANTIPOISON",
-        "_3DOSE2ANTIPOISON",
-        "_2DOSE2ANTIPOISON",
-        "_1DOSE2ANTIPOISON",
-        "_4DOSEANTIPOISON",
-        "_3DOSEANTIPOISON",
-        "_2DOSEANTIPOISON",
-        "_1DOSEANTIPOISON",
-        "RELICYMS_BALM4",
-        "RELICYMS_BALM3",
-        "RELICYMS_BALM2",
-        "RELICYMS_BALM1",
-        "SANFEW_SALVE_4_DOSE",
-        "SANFEW_SALVE_3_DOSE",
-        "SANFEW_SALVE_2_DOSE",
-        "SANFEW_SALVE_1_DOSE",
-        "BRUTAL_RELICYMS_BALM2",
-        "BRUTAL_RELICYMS_BALM1",
-        "BRUTAL_2DOSEANTIPOISON",
-        "BRUTAL_1DOSEANTIPOISON",
-        "BRUTAL_ANTIDOTE_2",
-        "BRUTAL_ANTIDOTE_1"
-      ],
-      "status": "possible",
-      "strongMatches": [],
-      "possibleMatches": [
-        {
-          "card": "Antipoison",
-          "score": 0.86,
-          "reason": "card name appears in label"
-        },
-        {
-          "card": "Superantipoison",
-          "score": 0.86,
-          "reason": "card name appears in label"
-        }
-      ]
-    },
-    {
-      "quest": "Family Crest",
-      "label": "Runes for casting each of the 4 blast spells",
-      "constantNames": [],
-      "status": "no plausible match",
-      "strongMatches": [],
-      "possibleMatches": []
     },
     {
       "quest": "Fishing Contest",
@@ -1227,50 +752,11 @@
     },
     {
       "quest": "Getting Ahead",
-      "label": "Any saw",
-      "constantNames": [
-        "POH_SAW",
-        "EYEGLO_CRYSTAL_SAW",
-        "WEARABLE_SAW"
-      ],
-      "status": "possible",
-      "strongMatches": [],
-      "possibleMatches": [
-        {
-          "card": "Amy's saw",
-          "score": 0.83,
-          "reason": "approximate"
-        }
-      ]
-    },
-    {
-      "quest": "Getting Ahead",
       "label": "You can get all the required items during the quest.",
       "constantNames": [],
       "status": "no plausible match",
       "strongMatches": [],
       "possibleMatches": []
-    },
-    {
-      "quest": "Ghosts Ahoy",
-      "label": "Ecto-token, OR 25 Ecto-Tokens and coins to travel by Charter Ship",
-      "constantNames": [
-        "ECTOTOKEN"
-      ],
-      "status": "possible",
-      "strongMatches": [],
-      "possibleMatches": [
-        {
-          "card": "Coins",
-          "score": 0.86,
-          "reason": "card name appears in label"
-        },
-        {
-          "card": "Ecto-token",
-          "score": 0.86,
-          "reason": "card name appears in label"
-        }
-      ]
     },
     {
       "quest": "Ghosts Ahoy",
@@ -1354,72 +840,6 @@
       ]
     },
     {
-      "quest": "Grim Tales",
-      "label": "Tarromin potion (unf)",
-      "constantNames": [
-        "TARROMINVIAL"
-      ],
-      "status": "strong",
-      "strongMatches": [
-        {
-          "card": "Tarromin potion",
-          "score": 1.0,
-          "reason": "normalized exact"
-        }
-      ],
-      "possibleMatches": [
-        {
-          "card": "Tarromin",
-          "score": 0.86,
-          "reason": "card name appears in label"
-        },
-        {
-          "card": "Stamina potion",
-          "score": 0.858,
-          "reason": "approximate"
-        },
-        {
-          "card": "Tarromin tar",
-          "score": 0.771,
-          "reason": "approximate"
-        },
-        {
-          "card": "Kwuarm potion",
-          "score": 0.744,
-          "reason": "approximate"
-        },
-        {
-          "card": "Ranarr potion",
-          "score": 0.744,
-          "reason": "approximate"
-        }
-      ]
-    },
-    {
-      "quest": "Grim Tales",
-      "label": "Watering can with at least 1 use",
-      "constantNames": [
-        "ZEAH_WATERINGCAN",
-        "WATERING_CAN_8",
-        "WATERING_CAN_7",
-        "WATERING_CAN_6",
-        "WATERING_CAN_5",
-        "WATERING_CAN_4",
-        "WATERING_CAN_3",
-        "WATERING_CAN_2",
-        "WATERING_CAN_1"
-      ],
-      "status": "possible",
-      "strongMatches": [],
-      "possibleMatches": [
-        {
-          "card": "Watering can",
-          "score": 0.86,
-          "reason": "card name appears in label"
-        }
-      ]
-    },
-    {
       "quest": "Haunted Mine",
       "label": "Combat gear",
       "constantNames": [],
@@ -1436,55 +856,6 @@
       "possibleMatches": []
     },
     {
-      "quest": "Heroes' Quest",
-      "label": "Harralander potion (unf)",
-      "constantNames": [
-        "HARRALANDERVIAL"
-      ],
-      "status": "strong",
-      "strongMatches": [
-        {
-          "card": "Harralander potion",
-          "score": 1.0,
-          "reason": "normalized exact"
-        }
-      ],
-      "possibleMatches": [
-        {
-          "card": "Harralander",
-          "score": 0.86,
-          "reason": "card name appears in label"
-        },
-        {
-          "card": "Harralander tar",
-          "score": 0.818,
-          "reason": "approximate"
-        },
-        {
-          "card": "Elder potion",
-          "score": 0.763,
-          "reason": "approximate"
-        }
-      ]
-    },
-    {
-      "quest": "Heroes' Quest",
-      "label": "Ice gloves/Smiths gloves (i)",
-      "constantNames": [
-        "ICE_GLOVES",
-        "SMITHING_UNIFORM_GLOVES_ICE"
-      ],
-      "status": "possible",
-      "strongMatches": [],
-      "possibleMatches": [
-        {
-          "card": "Smiths gloves",
-          "score": 0.86,
-          "reason": "card name appears in label"
-        }
-      ]
-    },
-    {
       "quest": "Holy Grail",
       "label": "Excalibur",
       "constantNames": [
@@ -1493,64 +864,6 @@
       "status": "no plausible match",
       "strongMatches": [],
       "possibleMatches": []
-    },
-    {
-      "quest": "Horror from the Deep",
-      "label": "20+ casts of each element spell",
-      "constantNames": [],
-      "status": "no plausible match",
-      "strongMatches": [],
-      "possibleMatches": []
-    },
-    {
-      "quest": "Icthlarin's Little Helper",
-      "label": "Any cat or kitten",
-      "constantNames": [
-        "WILEYCATOBJECT_HELL",
-        "WILEYCATOBJECT_LIGHT",
-        "WILEYCATOBJECT",
-        "WILEYCATOBJECT_BROWN",
-        "WILEYCATOBJECT_BLACK",
-        "WILEYCATOBJECT_BROWNGREY",
-        "WILEYCATOBJECT_BLUEGREY",
-        "LAZYCATOBJECT_HELL",
-        "LAZYCATOBJECT_LIGHT",
-        "LAZYCATOBJECT",
-        "LAZYCATOBJECT_BROWN",
-        "LAZYCATOBJECT_BLACK",
-        "LAZYCATOBJECT_BROWNGREY",
-        "LAZYCATOBJECT_BLUEGREY",
-        "GROWNCATOBJECT_HELL",
-        "GROWNCATOBJECT",
-        "GROWNCATOBJECT_LIGHT",
-        "GROWNCATOBJECT_BROWN",
-        "GROWNCATOBJECT_BLACK",
-        "GROWNCATOBJECT_BROWNGREY",
-        "GROWNCATOBJECT_BLUEGREY",
-        "KITTENOBJECT_HELL",
-        "KITTENOBJECT",
-        "KITTENOBJECT_LIGHT",
-        "KITTENOBJECT_BROWN",
-        "KITTENOBJECT_BLACK",
-        "KITTENOBJECT_BROWNGREY",
-        "KITTENOBJECT_BLUEGREY",
-        "OVERGROWNCATOBJECT_HELL",
-        "OVERGROWNCATOBJECT",
-        "OVERGROWNCATOBJECT_LIGHT",
-        "OVERGROWNCATOBJECT_BROWN",
-        "OVERGROWNCATOBJECT_BLACK",
-        "OVERGROWNCATOBJECT_BROWNGREY",
-        "OVERGROWNCATOBJECT_BLUEGREY"
-      ],
-      "status": "possible",
-      "strongMatches": [],
-      "possibleMatches": [
-        {
-          "card": "Kitten",
-          "score": 0.86,
-          "reason": "card name appears in label"
-        }
-      ]
     },
     {
       "quest": "Icthlarin's Little Helper",
@@ -1838,28 +1151,6 @@
           "card": "Orange cape",
           "score": 0.792,
           "reason": "approximate"
-        }
-      ]
-    },
-    {
-      "quest": "Land of the Goblins",
-      "label": "Toadflax potion (unf)",
-      "constantNames": [
-        "TOADFLAXVIAL"
-      ],
-      "status": "strong",
-      "strongMatches": [
-        {
-          "card": "Toadflax potion",
-          "score": 1.0,
-          "reason": "normalized exact"
-        }
-      ],
-      "possibleMatches": [
-        {
-          "card": "Toadflax",
-          "score": 0.86,
-          "reason": "card name appears in label"
         }
       ]
     },
@@ -2634,48 +1925,6 @@
       "possibleMatches": []
     },
     {
-      "quest": "Shades of Mort'ton",
-      "label": "Tarromin potion (unf)",
-      "constantNames": [
-        "TARROMINVIAL"
-      ],
-      "status": "strong",
-      "strongMatches": [
-        {
-          "card": "Tarromin potion",
-          "score": 1.0,
-          "reason": "normalized exact"
-        }
-      ],
-      "possibleMatches": [
-        {
-          "card": "Tarromin",
-          "score": 0.86,
-          "reason": "card name appears in label"
-        },
-        {
-          "card": "Stamina potion",
-          "score": 0.858,
-          "reason": "approximate"
-        },
-        {
-          "card": "Tarromin tar",
-          "score": 0.771,
-          "reason": "approximate"
-        },
-        {
-          "card": "Kwuarm potion",
-          "score": 0.744,
-          "reason": "approximate"
-        },
-        {
-          "card": "Ranarr potion",
-          "score": 0.744,
-          "reason": "approximate"
-        }
-      ]
-    },
-    {
       "quest": "Shadow of the Storm",
       "label": "Silverlight",
       "constantNames": [
@@ -2935,32 +2184,6 @@
       "possibleMatches": []
     },
     {
-      "quest": "Tears of Guthix",
-      "label": "Sapphire lantern",
-      "constantNames": [
-        "TOG_SAPPHIRE_LANTERN_LIT"
-      ],
-      "status": "possible",
-      "strongMatches": [],
-      "possibleMatches": [
-        {
-          "card": "Sapphire",
-          "score": 0.86,
-          "reason": "card name appears in label"
-        },
-        {
-          "card": "Sapphire bolts",
-          "score": 0.763,
-          "reason": "approximate"
-        },
-        {
-          "card": "Sapphire necklace",
-          "score": 0.757,
-          "reason": "approximate"
-        }
-      ]
-    },
-    {
       "quest": "The Corsair Curse",
       "label": "Combat gear + food to defeat Ithoi (level 34), who uses magic",
       "constantNames": [],
@@ -3048,44 +2271,11 @@
     },
     {
       "quest": "The Fremennik Exiles",
-      "label": "Astral runes",
-      "constantNames": [
-        "ASTRALRUNE"
-      ],
-      "status": "possible",
-      "strongMatches": [],
-      "possibleMatches": [
-        {
-          "card": "Astral rune",
-          "score": 0.95,
-          "reason": "approximate"
-        }
-      ]
-    },
-    {
-      "quest": "The Fremennik Exiles",
       "label": "Combat gear",
       "constantNames": [],
       "status": "no plausible match",
       "strongMatches": [],
       "possibleMatches": []
-    },
-    {
-      "quest": "The Fremennik Exiles",
-      "label": "Ice gloves or smiths gloves(i)",
-      "constantNames": [
-        "ICE_GLOVES",
-        "SMITHING_UNIFORM_GLOVES_ICE"
-      ],
-      "status": "possible",
-      "strongMatches": [],
-      "possibleMatches": [
-        {
-          "card": "Smiths gloves",
-          "score": 0.86,
-          "reason": "card name appears in label"
-        }
-      ]
     },
     {
       "quest": "The Fremennik Exiles",
@@ -3144,37 +2334,6 @@
           "card": "Fishbowl",
           "score": 0.86,
           "reason": "card name appears in label"
-        }
-      ]
-    },
-    {
-      "quest": "The Great Brain Robbery",
-      "label": "Holy symbol",
-      "constantNames": [
-        "BLESSEDSTAR"
-      ],
-      "status": "possible",
-      "strongMatches": [],
-      "possibleMatches": [
-        {
-          "card": "Unholy symbol",
-          "score": 0.947,
-          "reason": "approximate"
-        },
-        {
-          "card": "Old symbol",
-          "score": 0.887,
-          "reason": "approximate"
-        },
-        {
-          "card": "Holy mould",
-          "score": 0.792,
-          "reason": "approximate"
-        },
-        {
-          "card": "Holy moleys",
-          "score": 0.757,
-          "reason": "approximate"
         }
       ]
     },
@@ -3568,27 +2727,6 @@
     },
     {
       "quest": "While Guthix Sleeps",
-      "label": "Fire runes",
-      "constantNames": [
-        "FIRERUNE"
-      ],
-      "status": "possible",
-      "strongMatches": [],
-      "possibleMatches": [
-        {
-          "card": "Fire rune",
-          "score": 0.95,
-          "reason": "approximate"
-        },
-        {
-          "card": "Fire rune pack",
-          "score": 0.78,
-          "reason": "approximate"
-        }
-      ]
-    },
-    {
-      "quest": "While Guthix Sleeps",
       "label": "Lit sapphire lantern",
       "constantNames": [
         "TOG_SAPPHIRE_LANTERN_LIT"
@@ -3639,32 +2777,8 @@
       "possibleMatches": []
     },
     {
-      "quest": "While Guthix Sleeps",
-      "label": "Seed dibber (only if not done barb training)",
-      "constantNames": [
-        "DIBBER"
-      ],
-      "status": "strong",
-      "strongMatches": [
-        {
-          "card": "Seed dibber",
-          "score": 1.0,
-          "reason": "normalized exact"
-        }
-      ],
-      "possibleMatches": []
-    },
-    {
       "quest": "Witch's House",
       "label": "Combat gear and food for monsters up to level 53",
-      "constantNames": [],
-      "status": "no plausible match",
-      "strongMatches": [],
-      "possibleMatches": []
-    },
-    {
-      "quest": "Zogre Flesh Eaters",
-      "label": "Either brutal arrows or Crumble Undead for fighting Slash Bash",
       "constantNames": [],
       "status": "no plausible match",
       "strongMatches": [],

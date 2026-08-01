@@ -76,6 +76,47 @@ OWNER_OMITTED_UNRESOLVED = {
     ("Dragon Slayer II", "Seal of passage"),
 }
 
+OWNER_HANDLED_UNRESOLVED = {
+    ("A Kingdom Divided", "Defence Potion (3) or (4)"),
+    ("A Kingdom Divided", "Runes/equipment to cast FIRE bolt or better"),
+    ("A Tail of Two Cats", "A cat"),
+    ("A Tail of Two Cats", "Death runes"),
+    ("Bone Voyage", "Marrentill potion (unf)"),
+    ("Clock Tower", "Bucket of Water or a pair of ice gloves or smiths gloves(i)"),
+    ("Desert Treasure I", "Facemask (or other face covering)"),
+    ("Desert Treasure I", "Garlic powder"),
+    ("Desert Treasure II - The Fallen Empire", "Blood runes"),
+    ("Desert Treasure II - The Fallen Empire", "Death runes"),
+    ("Desert Treasure II - The Fallen Empire", "Fire runes"),
+    ("Desert Treasure II - The Fallen Empire", "Soul runes"),
+    ("Devious Minds", "Large/Colossal Pouch (non-degraded)"),
+    ("Eadgar's Ruse", "Ranarr potion (unf)"),
+    ("Enakhra's Lament", "Runes for crumble undead spell"),
+    ("Enakhra's Lament", "Runes to cast Fire Bolt or stronger"),
+    ("Enakhra's Lament", "Runes to cast Wind Bolt or stronger"),
+    ("Enlightened Journey", "Sack of potatoes (10)"),
+    ("Enlightened Journey", "Unlit candle"),
+    ("Family Crest", "At least one dose of antipoison or superantipoison"),
+    ("Family Crest", "Runes for casting each of the 4 blast spells"),
+    ("Getting Ahead", "Any saw"),
+    ("Ghosts Ahoy", "Ecto-token, OR 25 Ecto-Tokens and coins to travel by Charter Ship"),
+    ("Grim Tales", "Tarromin potion (unf)"),
+    ("Grim Tales", "Watering can with at least 1 use"),
+    ("Heroes' Quest", "Harralander potion (unf)"),
+    ("Heroes' Quest", "Ice gloves/Smiths gloves (i)"),
+    ("Horror from the Deep", "20+ casts of each element spell"),
+    ("Icthlarin's Little Helper", "Any cat or kitten"),
+    ("Land of the Goblins", "Toadflax potion (unf)"),
+    ("Shades of Mort'ton", "Tarromin potion (unf)"),
+    ("Tears of Guthix", "Sapphire lantern"),
+    ("The Fremennik Exiles", "Astral runes"),
+    ("The Fremennik Exiles", "Ice gloves or smiths gloves(i)"),
+    ("The Great Brain Robbery", "Holy symbol"),
+    ("While Guthix Sleeps", "Fire runes"),
+    ("While Guthix Sleeps", "Seed dibber (only if not done barb training)"),
+    ("Zogre Flesh Eaters", "Either brutal arrows or Crumble Undead for fighting Slash Bash"),
+}
+
 OWNER_EXCLUDED_CATEGORIES = {"Food/combat-supply review"}
 
 
@@ -202,7 +243,8 @@ def build_report(qh_data, quest_data, tracked_items):
                 ]
                 if not resolved:
                     if (leaf.get("name") and
-                            (qh_quest["name"], leaf["name"]) not in OWNER_OMITTED_UNRESOLVED):
+                            (qh_quest["name"], leaf["name"]) not in
+                            OWNER_OMITTED_UNRESOLVED | OWNER_HANDLED_UNRESOLVED):
                         unresolved.append(
                             {
                                 "quest": qh_quest["name"],

@@ -151,12 +151,15 @@ class BronzemanTcgPanel extends PluginPanel
 	private final JCheckBox showSharedRecent = new JCheckBox("Show shared");
 	private final JPanel recentUnlocksList = sectionBody();
 
+	private final JPanel sharedCardsPanel = sectionBody();
+	private final IconTextField sharedCardsSearchBar = new IconTextField();
 	private final JPanel sharedCardsList = sectionBody();
 	private final Set<String> expandedSharedCategories = new HashSet<>();
 	private final Set<String> expandedSharedSubcategories = new HashSet<>();
 	private MaterialTab sharedCardsTab;
 
 	private final JPanel importantUnlocksPanel = sectionBody();
+	private final IconTextField importantUnlocksSearchBar = new IconTextField();
 	private final JPanel importantUnlocksFilters = new JPanel();
 
 	private final JCheckBox showLockedImportant = new JCheckBox("Show locked");
@@ -314,10 +317,20 @@ class BronzemanTcgPanel extends PluginPanel
 		pvmPanel.add(Box.createVerticalStrut(4));
 		pvmPanel.add(contentList);
 
+		configureTabSearchBar(importantUnlocksSearchBar, "Search Collection",
+			this::refreshImportantUnlocks);
+		importantUnlocksPanel.add(importantUnlocksSearchBar);
+		importantUnlocksPanel.add(Box.createVerticalStrut(4));
 		configureImportantUnlockFilters();
 		importantUnlocksPanel.add(importantUnlocksFilters);
 		importantUnlocksPanel.add(Box.createVerticalStrut(4));
 		importantUnlocksPanel.add(importantUnlocksList);
+
+		configureTabSearchBar(sharedCardsSearchBar, "Search shared cards",
+			this::refreshSharedCards);
+		sharedCardsPanel.add(sharedCardsSearchBar);
+		sharedCardsPanel.add(Box.createVerticalStrut(4));
+		sharedCardsPanel.add(sharedCardsList);
 
 		add(createPlaceholderBanner());
 		add(Box.createVerticalStrut(8));
@@ -338,7 +351,7 @@ class BronzemanTcgPanel extends PluginPanel
 		addTab("Rumours", rumoursList, PanelTab.RUMOURS);
 		addTab("Recent Unlocks", recentUnlocksPanel, PanelTab.RECENT);
 		addTab("Collection", importantUnlocksPanel, PanelTab.IMPORTANT);
-		sharedCardsTab = addTab("Shared Cards", sharedCardsList, PanelTab.SHARED);
+		sharedCardsTab = addTab("Shared Cards", sharedCardsPanel, PanelTab.SHARED);
 		sharedCardsTab.setVisible(false);
 		tabs.select(tabs.getTab(0));
 		add(tabs);
@@ -442,6 +455,43 @@ class BronzemanTcgPanel extends PluginPanel
 		completedQuestNames = completed == null
 			? Collections.emptySet() : Collections.unmodifiableSet(new HashSet<>(completed));
 		questRoute = route == null ? QuestCatalog.RouteSelection.UNKNOWN : route;
+	}
+
+	private void configureTabSearchBar(IconTextField field, String tooltip,
+		Runnable refresh)
+	{
+		field.setIcon(IconTextField.Icon.SEARCH);
+		field.setToolTipText(tooltip);
+		field.setMaximumSize(new Dimension(Integer.MAX_VALUE, 28));
+		field.setAlignmentX(Component.LEFT_ALIGNMENT);
+		field.getDocument().addDocumentListener(new DocumentListener()
+		{
+			private void update()
+			{
+				if (snapshot != null)
+				{
+					refresh.run();
+				}
+			}
+
+			@Override
+			public void insertUpdate(DocumentEvent event)
+			{
+				update();
+			}
+
+			@Override
+			public void removeUpdate(DocumentEvent event)
+			{
+				update();
+			}
+
+			@Override
+			public void changedUpdate(DocumentEvent event)
+			{
+				update();
+			}
+		});
 	}
 
 	/** Stop queued work from touching a panel that has been removed from the toolbar. */
@@ -708,7 +758,7 @@ class BronzemanTcgPanel extends PluginPanel
 		boolean expanded = expandedQuests.contains(entry.name);
 		JPanel row = compactProgressRow(
 			(expanded ? "\u25bc " : "\u25b6 ") + entry.name, have, total);
-		row.setBackground(ColorScheme.DARKER_GRAY_COLOR);
+		styleCategoryHeader(row, 4);
 		if (!entry.notes.isEmpty())
 		{
 			row.setToolTipText(entry.notes);
@@ -739,9 +789,7 @@ class BronzemanTcgPanel extends PluginPanel
 			boolean expanded = expandedQuestSections.contains(key);
 			int have = section.satisfiedCount(snapshot.questCards, snapshot.questRoute);
 			int total = section.requirements.size();
-			JPanel row = compactProgressRow("  "
-				+ (expanded ? "\u25bc " : "\u25b6 ") + label, have, total);
-			row.setBackground(ColorScheme.DARKER_GRAY_COLOR);
+			JPanel row = questSectionRow(label, have, total, expanded);
 			makeClickable(row, () ->
 			{
 				if (!expandedQuestSections.remove(key))
@@ -759,31 +807,40 @@ class BronzemanTcgPanel extends PluginPanel
 			{
 				questList.add(mutedRow("    No card-backed requirements"));
 			}
-			for (int requirementIndex = 0;
-				requirementIndex < section.requirements.size(); requirementIndex++)
+			List<QuestCatalog.Requirement> ordered = new ArrayList<>(section.requirements);
+			if ("Items".equalsIgnoreCase(label))
 			{
-				renderQuestRequirement(section.requirements.get(requirementIndex),
-					key + "\0requirement\0" + requirementIndex);
+				// Keep ordinary checklist rows first and the expandable any-of/route
+				// groups together at the bottom of the Items section.
+				ordered.sort(Comparator.comparing(BronzemanTcgPanel::isExpandableQuestRequirement));
+			}
+			for (QuestCatalog.Requirement requirement : ordered)
+			{
+				int sourceIndex = section.requirements.indexOf(requirement);
+				renderQuestRequirement(requirement,
+					key + "\0requirement\0" + sourceIndex);
 			}
 		}
 	}
 
+	private static boolean isExpandableQuestRequirement(QuestCatalog.Requirement requirement)
+	{
+		return !requirement.children.isEmpty() || requirement.displayCards.size() > 1;
+	}
+
 	private void renderQuestRequirement(QuestCatalog.Requirement requirement, String key)
 	{
-		boolean expandable = !requirement.children.isEmpty()
-			|| requirement.displayCards.size() > 1;
+		boolean expandable = isExpandableQuestRequirement(requirement);
 		if (!expandable)
 		{
-			questList.add(requirementRow(requirement,
-				requirement.isSatisfied(snapshot.questCards, snapshot.questRoute)));
+			JPanel row = requirementRow(requirement,
+				requirement.isSatisfied(snapshot.questCards, snapshot.questRoute));
+			styleListContent(row);
+			questList.add(row);
 			return;
 		}
 		boolean expanded = expandedQuestRequirements.contains(key);
-		int have = requirement.displaySatisfied(snapshot.questCards, snapshot.questRoute);
-		int total = requirement.displayTotal(snapshot.questRoute);
-		JPanel row = compactProgressRow("    "
-			+ (expanded ? "\u25bc " : "\u25b6 ") + requirement.label, have, total);
-		row.setBackground(ColorScheme.DARKER_GRAY_COLOR);
+		JPanel row = contentDropdownRow(requirement.label, expanded);
 		makeClickable(row, () ->
 		{
 			if (!expandedQuestRequirements.remove(key))
@@ -803,8 +860,10 @@ class BronzemanTcgPanel extends PluginPanel
 			collectRequirementCards(requirement, cards);
 			for (String card : cards.values())
 			{
-				questList.add(statusRow("      " + displayCardName(card),
-					snapshot.questCards.contains(card.toLowerCase(Locale.ROOT)), null));
+				JPanel cardRow = statusRow("      " + displayCardName(card),
+					snapshot.questCards.contains(card.toLowerCase(Locale.ROOT)), null);
+				styleListContent(cardRow);
+				questList.add(cardRow);
 			}
 			return;
 		}
@@ -820,10 +879,66 @@ class BronzemanTcgPanel extends PluginPanel
 		{
 			for (String card : requirement.displayCards)
 			{
-				questList.add(statusRow("      " + displayCardName(card),
-					snapshot.questCards.contains(card.toLowerCase(Locale.ROOT)), null));
+				JPanel cardRow = statusRow("      " + displayCardName(card),
+					snapshot.questCards.contains(card.toLowerCase(Locale.ROOT)), null);
+				styleListContent(cardRow);
+				questList.add(cardRow);
 			}
 		}
+	}
+
+	private static JPanel questSectionRow(String label, int have, int total,
+		boolean expanded)
+	{
+		return hierarchyCountRow(label, have, total, expanded, 8);
+	}
+
+	private static JPanel hierarchyCountRow(String label, int have, int total,
+		boolean expanded, int leftPadding)
+	{
+		JPanel row = row(new BorderLayout(6, 0));
+		row.setBackground(ColorScheme.DARK_GRAY_COLOR);
+		styleCategoryHeader(row, leftPadding);
+
+		JLabel name = new JLabel((expanded ? "\u25bc " : "\u25b6 ") + label);
+		name.setForeground(Color.WHITE);
+		row.add(name, BorderLayout.CENTER);
+
+		JLabel count = new JLabel(have + "/" + total);
+		count.setForeground(ColorScheme.LIGHT_GRAY_COLOR);
+		count.setHorizontalAlignment(JLabel.RIGHT);
+		count.setPreferredSize(new Dimension(38, 16));
+		row.add(count, BorderLayout.EAST);
+		return row;
+	}
+
+	private static JPanel contentDropdownRow(String label, boolean expanded)
+	{
+		JPanel row = row(new BorderLayout());
+		row.setBackground(Color.BLACK);
+		row.setBorder(BorderFactory.createCompoundBorder(
+			BorderFactory.createLineBorder(ColorScheme.DARKER_GRAY_COLOR),
+			BorderFactory.createEmptyBorder(4, 12, 4, 6)));
+		JLabel name = new JLabel((expanded ? "\u25bc " : "\u25b6 ") + label);
+		name.setForeground(Color.WHITE);
+		row.add(name, BorderLayout.CENTER);
+		return row;
+	}
+
+	private static void styleCategoryHeader(JPanel row, int leftPadding)
+	{
+		row.setBackground(ColorScheme.DARK_GRAY_COLOR);
+		row.setBorder(BorderFactory.createCompoundBorder(
+			BorderFactory.createLineBorder(Color.BLACK),
+			BorderFactory.createEmptyBorder(4, leftPadding, 4, 4)));
+	}
+
+	private static void styleListContent(JPanel row)
+	{
+		row.setBackground(Color.BLACK);
+		row.setBorder(BorderFactory.createCompoundBorder(
+			BorderFactory.createLineBorder(ColorScheme.DARKER_GRAY_COLOR),
+			BorderFactory.createEmptyBorder(4, 6, 4, 6)));
 	}
 
 	private static void collectRequirementCards(QuestCatalog.Requirement requirement,
@@ -962,12 +1077,11 @@ class BronzemanTcgPanel extends PluginPanel
 			}
 			String key = nestedKey(master.name, task.label);
 			boolean taskExpanded = expandedSlayerTasks.contains(key);
-			String taskArrow = taskExpanded ? "\u25bc " : "\u25b6 ";
 			if (task.locationSpecific)
 			{
 				int locationsOwned = satisfiedRequirements(task.requirements, snapshot.owned);
-				slayerList.add(clickableProgressRow(
-					"  " + taskArrow + task.label, locationsOwned, task.requirements.size(),
+				slayerList.add(clickableHierarchyCountRow(
+					task.label, locationsOwned, task.requirements.size(), taskExpanded, 8,
 					() ->
 					{
 						if (!expandedSlayerTasks.remove(key))
@@ -981,9 +1095,9 @@ class BronzemanTcgPanel extends PluginPanel
 			{
 				QuestCatalog.Requirement requirement = task.requirements.get(0);
 				int variantsOwned = countOwned(requirement.displayCards, snapshot.owned);
-				slayerList.add(clickableProgressRow(
-					"  " + taskArrow + task.label,
-					variantsOwned, requirement.displayCards.size(), variantsOwned > 0, () ->
+				slayerList.add(clickableHierarchyCountRow(
+					task.label, variantsOwned, requirement.displayCards.size(), taskExpanded, 8,
+					() ->
 					{
 						if (!expandedSlayerTasks.remove(key))
 						{
@@ -1025,11 +1139,8 @@ class BronzemanTcgPanel extends PluginPanel
 		{
 			String key = master.name;
 			boolean superiorExpanded = expandedSlayerSuperiorGroups.contains(key);
-			int superiorHave = satisfiedRequirements(master.superiors, snapshot.owned);
-			String superiorArrow = superiorExpanded ? "\u25bc " : "\u25b6 ";
-			slayerList.add(clickableProgressRow(
-				"  " + superiorArrow + "Superior Creatures",
-				superiorHave, master.superiors.size(), () ->
+			slayerList.add(clickableContentDropdownRow(
+				"Superior Creatures", superiorExpanded, () ->
 				{
 					if (!expandedSlayerSuperiorGroups.remove(key))
 					{
@@ -1098,9 +1209,9 @@ class BronzemanTcgPanel extends PluginPanel
 			}
 			String key = nestedKey(sectionName, entry.name);
 			boolean groupExpanded = expandedPvmGroups.contains(key);
-			String groupArrow = groupExpanded ? "\u25bc " : "\u25b6 ";
-			contentList.add(clickableProgressRow("  " + groupArrow + entry.name,
-				entry.satisfiedCount(snapshot.owned), entry.requirements.size(), () ->
+			contentList.add(clickableHierarchyCountRow(entry.name,
+				entry.satisfiedCount(snapshot.owned), entry.requirements.size(),
+				groupExpanded, 8, () ->
 				{
 					if (!expandedPvmGroups.remove(key))
 					{
@@ -1193,6 +1304,23 @@ class BronzemanTcgPanel extends PluginPanel
 		boolean complete, Runnable action)
 	{
 		JPanel row = compactProgressRow(label, have, total, complete);
+		styleCategoryHeader(row, 4);
+		makeClickable(row, action);
+		return row;
+	}
+
+	private JPanel clickableHierarchyCountRow(String label, int have, int total,
+		boolean expanded, int leftPadding, Runnable action)
+	{
+		JPanel row = hierarchyCountRow(label, have, total, expanded, leftPadding);
+		makeClickable(row, action);
+		return row;
+	}
+
+	private JPanel clickableContentDropdownRow(String label, boolean expanded,
+		Runnable action)
+	{
+		JPanel row = contentDropdownRow(label, expanded);
 		makeClickable(row, action);
 		return row;
 	}
@@ -1287,7 +1415,10 @@ class BronzemanTcgPanel extends PluginPanel
 	private void refreshSharedCards()
 	{
 		sharedCardsList.removeAll();
-		List<SharedCategory> categories = buildSharedCategories(snapshot.shared);
+		String query = searchText(sharedCardsSearchBar);
+		boolean searching = !query.isEmpty();
+		List<SharedCategory> categories = filterSharedCategories(
+			buildSharedCategories(snapshot.shared), query);
 		for (int index = 0; index < categories.size(); index++)
 		{
 			SharedCategory category = categories.get(index);
@@ -1295,8 +1426,8 @@ class BronzemanTcgPanel extends PluginPanel
 			{
 				addSpacedDivider(sharedCardsList);
 			}
-			sharedCardsList.add(sharedCategoryRow(category));
-			if (!expandedSharedCategories.contains(category.name))
+			sharedCardsList.add(sharedCategoryRow(category, searching));
+			if (!searching && !expandedSharedCategories.contains(category.name))
 			{
 				continue;
 			}
@@ -1308,8 +1439,8 @@ class BronzemanTcgPanel extends PluginPanel
 			{
 				String key = importantSubcategoryKey(category.name, entry.getKey());
 				sharedCardsList.add(sharedSubcategoryRow(category.name, entry.getKey(),
-					entry.getValue().size()));
-				if (expandedSharedSubcategories.contains(key))
+					entry.getValue().size(), searching));
+				if (searching || expandedSharedSubcategories.contains(key))
 				{
 					for (String card : entry.getValue())
 					{
@@ -1321,7 +1452,9 @@ class BronzemanTcgPanel extends PluginPanel
 		}
 		if (categories.isEmpty())
 		{
-			sharedCardsList.add(mutedRow("No shared cards currently available, check your party is correctly synced in TCG Locked Side Panel."));
+			sharedCardsList.add(mutedRow(searching
+				? "No shared cards match"
+				: "No shared cards currently available, check your party is correctly synced in TCG Locked Side Panel."));
 		}
 		sharedCardsList.revalidate();
 		sharedCardsList.repaint();
@@ -1399,9 +1532,9 @@ class BronzemanTcgPanel extends PluginPanel
 		cards.sort(Comparator.comparing(this::displayCardName, String.CASE_INSENSITIVE_ORDER));
 	}
 
-	private JPanel sharedCategoryRow(SharedCategory category)
+	private JPanel sharedCategoryRow(SharedCategory category, boolean forceExpanded)
 	{
-		boolean expanded = expandedSharedCategories.contains(category.name);
+		boolean expanded = forceExpanded || expandedSharedCategories.contains(category.name);
 		JPanel row = collapsibleCountRow(category.name, category.size(), expanded, 0);
 		makeClickable(row, () ->
 		{
@@ -1414,10 +1547,11 @@ class BronzemanTcgPanel extends PluginPanel
 		return row;
 	}
 
-	private JPanel sharedSubcategoryRow(String category, String subcategory, int count)
+	private JPanel sharedSubcategoryRow(String category, String subcategory, int count,
+		boolean forceExpanded)
 	{
 		String key = importantSubcategoryKey(category, subcategory);
-		boolean expanded = expandedSharedSubcategories.contains(key);
+		boolean expanded = forceExpanded || expandedSharedSubcategories.contains(key);
 		JPanel row = collapsibleCountRow(subcategory, count, expanded, 2);
 		makeClickable(row, () ->
 		{
@@ -1433,8 +1567,7 @@ class BronzemanTcgPanel extends PluginPanel
 	private static JPanel collapsibleCountRow(String label, int count, boolean expanded, int indent)
 	{
 		JPanel row = row(new BorderLayout(6, 0));
-		row.setBackground(ColorScheme.DARK_GRAY_COLOR);
-		row.setBorder(BorderFactory.createEmptyBorder(4, indent, 4, 4));
+		styleCategoryHeader(row, indent + 4);
 		row.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		JLabel name = new JLabel((expanded ? "▼ " : "▶ ") + label);
 		name.setForeground(Color.WHITE);
@@ -1467,6 +1600,51 @@ class BronzemanTcgPanel extends PluginPanel
 			questFilters.add(checkBox);
 			checkBox.addActionListener(event -> updateQuestFilters());
 		}
+	}
+
+	private List<SharedCategory> filterSharedCategories(
+		List<SharedCategory> categories, String query)
+	{
+		if (query.isEmpty())
+		{
+			return categories;
+		}
+		List<SharedCategory> filtered = new ArrayList<>();
+		for (SharedCategory category : categories)
+		{
+			boolean categoryMatches = matchesSearch(category.name, query);
+			List<String> items = matchingCards(category.items, query, categoryMatches);
+			Map<String, List<String>> subcategories = new LinkedHashMap<>();
+			for (Map.Entry<String, List<String>> entry : category.subcategories.entrySet())
+			{
+				boolean headingMatches = categoryMatches
+					|| matchesSearch(entry.getKey(), query);
+				List<String> matches = matchingCards(entry.getValue(), query, headingMatches);
+				if (!matches.isEmpty())
+				{
+					subcategories.put(entry.getKey(), matches);
+				}
+			}
+			if (!items.isEmpty() || !subcategories.isEmpty())
+			{
+				filtered.add(new SharedCategory(category.name, items, subcategories));
+			}
+		}
+		return filtered;
+	}
+
+	private List<String> matchingCards(List<String> cards, String query,
+		boolean includeAll)
+	{
+		List<String> matches = new ArrayList<>();
+		for (String card : cards)
+		{
+			if (includeAll || matchesSearch(displayCardName(card), query))
+			{
+				matches.add(card);
+			}
+		}
+		return matches;
 	}
 
 	private void updateQuestSearch()
@@ -1588,6 +1766,8 @@ class BronzemanTcgPanel extends PluginPanel
 	{
 		importantUnlocksList.removeAll();
 		Set<String> owned = snapshot.owned;
+		String query = searchText(importantUnlocksSearchBar);
+		boolean searching = !query.isEmpty();
 		if (!showLockedImportant.isSelected() && !showUnlockedImportant.isSelected())
 		{
 			importantUnlocksList.add(mutedRow("Select a status to display items"));
@@ -1599,12 +1779,17 @@ class BronzemanTcgPanel extends PluginPanel
 		int visibleCategories = 0;
 		for (ImportantUnlocksCatalog.Category category : importantUnlocksCatalog.getCategories())
 		{
-			List<String> visibleItems = visibleImportantItems(category.items, owned);
+			boolean categoryMatches = matchesSearch(category.name, query);
+			List<String> visibleItems = visibleImportantItems(
+				category.items, owned, query, categoryMatches);
 			Map<ImportantUnlocksCatalog.Subcategory, List<String>> visibleSubcategories =
 				new LinkedHashMap<>();
 			for (ImportantUnlocksCatalog.Subcategory subcategory : category.subcategories)
 			{
-				List<String> subcategoryItems = visibleImportantItems(subcategory.items, owned);
+				boolean headingMatches = categoryMatches
+					|| matchesSearch(subcategory.name, query);
+				List<String> subcategoryItems = visibleImportantItems(
+					subcategory.items, owned, query, headingMatches);
 				if (!subcategoryItems.isEmpty())
 				{
 					visibleSubcategories.put(subcategory, subcategoryItems);
@@ -1621,8 +1806,8 @@ class BronzemanTcgPanel extends PluginPanel
 			}
 			visibleCategories++;
 			int have = countOwned(category.allItems, owned);
-			importantUnlocksList.add(importantCategoryRow(category, have));
-			if (expandedImportantCategories.contains(category.name))
+			importantUnlocksList.add(importantCategoryRow(category, have, searching));
+			if (searching || expandedImportantCategories.contains(category.name))
 			{
 				for (String card : visibleItems)
 				{
@@ -1641,8 +1826,8 @@ class BronzemanTcgPanel extends PluginPanel
 					visibleSubcategoryIndex++;
 					ImportantUnlocksCatalog.Subcategory subcategory = entry.getKey();
 					importantUnlocksList.add(importantSubcategoryRow(category, subcategory,
-						countOwned(subcategory.items, owned)));
-					if (expandedImportantSubcategories.contains(
+						countOwned(subcategory.items, owned), searching));
+					if (searching || expandedImportantSubcategories.contains(
 						importantSubcategoryKey(category.name, subcategory.name)))
 					{
 						for (String card : entry.getValue())
@@ -1667,13 +1852,15 @@ class BronzemanTcgPanel extends PluginPanel
 		importantUnlocksList.repaint();
 	}
 
-	private List<String> visibleImportantItems(List<String> items, Set<String> owned)
+	private List<String> visibleImportantItems(List<String> items, Set<String> owned,
+		String query, boolean includeAll)
 	{
 		List<String> visible = new ArrayList<>();
 		for (String card : items)
 		{
 			boolean unlocked = owned.contains(card.toLowerCase(Locale.ROOT));
-			if (shouldShowImportantItem(unlocked))
+			if (shouldShowImportantItem(unlocked)
+				&& (includeAll || matchesSearch(displayCardName(card), query)))
 			{
 				visible.add(card);
 			}
@@ -1681,11 +1868,13 @@ class BronzemanTcgPanel extends PluginPanel
 		return visible;
 	}
 
-	private JPanel importantCategoryRow(ImportantUnlocksCatalog.Category category, int have)
+	private JPanel importantCategoryRow(ImportantUnlocksCatalog.Category category, int have,
+		boolean forceExpanded)
 	{
-		boolean expanded = expandedImportantCategories.contains(category.name);
+		boolean expanded = forceExpanded || expandedImportantCategories.contains(category.name);
 		JPanel row = compactProgressRow((expanded ? "▼ " : "▶ ") + category.name,
 			have, category.allItems.size());
+		styleCategoryHeader(row, 4);
 		makeClickable(row, () ->
 		{
 			if (!expandedImportantCategories.remove(category.name))
@@ -1698,13 +1887,12 @@ class BronzemanTcgPanel extends PluginPanel
 	}
 
 	private JPanel importantSubcategoryRow(ImportantUnlocksCatalog.Category category,
-		ImportantUnlocksCatalog.Subcategory subcategory, int have)
+		ImportantUnlocksCatalog.Subcategory subcategory, int have, boolean forceExpanded)
 	{
 		String key = importantSubcategoryKey(category.name, subcategory.name);
-		boolean expanded = expandedImportantSubcategories.contains(key);
-		JPanel row = compactProgressRow("  " + (expanded ? "\u25bc " : "\u25b6 ")
-				+ subcategory.name,
-			have, subcategory.items.size());
+		boolean expanded = forceExpanded || expandedImportantSubcategories.contains(key);
+		JPanel row = hierarchyCountRow(subcategory.name, have,
+			subcategory.items.size(), expanded, 8);
 		makeClickable(row, () ->
 		{
 			if (!expandedImportantSubcategories.remove(key))
@@ -1946,6 +2134,7 @@ class BronzemanTcgPanel extends PluginPanel
 		String label = (expanded ? "\u25bc " : "\u25b6 ") + entry.name
 			+ (entry.miniquest ? " (mini)" : "");
 		JPanel row = compactProgressRow(label, have, Math.max(total, 0));
+		styleCategoryHeader(row, 4);
 		if (!entry.notes.isEmpty())
 		{
 			row.setToolTipText(entry.notes);
@@ -1971,11 +2160,22 @@ class BronzemanTcgPanel extends PluginPanel
 			? ": " + String.join(" / ", requirement.displayCards)
 			: "";
 		JPanel row = statusRow("  " + requirement.label + alternatives, have, null);
-		row.setBackground(ColorScheme.DARK_GRAY_COLOR);
+		styleListContent(row);
 		return row;
 	}
 
 	// ------------------------------------------------------------------ search
+
+	private static String searchText(IconTextField field)
+	{
+		return field.getText() == null ? ""
+			: field.getText().trim().toLowerCase(Locale.ROOT);
+	}
+
+	private static boolean matchesSearch(String value, String query)
+	{
+		return query.isEmpty() || value.toLowerCase(Locale.ROOT).contains(query);
+	}
 
 	private void refreshSearch()
 	{
@@ -2163,8 +2363,7 @@ class BronzemanTcgPanel extends PluginPanel
 	private static JPanel statusRow(String name, boolean unlocked, String missingCards)
 	{
 		JPanel row = row(new BorderLayout(6, 0));
-		row.setBackground(ColorScheme.DARKER_GRAY_COLOR);
-		row.setBorder(BorderFactory.createEmptyBorder(4, 6, 4, 6));
+		styleListContent(row);
 
 		JLabel nameLabel = new JLabel(name);
 		nameLabel.setForeground(Color.WHITE);
@@ -2188,8 +2387,7 @@ class BronzemanTcgPanel extends PluginPanel
 	private static JPanel recentUnlockRow(String name, long time, boolean shared)
 	{
 		JPanel row = row(new BorderLayout(6, 0));
-		row.setBackground(ColorScheme.DARKER_GRAY_COLOR);
-		row.setBorder(BorderFactory.createEmptyBorder(4, 6, 4, 6));
+		styleListContent(row);
 
 		JLabel nameLabel = new JLabel(name);
 		nameLabel.setForeground(Color.WHITE);

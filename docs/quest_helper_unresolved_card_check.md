@@ -5,66 +5,40 @@ Approximate matches are suggestions, not accepted mappings.
 
 ## Summary
 
-- Unresolved labels checked: 210.
-- Strong catalogue matches: 9.
-- Possible catalogue matches: 99.
-- No plausible card match: 102.
+- Unresolved labels checked: 172.
+- Strong catalogue matches: 1.
+- Possible catalogue matches: 76.
+- No plausible card match: 95.
 
 ## Strong catalogue matches
 
-- **Bone Voyage — Marrentill potion (unf)**: cards: Marrentill potion; constants: `MARRENTILLVIAL`.
-- **Desert Treasure I — Facemask (or other face covering)**: cards: Facemask; constants: `SLAYER_FACEMASK, SLAYER_HELM, SLAYER_HELM_I, SW_SLAYER_HELM_I, GASMASK`.
-- **Eadgar's Ruse — Ranarr potion (unf)**: cards: Ranarr potion; constants: `RANARRVIAL`.
 - **Enakhra's Lament — Granite (5kg)**: cards: Granite; constants: `ENAKH_GRANITE_MEDIUM`.
-- **Grim Tales — Tarromin potion (unf)**: cards: Tarromin potion; constants: `TARROMINVIAL`.
-- **Heroes' Quest — Harralander potion (unf)**: cards: Harralander potion; constants: `HARRALANDERVIAL`.
-- **Land of the Goblins — Toadflax potion (unf)**: cards: Toadflax potion; constants: `TOADFLAXVIAL`.
-- **Shades of Mort'ton — Tarromin potion (unf)**: cards: Tarromin potion; constants: `TARROMINVIAL`.
-- **While Guthix Sleeps — Seed dibber (only if not done barb training)**: cards: Seed dibber; constants: `DIBBER`.
 
 ## Possible catalogue matches
 
-- **A Kingdom Divided — Defence Potion (3) or (4)**: cards: Defence potion; constants: `_4DOSE1DEFENSE, _3DOSE1DEFENSE`.
 - **A Night at the Theatre — Ghostspeak amulet**: cards: Opal amulet; constants: `AMULET_OF_GHOSTSPEAK, AMULET_OF_GHOSTSPEAK_ENCHANTED, MORYTANIA_LEGS_MEDIUM, MORYTANIA_LEGS_HARD, MORYTANIA_LEGS_ELITE`.
-- **A Tail of Two Cats — A cat**: cards: Lazy cat, Cat; constants: `WILEYCATOBJECT_HELL, WILEYCATOBJECT_LIGHT, WILEYCATOBJECT, WILEYCATOBJECT_BROWN, WILEYCATOBJECT_BLACK, WILEYCATOBJECT_BROWNGREY, WILEYCATOBJECT_BLUEGREY, LAZYCATOBJECT_HELL, LAZYCATOBJECT_LIGHT, LAZYCATOBJECT, LAZYCATOBJECT_BROWN, LAZYCATOBJECT_BLACK, LAZYCATOBJECT_BROWNGREY, LAZYCATOBJECT_BLUEGREY, GROWNCATOBJECT_HELL, GROWNCATOBJECT, GROWNCATOBJECT_LIGHT, GROWNCATOBJECT_BROWN, GROWNCATOBJECT_BLACK, GROWNCATOBJECT_BROWNGREY, GROWNCATOBJECT_BLUEGREY, KITTENOBJECT_HELL, KITTENOBJECT, KITTENOBJECT_LIGHT, KITTENOBJECT_BROWN, KITTENOBJECT_BLACK, KITTENOBJECT_BROWNGREY, KITTENOBJECT_BLUEGREY, OVERGROWNCATOBJECT_HELL, OVERGROWNCATOBJECT, OVERGROWNCATOBJECT_LIGHT, OVERGROWNCATOBJECT_BROWN, OVERGROWNCATOBJECT_BLACK, OVERGROWNCATOBJECT_BROWNGREY, OVERGROWNCATOBJECT_BLUEGREY`.
-- **A Tail of Two Cats — Death runes**: cards: Death rune; constants: `DEATHRUNE`.
 - **Animal Magnetism — Ghostspeak amulet**: cards: Opal amulet; constants: `AMULET_OF_GHOSTSPEAK`.
 - **Animal Magnetism — Holy Symbol**: cards: Unholy symbol, Old symbol, Holy mould, Holy moleys; constants: `BLESSEDSTAR`.
 - **Biohazard — Gas mask**: cards: Jonas mask, Cat mask, Masori mask; constants: `GASMASK`.
-- **Clock Tower — Bucket of Water or a pair of ice gloves or smiths gloves(i)**: cards: Bucket, Bucket of water, Smiths gloves; constants: `BUCKET_WATER, ICE_GLOVES, SMITHING_UNIFORM_GLOVES_ICE`.
 - **Contact! — Prayer potions**: cards: Prayer potion, Prayer book; constants: `_4DOSEPRAYERRESTORE, _3DOSEPRAYERRESTORE, _2DOSEPRAYERRESTORE, _1DOSEPRAYERRESTORE, _4DOSE2RESTORE, _3DOSE2RESTORE, _2DOSE2RESTORE, _1DOSE2RESTORE, HUNTER_MIX_MOONMOTH_2DOSE, HUNTER_MIX_MOONMOTH_1DOSE, BUTTERFLY_JAR_MOONMOTH`.
 - **Creature of Fenkenstrain — Ghostspeak amulet**: cards: Opal amulet; constants: `AMULET_OF_GHOSTSPEAK, AMULET_OF_GHOSTSPEAK_ENCHANTED, MORYTANIA_LEGS_MEDIUM, MORYTANIA_LEGS_HARD, MORYTANIA_LEGS_ELITE`.
 - **Current Affairs — Charcoal**: cards: Juniper charcoal; constants: `CHARCOAL`.
 - **Demon Slayer — Armour**: cards: Bandos armour ornament kit, Broken armour, Crystal armour seed, Damaged armour, Moonclan armour; constants: `none`.
 - **Desert Treasure I — Charcoal**: cards: Juniper charcoal; constants: `CHARCOAL`.
 - **Desert Treasure I — Climbing boots**: cards: Rock-climbing boots, Climbing rope, Fighting boots; constants: `DEATH_CLIMBINGBOOTS, CLIMBING_BOOTS_G`.
-- **Desert Treasure I — Garlic powder**: cards: Garlic; constants: `FD_CRUSHED_GARLIC`.
 - **Desert Treasure I — Ice gloves/smiths gloves(i)**: cards: Smiths gloves; constants: `ICE_GLOVES, SMITHING_UNIFORM_GLOVES_ICE`.
 - **Desert Treasure I — Spiked boots**: cards: Spined boots, Pink boots, Spookier boots, Red boots, Gilded boots; constants: `DEATH_SPIKEDBOOTS`.
-- **Desert Treasure II - The Fallen Empire — Blood runes**: cards: Blood rune; constants: `BLOODRUNE`.
-- **Desert Treasure II - The Fallen Empire — Death runes**: cards: Death rune; constants: `DEATHRUNE`.
-- **Desert Treasure II - The Fallen Empire — Fire runes**: cards: Fire rune, Fire rune pack; constants: `FIRERUNE`.
-- **Desert Treasure II - The Fallen Empire — Soul runes**: cards: Soul rune, Soul journey; constants: `SOULRUNE`.
-- **Devious Minds — Large/Colossal Pouch (non-degraded)**: cards: Colossal pouch, Large meat pouch, Large pouch, Large fur pouch; constants: `RCU_POUCH_LARGE, DEVIOUS_GLOWINGPOUCH, RCU_POUCH_COLOSSAL, DEVIOUS_GLOWINGPOUCH_COLOSSAL`.
 - **Dream Mentor — Seal of passage**: cards: Necklace of passage; constants: `LUNAR_SEAL_OF_PASSAGE`.
 - **Eadgar's Ruse — Climbing boots**: cards: Rock-climbing boots, Climbing rope, Fighting boots; constants: `DEATH_CLIMBINGBOOTS, CLIMBING_BOOTS_G`.
 - **Enakhra's Lament — 52 kg of sandstone**: cards: Sandstone; constants: `none`.
-- **Enlightened Journey — Sack of potatoes (10)**: cards: Potatoes, Sack of coal; constants: `SACK_POTATO_10`.
-- **Enlightened Journey — Unlit candle**: cards: Lit candle, Candle; constants: `UNLIT_CANDLE, UNLIT_BLACK_CANDLE`.
 - **Fairytale I - Growing Pains — Dramen or lunar staff**: cards: Staff; constants: `DRAMEN_STAFF, LUNAR_MOONCLAN_LIMINAL_STAFF`.
 - **Fairytale I - Growing Pains — Ghostspeak amulet**: cards: Opal amulet; constants: `AMULET_OF_GHOSTSPEAK, AMULET_OF_GHOSTSPEAK_ENCHANTED, MORYTANIA_LEGS_MEDIUM, MORYTANIA_LEGS_HARD, MORYTANIA_LEGS_ELITE`.
 - **Fairytale II - Cure a Queen — Dramen or lunar staff**: cards: Staff; constants: `DRAMEN_STAFF, LUNAR_MOONCLAN_LIMINAL_STAFF`.
-- **Family Crest — At least one dose of antipoison or superantipoison**: cards: Antipoison, Superantipoison; constants: `ANTIVENOM_4, ANTIVENOM_3, ANTIVENOM_2, ANTIVENOM_1, ANTIVENOM4, ANTIVENOM3, ANTIVENOM2, ANTIVENOM1, ANTIDOTE__4, ANTIDOTE__3, ANTIDOTE__2, ANTIDOTE__1, ANTIDOTE_4, ANTIDOTE_3, ANTIDOTE_2, ANTIDOTE_1, _4DOSE2ANTIPOISON, _3DOSE2ANTIPOISON, _2DOSE2ANTIPOISON, _1DOSE2ANTIPOISON, _4DOSEANTIPOISON, _3DOSEANTIPOISON, _2DOSEANTIPOISON, _1DOSEANTIPOISON, RELICYMS_BALM4, RELICYMS_BALM3, RELICYMS_BALM2, RELICYMS_BALM1, SANFEW_SALVE_4_DOSE, SANFEW_SALVE_3_DOSE, SANFEW_SALVE_2_DOSE, SANFEW_SALVE_1_DOSE, BRUTAL_RELICYMS_BALM2, BRUTAL_RELICYMS_BALM1, BRUTAL_2DOSEANTIPOISON, BRUTAL_1DOSEANTIPOISON, BRUTAL_ANTIDOTE_2, BRUTAL_ANTIDOTE_1`.
 - **Garden of Tranquillity — Normal/Super/Ultra compost**: cards: Compost; constants: `BUCKET_COMPOST, BUCKET_SUPERCOMPOST, BUCKET_ULTRACOMPOST`.
 - **Garden of Tranquillity — Ring of Charos**: cards: Ring of coins, Ring of the gods, Ring of nature, Ring of recoil; constants: `RING_OF_CHAROS`.
-- **Getting Ahead — Any saw**: cards: Amy's saw; constants: `POH_SAW, EYEGLO_CRYSTAL_SAW, WEARABLE_SAW`.
-- **Ghosts Ahoy — Ecto-token, OR 25 Ecto-Tokens and coins to travel by Charter Ship**: cards: Coins, Ecto-token; constants: `ECTOTOKEN`.
 - **Ghosts Ahoy — Ghostspeak amulet**: cards: Opal amulet; constants: `AMULET_OF_GHOSTSPEAK`.
 - **Goblin Diplomacy — Orange dye**: cards: Orange, Orange cape; constants: `ORANGEDYE`.
 - **Grim Tales — Door key**: cards: Dark key, Loot key, Moon key; constants: `WITCHES_DOORKEY`.
-- **Grim Tales — Watering can with at least 1 use**: cards: Watering can; constants: `ZEAH_WATERINGCAN, WATERING_CAN_8, WATERING_CAN_7, WATERING_CAN_6, WATERING_CAN_5, WATERING_CAN_4, WATERING_CAN_3, WATERING_CAN_2, WATERING_CAN_1`.
-- **Heroes' Quest — Ice gloves/Smiths gloves (i)**: cards: Smiths gloves; constants: `ICE_GLOVES, SMITHING_UNIFORM_GLOVES_ICE`.
-- **Icthlarin's Little Helper — Any cat or kitten**: cards: Kitten; constants: `WILEYCATOBJECT_HELL, WILEYCATOBJECT_LIGHT, WILEYCATOBJECT, WILEYCATOBJECT_BROWN, WILEYCATOBJECT_BLACK, WILEYCATOBJECT_BROWNGREY, WILEYCATOBJECT_BLUEGREY, LAZYCATOBJECT_HELL, LAZYCATOBJECT_LIGHT, LAZYCATOBJECT, LAZYCATOBJECT_BROWN, LAZYCATOBJECT_BLACK, LAZYCATOBJECT_BROWNGREY, LAZYCATOBJECT_BLUEGREY, GROWNCATOBJECT_HELL, GROWNCATOBJECT, GROWNCATOBJECT_LIGHT, GROWNCATOBJECT_BROWN, GROWNCATOBJECT_BLACK, GROWNCATOBJECT_BROWNGREY, GROWNCATOBJECT_BLUEGREY, KITTENOBJECT_HELL, KITTENOBJECT, KITTENOBJECT_LIGHT, KITTENOBJECT_BROWN, KITTENOBJECT_BLACK, KITTENOBJECT_BROWNGREY, KITTENOBJECT_BLUEGREY, OVERGROWNCATOBJECT_HELL, OVERGROWNCATOBJECT, OVERGROWNCATOBJECT_LIGHT, OVERGROWNCATOBJECT_BROWN, OVERGROWNCATOBJECT_BLACK, OVERGROWNCATOBJECT_BROWNGREY, OVERGROWNCATOBJECT_BLUEGREY`.
 - **Icthlarin's Little Helper — Bucket of sap**: cards: Bucket of sand, Bucket, Bucket of slime, Bucket of water, Bucket of sandworms; constants: `ICS_LITTLE_SAP_BUCKET`.
 - **Icthlarin's Little Helper — Linen**: cards: Bolt of linen, Linen yarn; constants: `ICS_LITTLE_LINEN`.
 - **Icthlarin's Little Helper — Waterskin(4), bring a few to avoid drinking it**: cards: Waterskin; constants: `WATER_SKIN4`.
@@ -103,14 +77,10 @@ Approximate matches are suggestions, not accepted mappings.
 - **Song of the Elves — Mourner top**: cards: Ornate top; constants: `MOURNING_MOURNER_TOP`.
 - **Song of the Elves — Mourner trousers**: cards: Rogue trousers, Carpenter's trousers, Nutcracker trousers, Clown trousers, Clue hunter trousers; constants: `MOURNING_MOURNER_LEGS`.
 - **Spirits of the Elid — Stab Weapon Style**: cards: Crystal weapon seed; constants: `none`.
-- **Tears of Guthix — Sapphire lantern**: cards: Sapphire, Sapphire bolts, Sapphire necklace; constants: `TOG_SAPPHIRE_LANTERN_LIT`.
 - **The Dig Site — Charcoal**: cards: Juniper charcoal; constants: `CHARCOAL`.
 - **The Eyes of Glouphrie — Bucket of sap**: cards: Bucket of sand, Bucket, Bucket of slime, Bucket of water, Bucket of sandworms; constants: `ICS_LITTLE_SAP_BUCKET`.
-- **The Fremennik Exiles — Astral runes**: cards: Astral rune; constants: `ASTRALRUNE`.
-- **The Fremennik Exiles — Ice gloves or smiths gloves(i)**: cards: Smiths gloves; constants: `ICE_GLOVES, SMITHING_UNIFORM_GLOVES_ICE`.
 - **The Fremennik Exiles — Seal of passage**: cards: Necklace of passage; constants: `LUNAR_SEAL_OF_PASSAGE`.
 - **The Great Brain Robbery — Fishbowl helmet**: cards: Fishbowl; constants: `HUNDRED_PIRATE_DIVING_HELMET`.
-- **The Great Brain Robbery — Holy symbol**: cards: Unholy symbol, Old symbol, Holy mould, Holy moleys; constants: `BLESSEDSTAR`.
 - **The Great Brain Robbery — Ring of Charos**: cards: Ring of coins, Ring of the gods, Ring of nature, Ring of recoil; constants: `RING_OF_CHAROS, RING_OF_CHAROS_UNLOCKED`.
 - **The Great Brain Robbery — Wooden cat**: cards: Wooden stock; constants: `BRAIN_INV_WOODEN_CAT`.
 - **The Heart of Darkness — Prayer potions**: cards: Prayer potion, Prayer book; constants: `_4DOSEPRAYERRESTORE, _3DOSEPRAYERRESTORE, _2DOSEPRAYERRESTORE, _1DOSEPRAYERRESTORE, _4DOSE2RESTORE, _3DOSE2RESTORE, _2DOSE2RESTORE, _1DOSE2RESTORE, HUNTER_MIX_MOONMOTH_2DOSE, HUNTER_MIX_MOONMOTH_1DOSE, BUTTERFLY_JAR_MOONMOTH`.
@@ -120,7 +90,6 @@ Approximate matches are suggestions, not accepted mappings.
 - **Troll Romance — Climbing boots**: cards: Rock-climbing boots, Climbing rope, Fighting boots; constants: `DEATH_CLIMBINGBOOTS, CLIMBING_BOOTS_G`.
 - **Troll Stronghold — Climbing boots**: cards: Rock-climbing boots, Climbing rope, Fighting boots; constants: `DEATH_CLIMBINGBOOTS, CLIMBING_BOOTS_G`.
 - **Troubled Tortugans — Prayer restore**: cards: Super restore; constants: `_4DOSEPRAYERRESTORE, _3DOSEPRAYERRESTORE, _2DOSEPRAYERRESTORE, _1DOSEPRAYERRESTORE, _4DOSE2RESTORE, _3DOSE2RESTORE, _2DOSE2RESTORE, _1DOSE2RESTORE, HUNTER_MIX_MOONMOTH_2DOSE, HUNTER_MIX_MOONMOTH_1DOSE, BUTTERFLY_JAR_MOONMOTH`.
-- **While Guthix Sleeps — Fire runes**: cards: Fire rune, Fire rune pack; constants: `FIRERUNE`.
 - **While Guthix Sleeps — Lit sapphire lantern**: cards: Sapphire; constants: `TOG_SAPPHIRE_LANTERN_LIT`.
 - **While Guthix Sleeps — Magic weapon**: cards: Magic potion, Magic fang; constants: `none`.
 
@@ -130,7 +99,6 @@ Approximate matches are suggestions, not accepted mappings.
 - **A Kingdom Divided — Decent food**: cards: none; constants: `none`.
 - **A Kingdom Divided — Melee combat gear to fight Judge of Yama**: cards: none; constants: `none`.
 - **A Kingdom Divided — Melee or range gear to fight Xamphur.**: cards: none; constants: `none`.
-- **A Kingdom Divided — Runes/equipment to cast FIRE bolt or better**: cards: none; constants: `none`.
 - **A Night at the Theatre — Combat gear**: cards: none; constants: `none`.
 - **A Night at the Theatre — Ivandis/Blisterwood flail**: cards: none; constants: `IVANDIS_FLAIL, BLISTERWOOD_FLAIL`.
 - **A Porcine of Interest — Combat gear**: cards: none; constants: `none`.
@@ -152,11 +120,7 @@ Approximate matches are suggestions, not accepted mappings.
 - **Dream Mentor — some other type of food**: cards: none; constants: `none`.
 - **Dream Mentor — some type of food**: cards: none; constants: `none`.
 - **Elemental Workshop II — Battered Key**: cards: none; constants: `ELEMENTAL_WORKSHOP_KEY`.
-- **Enakhra's Lament — Runes for crumble undead spell**: cards: none; constants: `none`.
-- **Enakhra's Lament — Runes to cast Fire Bolt or stronger**: cards: none; constants: `none`.
-- **Enakhra's Lament — Runes to cast Wind Bolt or stronger**: cards: none; constants: `none`.
 - **Fairytale I - Growing Pains — Draynor skull**: cards: none; constants: `FAIRY_SKULL`.
-- **Family Crest — Runes for casting each of the 4 blast spells**: cards: none; constants: `none`.
 - **Fishing Contest — Red Vine Worm**: cards: none; constants: `RED_VINE_WORM`.
 - **Forgettable Tale... — A random item per player**: cards: none; constants: `none`.
 - **Getting Ahead — You can get all the required items during the quest.**: cards: none; constants: `none`.
@@ -165,7 +129,6 @@ Approximate matches are suggestions, not accepted mappings.
 - **Haunted Mine — Combat gear**: cards: none; constants: `none`.
 - **Heroes' Quest — A ranged or magic attack method**: cards: none; constants: `none`.
 - **Holy Grail — Excalibur**: cards: none; constants: `EXCALIBUR`.
-- **Horror from the Deep — 20+ casts of each element spell**: cards: none; constants: `none`.
 - **Imp Catcher — Red bead**: cards: none; constants: `RED_BEAD`.
 - **In Search of the Myreque — Charges in a druid pouch**: cards: none; constants: `DRUID_POUCH`.
 - **King's Ransom — Animate rock scroll**: cards: none; constants: `FAVOUR_ANIMATE_ROCK`.
@@ -227,4 +190,3 @@ Approximate matches are suggestions, not accepted mappings.
 - **While Guthix Sleeps — Melee weapon**: cards: none; constants: `none`.
 - **While Guthix Sleeps — Ranged weapon**: cards: none; constants: `none`.
 - **Witch's House — Combat gear and food for monsters up to level 53**: cards: none; constants: `none`.
-- **Zogre Flesh Eaters — Either brutal arrows or Crumble Undead for fighting Slash Bash**: cards: none; constants: `none`.
