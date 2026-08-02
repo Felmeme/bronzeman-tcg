@@ -778,8 +778,7 @@
 						{
 							"label": "Hammer",
 							"cards": [
-								"Hammer",
-								"Imcando hammer"
+								"Hammer"
 							],
 							"type": "item"
 						},
@@ -817,9 +816,17 @@
 							"type": "item"
 						},
 						{
-							"label": "A light source",
+							"label": "Any light source",
 							"cards": [
-								"Lit candle"
+								"Abyssal lantern",
+								"Bruma torch",
+								"Bullseye lantern",
+								"Candle lantern",
+								"Lit candle",
+								"Mining helmet",
+								"Oil lamp",
+								"Oil lantern",
+								"Torch"
 							],
 							"type": "item"
 						}
@@ -878,8 +885,7 @@
 						{
 							"label": "Any hammer",
 							"cards": [
-								"Hammer",
-								"Imcando hammer"
+								"Hammer"
 							],
 							"type": "item"
 						},
@@ -1123,8 +1129,7 @@
 						{
 							"label": "Hammer",
 							"cards": [
-								"Hammer",
-								"Imcando hammer"
+								"Hammer"
 							],
 							"type": "item"
 						},
@@ -1257,8 +1262,7 @@
 						{
 							"label": "Hammer",
 							"cards": [
-								"Hammer",
-								"Imcando hammer"
+								"Hammer"
 							],
 							"type": "item"
 						},
@@ -1482,8 +1486,7 @@
 						{
 							"label": "Hammer",
 							"cards": [
-								"Hammer",
-								"Imcando hammer"
+								"Hammer"
 							],
 							"type": "item"
 						},
@@ -1603,9 +1606,17 @@
 							"type": "item"
 						},
 						{
-							"label": "A light source",
+							"label": "Any light source",
 							"cards": [
-								"Lit candle"
+								"Abyssal lantern",
+								"Bruma torch",
+								"Bullseye lantern",
+								"Candle lantern",
+								"Lit candle",
+								"Mining helmet",
+								"Oil lamp",
+								"Oil lantern",
+								"Torch"
 							],
 							"type": "item"
 						}
@@ -1739,8 +1750,7 @@
 						{
 							"label": "Hammer",
 							"cards": [
-								"Hammer",
-								"Imcando hammer"
+								"Hammer"
 							],
 							"type": "item"
 						}
@@ -1856,8 +1866,7 @@
 						{
 							"label": "Hammer",
 							"cards": [
-								"Hammer",
-								"Imcando hammer"
+								"Hammer"
 							],
 							"type": "item"
 						},
@@ -2036,9 +2045,17 @@
 							"type": "item"
 						},
 						{
-							"label": "A light source",
+							"label": "Any light source",
 							"cards": [
-								"Lit candle"
+								"Abyssal lantern",
+								"Bruma torch",
+								"Bullseye lantern",
+								"Candle lantern",
+								"Lit candle",
+								"Mining helmet",
+								"Oil lamp",
+								"Oil lantern",
+								"Torch"
 							],
 							"type": "item"
 						},
@@ -2671,8 +2688,7 @@
 						{
 							"label": "Hammer",
 							"cards": [
-								"Hammer",
-								"Imcando hammer"
+								"Hammer"
 							],
 							"type": "item"
 						},
@@ -2789,8 +2805,7 @@
 						{
 							"label": "Hammer",
 							"cards": [
-								"Hammer",
-								"Imcando hammer"
+								"Hammer"
 							],
 							"type": "item"
 						},
@@ -2953,9 +2968,17 @@
 							"type": "item"
 						},
 						{
-							"label": "A light source",
+							"label": "Any light source",
 							"cards": [
-								"Lit candle"
+								"Abyssal lantern",
+								"Bruma torch",
+								"Bullseye lantern",
+								"Candle lantern",
+								"Lit candle",
+								"Mining helmet",
+								"Oil lamp",
+								"Oil lantern",
+								"Torch"
 							],
 							"type": "item"
 						},
@@ -3138,8 +3161,7 @@
 						{
 							"label": "Hammer",
 							"cards": [
-								"Hammer",
-								"Imcando hammer"
+								"Hammer"
 							],
 							"type": "item"
 						},
@@ -3257,8 +3279,7 @@
 						{
 							"label": "Hammer",
 							"cards": [
-								"Hammer",
-								"Imcando hammer"
+								"Hammer"
 							],
 							"type": "item"
 						}
@@ -3432,8 +3453,7 @@
 						{
 							"label": "Hammer",
 							"cards": [
-								"Hammer",
-								"Imcando hammer"
+								"Hammer"
 							],
 							"type": "item"
 						},
@@ -3489,8 +3509,7 @@
 						{
 							"label": "Hammer",
 							"cards": [
-								"Hammer",
-								"Imcando hammer"
+								"Hammer"
 							],
 							"type": "item"
 						},
@@ -4453,8 +4472,7 @@
 						{
 							"label": "Hammer",
 							"cards": [
-								"Hammer",
-								"Imcando hammer"
+								"Hammer"
 							],
 							"type": "item"
 						},
@@ -4601,18 +4619,16 @@
 							"type": "item"
 						},
 						{
-							"label": "Any hammer",
+							"label": "Hammer",
 							"cards": [
-								"Hammer",
-								"Imcando hammer"
+								"Hammer"
 							],
 							"type": "item"
 						},
 						{
-							"label": "Any saw",
+							"label": "Saw",
 							"cards": [
-								"Saw",
-								"Amy's saw"
+								"Saw"
 							],
 							"type": "item"
 						},
@@ -5302,8 +5318,7 @@
 						{
 							"label": "Hammer",
 							"cards": [
-								"Hammer",
-								"Imcando hammer"
+								"Hammer"
 							],
 							"type": "item"
 						},
@@ -5577,8 +5592,7 @@
 						{
 							"label": "Hammer",
 							"cards": [
-								"Hammer",
-								"Imcando hammer"
+								"Hammer"
 							],
 							"type": "item"
 						},
@@ -5829,10 +5843,9 @@
 							"type": "item"
 						},
 						{
-							"label": "Any hammer",
+							"label": "Hammer",
 							"cards": [
-								"Hammer",
-								"Imcando hammer"
+								"Hammer"
 							],
 							"type": "item"
 						},
@@ -6137,9 +6150,17 @@
 							"type": "item"
 						},
 						{
-							"label": "Light source",
+							"label": "Any light source",
 							"cards": [
-								"Lit candle"
+								"Abyssal lantern",
+								"Bruma torch",
+								"Bullseye lantern",
+								"Candle lantern",
+								"Lit candle",
+								"Mining helmet",
+								"Oil lamp",
+								"Oil lantern",
+								"Torch"
 							],
 							"type": "item"
 						},
@@ -6210,10 +6231,9 @@
 							"type": "item"
 						},
 						{
-							"label": "Any hammer",
+							"label": "Hammer",
 							"cards": [
-								"Hammer",
-								"Imcando hammer"
+								"Hammer"
 							],
 							"type": "item"
 						},
@@ -6563,8 +6583,7 @@
 						{
 							"label": "Hammer",
 							"cards": [
-								"Hammer",
-								"Imcando hammer"
+								"Hammer"
 							],
 							"type": "item"
 						},
@@ -6774,8 +6793,7 @@
 						{
 							"label": "Hammer",
 							"cards": [
-								"Hammer",
-								"Imcando hammer"
+								"Hammer"
 							],
 							"type": "item"
 						}
@@ -7061,10 +7079,9 @@
 							"type": "item"
 						},
 						{
-							"label": "Hammer (obtainable in quest)",
+							"label": "Hammer",
 							"cards": [
-								"Hammer",
-								"Imcando hammer"
+								"Hammer"
 							],
 							"type": "item"
 						},
@@ -7709,10 +7726,9 @@
 							"type": "item"
 						},
 						{
-							"label": "Any hammer",
+							"label": "Hammer",
 							"cards": [
-								"Hammer",
-								"Imcando hammer"
+								"Hammer"
 							],
 							"type": "item"
 						},
@@ -7807,8 +7823,7 @@
 						{
 							"label": "Hammer",
 							"cards": [
-								"Hammer",
-								"Imcando hammer"
+								"Hammer"
 							],
 							"type": "item"
 						},
@@ -8169,10 +8184,9 @@
 					"label": "Items",
 					"requirements": [
 						{
-							"label": "Any hammer",
+							"label": "Hammer",
 							"cards": [
-								"Hammer",
-								"Imcando hammer"
+								"Hammer"
 							],
 							"type": "item"
 						},
@@ -8413,9 +8427,17 @@
 							"type": "item"
 						},
 						{
-							"label": "Light source",
+							"label": "Any light source",
 							"cards": [
-								"Lit candle"
+								"Abyssal lantern",
+								"Bruma torch",
+								"Bullseye lantern",
+								"Candle lantern",
+								"Lit candle",
+								"Mining helmet",
+								"Oil lamp",
+								"Oil lantern",
+								"Torch"
 							],
 							"type": "item"
 						}
@@ -9490,8 +9512,7 @@
 						{
 							"label": "Hammer",
 							"cards": [
-								"Hammer",
-								"Imcando hammer"
+								"Hammer"
 							],
 							"type": "item"
 						},
@@ -9683,7 +9704,6 @@
 							"label": "Hammer or Flamtaer Hammer",
 							"cards": [
 								"Hammer",
-								"Imcando hammer",
 								"Flamtaer hammer"
 							],
 							"type": "item"
@@ -9781,8 +9801,7 @@
 						{
 							"label": "Hammer",
 							"cards": [
-								"Hammer",
-								"Imcando hammer"
+								"Hammer"
 							],
 							"type": "item"
 						}
@@ -10234,8 +10253,7 @@
 						{
 							"label": "Any hammer",
 							"cards": [
-								"Hammer",
-								"Imcando hammer"
+								"Hammer"
 							],
 							"type": "item"
 						},
@@ -10443,8 +10461,7 @@
 						{
 							"label": "Hammer",
 							"cards": [
-								"Hammer",
-								"Imcando hammer"
+								"Hammer"
 							],
 							"type": "item"
 						},
@@ -10647,9 +10664,17 @@
 							"type": "item"
 						},
 						{
-							"label": "Light source",
+							"label": "Any light source",
 							"cards": [
-								"Lit candle"
+								"Abyssal lantern",
+								"Bruma torch",
+								"Bullseye lantern",
+								"Candle lantern",
+								"Lit candle",
+								"Mining helmet",
+								"Oil lamp",
+								"Oil lantern",
+								"Torch"
 							],
 							"type": "item"
 						},
@@ -10806,8 +10831,7 @@
 						{
 							"label": "Hammer (obtainable in quest)",
 							"cards": [
-								"Hammer",
-								"Imcando hammer"
+								"Hammer"
 							],
 							"type": "item"
 						},
@@ -10960,8 +10984,7 @@
 						{
 							"label": "Hammer",
 							"cards": [
-								"Hammer",
-								"Imcando hammer"
+								"Hammer"
 							],
 							"type": "item"
 						},
@@ -11125,7 +11148,7 @@
 							"type": "item"
 						},
 						{
-							"label": "A light source to get the boots of lightness",
+							"label": "Any light source to get the boots of lightness",
 							"cards": [
 								"Abyssal lantern",
 								"Bruma torch",
@@ -11634,8 +11657,7 @@
 						{
 							"label": "Hammer",
 							"cards": [
-								"Hammer",
-								"Imcando hammer"
+								"Hammer"
 							],
 							"type": "item"
 						},
@@ -11685,18 +11707,140 @@
 							"type": "item"
 						},
 						{
-							"label": "Barrows gloves",
-							"cards": [
-								"Barrows gloves"
-							],
-							"type": "item"
-						},
-						{
-							"label": "Slayer gloves",
-							"cards": [
-								"Slayer gloves"
-							],
-							"type": "item"
+							"label": "Gloves (check wiki for more)",
+							"logic": "ANY",
+							"children": [
+								{
+									"label": "Bloodbark gauntlets",
+									"cards": [
+										"Bloodbark gauntlets"
+									],
+									"type": "item"
+								},
+								{
+									"label": "Clue hunter gloves",
+									"cards": [
+										"Clue hunter gloves"
+									],
+									"type": "item"
+								},
+								{
+									"label": "Gloves of silence",
+									"cards": [
+										"Gloves of silence"
+									],
+									"type": "item"
+								},
+								{
+									"label": "Graceful gloves",
+									"cards": [
+										"Graceful gloves"
+									],
+									"type": "item"
+								},
+								{
+									"label": "Granite gloves",
+									"cards": [
+										"Granite gloves"
+									],
+									"type": "item"
+								},
+								{
+									"label": "Ham gloves",
+									"cards": [
+										"Ham gloves"
+									],
+									"type": "item"
+								},
+								{
+									"label": "Iron gloves",
+									"cards": [
+										"Iron gloves"
+									],
+									"type": "item"
+								},
+								{
+									"label": "Karamja gloves",
+									"cards": [
+										"Karamja gloves 1",
+										"Karamja gloves 2",
+										"Karamja gloves 3",
+										"Karamja gloves 4"
+									],
+									"type": "item"
+								},
+								{
+									"label": "Leather gloves",
+									"cards": [
+										"Leather gloves"
+									],
+									"type": "item"
+								},
+								{
+									"label": "Mime gloves",
+									"cards": [
+										"Mime gloves"
+									],
+									"type": "item"
+								},
+								{
+									"label": "Mystic gloves",
+									"cards": [
+										"Mystic gloves"
+									],
+									"type": "item"
+								},
+								{
+									"label": "Ornate gloves",
+									"cards": [
+										"Ornate gloves"
+									],
+									"type": "item"
+								},
+								{
+									"label": "Purple gloves",
+									"cards": [
+										"Purple gloves"
+									],
+									"type": "item"
+								},
+								{
+									"label": "Regen bracelet",
+									"cards": [
+										"Regen bracelet"
+									],
+									"type": "item"
+								},
+								{
+									"label": "Swampbark gauntlets",
+									"cards": [
+										"Swampbark gauntlets"
+									],
+									"type": "item"
+								},
+								{
+									"label": "Void knight gloves",
+									"cards": [
+										"Void knight gloves"
+									],
+									"type": "item"
+								},
+								{
+									"label": "Warm gloves",
+									"cards": [
+										"Warm gloves"
+									],
+									"type": "item"
+								},
+								{
+									"label": "Zombie gloves",
+									"cards": [
+										"Zombie gloves"
+									],
+									"type": "item"
+								}
+		
+							]
 						},
 						{
 							"label": "Kharidian headpiece",
@@ -11749,7 +11893,7 @@
 					]
 				}
 			],
-			"notes": ""
+			"notes": "Steel gauntlets, Lunar gloves, and Klank's gauntlets are non-blocked gloves that can be used as well"
 		},
 		{
 			"name": "The Final Dawn",
@@ -11759,7 +11903,7 @@
 					"label": "Items",
 					"requirements": [
 						{
-							"label": "Any type of bone or raw meat",
+							"label": "Any type of bone of raw/cooked meat",
 							"cards": [
 								"Bones",
 								"Big bones",
@@ -11776,7 +11920,8 @@
 								"Raw bear meat",
 								"Raw boar meat",
 								"Raw rat meat",
-								"Raw ugthanki meat"
+								"Raw ugthanki meat",
+								"Cooked meat"
 							],
 							"type": "item"
 						},
@@ -11880,7 +12025,7 @@
 							"type": "item"
 						},
 						{
-							"label": "Any fishing rod",
+							"label": "Fly or normal fishing rod",
 							"cards": [
 								"Fishing rod",
 								"Fly fishing rod"
@@ -11897,8 +12042,7 @@
 						{
 							"label": "Hammer",
 							"cards": [
-								"Hammer",
-								"Imcando hammer"
+								"Hammer"
 							],
 							"type": "item"
 						},
@@ -11957,7 +12101,7 @@
 							"type": "item"
 						},
 						{
-							"label": "Smiths gloves",
+							"label": "Ice gloves or Smiths gloves (i)",
 							"cards": [
 								"Smiths gloves"
 							],
@@ -12113,26 +12257,20 @@
 						{
 							"label": "Beer / Beer Tankard",
 							"cards": [
-								"Beer"
+								"Beer",
+								"Beer tankard"
 							],
 							"type": "item"
 						},
 						{
 							"label": "Tinderbox",
 							"cards": [
-								"Beer tankard"
-							],
-							"type": "item"
-						},
-						{
-							"label": "Raw shark / Raw manta ray / Raw sea turtle",
-							"cards": [
 								"Tinderbox"
 							],
 							"type": "item"
 						},
 						{
-							"label": "Items for Lyre - Check wiki",
+							"label": "Raw shark / Raw manta ray / Raw sea turtle",
 							"cards": [
 								"Raw shark",
 								"Raw manta ray",
@@ -12141,29 +12279,56 @@
 							"type": "item"
 						},
 						{
-							"label": "Knife",
-							"cards": [
-								"Knife"
-							],
-							"type": "item"
-						},
-						{
-							"label": "Any axe",
-							"cards": [
-								"Crystal axe",
-								"3rd age axe",
-								"Infernal axe",
-								"Dragon axe",
-								"Rune axe",
-								"Gilded axe",
-								"Adamant axe",
-								"Mithril axe",
-								"Black axe",
-								"Steel axe",
-								"Iron axe",
-								"Bronze axe"
-							],
-							"type": "item"
+							"label": "Items for Lyre if crafting",
+							"logic": "ALL",
+							"children": [
+								{
+									"label": "Any axe",
+									"cards": [
+										"Crystal axe",
+										"3rd age axe",
+										"Infernal axe",
+										"Dragon axe",
+										"Rune axe",
+										"Gilded axe",
+										"Adamant axe",
+										"Mithril axe",
+										"Black axe",
+										"Steel axe",
+										"Iron axe",
+										"Bronze axe"
+									],
+									"type": "item"
+								},
+								{
+									"label": "Knife",
+									"cards": [
+										"Knife"
+									],
+									"type": "item"
+								},
+								{
+									"label": "Potato",
+									"cards": [
+										"Potato"
+									],
+									"type": "item"
+								},
+								{
+									"label": "Onion",
+									"cards": [
+										"Onion"
+									],
+									"type": "item"
+								},
+								{
+									"label": "Cabbage",
+									"cards": [
+										"Cabbage"
+									],
+									"type": "item"
+								}
+							]
 						}
 					]
 				},
@@ -12208,7 +12373,7 @@
 					]
 				}
 			],
-			"notes": "Lyre Monsters - Check wiki"
+			"notes": "Lanzig, Borrokar, Lensa, and Freidir are all optional if crafting the lyre"
 		},
 		{
 			"name": "The Frozen Door",
@@ -12217,6 +12382,21 @@
 				{
 					"label": "Items",
 					"requirements": [
+						{
+							"label": "Any crossbow",
+							"cards": [
+								"Crossbow",
+								"Bronze crossbow",
+								"Blurite crossbow",
+								"Iron crossbow",
+								"Steel crossbow",
+								"Mithril crossbow",
+								"Adamant crossbow",
+								"Rune crossbow",
+								"Dragon crossbow"
+							],
+							"type": "item"
+						},
 						{
 							"label": "Mith grapple",
 							"cards": [
@@ -12232,10 +12412,9 @@
 							"type": "item"
 						},
 						{
-							"label": "Hammer / Dragon warhammer",
+							"label": "Hammer",
 							"cards": [
-								"Hammer",
-								"Dragon warhammer"
+								"Hammer"
 							],
 							"type": "item"
 						}
@@ -12385,6 +12564,18 @@
 			"miniquest": true,
 			"sections": [
 				{
+					"label": "Items",
+					"requirements": [
+						{
+							"label": "Coins",
+							"cards": [
+								"Coins"
+							],
+							"type": "item"
+						}
+					]
+				},
+				{
 					"label": "Enemies",
 					"requirements": [
 						{
@@ -12424,6 +12615,20 @@
 								"Mahogany logs",
 								"Yew logs",
 								"Magic logs"
+							],
+							"type": "item"
+						},
+						{
+							"label": "Variety of ores (Consortium portion)",
+							"cards": [
+								"Clay",
+								"Tin ore",
+								"Copper ore",
+								"Iron ore",
+								"Coal",
+								"Silver ore",
+								"Gold ore",
+								"Mithril ore"
 							],
 							"type": "item"
 						},
@@ -12517,9 +12722,9 @@
 							"type": "item"
 						},
 						{
-							"label": "Pharaoh's sceptre",
+							"label": "Coins (to buy Shantay passes)",
 							"cards": [
-								"Pharaoh's sceptre"
+								"Coins"
 							],
 							"type": "item"
 						}
@@ -12574,6 +12779,13 @@
 							"type": "item"
 						},
 						{
+							"label": "Medallion of the deep (if no diving set)",
+							"cards": [
+								"Medallion of the deep"
+							],
+							"type": "item"
+						},
+						{
 							"label": "Wooden cats or Materials",
 							"logic": "ANY",
 							"children": [
@@ -12593,6 +12805,7 @@
 											"label": "Fur",
 											"cards": [
 												"Fur",
+												"Bear fur",
 												"Grey wolf fur"
 											],
 											"type": "item",
@@ -12727,14 +12940,6 @@
 								"Coins"
 							],
 							"type": "item"
-						},
-						{
-							"label": "Prayer potions",
-							"cards": [
-								"Prayer potion"
-							],
-							"type": "item",
-							"quantity": 2
 						}
 					]
 				},
@@ -12897,16 +13102,17 @@
 							"type": "item"
 						},
 						{
-							"label": "Prayer potions",
-							"cards": [
-								"Prayer potion"
-							],
-							"type": "item"
-						},
-						{
 							"label": "Any crossbow",
 							"cards": [
-								"Crossbow"
+								"Crossbow",
+								"Bronze crossbow",
+								"Blurite crossbow",
+								"Iron crossbow",
+								"Steel crossbow",
+								"Mithril crossbow",
+								"Adamant crossbow",
+								"Rune crossbow",
+								"Dragon crossbow"
 							],
 							"type": "item"
 						}
@@ -12994,7 +13200,7 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Skeleton",
+							"label": "Skeleton (optional)",
 							"cards": [
 								"Skeleton"
 							],
@@ -13003,7 +13209,7 @@
 					]
 				}
 			],
-			"notes": ""
+			"notes": "You can run away from the skeleton, making the card optional to complete the quest"
 		},
 		{
 			"name": "The Ribbiting Tale of a Lily Pad Labour Dispute",
@@ -13171,8 +13377,7 @@
 						{
 							"label": "Hammer",
 							"cards": [
-								"Hammer",
-								"Imcando hammer"
+								"Hammer"
 							],
 							"type": "item"
 						},
@@ -13343,16 +13548,14 @@
 						{
 							"label": "Hammer",
 							"cards": [
-								"Hammer",
-								"Imcando hammer"
+								"Hammer"
 							],
 							"type": "item"
 						},
 						{
-							"label": "Any saw",
+							"label": "Saw",
 							"cards": [
-								"Saw",
-								"Amy's saw"
+								"Saw"
 							],
 							"type": "item"
 						},
@@ -13534,16 +13737,14 @@
 						{
 							"label": "Hammer",
 							"cards": [
-								"Hammer",
-								"Imcando hammer"
+								"Hammer"
 							],
 							"type": "item"
 						},
 						{
-							"label": "Any saw",
+							"label": "Saw",
 							"cards": [
-								"Saw",
-								"Amy's saw"
+								"Saw"
 							],
 							"type": "item"
 						},
@@ -13552,8 +13753,7 @@
 							"cards": [
 								"Sea shell"
 							],
-							"type": "item",
-							"quantity": 6
+							"type": "item"
 						},
 						{
 							"label": "Any axe",
@@ -13861,8 +14061,7 @@
 								"Magic shield",
 								"Redwood shield"
 							],
-							"type": "item",
-							"quantity": 4
+							"type": "item"
 						}
 					]
 				}
@@ -13879,8 +14078,7 @@
 						{
 							"label": "Hammer",
 							"cards": [
-								"Hammer",
-								"Imcando hammer"
+								"Hammer"
 							],
 							"type": "item"
 						},
@@ -13980,7 +14178,7 @@
 							]
 						},
 						{
-							"label": "A light source",
+							"label": "Any light source",
 							"cards": [
 								"Abyssal lantern",
 								"Bruma torch",
@@ -14103,7 +14301,7 @@
 							"type": "card"
 						},
 						{
-							"label": "A light source",
+							"label": "Any light source",
 							"cards": [
 								"Abyssal lantern",
 								"Bruma torch",
