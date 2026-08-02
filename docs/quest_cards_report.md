@@ -13,11 +13,9 @@ substantially rebuilt for v0.2.14 on 2026-08-01.
   flattening every card into independent requirements.
 - Requirements can carry quantities, enemy/item types, display-only card
   groups and a Shield of Arrav gang selector used by Heroes' Quest.
-- `quest_prerequisites.json` adds a separate schema-1 snapshot of the pinned
-  Quest Helper's top-level quest requirements. The panel checks live started
-  and completed quest state before calling an entry ready; see
-  `quest_prerequisites_report.md` for scope and validation details.
 - Accepted TCG Locked shared cards satisfy quest requirements in the panel.
+- Quest counts and Hide missing cards use this card catalogue only; prerequisites,
+  skills, quest points and other game requirements remain outside panel scope.
 - The current data was compared with pinned Quest Helper commit
   `5ea99d5ea9ba3fb096ebe7b5ed02d80883e9819d` (4.16.1). See
   `quest_helper_requirements_audit.md`, `quest_helper_outlier_audit.md`, the

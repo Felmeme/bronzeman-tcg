@@ -907,8 +907,7 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 		// five-tick panel refresh.
 		if (!questStateInitialized || tickCounter % 25 == 0)
 		{
-			CapturedQuestStates states = captureQuestStates();
-			target.updateQuestState(states.completed, states.started, captureQuestRoute());
+			target.updateQuestState(captureCompletedQuests(), captureQuestRoute());
 			questStateInitialized = true;
 		}
 		SwingUtilities.invokeLater(() ->
@@ -921,28 +920,21 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	}
 
 	/** Read RuneLite quest state on the client thread; the panel only receives names. */
-	private CapturedQuestStates captureQuestStates()
+	private Set<String> captureCompletedQuests()
 	{
 		if (client.getGameState() != GameState.LOGGED_IN)
 		{
-			return CapturedQuestStates.EMPTY;
+			return Collections.emptySet();
 		}
 		Set<String> completed = new HashSet<>();
-		Set<String> started = new HashSet<>();
 		for (Quest quest : Quest.values())
 		{
-			QuestState state = quest.getState(client);
-			if (state != QuestState.NOT_STARTED)
+			if (quest.getState(client) == QuestState.FINISHED)
 			{
-				started.add(QuestCatalog.normalizeQuestName(quest.getName()));
-			}
-			if (state == QuestState.FINISHED)
-			{
-				completed.add(QuestCatalog.normalizeQuestName(quest.getName()));
+				completed.add(quest.getName().toLowerCase(Locale.ROOT));
 			}
 		}
-		return new CapturedQuestStates(Collections.unmodifiableSet(completed),
-			Collections.unmodifiableSet(started));
+		return Collections.unmodifiableSet(completed);
 	}
 
 	/**
@@ -3428,21 +3420,6 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 		}
 		queueChat(String.format(Locale.US,
 			"[Bronzeman TCG] You haven't collected these cards yet: %s - open more packs!", listed));
-	}
-
-	private static final class CapturedQuestStates
-	{
-		private static final CapturedQuestStates EMPTY = new CapturedQuestStates(
-			Collections.emptySet(), Collections.emptySet());
-
-		private final Set<String> completed;
-		private final Set<String> started;
-
-		private CapturedQuestStates(Set<String> completed, Set<String> started)
-		{
-			this.completed = completed;
-			this.started = started;
-		}
 	}
 
 	@Provides

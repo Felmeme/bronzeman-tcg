@@ -52,11 +52,12 @@ inventory items can also be marked without changing their chosen visual mode
 when Item Usage is temporarily unrestricted.
 
 The sidebar panel provides overall progress, recent unlocks, Collection and
-TCG Locked Shared Cards views, plus readiness tabs for Quests, Miniquests,
-Slayer, PvM and Rumours. Quest readiness checks prerequisite quest state as well
-as card ownership. Requirements are grouped into Quest prerequisites, Items and
+TCG Locked Shared Cards views, plus card-readiness tabs for Quests, Miniquests,
+Slayer, PvM and Rumours. Quest card requirements are grouped into Items and
 Enemies, support nested alternatives and route-specific requirements, and count
-accepted shared cards. Quests, Collection and Shared Cards each have focused search.
+accepted shared cards. Quest counts and Hide missing cards reflect card ownership
+only; prerequisites, skills, quest points and other game requirements are not checked.
+Quests, Collection and Shared Cards each have focused search.
 
 ## How it works
 

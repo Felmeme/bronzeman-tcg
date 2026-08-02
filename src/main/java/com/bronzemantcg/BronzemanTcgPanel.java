@@ -36,6 +36,7 @@ import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JCheckBox;
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
@@ -71,6 +72,9 @@ class BronzemanTcgPanel extends PluginPanel
 	private static final String IMPORTANT_SHOW_UNLOCKED_KEY = "importantShowUnlocked";
 	private static final String QUEST_HIDE_COMPLETED_KEY = "questHideCompleted";
 	private static final String QUEST_HIDE_INCOMPLETABLE_KEY = "questHideIncompletable";
+	private static final String QUEST_CARD_SCOPE_TOOLTIP =
+		"Card requirements only; quest prerequisites, skills, quest points, "
+			+ "and other requirements are not checked.";
 	private static final String SLAYER_SHOW_LOCKED_KEY = "slayerShowLocked";
 	private static final String SLAYER_SHOW_UNLOCKED_KEY = "slayerShowUnlocked";
 	private static final String PVM_SHOW_LOCKED_KEY = "pvmShowLocked";
@@ -114,7 +118,7 @@ class BronzemanTcgPanel extends PluginPanel
 	private final IconTextField questSearchBar = new IconTextField();
 	private final JPanel questFilters = new JPanel(new FlowLayout(FlowLayout.LEFT, 4, 0));
 	private final JCheckBox hideCompletedQuests = new JCheckBox("Hide completed");
-	private final JCheckBox hideIncompletableQuests = new JCheckBox("Hide incompletable");
+	private final JCheckBox hideIncompletableQuests = new JCheckBox("Hide missing cards");
 	private final JPanel questList = sectionBody();
 	private final Set<String> expandedQuests = new HashSet<>();
 	private final Set<String> expandedQuestCategories =
@@ -122,7 +126,6 @@ class BronzemanTcgPanel extends PluginPanel
 	private final Set<String> expandedQuestSections = new HashSet<>();
 	private final Set<String> expandedQuestRequirements = new HashSet<>();
 	private volatile Set<String> completedQuestNames = Collections.emptySet();
-	private volatile Set<String> startedQuestNames = Collections.emptySet();
 	private volatile QuestCatalog.RouteSelection questRoute =
 		QuestCatalog.RouteSelection.UNKNOWN;
 
@@ -451,26 +454,11 @@ class BronzemanTcgPanel extends PluginPanel
 	}
 
 	/** Receives an immutable-friendly quest-state snapshot captured on the client thread. */
-	void updateQuestState(Set<String> completed, Set<String> started,
-		QuestCatalog.RouteSelection route)
+	void updateQuestState(Set<String> completed, QuestCatalog.RouteSelection route)
 	{
-		completedQuestNames = normalizedQuestNames(completed);
-		startedQuestNames = normalizedQuestNames(started);
+		completedQuestNames = completed == null
+			? Collections.emptySet() : Collections.unmodifiableSet(new HashSet<>(completed));
 		questRoute = route == null ? QuestCatalog.RouteSelection.UNKNOWN : route;
-	}
-
-	private static Set<String> normalizedQuestNames(Set<String> names)
-	{
-		if (names == null || names.isEmpty())
-		{
-			return Collections.emptySet();
-		}
-		Set<String> normalized = new HashSet<>();
-		for (String name : names)
-		{
-			normalized.add(QuestCatalog.normalizeQuestName(name));
-		}
-		return Collections.unmodifiableSet(normalized);
 	}
 
 	private void configureTabSearchBar(IconTextField field, String tooltip,
@@ -536,13 +524,11 @@ class BronzemanTcgPanel extends PluginPanel
 		questCards.addAll(visibleShared);
 		boolean includeSlayerSuperiors = config.restrictSlayerSuperiors();
 		Set<String> completed = completedQuestNames;
-		Set<String> started = startedQuestNames;
 		QuestCatalog.RouteSelection route = questRoute;
 
 		return new PanelSnapshot(data, owned, visibleShared, recentUnlocksTracker.getRecent(),
 			recentUnlocksTracker.getSharedRecent(),
-			Collections.unmodifiableSet(questCards), includeSlayerSuperiors,
-			completed, started, route,
+			Collections.unmodifiableSet(questCards), includeSlayerSuperiors, completed, route,
 			countUnlocked(monsterCatalog.getEntityToCards(), owned),
 			countUnlocked(itemCatalog.getEntityToCards(), owned));
 	}
@@ -606,7 +592,6 @@ class BronzemanTcgPanel extends PluginPanel
 			|| previous.includeSlayerSuperiors != next.includeSlayerSuperiors;
 		boolean questStateChanged = first
 			|| !previous.completedQuests.equals(next.completedQuests)
-			|| !previous.startedQuests.equals(next.startedQuests)
 			|| !previous.questCards.equals(next.questCards)
 			|| previous.questRoute != next.questRoute;
 		snapshot = next;
@@ -698,11 +683,10 @@ class BronzemanTcgPanel extends PluginPanel
 		for (QuestCatalog.QuestEntry quest : source)
 		{
 			boolean completed = isQuestCompleted(quest.name);
-			boolean completable = quest.satisfiedCount(snapshot.questCards,
-				snapshot.startedQuests, snapshot.completedQuests, snapshot.questRoute)
+			boolean cardReady = quest.satisfiedCount(snapshot.questCards, snapshot.questRoute)
 				== quest.requirements.size();
 			if ((!hideCompletedQuests.isSelected() || !completed)
-				&& (!hideIncompletableQuests.isSelected() || completable)
+				&& (!hideIncompletableQuests.isSelected() || cardReady)
 				&& (query.isEmpty() || quest.name.toLowerCase(Locale.ROOT).contains(query)))
 			{
 				visible.add(quest);
@@ -713,25 +697,31 @@ class BronzemanTcgPanel extends PluginPanel
 
 	private boolean isQuestCompleted(String name)
 	{
-		return snapshot.completedQuests.contains(QuestCatalog.normalizeQuestName(name));
+		String key = name.toLowerCase(Locale.ROOT);
+		if (snapshot.completedQuests.contains(key))
+		{
+			return true;
+		}
+		return key.endsWith(" (miniquest)") && snapshot.completedQuests.contains(
+			key.substring(0, key.length() - " (miniquest)".length()));
 	}
 
 	private void addQuestCategory(String label, List<QuestCatalog.QuestEntry> entries,
 		boolean dataEmpty)
 	{
-		int completable = 0;
+		int cardReady = 0;
 		for (QuestCatalog.QuestEntry entry : entries)
 		{
-			if (entry.satisfiedCount(snapshot.questCards, snapshot.startedQuests,
-				snapshot.completedQuests, snapshot.questRoute)
+			if (entry.satisfiedCount(snapshot.questCards, snapshot.questRoute)
 				== entry.requirements.size())
 			{
-				completable++;
+				cardReady++;
 			}
 		}
 		boolean expanded = expandedQuestCategories.contains(label);
 		JPanel categoryRow = compactProgressRow(
-			(expanded ? "\u25bc " : "\u25b6 ") + label, completable, entries.size());
+			(expanded ? "\u25bc " : "\u25b6 ") + label, cardReady, entries.size());
+		setToolTipRecursively(categoryRow, QUEST_CARD_SCOPE_TOOLTIP);
 		makeClickable(categoryRow, () ->
 		{
 			if (!expandedQuestCategories.remove(label))
@@ -768,8 +758,7 @@ class BronzemanTcgPanel extends PluginPanel
 
 	private JPanel questEntryRow(QuestCatalog.QuestEntry entry)
 	{
-		int have = entry.satisfiedCount(snapshot.questCards, snapshot.startedQuests,
-			snapshot.completedQuests, snapshot.questRoute);
+		int have = entry.satisfiedCount(snapshot.questCards, snapshot.questRoute);
 		int total = entry.requirements.size();
 		boolean expanded = expandedQuests.contains(entry.name);
 		JPanel row = compactProgressRow(
@@ -794,7 +783,7 @@ class BronzemanTcgPanel extends PluginPanel
 	{
 		if (entry.sections.isEmpty())
 		{
-			questList.add(mutedRow("  No tracked requirements"));
+			questList.add(mutedRow("  No card-backed requirements"));
 			return;
 		}
 		for (int sectionIndex = 0; sectionIndex < entry.sections.size(); sectionIndex++)
@@ -803,8 +792,7 @@ class BronzemanTcgPanel extends PluginPanel
 			String label = section.label.isEmpty() ? "Requirements" : section.label;
 			String key = entry.name + "\0section\0" + sectionIndex;
 			boolean expanded = expandedQuestSections.contains(key);
-			int have = section.satisfiedCount(snapshot.questCards, snapshot.startedQuests,
-				snapshot.completedQuests, snapshot.questRoute);
+			int have = section.satisfiedCount(snapshot.questCards, snapshot.questRoute);
 			int total = section.requirements.size();
 			JPanel row = questSectionRow(label, have, total, expanded);
 			makeClickable(row, () ->
@@ -822,7 +810,7 @@ class BronzemanTcgPanel extends PluginPanel
 			}
 			if (section.requirements.isEmpty())
 			{
-				questList.add(mutedRow("    No tracked requirements"));
+				questList.add(mutedRow("    No card-backed requirements"));
 			}
 			List<QuestCatalog.Requirement> ordered = new ArrayList<>(section.requirements);
 			if ("Items".equalsIgnoreCase(label))
@@ -851,8 +839,7 @@ class BronzemanTcgPanel extends PluginPanel
 		if (!expandable)
 		{
 			JPanel row = requirementRow(requirement,
-				requirement.isSatisfied(snapshot.questCards, snapshot.startedQuests,
-					snapshot.completedQuests, snapshot.questRoute));
+				requirement.isSatisfied(snapshot.questCards, snapshot.questRoute));
 			styleListContent(row);
 			questList.add(row);
 			return;
@@ -1601,6 +1588,7 @@ class BronzemanTcgPanel extends PluginPanel
 		hideCompletedQuests.setSelected(getSavedBoolean(QUEST_HIDE_COMPLETED_KEY, true));
 		hideIncompletableQuests.setSelected(
 			getSavedBoolean(QUEST_HIDE_INCOMPLETABLE_KEY, false));
+		hideIncompletableQuests.setToolTipText(QUEST_CARD_SCOPE_TOOLTIP);
 
 		questFilters.setOpaque(false);
 		questFilters.setAlignmentX(Component.LEFT_ALIGNMENT);
@@ -2402,6 +2390,21 @@ class BronzemanTcgPanel extends PluginPanel
 		return row;
 	}
 
+	private static void setToolTipRecursively(Component component, String tooltip)
+	{
+		if (component instanceof JComponent)
+		{
+			((JComponent) component).setToolTipText(tooltip);
+		}
+		if (component instanceof Container)
+		{
+			for (Component child : ((Container) component).getComponents())
+			{
+				setToolTipRecursively(child, tooltip);
+			}
+		}
+	}
+
 	private static JPanel recentUnlockRow(String name, long time, boolean shared)
 	{
 		JPanel row = row(new BorderLayout(6, 0));
@@ -2716,7 +2719,6 @@ class BronzemanTcgPanel extends PluginPanel
 		private final List<RecentUnlocksTracker.Unlock> sharedRecentUnlocks;
 		private final boolean includeSlayerSuperiors;
 		private final Set<String> completedQuests;
-		private final Set<String> startedQuests;
 		private final QuestCatalog.RouteSelection questRoute;
 		private final int unlockedMonsters;
 		private final int unlockedItems;
@@ -2725,8 +2727,7 @@ class BronzemanTcgPanel extends PluginPanel
 			List<RecentUnlocksTracker.Unlock> recentUnlocks,
 			List<RecentUnlocksTracker.Unlock> sharedRecentUnlocks,
 			Set<String> questCards, boolean includeSlayerSuperiors,
-			Set<String> completedQuests, Set<String> startedQuests,
-			QuestCatalog.RouteSelection questRoute,
+			Set<String> completedQuests, QuestCatalog.RouteSelection questRoute,
 			int unlockedMonsters,
 			int unlockedItems)
 		{
@@ -2738,7 +2739,6 @@ class BronzemanTcgPanel extends PluginPanel
 			this.sharedRecentUnlocks = sharedRecentUnlocks;
 			this.includeSlayerSuperiors = includeSlayerSuperiors;
 			this.completedQuests = completedQuests;
-			this.startedQuests = startedQuests;
 			this.questRoute = questRoute;
 			this.unlockedMonsters = unlockedMonsters;
 			this.unlockedItems = unlockedItems;
