@@ -161,35 +161,35 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Judge of Yama (enemy)",
+							"label": "Judge of Yama",
 							"cards": [
 								"Judge of Yama"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Assassin (enemy)",
+							"label": "Assassin",
 							"cards": [
 								"Assassin"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Lizardman brute (enemy)",
+							"label": "Lizardman brute",
 							"cards": [
 								"Lizardman brute"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Xamphur (enemy)",
+							"label": "Xamphur",
 							"cards": [
 								"Xamphur"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Barbarian Warlord (enemy)",
+							"label": "Barbarian Warlord",
 							"cards": [
 								"Barbarian Warlord"
 							],
@@ -238,98 +238,98 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Vyrewatch (enemy)",
+							"label": "Vyrewatch",
 							"cards": [
 								"Vyrewatch"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Araxyte (enemy)",
+							"label": "Araxyte",
 							"cards": [
 								"Araxyte"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Hespori (enemy)",
+							"label": "Hespori",
 							"cards": [
 								"Hespori"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "The Maiden of Sugadinti (enemy)",
+							"label": "The Maiden of Sugadinti",
 							"cards": [
 								"The Maiden of Sugadinti"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Nylocas Matomenos (enemy)",
+							"label": "Nylocas Matomenos",
 							"cards": [
 								"Nylocas Matomenos"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Pestilent Bloat (enemy)",
+							"label": "Pestilent Bloat",
 							"cards": [
 								"Pestilent Bloat"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Nylocas Toxobolos (enemy)",
+							"label": "Nylocas Toxobolos",
 							"cards": [
 								"Nylocas Toxobolos"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Nylocas Hagios (enemy)",
+							"label": "Nylocas Hagios",
 							"cards": [
 								"Nylocas Hagios"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Nylocas Ischyros (enemy)",
+							"label": "Nylocas Ischyros",
 							"cards": [
 								"Nylocas Ischyros"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Nylocas Vasilias (enemy)",
+							"label": "Nylocas Vasilias",
 							"cards": [
 								"Nylocas Vasilias"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Sotetseg (enemy)",
+							"label": "Sotetseg",
 							"cards": [
 								"Sotetseg"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Xarpus (enemy)",
+							"label": "Xarpus",
 							"cards": [
 								"Xarpus"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Verzik Vitur (enemy)",
+							"label": "Verzik Vitur",
 							"cards": [
 								"Verzik Vitur"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Nylocas Athanatos (enemy)",
+							"label": "Nylocas Athanatos",
 							"cards": [
 								"Nylocas Athanatos"
 							],
@@ -381,7 +381,7 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Sourhog (enemy)",
+							"label": "Sourhog",
 							"cards": [
 								"Sourhog"
 							],
@@ -412,56 +412,56 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Angry unicorn (enemy)",
+							"label": "Angry unicorn",
 							"cards": [
 								"Angry unicorn"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Angry bear (enemy)",
+							"label": "Angry bear",
 							"cards": [
 								"Angry bear"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Angry giant rat (enemy)",
+							"label": "Angry giant rat",
 							"cards": [
 								"Angry giant rat"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Angry goblin (enemy)",
+							"label": "Angry goblin",
 							"cards": [
 								"Angry goblin"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Fear reaper (enemy)",
+							"label": "Fear reaper",
 							"cards": [
 								"Fear reaper"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Confusion beast (enemy)",
+							"label": "Confusion beast",
 							"cards": [
 								"Confusion beast"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Hopeless creature (enemy)",
+							"label": "Hopeless creature",
 							"cards": [
 								"Hopeless creature"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Tolna (enemy)",
+							"label": "Tolna",
 							"cards": [
 								"Tolna"
 							],
@@ -703,21 +703,21 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Abomination (enemy)",
+							"label": "Abomination",
 							"cards": [
 								"Abomination"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Ranis Drakan (enemy)",
+							"label": "Ranis Drakan",
 							"cards": [
 								"Ranis Drakan"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Vyrewatch (enemy)",
+							"label": "Vyrewatch",
 							"cards": [
 								"Vyrewatch"
 							],
@@ -829,21 +829,21 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "H.A.M. Archer (enemy)",
+							"label": "H.A.M. Archer",
 							"cards": [
 								"H.A.M. Archer"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "H.A.M. Mage (enemy)",
+							"label": "H.A.M. Mage",
 							"cards": [
 								"H.A.M. Mage"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Sigmund (enemy)",
+							"label": "Sigmund",
 							"cards": [
 								"Sigmund"
 							],
@@ -924,7 +924,7 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Mithril dragon (enemy)",
+							"label": "Mithril dragon",
 							"cards": [
 								"Mithril dragon"
 							],
@@ -1010,7 +1010,7 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Ancient Guardian (enemy)",
+							"label": "Ancient Guardian",
 							"cards": [
 								"Ancient Guardian"
 							],
@@ -1074,28 +1074,28 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Head Menaphite Guard (enemy)",
+							"label": "Head Menaphite Guard",
 							"cards": [
 								"Head Menaphite Guard"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Scarab Mage (enemy)",
+							"label": "Scarab Mage",
 							"cards": [
 								"Scarab Mage"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Champion of Scabaras (enemy)",
+							"label": "Champion of Scabaras",
 							"cards": [
 								"Champion of Scabaras"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Menaphite Akh (enemy)",
+							"label": "Menaphite Akh",
 							"cards": [
 								"Menaphite Akh"
 							],
@@ -1166,14 +1166,14 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Scorpion (enemy)",
+							"label": "Scorpion",
 							"cards": [
 								"Scorpion"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Arzinian Being of Bordanzan (enemy)",
+							"label": "Arzinian Being of Bordanzan",
 							"cards": [
 								"Arzinian Being of Bordanzan"
 							],
@@ -1286,14 +1286,14 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Chompy bird (enemy)",
+							"label": "Chompy bird",
 							"cards": [
 								"Chompy bird"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Wolf (enemy)",
+							"label": "Wolf",
 							"cards": [
 								"Wolf"
 							],
@@ -1312,7 +1312,7 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Mourner (enemy)",
+							"label": "Mourner",
 							"cards": [
 								"Mourner"
 							],
@@ -1390,7 +1390,7 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Pirate (enemy)",
+							"label": "Pirate",
 							"cards": [
 								"Pirate"
 							],
@@ -1563,7 +1563,7 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Icelord (enemy)",
+							"label": "Icelord",
 							"cards": [
 								"Icelord"
 							],
@@ -1615,21 +1615,21 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Giant Scarab (enemy)",
+							"label": "Giant Scarab",
 							"cards": [
 								"Giant Scarab"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Locust rider (enemy)",
+							"label": "Locust rider",
 							"cards": [
 								"Locust rider"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Scarab Mage (enemy)",
+							"label": "Scarab Mage",
 							"cards": [
 								"Scarab Mage"
 							],
@@ -1750,7 +1750,7 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Experiment (enemy)",
+							"label": "Experiment",
 							"cards": [
 								"Experiment"
 							],
@@ -1887,7 +1887,7 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Vanstrom Klause (enemy)",
+							"label": "Vanstrom Klause",
 							"cards": [
 								"Vanstrom Klause"
 							],
@@ -1961,7 +1961,7 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Adala (enemy)",
+							"label": "Adala",
 							"cards": [
 								"Adala"
 							],
@@ -2066,14 +2066,14 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Sigmund (enemy)",
+							"label": "Sigmund",
 							"cards": [
 								"Sigmund"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "H.A.M. Guard (enemy)",
+							"label": "H.A.M. Guard",
 							"cards": [
 								"H.A.M. Guard"
 							],
@@ -2122,28 +2122,28 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Armoured zombie (Defender of Varrock) (enemy)",
+							"label": "Armoured zombie (Defender of Varrock)",
 							"cards": [
 								"Armoured zombie (Defender of Varrock)"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Armoured zombie (The Curse of Arrav) (enemy)",
+							"label": "Armoured zombie (The Curse of Arrav)",
 							"cards": [
 								"Armoured zombie (The Curse of Arrav)"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Armoured zombie (Zemouregal's Fort) (enemy)",
+							"label": "Armoured zombie (Zemouregal's Fort)",
 							"cards": [
 								"Armoured zombie (Zemouregal's Fort)"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Chaos Golem (enemy)",
+							"label": "Chaos Golem",
 							"cards": [
 								"Chaos Golem"
 							],
@@ -2189,7 +2189,7 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Delrith (enemy)",
+							"label": "Delrith",
 							"cards": [
 								"Delrith"
 							],
@@ -2322,35 +2322,35 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Dessous (enemy)",
+							"label": "Dessous",
 							"cards": [
 								"Dessous"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Ice troll (enemy)",
+							"label": "Ice troll",
 							"cards": [
 								"Ice troll"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Kamil (enemy)",
+							"label": "Kamil",
 							"cards": [
 								"Kamil"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Fareed (enemy)",
+							"label": "Fareed",
 							"cards": [
 								"Fareed"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Damis (enemy)",
+							"label": "Damis",
 							"cards": [
 								"Damis"
 							],
@@ -2457,91 +2457,91 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Ancient Guardian (enemy)",
+							"label": "Ancient Guardian",
 							"cards": [
 								"Ancient Guardian"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Vardorvis (enemy)",
+							"label": "Vardorvis",
 							"cards": [
 								"Vardorvis"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Kasonde (enemy)",
+							"label": "Kasonde",
 							"cards": [
 								"Kasonde"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "The Leviathan (enemy)",
+							"label": "The Leviathan",
 							"cards": [
 								"The Leviathan"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Jhallan (enemy)",
+							"label": "Jhallan",
 							"cards": [
 								"Jhallan"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Duke Sucellus (enemy)",
+							"label": "Duke Sucellus",
 							"cards": [
 								"Duke Sucellus"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "The Whisperer (enemy)",
+							"label": "The Whisperer",
 							"cards": [
 								"The Whisperer"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Mysterious Figure (enemy)",
+							"label": "Mysterious Figure",
 							"cards": [
 								"Mysterious Figure"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "The Forsaken Assassin (enemy)",
+							"label": "The Forsaken Assassin",
 							"cards": [
 								"The Forsaken Assassin"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Ketla the Unworthy (enemy)",
+							"label": "Ketla the Unworthy",
 							"cards": [
 								"Ketla the Unworthy"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Kasonde the Craven (enemy)",
+							"label": "Kasonde the Craven",
 							"cards": [
 								"Kasonde the Craven"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Persten the Deceitful (enemy)",
+							"label": "Persten the Deceitful",
 							"cards": [
 								"Persten the Deceitful"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Scarred imp (enemy)",
+							"label": "Scarred imp",
 							"cards": [
 								"Scarred imp"
 							],
@@ -2704,56 +2704,56 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Zombie rat (enemy)",
+							"label": "Zombie rat",
 							"cards": [
 								"Zombie rat"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Ghost (enemy)",
+							"label": "Ghost",
 							"cards": [
 								"Ghost"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Skeleton (enemy)",
+							"label": "Skeleton",
 							"cards": [
 								"Skeleton"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Zombie (enemy)",
+							"label": "Zombie",
 							"cards": [
 								"Zombie"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Melzar the Mad (enemy)",
+							"label": "Melzar the Mad",
 							"cards": [
 								"Melzar the Mad"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Lesser demon (enemy)",
+							"label": "Lesser demon",
 							"cards": [
 								"Lesser demon"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Wormbrain (enemy)",
+							"label": "Wormbrain",
 							"cards": [
 								"Wormbrain"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Elvarg (enemy)",
+							"label": "Elvarg",
 							"cards": [
 								"Elvarg"
 							],
@@ -3005,105 +3005,105 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Vorkath (enemy)",
+							"label": "Vorkath",
 							"cards": [
 								"Vorkath"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Spawn (enemy)",
+							"label": "Spawn",
 							"cards": [
 								"Spawn"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Robert the Strong (enemy)",
+							"label": "Robert the Strong",
 							"cards": [
 								"Robert the Strong"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Green dragon (enemy)",
+							"label": "Green dragon",
 							"cards": [
 								"Green dragon"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Blue dragon (enemy)",
+							"label": "Blue dragon",
 							"cards": [
 								"Blue dragon"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Red dragon (enemy)",
+							"label": "Red dragon",
 							"cards": [
 								"Red dragon"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Iron dragon (enemy)",
+							"label": "Iron dragon",
 							"cards": [
 								"Iron dragon"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Brutal green dragon (enemy)",
+							"label": "Brutal green dragon",
 							"cards": [
 								"Brutal green dragon"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Black dragon (enemy)",
+							"label": "Black dragon",
 							"cards": [
 								"Black dragon"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Steel dragon (enemy)",
+							"label": "Steel dragon",
 							"cards": [
 								"Steel dragon"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Brutal red dragon (enemy)",
+							"label": "Brutal red dragon",
 							"cards": [
 								"Brutal red dragon"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Mithril dragon (enemy)",
+							"label": "Mithril dragon",
 							"cards": [
 								"Mithril dragon"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Adamant dragon (enemy)",
+							"label": "Adamant dragon",
 							"cards": [
 								"Adamant dragon"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Rune dragon (enemy)",
+							"label": "Rune dragon",
 							"cards": [
 								"Rune dragon"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Galvek (enemy)",
+							"label": "Galvek",
 							"cards": [
 								"Galvek"
 							],
@@ -3163,28 +3163,28 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "The Inadequacy (enemy)",
+							"label": "The Inadequacy",
 							"cards": [
 								"The Inadequacy"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "The Everlasting (enemy)",
+							"label": "The Everlasting",
 							"cards": [
 								"The Everlasting"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "The Untouchable (enemy)",
+							"label": "The Untouchable",
 							"cards": [
 								"The Untouchable"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "The Illusive (enemy)",
+							"label": "The Illusive",
 							"cards": [
 								"The Illusive"
 							],
@@ -3236,7 +3236,7 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Suit of armour (enemy)",
+							"label": "Suit of armour",
 							"cards": [
 								"Suit of armour"
 							],
@@ -3383,7 +3383,7 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Kebbit (Eagles' Peak) (enemy)",
+							"label": "Kebbit (Eagles' Peak)",
 							"cards": [
 								"Kebbit (Eagles' Peak)"
 							],
@@ -3468,7 +3468,7 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Earth elemental (enemy)",
+							"label": "Earth elemental",
 							"cards": [
 								"Earth elemental"
 							],
@@ -3526,7 +3526,7 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Earth elemental (enemy)",
+							"label": "Earth elemental",
 							"cards": [
 								"Earth elemental"
 							],
@@ -3882,9 +3882,9 @@
 							"type": "item"
 						},
 						{
-							"label": "Ball of Wool",
+							"label": "Ball of wool",
 							"cards": [
-								"Ball of Wool"
+								"Ball of wool"
 							],
 							"type": "item"
 						},
@@ -4036,7 +4036,7 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Tanglefoot (enemy)",
+							"label": "Tanglefoot",
 							"cards": [
 								"Tanglefoot"
 							],
@@ -4074,7 +4074,7 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Gorak (enemy)",
+							"label": "Gorak",
 							"cards": [
 								"Gorak"
 							],
@@ -4229,7 +4229,7 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Chronozon (enemy)",
+							"label": "Chronozon",
 							"cards": [
 								"Chronozon"
 							],
@@ -4266,28 +4266,28 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Khazard Scorpion (enemy)",
+							"label": "Khazard Scorpion",
 							"cards": [
 								"Khazard Scorpion"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Khazard Ogre (enemy)",
+							"label": "Khazard Ogre",
 							"cards": [
 								"Khazard Ogre"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Bouncer (enemy)",
+							"label": "Bouncer",
 							"cards": [
 								"Bouncer"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "General Khazard (enemy)",
+							"label": "General Khazard",
 							"cards": [
 								"General Khazard"
 							],
@@ -4685,7 +4685,7 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Headless Beast (enemy)",
+							"label": "Headless Beast",
 							"cards": [
 								"Headless Beast"
 							],
@@ -4816,7 +4816,7 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Giant lobster (enemy)",
+							"label": "Giant lobster",
 							"cards": [
 								"Giant lobster"
 							],
@@ -4926,7 +4926,7 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Glod (enemy)",
+							"label": "Glod",
 							"cards": [
 								"Glod"
 							],
@@ -4957,7 +4957,7 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Treus Dayth (enemy)",
+							"label": "Treus Dayth",
 							"cards": [
 								"Treus Dayth"
 							],
@@ -4976,7 +4976,7 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Clivet (enemy)",
+							"label": "Alomone (siding with Ceril)",
 							"cards": [
 								"Clivet"
 							],
@@ -5041,21 +5041,21 @@
 							"type": "item"
 						},
 						{
-							"label": "Ice Queen (enemy)",
+							"label": "Ice Queen",
 							"cards": [
 								"Ice Queen"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Entrana firebird (enemy)",
+							"label": "Entrana firebird",
 							"cards": [
 								"Entrana firebird"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Jailer (enemy)",
+							"label": "Jailer",
 							"cards": [
 								"Jailer"
 							],
@@ -5119,7 +5119,7 @@
 									"selectorValue": "PHOENIX",
 									"children": [
 										{
-											"label": "Grip (enemy)",
+											"label": "Grip",
 											"cards": [
 												"Grip"
 											],
@@ -5154,42 +5154,42 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Verac the Defiled (enemy)",
+							"label": "Verac the Defiled",
 							"cards": [
 								"Verac the Defiled"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Dharok the Wretched (enemy)",
+							"label": "Dharok the Wretched",
 							"cards": [
 								"Dharok the Wretched"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Ahrim the Blighted (enemy)",
+							"label": "Ahrim the Blighted",
 							"cards": [
 								"Ahrim the Blighted"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Torag the Corrupted (enemy)",
+							"label": "Torag the Corrupted",
 							"cards": [
 								"Torag the Corrupted"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Karil the Tainted (enemy)",
+							"label": "Karil the Tainted",
 							"cards": [
 								"Karil the Tainted"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Guthan the Infested (enemy)",
+							"label": "Guthan the Infested",
 							"cards": [
 								"Guthan the Infested"
 							],
@@ -5208,7 +5208,7 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Black Knight Titan (enemy)",
+							"label": "Black Knight Titan",
 							"cards": [
 								"Black Knight Titan"
 							],
@@ -5239,35 +5239,35 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Snothead (enemy)",
+							"label": "Snothead",
 							"cards": [
 								"Snothead"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Snailfeet (enemy)",
+							"label": "Snailfeet",
 							"cards": [
 								"Snailfeet"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Mosschin (enemy)",
+							"label": "Mosschin",
 							"cards": [
 								"Mosschin"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Redeyes (enemy)",
+							"label": "Redeyes",
 							"cards": [
 								"Redeyes"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Strongbones (enemy)",
+							"label": "Strongbones",
 							"cards": [
 								"Strongbones"
 							],
@@ -5408,14 +5408,14 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Dagannoth (enemy)",
+							"label": "Dagannoth",
 							"cards": [
 								"Dagannoth"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Dagannoth mother (enemy)",
+							"label": "Dagannoth mother",
 							"cards": [
 								"Dagannoth mother"
 							],
@@ -5515,14 +5515,14 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Possessed Priest (enemy)",
+							"label": "Possessed Priest",
 							"cards": [
 								"Possessed Priest"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Apparition (enemy)",
+							"label": "Apparition",
 							"cards": [
 								"Apparition"
 							],
@@ -5541,7 +5541,7 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Imp (enemy)",
+							"label": "Imp",
 							"cards": [
 								"Imp"
 							],
@@ -5742,14 +5742,14 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Gadderanks (enemy)",
+							"label": "Gadderanks",
 							"cards": [
 								"Gadderanks"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Vampyre Juvinate (enemy)",
+							"label": "Vampyre Juvinate",
 							"cards": [
 								"Vampyre Juvinate"
 							],
@@ -5856,7 +5856,7 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Skeleton Hellhound (enemy)",
+							"label": "Skeleton Hellhound",
 							"cards": [
 								"Skeleton Hellhound"
 							],
@@ -5875,42 +5875,42 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Akkha (enemy)",
+							"label": "Akkha",
 							"cards": [
 								"Akkha"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Ba-Ba (enemy)",
+							"label": "Ba-Ba",
 							"cards": [
 								"Ba-Ba"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Kephri (enemy)",
+							"label": "Kephri",
 							"cards": [
 								"Kephri"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Zebak (enemy)",
+							"label": "Zebak",
 							"cards": [
 								"Zebak"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Tumeken's Warden (enemy)",
+							"label": "Tumeken's Warden",
 							"cards": [
 								"Tumeken's Warden"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Elidinis' Warden (enemy)",
+							"label": "Elidinis' Warden",
 							"cards": [
 								"Elidinis' Warden"
 							],
@@ -6055,7 +6055,7 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Tarn (enemy)",
+							"label": "Tarn",
 							"cards": [
 								"Tarn"
 							],
@@ -6156,35 +6156,35 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Snothead (enemy)",
+							"label": "Snothead",
 							"cards": [
 								"Snothead"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Snailfeet (enemy)",
+							"label": "Snailfeet",
 							"cards": [
 								"Snailfeet"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Mosschin (enemy)",
+							"label": "Mosschin",
 							"cards": [
 								"Mosschin"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Redeyes (enemy)",
+							"label": "Redeyes",
 							"cards": [
 								"Redeyes"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Strongbones (enemy)",
+							"label": "Strongbones",
 							"cards": [
 								"Strongbones"
 							],
@@ -6424,28 +6424,28 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Ranalph Devere (enemy)",
+							"label": "Ranalph Devere",
 							"cards": [
 								"Ranalph Devere"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Irvig Senay (enemy)",
+							"label": "Irvig Senay",
 							"cards": [
 								"Irvig Senay"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "San Tojalon (enemy)",
+							"label": "San Tojalon",
 							"cards": [
 								"San Tojalon"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Nezikchened (enemy)",
+							"label": "Nezikchened",
 							"cards": [
 								"Nezikchened"
 							],
@@ -6494,14 +6494,14 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Tree spirit (enemy)",
+							"label": "Tree spirit",
 							"cards": [
 								"Tree spirit"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Zombie (enemy)",
+							"label": "Zombie",
 							"cards": [
 								"Zombie"
 							],
@@ -6659,14 +6659,14 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Suqah (enemy)",
+							"label": "Suqah",
 							"cards": [
 								"Suqah"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Me (enemy)",
+							"label": "Me",
 							"cards": [
 								"Me"
 							],
@@ -6685,7 +6685,7 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Black demon (enemy)",
+							"label": "Black demon",
 							"cards": [
 								"Black demon"
 							],
@@ -6704,21 +6704,21 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Porazdir (enemy)",
+							"label": "Porazdir",
 							"cards": [
 								"Porazdir"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Justiciar Zachariah (enemy)",
+							"label": "Justiciar Zachariah",
 							"cards": [
 								"Justiciar Zachariah"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Derwen (enemy)",
+							"label": "Derwen",
 							"cards": [
 								"Derwen"
 							],
@@ -6785,14 +6785,14 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Don't Know What (enemy)",
+							"label": "Don't Know What",
 							"cards": [
 								"Don't Know What"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Mother (enemy)",
+							"label": "Mother",
 							"cards": [
 								"Mother"
 							],
@@ -6837,14 +6837,14 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Dire Wolf Alpha (enemy)",
+							"label": "Dire Wolf Alpha",
 							"cards": [
 								"Dire Wolf Alpha"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Minotaur (enemy)",
+							"label": "Minotaur",
 							"cards": [
 								"Minotaur"
 							],
@@ -6889,14 +6889,14 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Sir Mordred (enemy)",
+							"label": "Sir Mordred",
 							"cards": [
 								"Sir Mordred"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Giant bat (enemy)",
+							"label": "Giant bat",
 							"cards": [
 								"Giant bat"
 							],
@@ -7014,7 +7014,7 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Jungle Demon (enemy)",
+							"label": "Jungle Demon",
 							"cards": [
 								"Jungle Demon"
 							],
@@ -7120,42 +7120,42 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Kruk (enemy)",
+							"label": "Kruk",
 							"cards": [
 								"Kruk"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Keef (enemy)",
+							"label": "Keef",
 							"cards": [
 								"Keef"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Kob (enemy)",
+							"label": "Kob",
 							"cards": [
 								"Kob"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Tortured gorilla (enemy)",
+							"label": "Tortured gorilla",
 							"cards": [
 								"Tortured gorilla"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Demonic gorilla (enemy)",
+							"label": "Demonic gorilla",
 							"cards": [
 								"Demonic gorilla"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Glough (enemy)",
+							"label": "Glough",
 							"cards": [
 								"Glough"
 							],
@@ -7273,7 +7273,7 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "The Kendal (enemy)",
+							"label": "The Kendal",
 							"cards": [
 								"The Kendal"
 							],
@@ -7383,7 +7383,7 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Mourner (enemy)",
+							"label": "Mourner",
 							"cards": [
 								"Mourner"
 							],
@@ -7430,7 +7430,7 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Shadow (Temple of Light) (enemy)",
+							"label": "Shadow (Temple of Light)",
 							"cards": [
 								"Shadow (Temple of Light)"
 							],
@@ -7516,14 +7516,14 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Baby Roc (enemy)",
+							"label": "Baby Roc",
 							"cards": [
 								"Baby Roc"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Giant Roc (enemy)",
+							"label": "Giant Roc",
 							"cards": [
 								"Giant Roc"
 							],
@@ -7554,7 +7554,7 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Ghast (enemy)",
+							"label": "Ghast",
 							"cards": [
 								"Ghast"
 							],
@@ -7599,7 +7599,7 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Goblin guard (enemy)",
+							"label": "Goblin guard",
 							"cards": [
 								"Goblin guard"
 							],
@@ -7662,14 +7662,14 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Skeleton fremennik (enemy)",
+							"label": "Skeleton fremennik",
 							"cards": [
 								"Skeleton fremennik"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Ulfric (enemy)",
+							"label": "Ulfric",
 							"cards": [
 								"Ulfric"
 							],
@@ -7779,14 +7779,14 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Slagilith (enemy)",
+							"label": "Slagilith",
 							"cards": [
 								"Slagilith"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Dwarf gang member (enemy)",
+							"label": "Dwarf gang member",
 							"cards": [
 								"Dwarf gang member"
 							],
@@ -7865,28 +7865,28 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Sulphur Nagua (enemy)",
+							"label": "Sulphur Nagua",
 							"cards": [
 								"Sulphur Nagua"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Blue Moon (enemy)",
+							"label": "Blue Moon",
 							"cards": [
 								"Blue Moon"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Blood Moon (enemy)",
+							"label": "Blood Moon",
 							"cards": [
 								"Blood Moon"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Eclipse Moon (enemy)",
+							"label": "Eclipse Moon",
 							"cards": [
 								"Eclipse Moon"
 							],
@@ -7939,7 +7939,7 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Gardener (enemy)",
+							"label": "Gardener",
 							"cards": [
 								"Gardener"
 							],
@@ -8032,14 +8032,14 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Temple Guardian (enemy)",
+							"label": "Temple Guardian",
 							"cards": [
 								"Temple Guardian"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Monk of Zamorak (enemy)",
+							"label": "Monk of Zamorak",
 							"cards": [
 								"Monk of Zamorak"
 							],
@@ -8150,7 +8150,7 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Jail guard (enemy)",
+							"label": "Jail guard",
 							"cards": [
 								"Jail guard"
 							],
@@ -8203,7 +8203,7 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Drink troll (enemy)",
+							"label": "Drink troll",
 							"cards": [
 								"Drink troll"
 							],
@@ -8255,56 +8255,56 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Giant rat (enemy)",
+							"label": "Giant rat",
 							"cards": [
 								"Giant rat"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Unicorn (enemy)",
+							"label": "Unicorn",
 							"cards": [
 								"Unicorn"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Black bear (enemy)",
+							"label": "Black bear",
 							"cards": [
 								"Black bear"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Ram (enemy)",
+							"label": "Ram",
 							"cards": [
 								"Ram"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Goblin (enemy)",
+							"label": "Goblin",
 							"cards": [
 								"Goblin"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Big frog (enemy)",
+							"label": "Big frog",
 							"cards": [
 								"Big frog"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Giant bat (enemy)",
+							"label": "Giant bat",
 							"cards": [
 								"Giant bat"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Monkey (monster) (enemy)",
+							"label": "Monkey (monster)",
 							"cards": [
 								"Monkey (monster)"
 							],
@@ -8425,182 +8425,182 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Wolf (enemy)",
+							"label": "Wolf",
 							"cards": [
 								"Wolf"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Bat (enemy)",
+							"label": "Bat",
 							"cards": [
 								"Bat"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Rat (enemy)",
+							"label": "Rat",
 							"cards": [
 								"Rat"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Baby blue dragon (enemy)",
+							"label": "Baby blue dragon",
 							"cards": [
 								"Baby blue dragon"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Ogre (enemy)",
+							"label": "Ogre",
 							"cards": [
 								"Ogre"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Jogre (enemy)",
+							"label": "Jogre",
 							"cards": [
 								"Jogre"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Zogre (enemy)",
+							"label": "Zogre",
 							"cards": [
 								"Zogre"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Mogre (enemy)",
+							"label": "Mogre",
 							"cards": [
 								"Mogre"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Dagannoth (enemy)",
+							"label": "Dagannoth",
 							"cards": [
 								"Dagannoth"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Snake (enemy)",
+							"label": "Snake",
 							"cards": [
 								"Snake"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Zombie (enemy)",
+							"label": "Zombie",
 							"cards": [
 								"Zombie"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Werewolf (enemy)",
+							"label": "Werewolf",
 							"cards": [
 								"Werewolf"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Moss Giant (Iorwerth Dungeon) (enemy)",
+							"label": "Moss Giant (Iorwerth Dungeon)",
 							"cards": [
 								"Moss Giant (Iorwerth Dungeon)"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Fire giant (enemy)",
+							"label": "Fire giant",
 							"cards": [
 								"Fire giant"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Ice giant (enemy)",
+							"label": "Ice giant",
 							"cards": [
 								"Ice giant"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Terrorbird (enemy)",
+							"label": "Terrorbird",
 							"cards": [
 								"Terrorbird"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Ghoul (enemy)",
+							"label": "Ghoul",
 							"cards": [
 								"Ghoul"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Mountain troll (enemy)",
+							"label": "Mountain troll",
 							"cards": [
 								"Mountain troll"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Seagull (enemy)",
+							"label": "Seagull",
 							"cards": [
 								"Seagull"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Undead cow (enemy)",
+							"label": "Undead cow",
 							"cards": [
 								"Undead cow"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Experiment (enemy)",
+							"label": "Experiment",
 							"cards": [
 								"Experiment"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Basilisk (enemy)",
+							"label": "Basilisk",
 							"cards": [
 								"Basilisk"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Lizard (enemy)",
+							"label": "Lizard",
 							"cards": [
 								"Lizard"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Cave goblin (monster) (enemy)",
+							"label": "Cave goblin (monster)",
 							"cards": [
 								"Cave goblin (monster)"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Vulture (enemy)",
+							"label": "Vulture",
 							"cards": [
 								"Vulture"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Jackal (enemy)",
+							"label": "Jackal",
 							"cards": [
 								"Jackal"
 							],
@@ -8764,7 +8764,7 @@
 							"type": "item"
 						},
 						{
-							"label": "Icefiend (enemy)",
+							"label": "Icefiend",
 							"cards": [
 								"Icefiend"
 							],
@@ -8859,14 +8859,14 @@
 							"type": "item"
 						},
 						{
-							"label": "Mudskipper (enemy)",
+							"label": "Mudskipper",
 							"cards": [
 								"Mudskipper"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Crab (enemy)",
+							"label": "Crab",
 							"cards": [
 								"Crab"
 							],
@@ -8944,14 +8944,14 @@
 							"type": "item"
 						},
 						{
-							"label": "Big Snake (enemy)",
+							"label": "Big Snake",
 							"cards": [
 								"Big Snake"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Monkey Guard (enemy)",
+							"label": "Monkey Guard",
 							"cards": [
 								"Monkey Guard"
 							],
@@ -8977,14 +8977,14 @@
 							"type": "item"
 						},
 						{
-							"label": "Evil Chicken (enemy)",
+							"label": "Evil Chicken",
 							"cards": [
 								"Evil Chicken"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Black dragon (enemy)",
+							"label": "Black dragon",
 							"cards": [
 								"Black dragon"
 							],
@@ -9036,42 +9036,42 @@
 					"label": "Defeating the Culinaromancer",
 					"requirements": [
 						{
-							"label": "Agrith-Na-Na (enemy)",
+							"label": "Agrith-Na-Na",
 							"cards": [
 								"Agrith-Na-Na"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Flambeed (enemy)",
+							"label": "Flambeed",
 							"cards": [
 								"Flambeed"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Karamel (enemy)",
+							"label": "Karamel",
 							"cards": [
 								"Karamel"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Dessourt (enemy)",
+							"label": "Dessourt",
 							"cards": [
 								"Dessourt"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Gelatinnoth Mother (enemy)",
+							"label": "Gelatinnoth Mother",
 							"cards": [
 								"Gelatinnoth Mother"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Culinaromancer (enemy)",
+							"label": "Culinaromancer",
 							"cards": [
 								"Culinaromancer"
 							],
@@ -9090,7 +9090,7 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Sir Leye (enemy)",
+							"label": "Sir Leye",
 							"cards": [
 								"Sir Leye"
 							],
@@ -9227,7 +9227,7 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Tyras guard (enemy)",
+							"label": "Tyras guard",
 							"cards": [
 								"Tyras guard"
 							],
@@ -9294,7 +9294,7 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Moss Guardian (enemy)",
+							"label": "Moss Guardian",
 							"cards": [
 								"Moss Guardian"
 							],
@@ -9339,7 +9339,7 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Giant Sea Snake (enemy)",
+							"label": "Giant Sea Snake",
 							"cards": [
 								"Giant Sea Snake"
 							],
@@ -9391,14 +9391,14 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Evil spirit (enemy)",
+							"label": "Evil spirit",
 							"cards": [
 								"Evil spirit"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Fever spider (enemy)",
+							"label": "Fever spider",
 							"cards": [
 								"Fever spider"
 							],
@@ -9448,7 +9448,7 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Jailer (enemy)",
+							"label": "Jailer",
 							"cards": [
 								"Jailer"
 							],
@@ -9514,21 +9514,21 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Large chicken (enemy)",
+							"label": "Large chicken",
 							"cards": [
 								"Large chicken"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Black jaguar (enemy)",
+							"label": "Black jaguar",
 							"cards": [
 								"Black jaguar"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Red dragon (enemy)",
+							"label": "Red dragon",
 							"cards": [
 								"Red dragon"
 							],
@@ -9599,28 +9599,28 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Evelot (enemy)",
+							"label": "Evelot",
 							"cards": [
 								"Evelot"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Assassin (enemy)",
+							"label": "Assassin",
 							"cards": [
 								"Assassin"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Strange Creature (enemy)",
+							"label": "Strange Creature",
 							"cards": [
 								"Strange Creature"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Strange creature (Shadows of Custodia) (enemy)",
+							"label": "Strange creature (Shadows of Custodia)",
 							"cards": [
 								"Strange creature (Shadows of Custodia)"
 							],
@@ -9694,7 +9694,7 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Loar Shade (enemy)",
+							"label": "Loar Shade",
 							"cards": [
 								"Loar Shade"
 							],
@@ -9739,7 +9739,7 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Agrith Naar (enemy)",
+							"label": "Agrith Naar",
 							"cards": [
 								"Agrith Naar"
 							],
@@ -9792,14 +9792,14 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Strange Creature (enemy)",
+							"label": "Strange Creature",
 							"cards": [
 								"Strange Creature"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Strange creature (Shadows of Custodia) (enemy)",
+							"label": "Strange creature (Shadows of Custodia)",
 							"cards": [
 								"Strange creature (Shadows of Custodia)"
 							],
@@ -9880,7 +9880,7 @@
 									"selectorValue": "BLACK_ARM",
 									"children": [
 										{
-											"label": "Weaponsmaster (enemy)",
+											"label": "Weaponsmaster",
 											"cards": [
 												"Weaponsmaster"
 											],
@@ -9901,7 +9901,7 @@
 											"type": "item"
 										},
 										{
-											"label": "Jonny the Beard (enemy)",
+											"label": "Jonny the Beard",
 											"cards": [
 												"Jonny the Beard"
 											],
@@ -9979,7 +9979,7 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Nazastarool (enemy)",
+							"label": "Nazastarool",
 							"cards": [
 								"Nazastarool"
 							],
@@ -10138,49 +10138,49 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Kroy (enemy)",
+							"label": "Kroy",
 							"cards": [
 								"Kroy"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Nail beast (enemy)",
+							"label": "Nail beast",
 							"cards": [
 								"Nail beast"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Vampyre Juvinate (enemy)",
+							"label": "Vampyre Juvinate",
 							"cards": [
 								"Vampyre Juvinate"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Mutated Bloodveld (enemy)",
+							"label": "Mutated Bloodveld",
 							"cards": [
 								"Mutated Bloodveld"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Damien Leucurte (enemy)",
+							"label": "Damien Leucurte",
 							"cards": [
 								"Damien Leucurte"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Vampyre Juvenile (enemy)",
+							"label": "Vampyre Juvenile",
 							"cards": [
 								"Vampyre Juvenile"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Vanstrom Klause (enemy)",
+							"label": "Vanstrom Klause",
 							"cards": [
 								"Vanstrom Klause"
 							],
@@ -10511,56 +10511,56 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Mourner (enemy)",
+							"label": "Mourner",
 							"cards": [
 								"Mourner"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Paladin (enemy)",
+							"label": "Paladin",
 							"cards": [
 								"Paladin"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Knight of Ardougne (enemy)",
+							"label": "Knight of Ardougne",
 							"cards": [
 								"Knight of Ardougne"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Iorwerth Archer (enemy)",
+							"label": "Iorwerth Archer",
 							"cards": [
 								"Iorwerth Archer"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Iorwerth Warrior (enemy)",
+							"label": "Iorwerth Warrior",
 							"cards": [
 								"Iorwerth Warrior"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Arianwyn (enemy)",
+							"label": "Arianwyn",
 							"cards": [
 								"Arianwyn"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Essyllt (enemy)",
+							"label": "Essyllt",
 							"cards": [
 								"Essyllt"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Fragment of Seren (enemy)",
+							"label": "Fragment of Seren",
 							"cards": [
 								"Fragment of Seren"
 							],
@@ -10707,21 +10707,21 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Black golem (enemy)",
+							"label": "Black golem",
 							"cards": [
 								"Black golem"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Grey golem (enemy)",
+							"label": "Grey golem",
 							"cards": [
 								"Grey golem"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "White golem (enemy)",
+							"label": "White golem",
 							"cards": [
 								"White golem"
 							],
@@ -10831,14 +10831,14 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Sea troll (enemy)",
+							"label": "Sea troll",
 							"cards": [
 								"Sea troll"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Sea Troll Queen (enemy)",
+							"label": "Sea Troll Queen",
 							"cards": [
 								"Sea Troll Queen"
 							],
@@ -10978,7 +10978,7 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Monkey (monster) (enemy)",
+							"label": "Monkey (monster)",
 							"cards": [
 								"Monkey (monster)"
 							],
@@ -11027,7 +11027,7 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Corrupt Lizardman (enemy)",
+							"label": "Corrupt Lizardman",
 							"cards": [
 								"Corrupt Lizardman"
 							],
@@ -11189,21 +11189,21 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Fire Warrior of Lesarkus (enemy)",
+							"label": "Fire Warrior of Lesarkus",
 							"cards": [
 								"Fire Warrior of Lesarkus"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Guardian of Armadyl (enemy)",
+							"label": "Guardian of Armadyl",
 							"cards": [
 								"Guardian of Armadyl"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Lucien (enemy)",
+							"label": "Lucien",
 							"cards": [
 								"Lucien"
 							],
@@ -11266,14 +11266,14 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Tormented Soul (enemy)",
+							"label": "Tormented Soul",
 							"cards": [
 								"Tormented Soul"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Trapped Soul (enemy)",
+							"label": "Trapped Soul",
 							"cards": [
 								"Trapped Soul"
 							],
@@ -11332,42 +11332,42 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Vyrewatch (enemy)",
+							"label": "Vyrewatch",
 							"cards": [
 								"Vyrewatch"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Vyrewatch Sentinel (enemy)",
+							"label": "Vyrewatch Sentinel",
 							"cards": [
 								"Vyrewatch Sentinel"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Monk of Zamorak (enemy)",
+							"label": "Monk of Zamorak",
 							"cards": [
 								"Monk of Zamorak"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "The Maiden of Sugadinti (enemy)",
+							"label": "The Maiden of Sugadinti",
 							"cards": [
 								"The Maiden of Sugadinti"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Nylocas Vasilias (enemy)",
+							"label": "Nylocas Vasilias",
 							"cards": [
 								"Nylocas Vasilias"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Lowerniel Drakan (enemy)",
+							"label": "Lowerniel Drakan",
 							"cards": [
 								"Lowerniel Drakan"
 							],
@@ -11405,7 +11405,7 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Ithoi the Navigator (enemy)",
+							"label": "Ithoi the Navigator",
 							"cards": [
 								"Ithoi the Navigator"
 							],
@@ -11475,14 +11475,14 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Golem guard (enemy)",
+							"label": "Golem guard",
 							"cards": [
 								"Golem guard"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Arrav (enemy)",
+							"label": "Arrav",
 							"cards": [
 								"Arrav"
 							],
@@ -11501,7 +11501,7 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Sand Snake (enemy)",
+							"label": "Sand Snake",
 							"cards": [
 								"Sand Snake"
 							],
@@ -11649,7 +11649,7 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Evil Creature (enemy)",
+							"label": "Evil Creature",
 							"cards": [
 								"Evil Creature"
 							],
@@ -11723,14 +11723,14 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Bandit champion (enemy)",
+							"label": "Bandit champion",
 							"cards": [
 								"Bandit champion"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Tough Guy (enemy)",
+							"label": "Tough Guy",
 							"cards": [
 								"Tough Guy"
 							],
@@ -11790,28 +11790,28 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Emissary Enforcer (enemy)",
+							"label": "Emissary Enforcer",
 							"cards": [
 								"Emissary Enforcer"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Chimalli (enemy)",
+							"label": "Chimalli",
 							"cards": [
 								"Chimalli"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Lucius (enemy)",
+							"label": "Lucius",
 							"cards": [
 								"Lucius"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Ennius Tullus (enemy)",
+							"label": "Ennius Tullus",
 							"cards": [
 								"Ennius Tullus"
 							],
@@ -11959,42 +11959,42 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Basilisk Youngling (enemy)",
+							"label": "Basilisk Youngling",
 							"cards": [
 								"Basilisk Youngling"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Basilisk (enemy)",
+							"label": "Basilisk",
 							"cards": [
 								"Basilisk"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Monstrous Basilisk (The Fremennik Exiles) (enemy)",
+							"label": "Monstrous Basilisk (The Fremennik Exiles)",
 							"cards": [
 								"Monstrous Basilisk (The Fremennik Exiles)"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Monstrous basilisk (enemy)",
+							"label": "Monstrous basilisk",
 							"cards": [
 								"Monstrous basilisk"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Typhor (enemy)",
+							"label": "Typhor",
 							"cards": [
 								"Typhor"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "The Jormungand (enemy)",
+							"label": "The Jormungand",
 							"cards": [
 								"The Jormungand"
 							],
@@ -12068,14 +12068,14 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Ice troll (enemy)",
+							"label": "Ice troll",
 							"cards": [
 								"Ice troll"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Ice Troll King (enemy)",
+							"label": "Ice Troll King",
 							"cards": [
 								"Ice Troll King"
 							],
@@ -12161,35 +12161,35 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Lanzig (enemy)",
+							"label": "Lanzig",
 							"cards": [
 								"Lanzig"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Borrokar (enemy)",
+							"label": "Borrokar",
 							"cards": [
 								"Borrokar"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Lensa (enemy)",
+							"label": "Lensa",
 							"cards": [
 								"Lensa"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Freidir (enemy)",
+							"label": "Freidir",
 							"cards": [
 								"Freidir"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "The Draugen (enemy)",
+							"label": "The Draugen",
 							"cards": [
 								"The Draugen"
 							],
@@ -12235,112 +12235,112 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Kree'arra (enemy)",
+							"label": "Kree'arra",
 							"cards": [
 								"Kree'arra"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "General Graardor (enemy)",
+							"label": "General Graardor",
 							"cards": [
 								"General Graardor"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Commander Zilyana (enemy)",
+							"label": "Commander Zilyana",
 							"cards": [
 								"Commander Zilyana"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "K'ril Tsutsaroth (enemy)",
+							"label": "K'ril Tsutsaroth",
 							"cards": [
 								"K'ril Tsutsaroth"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Flight Kilisa (enemy)",
+							"label": "Flight Kilisa",
 							"cards": [
 								"Flight Kilisa"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Wingman Skree (enemy)",
+							"label": "Wingman Skree",
 							"cards": [
 								"Wingman Skree"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Flockleader Geerin (enemy)",
+							"label": "Flockleader Geerin",
 							"cards": [
 								"Flockleader Geerin"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Sergeant Strongstack (enemy)",
+							"label": "Sergeant Strongstack",
 							"cards": [
 								"Sergeant Strongstack"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Sergeant Steelwill (enemy)",
+							"label": "Sergeant Steelwill",
 							"cards": [
 								"Sergeant Steelwill"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Sergeant Grimspike (enemy)",
+							"label": "Sergeant Grimspike",
 							"cards": [
 								"Sergeant Grimspike"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Bree (enemy)",
+							"label": "Bree",
 							"cards": [
 								"Bree"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Starlight (enemy)",
+							"label": "Starlight",
 							"cards": [
 								"Starlight"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Growler (enemy)",
+							"label": "Growler",
 							"cards": [
 								"Growler"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Tstanon Karlak (enemy)",
+							"label": "Tstanon Karlak",
 							"cards": [
 								"Tstanon Karlak"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Zakl'n Gritch (enemy)",
+							"label": "Zakl'n Gritch",
 							"cards": [
 								"Zakl'n Gritch"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Balfrug Kreeyath (enemy)",
+							"label": "Balfrug Kreeyath",
 							"cards": [
 								"Balfrug Kreeyath"
 							],
@@ -12378,7 +12378,7 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Bouncer (enemy)",
+							"label": "Bouncer",
 							"cards": [
 								"Bouncer"
 							],
@@ -12538,7 +12538,7 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Black demon (enemy)",
+							"label": "Black demon",
 							"cards": [
 								"Black demon"
 							],
@@ -12618,14 +12618,14 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Barrelchest (enemy)",
+							"label": "Barrelchest",
 							"cards": [
 								"Barrelchest"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Sorebones (enemy)",
+							"label": "Sorebones",
 							"cards": [
 								"Sorebones"
 							],
@@ -12732,28 +12732,28 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Emissary Brawler (enemy)",
+							"label": "Emissary Brawler",
 							"cards": [
 								"Emissary Brawler"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Emissary Conjurer (enemy)",
+							"label": "Emissary Conjurer",
 							"cards": [
 								"Emissary Conjurer"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Prince Itzla Arkan (enemy)",
+							"label": "Prince Itzla Arkan",
 							"cards": [
 								"Prince Itzla Arkan"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Amoxliatl (enemy)",
+							"label": "Amoxliatl",
 							"cards": [
 								"Amoxliatl"
 							],
@@ -12772,7 +12772,7 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Brutus (enemy)",
+							"label": "Brutus",
 							"cards": [
 								"Brutus"
 							],
@@ -12906,14 +12906,14 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Warped Terrorbird (enemy)",
+							"label": "Warped Terrorbird",
 							"cards": [
 								"Warped Terrorbird"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Evil Creature (enemy)",
+							"label": "Evil Creature",
 							"cards": [
 								"Evil Creature"
 							],
@@ -12951,21 +12951,21 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Pirate (enemy)",
+							"label": "Pirate",
 							"cards": [
 								"Pirate"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Black Eye Bethel (enemy)",
+							"label": "Black Eye Bethel",
 							"cards": [
 								"Black Eye Bethel"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Giant lobster (enemy)",
+							"label": "Giant lobster",
 							"cards": [
 								"Giant lobster"
 							],
@@ -12984,7 +12984,7 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Skeleton (enemy)",
+							"label": "Skeleton",
 							"cards": [
 								"Skeleton"
 							],
@@ -13026,7 +13026,7 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Cuthbert (enemy)",
+							"label": "Cuthbert",
 							"cards": [
 								"Cuthbert"
 							],
@@ -13112,7 +13112,7 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Slug Prince (enemy)",
+							"label": "Slug Prince",
 							"cards": [
 								"Slug Prince"
 							],
@@ -13179,7 +13179,7 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Mercenary Captain (enemy)",
+							"label": "Mercenary Captain",
 							"cards": [
 								"Mercenary Captain"
 							],
@@ -13313,7 +13313,7 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Khazard warlord (enemy)",
+							"label": "Khazard warlord",
 							"cards": [
 								"Khazard warlord"
 							],
@@ -13379,7 +13379,7 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Arrg (enemy)",
+							"label": "Arrg",
 							"cards": [
 								"Arrg"
 							],
@@ -13410,28 +13410,28 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Dad (enemy)",
+							"label": "Dad",
 							"cards": [
 								"Dad"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Troll general (enemy)",
+							"label": "Troll general",
 							"cards": [
 								"Troll general"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Berry (enemy)",
+							"label": "Berry",
 							"cards": [
 								"Berry"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Twig (enemy)",
+							"label": "Twig",
 							"cards": [
 								"Twig"
 							],
@@ -13488,14 +13488,14 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Gryphon (enemy)",
+							"label": "Gryphon",
 							"cards": [
 								"Gryphon"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Shellbane gryphon (enemy)",
+							"label": "Shellbane gryphon",
 							"cards": [
 								"Shellbane gryphon"
 							],
@@ -13526,14 +13526,14 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Knight of Varlamore (enemy)",
+							"label": "Knight of Varlamore",
 							"cards": [
 								"Knight of Varlamore"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Cultist (enemy)",
+							"label": "Cultist",
 							"cards": [
 								"Cultist"
 							],
@@ -13587,16 +13587,82 @@
 							"type": "item"
 						},
 						{
-							"label": "Arrows (metal, unpoisoned)",
-							"cards": [
-								"Rune arrow",
-								"Adamant arrow",
-								"Mithril arrow",
-								"Steel arrow",
-								"Iron arrow",
-								"Bronze arrow"
-							],
-							"type": "item"
+							"label": "Arrows (unpoisoned) and fire arrows",
+							"logic": "ANY",
+							"children": [
+								{
+									"label": "Bronze arrow/fire",
+									"logic": "ALL",
+									"cards": [
+										"Bronze arrow",
+										"Bronze fire arrow"
+									],
+									"type": "item"
+								},
+								{
+									"label": "Iron arrow/fire",
+									"logic": "ALL",
+									"cards": [
+										"Iron arrow",
+										"Iron fire arrow"
+									],
+									"type": "item"
+								},
+								{
+									"label": "Steel arrow/fire",
+									"logic": "ALL",
+									"cards": [
+										"Steel arrow",
+										"Steel fire arrow"
+									],
+									"type": "item"
+								},
+								{
+									"label": "Mithril arrow/fire",
+									"logic": "ALL",
+									"cards": [
+										"Mithril arrow",
+										"Mithril fire arrow"
+									],
+									"type": "item"
+								},
+								{
+									"label": "Adamant arrow/fire",
+									"logic": "ALL",
+									"cards": [
+										"Adamant arrow",
+										"Adamant fire arrow"
+									],
+									"type": "item"
+								},
+								{
+									"label": "Rune arrow/fire",
+									"logic": "ALL",
+									"cards": [
+										"Rune arrow",
+										"Rune fire arrow"
+									],
+									"type": "item"
+								},
+								{
+									"label": "Dragon arrow/fire",
+									"logic": "ALL",
+									"cards": [
+										"Dragon arrow",
+										"Dragon fire arrow"
+									],
+									"type": "item"
+								},
+								{
+									"label": "Amethyst arrow/fire",
+									"logic": "ALL",
+									"cards": [
+										"Amethyst arrow",
+										"Amethyst fire arrow"
+									],
+									"type": "item"
+								}
+							]
 						},
 						{
 							"label": "Bow (not crossbow)",
@@ -13622,42 +13688,42 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Doomion (enemy)",
+							"label": "Doomion",
 							"cards": [
 								"Doomion"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Othainian (enemy)",
+							"label": "Othainian",
 							"cards": [
 								"Othainian"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Holthion (enemy)",
+							"label": "Holthion",
 							"cards": [
 								"Holthion"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Paladin (enemy)",
+							"label": "Paladin",
 							"cards": [
 								"Paladin"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Kalrag (enemy)",
+							"label": "Kalrag",
 							"cards": [
 								"Kalrag"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Disciple of Iban (enemy)",
+							"label": "Disciple of Iban",
 							"cards": [
 								"Disciple of Iban"
 							],
@@ -13743,7 +13809,7 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Count Draynor (enemy)",
+							"label": "Count Draynor",
 							"cards": [
 								"Count Draynor"
 							],
@@ -13831,14 +13897,14 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Black Knight (enemy)",
+							"label": "Black Knight",
 							"cards": [
 								"Black Knight"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Black knight (Port Sarim jail) (enemy)",
+							"label": "Black knight (Port Sarim jail)",
 							"cards": [
 								"Black knight (Port Sarim jail)"
 							],
@@ -13971,14 +14037,14 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Gorad (enemy)",
+							"label": "Gorad",
 							"cards": [
 								"Gorad"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Giant bat (enemy)",
+							"label": "Giant bat",
 							"cards": [
 								"Giant bat"
 							],
@@ -14001,47 +14067,29 @@
 							"cards": [
 								"Air rune"
 							],
-							"type": "item"
+							"type": "item",
+							"quantity": 6
 						},
 						{
 							"label": "Earth rune",
 							"cards": [
 								"Earth rune"
 							],
-							"type": "item"
+							"type": "item",
+							"quantity": 6
 						},
 						{
 							"label": "Water rune",
 							"cards": [
 								"Water rune"
 							],
-							"type": "item"
+							"type": "item",
+							"quantity": 6
 						},
 						{
 							"label": "Rope",
 							"cards": [
 								"Rope"
-							],
-							"type": "item"
-						},
-						{
-							"label": "Air runes",
-							"cards": [
-								"Air rune"
-							],
-							"type": "item"
-						},
-						{
-							"label": "Earth runes",
-							"cards": [
-								"Earth rune"
-							],
-							"type": "item"
-						},
-						{
-							"label": "Water runes",
-							"cards": [
-								"Water rune"
 							],
 							"type": "item"
 						}
@@ -14062,7 +14110,8 @@
 							"cards": [
 								"Chaos rune"
 							],
-							"type": "item"
+							"type": "item",
+							"quantity": 15
 						},
 						{
 							"label": "Bowl",
@@ -14078,13 +14127,6 @@
 								"Chaos talisman"
 							],
 							"type": "item"
-						},
-						{
-							"label": "Chaos runes",
-							"cards": [
-								"Chaos rune"
-							],
-							"type": "item"
 						}
 					]
 				},
@@ -14092,14 +14134,14 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Outlaw (enemy)",
+							"label": "Outlaw",
 							"cards": [
 								"Outlaw"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "King Roald (enemy)",
+							"label": "King Roald",
 							"cards": [
 								"King Roald"
 							],
@@ -14188,13 +14230,6 @@
 							"type": "item"
 						},
 						{
-							"label": "Mind rune",
-							"cards": [
-								"Mind rune"
-							],
-							"type": "item"
-						},
-						{
 							"label": "Law rune",
 							"cards": [
 								"Law rune"
@@ -14209,9 +14244,55 @@
 							"type": "item"
 						},
 						{
-							"label": "Logs",
+							"label": "Movario's Door",
+							"logic": "ALL",
+							"children": [
+								{
+									"label": "Air rune",
+									"cards": [
+										"Air rune"
+									],
+									"type": "item"
+								},
+								{
+									"label": "Water rune",
+									"cards": [
+										"Water rune"
+									],
+									"type": "item"
+								},
+								{
+									"label": "Earth rune",
+									"cards": [
+										"Earth rune"
+									],
+									"type": "item"
+								},
+								{
+									"label": "Fire rune",
+									"cards": [
+										"Fire rune"
+									],
+									"type": "item"
+								},
+								{
+									"label": "Mind rune",
+									"cards": [
+										"Mind rune"
+									],
+									"type": "item"
+								}
+							]
+						},
+						{
+							"label": "Any log (except Redwood)",
 							"cards": [
-								"Logs"
+								"Logs",
+								"Oak logs",
+								"Willow logs",
+								"Maple logs",
+								"Yew logs",
+								"Magic logs"
 							],
 							"type": "item"
 						},
@@ -14224,20 +14305,164 @@
 							"quantity": 520
 						},
 						{
-							"label": "Astral rune",
-							"cards": [
-								"Astral rune"
-							],
-							"type": "item",
-							"quantity": 4
+							"label": "Elemental Spell Runes",
+							"logic": "ALL",
+							"children": [
+								{ 
+									"label": "Elemental Runes",
+									"logic": "ALL",
+									"children": [
+										{
+											"label": "Air rune",
+											"cards": [
+												"Air rune"
+											],
+											"type": "item"
+										},
+										{
+											"label": "Water rune",
+											"cards": [
+												"Water rune"
+											],
+											"type": "item"
+										},
+										{
+											"label": "Earth rune",
+											"cards": [
+												"Earth rune"
+											],
+											"type": "item"
+										},
+										{
+											"label": "Fire rune",
+											"cards": [
+												"Fire rune"
+											],
+											"type": "item"
+										}
+									]
+								},
+								{
+									"label": "Catalyst Runes",
+									"logic": "ANY",
+									"children": [
+										{
+											"label": "Mind rune",
+											"cards": [
+												"Mind rune"
+											],
+											"type": "item"
+										},
+										{
+											"label": "Chaos rune",
+											"cards": [
+												"Chaos rune"
+											],
+											"type": "item"
+										},
+										{
+											"label": "Death rune",
+											"cards": [
+												"Death rune"
+											],
+											"type": "item"
+										},
+										{
+											"label": "Blood rune",
+											"cards": [
+												"Blood rune"
+											],
+											"type": "item"
+										},
+										{
+											"label": "Wrath rune",
+											"cards": [
+												"Wrath rune"
+											],
+											"type": "item"
+										}
+									]
+								}
+							]	
 						},
 						{
-							"label": "Cosmic rune",
-							"cards": [
-								"Cosmic rune"
-							],
-							"type": "item",
-							"quantity": 4
+							"label": "Curse and Utility Spells",
+							"logic": "ALL",
+							"children": [
+								{
+									"label": "Body rune or Soul rune",
+									"cards": [
+										"Body rune",
+										"Soul rune"
+									],
+									"type": "item"
+								},
+								{
+									"label": "Law rune",
+									"cards": [
+										"Law rune"
+									],
+									"type": "item"
+								},
+								{
+									"label": "Air rune",
+									"cards": [
+										"Air rune"
+									],
+									"type": "item"
+								}
+
+							]
+						},
+						{
+							"label": "Alchemy Spells",
+							"logic": "ALL",
+							"children": [
+								{
+									"label": "Fire rune",
+									"cards": [
+										"Fire rune"
+									],
+									"type": "item"
+								},
+								{
+									"label": "Nature rune",
+									"cards": [
+										"Nature rune"
+									],
+									"type": "item"
+								}
+							]
+						},
+						{
+							"label": "Astral Contact Runes",
+							"logic": "ALL",
+							"children": [
+								{
+									"label": "Air rune",
+									"cards": [
+										"Air rune"
+									],
+									"type": "item",
+									"quantity": 8
+								},
+								{
+									"label": "Astral rune",
+									"cards": [
+										"Astral rune"
+									],
+									"type": "item",
+									"quantity": 2
+								},
+								{
+									"label": "Cosmic rune",
+									"cards": [
+										"Cosmic rune"
+									],
+									"type": "item",
+									"quantity": 2
+								}
+							]
 						},
 						{
 							"label": "Charge Orb Runes",
@@ -14290,13 +14515,6 @@
 									]
 								}
 							]
-						},
-						{
-							"label": "Fire runes",
-							"cards": [
-								"Fire rune"
-							],
-							"type": "item"
 						}
 					]
 				},
@@ -14304,49 +14522,49 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Assassin (enemy)",
+							"label": "Assassin",
 							"cards": [
 								"Assassin"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Mercenary axeman (enemy)",
+							"label": "Mercenary axeman",
 							"cards": [
 								"Mercenary axeman"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Mercenary mage (enemy)",
+							"label": "Mercenary mage",
 							"cards": [
 								"Mercenary mage"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Elite Black Knight (enemy)",
+							"label": "Elite Black Knight",
 							"cards": [
 								"Elite Black Knight"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Surok Magis (enemy)",
+							"label": "Surok Magis",
 							"cards": [
 								"Surok Magis"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Balance Elemental (enemy)",
+							"label": "Balance Elemental",
 							"cards": [
 								"Balance Elemental"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Tormented Demon (enemy)",
+							"label": "Tormented Demon",
 							"cards": [
 								"Tormented Demon"
 							],
@@ -14384,7 +14602,7 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Witch's experiment (enemy)",
+							"label": "Witch's experiment",
 							"cards": [
 								"Witch's experiment"
 							],
@@ -14403,7 +14621,7 @@
 					"label": "Items",
 					"requirements": [
 						{
-							"label": "Burnt meat",
+							"label": "Burnt meat (check wiki)",
 							"cards": [
 								"Burnt meat"
 							],
@@ -14422,14 +14640,6 @@
 								"Onion"
 							],
 							"type": "item"
-						},
-						{
-							"label": "Giant rat / Cow (raw meat source)",
-							"cards": [
-								"Giant rat",
-								"Cow"
-							],
-							"type": "card"
 						}
 					]
 				},
@@ -14437,9 +14647,11 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Rat (enemy)",
+							"label": "Rat",
 							"cards": [
-								"Rat"
+								"Rat",
+								"Giant rat",
+								"Dungeon rat"
 							],
 							"type": "enemy"
 						}
@@ -14541,14 +14753,14 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Slash Bash (enemy)",
+							"label": "Slash Bash",
 							"cards": [
 								"Slash Bash"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Zombie (enemy)",
+							"label": "Zombie",
 							"cards": [
 								"Zombie"
 							],
