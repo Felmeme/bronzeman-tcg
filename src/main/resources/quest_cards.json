@@ -11127,7 +11127,15 @@
 						{
 							"label": "A light source to get the boots of lightness",
 							"cards": [
-								"Lit candle"
+								"Abyssal lantern",
+								"Bruma torch",
+								"Bullseye lantern",
+								"Candle lantern",
+								"Lit candle",
+								"Mining helmet",
+								"Oil lamp",
+								"Oil lantern",
+								"Torch"
 							],
 							"type": "item"
 						},
@@ -11148,7 +11156,9 @@
 										"Yew shortbow",
 										"Yew longbow",
 										"Magic shortbow",
-										"Magic longbow"
+										"Magic longbow",
+										"Dark bow",
+										"Twisted bow"
 									],
 									"type": "item"
 								},
@@ -11236,7 +11246,7 @@
 							"type": "item"
 						},
 						{
-							"label": "Pickaxe",
+							"label": "Any pickaxe",
 							"cards": [
 								"Crystal pickaxe",
 								"3rd age pickaxe",
@@ -13131,6 +13141,13 @@
 					"label": "Items",
 					"requirements": [
 						{
+							"label": "Coins (to buy Shantay Passes)",
+							"cards": [
+								"Coins"
+							],
+							"type": "item"
+						},
+						{
 							"label": "Desert shirt",
 							"cards": [
 								"Desert shirt"
@@ -13212,12 +13229,69 @@
 							"type": "item"
 						},
 						{
-							"label": "One of: a harpoon or lobster pot.",
-							"cards": [
-								"Lobster pot",
-								"Harpoon"
-							],
-							"type": "item"
+							"label": "A tool or coins to acquire favour on Miscellania",
+							"logic": "ANY",
+							"children": [
+								{
+									"label": "Coins to buy Mixed flowers",
+									"cards": [
+										"Coins"
+									],
+									"type": "item",
+									"quantity": 1875
+								},
+								{
+									"label": "Any axe",
+									"cards": [
+										"3rd age axe",
+										"Adamant axe",
+										"Black axe",
+										"Bronze axe",
+										"Crystal axe",
+										"Dragon axe",
+										"Gilded axe",
+										"Infernal axe",
+										"Iron axe",
+										"Mithril axe",
+										"Rune axe",
+										"Steel axe"
+									],
+									"type": "item"
+								},
+								{
+									"label": "Rake",
+									"cards": [
+										"Rake"
+									],
+									"type": "item"
+								},
+								{
+									"label": "Any pickaxe",
+									"cards": [
+										"3rd age pickaxe",
+										"Adamant pickaxe",
+										"Black pickaxe",
+										"Bronze pickaxe",
+										"Crystal pickaxe",
+										"Dragon pickaxe",
+										"Gilded pickaxe",
+										"Infernal pickaxe",
+										"Iron pickaxe",
+										"Mithril pickaxe",
+										"Rune pickaxe",
+										"Steel pickaxe"
+									],
+									"type": "item"
+								},
+								{
+									"label": "A harpoon or lobster pot",
+									"cards": [
+										"Harpoon",
+										"Lobster pot"
+									],
+									"type": "item"
+								}
+							]
 						},
 						{
 							"label": "Any non-silver ring you are willing to lose",
@@ -13275,9 +13349,10 @@
 							"type": "item"
 						},
 						{
-							"label": "Saw",
+							"label": "Any saw",
 							"cards": [
-								"Saw"
+								"Saw",
+								"Amy's saw"
 							],
 							"type": "item"
 						},
@@ -13345,7 +13420,7 @@
 							"type": "item"
 						},
 						{
-							"label": "Any logs",
+							"label": "Maple or yew logs",
 							"cards": [
 								"Maple logs",
 								"Yew logs"
@@ -13356,6 +13431,13 @@
 							"label": "Rope",
 							"cards": [
 								"Rope"
+							],
+							"type": "item"
+						},
+						{
+							"label": "Bucket",
+							"cards": [
+								"Bucket"
 							],
 							"type": "item"
 						},
@@ -13440,7 +13522,7 @@
 					]
 				}
 			],
-			"notes": ""
+			"notes": "Berry and Twig are only required if you fail to pickpocket with 30+ Thieving or just simply attack them."
 		},
 		{
 			"name": "Troubled Tortugans",
@@ -13460,9 +13542,18 @@
 						{
 							"label": "Any saw",
 							"cards": [
-								"Saw"
+								"Saw",
+								"Amy's saw"
 							],
 							"type": "item"
+						},
+						{
+							"label": "Sea shell",
+							"cards": [
+								"Sea shell"
+							],
+							"type": "item",
+							"quantity": 6
 						},
 						{
 							"label": "Any axe",
@@ -13742,9 +13833,14 @@
 					"label": "Items",
 					"requirements": [
 						{
-							"label": "Oak logs",
+							"label": "Oak logs or better",
 							"cards": [
-								"Oak logs"
+								"Oak logs",
+								"Willow logs",
+								"Maple logs",
+								"Yew logs",
+								"Magic logs",
+								"Redwood logs"
 							],
 							"type": "item"
 						},
@@ -13756,11 +13852,17 @@
 							"type": "item"
 						},
 						{
-							"label": "Oak shield",
+							"label": "Oak shield or unstrung bow or better",
 							"cards": [
-								"Oak shield"
+								"Oak shield",
+								"Willow shield",
+								"Maple shield",
+								"Yew shield",
+								"Magic shield",
+								"Redwood shield"
 							],
-							"type": "item"
+							"type": "item",
+							"quantity": 4
 						}
 					]
 				}
@@ -13880,7 +13982,15 @@
 						{
 							"label": "A light source",
 							"cards": [
-								"Lit candle"
+								"Abyssal lantern",
+								"Bruma torch",
+								"Bullseye lantern",
+								"Candle lantern",
+								"Lit candle",
+								"Mining helmet",
+								"Oil lamp",
+								"Oil lantern",
+								"Torch"
 							],
 							"type": "item"
 						},
@@ -13900,13 +14010,6 @@
 							"label": "Black Knight",
 							"cards": [
 								"Black Knight"
-							],
-							"type": "enemy"
-						},
-						{
-							"label": "Black knight (Port Sarim jail)",
-							"cards": [
-								"Black knight (Port Sarim jail)"
 							],
 							"type": "enemy"
 						}
@@ -14002,7 +14105,15 @@
 						{
 							"label": "A light source",
 							"cards": [
-								"Lit candle"
+								"Abyssal lantern",
+								"Bruma torch",
+								"Bullseye lantern",
+								"Candle lantern",
+								"Lit candle",
+								"Mining helmet",
+								"Oil lamp",
+								"Oil lantern",
+								"Torch"
 							],
 							"type": "item"
 						},
