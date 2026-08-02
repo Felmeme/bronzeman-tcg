@@ -17,11 +17,10 @@ import javax.inject.Singleton;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * Informational quest data for the side panel: which cards a player must own to complete
- * each quest (required items as any-of groups, plus resolvable quest enemies). Loaded from
- * resources/quest_cards.json; purely display - quests are never blocked by this plugin,
- * but under forced-drop a locked quest item genuinely can't be used, so "own the cards"
- * and "can physically complete it" coincide.
+ * Informational quest data for the side panel: prerequisite quest state and which cards a
+ * player must own to complete each quest (required items as any-of groups, plus resolvable
+ * quest enemies). Loaded from resources/quest_cards.json and quest_prerequisites.json;
+ * purely display - quests are never blocked by this plugin.
  */
 @Slf4j
 @Singleton
@@ -72,6 +71,7 @@ public class QuestCatalog
 
 	private void load(Gson gson)
 	{
+		Map<String, List<Requirement>> prerequisitesByQuest = loadPrerequisites(gson);
 		try (InputStream stream = getClass().getResourceAsStream("/quest_cards.json"))
 		{
 			if (stream == null)
@@ -96,6 +96,12 @@ public class QuestCatalog
 					continue;
 				}
 				List<Section> sections = new ArrayList<>();
+				List<Requirement> prerequisites = prerequisitesByQuest.remove(
+					normalizeQuestName(dto.name));
+				if (prerequisites != null && !prerequisites.isEmpty())
+				{
+					sections.add(new Section("Quest prerequisites", prerequisites));
+				}
 				List<String> monsters = new ArrayList<>();
 				if (dto.sections != null)
 				{
@@ -144,6 +150,11 @@ public class QuestCatalog
 					Collections.unmodifiableList(entry.getValue()));
 			}
 			cardQuests = Collections.unmodifiableMap(immutableCardQuests);
+			if (!prerequisitesByQuest.isEmpty())
+			{
+				log.warn("Ignored prerequisite data for {} unknown quest entries",
+					prerequisitesByQuest.size());
+			}
 			log.info("Loaded {} quests and {} miniquests from card-requirement snapshot",
 				quests.size(), miniquests.size());
 		}
@@ -151,6 +162,57 @@ public class QuestCatalog
 		{
 			log.warn("Failed to load quest_cards.json", ex);
 		}
+	}
+
+	private Map<String, List<Requirement>> loadPrerequisites(Gson gson)
+	{
+		Map<String, List<Requirement>> result = new HashMap<>();
+		try (InputStream stream = getClass().getResourceAsStream(
+			"/quest_prerequisites.json"))
+		{
+			if (stream == null)
+			{
+				log.info("quest_prerequisites.json not present; quest readiness will be card-only.");
+				return result;
+			}
+			PrerequisiteSnapshot snapshot = gson.fromJson(
+				new InputStreamReader(stream, StandardCharsets.UTF_8),
+				PrerequisiteSnapshot.class);
+			if (snapshot == null || snapshot.quests == null)
+			{
+				return result;
+			}
+			for (QuestPrerequisitesDto quest : snapshot.quests)
+			{
+				if (quest == null || quest.name == null || quest.name.trim().isEmpty()
+					|| quest.prerequisites == null)
+				{
+					continue;
+				}
+				List<Requirement> requirements = result.computeIfAbsent(
+					normalizeQuestName(quest.name), ignored -> new ArrayList<>());
+				for (PrerequisiteDto prerequisite : quest.prerequisites)
+				{
+					if (prerequisite == null || prerequisite.name == null
+						|| prerequisite.name.trim().isEmpty())
+					{
+						continue;
+					}
+					QuestStateRequirement state = parseQuestState(prerequisite.state);
+					String name = prerequisite.name.trim();
+					requirements.add(new Requirement(
+						(state == QuestStateRequirement.IN_PROGRESS ? "Start " : "Complete ") + name,
+						Collections.emptyList(), null, Logic.ALL, "quest",
+						Collections.emptyList(), null, null, false,
+						Collections.singletonList(name), state));
+				}
+			}
+		}
+		catch (IOException ex)
+		{
+			log.warn("Failed to load quest_prerequisites.json", ex);
+		}
+		return result;
 	}
 
 	private static Requirement loadRequirement(RequirementDto dto)
@@ -173,12 +235,26 @@ public class QuestCatalog
 		}
 		return new Requirement(dto.label.trim(), dto.cards, dto.quantity,
 			parseLogic(dto.logic), dto.type, children, dto.selector, dto.selectorValue,
-			dto.displayCardsOnly);
+			dto.displayCardsOnly, Collections.emptyList(), QuestStateRequirement.FINISHED);
 	}
 
 	private static Logic parseLogic(String value)
 	{
 		return "ANY".equalsIgnoreCase(value) ? Logic.ANY : Logic.ALL;
+	}
+
+	private static QuestStateRequirement parseQuestState(String value)
+	{
+		return "IN_PROGRESS".equalsIgnoreCase(value)
+			? QuestStateRequirement.IN_PROGRESS : QuestStateRequirement.FINISHED;
+	}
+
+	static String normalizeQuestName(String name)
+	{
+		String normalized = name == null ? "" : name.trim().toLowerCase(Locale.ROOT);
+		return normalized.endsWith(" (miniquest)")
+			? normalized.substring(0, normalized.length() - " (miniquest)".length())
+			: normalized;
 	}
 
 	private static String sortName(String name)
@@ -266,10 +342,18 @@ public class QuestCatalog
 
 		public int satisfiedCount(Set<String> ownedLowerCase, RouteSelection route)
 		{
+			return satisfiedCount(ownedLowerCase, Collections.emptySet(),
+				Collections.emptySet(), route);
+		}
+
+		public int satisfiedCount(Set<String> ownedLowerCase,
+			Set<String> startedQuests, Set<String> completedQuests, RouteSelection route)
+		{
 			int count = 0;
 			for (Requirement requirement : requirements)
 			{
-				if (requirement.isSatisfied(ownedLowerCase, route))
+				if (requirement.isSatisfied(ownedLowerCase, startedQuests,
+					completedQuests, route))
 				{
 					count++;
 				}
@@ -291,10 +375,18 @@ public class QuestCatalog
 
 		public int satisfiedCount(Set<String> ownedLowerCase, RouteSelection route)
 		{
+			return satisfiedCount(ownedLowerCase, Collections.emptySet(),
+				Collections.emptySet(), route);
+		}
+
+		public int satisfiedCount(Set<String> ownedLowerCase,
+			Set<String> startedQuests, Set<String> completedQuests, RouteSelection route)
+		{
 			int count = 0;
 			for (Requirement requirement : requirements)
 			{
-				if (requirement.isSatisfied(ownedLowerCase, route))
+				if (requirement.isSatisfied(ownedLowerCase, startedQuests,
+					completedQuests, route))
 				{
 					count++;
 				}
@@ -316,6 +408,12 @@ public class QuestCatalog
 		PHOENIX
 	}
 
+	public enum QuestStateRequirement
+	{
+		IN_PROGRESS,
+		FINISHED
+	}
+
 	/** Recursive card requirement. A leaf owns any card; a branch combines child nodes. */
 	public static class Requirement
 	{
@@ -329,16 +427,21 @@ public class QuestCatalog
 		public final String selector;
 		public final String selectorValue;
 		public final boolean displayCardsOnly;
+		public final List<String> displayQuests;
+		public final List<String> lowerQuests;
+		public final QuestStateRequirement questState;
 
 		Requirement(String label, List<String> cards)
 		{
 			this(label, cards, null, Logic.ANY, "card",
-				Collections.emptyList(), null, null, false);
+				Collections.emptyList(), null, null, false,
+				Collections.emptyList(), QuestStateRequirement.FINISHED);
 		}
 
 		Requirement(String label, List<String> cards, Integer quantity,
 			Logic logic, String type, List<Requirement> children,
-			String selector, String selectorValue, boolean displayCardsOnly)
+			String selector, String selectorValue, boolean displayCardsOnly,
+			List<String> quests, QuestStateRequirement questState)
 		{
 			this.label = label;
 			List<String> display = new ArrayList<>();
@@ -360,6 +463,20 @@ public class QuestCatalog
 			this.selector = selector == null ? "" : selector.trim();
 			this.selectorValue = selectorValue == null ? "" : selectorValue.trim();
 			this.displayCardsOnly = displayCardsOnly;
+			List<String> displayedQuests = new ArrayList<>();
+			List<String> normalizedQuests = new ArrayList<>();
+			for (String quest : quests == null ? Collections.<String>emptyList() : quests)
+			{
+				if (quest != null && !quest.trim().isEmpty())
+				{
+					displayedQuests.add(quest.trim());
+					normalizedQuests.add(normalizeQuestName(quest));
+				}
+			}
+			this.displayQuests = Collections.unmodifiableList(displayedQuests);
+			this.lowerQuests = Collections.unmodifiableList(normalizedQuests);
+			this.questState = questState == null
+				? QuestStateRequirement.FINISHED : questState;
 		}
 
 		public boolean isSatisfied(Set<String> ownedLowerCase)
@@ -369,10 +486,18 @@ public class QuestCatalog
 
 		public boolean isSatisfied(Set<String> ownedLowerCase, RouteSelection route)
 		{
+			return isSatisfied(ownedLowerCase, Collections.emptySet(),
+				Collections.emptySet(), route);
+		}
+
+		public boolean isSatisfied(Set<String> ownedLowerCase,
+			Set<String> startedQuests, Set<String> completedQuests, RouteSelection route)
+		{
 			Requirement selected = selectedChild(route);
 			if (selected != null)
 			{
-				return selected.isSatisfied(ownedLowerCase, route);
+				return selected.isSatisfied(ownedLowerCase, startedQuests,
+					completedQuests, route);
 			}
 			if (!children.isEmpty())
 			{
@@ -380,7 +505,8 @@ public class QuestCatalog
 				{
 					for (Requirement child : children)
 					{
-						if (child.isSatisfied(ownedLowerCase, route))
+						if (child.isSatisfied(ownedLowerCase, startedQuests,
+							completedQuests, route))
 						{
 							return true;
 						}
@@ -389,12 +515,26 @@ public class QuestCatalog
 				}
 				for (Requirement child : children)
 				{
-					if (!child.isSatisfied(ownedLowerCase, route))
+					if (!child.isSatisfied(ownedLowerCase, startedQuests,
+						completedQuests, route))
 					{
 						return false;
 					}
 				}
 				return true;
+			}
+			if ("quest".equals(type))
+			{
+				for (String quest : lowerQuests)
+				{
+					if (completedQuests.contains(quest)
+						|| (questState == QuestStateRequirement.IN_PROGRESS
+							&& startedQuests.contains(quest)))
+					{
+						return true;
+					}
+				}
+				return lowerQuests.isEmpty();
 			}
 			for (String card : lowerCards)
 			{
@@ -455,6 +595,23 @@ public class QuestCatalog
 	{
 		int schema;
 		List<QuestDto> quests;
+	}
+
+	private static class PrerequisiteSnapshot
+	{
+		List<QuestPrerequisitesDto> quests;
+	}
+
+	private static class QuestPrerequisitesDto
+	{
+		String name;
+		List<PrerequisiteDto> prerequisites;
+	}
+
+	private static class PrerequisiteDto
+	{
+		String name;
+		String state;
 	}
 
 	private static class QuestDto
