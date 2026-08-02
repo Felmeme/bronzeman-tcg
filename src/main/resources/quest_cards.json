@@ -11027,7 +11027,7 @@
 							"type": "item"
 						},
 						{
-							"label": "A pickaxe",
+							"label": "Any pickaxe",
 							"cards": [
 								"Crystal pickaxe",
 								"3rd age pickaxe",
@@ -11170,11 +11170,11 @@
 							"type": "item"
 						},
 						{
-							"label": "Yew/magic bow or throwable weapon",
+							"label": "Yew+ bow or throwable weapon",
 							"logic": "ANY",
 							"children": [
 								{
-									"label": "Yew, magic, or dark bow",
+									"label": "Yew or higher bow",
 									"cards": [
 										"Yew shortbow",
 										"Yew longbow",
@@ -11325,7 +11325,7 @@
 					"label": "Items",
 					"requirements": [
 						{
-							"label": "Coins",
+							"label": "Coins (if buying flail)",
 							"cards": [
 								"Coins"
 							],
@@ -11335,6 +11335,24 @@
 							"label": "Tinderbox",
 							"cards": [
 								"Tinderbox"
+							],
+							"type": "item"
+						},
+						{
+							"label": "Any pickaxe",
+							"cards": [
+								"Crystal pickaxe",
+								"3rd age pickaxe",
+								"Infernal pickaxe",
+								"Dragon pickaxe",
+								"Rune pickaxe",
+								"Gilded pickaxe",
+								"Adamant pickaxe",
+								"Mithril pickaxe",
+								"Black pickaxe",
+								"Steel pickaxe",
+								"Iron pickaxe",
+								"Bronze pickaxe"
 							],
 							"type": "item"
 						},
@@ -11498,7 +11516,15 @@
 						{
 							"label": "Any crossbow",
 							"cards": [
-								"Crossbow"
+								"Crossbow",
+								"Bronze crossbow",
+								"Blurite crossbow",
+								"Iron crossbow",
+								"Steel crossbow",
+								"Mithril crossbow",
+								"Adamant crossbow",
+								"Rune crossbow",
+								"Dragon crossbow"
 							],
 							"type": "item"
 						}
