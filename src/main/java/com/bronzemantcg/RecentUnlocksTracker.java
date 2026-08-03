@@ -1,9 +1,8 @@
 package com.bronzemantcg;
 
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
@@ -27,10 +26,6 @@ public class RecentUnlocksTracker
 	private static final String KEY = "recentUnlocks";
 	private static final String SHARED_KEY = "recentSharedUnlocks";
 	private static final int MAX_RECENT = 200;
-	private static final Type LIST_TYPE = new TypeToken<List<Unlock>>()
-	{
-	}.getType();
-
 	private final ConfigManager configManager;
 	private final Gson gson;
 	private List<Unlock> recent = new ArrayList<>();
@@ -71,10 +66,10 @@ public class RecentUnlocksTracker
 		}
 		try
 		{
-			List<Unlock> loaded = gson.fromJson(raw, LIST_TYPE);
+			Unlock[] loaded = gson.fromJson(raw, Unlock[].class);
 			if (loaded != null)
 			{
-				destination.addAll(loaded);
+				destination.addAll(Arrays.asList(loaded));
 			}
 		}
 		catch (Exception ex)

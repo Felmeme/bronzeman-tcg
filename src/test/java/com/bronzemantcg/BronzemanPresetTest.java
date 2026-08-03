@@ -5,12 +5,12 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThrows;
 import static org.junit.Assert.assertTrue;
 
-import java.lang.reflect.Method;
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
+import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import net.runelite.client.config.ConfigItem;
+import java.util.Set;
 import org.junit.Test;
 
 public class BronzemanPresetTest
@@ -57,23 +57,77 @@ public class BronzemanPresetTest
 	}
 
 	@Test
-	public void configDefaultsMatchTcgLockedPreset() throws Exception
+	public void configDefaultsMatchTcgLockedPreset()
 	{
 		BronzemanTcgConfig defaults = new BronzemanTcgConfig() { };
 		Map<String, String> expected = BronzemanPreset.TCG_LOCKED.getSettings();
 		Map<String, String> actual = new LinkedHashMap<>();
-		for (Method method : BronzemanTcgConfig.class.getMethods())
+		for (String key : expected.keySet())
 		{
-			ConfigItem item = method.getAnnotation(ConfigItem.class);
-			if (item == null || !expected.containsKey(item.keyName()))
-			{
-				continue;
-			}
-			Object value = method.invoke(defaults);
-			actual.put(item.keyName(), value instanceof Enum
-				? ((Enum<?>) value).name() : String.valueOf(value));
+			BronzemanSettingRegistry.Definition definition =
+				BronzemanSettingRegistry.require(key);
+			actual.put(key, definition.serialize(definition.defaultValue(defaults)));
 		}
 		assertEquals(expected, actual);
+	}
+
+	@Test
+	public void registryValuesRoundTripWithoutReflection()
+	{
+		BronzemanTcgConfig defaults = new BronzemanTcgConfig() { };
+		for (BronzemanSettingRegistry.Definition definition
+			: BronzemanSettingRegistry.all())
+		{
+			String serialized = definition.serialize(definition.defaultValue(defaults));
+			assertTrue(definition.getKey(), definition.accepts(serialized));
+			assertEquals(definition.getKey(), serialized,
+				definition.serialize(definition.parse(serialized)));
+			for (Enum<?> choice : definition.getEnumValues())
+			{
+				assertTrue(definition.getKey() + ":" + choice.name(),
+					definition.accepts(choice.name()));
+				assertEquals(choice, definition.parse(choice.name()));
+			}
+		}
+	}
+
+	@Test
+	public void registryCoversEveryVisibleSidePanelSetting()
+	{
+		Set<String> expected = Set.of(
+			"npcVisibilityMode", "groundItemsMode", "itemUsageMode", "foodSettingsMode",
+			"bankingMode", "grandExchangeMode", "coinMode", "acceptSharedUnlocks",
+			"lootExemptNames", "showLockedMenuOptions", "woodcuttingMode", "miningMode",
+			"fishingMode", "cookingMode", "burntFoodMode", "tinderboxMode",
+			"smeltingMode", "smithingMode", "craftingMode", "restrictEnchanting",
+			"requireCrushedGem", "fletchingMode", "herbloreMode", "runecraftingMode",
+			"hunterMode", "restrictHunterRumours", "farmingRakeMode", "compostMode",
+			"slayerMode", "restrictSlayerSuperiors", "thievingMode", "hamFullLoot",
+			"masterFarmerInsanity", "stallThievingMode", "sailingUpgradeMode",
+			"restrictSalvaging", "lockedItemMarkMode", "tintLockedNpcs",
+			"duelistCityMode", "lockedOutlineColor", "lockedOutlineWidth",
+			"lockedOutlineFeather");
+		Set<String> actual = new HashSet<>();
+		for (BronzemanSettingRegistry.Definition definition
+			: BronzemanSettingRegistry.all())
+		{
+			actual.add(definition.getKey());
+		}
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	public void everyPresetValueIsAcceptedByTheRegistry()
+	{
+		for (BronzemanPreset preset : BronzemanPreset.values())
+		{
+			for (Map.Entry<String, String> setting : preset.getSettings().entrySet())
+			{
+				assertTrue(setting.getKey(),
+					BronzemanSettingRegistry.require(setting.getKey())
+						.accepts(setting.getValue()));
+			}
+		}
 	}
 
 	@Test
@@ -110,7 +164,7 @@ public class BronzemanPresetTest
 		String encoded = BronzemanSettingsManager.encodeSettings(GSON, settings);
 		assertTrue(encoded.startsWith(BronzemanSettingsManager.EXPORT_PREFIX));
 		String uncompressedJson = "{\"version\":1,\"settings\":"
-			+ new com.google.gson.Gson().toJson(BronzemanPreset.TCG_LOCKED.getSettings()) + "}";
+			+ GSON.toJson(BronzemanPreset.TCG_LOCKED.getSettings()) + "}";
 		String uncompressed = BronzemanSettingsManager.EXPORT_PREFIX
 			+ Base64.getUrlEncoder().withoutPadding().encodeToString(
 				uncompressedJson.getBytes(StandardCharsets.UTF_8));

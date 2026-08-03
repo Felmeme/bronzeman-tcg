@@ -2,24 +2,21 @@ package com.bronzemantcg;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonParseException;
-import java.awt.Color;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.Collections;
 import java.util.LinkedHashMap;
-import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
-import net.runelite.client.config.ConfigItem;
+import net.runelite.client.config.ConfigDescriptor;
+import net.runelite.client.config.ConfigItemDescriptor;
 import net.runelite.client.config.ConfigManager;
 
 /** Applies built-in presets and encodes validated, plugin-only share strings. */
@@ -29,42 +26,36 @@ final class BronzemanSettingsManager
 	private static final int FORMAT_VERSION = 1;
 	private static final int MAX_IMPORT_LENGTH = 16_384;
 	private static final int MAX_DECOMPRESSED_LENGTH = 65_536;
-	private static final int MAX_TEXT_VALUE_LENGTH = 2_000;
 
 	private static final Set<String> GAMEPLAY_KEYS;
 	private static final Set<String> EXPORT_KEYS;
-	private static final Map<String, Method> CONFIG_METHODS;
 
 	static
 	{
-		LinkedHashSet<String> gameplay = new LinkedHashSet<>(
+		GAMEPLAY_KEYS = Collections.unmodifiableSet(
 			BronzemanPreset.MAXIMUM.getSettings().keySet());
-		GAMEPLAY_KEYS = Collections.unmodifiableSet(gameplay);
 
 		// Personal exemptions are deliberately local and are never shared.
 		EXPORT_KEYS = GAMEPLAY_KEYS;
-
-		Map<String, Method> methods = new LinkedHashMap<>();
-		for (Method method : BronzemanTcgConfig.class.getMethods())
-		{
-			ConfigItem item = method.getAnnotation(ConfigItem.class);
-			if (item != null && EXPORT_KEYS.contains(item.keyName()))
-			{
-				methods.put(item.keyName(), method);
-			}
-		}
-		CONFIG_METHODS = Collections.unmodifiableMap(methods);
 	}
 
 	private final BronzemanTcgConfig config;
 	private final ConfigManager configManager;
 	private final Gson gson;
+	private final Map<String, String> displayNames;
 
-	BronzemanSettingsManager(Gson gson, BronzemanTcgConfig config, ConfigManager configManager)
+	BronzemanSettingsManager(Gson gson, BronzemanTcgConfig config, ConfigManager configManager,
+		ConfigDescriptor descriptor)
 	{
 		this.gson = gson;
 		this.config = config;
 		this.configManager = configManager;
+		Map<String, String> names = new LinkedHashMap<>();
+		for (ConfigItemDescriptor item : descriptor.getItems())
+		{
+			names.put(item.getItem().keyName(), item.getItem().name());
+		}
+		this.displayNames = Collections.unmodifiableMap(names);
 	}
 
 	void apply(BronzemanPreset preset)
@@ -86,7 +77,13 @@ final class BronzemanSettingsManager
 	/** One write path for presets, imports and the compact side-panel controls. */
 	void save(String key, Object value)
 	{
-		String serialized = serialize(value);
+		BronzemanSettingRegistry.Definition definition =
+			BronzemanSettingRegistry.require(key);
+		String serialized = definition.serialize(value);
+		if (!definition.accepts(serialized))
+		{
+			throw new IllegalArgumentException("Invalid value for setting: " + key);
+		}
 		configManager.setConfiguration(BronzemanTcgConfig.GROUP, key, serialized);
 		String stored = configManager.getConfiguration(BronzemanTcgConfig.GROUP, key);
 		if (!serialized.equals(stored))
@@ -95,25 +92,16 @@ final class BronzemanSettingsManager
 		}
 	}
 
-	/** Read the stored value directly; fall back to the config method only for defaults. */
-	Object read(Method method)
+	/** Read the stored value directly; fall back to the direct config getter for defaults. */
+	Object read(BronzemanSettingRegistry.Definition definition)
 	{
-		ConfigItem item = method.getAnnotation(ConfigItem.class);
 		String stored = configManager.getConfiguration(BronzemanTcgConfig.GROUP,
-			item.keyName());
+			definition.getKey());
 		if (stored != null)
 		{
-			return configManager.getConfiguration(BronzemanTcgConfig.GROUP,
-				item.keyName(), method.getReturnType());
+			return definition.parse(stored);
 		}
-		try
-		{
-			return method.invoke(config);
-		}
-		catch (IllegalAccessException | InvocationTargetException ex)
-		{
-			throw new IllegalStateException("Could not read setting " + item.keyName(), ex);
-		}
+		return definition.defaultValue(config);
 	}
 
 	String exportSettings()
@@ -121,12 +109,9 @@ final class BronzemanSettingsManager
 		Map<String, String> values = new LinkedHashMap<>();
 		for (String key : EXPORT_KEYS)
 		{
-			Method method = CONFIG_METHODS.get(key);
-			if (method == null)
-			{
-				continue;
-			}
-			values.put(key, serialize(read(method)));
+			BronzemanSettingRegistry.Definition definition =
+				BronzemanSettingRegistry.require(key);
+			values.put(key, definition.serialize(read(definition)));
 		}
 		return encodeSettings(gson, values);
 	}
@@ -223,8 +208,9 @@ final class BronzemanSettingsManager
 			{
 				continue;
 			}
-			Method method = CONFIG_METHODS.get(key);
-			if (method == null || !isValid(method.getReturnType(), value))
+			BronzemanSettingRegistry.Definition definition =
+				BronzemanSettingRegistry.find(key);
+			if (definition == null || !definition.accepts(value))
 			{
 				throw new IllegalArgumentException("Invalid value for setting: " + key);
 			}
@@ -242,16 +228,18 @@ final class BronzemanSettingsManager
 		List<Change> changes = new ArrayList<>();
 		for (Map.Entry<String, String> entry : settings.entrySet())
 		{
-			Method method = CONFIG_METHODS.get(entry.getKey());
-			if (method == null)
+			BronzemanSettingRegistry.Definition definition =
+				BronzemanSettingRegistry.find(entry.getKey());
+			if (definition == null)
 			{
 				continue;
 			}
-			String oldValue = serialize(read(method));
+			String oldValue = definition.serialize(read(definition));
 			if (!oldValue.equals(entry.getValue()))
 			{
-				ConfigItem item = method.getAnnotation(ConfigItem.class);
-				changes.add(new Change(item.name(), oldValue, entry.getValue()));
+				changes.add(new Change(
+					displayNames.getOrDefault(entry.getKey(), entry.getKey()),
+					oldValue, entry.getValue()));
 			}
 		}
 		return Collections.unmodifiableList(changes);
@@ -265,35 +253,6 @@ final class BronzemanSettingsManager
 	static Set<String> exportKeys()
 	{
 		return EXPORT_KEYS;
-	}
-
-	private static String serialize(Object value)
-	{
-		if (value instanceof Color)
-		{
-			return String.valueOf(((Color) value).getRGB());
-		}
-		return value instanceof Enum ? ((Enum<?>) value).name() : String.valueOf(value);
-	}
-
-	private static boolean isValid(Class<?> type, String value)
-	{
-		if (type == boolean.class || type == Boolean.class)
-		{
-			return "true".equals(value) || "false".equals(value);
-		}
-		if (type.isEnum())
-		{
-			for (Object constant : type.getEnumConstants())
-			{
-				if (((Enum<?>) constant).name().equals(value))
-				{
-					return true;
-				}
-			}
-			return false;
-		}
-		return type == String.class && value.length() <= MAX_TEXT_VALUE_LENGTH;
 	}
 
 	static final class Change

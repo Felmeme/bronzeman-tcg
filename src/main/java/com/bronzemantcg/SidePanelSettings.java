@@ -16,7 +16,6 @@ import java.awt.Toolkit;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -40,17 +39,18 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
 import lombok.extern.slf4j.Slf4j;
+import net.runelite.client.config.ConfigDescriptor;
 import net.runelite.client.config.ConfigItem;
+import net.runelite.client.config.ConfigItemDescriptor;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.config.Range;
 import net.runelite.client.ui.ColorScheme;
 
-/** Reflection-backed compact settings view shown inside the plugin panel. */
+/** Explicit-registry-backed compact settings view shown inside the plugin panel. */
 @Slf4j
 final class SidePanelSettings
 {
 	private final JPanel panel = sectionBody();
-	private final BronzemanTcgConfig config;
 	private final ConfigManager configManager;
 	private final BronzemanSettingsManager settingsManager;
 	private final Runnable closeSettings;
@@ -62,12 +62,13 @@ final class SidePanelSettings
 	SidePanelSettings(Gson gson, BronzemanTcgConfig config, ConfigManager configManager,
 		boolean onboardingPending, Runnable closeSettings)
 	{
-		this.config = config;
 		this.configManager = configManager;
-		this.settingsManager = new BronzemanSettingsManager(gson, config, configManager);
+		ConfigDescriptor descriptor = configManager.getConfigDescriptor(config);
+		this.settingsManager = new BronzemanSettingsManager(
+			gson, config, configManager, descriptor);
 		this.onboardingPending = onboardingPending;
 		this.closeSettings = closeSettings;
-		this.categories = buildCategories();
+		this.categories = buildCategories(descriptor);
 	}
 
 	JPanel component()
@@ -122,9 +123,9 @@ final class SidePanelSettings
 				if (sectionExpanded)
 				{
 					panel.add(listDivider());
-					for (Method method : section.items)
+					for (ConfigItemDescriptor item : section.items)
 					{
-						panel.add(settingControl(method));
+						panel.add(settingControl(item));
 					}
 				}
 			}
@@ -350,22 +351,36 @@ final class SidePanelSettings
 		return label;
 	}
 
-	private static List<Category> buildCategories()
+	private static List<Category> buildCategories(ConfigDescriptor descriptor)
 	{
-		Map<String, List<Method>> bySection = new HashMap<>();
-		for (Method method : BronzemanTcgConfig.class.getMethods())
+		Map<String, List<ConfigItemDescriptor>> bySection = new HashMap<>();
+		Set<String> visibleKeys = new HashSet<>();
+		for (ConfigItemDescriptor descriptorItem : descriptor.getItems())
 		{
-			ConfigItem item = method.getAnnotation(ConfigItem.class);
-			if (item != null && !item.hidden())
+			ConfigItem item = descriptorItem.getItem();
+			if (!item.hidden())
 			{
+				if (BronzemanSettingRegistry.find(item.keyName()) == null)
+				{
+					throw new IllegalStateException(
+						"Visible setting is missing from registry: " + item.keyName());
+				}
+				visibleKeys.add(item.keyName());
 				bySection.computeIfAbsent(item.section(), ignored -> new ArrayList<>())
-					.add(method);
+					.add(descriptorItem);
 			}
 		}
-		for (List<Method> methods : bySection.values())
+		for (BronzemanSettingRegistry.Definition definition : BronzemanSettingRegistry.all())
 		{
-			methods.sort(Comparator.comparingInt(
-				method -> method.getAnnotation(ConfigItem.class).position()));
+			if (!visibleKeys.contains(definition.getKey()))
+			{
+				throw new IllegalStateException(
+					"Registry setting has no visible config item: " + definition.getKey());
+			}
+		}
+		for (List<ConfigItemDescriptor> items : bySection.values())
+		{
+			items.sort(Comparator.comparingInt(ConfigItemDescriptor::position));
 		}
 
 		List<Category> result = new ArrayList<>();
@@ -394,17 +409,18 @@ final class SidePanelSettings
 		return result;
 	}
 
-	private static Category category(String name, Map<String, List<Method>> bySection,
+	private static Category category(String name,
+		Map<String, List<ConfigItemDescriptor>> bySection,
 		Section... definitions)
 	{
 		List<Section> sections = new ArrayList<>();
 		for (Section definition : definitions)
 		{
-			List<Method> methods =
+			List<ConfigItemDescriptor> items =
 				bySection.getOrDefault(definition.key, Collections.emptyList());
-			if (!methods.isEmpty())
+			if (!items.isEmpty())
 			{
-				sections.add(new Section(definition.name, definition.key, methods));
+				sections.add(new Section(definition.name, definition.key, items));
 			}
 		}
 		return new Category(name, sections);
@@ -415,13 +431,15 @@ final class SidePanelSettings
 		return new Section(name, key, Collections.emptyList());
 	}
 
-	private JPanel settingControl(Method method)
+	private JPanel settingControl(ConfigItemDescriptor descriptor)
 	{
-		ConfigItem item = method.getAnnotation(ConfigItem.class);
+		ConfigItem item = descriptor.getItem();
+		BronzemanSettingRegistry.Definition definition =
+			BronzemanSettingRegistry.require(item.keyName());
 		Object value;
 		try
 		{
-			value = settingsManager.read(method);
+			value = settingsManager.read(definition);
 		}
 		catch (RuntimeException ex)
 		{
@@ -453,7 +471,8 @@ final class SidePanelSettings
 
 		if (value instanceof Enum)
 		{
-			JComboBox<Object> combo = new JComboBox<>(value.getClass().getEnumConstants());
+			JComboBox<Object> combo = new JComboBox<>(
+				definition.getEnumValues().toArray());
 			combo.setSelectedItem(value);
 			styleSettingComponent(combo, tooltip);
 			combo.addActionListener(event ->
@@ -462,7 +481,7 @@ final class SidePanelSettings
 		}
 		else if (value instanceof Integer)
 		{
-			Range range = method.getAnnotation(Range.class);
+			Range range = descriptor.getRange();
 			int min = range == null ? Integer.MIN_VALUE : range.min();
 			int max = range == null ? Integer.MAX_VALUE : range.max();
 			JSpinner spinner = new JSpinner(
@@ -580,9 +599,9 @@ final class SidePanelSettings
 	{
 		private final String name;
 		private final String key;
-		private final List<Method> items;
+		private final List<ConfigItemDescriptor> items;
 
-		private Section(String name, String key, List<Method> items)
+		private Section(String name, String key, List<ConfigItemDescriptor> items)
 		{
 			this.name = name;
 			this.key = key;
