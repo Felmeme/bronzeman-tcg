@@ -87,10 +87,10 @@
 									],
 									"type": "item"
 								}
-								]
-							}
-						]
-					},
+							]
+						}
+					]
+				},
 				{
 					"label": "Enemies",
 					"requirements": [
@@ -5939,31 +5939,19 @@
 										},
 										{
 											"label": "Air runes or staff",
-											"logic": "ANY",
-											"children": [
-												{
-													"label": "Air runes",
-													"cards": [
-														"Air rune"
-													],
-													"type": "item"
-												},
-												{
-													"label": "Air staff",
-													"cards": [
-														"Air battlestaff",
-														"Mystic air staff",
-														"Staff of air",
-														"Smoke battlestaff",
-														"Mystic smoke staff",
-														"Dust battlestaff",
-														"Mystic dust staff",
-														"Mist battlestaff",
-														"Mystic mist staff"
-													],
-													"type": "item"
-												}
-											]
+											"cards": [
+												"Air rune",
+												"Air battlestaff",
+												"Mystic air staff",
+												"Staff of air",
+												"Smoke battlestaff",
+												"Mystic smoke staff",
+												"Dust battlestaff",
+												"Mystic dust staff",
+												"Mist battlestaff",
+												"Mystic mist staff"
+											],
+											"type": "item"
 										}
 									]
 								}
@@ -6254,7 +6242,7 @@
 							"cards": [
 								"Ungadulu"
 							],
-							"type": "card"
+							"type": "enemy"
 						},
 						{
 							"label": "Sapphire",
@@ -8345,7 +8333,7 @@
 								"Rabbit",
 								"Bunny"
 							],
-							"type": "card"
+							"type": "enemy"
 						},
 						{
 							"label": "Coins",
@@ -10034,7 +10022,7 @@
 									"logic": "ALL",
 									"children": [
 										{
-											"label": "Air runes",
+											"label": "Fire runes",
 											"logic": "ANY",
 											"children": [
 												{
@@ -11118,50 +11106,38 @@
 						},
 						{
 							"label": "Yew+ bow or throwable weapon",
-							"logic": "ANY",
-							"children": [
-								{
-									"label": "Yew or higher bow",
-									"cards": [
-										"Yew shortbow",
-										"Yew longbow",
-										"Magic shortbow",
-										"Magic longbow",
-										"Dark bow",
-										"Twisted bow"
-									],
-									"type": "item"
-								},
-								{
-									"label": "Optional throwable weapon",
-									"cards": [
-										"Bronze knife",
-										"Iron knife",
-										"Steel knife",
-										"Black knife",
-										"Mithril knife",
-										"Adamant knife",
-										"Rune knife",
-										"Dragon knife",
-										"Bronze dart",
-										"Iron dart",
-										"Steel dart",
-										"Black dart",
-										"Mithril dart",
-										"Adamant dart",
-										"Rune dart",
-										"Amethyst dart",
-										"Dragon dart",
-										"Bronze thrownaxe",
-										"Iron thrownaxe",
-										"Steel thrownaxe",
-										"Mithril thrownaxe",
-										"Rune thrownaxe",
-										"Dragon thrownaxe"
-									],
-									"type": "item"
-								}
-							]
+							"cards": [
+								"Yew shortbow",
+								"Yew longbow",
+								"Magic shortbow",
+								"Magic longbow",
+								"Dark bow",
+								"Twisted bow",
+								"Bronze knife",
+								"Iron knife",
+								"Steel knife",
+								"Black knife",
+								"Mithril knife",
+								"Adamant knife",
+								"Rune knife",
+								"Dragon knife",
+								"Bronze dart",
+								"Iron dart",
+								"Steel dart",
+								"Black dart",
+								"Mithril dart",
+								"Adamant dart",
+								"Rune dart",
+								"Amethyst dart",
+								"Dragon dart",
+								"Bronze thrownaxe",
+								"Iron thrownaxe",
+								"Steel thrownaxe",
+								"Mithril thrownaxe",
+								"Rune thrownaxe",
+								"Dragon thrownaxe"
+							],
+							"type": "item"
 						}
 					]
 				},
@@ -11681,139 +11657,30 @@
 						},
 						{
 							"label": "Gloves (check wiki for more)",
-							"logic": "ANY",
-							"children": [
-								{
-									"label": "Bloodbark gauntlets",
-									"cards": [
-										"Bloodbark gauntlets"
-									],
-									"type": "item"
-								},
-								{
-									"label": "Clue hunter gloves",
-									"cards": [
-										"Clue hunter gloves"
-									],
-									"type": "item"
-								},
-								{
-									"label": "Gloves of silence",
-									"cards": [
-										"Gloves of silence"
-									],
-									"type": "item"
-								},
-								{
-									"label": "Graceful gloves",
-									"cards": [
-										"Graceful gloves"
-									],
-									"type": "item"
-								},
-								{
-									"label": "Granite gloves",
-									"cards": [
-										"Granite gloves"
-									],
-									"type": "item"
-								},
-								{
-									"label": "Ham gloves",
-									"cards": [
-										"Ham gloves"
-									],
-									"type": "item"
-								},
-								{
-									"label": "Iron gloves",
-									"cards": [
-										"Iron gloves"
-									],
-									"type": "item"
-								},
-								{
-									"label": "Karamja gloves",
-									"cards": [
-										"Karamja gloves 1",
-										"Karamja gloves 2",
-										"Karamja gloves 3",
-										"Karamja gloves 4"
-									],
-									"type": "item"
-								},
-								{
-									"label": "Leather gloves",
-									"cards": [
-										"Leather gloves"
-									],
-									"type": "item"
-								},
-								{
-									"label": "Mime gloves",
-									"cards": [
-										"Mime gloves"
-									],
-									"type": "item"
-								},
-								{
-									"label": "Mystic gloves",
-									"cards": [
-										"Mystic gloves"
-									],
-									"type": "item"
-								},
-								{
-									"label": "Ornate gloves",
-									"cards": [
-										"Ornate gloves"
-									],
-									"type": "item"
-								},
-								{
-									"label": "Purple gloves",
-									"cards": [
-										"Purple gloves"
-									],
-									"type": "item"
-								},
-								{
-									"label": "Regen bracelet",
-									"cards": [
-										"Regen bracelet"
-									],
-									"type": "item"
-								},
-								{
-									"label": "Swampbark gauntlets",
-									"cards": [
-										"Swampbark gauntlets"
-									],
-									"type": "item"
-								},
-								{
-									"label": "Void knight gloves",
-									"cards": [
-										"Void knight gloves"
-									],
-									"type": "item"
-								},
-								{
-									"label": "Warm gloves",
-									"cards": [
-										"Warm gloves"
-									],
-									"type": "item"
-								},
-								{
-									"label": "Zombie gloves",
-									"cards": [
-										"Zombie gloves"
-									],
-									"type": "item"
-								}
-		
-							]
+							"cards": [
+								"Bloodbark gauntlets",
+								"Clue hunter gloves",
+								"Gloves of silence",
+								"Graceful gloves",
+								"Granite gloves",
+								"Ham gloves",
+								"Iron gloves",
+								"Karamja gloves 1",
+								"Karamja gloves 2",
+								"Karamja gloves 3",
+								"Karamja gloves 4",
+								"Leather gloves",
+								"Mime gloves",
+								"Mystic gloves",
+								"Ornate gloves",
+								"Purple gloves",
+								"Regen bracelet",
+								"Swampbark gauntlets",
+								"Void knight gloves",
+								"Warm gloves",
+								"Zombie gloves"
+							],
+							"type": "item"
 						},
 						{
 							"label": "Kharidian headpiece",
@@ -14264,14 +14131,14 @@
 							"cards": [
 								"Ogre shaman"
 							],
-							"type": "card"
+							"type": "enemy"
 						},
 						{
 							"label": "Enclave guard",
 							"cards": [
 								"Enclave guard"
 							],
-							"type": "card"
+							"type": "enemy"
 						},
 						{
 							"label": "Any light source",
@@ -14590,7 +14457,7 @@
 							"label": "Elemental Spell Runes",
 							"logic": "ALL",
 							"children": [
-								{ 
+								{
 									"label": "Elemental Runes",
 									"logic": "ALL",
 									"children": [
@@ -14626,46 +14493,16 @@
 								},
 								{
 									"label": "Catalyst Runes",
-									"logic": "ANY",
-									"children": [
-										{
-											"label": "Mind rune",
-											"cards": [
-												"Mind rune"
-											],
-											"type": "item"
-										},
-										{
-											"label": "Chaos rune",
-											"cards": [
-												"Chaos rune"
-											],
-											"type": "item"
-										},
-										{
-											"label": "Death rune",
-											"cards": [
-												"Death rune"
-											],
-											"type": "item"
-										},
-										{
-											"label": "Blood rune",
-											"cards": [
-												"Blood rune"
-											],
-											"type": "item"
-										},
-										{
-											"label": "Wrath rune",
-											"cards": [
-												"Wrath rune"
-											],
-											"type": "item"
-										}
-									]
+									"cards": [
+										"Mind rune",
+										"Chaos rune",
+										"Death rune",
+										"Blood rune",
+										"Wrath rune"
+									],
+									"type": "item"
 								}
-							]	
+							]
 						},
 						{
 							"label": "Curse and Utility Spells",
@@ -14693,7 +14530,6 @@
 									],
 									"type": "item"
 								}
-
 							]
 						},
 						{

@@ -351,6 +351,7 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 		migrateFishingMode();
 		migrateHunterMode();
 		removeRetiredGeneralSettings();
+		migrateTcgLockedDefaults(presetOnboardingRequired);
 		// Mid-session enable fires no ItemContainerChanged, so seed the tool cache now.
 		clientThread.invokeLater(this::refreshCarriedTools);
 		welcomeShown = false;
@@ -774,6 +775,12 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 				{
 					return true;
 				}
+				// Pickpocket is deliberately click-only even though it is an NPC option.
+				// The interaction remains blocked and chat supplies the missing-card reason.
+				if (PICKPOCKET_OPTION.equals(optionLower))
+				{
+					return false;
+				}
 				// Prevent Interaction strips every option (Examine is a different MenuAction, so it
 				// survives untouched). Slayer masters answer only to the Slayer section, and
 				// started-quest NPCs keep Prevent Combat treatment so quests never brick.
@@ -803,16 +810,8 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 			case GROUND_ITEM_THIRD_OPTION:
 			case GROUND_ITEM_FOURTH_OPTION:
 			case GROUND_ITEM_FIFTH_OPTION:
-			{
-				if (config.groundItemsMode() != LockState.LOCKED
-					|| !TAKE_OPTION.equals(optionLower))
-				{
-					return false;
-				}
-				String itemName = itemManager.getItemComposition(entry.getIdentifier()).getName();
-				return itemName != null && !itemName.isEmpty() && !isLootExempt(itemName)
-					&& !isUnlocked(itemCatalog, itemName);
-			}
+				// Ground-item options stay visible; the click path remains the final guard.
+				return false;
 			case GAME_OBJECT_FIRST_OPTION:
 			case GAME_OBJECT_SECOND_OPTION:
 			case GAME_OBJECT_THIRD_OPTION:
@@ -820,7 +819,13 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 			case GAME_OBJECT_FIFTH_OPTION:
 			{
 				String objectName = Text.removeTags(entry.getTarget()).trim();
-				return !objectName.isEmpty()
+				if (objectName.isEmpty())
+				{
+					return false;
+				}
+				ResourceNodeCatalog.Rule rule = nodeCatalog.find(ResourceNodeCatalog.KIND_OBJECT,
+					objectName, option, entry.getIdentifier());
+				return rule != null && shouldHideWorldObjectCategory(rule.category)
 					&& evaluateNodeRule(ResourceNodeCatalog.KIND_OBJECT, objectName, option,
 						entry.getIdentifier()) != null;
 			}
@@ -1267,6 +1272,12 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 		});
 	}
 
+	/** Only trees still remove a blocked world-object option; other nodes use chat feedback. */
+	static boolean shouldHideWorldObjectCategory(String category)
+	{
+		return "woodcutting".equals(category);
+	}
+
 	private void refreshVisibleSettings()
 	{
 		BronzemanTcgPanel target = panel;
@@ -1412,7 +1423,7 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 		// card exists, so below All the requirement is just Coins + Coin pouch. The
 		// Insanity toggle only bites in All mode, mirroring H.A.M.
 		ThievingMode mode = config.thievingMode();
-		if (mode == ThievingMode.OFF)
+		if (mode == ThievingMode.OFF || mode == ThievingMode.NPC_CARD_ONLY)
 		{
 			return null;
 		}
@@ -2089,6 +2100,13 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 		{
 			return evaluateRunecraftingRule(rule);
 		}
+		if ("pickpocketing".equals(rule.category)
+			&& config.thievingMode() == ThievingMode.NPC_CARD_ONLY)
+		{
+			List<String> missing = rule.missingRequirementsForRole(
+				effectiveOwnedCards(), "npc");
+			return missing.isEmpty() ? null : missing;
+		}
 
 		boolean forceAllInGroups = false;
 		Set<String> excludedRoles;
@@ -2380,6 +2398,10 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 			case "pickpocketing":
 				switch (config.thievingMode())
 				{
+					case NPC_CARD_ONLY:
+						// Handled before generic role exclusion so unlabelled Coins/Pouch
+						// groups are ignored rather than accidentally enforced.
+						return null;
 					case COINS_POUCH:
 						return Set.of("npc", "loot", "loot-ham", "loot-elf");
 					case NPC_ONLY:
@@ -3025,6 +3047,39 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 		configManager.setConfiguration(BronzemanTcgConfig.GROUP,
 			"presetOnboardingPending", true);
 		return true;
+	}
+
+	/**
+	 * Makes TCG Locked the baseline for genuinely new installs without changing an
+	 * existing player's effective setup. RuneLite commonly leaves old default values
+	 * unstored, so existing installs receive explicit copies of only the defaults that
+	 * changed. Explicit user choices are never overwritten.
+	 */
+	private void migrateTcgLockedDefaults(boolean freshInstall)
+	{
+		String migrated = configManager.getConfiguration(BronzemanTcgConfig.GROUP,
+			"tcgLockedDefaultsMigrated");
+		if (Boolean.parseBoolean(migrated))
+		{
+			return;
+		}
+
+		// Mark first so a partial migration can never be repeated over later user changes.
+		configManager.setConfiguration(BronzemanTcgConfig.GROUP,
+			"tcgLockedDefaultsMigrated", true);
+		if (freshInstall)
+		{
+			return;
+		}
+
+		for (Map.Entry<String, String> entry : BronzemanPreset.getPreTcgLockedDefaults().entrySet())
+		{
+			if (configManager.getConfiguration(BronzemanTcgConfig.GROUP, entry.getKey()) == null)
+			{
+				configManager.setConfiguration(BronzemanTcgConfig.GROUP,
+					entry.getKey(), entry.getValue());
+			}
+		}
 	}
 
 	private void migrateNpcVisibility()

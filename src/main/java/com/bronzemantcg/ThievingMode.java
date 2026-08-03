@@ -4,8 +4,9 @@ package com.bronzemantcg;
 public enum ThievingMode
 {
 	OFF("No Restrictions"),
-	COINS_POUCH("Coins+Pouch"),
-	NPC_ONLY("Coins+Pouch+NPC"),
+	NPC_CARD_ONLY("NPC Only"),
+	COINS_POUCH("Coins + Pouch"),
+	NPC_ONLY("Coins + Pouch + NPC"),
 	NPC_AND_LOOT("Require All");
 
 	private final String label;

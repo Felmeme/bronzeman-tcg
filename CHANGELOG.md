@@ -4,6 +4,32 @@ Versioning: 0.MINOR.PATCH — staying on 0.2.x until the full skills sweep is
 complete, then 0.3.0. The runelite-plugin.properties version line is bumped in
 the same commit as each release.
 
+## v0.2.15 — 2026-08-03
+
+### New
+- Added first-run onboarding with TCG Locked and Maximum Restrictions presets.
+- Added compressed settings import and export. Personal exemptions, visuals and
+  external-plugin preferences remain private and are never included.
+- Added a compact, categorised settings view through the side-panel banner cog.
+- Added an NPC Only pickpocketing mode alongside the existing Coins, Pouch and
+  full-loot choices. NPCs without a card remain unrestricted in this mode.
+
+### Changed
+- New installs now use the TCG Locked preset as their baseline. A one-time
+  compatibility migration preserves every existing user's effective settings.
+- Expanded and corrected quest requirements through a community data pass,
+  then simplified several oversized alternative-item groups.
+- Quest sorting now ignores a leading "A" as well as "The".
+- Mining rocks, Runecrafting altars, Thieving stalls and chests, pickpocket
+  targets, ground items and other world-resource interactions now keep their
+  menu options visible and provide missing-card feedback when clicked. Locked
+  trees and ordinary locked NPC options retain their existing hiding behaviour.
+
+### Fixes
+- Settings entered through the side panel, presets and import strings now share
+  one validated write path and refresh the visible panel consistently.
+- Leaving the settings view now restores the complete wrapped tab list.
+
 ## v0.2.14 — 2026-08-01
 
 ### New

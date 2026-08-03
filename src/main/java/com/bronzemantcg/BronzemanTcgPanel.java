@@ -2379,7 +2379,11 @@ class BronzemanTcgPanel extends PluginPanel
 
 	private static String questSortName(String name)
 	{
-		return name.regionMatches(true, 0, "The ", 0, 4) ? name.substring(4) : name;
+		if (name.regionMatches(true, 0, "The ", 0, 4))
+		{
+			return name.substring(4);
+		}
+		return name.regionMatches(true, 0, "A ", 0, 2) ? name.substring(2) : name;
 	}
 
 	private static boolean sameUnlocks(List<RecentUnlocksTracker.Unlock> first,

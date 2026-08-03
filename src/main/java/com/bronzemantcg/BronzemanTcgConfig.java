@@ -236,6 +236,19 @@ public interface BronzemanTcgConfig extends Config
 	}
 
 	@ConfigItem(
+		keyName = "tcgLockedDefaultsMigrated",
+		name = "",
+		description = "",
+		hidden = true,
+		section = generalSettings,
+		position = 95
+	)
+	default boolean tcgLockedDefaultsMigrated()
+	{
+		return false;
+	}
+
+	@ConfigItem(
 		keyName = "groundItemsMode",
 		name = "Ground Items",
 		description = "'Require Card': hides options for picking up Ground Items"
@@ -245,7 +258,7 @@ public interface BronzemanTcgConfig extends Config
 	)
 	default LockState groundItemsMode()
 	{
-		return LockState.LOCKED;
+		return LockState.UNLOCKED;
 	}
 
 	@ConfigItem(
@@ -290,7 +303,7 @@ public interface BronzemanTcgConfig extends Config
 	)
 	default BankingMode bankingMode()
 	{
-		return BankingMode.DEPOSIT_ONLY;
+		return BankingMode.FULL;
 	}
 
 	@ConfigItem(
@@ -366,7 +379,9 @@ public interface BronzemanTcgConfig extends Config
 	@ConfigItem(
 		keyName = "showLockedMenuOptions",
 		name = "Show Mouseover Options",
-		description = "Keep blocked options visible for resources, ground items and shops."
+		description = "Also keep blocked tree and activity-NPC options visible."
+			+ "<br>Other resource and ground-item options are already kept visible."
+			+ "<br>Ordinary NPC options remain controlled by NPC Locks."
 			+ "<br>The click is still blocked and chat explains which cards are missing.",
 		section = generalSettings,
 		position = 10
@@ -391,7 +406,7 @@ public interface BronzemanTcgConfig extends Config
 	)
 	default WoodcuttingMode woodcuttingMode()
 	{
-		return WoodcuttingMode.LOGS_ONLY;
+		return WoodcuttingMode.TOOL_ONLY;
 	}
 
 	@ConfigItem(
@@ -406,7 +421,7 @@ public interface BronzemanTcgConfig extends Config
 	)
 	default MiningMode miningMode()
 	{
-		return MiningMode.CARD_REQUIRED;
+		return MiningMode.TOOL_ONLY;
 	}
 
 	@ConfigItem(
@@ -423,7 +438,7 @@ public interface BronzemanTcgConfig extends Config
 	)
 	default FishingRestrictionMode fishingMode()
 	{
-		return FishingRestrictionMode.CARD_REQUIRED;
+		return FishingRestrictionMode.TOOL_ONLY;
 	}
 
 	@ConfigItem(
@@ -453,7 +468,7 @@ public interface BronzemanTcgConfig extends Config
 	)
 	default CookingMode cookingMode()
 	{
-		return CookingMode.INPUT_OUTPUT;
+		return CookingMode.INPUT_ONLY;
 	}
 
 	@ConfigItem(
@@ -468,7 +483,7 @@ public interface BronzemanTcgConfig extends Config
 	)
 	default BurntFoodMode burntFoodMode()
 	{
-		return BurntFoodMode.REQUIRE_CARD;
+		return BurntFoodMode.OFF;
 	}
 
 	//----------------
@@ -500,7 +515,7 @@ public interface BronzemanTcgConfig extends Config
 	)
 	default SmeltingMode smeltingMode()
 	{
-		return SmeltingMode.BOTH;
+		return SmeltingMode.ORE;
 	}
 
 	@ConfigItem(
@@ -514,7 +529,7 @@ public interface BronzemanTcgConfig extends Config
 	)
 	default SmithingMode smithingMode()
 	{
-		return SmithingMode.BOTH;
+		return SmithingMode.BARS;
 	}
 
 	//----------------
@@ -531,7 +546,7 @@ public interface BronzemanTcgConfig extends Config
 	)
 	default CraftingMode craftingMode()
 	{
-		return CraftingMode.BOTH;
+		return CraftingMode.INPUT_ONLY;
 	}
 
 	@ConfigItem(
@@ -544,7 +559,7 @@ public interface BronzemanTcgConfig extends Config
 	)
 	default boolean restrictEnchanting()
 	{
-		return true;
+		return false;
 	}
 
 	@ConfigItem(
@@ -558,7 +573,7 @@ public interface BronzemanTcgConfig extends Config
 	)
 	default boolean requireCrushedGem()
 	{
-		return true;
+		return false;
 	}
 
 	//----------------
@@ -575,7 +590,7 @@ public interface BronzemanTcgConfig extends Config
 	)
 	default FletchingMode fletchingMode()
 	{
-		return FletchingMode.PRODUCT_AND_MATERIALS;
+		return FletchingMode.INPUT_ONLY;
 	}
 
 	@ConfigItem(
@@ -592,7 +607,7 @@ public interface BronzemanTcgConfig extends Config
 	)
 	default HerbloreMode herbloreMode()
 	{
-		return HerbloreMode.REQUIRE_ALL;
+		return HerbloreMode.INPUT_ONLY;
 	}
 
 	@ConfigItem(
@@ -608,7 +623,7 @@ public interface BronzemanTcgConfig extends Config
 	)
 	default RunecraftingMode runecraftingMode()
 	{
-		return RunecraftingMode.TALISMAN_RUNES;
+		return RunecraftingMode.TALISMAN;
 	}
 
 	//----------------
@@ -669,7 +684,7 @@ public interface BronzemanTcgConfig extends Config
 	)
 	default FarmingRakeMode farmingRakeMode()
 	{
-		return FarmingRakeMode.BOTH;
+		return FarmingRakeMode.TOOLS;
 	}
 
 	@ConfigItem(
@@ -681,7 +696,7 @@ public interface BronzemanTcgConfig extends Config
 	)
 	default CardRequirement compostMode()
 	{
-		return CardRequirement.CARD_REQUIRED;
+		return CardRequirement.NO_CARD;
 	}
 
 	//----------------
@@ -700,7 +715,7 @@ public interface BronzemanTcgConfig extends Config
 	)
 	default SlayerMode slayerMode()
 	{
-		return SlayerMode.OFF;
+		return SlayerMode.MASTER;
 	}
 
 	@ConfigItem(
@@ -726,10 +741,11 @@ public interface BronzemanTcgConfig extends Config
 	@ConfigItem(
 		keyName = "thievingMode",
 		name = "Pickpocketing Options",
-		description = "'Coins + Pouch': pickpocketing an NPC requires Coins and Coin pouch. "
-			+ "<br>'Coins, Pouch and NPC Card': additionally requires the card of the NPC being pickpocketed."
-			+ "<br> 'All': requires all loot from NPCs loot table and NPC Card of the NPC being pickpocketed."
-			+ "<br> Insanity H.A.M. Members and Master Farmers are not included in All.",
+		description = "'NPC Only': requires the target's NPC card when one exists."
+			+ "<br>'Coins + Pouch': requires Coins and Coin pouch."
+			+ "<br>'Coins + Pouch + NPC': also requires the target's NPC card when one exists."
+			+ "<br>'Require All': requires all reviewed loot and the NPC card."
+			+ "<br>H.A.M. Members and Master Farmers use their separate Full Loot options.",
 		section = thievingSection,
 		position = 0
 	)

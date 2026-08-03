@@ -289,6 +289,25 @@ public class ResourceNodeCatalog
 			}
 			return missing;
 		}
+
+		/** Missing requirements from one named role only; unlabelled groups are ignored. */
+		public List<String> missingRequirementsForRole(Set<String> owned, String includedRole)
+		{
+			if (includedRole == null)
+			{
+				return Collections.emptyList();
+			}
+			String cleanRole = includedRole.trim().toLowerCase(Locale.ROOT);
+			List<String> missing = new ArrayList<>();
+			for (CardGroup group : groups)
+			{
+				if (cleanRole.equals(group.role) && !group.isSatisfied(owned))
+				{
+					missing.add(String.join(" / ", group.displayCards));
+				}
+			}
+			return missing;
+		}
 	}
 
 	public static class CardGroup

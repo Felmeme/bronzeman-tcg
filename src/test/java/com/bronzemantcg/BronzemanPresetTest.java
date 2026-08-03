@@ -5,10 +5,12 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThrows;
 import static org.junit.Assert.assertTrue;
 
+import java.lang.reflect.Method;
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import net.runelite.client.config.ConfigItem;
 import org.junit.Test;
 
 public class BronzemanPresetTest
@@ -50,6 +52,37 @@ public class BronzemanPresetTest
 		assertEquals(CookingMode.INPUT_ONLY.name(), settings.get("cookingMode"));
 		assertEquals(WoodcuttingMode.TOOL_ONLY.name(), settings.get("woodcuttingMode"));
 		assertEquals(HunterMode.TOOLS_ONLY.name(), settings.get("hunterMode"));
+	}
+
+	@Test
+	public void configDefaultsMatchTcgLockedPreset() throws Exception
+	{
+		BronzemanTcgConfig defaults = new BronzemanTcgConfig() { };
+		Map<String, String> expected = BronzemanPreset.TCG_LOCKED.getSettings();
+		Map<String, String> actual = new LinkedHashMap<>();
+		for (Method method : BronzemanTcgConfig.class.getMethods())
+		{
+			ConfigItem item = method.getAnnotation(ConfigItem.class);
+			if (item == null || !expected.containsKey(item.keyName()))
+			{
+				continue;
+			}
+			Object value = method.invoke(defaults);
+			actual.put(item.keyName(), value instanceof Enum
+				? ((Enum<?>) value).name() : String.valueOf(value));
+		}
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	public void legacyDefaultMigrationOnlyContainsChangedDefaults()
+	{
+		Map<String, String> current = BronzemanPreset.TCG_LOCKED.getSettings();
+		for (Map.Entry<String, String> old : BronzemanPreset.getPreTcgLockedDefaults().entrySet())
+		{
+			assertTrue(current.containsKey(old.getKey()));
+			assertFalse(old.getValue().equals(current.get(old.getKey())));
+		}
 	}
 
 	@Test

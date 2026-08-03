@@ -76,6 +76,31 @@ enum BronzemanPreset
 		"sailingUpgradeMode", SailingUpgradeMode.EVERYTHING,
 		"restrictSalvaging", true));
 
+	/**
+	 * Effective defaults before TCG Locked became the baseline. Existing installs often
+	 * have no stored value for a setting that still uses its old default, so those values
+	 * must be written once before changing the defaults underneath them.
+	 */
+	private static final Map<String, String> PRE_TCG_LOCKED_DEFAULTS = values(
+		"groundItemsMode", LockState.LOCKED,
+		"bankingMode", BankingMode.DEPOSIT_ONLY,
+		"woodcuttingMode", WoodcuttingMode.LOGS_ONLY,
+		"miningMode", MiningMode.CARD_REQUIRED,
+		"fishingMode", FishingRestrictionMode.CARD_REQUIRED,
+		"cookingMode", CookingMode.INPUT_OUTPUT,
+		"burntFoodMode", BurntFoodMode.REQUIRE_CARD,
+		"smeltingMode", SmeltingMode.BOTH,
+		"smithingMode", SmithingMode.BOTH,
+		"craftingMode", CraftingMode.BOTH,
+		"restrictEnchanting", true,
+		"requireCrushedGem", true,
+		"fletchingMode", FletchingMode.PRODUCT_AND_MATERIALS,
+		"herbloreMode", HerbloreMode.REQUIRE_ALL,
+		"runecraftingMode", RunecraftingMode.TALISMAN_RUNES,
+		"farmingRakeMode", FarmingRakeMode.BOTH,
+		"compostMode", CardRequirement.CARD_REQUIRED,
+		"slayerMode", SlayerMode.OFF);
+
 	private final String label;
 	private final Map<String, String> settings;
 
@@ -93,6 +118,11 @@ enum BronzemanPreset
 	Map<String, String> getSettings()
 	{
 		return settings;
+	}
+
+	static Map<String, String> getPreTcgLockedDefaults()
+	{
+		return PRE_TCG_LOCKED_DEFAULTS;
 	}
 
 	private static Map<String, String> values(Object... pairs)
