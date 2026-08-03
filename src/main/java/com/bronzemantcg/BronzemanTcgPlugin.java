@@ -1,5 +1,6 @@
 package com.bronzemantcg;
 
+import com.google.gson.Gson;
 import com.google.inject.Provides;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
@@ -199,6 +200,9 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 
 	@Inject
 	private ConfigManager configManager;
+
+	@Inject
+	private Gson gson;
 
 	@Inject
 	private TcgCollectionReader collectionReader;
@@ -423,6 +427,7 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 		}
 
 		BronzemanTcgPanel newPanel = new BronzemanTcgPanel(
+				gson,
 				monsterCatalog,
 				itemCatalog,
 				nodeCatalog,

@@ -58,10 +58,11 @@ final class BronzemanSettingsManager
 
 	private final BronzemanTcgConfig config;
 	private final ConfigManager configManager;
-	private static final Gson GSON = new Gson();
+	private final Gson gson;
 
-	BronzemanSettingsManager(BronzemanTcgConfig config, ConfigManager configManager)
+	BronzemanSettingsManager(Gson gson, BronzemanTcgConfig config, ConfigManager configManager)
 	{
+		this.gson = gson;
 		this.config = config;
 		this.configManager = configManager;
 	}
@@ -127,13 +128,13 @@ final class BronzemanSettingsManager
 			}
 			values.put(key, serialize(read(method)));
 		}
-		return encodeSettings(values);
+		return encodeSettings(gson, values);
 	}
 
-	static String encodeSettings(Map<String, String> values)
+	static String encodeSettings(Gson gson, Map<String, String> values)
 	{
 		Map<String, String> accepted = validateSettings(values);
-		String json = GSON.toJson(new ExportData(FORMAT_VERSION, accepted));
+		String json = gson.toJson(new ExportData(FORMAT_VERSION, accepted));
 		try
 		{
 			ByteArrayOutputStream bytes = new ByteArrayOutputStream();
@@ -152,10 +153,10 @@ final class BronzemanSettingsManager
 
 	Map<String, String> importSettings(String encoded)
 	{
-		return decodeSettings(encoded);
+		return decodeSettings(gson, encoded);
 	}
 
-	static Map<String, String> decodeSettings(String encoded)
+	static Map<String, String> decodeSettings(Gson gson, String encoded)
 	{
 		if (encoded == null)
 		{
@@ -176,7 +177,7 @@ final class BronzemanSettingsManager
 		{
 			byte[] decoded = Base64.getUrlDecoder().decode(
 				clean.substring(EXPORT_PREFIX.length()));
-			data = GSON.fromJson(decompress(decoded), ExportData.class);
+			data = gson.fromJson(decompress(decoded), ExportData.class);
 		}
 		catch (IllegalArgumentException | JsonParseException | IOException ex)
 		{

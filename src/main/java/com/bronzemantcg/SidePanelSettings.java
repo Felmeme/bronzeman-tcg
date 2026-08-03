@@ -7,6 +7,7 @@ import static com.bronzemantcg.PanelComponents.row;
 import static com.bronzemantcg.PanelComponents.sectionBody;
 import static com.bronzemantcg.PanelComponents.styleHierarchyRow;
 
+import com.google.gson.Gson;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
@@ -58,12 +59,12 @@ final class SidePanelSettings
 	private final Set<String> expandedSections = new HashSet<>();
 	private boolean onboardingPending;
 
-	SidePanelSettings(BronzemanTcgConfig config, ConfigManager configManager,
+	SidePanelSettings(Gson gson, BronzemanTcgConfig config, ConfigManager configManager,
 		boolean onboardingPending, Runnable closeSettings)
 	{
 		this.config = config;
 		this.configManager = configManager;
-		this.settingsManager = new BronzemanSettingsManager(config, configManager);
+		this.settingsManager = new BronzemanSettingsManager(gson, config, configManager);
 		this.onboardingPending = onboardingPending;
 		this.closeSettings = closeSettings;
 		this.categories = buildCategories();

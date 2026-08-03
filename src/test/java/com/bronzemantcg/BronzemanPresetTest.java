@@ -15,6 +15,8 @@ import org.junit.Test;
 
 public class BronzemanPresetTest
 {
+	private static final com.google.gson.Gson GSON = new com.google.gson.Gson();
+
 	@Test
 	public void presetsCoverTheSameGameplaySettings()
 	{
@@ -105,7 +107,7 @@ public class BronzemanPresetTest
 			BronzemanPreset.TCG_LOCKED.getSettings());
 		settings.put("lootExemptNames", "Coins, Rune*");
 
-		String encoded = BronzemanSettingsManager.encodeSettings(settings);
+		String encoded = BronzemanSettingsManager.encodeSettings(GSON, settings);
 		assertTrue(encoded.startsWith(BronzemanSettingsManager.EXPORT_PREFIX));
 		String uncompressedJson = "{\"version\":1,\"settings\":"
 			+ new com.google.gson.Gson().toJson(BronzemanPreset.TCG_LOCKED.getSettings()) + "}";
@@ -113,7 +115,7 @@ public class BronzemanPresetTest
 			+ Base64.getUrlEncoder().withoutPadding().encodeToString(
 				uncompressedJson.getBytes(StandardCharsets.UTF_8));
 		assertTrue(encoded.length() < uncompressed.length());
-		Map<String, String> decoded = BronzemanSettingsManager.decodeSettings(encoded);
+		Map<String, String> decoded = BronzemanSettingsManager.decodeSettings(GSON, encoded);
 		assertEquals(BronzemanPreset.TCG_LOCKED.getSettings(), decoded);
 		assertFalse(decoded.containsKey("lootExemptNames"));
 	}
@@ -124,15 +126,15 @@ public class BronzemanPresetTest
 		Map<String, String> settings = new LinkedHashMap<>();
 		settings.put("bankingMode", BankingMode.FULL.name());
 		settings.put("futureSetting", "futureValue");
-		String encoded = BronzemanSettingsManager.encodeSettings(settings);
+		String encoded = BronzemanSettingsManager.encodeSettings(GSON, settings);
 		assertEquals(settings.get("bankingMode"),
-			BronzemanSettingsManager.decodeSettings(encoded).get("bankingMode"));
-		assertFalse(BronzemanSettingsManager.decodeSettings(encoded)
+			BronzemanSettingsManager.decodeSettings(GSON, encoded).get("bankingMode"));
+		assertFalse(BronzemanSettingsManager.decodeSettings(GSON, encoded)
 			.containsKey("futureSetting"));
 
 		Map<String, String> invalid = new LinkedHashMap<>();
 		invalid.put("bankingMode", "EVERYTHING");
 		assertThrows(IllegalArgumentException.class,
-			() -> BronzemanSettingsManager.encodeSettings(invalid));
+			() -> BronzemanSettingsManager.encodeSettings(GSON, invalid));
 	}
 }

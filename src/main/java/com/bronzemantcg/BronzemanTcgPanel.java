@@ -1,5 +1,6 @@
 package com.bronzemantcg;
 
+import com.google.gson.Gson;
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Color;
@@ -169,6 +170,7 @@ class BronzemanTcgPanel extends PluginPanel
 	private final Set<String> expandedImportantSubcategories = new HashSet<>();
 
 	BronzemanTcgPanel(
+			Gson gson,
 			TrackedMonsterCatalog monsterCatalog,
 			TrackedItemCatalog itemCatalog,
 			ResourceNodeCatalog nodeCatalog,
@@ -197,7 +199,7 @@ class BronzemanTcgPanel extends PluginPanel
 		this.config = config;
 		this.configManager = configManager;
 		this.executor = executor;
-		this.sidePanelSettings = new SidePanelSettings(config, configManager,
+		this.sidePanelSettings = new SidePanelSettings(gson, config, configManager,
 			presetOnboardingRequired, () -> selectContentTab(PanelTab.QUESTS));
 
 		JPanel questPanel = sectionBody();
