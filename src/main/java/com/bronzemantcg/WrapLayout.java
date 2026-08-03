@@ -14,14 +14,15 @@ import javax.swing.SwingUtilities;
  * a vertical BoxLayout (like the plugin panel) a wrapped second row gets clipped. This
  * variant measures the real wrapped height at the target width - used so the six panel tabs
  * can flow onto two rows at the fixed 225px width instead of being truncated.
- *
  * Adapted from Rob Camick's well-known public WrapLayout.
  */
 class WrapLayout extends FlowLayout
 {
-	WrapLayout(int align, int hgap, int vgap)
+	WrapLayout(int hgap, int vgap)
 	{
-		super(align, hgap, vgap);
+		// FlowLayout's no-argument constructor is centred by default.
+		setHgap(hgap);
+		setVgap(vgap);
 	}
 
 	@Override
@@ -43,6 +44,13 @@ class WrapLayout extends FlowLayout
 		synchronized (target.getTreeLock())
 		{
 			int targetWidth = target.getSize().width;
+			// A component restored after setVisible(false) may be measured before Swing has
+			// assigned its width again. Its parent still has the real sidebar width, so use
+			// that instead of incorrectly measuring every tab as one unwrapped row.
+			if (targetWidth == 0 && target.getParent() != null)
+			{
+				targetWidth = target.getParent().getWidth();
+			}
 			if (targetWidth == 0)
 			{
 				targetWidth = Integer.MAX_VALUE;

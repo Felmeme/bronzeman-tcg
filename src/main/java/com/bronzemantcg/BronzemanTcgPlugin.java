@@ -285,6 +285,7 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	private int apiQueryTicks = -1;
 	private volatile BronzemanTcgPanel panel;
 	private volatile NavigationButton navButton;
+	private boolean presetOnboardingRequired;
 	// Invalidates queued Swing startup work when the plugin is stopped or restarted
 	// before the EDT has had a chance to install the navigation panel.
 	private volatile long panelGeneration;
@@ -335,6 +336,9 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	@Override
 	protected void startUp()
 	{
+		// Check before the legacy migrations write their markers. That is how a genuinely
+		// fresh install is distinguished from an existing user upgrading this release.
+		presetOnboardingRequired = preparePresetOnboarding();
 		collectionReader.invalidate();
 		recentUnlocksTracker.reload();
 		// Nothing shared survives a restart of this plugin. Sources are asked to re-offer on the
@@ -430,7 +434,8 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 				importantUnlocksCatalog,
 				config,
 				configManager,
-				executor);
+				executor,
+				presetOnboardingRequired);
 		NavigationButton newNavButton = NavigationButton.builder()
 			.tooltip("Bronzeman TCG")
 			.icon(loadPanelIcon())
@@ -998,6 +1003,7 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 
 		if (BronzemanTcgConfig.GROUP.equals(event.getGroup()))
 		{
+			refreshVisibleSettings();
 			refreshVisiblePanel();
 		}
 	}
@@ -1257,6 +1263,22 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 			if (target.isShowing())
 			{
 				target.requestRefresh();
+			}
+		});
+	}
+
+	private void refreshVisibleSettings()
+	{
+		BronzemanTcgPanel target = panel;
+		if (target == null)
+		{
+			return;
+		}
+		SwingUtilities.invokeLater(() ->
+		{
+			if (target.isShowing())
+			{
+				target.onConfigChanged();
 			}
 		});
 	}
@@ -2971,6 +2993,40 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	 * preserving each player's effective behaviour. Same strict one-shot pattern as
 	 * migrateExemptList: flag first, so a mid-way crash can never re-run it.
 	 */
+	private boolean preparePresetOnboarding()
+	{
+		String complete = configManager.getConfiguration(BronzemanTcgConfig.GROUP,
+			"presetOnboardingComplete");
+		if (Boolean.parseBoolean(complete))
+		{
+			return false;
+		}
+		String pending = configManager.getConfiguration(BronzemanTcgConfig.GROUP,
+			"presetOnboardingPending");
+		if (Boolean.parseBoolean(pending))
+		{
+			return true;
+		}
+
+		String[] existingInstallMarkers = {
+			"npcVisibilityMigrated", "exemptListMigrated", "fishingModeMigrated",
+			"hunterModeMigrated"
+		};
+		for (String marker : existingInstallMarkers)
+		{
+			if (configManager.getConfiguration(BronzemanTcgConfig.GROUP, marker) != null)
+			{
+				configManager.setConfiguration(BronzemanTcgConfig.GROUP,
+					"presetOnboardingComplete", true);
+				return false;
+			}
+		}
+
+		configManager.setConfiguration(BronzemanTcgConfig.GROUP,
+			"presetOnboardingPending", true);
+		return true;
+	}
+
 	private void migrateNpcVisibility()
 	{
 		if (config.npcVisibilityMigrated())

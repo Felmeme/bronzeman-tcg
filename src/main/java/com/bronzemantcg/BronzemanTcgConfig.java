@@ -210,6 +210,32 @@ public interface BronzemanTcgConfig extends Config
 	}
 
 	@ConfigItem(
+		keyName = "presetOnboardingComplete",
+		name = "",
+		description = "",
+		hidden = true,
+		section = generalSettings,
+		position = 96
+	)
+	default boolean presetOnboardingComplete()
+	{
+		return false;
+	}
+
+	@ConfigItem(
+		keyName = "presetOnboardingPending",
+		name = "",
+		description = "",
+		hidden = true,
+		section = generalSettings,
+		position = 97
+	)
+	default boolean presetOnboardingPending()
+	{
+		return false;
+	}
+
+	@ConfigItem(
 		keyName = "groundItemsMode",
 		name = "Ground Items",
 		description = "'Require Card': hides options for picking up Ground Items"
