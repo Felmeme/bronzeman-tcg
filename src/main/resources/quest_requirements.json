@@ -1,0 +1,3682 @@
+{
+	"schema": 1,
+	"source": {
+		"provider": "osrs-wiki",
+		"fetched": "2026-08-03"
+	},
+	"quests": [
+		{
+			"name": "A Kingdom Divided",
+			"runeliteQuest": "A_KINGDOM_DIVIDED",
+			"skills": [
+				{
+					"skill": "AGILITY",
+					"level": 54
+				},
+				{
+					"skill": "THIEVING",
+					"level": 52
+				},
+				{
+					"skill": "WOODCUTTING",
+					"level": 52
+				},
+				{
+					"skill": "HERBLORE",
+					"level": 50
+				},
+				{
+					"skill": "MINING",
+					"level": 42
+				},
+				{
+					"skill": "CRAFTING",
+					"level": 38
+				},
+				{
+					"skill": "MAGIC",
+					"level": 35
+				}
+			],
+			"quests": [
+				{
+					"name": "The Depths of Despair",
+					"runeliteQuest": "THE_DEPTHS_OF_DESPAIR"
+				},
+				{
+					"name": "The Queen of Thieves",
+					"runeliteQuest": "THE_QUEEN_OF_THIEVES"
+				},
+				{
+					"name": "The Ascent of Arceuus",
+					"runeliteQuest": "THE_ASCENT_OF_ARCEUUS"
+				},
+				{
+					"name": "The Forsaken Tower",
+					"runeliteQuest": "THE_FORSAKEN_TOWER"
+				},
+				{
+					"name": "Tale of the Righteous",
+					"runeliteQuest": "TALE_OF_THE_RIGHTEOUS"
+				}
+			]
+		},
+		{
+			"name": "A Night at the Theatre",
+			"runeliteQuest": "A_NIGHT_AT_THE_THEATRE",
+			"quests": [
+				{
+					"name": "A Taste of Hope",
+					"runeliteQuest": "A_TASTE_OF_HOPE"
+				}
+			]
+		},
+		{
+			"name": "A Tail of Two Cats",
+			"runeliteQuest": "A_TAIL_OF_TWO_CATS",
+			"quests": [
+				{
+					"name": "Icthlarin's Little Helper",
+					"runeliteQuest": "ICTHLARINS_LITTLE_HELPER"
+				}
+			]
+		},
+		{
+			"name": "A Taste of Hope",
+			"runeliteQuest": "A_TASTE_OF_HOPE",
+			"skills": [
+				{
+					"skill": "CRAFTING",
+					"level": 48
+				},
+				{
+					"skill": "AGILITY",
+					"level": 45
+				},
+				{
+					"skill": "ATTACK",
+					"level": 40
+				},
+				{
+					"skill": "HERBLORE",
+					"level": 40
+				},
+				{
+					"skill": "SLAYER",
+					"level": 38
+				}
+			],
+			"quests": [
+				{
+					"name": "Darkness of Hallowvale",
+					"runeliteQuest": "DARKNESS_OF_HALLOWVALE"
+				}
+			]
+		},
+		{
+			"name": "Animal Magnetism",
+			"runeliteQuest": "ANIMAL_MAGNETISM",
+			"skills": [
+				{
+					"skill": "WOODCUTTING",
+					"level": 35
+				},
+				{
+					"skill": "RANGED",
+					"level": 30
+				},
+				{
+					"skill": "CRAFTING",
+					"level": 19
+				},
+				{
+					"skill": "SLAYER",
+					"level": 18
+				}
+			],
+			"quests": [
+				{
+					"name": "The Restless Ghost",
+					"runeliteQuest": "THE_RESTLESS_GHOST"
+				},
+				{
+					"name": "Ernest the Chicken",
+					"runeliteQuest": "ERNEST_THE_CHICKEN"
+				},
+				{
+					"name": "Priest in Peril",
+					"runeliteQuest": "PRIEST_IN_PERIL"
+				}
+			]
+		},
+		{
+			"name": "Another Slice of H.A.M.",
+			"runeliteQuest": "ANOTHER_SLICE_OF_HAM",
+			"skills": [
+				{
+					"skill": "PRAYER",
+					"level": 25
+				},
+				{
+					"skill": "ATTACK",
+					"level": 15
+				}
+			],
+			"quests": [
+				{
+					"name": "Death to the Dorgeshuun",
+					"runeliteQuest": "DEATH_TO_THE_DORGESHUUN"
+				},
+				{
+					"name": "The Giant Dwarf",
+					"runeliteQuest": "THE_GIANT_DWARF"
+				},
+				{
+					"name": "The Dig Site",
+					"runeliteQuest": "THE_DIG_SITE"
+				}
+			]
+		},
+		{
+			"name": "Architectural Alliance",
+			"skills": [
+				{
+					"skill": "MINING",
+					"level": 42
+				}
+			]
+		},
+		{
+			"name": "At First Light",
+			"runeliteQuest": "AT_FIRST_LIGHT",
+			"skills": [
+				{
+					"skill": "HUNTER",
+					"level": 46
+				},
+				{
+					"skill": "HERBLORE",
+					"level": 30
+				},
+				{
+					"skill": "CONSTRUCTION",
+					"level": 27
+				}
+			],
+			"quests": [
+				{
+					"name": "Children of the Sun",
+					"runeliteQuest": "CHILDREN_OF_THE_SUN"
+				},
+				{
+					"name": "Eagles' Peak",
+					"runeliteQuest": "EAGLES_PEAK"
+				}
+			]
+		},
+		{
+			"name": "Barbarian Training",
+			"runeliteQuest": "BARBARIAN_TRAINING",
+			"skills": [
+				{
+					"skill": "FISHING",
+					"level": 55
+				},
+				{
+					"skill": "FIREMAKING",
+					"level": 35
+				},
+				{
+					"skill": "STRENGTH",
+					"level": 35
+				},
+				{
+					"skill": "AGILITY",
+					"level": 15
+				},
+				{
+					"skill": "FARMING",
+					"level": 15
+				},
+				{
+					"skill": "CRAFTING",
+					"level": 11
+				},
+				{
+					"skill": "SMITHING",
+					"level": 5
+				},
+				{
+					"skill": "HERBLORE",
+					"level": 4
+				}
+			],
+			"quests": [
+				{
+					"name": "Tai Bwo Wannai Trio",
+					"runeliteQuest": "TAI_BWO_WANNAI_TRIO"
+				}
+			]
+		},
+		{
+			"name": "Below Ice Mountain",
+			"runeliteQuest": "BELOW_ICE_MOUNTAIN",
+			"questPoints": 16
+		},
+		{
+			"name": "Beneath Cursed Sands",
+			"runeliteQuest": "BENEATH_CURSED_SANDS",
+			"skills": [
+				{
+					"skill": "AGILITY",
+					"level": 62
+				},
+				{
+					"skill": "CRAFTING",
+					"level": 55
+				},
+				{
+					"skill": "FIREMAKING",
+					"level": 55
+				}
+			],
+			"quests": [
+				{
+					"name": "Contact!",
+					"runeliteQuest": "CONTACT"
+				}
+			]
+		},
+		{
+			"name": "Between a Rock...",
+			"runeliteQuest": "BETWEEN_A_ROCK",
+			"skills": [
+				{
+					"skill": "SMITHING",
+					"level": 50
+				},
+				{
+					"skill": "MINING",
+					"level": 40
+				},
+				{
+					"skill": "DEFENCE",
+					"level": 30
+				}
+			],
+			"quests": [
+				{
+					"name": "Dwarf Cannon",
+					"runeliteQuest": "DWARF_CANNON"
+				},
+				{
+					"name": "Fishing Contest",
+					"runeliteQuest": "FISHING_CONTEST"
+				}
+			]
+		},
+		{
+			"name": "Big Chompy Bird Hunting",
+			"runeliteQuest": "BIG_CHOMPY_BIRD_HUNTING",
+			"skills": [
+				{
+					"skill": "COOKING",
+					"level": 30
+				},
+				{
+					"skill": "RANGED",
+					"level": 30
+				},
+				{
+					"skill": "FLETCHING",
+					"level": 5
+				}
+			]
+		},
+		{
+			"name": "Biohazard",
+			"runeliteQuest": "BIOHAZARD",
+			"quests": [
+				{
+					"name": "Plague City",
+					"runeliteQuest": "PLAGUE_CITY"
+				}
+			]
+		},
+		{
+			"name": "Black Knights' Fortress",
+			"runeliteQuest": "BLACK_KNIGHTS_FORTRESS",
+			"questPoints": 12
+		},
+		{
+			"name": "Bone Voyage",
+			"runeliteQuest": "BONE_VOYAGE",
+			"quests": [
+				{
+					"name": "The Dig Site",
+					"runeliteQuest": "THE_DIG_SITE"
+				}
+			],
+			"other": [
+				"100 Kudos"
+			]
+		},
+		{
+			"name": "Cabin Fever",
+			"runeliteQuest": "CABIN_FEVER",
+			"skills": [
+				{
+					"skill": "SMITHING",
+					"level": 50
+				},
+				{
+					"skill": "CRAFTING",
+					"level": 45
+				},
+				{
+					"skill": "AGILITY",
+					"level": 42
+				},
+				{
+					"skill": "RANGED",
+					"level": 40
+				}
+			],
+			"quests": [
+				{
+					"name": "Pirate's Treasure",
+					"runeliteQuest": "PIRATES_TREASURE"
+				},
+				{
+					"name": "Rum Deal",
+					"runeliteQuest": "RUM_DEAL"
+				}
+			]
+		},
+		{
+			"name": "Client of Kourend",
+			"runeliteQuest": "CLIENT_OF_KOUREND",
+			"quests": [
+				{
+					"name": "X Marks the Spot",
+					"runeliteQuest": "X_MARKS_THE_SPOT"
+				}
+			]
+		},
+		{
+			"name": "Cold War",
+			"runeliteQuest": "COLD_WAR",
+			"skills": [
+				{
+					"skill": "CONSTRUCTION",
+					"level": 34
+				},
+				{
+					"skill": "AGILITY",
+					"level": 30
+				},
+				{
+					"skill": "CRAFTING",
+					"level": 30
+				},
+				{
+					"skill": "THIEVING",
+					"level": 15
+				},
+				{
+					"skill": "HUNTER",
+					"level": 10
+				}
+			],
+			"other": [
+				"Access to a crafting table 3"
+			]
+		},
+		{
+			"name": "Contact!",
+			"runeliteQuest": "CONTACT",
+			"quests": [
+				{
+					"name": "Prince Ali Rescue",
+					"runeliteQuest": "PRINCE_ALI_RESCUE"
+				},
+				{
+					"name": "Icthlarin's Little Helper",
+					"runeliteQuest": "ICTHLARINS_LITTLE_HELPER"
+				}
+			]
+		},
+		{
+			"name": "Creature of Fenkenstrain",
+			"runeliteQuest": "CREATURE_OF_FENKENSTRAIN",
+			"skills": [
+				{
+					"skill": "THIEVING",
+					"level": 25
+				},
+				{
+					"skill": "CRAFTING",
+					"level": 20
+				}
+			],
+			"quests": [
+				{
+					"name": "Priest in Peril",
+					"runeliteQuest": "PRIEST_IN_PERIL"
+				},
+				{
+					"name": "The Restless Ghost",
+					"runeliteQuest": "THE_RESTLESS_GHOST"
+				}
+			]
+		},
+		{
+			"name": "Current Affairs",
+			"runeliteQuest": "CURRENT_AFFAIRS",
+			"skills": [
+				{
+					"skill": "SAILING",
+					"level": 22
+				},
+				{
+					"skill": "FISHING",
+					"level": 10
+				}
+			],
+			"quests": [
+				{
+					"name": "Pandemonium",
+					"runeliteQuest": "PANDEMONIUM"
+				}
+			]
+		},
+		{
+			"name": "Curse of the Empty Lord",
+			"runeliteQuest": "CURSE_OF_THE_EMPTY_LORD",
+			"skills": [
+				{
+					"skill": "THIEVING",
+					"level": 53
+				},
+				{
+					"skill": "PRAYER",
+					"level": 31
+				}
+			],
+			"quests": [
+				{
+					"name": "Desert Treasure I",
+					"runeliteQuest": "DESERT_TREASURE_I"
+				},
+				{
+					"name": "The Restless Ghost",
+					"runeliteQuest": "THE_RESTLESS_GHOST"
+				}
+			]
+		},
+		{
+			"name": "Darkness of Hallowvale",
+			"runeliteQuest": "DARKNESS_OF_HALLOWVALE",
+			"skills": [
+				{
+					"skill": "STRENGTH",
+					"level": 40
+				},
+				{
+					"skill": "MAGIC",
+					"level": 33
+				},
+				{
+					"skill": "CRAFTING",
+					"level": 32
+				},
+				{
+					"skill": "AGILITY",
+					"level": 26
+				},
+				{
+					"skill": "THIEVING",
+					"level": 22
+				},
+				{
+					"skill": "MINING",
+					"level": 20
+				},
+				{
+					"skill": "CONSTRUCTION",
+					"level": 5
+				}
+			],
+			"quests": [
+				{
+					"name": "In Aid of the Myreque",
+					"runeliteQuest": "IN_AID_OF_THE_MYREQUE"
+				}
+			]
+		},
+		{
+			"name": "Death on the Isle",
+			"runeliteQuest": "DEATH_ON_THE_ISLE",
+			"skills": [
+				{
+					"skill": "THIEVING",
+					"level": 34
+				},
+				{
+					"skill": "AGILITY",
+					"level": 32
+				}
+			],
+			"quests": [
+				{
+					"name": "Children of the Sun",
+					"runeliteQuest": "CHILDREN_OF_THE_SUN"
+				}
+			]
+		},
+		{
+			"name": "Death to the Dorgeshuun",
+			"runeliteQuest": "DEATH_TO_THE_DORGESHUUN",
+			"skills": [
+				{
+					"skill": "AGILITY",
+					"level": 23
+				},
+				{
+					"skill": "THIEVING",
+					"level": 23
+				}
+			],
+			"quests": [
+				{
+					"name": "The Lost Tribe",
+					"runeliteQuest": "THE_LOST_TRIBE"
+				}
+			]
+		},
+		{
+			"name": "Defender of Varrock",
+			"runeliteQuest": "DEFENDER_OF_VARROCK",
+			"skills": [
+				{
+					"skill": "SMITHING",
+					"level": 55
+				},
+				{
+					"skill": "HUNTER",
+					"level": 52
+				}
+			],
+			"quests": [
+				{
+					"name": "Shield of Arrav",
+					"runeliteQuest": "SHIELD_OF_ARRAV"
+				},
+				{
+					"name": "Temple of Ikov",
+					"runeliteQuest": "TEMPLE_OF_IKOV"
+				},
+				{
+					"name": "Below Ice Mountain",
+					"runeliteQuest": "BELOW_ICE_MOUNTAIN"
+				},
+				{
+					"name": "Family Crest",
+					"runeliteQuest": "FAMILY_CREST"
+				},
+				{
+					"name": "Garden of Tranquillity",
+					"runeliteQuest": "GARDEN_OF_TRANQUILLITY"
+				},
+				{
+					"name": "What Lies Below",
+					"runeliteQuest": "WHAT_LIES_BELOW"
+				},
+				{
+					"name": "Romeo & Juliet",
+					"runeliteQuest": "ROMEO__JULIET"
+				},
+				{
+					"name": "Demon Slayer",
+					"runeliteQuest": "DEMON_SLAYER"
+				}
+			]
+		},
+		{
+			"name": "Desert Treasure I",
+			"runeliteQuest": "DESERT_TREASURE_I",
+			"skills": [
+				{
+					"skill": "THIEVING",
+					"level": 53
+				},
+				{
+					"skill": "FIREMAKING",
+					"level": 50
+				},
+				{
+					"skill": "MAGIC",
+					"level": 50
+				},
+				{
+					"skill": "SLAYER",
+					"level": 10
+				}
+			],
+			"quests": [
+				{
+					"name": "The Dig Site",
+					"runeliteQuest": "THE_DIG_SITE"
+				},
+				{
+					"name": "Temple of Ikov",
+					"runeliteQuest": "TEMPLE_OF_IKOV"
+				},
+				{
+					"name": "The Tourist Trap",
+					"runeliteQuest": "THE_TOURIST_TRAP"
+				},
+				{
+					"name": "Troll Stronghold",
+					"runeliteQuest": "TROLL_STRONGHOLD"
+				},
+				{
+					"name": "Priest in Peril",
+					"runeliteQuest": "PRIEST_IN_PERIL"
+				},
+				{
+					"name": "Waterfall Quest",
+					"runeliteQuest": "WATERFALL_QUEST"
+				},
+				{
+					"name": "Plague City",
+					"runeliteQuest": "PLAGUE_CITY"
+				}
+			]
+		},
+		{
+			"name": "Desert Treasure II - The Fallen Empire",
+			"runeliteQuest": "DESERT_TREASURE_II__THE_FALLEN_EMPIRE",
+			"skills": [
+				{
+					"skill": "FIREMAKING",
+					"level": 75
+				},
+				{
+					"skill": "MAGIC",
+					"level": 75
+				},
+				{
+					"skill": "THIEVING",
+					"level": 70
+				},
+				{
+					"skill": "HERBLORE",
+					"level": 62
+				},
+				{
+					"skill": "CONSTRUCTION",
+					"level": 60
+				},
+				{
+					"skill": "RUNECRAFT",
+					"level": 60
+				}
+			],
+			"quests": [
+				{
+					"name": "Desert Treasure I",
+					"runeliteQuest": "DESERT_TREASURE_I"
+				},
+				{
+					"name": "Secrets of the North",
+					"runeliteQuest": "SECRETS_OF_THE_NORTH"
+				},
+				{
+					"name": "Enakhra's Lament",
+					"runeliteQuest": "ENAKHRAS_LAMENT"
+				},
+				{
+					"name": "Temple of the Eye",
+					"runeliteQuest": "TEMPLE_OF_THE_EYE"
+				},
+				{
+					"name": "The Garden of Death",
+					"runeliteQuest": "THE_GARDEN_OF_DEATH"
+				},
+				{
+					"name": "Below Ice Mountain",
+					"runeliteQuest": "BELOW_ICE_MOUNTAIN"
+				},
+				{
+					"name": "His Faithful Servants",
+					"runeliteQuest": "HIS_FAITHFUL_SERVANTS"
+				}
+			]
+		},
+		{
+			"name": "Devious Minds",
+			"runeliteQuest": "DEVIOUS_MINDS",
+			"skills": [
+				{
+					"skill": "SMITHING",
+					"level": 65
+				},
+				{
+					"skill": "FLETCHING",
+					"level": 50
+				},
+				{
+					"skill": "RUNECRAFT",
+					"level": 50
+				}
+			],
+			"quests": [
+				{
+					"name": "Wanted!",
+					"runeliteQuest": "WANTED"
+				},
+				{
+					"name": "Troll Stronghold",
+					"runeliteQuest": "TROLL_STRONGHOLD"
+				},
+				{
+					"name": "Doric's Quest",
+					"runeliteQuest": "DORICS_QUEST"
+				}
+			]
+		},
+		{
+			"name": "Dragon Slayer I",
+			"runeliteQuest": "DRAGON_SLAYER_I",
+			"questPoints": 32
+		},
+		{
+			"name": "Dragon Slayer II",
+			"runeliteQuest": "DRAGON_SLAYER_II",
+			"skills": [
+				{
+					"skill": "MAGIC",
+					"level": 75
+				},
+				{
+					"skill": "SMITHING",
+					"level": 70
+				},
+				{
+					"skill": "MINING",
+					"level": 68
+				},
+				{
+					"skill": "CRAFTING",
+					"level": 62
+				},
+				{
+					"skill": "AGILITY",
+					"level": 60
+				},
+				{
+					"skill": "THIEVING",
+					"level": 60
+				},
+				{
+					"skill": "CONSTRUCTION",
+					"level": 50
+				},
+				{
+					"skill": "HITPOINTS",
+					"level": 50
+				}
+			],
+			"quests": [
+				{
+					"name": "Legends' Quest",
+					"runeliteQuest": "LEGENDS_QUEST"
+				},
+				{
+					"name": "Dream Mentor",
+					"runeliteQuest": "DREAM_MENTOR"
+				},
+				{
+					"name": "A Tail of Two Cats",
+					"runeliteQuest": "A_TAIL_OF_TWO_CATS"
+				},
+				{
+					"name": "Animal Magnetism",
+					"runeliteQuest": "ANIMAL_MAGNETISM"
+				},
+				{
+					"name": "Ghosts Ahoy",
+					"runeliteQuest": "GHOSTS_AHOY"
+				},
+				{
+					"name": "Bone Voyage",
+					"runeliteQuest": "BONE_VOYAGE"
+				},
+				{
+					"name": "Client of Kourend",
+					"runeliteQuest": "CLIENT_OF_KOUREND"
+				},
+				{
+					"name": "Barbarian Training",
+					"runeliteQuest": "BARBARIAN_TRAINING"
+				}
+			],
+			"questPoints": 200
+		},
+		{
+			"name": "Dream Mentor",
+			"runeliteQuest": "DREAM_MENTOR",
+			"quests": [
+				{
+					"name": "Lunar Diplomacy",
+					"runeliteQuest": "LUNAR_DIPLOMACY"
+				},
+				{
+					"name": "Eadgar's Ruse",
+					"runeliteQuest": "EADGARS_RUSE"
+				}
+			]
+		},
+		{
+			"name": "Eadgar's Ruse",
+			"runeliteQuest": "EADGARS_RUSE",
+			"skills": [
+				{
+					"skill": "HERBLORE",
+					"level": 31
+				}
+			],
+			"quests": [
+				{
+					"name": "Druidic Ritual",
+					"runeliteQuest": "DRUIDIC_RITUAL"
+				},
+				{
+					"name": "Troll Stronghold",
+					"runeliteQuest": "TROLL_STRONGHOLD"
+				}
+			]
+		},
+		{
+			"name": "Eagles' Peak",
+			"runeliteQuest": "EAGLES_PEAK",
+			"skills": [
+				{
+					"skill": "HUNTER",
+					"level": 27
+				}
+			]
+		},
+		{
+			"name": "Elemental Workshop I",
+			"runeliteQuest": "ELEMENTAL_WORKSHOP_I",
+			"skills": [
+				{
+					"skill": "CRAFTING",
+					"level": 20
+				},
+				{
+					"skill": "MINING",
+					"level": 20
+				},
+				{
+					"skill": "SMITHING",
+					"level": 20
+				}
+			]
+		},
+		{
+			"name": "Elemental Workshop II",
+			"runeliteQuest": "ELEMENTAL_WORKSHOP_II",
+			"skills": [
+				{
+					"skill": "SMITHING",
+					"level": 30
+				},
+				{
+					"skill": "MAGIC",
+					"level": 20
+				}
+			],
+			"quests": [
+				{
+					"name": "Elemental Workshop I",
+					"runeliteQuest": "ELEMENTAL_WORKSHOP_I"
+				}
+			]
+		},
+		{
+			"name": "Enakhra's Lament",
+			"runeliteQuest": "ENAKHRAS_LAMENT",
+			"skills": [
+				{
+					"skill": "CRAFTING",
+					"level": 50
+				},
+				{
+					"skill": "FIREMAKING",
+					"level": 45
+				},
+				{
+					"skill": "PRAYER",
+					"level": 43
+				},
+				{
+					"skill": "MAGIC",
+					"level": 39
+				}
+			]
+		},
+		{
+			"name": "Enlightened Journey",
+			"runeliteQuest": "ENLIGHTENED_JOURNEY",
+			"skills": [
+				{
+					"skill": "CRAFTING",
+					"level": 36
+				},
+				{
+					"skill": "FARMING",
+					"level": 30
+				},
+				{
+					"skill": "FIREMAKING",
+					"level": 20
+				}
+			],
+			"questPoints": 20
+		},
+		{
+			"name": "Enter the Abyss",
+			"runeliteQuest": "ENTER_THE_ABYSS",
+			"quests": [
+				{
+					"name": "Rune Mysteries",
+					"runeliteQuest": "RUNE_MYSTERIES"
+				}
+			]
+		},
+		{
+			"name": "Ethically Acquired Antiquities",
+			"runeliteQuest": "ETHICALLY_ACQUIRED_ANTIQUITIES",
+			"skills": [
+				{
+					"skill": "THIEVING",
+					"level": 25
+				}
+			],
+			"quests": [
+				{
+					"name": "Children of the Sun",
+					"runeliteQuest": "CHILDREN_OF_THE_SUN"
+				},
+				{
+					"name": "Shield of Arrav",
+					"runeliteQuest": "SHIELD_OF_ARRAV"
+				}
+			]
+		},
+		{
+			"name": "Fairytale I - Growing Pains",
+			"runeliteQuest": "FAIRYTALE_I__GROWING_PAINS",
+			"quests": [
+				{
+					"name": "Lost City",
+					"runeliteQuest": "LOST_CITY"
+				},
+				{
+					"name": "Nature Spirit",
+					"runeliteQuest": "NATURE_SPIRIT"
+				}
+			]
+		},
+		{
+			"name": "Fairytale II - Cure a Queen",
+			"runeliteQuest": "FAIRYTALE_II__CURE_A_QUEEN",
+			"skills": [
+				{
+					"skill": "HERBLORE",
+					"level": 57
+				},
+				{
+					"skill": "FARMING",
+					"level": 49
+				},
+				{
+					"skill": "THIEVING",
+					"level": 40
+				}
+			],
+			"quests": [
+				{
+					"name": "Fairytale I - Growing Pains",
+					"runeliteQuest": "FAIRYTALE_I__GROWING_PAINS"
+				}
+			]
+		},
+		{
+			"name": "Family Crest",
+			"runeliteQuest": "FAMILY_CREST",
+			"skills": [
+				{
+					"skill": "MAGIC",
+					"level": 59
+				},
+				{
+					"skill": "CRAFTING",
+					"level": 40
+				},
+				{
+					"skill": "MINING",
+					"level": 40
+				},
+				{
+					"skill": "SMITHING",
+					"level": 40
+				}
+			]
+		},
+		{
+			"name": "Family Pest",
+			"runeliteQuest": "FAMILY_PEST",
+			"quests": [
+				{
+					"name": "Family Crest",
+					"runeliteQuest": "FAMILY_CREST"
+				}
+			]
+		},
+		{
+			"name": "Fishing Contest",
+			"runeliteQuest": "FISHING_CONTEST",
+			"skills": [
+				{
+					"skill": "FISHING",
+					"level": 10
+				}
+			]
+		},
+		{
+			"name": "Forgettable Tale...",
+			"runeliteQuest": "FORGETTABLE_TALE",
+			"skills": [
+				{
+					"skill": "COOKING",
+					"level": 22
+				},
+				{
+					"skill": "FARMING",
+					"level": 17
+				}
+			],
+			"quests": [
+				{
+					"name": "The Giant Dwarf",
+					"runeliteQuest": "THE_GIANT_DWARF"
+				},
+				{
+					"name": "Fishing Contest",
+					"runeliteQuest": "FISHING_CONTEST"
+				}
+			]
+		},
+		{
+			"name": "Garden of Tranquillity",
+			"runeliteQuest": "GARDEN_OF_TRANQUILLITY",
+			"skills": [
+				{
+					"skill": "FARMING",
+					"level": 25
+				}
+			],
+			"quests": [
+				{
+					"name": "Creature of Fenkenstrain",
+					"runeliteQuest": "CREATURE_OF_FENKENSTRAIN"
+				}
+			]
+		},
+		{
+			"name": "Getting Ahead",
+			"runeliteQuest": "GETTING_AHEAD",
+			"skills": [
+				{
+					"skill": "CRAFTING",
+					"level": 30
+				},
+				{
+					"skill": "CONSTRUCTION",
+					"level": 26
+				}
+			]
+		},
+		{
+			"name": "Ghosts Ahoy",
+			"runeliteQuest": "GHOSTS_AHOY",
+			"skills": [
+				{
+					"skill": "AGILITY",
+					"level": 25
+				},
+				{
+					"skill": "COOKING",
+					"level": 20
+				}
+			],
+			"quests": [
+				{
+					"name": "Priest in Peril",
+					"runeliteQuest": "PRIEST_IN_PERIL"
+				},
+				{
+					"name": "The Restless Ghost",
+					"runeliteQuest": "THE_RESTLESS_GHOST"
+				}
+			]
+		},
+		{
+			"name": "Grim Tales",
+			"runeliteQuest": "GRIM_TALES",
+			"skills": [
+				{
+					"skill": "WOODCUTTING",
+					"level": 71
+				},
+				{
+					"skill": "AGILITY",
+					"level": 59
+				},
+				{
+					"skill": "THIEVING",
+					"level": 58
+				},
+				{
+					"skill": "HERBLORE",
+					"level": 52
+				},
+				{
+					"skill": "FARMING",
+					"level": 45
+				}
+			],
+			"quests": [
+				{
+					"name": "Witch's House",
+					"runeliteQuest": "WITCHS_HOUSE"
+				}
+			]
+		},
+		{
+			"name": "Haunted Mine",
+			"runeliteQuest": "HAUNTED_MINE",
+			"skills": [
+				{
+					"skill": "CRAFTING",
+					"level": 35
+				}
+			],
+			"quests": [
+				{
+					"name": "Priest in Peril",
+					"runeliteQuest": "PRIEST_IN_PERIL"
+				}
+			]
+		},
+		{
+			"name": "Heroes' Quest",
+			"runeliteQuest": "HEROES_QUEST",
+			"skills": [
+				{
+					"skill": "COOKING",
+					"level": 53
+				},
+				{
+					"skill": "FISHING",
+					"level": 53
+				},
+				{
+					"skill": "MINING",
+					"level": 50
+				},
+				{
+					"skill": "HERBLORE",
+					"level": 25
+				}
+			],
+			"quests": [
+				{
+					"name": "Shield of Arrav",
+					"runeliteQuest": "SHIELD_OF_ARRAV"
+				},
+				{
+					"name": "Lost City",
+					"runeliteQuest": "LOST_CITY"
+				},
+				{
+					"name": "Merlin's Crystal",
+					"runeliteQuest": "MERLINS_CRYSTAL"
+				},
+				{
+					"name": "Dragon Slayer I",
+					"runeliteQuest": "DRAGON_SLAYER_I"
+				}
+			],
+			"questPoints": 55
+		},
+		{
+			"name": "His Faithful Servants",
+			"runeliteQuest": "HIS_FAITHFUL_SERVANTS",
+			"quests": [
+				{
+					"name": "Priest in Peril",
+					"runeliteQuest": "PRIEST_IN_PERIL"
+				}
+			]
+		},
+		{
+			"name": "Holy Grail",
+			"runeliteQuest": "HOLY_GRAIL",
+			"skills": [
+				{
+					"skill": "ATTACK",
+					"level": 20
+				}
+			],
+			"quests": [
+				{
+					"name": "Merlin's Crystal",
+					"runeliteQuest": "MERLINS_CRYSTAL"
+				}
+			]
+		},
+		{
+			"name": "Hopespear's Will",
+			"runeliteQuest": "HOPESPEARS_WILL",
+			"skills": [
+				{
+					"skill": "PRAYER",
+					"level": 50
+				}
+			],
+			"quests": [
+				{
+					"name": "The Restless Ghost",
+					"runeliteQuest": "THE_RESTLESS_GHOST"
+				},
+				{
+					"name": "Desert Treasure I",
+					"runeliteQuest": "DESERT_TREASURE_I"
+				},
+				{
+					"name": "Fairytale II - Cure a Queen",
+					"runeliteQuest": "FAIRYTALE_II__CURE_A_QUEEN"
+				},
+				{
+					"name": "Land of the Goblins",
+					"runeliteQuest": "LAND_OF_THE_GOBLINS"
+				}
+			]
+		},
+		{
+			"name": "Horror from the Deep",
+			"runeliteQuest": "HORROR_FROM_THE_DEEP",
+			"skills": [
+				{
+					"skill": "AGILITY",
+					"level": 35
+				}
+			],
+			"quests": [
+				{
+					"name": "Alfred Grimhand's Barcrawl",
+					"runeliteQuest": "ALFRED_GRIMHANDS_BARCRAWL"
+				}
+			]
+		},
+		{
+			"name": "Icthlarin's Little Helper",
+			"runeliteQuest": "ICTHLARINS_LITTLE_HELPER",
+			"quests": [
+				{
+					"name": "Gertrude's Cat",
+					"runeliteQuest": "GERTRUDES_CAT"
+				}
+			]
+		},
+		{
+			"name": "In Aid of the Myreque",
+			"runeliteQuest": "IN_AID_OF_THE_MYREQUE",
+			"skills": [
+				{
+					"skill": "AGILITY",
+					"level": 25
+				},
+				{
+					"skill": "CRAFTING",
+					"level": 25
+				},
+				{
+					"skill": "MINING",
+					"level": 15
+				},
+				{
+					"skill": "MAGIC",
+					"level": 7
+				}
+			],
+			"quests": [
+				{
+					"name": "In Search of the Myreque",
+					"runeliteQuest": "IN_SEARCH_OF_THE_MYREQUE"
+				}
+			]
+		},
+		{
+			"name": "In Search of the Myreque",
+			"runeliteQuest": "IN_SEARCH_OF_THE_MYREQUE",
+			"skills": [
+				{
+					"skill": "AGILITY",
+					"level": 25
+				}
+			],
+			"quests": [
+				{
+					"name": "Nature Spirit",
+					"runeliteQuest": "NATURE_SPIRIT"
+				}
+			]
+		},
+		{
+			"name": "Into the Tombs",
+			"runeliteQuest": "INTO_THE_TOMBS",
+			"quests": [
+				{
+					"name": "Beneath Cursed Sands",
+					"runeliteQuest": "BENEATH_CURSED_SANDS"
+				}
+			]
+		},
+		{
+			"name": "Jungle Potion",
+			"runeliteQuest": "JUNGLE_POTION",
+			"skills": [
+				{
+					"skill": "HERBLORE",
+					"level": 3
+				}
+			],
+			"quests": [
+				{
+					"name": "Druidic Ritual",
+					"runeliteQuest": "DRUIDIC_RITUAL"
+				}
+			]
+		},
+		{
+			"name": "King's Ransom",
+			"runeliteQuest": "KINGS_RANSOM",
+			"skills": [
+				{
+					"skill": "DEFENCE",
+					"level": 65
+				},
+				{
+					"skill": "MAGIC",
+					"level": 45
+				}
+			],
+			"quests": [
+				{
+					"name": "Black Knights' Fortress",
+					"runeliteQuest": "BLACK_KNIGHTS_FORTRESS"
+				},
+				{
+					"name": "Holy Grail",
+					"runeliteQuest": "HOLY_GRAIL"
+				},
+				{
+					"name": "Murder Mystery",
+					"runeliteQuest": "MURDER_MYSTERY"
+				},
+				{
+					"name": "One Small Favour",
+					"runeliteQuest": "ONE_SMALL_FAVOUR"
+				}
+			]
+		},
+		{
+			"name": "Lair of Tarn Razorlor",
+			"runeliteQuest": "LAIR_OF_TARN_RAZORLOR",
+			"skills": [
+				{
+					"skill": "SLAYER",
+					"level": 40
+				}
+			],
+			"quests": [
+				{
+					"name": "Haunted Mine",
+					"runeliteQuest": "HAUNTED_MINE"
+				}
+			]
+		},
+		{
+			"name": "Land of the Goblins",
+			"runeliteQuest": "LAND_OF_THE_GOBLINS",
+			"skills": [
+				{
+					"skill": "HERBLORE",
+					"level": 48
+				},
+				{
+					"skill": "THIEVING",
+					"level": 45
+				},
+				{
+					"skill": "FISHING",
+					"level": 40
+				},
+				{
+					"skill": "AGILITY",
+					"level": 38
+				}
+			],
+			"quests": [
+				{
+					"name": "Another Slice of H.A.M.",
+					"runeliteQuest": "ANOTHER_SLICE_OF_HAM"
+				},
+				{
+					"name": "Fishing Contest",
+					"runeliteQuest": "FISHING_CONTEST"
+				}
+			]
+		},
+		{
+			"name": "Legends' Quest",
+			"runeliteQuest": "LEGENDS_QUEST",
+			"skills": [
+				{
+					"skill": "MAGIC",
+					"level": 56
+				},
+				{
+					"skill": "MINING",
+					"level": 52
+				},
+				{
+					"skill": "AGILITY",
+					"level": 50
+				},
+				{
+					"skill": "CRAFTING",
+					"level": 50
+				},
+				{
+					"skill": "SMITHING",
+					"level": 50
+				},
+				{
+					"skill": "STRENGTH",
+					"level": 50
+				},
+				{
+					"skill": "THIEVING",
+					"level": 50
+				},
+				{
+					"skill": "WOODCUTTING",
+					"level": 50
+				},
+				{
+					"skill": "HERBLORE",
+					"level": 45
+				},
+				{
+					"skill": "PRAYER",
+					"level": 42
+				}
+			],
+			"quests": [
+				{
+					"name": "Family Crest",
+					"runeliteQuest": "FAMILY_CREST"
+				},
+				{
+					"name": "Heroes' Quest",
+					"runeliteQuest": "HEROES_QUEST"
+				},
+				{
+					"name": "Shilo Village",
+					"runeliteQuest": "SHILO_VILLAGE"
+				},
+				{
+					"name": "Underground Pass",
+					"runeliteQuest": "UNDERGROUND_PASS"
+				},
+				{
+					"name": "Waterfall Quest",
+					"runeliteQuest": "WATERFALL_QUEST"
+				}
+			],
+			"questPoints": 107
+		},
+		{
+			"name": "Lost City",
+			"runeliteQuest": "LOST_CITY",
+			"skills": [
+				{
+					"skill": "WOODCUTTING",
+					"level": 36
+				},
+				{
+					"skill": "CRAFTING",
+					"level": 31
+				}
+			]
+		},
+		{
+			"name": "Lunar Diplomacy",
+			"runeliteQuest": "LUNAR_DIPLOMACY",
+			"skills": [
+				{
+					"skill": "MAGIC",
+					"level": 65
+				},
+				{
+					"skill": "CRAFTING",
+					"level": 61
+				},
+				{
+					"skill": "MINING",
+					"level": 60
+				},
+				{
+					"skill": "WOODCUTTING",
+					"level": 55
+				},
+				{
+					"skill": "FIREMAKING",
+					"level": 49
+				},
+				{
+					"skill": "DEFENCE",
+					"level": 40
+				},
+				{
+					"skill": "HERBLORE",
+					"level": 5
+				}
+			],
+			"quests": [
+				{
+					"name": "The Fremennik Trials",
+					"runeliteQuest": "THE_FREMENNIK_TRIALS"
+				},
+				{
+					"name": "Lost City",
+					"runeliteQuest": "LOST_CITY"
+				},
+				{
+					"name": "Rune Mysteries",
+					"runeliteQuest": "RUNE_MYSTERIES"
+				},
+				{
+					"name": "Shilo Village",
+					"runeliteQuest": "SHILO_VILLAGE"
+				}
+			]
+		},
+		{
+			"name": "Mage Arena I",
+			"runeliteQuest": "MAGE_ARENA_I",
+			"skills": [
+				{
+					"skill": "MAGIC",
+					"level": 60
+				}
+			]
+		},
+		{
+			"name": "Mage Arena II",
+			"runeliteQuest": "MAGE_ARENA_II",
+			"skills": [
+				{
+					"skill": "MAGIC",
+					"level": 75
+				}
+			],
+			"quests": [
+				{
+					"name": "Mage Arena I",
+					"runeliteQuest": "MAGE_ARENA_I"
+				}
+			],
+			"other": [
+				"100 casts each of Claws of Guthix, Flames of Zamorak and Saradomin Strike"
+			]
+		},
+		{
+			"name": "Making Friends with My Arm",
+			"runeliteQuest": "MAKING_FRIENDS_WITH_MY_ARM",
+			"skills": [
+				{
+					"skill": "MINING",
+					"level": 72
+				},
+				{
+					"skill": "AGILITY",
+					"level": 68
+				},
+				{
+					"skill": "FIREMAKING",
+					"level": 66
+				},
+				{
+					"skill": "CONSTRUCTION",
+					"level": 35
+				}
+			],
+			"quests": [
+				{
+					"name": "My Arm's Big Adventure",
+					"runeliteQuest": "MY_ARMS_BIG_ADVENTURE"
+				},
+				{
+					"name": "Swan Song",
+					"runeliteQuest": "SWAN_SONG"
+				},
+				{
+					"name": "Cold War",
+					"runeliteQuest": "COLD_WAR"
+				},
+				{
+					"name": "Romeo & Juliet",
+					"runeliteQuest": "ROMEO__JULIET"
+				}
+			]
+		},
+		{
+			"name": "Making History",
+			"runeliteQuest": "MAKING_HISTORY",
+			"quests": [
+				{
+					"name": "Priest in Peril",
+					"runeliteQuest": "PRIEST_IN_PERIL"
+				},
+				{
+					"name": "The Restless Ghost",
+					"runeliteQuest": "THE_RESTLESS_GHOST"
+				}
+			]
+		},
+		{
+			"name": "Meat and Greet",
+			"runeliteQuest": "MEAT_AND_GREET",
+			"quests": [
+				{
+					"name": "Children of the Sun",
+					"runeliteQuest": "CHILDREN_OF_THE_SUN"
+				}
+			]
+		},
+		{
+			"name": "Monkey Madness I",
+			"runeliteQuest": "MONKEY_MADNESS_I",
+			"quests": [
+				{
+					"name": "The Grand Tree",
+					"runeliteQuest": "THE_GRAND_TREE"
+				},
+				{
+					"name": "Tree Gnome Village",
+					"runeliteQuest": "TREE_GNOME_VILLAGE"
+				}
+			]
+		},
+		{
+			"name": "Monkey Madness II",
+			"runeliteQuest": "MONKEY_MADNESS_II",
+			"skills": [
+				{
+					"skill": "CRAFTING",
+					"level": 70
+				},
+				{
+					"skill": "SLAYER",
+					"level": 69
+				},
+				{
+					"skill": "FIREMAKING",
+					"level": 60
+				},
+				{
+					"skill": "HUNTER",
+					"level": 60
+				},
+				{
+					"skill": "AGILITY",
+					"level": 55
+				},
+				{
+					"skill": "THIEVING",
+					"level": 55
+				}
+			],
+			"quests": [
+				{
+					"name": "Enlightened Journey",
+					"runeliteQuest": "ENLIGHTENED_JOURNEY"
+				},
+				{
+					"name": "The Eyes of Glouphrie",
+					"runeliteQuest": "THE_EYES_OF_GLOUPHRIE"
+				},
+				{
+					"name": "Recipe for Disaster - King Awowogei",
+					"runeliteQuest": "RECIPE_FOR_DISASTER__KING_AWOWOGEI"
+				},
+				{
+					"name": "Troll Stronghold",
+					"runeliteQuest": "TROLL_STRONGHOLD"
+				},
+				{
+					"name": "Watchtower",
+					"runeliteQuest": "WATCHTOWER"
+				}
+			]
+		},
+		{
+			"name": "Mountain Daughter",
+			"runeliteQuest": "MOUNTAIN_DAUGHTER",
+			"skills": [
+				{
+					"skill": "AGILITY",
+					"level": 20
+				}
+			]
+		},
+		{
+			"name": "Mourning's End Part I",
+			"runeliteQuest": "MOURNINGS_END_PART_I",
+			"skills": [
+				{
+					"skill": "RANGED",
+					"level": 60
+				},
+				{
+					"skill": "THIEVING",
+					"level": 50
+				}
+			],
+			"quests": [
+				{
+					"name": "Roving Elves",
+					"runeliteQuest": "ROVING_ELVES"
+				},
+				{
+					"name": "Big Chompy Bird Hunting",
+					"runeliteQuest": "BIG_CHOMPY_BIRD_HUNTING"
+				},
+				{
+					"name": "Sheep Herder",
+					"runeliteQuest": "SHEEP_HERDER"
+				}
+			]
+		},
+		{
+			"name": "Mourning's End Part II",
+			"runeliteQuest": "MOURNINGS_END_PART_II",
+			"quests": [
+				{
+					"name": "Mourning's End Part I",
+					"runeliteQuest": "MOURNINGS_END_PART_I"
+				}
+			]
+		},
+		{
+			"name": "My Arm's Big Adventure",
+			"runeliteQuest": "MY_ARMS_BIG_ADVENTURE",
+			"skills": [
+				{
+					"skill": "FARMING",
+					"level": 29
+				},
+				{
+					"skill": "WOODCUTTING",
+					"level": 10
+				}
+			],
+			"quests": [
+				{
+					"name": "Eadgar's Ruse",
+					"runeliteQuest": "EADGARS_RUSE"
+				},
+				{
+					"name": "The Feud",
+					"runeliteQuest": "THE_FEUD"
+				},
+				{
+					"name": "Jungle Potion",
+					"runeliteQuest": "JUNGLE_POTION"
+				}
+			],
+			"other": [
+				"60% Tai Bwo Wannai Cleanup favour"
+			]
+		},
+		{
+			"name": "Nature Spirit",
+			"runeliteQuest": "NATURE_SPIRIT",
+			"quests": [
+				{
+					"name": "Priest in Peril",
+					"runeliteQuest": "PRIEST_IN_PERIL"
+				},
+				{
+					"name": "The Restless Ghost",
+					"runeliteQuest": "THE_RESTLESS_GHOST"
+				}
+			]
+		},
+		{
+			"name": "Olaf's Quest",
+			"runeliteQuest": "OLAFS_QUEST",
+			"skills": [
+				{
+					"skill": "WOODCUTTING",
+					"level": 50
+				},
+				{
+					"skill": "FIREMAKING",
+					"level": 40
+				}
+			],
+			"quests": [
+				{
+					"name": "The Fremennik Trials",
+					"runeliteQuest": "THE_FREMENNIK_TRIALS"
+				}
+			]
+		},
+		{
+			"name": "One Small Favour",
+			"runeliteQuest": "ONE_SMALL_FAVOUR",
+			"skills": [
+				{
+					"skill": "AGILITY",
+					"level": 36
+				},
+				{
+					"skill": "SMITHING",
+					"level": 30
+				},
+				{
+					"skill": "CRAFTING",
+					"level": 25
+				},
+				{
+					"skill": "HERBLORE",
+					"level": 18
+				}
+			],
+			"quests": [
+				{
+					"name": "Rune Mysteries",
+					"runeliteQuest": "RUNE_MYSTERIES"
+				},
+				{
+					"name": "Shilo Village",
+					"runeliteQuest": "SHILO_VILLAGE"
+				}
+			]
+		},
+		{
+			"name": "Perilous Moons",
+			"runeliteQuest": "PERILOUS_MOONS",
+			"skills": [
+				{
+					"skill": "SLAYER",
+					"level": 48
+				},
+				{
+					"skill": "FISHING",
+					"level": 20
+				},
+				{
+					"skill": "HUNTER",
+					"level": 20
+				},
+				{
+					"skill": "RUNECRAFT",
+					"level": 20
+				},
+				{
+					"skill": "CONSTRUCTION",
+					"level": 10
+				}
+			],
+			"quests": [
+				{
+					"name": "Twilight's Promise",
+					"runeliteQuest": "TWILIGHTS_PROMISE"
+				}
+			]
+		},
+		{
+			"name": "Prying Times",
+			"runeliteQuest": "PRYING_TIMES",
+			"skills": [
+				{
+					"skill": "SMITHING",
+					"level": 30
+				},
+				{
+					"skill": "SAILING",
+					"level": 12
+				}
+			],
+			"quests": [
+				{
+					"name": "Pandemonium",
+					"runeliteQuest": "PANDEMONIUM"
+				},
+				{
+					"name": "The Knight's Sword",
+					"runeliteQuest": "THE_KNIGHTS_SWORD"
+				}
+			]
+		},
+		{
+			"name": "Rag and Bone Man II",
+			"runeliteQuest": "RAG_AND_BONE_MAN_II",
+			"skills": [
+				{
+					"skill": "SLAYER",
+					"level": 40
+				},
+				{
+					"skill": "DEFENCE",
+					"level": 20
+				}
+			],
+			"quests": [
+				{
+					"name": "Rag and Bone Man I",
+					"runeliteQuest": "RAG_AND_BONE_MAN_I"
+				},
+				{
+					"name": "Skippy and the Mogres",
+					"runeliteQuest": "SKIPPY_AND_THE_MOGRES"
+				},
+				{
+					"name": "Horror from the Deep",
+					"runeliteQuest": "HORROR_FROM_THE_DEEP"
+				},
+				{
+					"name": "The Fremennik Trials",
+					"runeliteQuest": "THE_FREMENNIK_TRIALS"
+				},
+				{
+					"name": "Creature of Fenkenstrain",
+					"runeliteQuest": "CREATURE_OF_FENKENSTRAIN"
+				},
+				{
+					"name": "Waterfall Quest",
+					"runeliteQuest": "WATERFALL_QUEST"
+				}
+			]
+		},
+		{
+			"name": "Ratcatchers",
+			"runeliteQuest": "RATCATCHERS",
+			"quests": [
+				{
+					"name": "Icthlarin's Little Helper",
+					"runeliteQuest": "ICTHLARINS_LITTLE_HELPER"
+				}
+			],
+			"other": [
+				"Access to Keldagrim (via The Giant Dwarf)"
+			]
+		},
+		{
+			"name": "Recipe for Disaster",
+			"runeliteQuest": "RECIPE_FOR_DISASTER",
+			"skills": [
+				{
+					"skill": "COOKING",
+					"level": 70
+				},
+				{
+					"skill": "MAGIC",
+					"level": 59
+				},
+				{
+					"skill": "FISHING",
+					"level": 53
+				},
+				{
+					"skill": "THIEVING",
+					"level": 53
+				},
+				{
+					"skill": "FIREMAKING",
+					"level": 50
+				},
+				{
+					"skill": "MINING",
+					"level": 50
+				},
+				{
+					"skill": "AGILITY",
+					"level": 48
+				},
+				{
+					"skill": "CRAFTING",
+					"level": 40
+				},
+				{
+					"skill": "RANGED",
+					"level": 40
+				},
+				{
+					"skill": "SMITHING",
+					"level": 40
+				},
+				{
+					"skill": "WOODCUTTING",
+					"level": 36
+				},
+				{
+					"skill": "HERBLORE",
+					"level": 25
+				},
+				{
+					"skill": "COOKING",
+					"level": 10
+				},
+				{
+					"skill": "FLETCHING",
+					"level": 10
+				}
+			],
+			"quests": [
+				{
+					"name": "Cook's Assistant",
+					"runeliteQuest": "COOKS_ASSISTANT"
+				},
+				{
+					"name": "Fishing Contest",
+					"runeliteQuest": "FISHING_CONTEST"
+				},
+				{
+					"name": "Goblin Diplomacy",
+					"runeliteQuest": "GOBLIN_DIPLOMACY"
+				},
+				{
+					"name": "Big Chompy Bird Hunting",
+					"runeliteQuest": "BIG_CHOMPY_BIRD_HUNTING"
+				},
+				{
+					"name": "Murder Mystery",
+					"runeliteQuest": "MURDER_MYSTERY"
+				},
+				{
+					"name": "Nature Spirit",
+					"runeliteQuest": "NATURE_SPIRIT"
+				},
+				{
+					"name": "Witch's House",
+					"runeliteQuest": "WITCHS_HOUSE"
+				},
+				{
+					"name": "Gertrude's Cat",
+					"runeliteQuest": "GERTRUDES_CAT"
+				},
+				{
+					"name": "Shadow of the Storm",
+					"runeliteQuest": "SHADOW_OF_THE_STORM"
+				},
+				{
+					"name": "Legends' Quest",
+					"runeliteQuest": "LEGENDS_QUEST"
+				},
+				{
+					"name": "Monkey Madness I",
+					"runeliteQuest": "MONKEY_MADNESS_I"
+				},
+				{
+					"name": "Desert Treasure I",
+					"runeliteQuest": "DESERT_TREASURE_I"
+				},
+				{
+					"name": "Horror from the Deep",
+					"runeliteQuest": "HORROR_FROM_THE_DEEP"
+				}
+			],
+			"questPoints": 175
+		},
+		{
+			"name": "Recruitment Drive",
+			"runeliteQuest": "RECRUITMENT_DRIVE",
+			"quests": [
+				{
+					"name": "Black Knights' Fortress",
+					"runeliteQuest": "BLACK_KNIGHTS_FORTRESS"
+				},
+				{
+					"name": "Druidic Ritual",
+					"runeliteQuest": "DRUIDIC_RITUAL"
+				}
+			]
+		},
+		{
+			"name": "Regicide",
+			"runeliteQuest": "REGICIDE",
+			"skills": [
+				{
+					"skill": "AGILITY",
+					"level": 56
+				},
+				{
+					"skill": "CRAFTING",
+					"level": 10
+				}
+			],
+			"quests": [
+				{
+					"name": "Underground Pass",
+					"runeliteQuest": "UNDERGROUND_PASS"
+				}
+			]
+		},
+		{
+			"name": "Rogue Trader",
+			"quests": [
+				{
+					"name": "The Feud",
+					"runeliteQuest": "THE_FEUD"
+				},
+				{
+					"name": "Rune Mysteries",
+					"runeliteQuest": "RUNE_MYSTERIES"
+				},
+				{
+					"name": "Icthlarin's Little Helper",
+					"runeliteQuest": "ICTHLARINS_LITTLE_HELPER"
+				}
+			]
+		},
+		{
+			"name": "Roving Elves",
+			"runeliteQuest": "ROVING_ELVES",
+			"skills": [
+				{
+					"skill": "AGILITY",
+					"level": 56
+				}
+			],
+			"quests": [
+				{
+					"name": "Regicide",
+					"runeliteQuest": "REGICIDE"
+				},
+				{
+					"name": "Waterfall Quest",
+					"runeliteQuest": "WATERFALL_QUEST"
+				}
+			]
+		},
+		{
+			"name": "Royal Trouble",
+			"runeliteQuest": "ROYAL_TROUBLE",
+			"skills": [
+				{
+					"skill": "AGILITY",
+					"level": 40
+				},
+				{
+					"skill": "SLAYER",
+					"level": 40
+				}
+			],
+			"quests": [
+				{
+					"name": "Throne of Miscellania",
+					"runeliteQuest": "THRONE_OF_MISCELLANIA"
+				}
+			]
+		},
+		{
+			"name": "Rum Deal",
+			"runeliteQuest": "RUM_DEAL",
+			"skills": [
+				{
+					"skill": "FISHING",
+					"level": 50
+				},
+				{
+					"skill": "PRAYER",
+					"level": 47
+				},
+				{
+					"skill": "CRAFTING",
+					"level": 42
+				},
+				{
+					"skill": "SLAYER",
+					"level": 42
+				},
+				{
+					"skill": "FARMING",
+					"level": 40
+				}
+			],
+			"quests": [
+				{
+					"name": "Zogre Flesh Eaters",
+					"runeliteQuest": "ZOGRE_FLESH_EATERS"
+				},
+				{
+					"name": "Priest in Peril",
+					"runeliteQuest": "PRIEST_IN_PERIL"
+				}
+			]
+		},
+		{
+			"name": "Scorpion Catcher",
+			"runeliteQuest": "SCORPION_CATCHER",
+			"skills": [
+				{
+					"skill": "PRAYER",
+					"level": 31
+				}
+			],
+			"quests": [
+				{
+					"name": "Alfred Grimhand's Barcrawl",
+					"runeliteQuest": "ALFRED_GRIMHANDS_BARCRAWL"
+				}
+			]
+		},
+		{
+			"name": "Scrambled!",
+			"runeliteQuest": "SCRAMBLED",
+			"skills": [
+				{
+					"skill": "CONSTRUCTION",
+					"level": 38
+				},
+				{
+					"skill": "COOKING",
+					"level": 36
+				},
+				{
+					"skill": "SMITHING",
+					"level": 35
+				}
+			],
+			"quests": [
+				{
+					"name": "Children of the Sun",
+					"runeliteQuest": "CHILDREN_OF_THE_SUN"
+				}
+			]
+		},
+		{
+			"name": "Sea Slug",
+			"runeliteQuest": "SEA_SLUG",
+			"skills": [
+				{
+					"skill": "FIREMAKING",
+					"level": 30
+				}
+			]
+		},
+		{
+			"name": "Secrets of the North",
+			"runeliteQuest": "SECRETS_OF_THE_NORTH",
+			"skills": [
+				{
+					"skill": "AGILITY",
+					"level": 69
+				},
+				{
+					"skill": "THIEVING",
+					"level": 64
+				},
+				{
+					"skill": "HUNTER",
+					"level": 56
+				}
+			],
+			"quests": [
+				{
+					"name": "Making Friends with My Arm",
+					"runeliteQuest": "MAKING_FRIENDS_WITH_MY_ARM"
+				},
+				{
+					"name": "The General's Shadow",
+					"runeliteQuest": "THE_GENERALS_SHADOW"
+				},
+				{
+					"name": "Devious Minds",
+					"runeliteQuest": "DEVIOUS_MINDS"
+				},
+				{
+					"name": "Hazeel Cult",
+					"runeliteQuest": "HAZEEL_CULT"
+				}
+			]
+		},
+		{
+			"name": "Shades of Mort'ton",
+			"runeliteQuest": "SHADES_OF_MORTTON",
+			"skills": [
+				{
+					"skill": "CRAFTING",
+					"level": 20
+				},
+				{
+					"skill": "HERBLORE",
+					"level": 15
+				},
+				{
+					"skill": "FIREMAKING",
+					"level": 5
+				}
+			],
+			"quests": [
+				{
+					"name": "Priest in Peril",
+					"runeliteQuest": "PRIEST_IN_PERIL"
+				}
+			]
+		},
+		{
+			"name": "Shadow of the Storm",
+			"runeliteQuest": "SHADOW_OF_THE_STORM",
+			"skills": [
+				{
+					"skill": "CRAFTING",
+					"level": 30
+				}
+			],
+			"quests": [
+				{
+					"name": "The Golem",
+					"runeliteQuest": "THE_GOLEM"
+				},
+				{
+					"name": "Demon Slayer",
+					"runeliteQuest": "DEMON_SLAYER"
+				}
+			]
+		},
+		{
+			"name": "Shadows of Custodia",
+			"runeliteQuest": "SHADOWS_OF_CUSTODIA",
+			"skills": [
+				{
+					"skill": "SLAYER",
+					"level": 54
+				},
+				{
+					"skill": "FISHING",
+					"level": 45
+				},
+				{
+					"skill": "CONSTRUCTION",
+					"level": 41
+				},
+				{
+					"skill": "HUNTER",
+					"level": 36
+				}
+			],
+			"quests": [
+				{
+					"name": "Children of the Sun",
+					"runeliteQuest": "CHILDREN_OF_THE_SUN"
+				}
+			]
+		},
+		{
+			"name": "Shilo Village",
+			"runeliteQuest": "SHILO_VILLAGE",
+			"skills": [
+				{
+					"skill": "AGILITY",
+					"level": 32
+				},
+				{
+					"skill": "CRAFTING",
+					"level": 20
+				}
+			],
+			"quests": [
+				{
+					"name": "Jungle Potion",
+					"runeliteQuest": "JUNGLE_POTION"
+				}
+			]
+		},
+		{
+			"name": "Sins of the Father",
+			"runeliteQuest": "SINS_OF_THE_FATHER",
+			"skills": [
+				{
+					"skill": "WOODCUTTING",
+					"level": 62
+				},
+				{
+					"skill": "FLETCHING",
+					"level": 60
+				},
+				{
+					"skill": "CRAFTING",
+					"level": 56
+				},
+				{
+					"skill": "AGILITY",
+					"level": 52
+				},
+				{
+					"skill": "ATTACK",
+					"level": 50
+				},
+				{
+					"skill": "SLAYER",
+					"level": 50
+				},
+				{
+					"skill": "MAGIC",
+					"level": 49
+				}
+			],
+			"quests": [
+				{
+					"name": "Vampyre Slayer",
+					"runeliteQuest": "VAMPYRE_SLAYER"
+				},
+				{
+					"name": "A Taste of Hope",
+					"runeliteQuest": "A_TASTE_OF_HOPE"
+				}
+			]
+		},
+		{
+			"name": "Skippy and the Mogres",
+			"runeliteQuest": "SKIPPY_AND_THE_MOGRES",
+			"skills": [
+				{
+					"skill": "COOKING",
+					"level": 20
+				}
+			]
+		},
+		{
+			"name": "Sleeping Giants",
+			"runeliteQuest": "SLEEPING_GIANTS",
+			"skills": [
+				{
+					"skill": "SMITHING",
+					"level": 15
+				}
+			]
+		},
+		{
+			"name": "Song of the Elves",
+			"runeliteQuest": "SONG_OF_THE_ELVES",
+			"skills": [
+				{
+					"skill": "AGILITY",
+					"level": 70
+				},
+				{
+					"skill": "CONSTRUCTION",
+					"level": 70
+				},
+				{
+					"skill": "FARMING",
+					"level": 70
+				},
+				{
+					"skill": "HERBLORE",
+					"level": 70
+				},
+				{
+					"skill": "HUNTER",
+					"level": 70
+				},
+				{
+					"skill": "MINING",
+					"level": 70
+				},
+				{
+					"skill": "SMITHING",
+					"level": 70
+				},
+				{
+					"skill": "WOODCUTTING",
+					"level": 70
+				}
+			],
+			"quests": [
+				{
+					"name": "Mourning's End Part II",
+					"runeliteQuest": "MOURNINGS_END_PART_II"
+				},
+				{
+					"name": "Making History",
+					"runeliteQuest": "MAKING_HISTORY"
+				},
+				{
+					"name": "Druidic Ritual",
+					"runeliteQuest": "DRUIDIC_RITUAL"
+				}
+			]
+		},
+		{
+			"name": "Spirits of the Elid",
+			"runeliteQuest": "SPIRITS_OF_THE_ELID",
+			"skills": [
+				{
+					"skill": "MINING",
+					"level": 37
+				},
+				{
+					"skill": "RANGED",
+					"level": 37
+				},
+				{
+					"skill": "THIEVING",
+					"level": 37
+				},
+				{
+					"skill": "MAGIC",
+					"level": 33
+				}
+			]
+		},
+		{
+			"name": "Swan Song",
+			"runeliteQuest": "SWAN_SONG",
+			"skills": [
+				{
+					"skill": "MAGIC",
+					"level": 66
+				},
+				{
+					"skill": "COOKING",
+					"level": 62
+				},
+				{
+					"skill": "FISHING",
+					"level": 62
+				},
+				{
+					"skill": "SMITHING",
+					"level": 45
+				},
+				{
+					"skill": "FIREMAKING",
+					"level": 42
+				},
+				{
+					"skill": "CRAFTING",
+					"level": 40
+				}
+			],
+			"quests": [
+				{
+					"name": "One Small Favour",
+					"runeliteQuest": "ONE_SMALL_FAVOUR"
+				},
+				{
+					"name": "Garden of Tranquillity",
+					"runeliteQuest": "GARDEN_OF_TRANQUILLITY"
+				}
+			],
+			"questPoints": 100
+		},
+		{
+			"name": "Tai Bwo Wannai Trio",
+			"runeliteQuest": "TAI_BWO_WANNAI_TRIO",
+			"skills": [
+				{
+					"skill": "COOKING",
+					"level": 30
+				},
+				{
+					"skill": "AGILITY",
+					"level": 15
+				},
+				{
+					"skill": "FISHING",
+					"level": 5
+				}
+			],
+			"quests": [
+				{
+					"name": "Jungle Potion",
+					"runeliteQuest": "JUNGLE_POTION"
+				}
+			]
+		},
+		{
+			"name": "Tale of the Righteous",
+			"runeliteQuest": "TALE_OF_THE_RIGHTEOUS",
+			"skills": [
+				{
+					"skill": "STRENGTH",
+					"level": 16
+				},
+				{
+					"skill": "MINING",
+					"level": 10
+				}
+			],
+			"quests": [
+				{
+					"name": "Client of Kourend",
+					"runeliteQuest": "CLIENT_OF_KOUREND"
+				}
+			]
+		},
+		{
+			"name": "Tears of Guthix",
+			"runeliteQuest": "TEARS_OF_GUTHIX",
+			"skills": [
+				{
+					"skill": "FIREMAKING",
+					"level": 49
+				},
+				{
+					"skill": "CRAFTING",
+					"level": 20
+				},
+				{
+					"skill": "MINING",
+					"level": 20
+				}
+			],
+			"questPoints": 43
+		},
+		{
+			"name": "Temple of Ikov",
+			"runeliteQuest": "TEMPLE_OF_IKOV",
+			"skills": [
+				{
+					"skill": "THIEVING",
+					"level": 42
+				},
+				{
+					"skill": "RANGED",
+					"level": 40
+				}
+			]
+		},
+		{
+			"name": "Temple of the Eye",
+			"runeliteQuest": "TEMPLE_OF_THE_EYE",
+			"skills": [
+				{
+					"skill": "RUNECRAFT",
+					"level": 10
+				}
+			],
+			"quests": [
+				{
+					"name": "Enter the Abyss",
+					"runeliteQuest": "ENTER_THE_ABYSS"
+				}
+			]
+		},
+		{
+			"name": "The Ascent of Arceuus",
+			"runeliteQuest": "THE_ASCENT_OF_ARCEUUS",
+			"skills": [
+				{
+					"skill": "HUNTER",
+					"level": 12
+				}
+			],
+			"quests": [
+				{
+					"name": "Client of Kourend",
+					"runeliteQuest": "CLIENT_OF_KOUREND"
+				}
+			]
+		},
+		{
+			"name": "The Blood Moon Rises",
+			"runeliteQuest": "THE_BLOOD_MOON_RISES",
+			"skills": [
+				{
+					"skill": "SLAYER",
+					"level": 74
+				},
+				{
+					"skill": "WOODCUTTING",
+					"level": 74
+				},
+				{
+					"skill": "COOKING",
+					"level": 72
+				},
+				{
+					"skill": "SMITHING",
+					"level": 72
+				},
+				{
+					"skill": "FLETCHING",
+					"level": 70
+				},
+				{
+					"skill": "MINING",
+					"level": 66
+				},
+				{
+					"skill": "HUNTER",
+					"level": 65
+				},
+				{
+					"skill": "CRAFTING",
+					"level": 64
+				},
+				{
+					"skill": "HERBLORE",
+					"level": 64
+				},
+				{
+					"skill": "MAGIC",
+					"level": 57
+				}
+			],
+			"quests": [
+				{
+					"name": "A Night at the Theatre",
+					"runeliteQuest": "A_NIGHT_AT_THE_THEATRE"
+				},
+				{
+					"name": "Sins of the Father",
+					"runeliteQuest": "SINS_OF_THE_FATHER"
+				}
+			]
+		},
+		{
+			"name": "The Curse of Arrav",
+			"runeliteQuest": "THE_CURSE_OF_ARRAV",
+			"skills": [
+				{
+					"skill": "MINING",
+					"level": 64
+				},
+				{
+					"skill": "RANGED",
+					"level": 62
+				},
+				{
+					"skill": "THIEVING",
+					"level": 62
+				},
+				{
+					"skill": "AGILITY",
+					"level": 61
+				},
+				{
+					"skill": "STRENGTH",
+					"level": 58
+				},
+				{
+					"skill": "SLAYER",
+					"level": 37
+				}
+			],
+			"quests": [
+				{
+					"name": "Defender of Varrock",
+					"runeliteQuest": "DEFENDER_OF_VARROCK"
+				},
+				{
+					"name": "Troll Romance",
+					"runeliteQuest": "TROLL_ROMANCE"
+				}
+			]
+		},
+		{
+			"name": "The Depths of Despair",
+			"runeliteQuest": "THE_DEPTHS_OF_DESPAIR",
+			"skills": [
+				{
+					"skill": "AGILITY",
+					"level": 18
+				}
+			],
+			"quests": [
+				{
+					"name": "Client of Kourend",
+					"runeliteQuest": "CLIENT_OF_KOUREND"
+				}
+			]
+		},
+		{
+			"name": "The Dig Site",
+			"runeliteQuest": "THE_DIG_SITE",
+			"skills": [
+				{
+					"skill": "THIEVING",
+					"level": 25
+				},
+				{
+					"skill": "AGILITY",
+					"level": 10
+				},
+				{
+					"skill": "HERBLORE",
+					"level": 10
+				}
+			]
+		},
+		{
+			"name": "The Enchanted Key",
+			"runeliteQuest": "THE_ENCHANTED_KEY",
+			"quests": [
+				{
+					"name": "Making History",
+					"runeliteQuest": "MAKING_HISTORY"
+				}
+			]
+		},
+		{
+			"name": "The Eyes of Glouphrie",
+			"runeliteQuest": "THE_EYES_OF_GLOUPHRIE",
+			"skills": [
+				{
+					"skill": "MAGIC",
+					"level": 46
+				},
+				{
+					"skill": "CONSTRUCTION",
+					"level": 5
+				}
+			],
+			"quests": [
+				{
+					"name": "The Grand Tree",
+					"runeliteQuest": "THE_GRAND_TREE"
+				}
+			]
+		},
+		{
+			"name": "The Feud",
+			"runeliteQuest": "THE_FEUD",
+			"skills": [
+				{
+					"skill": "THIEVING",
+					"level": 30
+				}
+			]
+		},
+		{
+			"name": "The Final Dawn",
+			"runeliteQuest": "THE_FINAL_DAWN",
+			"skills": [
+				{
+					"skill": "THIEVING",
+					"level": 66
+				},
+				{
+					"skill": "FLETCHING",
+					"level": 52
+				},
+				{
+					"skill": "RUNECRAFT",
+					"level": 52
+				}
+			],
+			"quests": [
+				{
+					"name": "The Heart of Darkness",
+					"runeliteQuest": "THE_HEART_OF_DARKNESS"
+				},
+				{
+					"name": "Perilous Moons",
+					"runeliteQuest": "PERILOUS_MOONS"
+				}
+			]
+		},
+		{
+			"name": "The Forsaken Tower",
+			"runeliteQuest": "THE_FORSAKEN_TOWER",
+			"quests": [
+				{
+					"name": "Client of Kourend",
+					"runeliteQuest": "CLIENT_OF_KOUREND"
+				}
+			]
+		},
+		{
+			"name": "The Fremennik Exiles",
+			"runeliteQuest": "THE_FREMENNIK_EXILES",
+			"skills": [
+				{
+					"skill": "CRAFTING",
+					"level": 65
+				},
+				{
+					"skill": "FISHING",
+					"level": 60
+				},
+				{
+					"skill": "MINING",
+					"level": 60
+				},
+				{
+					"skill": "SLAYER",
+					"level": 60
+				},
+				{
+					"skill": "SMITHING",
+					"level": 60
+				},
+				{
+					"skill": "RUNECRAFT",
+					"level": 55
+				}
+			],
+			"quests": [
+				{
+					"name": "The Fremennik Isles",
+					"runeliteQuest": "THE_FREMENNIK_ISLES"
+				},
+				{
+					"name": "Lunar Diplomacy",
+					"runeliteQuest": "LUNAR_DIPLOMACY"
+				},
+				{
+					"name": "Mountain Daughter",
+					"runeliteQuest": "MOUNTAIN_DAUGHTER"
+				},
+				{
+					"name": "Heroes' Quest",
+					"runeliteQuest": "HEROES_QUEST"
+				}
+			]
+		},
+		{
+			"name": "The Fremennik Isles",
+			"runeliteQuest": "THE_FREMENNIK_ISLES",
+			"skills": [
+				{
+					"skill": "CONSTRUCTION",
+					"level": 20
+				}
+			],
+			"quests": [
+				{
+					"name": "The Fremennik Trials",
+					"runeliteQuest": "THE_FREMENNIK_TRIALS"
+				}
+			]
+		},
+		{
+			"name": "The Frozen Door",
+			"runeliteQuest": "THE_FROZEN_DOOR",
+			"skills": [
+				{
+					"skill": "AGILITY",
+					"level": 70
+				},
+				{
+					"skill": "HITPOINTS",
+					"level": 70
+				},
+				{
+					"skill": "RANGED",
+					"level": 70
+				},
+				{
+					"skill": "STRENGTH",
+					"level": 70
+				}
+			],
+			"quests": [
+				{
+					"name": "Desert Treasure I",
+					"runeliteQuest": "DESERT_TREASURE_I"
+				}
+			]
+		},
+		{
+			"name": "The Garden of Death",
+			"runeliteQuest": "THE_GARDEN_OF_DEATH",
+			"skills": [
+				{
+					"skill": "FARMING",
+					"level": 20
+				}
+			]
+		},
+		{
+			"name": "The General's Shadow",
+			"runeliteQuest": "THE_GENERALS_SHADOW",
+			"quests": [
+				{
+					"name": "Curse of the Empty Lord",
+					"runeliteQuest": "CURSE_OF_THE_EMPTY_LORD"
+				},
+				{
+					"name": "Fight Arena",
+					"runeliteQuest": "FIGHT_ARENA"
+				}
+			]
+		},
+		{
+			"name": "The Giant Dwarf",
+			"runeliteQuest": "THE_GIANT_DWARF",
+			"skills": [
+				{
+					"skill": "MAGIC",
+					"level": 33
+				},
+				{
+					"skill": "FIREMAKING",
+					"level": 16
+				},
+				{
+					"skill": "THIEVING",
+					"level": 14
+				},
+				{
+					"skill": "CRAFTING",
+					"level": 12
+				}
+			]
+		},
+		{
+			"name": "The Golem",
+			"runeliteQuest": "THE_GOLEM",
+			"skills": [
+				{
+					"skill": "THIEVING",
+					"level": 25
+				},
+				{
+					"skill": "CRAFTING",
+					"level": 20
+				}
+			]
+		},
+		{
+			"name": "The Grand Tree",
+			"runeliteQuest": "THE_GRAND_TREE",
+			"skills": [
+				{
+					"skill": "AGILITY",
+					"level": 25
+				}
+			]
+		},
+		{
+			"name": "The Great Brain Robbery",
+			"runeliteQuest": "THE_GREAT_BRAIN_ROBBERY",
+			"skills": [
+				{
+					"skill": "PRAYER",
+					"level": 50
+				},
+				{
+					"skill": "CONSTRUCTION",
+					"level": 30
+				},
+				{
+					"skill": "CRAFTING",
+					"level": 16
+				}
+			],
+			"quests": [
+				{
+					"name": "Creature of Fenkenstrain",
+					"runeliteQuest": "CREATURE_OF_FENKENSTRAIN"
+				},
+				{
+					"name": "Cabin Fever",
+					"runeliteQuest": "CABIN_FEVER"
+				},
+				{
+					"name": "Recipe for Disaster - Pirate Pete",
+					"runeliteQuest": "RECIPE_FOR_DISASTER__PIRATE_PETE"
+				}
+			]
+		},
+		{
+			"name": "The Hand in the Sand",
+			"runeliteQuest": "THE_HAND_IN_THE_SAND",
+			"skills": [
+				{
+					"skill": "CRAFTING",
+					"level": 49
+				},
+				{
+					"skill": "THIEVING",
+					"level": 17
+				}
+			]
+		},
+		{
+			"name": "The Heart of Darkness",
+			"runeliteQuest": "THE_HEART_OF_DARKNESS",
+			"skills": [
+				{
+					"skill": "MINING",
+					"level": 55
+				},
+				{
+					"skill": "SLAYER",
+					"level": 48
+				},
+				{
+					"skill": "THIEVING",
+					"level": 48
+				},
+				{
+					"skill": "AGILITY",
+					"level": 46
+				}
+			],
+			"quests": [
+				{
+					"name": "Twilight's Promise",
+					"runeliteQuest": "TWILIGHTS_PROMISE"
+				}
+			]
+		},
+		{
+			"name": "The Knight's Sword",
+			"runeliteQuest": "THE_KNIGHTS_SWORD",
+			"skills": [
+				{
+					"skill": "MINING",
+					"level": 10
+				}
+			]
+		},
+		{
+			"name": "The Lost Tribe",
+			"runeliteQuest": "THE_LOST_TRIBE",
+			"skills": [
+				{
+					"skill": "MINING",
+					"level": 17
+				},
+				{
+					"skill": "AGILITY",
+					"level": 13
+				},
+				{
+					"skill": "THIEVING",
+					"level": 13
+				}
+			],
+			"quests": [
+				{
+					"name": "Goblin Diplomacy",
+					"runeliteQuest": "GOBLIN_DIPLOMACY"
+				},
+				{
+					"name": "Rune Mysteries",
+					"runeliteQuest": "RUNE_MYSTERIES"
+				}
+			]
+		},
+		{
+			"name": "The Path of Glouphrie",
+			"runeliteQuest": "THE_PATH_OF_GLOUPHRIE",
+			"skills": [
+				{
+					"skill": "STRENGTH",
+					"level": 60
+				},
+				{
+					"skill": "SLAYER",
+					"level": 56
+				},
+				{
+					"skill": "THIEVING",
+					"level": 56
+				},
+				{
+					"skill": "RANGED",
+					"level": 47
+				},
+				{
+					"skill": "AGILITY",
+					"level": 45
+				}
+			],
+			"quests": [
+				{
+					"name": "The Eyes of Glouphrie",
+					"runeliteQuest": "THE_EYES_OF_GLOUPHRIE"
+				},
+				{
+					"name": "Waterfall Quest",
+					"runeliteQuest": "WATERFALL_QUEST"
+				},
+				{
+					"name": "Tree Gnome Village",
+					"runeliteQuest": "TREE_GNOME_VILLAGE"
+				}
+			]
+		},
+		{
+			"name": "The Queen of Thieves",
+			"runeliteQuest": "THE_QUEEN_OF_THIEVES",
+			"skills": [
+				{
+					"skill": "THIEVING",
+					"level": 20
+				}
+			],
+			"quests": [
+				{
+					"name": "Client of Kourend",
+					"runeliteQuest": "CLIENT_OF_KOUREND"
+				}
+			]
+		},
+		{
+			"name": "The Red Reef",
+			"runeliteQuest": "THE_RED_REEF",
+			"skills": [
+				{
+					"skill": "SAILING",
+					"level": 52
+				},
+				{
+					"skill": "SMITHING",
+					"level": 48
+				}
+			],
+			"quests": [
+				{
+					"name": "Troubled Tortugans",
+					"runeliteQuest": "TROUBLED_TORTUGANS"
+				}
+			]
+		},
+		{
+			"name": "The Ribbiting Tale of a Lily Pad Labour Dispute",
+			"runeliteQuest": "THE_RIBBITING_TALE_OF_A_LILY_PAD_LABOUR_DISPUTE",
+			"skills": [
+				{
+					"skill": "WOODCUTTING",
+					"level": 15
+				}
+			],
+			"quests": [
+				{
+					"name": "Children of the Sun",
+					"runeliteQuest": "CHILDREN_OF_THE_SUN"
+				}
+			]
+		},
+		{
+			"name": "The Slug Menace",
+			"runeliteQuest": "THE_SLUG_MENACE",
+			"skills": [
+				{
+					"skill": "CRAFTING",
+					"level": 30
+				},
+				{
+					"skill": "RUNECRAFT",
+					"level": 30
+				},
+				{
+					"skill": "SLAYER",
+					"level": 30
+				},
+				{
+					"skill": "THIEVING",
+					"level": 30
+				}
+			],
+			"quests": [
+				{
+					"name": "Wanted!",
+					"runeliteQuest": "WANTED"
+				},
+				{
+					"name": "Sea Slug",
+					"runeliteQuest": "SEA_SLUG"
+				}
+			]
+		},
+		{
+			"name": "The Tourist Trap",
+			"runeliteQuest": "THE_TOURIST_TRAP",
+			"skills": [
+				{
+					"skill": "SMITHING",
+					"level": 20
+				},
+				{
+					"skill": "FLETCHING",
+					"level": 10
+				}
+			]
+		},
+		{
+			"name": "Throne of Miscellania",
+			"runeliteQuest": "THRONE_OF_MISCELLANIA",
+			"quests": [
+				{
+					"name": "Heroes' Quest",
+					"runeliteQuest": "HEROES_QUEST"
+				},
+				{
+					"name": "The Fremennik Trials",
+					"runeliteQuest": "THE_FREMENNIK_TRIALS"
+				}
+			]
+		},
+		{
+			"name": "Tower of Life",
+			"runeliteQuest": "TOWER_OF_LIFE",
+			"skills": [
+				{
+					"skill": "CONSTRUCTION",
+					"level": 10
+				}
+			]
+		},
+		{
+			"name": "Tribal Totem",
+			"runeliteQuest": "TRIBAL_TOTEM",
+			"skills": [
+				{
+					"skill": "THIEVING",
+					"level": 21
+				}
+			]
+		},
+		{
+			"name": "Troll Romance",
+			"runeliteQuest": "TROLL_ROMANCE",
+			"skills": [
+				{
+					"skill": "AGILITY",
+					"level": 28
+				}
+			],
+			"quests": [
+				{
+					"name": "Troll Stronghold",
+					"runeliteQuest": "TROLL_STRONGHOLD"
+				}
+			]
+		},
+		{
+			"name": "Troll Stronghold",
+			"runeliteQuest": "TROLL_STRONGHOLD",
+			"skills": [
+				{
+					"skill": "AGILITY",
+					"level": 15
+				}
+			],
+			"quests": [
+				{
+					"name": "Death Plateau",
+					"runeliteQuest": "DEATH_PLATEAU"
+				}
+			]
+		},
+		{
+			"name": "Troubled Tortugans",
+			"runeliteQuest": "TROUBLED_TORTUGANS",
+			"skills": [
+				{
+					"skill": "SLAYER",
+					"level": 51
+				},
+				{
+					"skill": "CONSTRUCTION",
+					"level": 48
+				},
+				{
+					"skill": "HUNTER",
+					"level": 45
+				},
+				{
+					"skill": "SAILING",
+					"level": 45
+				},
+				{
+					"skill": "WOODCUTTING",
+					"level": 40
+				},
+				{
+					"skill": "CRAFTING",
+					"level": 34
+				}
+			],
+			"quests": [
+				{
+					"name": "Pandemonium",
+					"runeliteQuest": "PANDEMONIUM"
+				}
+			]
+		},
+		{
+			"name": "Twilight's Promise",
+			"runeliteQuest": "TWILIGHTS_PROMISE",
+			"quests": [
+				{
+					"name": "Children of the Sun",
+					"runeliteQuest": "CHILDREN_OF_THE_SUN"
+				}
+			]
+		},
+		{
+			"name": "Underground Pass",
+			"runeliteQuest": "UNDERGROUND_PASS",
+			"skills": [
+				{
+					"skill": "RANGED",
+					"level": 25
+				}
+			],
+			"quests": [
+				{
+					"name": "Biohazard",
+					"runeliteQuest": "BIOHAZARD"
+				}
+			]
+		},
+		{
+			"name": "Wanted!",
+			"runeliteQuest": "WANTED",
+			"quests": [
+				{
+					"name": "Recruitment Drive",
+					"runeliteQuest": "RECRUITMENT_DRIVE"
+				},
+				{
+					"name": "The Lost Tribe",
+					"runeliteQuest": "THE_LOST_TRIBE"
+				},
+				{
+					"name": "Priest in Peril",
+					"runeliteQuest": "PRIEST_IN_PERIL"
+				},
+				{
+					"name": "Enter the Abyss",
+					"runeliteQuest": "ENTER_THE_ABYSS"
+				}
+			],
+			"questPoints": 32
+		},
+		{
+			"name": "Watchtower",
+			"runeliteQuest": "WATCHTOWER",
+			"skills": [
+				{
+					"skill": "MINING",
+					"level": 40
+				},
+				{
+					"skill": "AGILITY",
+					"level": 25
+				},
+				{
+					"skill": "THIEVING",
+					"level": 15
+				},
+				{
+					"skill": "HERBLORE",
+					"level": 14
+				},
+				{
+					"skill": "MAGIC",
+					"level": 14
+				}
+			]
+		},
+		{
+			"name": "What Lies Below",
+			"runeliteQuest": "WHAT_LIES_BELOW",
+			"skills": [
+				{
+					"skill": "RUNECRAFT",
+					"level": 35
+				}
+			],
+			"quests": [
+				{
+					"name": "Rune Mysteries",
+					"runeliteQuest": "RUNE_MYSTERIES"
+				}
+			]
+		},
+		{
+			"name": "While Guthix Sleeps",
+			"runeliteQuest": "WHILE_GUTHIX_SLEEPS",
+			"skills": [
+				{
+					"skill": "ATTACK",
+					"level": 99
+				},
+				{
+					"skill": "STRENGTH",
+					"level": 99
+				},
+				{
+					"skill": "THIEVING",
+					"level": 72
+				},
+				{
+					"skill": "MAGIC",
+					"level": 67
+				},
+				{
+					"skill": "AGILITY",
+					"level": 66
+				},
+				{
+					"skill": "FARMING",
+					"level": 65
+				},
+				{
+					"skill": "HERBLORE",
+					"level": 65
+				},
+				{
+					"skill": "HUNTER",
+					"level": 62
+				},
+				{
+					"skill": "FIREMAKING",
+					"level": 49
+				}
+			],
+			"quests": [
+				{
+					"name": "Defender of Varrock",
+					"runeliteQuest": "DEFENDER_OF_VARROCK"
+				},
+				{
+					"name": "The Path of Glouphrie",
+					"runeliteQuest": "THE_PATH_OF_GLOUPHRIE"
+				},
+				{
+					"name": "Fight Arena",
+					"runeliteQuest": "FIGHT_ARENA"
+				},
+				{
+					"name": "Dream Mentor",
+					"runeliteQuest": "DREAM_MENTOR"
+				},
+				{
+					"name": "The Hand in the Sand",
+					"runeliteQuest": "THE_HAND_IN_THE_SAND"
+				},
+				{
+					"name": "Wanted!",
+					"runeliteQuest": "WANTED"
+				},
+				{
+					"name": "Temple of the Eye",
+					"runeliteQuest": "TEMPLE_OF_THE_EYE"
+				},
+				{
+					"name": "Tears of Guthix",
+					"runeliteQuest": "TEARS_OF_GUTHIX"
+				},
+				{
+					"name": "Nature Spirit",
+					"runeliteQuest": "NATURE_SPIRIT"
+				},
+				{
+					"name": "A Tail of Two Cats",
+					"runeliteQuest": "A_TAIL_OF_TWO_CATS"
+				}
+			],
+			"questPoints": 180
+		},
+		{
+			"name": "Zogre Flesh Eaters",
+			"runeliteQuest": "ZOGRE_FLESH_EATERS",
+			"skills": [
+				{
+					"skill": "RANGED",
+					"level": 30
+				},
+				{
+					"skill": "HERBLORE",
+					"level": 8
+				},
+				{
+					"skill": "SMITHING",
+					"level": 4
+				}
+			],
+			"quests": [
+				{
+					"name": "Big Chompy Bird Hunting",
+					"runeliteQuest": "BIG_CHOMPY_BIRD_HUNTING"
+				},
+				{
+					"name": "Jungle Potion",
+					"runeliteQuest": "JUNGLE_POTION"
+				}
+			]
+		}
+	]
+}

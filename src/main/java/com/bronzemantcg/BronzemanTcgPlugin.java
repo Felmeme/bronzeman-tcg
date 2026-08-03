@@ -235,6 +235,9 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	private QuestCatalog questCatalog;
 
 	@Inject
+	private QuestRequirementCatalog questRequirementCatalog;
+
+	@Inject
 	private ContentCatalog contentCatalog;
 
 	@Inject
@@ -432,6 +435,7 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 				itemCatalog,
 				nodeCatalog,
 				questCatalog,
+				questRequirementCatalog,
 				contentCatalog,
 				monsterAreaCatalog,
 				collectionReader,
@@ -922,7 +926,8 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 		// five-tick panel refresh.
 		if (!questStateInitialized || tickCounter % 25 == 0)
 		{
-			target.updateQuestState(captureCompletedQuests(), captureQuestRoute());
+			target.updateQuestState(captureCompletedQuests(), captureQuestRoute(),
+				captureRealSkillLevels(), captureQuestPoints());
 			questStateInitialized = true;
 		}
 		SwingUtilities.invokeLater(() ->
@@ -950,6 +955,30 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 			}
 		}
 		return Collections.unmodifiableSet(completed);
+	}
+
+	/**
+	 * Real (unboosted) levels for the side panel's "Show meets reqs" filter, indexed by
+	 * {@link net.runelite.api.Skill#ordinal()}. Returns null when logged out: unknown
+	 * levels must leave the filter inert rather than hide every quest.
+	 */
+	private int[] captureRealSkillLevels()
+	{
+		if (client.getGameState() != GameState.LOGGED_IN)
+		{
+			return null;
+		}
+		int[] levels = client.getRealSkillLevels();
+		return levels == null ? null : levels.clone();
+	}
+
+	private int captureQuestPoints()
+	{
+		if (client.getGameState() != GameState.LOGGED_IN)
+		{
+			return 0;
+		}
+		return client.getVarpValue(VarPlayerID.QP);
 	}
 
 	/**

@@ -67,11 +67,21 @@ final class PanelComponents
 
 	static void styleHierarchyRow(JPanel row, boolean expanded, boolean nested)
 	{
+		styleHierarchyRow(row, expanded, nested, nested ? 10 : 7);
+	}
+
+	/**
+	 * Same look with an explicit left inset. The side-panel tabs nest four levels deep
+	 * where the settings view only nests two, so they carry their own indentation while
+	 * sharing these colours - keep this the single definition of the bronze row style.
+	 */
+	static void styleHierarchyRow(JPanel row, boolean expanded, boolean nested,
+		int leftPadding)
+	{
 		Color bronze = nested ? new Color(138, 94, 52) : new Color(153, 102, 51);
 		Color background = expanded ? new Color(62, 50, 40)
 			: ColorScheme.DARKER_GRAY_COLOR;
 		int verticalPadding = nested ? 3 : 5;
-		int leftPadding = nested ? 10 : 7;
 		row.setBackground(background);
 		row.setBorder(BorderFactory.createCompoundBorder(
 			BorderFactory.createLineBorder(bronze),

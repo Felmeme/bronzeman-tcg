@@ -8,8 +8,9 @@ import java.awt.Component;
 import java.awt.Container;
 import java.awt.Cursor;
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.GridBagLayout;
 import java.awt.Image;
 import java.awt.Insets;
 import java.awt.LayoutManager;
@@ -38,6 +39,7 @@ import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
@@ -45,6 +47,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import lombok.extern.slf4j.Slf4j;
+import net.runelite.api.Skill;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.ui.ColorScheme;
 import net.runelite.client.ui.PluginPanel;
@@ -83,6 +86,7 @@ class BronzemanTcgPanel extends PluginPanel
 	private final TrackedItemCatalog itemCatalog;
 	private final ResourceNodeCatalog nodeCatalog;
 	private final QuestCatalog questCatalog;
+	private final QuestRequirementCatalog questRequirementCatalog;
 	private final ContentCatalog contentCatalog;
 	private final MonsterAreaCatalog monsterAreaCatalog;
 	private final TcgCollectionReader collectionReader;
@@ -101,6 +105,9 @@ class BronzemanTcgPanel extends PluginPanel
 	private PanelTab selectedTab = PanelTab.QUESTS;
 	private PanelTab lastContentTab = PanelTab.QUESTS;
 	private final Map<PanelTab, MaterialTab> materialTabs = new EnumMap<>(PanelTab.class);
+	/** Square, sized around the cog glyph rather than the banner's height. */
+	private static final int SETTINGS_BUTTON = 24;
+
 	private final JButton settingsButton = new JButton("\u2699");
 
 	private final IconTextField searchBar = new IconTextField();
@@ -119,7 +126,7 @@ class BronzemanTcgPanel extends PluginPanel
 	private final IconTextField questSearchBar = new IconTextField();
 	private final JPanel questFilters = new JPanel(new FlowLayout(FlowLayout.LEFT, 4, 0));
 	private final JCheckBox hideCompletedQuests = new JCheckBox("Hide completed");
-	private final JCheckBox hideIncompletableQuests = new JCheckBox("Hide incompletable");
+	private final JCheckBox showMeetsReqsQuests = new JCheckBox("Show meets reqs");
 	private final JPanel questList = sectionBody();
 	private final Set<String> expandedQuests = new HashSet<>();
 	private final Set<String> expandedQuestCategories =
@@ -129,6 +136,10 @@ class BronzemanTcgPanel extends PluginPanel
 	private volatile Set<String> completedQuestNames = Collections.emptySet();
 	private volatile QuestCatalog.RouteSelection questRoute =
 		QuestCatalog.RouteSelection.UNKNOWN;
+	// Real levels indexed by Skill.ordinal(), or null while logged out. Null must leave
+	// the "Show meets reqs" filter inert - unknown levels would otherwise hide everything.
+	private volatile int[] realSkillLevels;
+	private volatile int questPoints;
 
 	private final JCheckBox showLockedSlayer = new JCheckBox("Show locked");
 	private final JCheckBox showUnlockedSlayer = new JCheckBox("Show unlocked");
@@ -175,6 +186,7 @@ class BronzemanTcgPanel extends PluginPanel
 			TrackedItemCatalog itemCatalog,
 			ResourceNodeCatalog nodeCatalog,
 			QuestCatalog questCatalog,
+			QuestRequirementCatalog questRequirementCatalog,
 			ContentCatalog contentCatalog,
 			MonsterAreaCatalog monsterAreaCatalog,
 			TcgCollectionReader collectionReader,
@@ -190,6 +202,7 @@ class BronzemanTcgPanel extends PluginPanel
 		this.itemCatalog = itemCatalog;
 		this.nodeCatalog = nodeCatalog;
 		this.questCatalog = questCatalog;
+		this.questRequirementCatalog = questRequirementCatalog;
 		this.contentCatalog = contentCatalog;
 		this.monsterAreaCatalog = monsterAreaCatalog;
 		this.collectionReader = collectionReader;
@@ -424,7 +437,8 @@ class BronzemanTcgPanel extends PluginPanel
 		settingsButton.setForeground(Color.WHITE);
 		settingsButton.setBackground(ColorScheme.DARK_GRAY_COLOR);
 		settingsButton.setBorder(BorderFactory.createLineBorder(bronze));
-		settingsButton.setPreferredSize(new Dimension(32, 32));
+		settingsButton.setPreferredSize(new Dimension(SETTINGS_BUTTON, SETTINGS_BUTTON));
+		settingsButton.setMargin(new Insets(0, 0, 0, 0));
 		settingsButton.addActionListener(event ->
 		{
 			if (selectedTab == PanelTab.SETTINGS)
@@ -436,7 +450,14 @@ class BronzemanTcgPanel extends PluginPanel
 				showSettings();
 			}
 		});
-		banner.add(settingsButton, BorderLayout.EAST);
+
+		// BorderLayout stretches an EAST child to the banner's full height, which would
+		// make the cog a tall rectangle. GridBagLayout centres it at its preferred size
+		// instead, keeping it square and sized around the glyph.
+		JPanel settingsHolder = new JPanel(new GridBagLayout());
+		settingsHolder.setOpaque(false);
+		settingsHolder.add(settingsButton);
+		banner.add(settingsHolder, BorderLayout.EAST);
 		return banner;
 	}
 
@@ -559,11 +580,14 @@ class BronzemanTcgPanel extends PluginPanel
 	}
 
 	/** Receives an immutable-friendly quest-state snapshot captured on the client thread. */
-	void updateQuestState(Set<String> completed, QuestCatalog.RouteSelection route)
+	void updateQuestState(Set<String> completed, QuestCatalog.RouteSelection route,
+		int[] levels, int points)
 	{
 		completedQuestNames = completed == null
 			? Collections.emptySet() : Collections.unmodifiableSet(new HashSet<>(completed));
 		questRoute = route == null ? QuestCatalog.RouteSelection.UNKNOWN : route;
+		realSkillLevels = levels == null ? null : levels.clone();
+		questPoints = points;
 	}
 
 	private void configureTabSearchBar(IconTextField field, String tooltip,
@@ -634,6 +658,7 @@ class BronzemanTcgPanel extends PluginPanel
 		return new PanelSnapshot(data, owned, visibleShared, recentUnlocksTracker.getRecent(),
 			recentUnlocksTracker.getSharedRecent(),
 			Collections.unmodifiableSet(questCards), includeSlayerSuperiors, completed, route,
+			realSkillLevels, questPoints,
 			countUnlocked(monsterCatalog.getEntityToCards(), owned),
 			countUnlocked(itemCatalog.getEntityToCards(), owned));
 	}
@@ -698,7 +723,9 @@ class BronzemanTcgPanel extends PluginPanel
 		boolean questStateChanged = first
 			|| !previous.completedQuests.equals(next.completedQuests)
 			|| !previous.questCards.equals(next.questCards)
-			|| previous.questRoute != next.questRoute;
+			|| previous.questRoute != next.questRoute
+			|| !java.util.Arrays.equals(previous.realSkillLevels, next.realSkillLevels)
+			|| previous.questPoints != next.questPoints;
 		snapshot = next;
 		// Party-sharing controls whether this view exists. The Recent Unlocks
 		// "Show shared" preference only filters that tab and must not affect this one.
@@ -789,15 +816,124 @@ class BronzemanTcgPanel extends PluginPanel
 		{
 			boolean completed = isQuestCompleted(quest.name);
 			boolean completable = quest.satisfiedCount(snapshot.questCards, snapshot.questRoute)
-				== quest.requirements.size();
+				== quest.requirements.size()
+				&& meetsRequirements(quest.name);
 			if ((!hideCompletedQuests.isSelected() || !completed)
-				&& (!hideIncompletableQuests.isSelected() || completable)
+				&& (!showMeetsReqsQuests.isSelected() || completable)
 				&& (query.isEmpty() || quest.name.toLowerCase(Locale.ROOT).contains(query)))
 			{
 				visible.add(quest);
 			}
 		}
 		return visible;
+	}
+
+	/**
+	 * Quest-title hover: the requirement checklist plus any catalogue note. Requirements
+	 * live only here, never in the dropdowns. Returns null when there is nothing to show.
+	 */
+	private String questTooltip(QuestCatalog.QuestEntry entry)
+	{
+		QuestRequirementCatalog.Requirements requirements =
+			questRequirementCatalog.get(entry.name);
+		if (requirements == null && entry.notes.isEmpty())
+		{
+			return null;
+		}
+
+		StringBuilder text = new StringBuilder("<html><b>")
+			.append(escapeHtml(entry.name)).append("</b>");
+		if (!entry.notes.isEmpty())
+		{
+			text.append("<br>").append(escapeHtml(entry.notes));
+		}
+		if (requirements != null)
+		{
+			int[] levels = snapshot == null ? null : snapshot.realSkillLevels;
+			for (QuestRequirementCatalog.SkillRequirement skill : requirements.skills)
+			{
+				int ordinal = skill.skill.ordinal();
+				Integer actual = levels != null && ordinal < levels.length
+					? levels[ordinal] : null;
+				boolean met = actual != null && actual >= skill.level;
+				String suffix = actual != null && !met ? " (you have " + actual + ")" : "";
+				text.append(markedLine(met, actual != null,
+					skill.level + " " + skillLabel(skill.skill) + suffix));
+			}
+			if (requirements.questPoints > 0)
+			{
+				boolean known = levels != null;
+				text.append(markedLine(known && snapshot.questPoints >= requirements.questPoints,
+					known, requirements.questPoints + " Quest Points"));
+			}
+			for (QuestRequirementCatalog.QuestRequirement quest : requirements.quests)
+			{
+				boolean known = snapshot != null;
+				text.append(markedLine(known && snapshot.completedQuests.contains(
+					quest.quest.getName().toLowerCase(Locale.ROOT)), known, quest.name));
+			}
+			// Real gates the wiki states as free text. Shown so the player knows about
+			// them, but never part of the filter - hence a neutral marker, not a cross.
+			for (String note : requirements.other)
+			{
+				text.append("<br>&nbsp;&nbsp;&#8226; ").append(escapeHtml(note));
+			}
+		}
+		return text.append("</html>").toString();
+	}
+
+	/**
+	 * Swing shows the deepest child's tooltip, and compactProgressRow gives its name
+	 * label one so clipped names stay readable at the fixed panel width. Without this the
+	 * checklist would only appear over the progress bar and padding, never over the name.
+	 */
+	private static void applyToolTipDeep(JComponent component, String text)
+	{
+		component.setToolTipText(text);
+		for (Component child : component.getComponents())
+		{
+			if (child instanceof JComponent)
+			{
+				applyToolTipDeep((JComponent) child, text);
+			}
+		}
+	}
+
+	private static String markedLine(boolean met, boolean known, String label)
+	{
+		if (!known)
+		{
+			return "<br>&nbsp;&nbsp;&#8226; " + escapeHtml(label);
+		}
+		String colour = String.format("#%06x",
+			(met ? UNLOCKED : LOCKED).getRGB() & 0xFFFFFF);
+		return "<br>&nbsp;&nbsp;<font color='" + colour + "'>"
+			+ (met ? "&#10004;" : "&#10008;") + "</font> " + escapeHtml(label);
+	}
+
+	private static String skillLabel(Skill skill)
+	{
+		String name = skill.name();
+		return name.charAt(0) + name.substring(1).toLowerCase(Locale.ROOT);
+	}
+
+	private static String escapeHtml(String value)
+	{
+		return value.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;");
+	}
+
+	/**
+	 * Skill levels, quest points and prerequisite quests for one quest. Display-only
+	 * notes are deliberately excluded - they are gates we cannot evaluate, so counting
+	 * them would hide quests the player may well be able to start.
+	 */
+	private boolean meetsRequirements(String questName)
+	{
+		QuestRequirementCatalog.Requirements requirements =
+			questRequirementCatalog.get(questName);
+		return requirements == null
+			|| requirements.isMet(snapshot.realSkillLevels, snapshot.questPoints,
+				snapshot.completedQuests);
 	}
 
 	private boolean isQuestCompleted(String name)
@@ -824,8 +960,8 @@ class BronzemanTcgPanel extends PluginPanel
 			}
 		}
 		boolean expanded = expandedQuestCategories.contains(label);
-		JPanel categoryRow = compactProgressRow(
-			(expanded ? "\u25bc " : "\u25b6 ") + label, completable, entries.size());
+		JPanel categoryRow = compactProgressRow(label, completable, entries.size());
+		styleCategoryHeader(categoryRow, expanded, 4, false);
 		makeClickable(categoryRow, () ->
 		{
 			if (!expandedQuestCategories.remove(label))
@@ -865,12 +1001,12 @@ class BronzemanTcgPanel extends PluginPanel
 		int have = entry.satisfiedCount(snapshot.questCards, snapshot.questRoute);
 		int total = entry.requirements.size();
 		boolean expanded = expandedQuests.contains(entry.name);
-		JPanel row = compactProgressRow(
-			(expanded ? "\u25bc " : "\u25b6 ") + entry.name, have, total);
-		styleCategoryHeader(row, 4);
-		if (!entry.notes.isEmpty())
+		JPanel row = compactProgressRow(entry.name, have, total);
+		styleCategoryHeader(row, expanded, 4, false);
+		String tooltip = questTooltip(entry);
+		if (tooltip != null)
 		{
-			row.setToolTipText(entry.notes);
+			applyToolTipDeep(row, tooltip);
 		}
 		makeClickable(row, () ->
 		{
@@ -1006,10 +1142,9 @@ class BronzemanTcgPanel extends PluginPanel
 		boolean expanded, int leftPadding)
 	{
 		JPanel row = row(new BorderLayout(6, 0));
-		row.setBackground(ColorScheme.DARK_GRAY_COLOR);
-		styleCategoryHeader(row, leftPadding);
+		styleCategoryHeader(row, expanded, leftPadding, true);
 
-		JLabel name = new JLabel((expanded ? "\u25bc " : "\u25b6 ") + label);
+		JLabel name = new JLabel(label);
 		name.setForeground(Color.WHITE);
 		row.add(name, BorderLayout.CENTER);
 
@@ -1024,22 +1159,22 @@ class BronzemanTcgPanel extends PluginPanel
 	private static JPanel contentDropdownRow(String label, boolean expanded)
 	{
 		JPanel row = row(new BorderLayout());
-		row.setBackground(Color.BLACK);
-		row.setBorder(BorderFactory.createCompoundBorder(
-			BorderFactory.createLineBorder(ColorScheme.DARKER_GRAY_COLOR),
-			BorderFactory.createEmptyBorder(4, 12, 4, 6)));
-		JLabel name = new JLabel((expanded ? "\u25bc " : "\u25b6 ") + label);
+		styleCategoryHeader(row, expanded, 12, true);
+		JLabel name = new JLabel(label);
 		name.setForeground(Color.WHITE);
 		row.add(name, BorderLayout.CENTER);
 		return row;
 	}
 
-	private static void styleCategoryHeader(JPanel row, int leftPadding)
+	/**
+	 * Every expandable row in the tabs, styled to match the settings view: a bronze
+	 * border marks "this opens", and an expanded row fills warm brown. Leaf card rows
+	 * keep {@link #styleListContent} so content stays visually distinct from controls.
+	 */
+	private static void styleCategoryHeader(JPanel row, boolean expanded, int leftPadding,
+		boolean nested)
 	{
-		row.setBackground(ColorScheme.DARK_GRAY_COLOR);
-		row.setBorder(BorderFactory.createCompoundBorder(
-			BorderFactory.createLineBorder(Color.BLACK),
-			BorderFactory.createEmptyBorder(4, leftPadding, 4, 4)));
+		PanelComponents.styleHierarchyRow(row, expanded, nested, leftPadding);
 	}
 
 	private static void styleListContent(JPanel row)
@@ -1067,6 +1202,10 @@ class BronzemanTcgPanel extends PluginPanel
 	{
 		contentList.removeAll();
 		boolean visible = addPvmSection("Instanced Content/Raids", snapshot.data.contents);
+		if (visible)
+		{
+			addSpacedDivider(contentList);
+		}
 		visible |= addPvmSection("Monsters by Area", snapshot.data.areas);
 		if (snapshot.data.contents.isEmpty() && snapshot.data.areas.isEmpty())
 		{
@@ -1104,6 +1243,10 @@ class BronzemanTcgPanel extends PluginPanel
 		{
 			if (hasVisibleSlayerContent(master))
 			{
+				if (visible)
+				{
+					addSpacedDivider(slayerList);
+				}
 				addSlayerMaster(master);
 				visible = true;
 			}
@@ -1138,9 +1281,8 @@ class BronzemanTcgPanel extends PluginPanel
 		}
 
 		int have = satisfiedRequirements(superiors, snapshot.owned);
-		String arrow = expandedGlobalSuperiors ? "\u25bc " : "\u25b6 ";
-		slayerList.add(clickableProgressRow(arrow + "Superior Creatures",
-			have, superiors.size(), () ->
+		slayerList.add(clickableProgressRow("Superior Creatures",
+			have, superiors.size(), expandedGlobalSuperiors, () ->
 			{
 				expandedGlobalSuperiors = !expandedGlobalSuperiors;
 				refreshSlayer();
@@ -1164,8 +1306,7 @@ class BronzemanTcgPanel extends PluginPanel
 		boolean expanded = expandedSlayer.contains(master.name);
 		int have = master.satisfiedCount(snapshot.owned, snapshot.includeSlayerSuperiors);
 		int total = master.requirementCount(snapshot.includeSlayerSuperiors);
-		String arrow = expanded ? "\u25bc " : "\u25b6 ";
-		slayerList.add(clickableProgressRow(arrow + master.name, have, total, () ->
+		slayerList.add(clickableProgressRow(master.name, have, total, expanded, () ->
 		{
 			if (!expandedSlayer.remove(master.name))
 			{
@@ -1295,8 +1436,7 @@ class BronzemanTcgPanel extends PluginPanel
 				ready++;
 			}
 		}
-		String arrow = expanded ? "\u25bc " : "\u25b6 ";
-		contentList.add(clickableProgressRow(arrow + sectionName, ready, entries.size(), () ->
+		contentList.add(clickableProgressRow(sectionName, ready, entries.size(), expanded, () ->
 		{
 			if (!expandedPvmSections.remove(sectionName))
 			{
@@ -1309,11 +1449,16 @@ class BronzemanTcgPanel extends PluginPanel
 			return true;
 		}
 
+		int entryIndex = 0;
 		for (QuestCatalog.QuestEntry entry : entries)
 		{
 			if (!hasVisiblePvmRequirement(entry))
 			{
 				continue;
+			}
+			if (entryIndex++ > 0)
+			{
+				addSpacedDivider(contentList);
 			}
 			String key = nestedKey(sectionName, entry.name);
 			boolean groupExpanded = expandedPvmGroups.contains(key);
@@ -1403,16 +1548,17 @@ class BronzemanTcgPanel extends PluginPanel
 		return unlocked ? showUnlockedPvm.isSelected() : showLockedPvm.isSelected();
 	}
 
-	private JPanel clickableProgressRow(String label, int have, int total, Runnable action)
+	private JPanel clickableProgressRow(String label, int have, int total,
+		boolean expanded, Runnable action)
 	{
-		return clickableProgressRow(label, have, total, have >= total, action);
+		return clickableProgressRow(label, have, total, have >= total, expanded, action);
 	}
 
 	private JPanel clickableProgressRow(String label, int have, int total,
-		boolean complete, Runnable action)
+		boolean complete, boolean expanded, Runnable action)
 	{
 		JPanel row = compactProgressRow(label, have, total, complete);
-		styleCategoryHeader(row, 4);
+		styleCategoryHeader(row, expanded, 4, false);
 		makeClickable(row, action);
 		return row;
 	}
@@ -1497,8 +1643,13 @@ class BronzemanTcgPanel extends PluginPanel
 		}
 		// Entries are sorted once by the background preparation pass. A name never moves
 		// when the owned collection changes.
+		int rumourIndex = 0;
 		for (QuestCatalog.QuestEntry entry : entries)
 		{
+			if (rumourIndex++ > 0)
+			{
+				addSpacedDivider(rumoursList);
+			}
 			rumoursList.add(checklistRow(entry, snapshot.owned, expandedRumours,
 				this::refreshRumours));
 			if (expandedRumours.contains(entry.name))
@@ -1710,9 +1861,9 @@ class BronzemanTcgPanel extends PluginPanel
 	private static JPanel collapsibleCountRow(String label, int count, boolean expanded, int indent)
 	{
 		JPanel row = row(new BorderLayout(6, 0));
-		styleCategoryHeader(row, indent + 4);
+		styleCategoryHeader(row, expanded, indent + 4, indent > 0);
 		row.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		JLabel name = new JLabel((expanded ? "▼ " : "▶ ") + label);
+		JLabel name = new JLabel(label);
 		name.setForeground(Color.WHITE);
 		row.add(name, BorderLayout.CENTER);
 		JLabel total = new JLabel(Integer.toString(count));
@@ -1724,8 +1875,12 @@ class BronzemanTcgPanel extends PluginPanel
 	private void configureQuestFilters()
 	{
 		hideCompletedQuests.setSelected(getSavedBoolean(QUEST_HIDE_COMPLETED_KEY, true));
-		hideIncompletableQuests.setSelected(
+		// Same predicate as the old "Hide incompletable", just phrased positively, so the
+		// stored key is deliberately unchanged - renaming it would reset every user.
+		showMeetsReqsQuests.setSelected(
 			getSavedBoolean(QUEST_HIDE_INCOMPLETABLE_KEY, false));
+		showMeetsReqsQuests.setToolTipText("Only show quests whose skill levels, quest "
+			+ "points, prerequisite quests and cards you already have.");
 
 		questFilters.setOpaque(false);
 		questFilters.setAlignmentX(Component.LEFT_ALIGNMENT);
@@ -1733,7 +1888,7 @@ class BronzemanTcgPanel extends PluginPanel
 		questFilters.setLayout(new BoxLayout(questFilters, BoxLayout.Y_AXIS));
 
 		for (JCheckBox checkBox : new JCheckBox[]{
-			hideCompletedQuests, hideIncompletableQuests})
+			hideCompletedQuests, showMeetsReqsQuests})
 		{
 			checkBox.setOpaque(false);
 			checkBox.setForeground(Color.WHITE);
@@ -1805,7 +1960,7 @@ class BronzemanTcgPanel extends PluginPanel
 		configManager.setConfiguration(BronzemanTcgConfig.GROUP,
 			QUEST_HIDE_COMPLETED_KEY, hideCompletedQuests.isSelected());
 		configManager.setConfiguration(BronzemanTcgConfig.GROUP,
-			QUEST_HIDE_INCOMPLETABLE_KEY, hideIncompletableQuests.isSelected());
+			QUEST_HIDE_INCOMPLETABLE_KEY, showMeetsReqsQuests.isSelected());
 		dirtyTabs.add(PanelTab.QUESTS);
 		if (selectedTab == PanelTab.QUESTS)
 		{
@@ -2014,9 +2169,8 @@ class BronzemanTcgPanel extends PluginPanel
 		boolean forceExpanded)
 	{
 		boolean expanded = forceExpanded || expandedImportantCategories.contains(category.name);
-		JPanel row = compactProgressRow((expanded ? "▼ " : "▶ ") + category.name,
-			have, category.allItems.size());
-		styleCategoryHeader(row, 4);
+		JPanel row = compactProgressRow(category.name, have, category.allItems.size());
+		styleCategoryHeader(row, expanded, 4, false);
 		makeClickable(row, () ->
 		{
 			if (!expandedImportantCategories.remove(category.name))
@@ -2226,10 +2380,9 @@ class BronzemanTcgPanel extends PluginPanel
 		int have = entry.satisfiedCount(owned);
 		int total = entry.requirements.size();
 		boolean expanded = expandedNames.contains(entry.name);
-		String label = (expanded ? "\u25bc " : "\u25b6 ") + entry.name
-			+ (entry.miniquest ? " (mini)" : "");
+		String label = entry.name + (entry.miniquest ? " (mini)" : "");
 		JPanel row = compactProgressRow(label, have, total);
-		styleCategoryHeader(row, 4);
+		styleCategoryHeader(row, expanded, 4, false);
 		if (!entry.notes.isEmpty())
 		{
 			row.setToolTipText(entry.notes);
@@ -2575,7 +2728,7 @@ class BronzemanTcgPanel extends PluginPanel
 
 		JLabel text = new JLabel(label);
 		text.setForeground(Color.WHITE);
-		text.setToolTipText(label.replace("\u25bc ", "").replace("\u25b6 ", "").trim());
+		text.setToolTipText(label.trim());
 		row.add(text, BorderLayout.CENTER);
 
 		JPanel progress = new JPanel(new BorderLayout(6, 0));
@@ -2799,6 +2952,9 @@ class BronzemanTcgPanel extends PluginPanel
 		private final boolean includeSlayerSuperiors;
 		private final Set<String> completedQuests;
 		private final QuestCatalog.RouteSelection questRoute;
+		/** Real levels by Skill.ordinal(), or null while logged out. */
+		private final int[] realSkillLevels;
+		private final int questPoints;
 		private final int unlockedMonsters;
 		private final int unlockedItems;
 
@@ -2807,9 +2963,12 @@ class BronzemanTcgPanel extends PluginPanel
 			List<RecentUnlocksTracker.Unlock> sharedRecentUnlocks,
 			Set<String> questCards, boolean includeSlayerSuperiors,
 			Set<String> completedQuests, QuestCatalog.RouteSelection questRoute,
+			int[] realSkillLevels, int questPoints,
 			int unlockedMonsters,
 			int unlockedItems)
 		{
+			this.realSkillLevels = realSkillLevels;
+			this.questPoints = questPoints;
 			this.data = data;
 			this.owned = owned;
 			this.shared = shared;
