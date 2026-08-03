@@ -40,6 +40,9 @@ public class RecipeCatalog
 	public static final String KIND_INTERFACE = "interface";
 	public static final String KIND_SPELL_ON_ITEM = "spell-on-item";
 	public static final String ANY_TARGET = "*";
+	private static final String COSTUME_NEEDLE = "costume needle";
+	private static final Set<String> COSTUME_NEEDLE_REPLACEMENTS = new HashSet<>(Arrays.asList(
+		"needle", "thread"));
 
 	private static final Set<String> EVENT_LOGS = new HashSet<>(Arrays.asList(
 		"blue logs", "green logs", "red logs", "purple logs", "white logs"));
@@ -64,7 +67,8 @@ public class RecipeCatalog
 			return null;
 		}
 		return recipes.get(key(kind,
-			CardNames.stripDoseSuffix(name.trim().toLowerCase(Locale.ROOT)),
+			canonicalTriggerName(kind,
+				CardNames.stripDoseSuffix(name.trim().toLowerCase(Locale.ROOT))),
 			CardNames.stripDoseSuffix(target.trim().toLowerCase(Locale.ROOT))));
 	}
 
@@ -75,7 +79,8 @@ public class RecipeCatalog
 		{
 			return null;
 		}
-		String nameKey = CardNames.stripDoseSuffix(name.trim().toLowerCase(Locale.ROOT));
+		String nameKey = canonicalTriggerName(kind,
+			CardNames.stripDoseSuffix(name.trim().toLowerCase(Locale.ROOT)));
 		String targetKey = target == null ? ANY_TARGET
 			: CardNames.stripDoseSuffix(target.trim().toLowerCase(Locale.ROOT));
 		Recipe recipe = recipes.get(key(kind, nameKey, targetKey));
@@ -94,6 +99,13 @@ public class RecipeCatalog
 	private static String key(String kind, String nameLower, String targetLower)
 	{
 		return kind + '|' + nameLower + '|' + targetLower;
+	}
+
+	/** Costume needle opens the same sewing interfaces as Needle. */
+	private static String canonicalTriggerName(String kind, String nameLower)
+	{
+		return KIND_ITEM_ON_ITEM.equals(kind) && COSTUME_NEEDLE.equals(nameLower)
+			? "needle" : nameLower;
 	}
 
 	private void load(Gson gson)
@@ -216,11 +228,14 @@ public class RecipeCatalog
 			boolean enforceOutput)
 		{
 			List<String> missing = new ArrayList<>();
+			boolean costumeNeedleOwned = "crafting".equals(category)
+				&& owned.contains(COSTUME_NEEDLE);
 			if (enforceInputs)
 			{
 				for (ResourceNodeCatalog.CardGroup group : inputGroups)
 				{
-					if (!group.isSatisfied(owned))
+					if (!group.isSatisfied(owned)
+						&& !(costumeNeedleOwned && isCostumeNeedleReplacement(group)))
 					{
 						missing.add(String.join(" / ", group.displayCards));
 					}
@@ -232,6 +247,13 @@ public class RecipeCatalog
 				missing.add(output);
 			}
 			return missing;
+		}
+
+		private static boolean isCostumeNeedleReplacement(ResourceNodeCatalog.CardGroup group)
+		{
+			return group.displayCards.size() == 1
+				&& COSTUME_NEEDLE_REPLACEMENTS.contains(
+					group.displayCards.get(0).toLowerCase(Locale.ROOT));
 		}
 	}
 
