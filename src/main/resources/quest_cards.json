@@ -290,8 +290,7 @@
 						},
 						{
 							"label": "A knife or slash weapon",
-							"logic": "ALL",
-							"displayCardsOnly": true,
+							"logic": "ANY",
 							"children": [
 								{
 									"label": "Knife",
@@ -316,7 +315,14 @@
 										"Mithril longsword",
 										"Steel longsword",
 										"Iron longsword",
-										"Bronze longsword"
+										"Bronze longsword",
+										"Bronze sword",
+										"Iron sword",
+										"Steel sword",
+										"Mithril sword",
+										"Adamant sword",
+										"Rune sword",
+										"Dragon sword"
 									],
 									"type": "item"
 								}
@@ -6180,7 +6186,7 @@
 							"type": "item"
 						},
 						{
-							"label": "Any axe",
+							"label": "Rune axe or higher",
 							"cards": [
 								"Rune axe",
 								"Dragon axe",
@@ -6201,6 +6207,61 @@
 								"Vial of water"
 							],
 							"type": "item"
+						},
+						{
+							"label": "1 of each cut gem",
+							"logic": "ALL",
+							"children": [
+								{
+									"label": "Sapphire",
+									"cards": [
+										"Sapphire"
+									],
+									"type": "item"
+								},
+								{
+									"label": "Emerald",
+									"cards": [
+										"Emerald"
+									],
+									"type": "item"
+								},
+								{
+									"label": "Ruby",
+									"cards": [
+										"Ruby"
+									],
+									"type": "item"
+								},
+								{
+									"label": "Diamond",
+									"cards": [
+										"Diamond"
+									],
+									"type": "item"
+								},
+								{
+									"label": "Opal",
+									"cards": [
+										"Opal"
+									],
+									"type": "item"
+								},
+								{
+									"label": "Jade",
+									"cards": [
+										"Jade"
+									],
+									"type": "item"
+								},
+								{
+									"label": "Red topaz",
+									"cards": [
+										"Red topaz"
+									],
+									"type": "item"
+								}
+							]
 						},
 						{
 							"label": "Soul rune",
@@ -6224,6 +6285,13 @@
 							"type": "item"
 						},
 						{
+							"label": "Earth rune",
+							"cards": [
+								"Earth rune"
+							],
+							"type": "item"	
+						},
+						{
 							"label": "Unpowered orb",
 							"cards": [
 								"Unpowered orb"
@@ -6245,55 +6313,6 @@
 							"type": "enemy"
 						},
 						{
-							"label": "Sapphire",
-							"cards": [
-								"Sapphire"
-							],
-							"type": "item"
-						},
-						{
-							"label": "Emerald",
-							"cards": [
-								"Emerald"
-							],
-							"type": "item"
-						},
-						{
-							"label": "Ruby",
-							"cards": [
-								"Ruby"
-							],
-							"type": "item"
-						},
-						{
-							"label": "Diamond",
-							"cards": [
-								"Diamond"
-							],
-							"type": "item"
-						},
-						{
-							"label": "Opal",
-							"cards": [
-								"Opal"
-							],
-							"type": "item"
-						},
-						{
-							"label": "Jade",
-							"cards": [
-								"Jade"
-							],
-							"type": "item"
-						},
-						{
-							"label": "Red topaz",
-							"cards": [
-								"Red topaz"
-							],
-							"type": "item"
-						},
-						{
 							"label": "Charge Orb Runes",
 							"logic": "ALL",
 							"children": [
@@ -6302,46 +6321,17 @@
 									"cards": [
 										"Cosmic rune"
 									],
-									"type": "item",
-									"quantity": 3
+									"type": "item"
 								},
 								{
-									"label": "Elemental runes",
-									"logic": "ANY",
-									"children": [
-										{
-											"label": "Air runes",
-											"cards": [
-												"Air rune"
-											],
-											"type": "item",
-											"quantity": 30
-										},
-										{
-											"label": "Water runes",
-											"cards": [
-												"Water rune"
-											],
-											"type": "item",
-											"quantity": 30
-										},
-										{
-											"label": "Earth runes",
-											"cards": [
-												"Earth rune"
-											],
-											"type": "item",
-											"quantity": 30
-										},
-										{
-											"label": "Fire runes",
-											"cards": [
-												"Fire rune"
-											],
-											"type": "item",
-											"quantity": 30
-										}
-									]
+									"label": "30 of any elemental runes",
+									"cards": [
+										"Air runes",
+										"Earth runes",
+										"Fire runes",
+										"Water runes"
+									],
+									"type": "item"
 								}
 							]
 						},
@@ -6364,7 +6354,7 @@
 							"type": "item"
 						},
 						{
-							"label": "A machete",
+							"label": "Any machete",
 							"cards": [
 								"Red topaz machete",
 								"Jade machete",
@@ -6426,7 +6416,14 @@
 							"type": "item"
 						},
 						{
-							"label": "Any axe",
+							"label": "Bronze axe (for Entrana)",
+							"cards": [
+								"Bronze axe"
+							],
+							"type": "item"
+						},
+						{
+							"label": "Any axe (to start)",
 							"cards": [
 								"Bronze axe",
 								"Crystal axe",
@@ -6525,12 +6522,13 @@
 						{
 							"label": "Needle",
 							"cards": [
-								"Needle"
+								"Needle",
+								"Costume needle"
 							],
 							"type": "item"
 						},
 						{
-							"label": "Thread",
+							"label": "Thread (without costume needle)",
 							"cards": [
 								"Thread"
 							],
@@ -6572,6 +6570,24 @@
 								"Steel pickaxe",
 								"Iron pickaxe",
 								"Bronze pickaxe"
+							],
+							"type": "item"
+						},
+						{
+							"label": "Any axe",
+							"cards": [
+								"Crystal axe",
+								"3rd age axe",
+								"Infernal axe",
+								"Dragon axe",
+								"Rune axe",
+								"Gilded axe",
+								"Adamant axe",
+								"Mithril axe",
+								"Black axe",
+								"Steel axe",
+								"Iron axe",
+								"Bronze axe"
 							],
 							"type": "item"
 						},
@@ -6636,6 +6652,66 @@
 			"miniquest": true,
 			"sections": [
 				{
+					"label": "Items",
+					"requirements": [
+						{
+							"label": "Magic combat spell options or powered staff choice",
+							"logic": "ALL",
+							"children": [
+								{
+									"label": "Any catalytic rune",
+									"cards": [
+										"Mind rune",
+										"Chaos rune",
+										"Death rune",
+										"Blood rune",
+										"Wrath rune"
+									]
+								},
+								{
+									"label": "Any elemental rune",
+									"cards": [
+										"Air rune",
+										"Water rune",
+										"Earth rune",
+										"Fire rune",
+										"Mist rune",
+										"Dust rune",
+										"Mud rune",
+										"Smoke rune",
+										"Lava rune"
+									]
+								}
+							]
+						},
+						{
+							"label": "Knife or slash weapon",
+							"cards": [
+								"Knife",
+								"Bronze sword",
+								"Iron sword",
+								"Steel sword",
+								"Mithril sword",
+								"Adamant sword",
+								"Rune sword",
+								"Dragon sword",
+								"Bronze scimitar",
+								"Iron scimitar",
+								"Steel scimitar",
+								"Mithril scimitar",
+								"Adamant scimitar",
+								"Rune scimitar",
+								"Dragon scimitar",
+								"Wilderness sword 1",
+								"Wilderness sword 2",
+								"Wilderness sword 3",
+								"Wilderness sword 4"
+							],
+							"type": "item"
+						}
+					]
+				},
+				{
 					"label": "Enemies",
 					"requirements": [
 						{
@@ -6654,6 +6730,54 @@
 			"name": "Mage Arena II",
 			"miniquest": true,
 			"sections": [
+				{
+					"label": "Items",
+					"requirements": [
+						{
+							"label": "Any god staff",
+							"cards": [
+								"Saradomin staff",
+								"Zamorak staff",
+								"Guthix staff"
+							],
+							"type": "item"
+						},
+						{
+							"label": "God spell runes",
+							"cards": [
+								"Air rune",
+								"Fire rune",
+								"Blood rune"
+							],
+							"type": "item"
+						},
+						{
+							"label": "Knife or slash weapon",
+							"cards": [
+								"Knife",
+								"Bronze sword",
+								"Iron sword",
+								"Steel sword",
+								"Mithril sword",
+								"Adamant sword",
+								"Rune sword",
+								"Dragon sword",
+								"Bronze scimitar",
+								"Iron scimitar",
+								"Steel scimitar",
+								"Mithril scimitar",
+								"Adamant scimitar",
+								"Rune scimitar",
+								"Dragon scimitar",
+								"Wilderness sword 1",
+								"Wilderness sword 2",
+								"Wilderness sword 3",
+								"Wilderness sword 4"
+							],
+							"type": "item"
+						}
+					]
+				},
 				{
 					"label": "Enemies",
 					"requirements": [
@@ -6823,6 +6947,13 @@
 							"type": "item"
 						},
 						{
+							"label": "Bucket (if collecting wax manually)",
+							"cards": [
+								"Bucket"
+							],
+							"type": "item"
+						},
+						{
 							"label": "Tinderbox",
 							"cards": [
 								"Tinderbox"
@@ -6908,15 +7039,9 @@
 							"type": "item"
 						},
 						{
-							"label": "Logs",
+							"label": "Logs or Plank",
 							"cards": [
-								"Logs"
-							],
-							"type": "item"
-						},
-						{
-							"label": "Plank",
-							"cards": [
+								"Logs",
 								"Plank"
 							],
 							"type": "item"
@@ -6948,7 +7073,7 @@
 							"type": "item"
 						},
 						{
-							"label": "Monkey bones",
+							"label": "Monkey bones or Monkey corpse",
 							"cards": [
 								"Monkey bones"
 							],
@@ -7042,9 +7167,17 @@
 							]
 						},
 						{
-							"label": "A lightsource",
+							"label": "Any light source",
 							"cards": [
-								"Lit candle"
+								"Abyssal lantern",
+								"Bruma torch",
+								"Bullseye lantern",
+								"Candle lantern",
+								"Lit candle",
+								"Mining helmet",
+								"Oil lamp",
+								"Oil lantern",
+								"Torch"
 							],
 							"type": "item"
 						},
@@ -7133,17 +7266,9 @@
 							"type": "item"
 						},
 						{
-							"label": "Any plank",
+							"label": "Plank",
 							"cards": [
-								"Plank",
-								"Oak plank"
-							],
-							"type": "item"
-						},
-						{
-							"label": "Staff",
-							"cards": [
-								"Staff"
+								"Plank"
 							],
 							"type": "item"
 						},
@@ -7186,6 +7311,7 @@
 						{
 							"label": "A staff or a pole",
 							"cards": [
+								"Staff",
 								"Battlestaff",
 								"Air battlestaff",
 								"Mystic air staff",
@@ -7361,20 +7487,89 @@
 							"type": "item"
 						},
 						{
-							"label": "Death tiara / Catalytic talisman / Catalytic tiara",
-							"cards": [
-								"Death tiara",
-								"Catalytic talisman",
-								"Catalytic tiara"
-							],
-							"type": "item"
-						},
-						{
 							"label": "Rope",
 							"cards": [
 								"Rope"
 							],
 							"type": "item"
+						},
+						{
+							"label": "50 random items or a skippable item",
+							"logic": "ANY",
+							"children": [
+								{
+									"label": "Death tiara",
+									"cards": [
+										"Death tiara"
+									],
+									"type": "item"
+								},
+								{
+									"label": "Catalytic talisman/tiara",
+									"cards": [
+										"Catalytic talisman",
+										"Catalytic tiara"
+									],
+									"type": "item"
+								},
+								{
+									"label": "50 items for Klank",
+									"cards": [
+										"Babydragon bones",
+										"Ball of wool",
+										"Bronze bar",
+										"Bronze med helm",
+										"Bucket of milk",
+										"Cake tin",
+										"Cheese",
+										"Chisel",
+										"Cooked meat",
+										"Egg",
+										"Facemask",
+										"Fishing rod",
+										"Flax",
+										"Gold ring",
+										"Hammer",
+										"Iron axe",
+										"Iron nails",
+										"Iron pickaxe",
+										"Jug of wine",
+										"Kebab",
+										"Knife",
+										"Leather boots",
+										"Leather gloves",
+										"Lobster pot",
+										"Lockpick",
+										"Necklace mould",
+										"Needle",
+										"Oak logs",
+										"Pie dish",
+										"Plank",
+										"Pot of flour",
+										"Potato cactus",
+										"Potatoes",
+										"Pure essence",
+										"Redberries",
+										"Rope",
+										"Rotten tomato",
+										"Shears",
+										"Spade",
+										"Swamp paste",
+										"Thread",
+										"Tinderbox",
+										"Unicorn horn dust",
+										"Vial of water",
+										"White apron",
+										"White berries",
+										"Archery ticket",
+										"Agility arena ticket",
+										"Castle wars ticket",
+										"Crumbling tome",
+										"Jail key",
+										"Dusty key"
+									]
+								}
+							]
 						}
 					]
 				},
@@ -7391,7 +7586,7 @@
 					]
 				}
 			],
-			"notes": ""
+			"notes": "Death talisman has no restriction\nSkull, Slashed/battered book, Prifddinas' history, and Door key are items Klank can ask for, but has no restriction for it"
 		},
 		{
 			"name": "Murder Mystery",
@@ -7401,16 +7596,16 @@
 					"label": "Items",
 					"requirements": [
 						{
-							"label": "Pot",
+							"label": "Pot (if using the flour bag)",
 							"cards": [
 								"Pot"
 							],
 							"type": "item"
 						},
 						{
-							"label": "Pot of Flour",
+							"label": "Pot of flour",
 							"cards": [
-								"Pot of Flour"
+								"Pot of flour"
 							],
 							"type": "item"
 						}
@@ -7661,6 +7856,40 @@
 							"type": "item"
 						},
 						{
+							"label": "Guthix rest materials (if making)",
+							"logic": "ALL",
+							"children": [
+								{
+									"label": "Guam leaf",
+									"cards": [
+										"Guam leaf"
+									],
+									"type": "item"
+								},
+								{
+									"label": "Marrentill",
+									"cards": [
+										"Marrentill"
+									],
+									"type": "item"
+								},
+								{
+									"label": "Harralander",
+									"cards": [
+										"Harralander"
+									],
+									"type": "item"
+								},
+								{
+									"label": "Cup of hot water",
+									"cards": [
+										"Cup of hot water"
+									],
+									"type": "item"
+								}
+							]
+						},
+						{
 							"label": "Hammer",
 							"cards": [
 								"Hammer"
@@ -7689,40 +7918,38 @@
 							"type": "item"
 						},
 						{
-							"label": "Guam leaf",
-							"cards": [
-								"Guam leaf"
-							],
-							"type": "item",
-							"quantity": 2
-						},
-						{
-							"label": "Marrentill",
-							"cards": [
-								"Marrentill"
-							],
-							"type": "item"
-						},
-						{
-							"label": "Harralander",
-							"cards": [
-								"Harralander"
-							],
-							"type": "item"
-						},
-						{
-							"label": "Empty cup",
-							"cards": [
-								"Empty cup"
-							],
-							"type": "item"
-						},
-						{
-							"label": "Bowl of hot water",
-							"cards": [
-								"Bowl of hot water"
-							],
-							"type": "item"
+							"label": "2 cut gems of specific type",
+							"logic": "ALL",
+							"children": [
+								{
+									"label": "Opal",
+									"cards": [
+										"Opal"
+									],
+									"type": "item"
+								},
+								{
+									"label": "Jade",
+									"cards": [
+										"Jade"
+									],
+									"type": "item"
+								},
+								{
+									"label": "Red topaz",
+									"cards": [
+										"Red topaz"
+									],
+									"type": "item"
+								},
+								{
+									"label": "Sapphire",
+									"cards": [
+										"Sapphire"
+									],
+									"type": "item"
+								}
+							]
 						}
 					]
 				},
@@ -7889,7 +8116,7 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Gardener",
+							"label": "Gardener (can be despawned)",
 							"cards": [
 								"Gardener"
 							],
@@ -8015,6 +8242,13 @@
 							"type": "item"
 						},
 						{
+							"label": "Ball of wool",
+							"cards": [
+								"Ball of wool"
+							],
+							"type": "item"
+						},
+						{
 							"label": "Yellow dye / Onion",
 							"cards": [
 								"Yellow dye",
@@ -8085,14 +8319,6 @@
 								"Rope"
 							],
 							"type": "item"
-						},
-						{
-							"label": "Balls of wool",
-							"cards": [
-								"Ball of wool"
-							],
-							"type": "item",
-							"quantity": 3
 						}
 					]
 				},
@@ -8118,6 +8344,13 @@
 				{
 					"label": "Items",
 					"requirements": [
+						{
+							"label": "Coins (without ring of charos(a))",
+							"cards": [
+								"Coins"
+							],
+							"type": "item"
+						},
 						{
 							"label": "Hammer",
 							"cards": [
@@ -8185,9 +8418,14 @@
 							"type": "item"
 						},
 						{
-							"label": "Logs",
+							"label": "Any logs",
 							"cards": [
-								"Logs"
+								"Logs",
+								"Oak logs",
+								"Willow logs",
+								"Maple logs",
+								"Yew logs",
+								"Magic logs"
 							],
 							"type": "item"
 						},
@@ -8204,23 +8442,31 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Giant rat",
+							"label": "Rat",
 							"cards": [
-								"Giant rat"
+								"Blessed giant rat",
+								"Dungeon rat",
+								"Giant crypt rat",
+								"Giant rat",
+								"Zombie rat"
 							],
 							"type": "enemy"
 						},
 						{
 							"label": "Unicorn",
 							"cards": [
+								"Black unicorn",
 								"Unicorn"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Black bear",
+							"label": "Bear",
 							"cards": [
-								"Black bear"
+								"Bear Cub",
+								"Black bear",
+								"Grizzly bear",
+								"Grizzly bear cub"
 							],
 							"type": "enemy"
 						},
@@ -8234,7 +8480,8 @@
 						{
 							"label": "Goblin",
 							"cards": [
-								"Goblin"
+								"Goblin",
+								"Goblin guard"
 							],
 							"type": "enemy"
 						},
@@ -8253,9 +8500,10 @@
 							"type": "enemy"
 						},
 						{
-							"label": "Monkey (monster)",
+							"label": "Monkey",
 							"cards": [
-								"Monkey (monster)"
+								"Monkey (monster)",
+								"Monkey Zombie"
 							],
 							"type": "enemy"
 						}
@@ -8279,9 +8527,14 @@
 							"type": "item"
 						},
 						{
-							"label": "Logs",
+							"label": "Any logs",
 							"cards": [
-								"Logs"
+								"Logs",
+								"Oak logs",
+								"Willow logs",
+								"Maple logs",
+								"Yew logs",
+								"Magic logs"
 							],
 							"type": "item"
 						},
@@ -8293,7 +8546,7 @@
 							"type": "item"
 						},
 						{
-							"label": "Dusty key",
+							"label": "Dusty key or 70 Agility",
 							"cards": [
 								"Dusty key"
 							],
@@ -8328,38 +8581,12 @@
 							"type": "item"
 						},
 						{
-							"label": "Rabbit / Bunny (rabbit bone)",
-							"cards": [
-								"Rabbit",
-								"Bunny"
-							],
-							"type": "enemy"
-						},
-						{
 							"label": "Coins",
 							"cards": [
 								"Coins"
 							],
 							"type": "item",
 							"quantity": 902
-						},
-						{
-							"label": "Any axe",
-							"cards": [
-								"Crystal axe",
-								"3rd age axe",
-								"Infernal axe",
-								"Dragon axe",
-								"Rune axe",
-								"Gilded axe",
-								"Adamant axe",
-								"Mithril axe",
-								"Black axe",
-								"Steel axe",
-								"Iron axe",
-								"Bronze axe"
-							],
-							"type": "item"
 						},
 						{
 							"label": "Any light source",
@@ -8384,7 +8611,13 @@
 						{
 							"label": "Wolf",
 							"cards": [
-								"Wolf"
+								"Wolf",
+								"Big Wolf",
+								"White wolf",
+								"Ice wolf",
+								"Dire Wolf",
+								"Desert Wolf",
+								"Jungle Wolf"
 							],
 							"type": "enemy"
 						},
@@ -8398,7 +8631,10 @@
 						{
 							"label": "Rat",
 							"cards": [
-								"Rat"
+								"Rat",
+								"Brine rat",
+								"Giant rat",
+								"Crypt rat"
 							],
 							"type": "enemy"
 						},
@@ -8412,7 +8648,12 @@
 						{
 							"label": "Ogre",
 							"cards": [
-								"Ogre"
+								"Ogre",
+								"Gorad",
+								"Enclave guard",
+								"Ogre chieftain",
+								"Ogress Shaman",
+								"Ogress Warrior"
 							],
 							"type": "enemy"
 						},
@@ -8426,7 +8667,9 @@
 						{
 							"label": "Zogre",
 							"cards": [
-								"Zogre"
+								"Zogre",
+								"Skogre",
+								"Slash Bash"
 							],
 							"type": "enemy"
 						},
@@ -8440,13 +8683,21 @@
 						{
 							"label": "Dagannoth",
 							"cards": [
-								"Dagannoth"
+								"Blue dagannoth",
+								"Dagannoth",
+								"Dagannoth Rex",
+								"Dagannoth Supreme",
+								"Dagannoth Prime",
+								"Dagannoth fledgeling",
+								"Dagannoth mother",
+								"Dagannoth spawn"
 							],
 							"type": "enemy"
 						},
 						{
 							"label": "Snake",
 							"cards": [
+								"Bush snake",
 								"Snake"
 							],
 							"type": "enemy"
@@ -8454,7 +8705,13 @@
 						{
 							"label": "Zombie",
 							"cards": [
-								"Zombie"
+								"Armoured zombie (Defender of Varrock)",
+								"Armoured zombie (Zemouregal's Fort)",
+								"Nazastarool",
+								"Sorebones",
+								"Zombie",
+								"Zombie pirate",
+								"Zombie swab"
 							],
 							"type": "enemy"
 						},
@@ -8466,8 +8723,10 @@
 							"type": "enemy"
 						},
 						{
-							"label": "Moss Giant (Iorwerth Dungeon)",
+							"label": "Moss Giant",
 							"cards": [
+								"Bryophyta",
+								"Moss giant",
 								"Moss Giant (Iorwerth Dungeon)"
 							],
 							"type": "enemy"
@@ -8489,7 +8748,9 @@
 						{
 							"label": "Terrorbird",
 							"cards": [
-								"Terrorbird"
+								"Mutated Terrorbird",
+								"Terrorbird",
+								"Warped Terrorbird"
 							],
 							"type": "enemy"
 						},
@@ -8501,9 +8762,22 @@
 							"type": "enemy"
 						},
 						{
-							"label": "Mountain troll",
+							"label": "Troll",
 							"cards": [
-								"Mountain troll"
+								"Arrg",
+								"Berry",
+								"Chuck up",
+								"Daddy's special water",
+								"Drink troll",
+								"Kraka",
+								"Mountain troll",
+								"Pee Hat",
+								"River troll",
+								"Rock (Troll)",
+								"Stick",
+								"Thrower Troll",
+								"Troll general",
+								"Twig"
 							],
 							"type": "enemy"
 						},
@@ -8524,14 +8798,27 @@
 						{
 							"label": "Experiment",
 							"cards": [
-								"Experiment"
+								"Experiment",
+								"Experiment No.2"
+							],
+							"type": "enemy"
+						},
+						{
+							"label": "Rabbit",
+							"cards": [
+								"Rabbit",
+								"Bunny"
 							],
 							"type": "enemy"
 						},
 						{
 							"label": "Basilisk",
 							"cards": [
-								"Basilisk"
+								"Basilisk",
+								"Basilisk Knight",
+								"Basilisk Sentinel",
+								"Basilisk Youngling",
+								"Monstrous basilisk"
 							],
 							"type": "enemy"
 						},
@@ -8543,9 +8830,11 @@
 							"type": "enemy"
 						},
 						{
-							"label": "Cave goblin (monster)",
+							"label": "Cave goblin",
 							"cards": [
-								"Cave goblin (monster)"
+								"Cave goblin (monster)",
+								"Cave goblin miner",
+								"Cave goblin guard"
 							],
 							"type": "enemy"
 						},
@@ -8576,9 +8865,12 @@
 					"label": "Items",
 					"requirements": [
 						{
-							"label": "Cat / Hellcat",
+							"label": "Cat / Hellcat (not Overgrown)",
 							"cards": [
+								"Kitten",
 								"Cat",
+								"Wily cat",
+								"Lazy cat",
 								"Hellcat"
 							],
 							"type": "item"
@@ -8620,6 +8912,13 @@
 							"type": "item"
 						},
 						{
+							"label": "Pot of weeds materials",
+							"cards": [
+								"Weeds",
+								"Pot"
+							]
+						},
+						{
 							"label": "Coins",
 							"cards": [
 								"Coins"
@@ -8627,19 +8926,14 @@
 							"type": "item"
 						},
 						{
-							"label": "Red spiders' eggs",
+							"label": "Rat poison materials (if making)",
 							"cards": [
-								"Red spiders' eggs"
-							],
-							"type": "item"
-						},
-						{
-							"label": "Clean kwuarm",
-							"cards": [
+								"Vial",
+								"Red spiders' eggs",
 								"Kwuarm"
-							],
-							"type": "item"
+							]
 						}
+						
 					]
 				}
 			],
@@ -8667,16 +8961,9 @@
 							"type": "item"
 						},
 						{
-							"label": "Fruit blast",
+							"label": "Fruit blast (not premade)",
 							"cards": [
 								"Fruit blast"
-							],
-							"type": "item"
-						},
-						{
-							"label": "Premade fr' blast",
-							"cards": [
-								"Premade fr' blast"
 							],
 							"type": "item"
 						},
@@ -8721,17 +9008,25 @@
 							"type": "item"
 						},
 						{
-							"label": "Icefiend",
+							"label": "Icefiend, Ice gloves/Smith gloves (i), or 2 hours",
 							"cards": [
 								"Icefiend"
-							],
-							"type": "enemy"
+							]
 						}
 					]
 				},
 				{
 					"label": "Freeing the Goblin generals",
 					"requirements": [
+						{
+							"label": "Dye",
+							"cards": [
+								"Blue dye",
+								"Black dye",
+								"Green dye",
+								"Purple dye"
+							]
+						},
 						{
 							"label": "Bucket of water",
 							"cards": [
@@ -8740,9 +9035,9 @@
 							"type": "item"
 						},
 						{
-							"label": "Orange",
+							"label": "Orange slices",
 							"cards": [
-								"Orange"
+								"Orange slices"
 							],
 							"type": "item"
 						},
@@ -8795,7 +9090,7 @@
 							"type": "item"
 						},
 						{
-							"label": "Needle",
+							"label": "Needle (Costume needle does not work)",
 							"cards": [
 								"Needle"
 							],
@@ -8840,6 +9135,27 @@
 								"Cake tin"
 							],
 							"type": "item"
+						},
+						{
+							"label": "Bucket of milk",
+							"cards": [
+								"Bucket of milk"
+							],
+							"type": "item"
+						},
+						{
+							"label": "Egg",
+							"cards": [
+								"Egg"
+							],
+							"type": "item"
+						},
+						{
+							"label": "Pot of flour",
+							"cards": [
+								"Pot of flour"
+							],
+							"type": "item"
 						}
 					]
 				},
@@ -8847,16 +9163,12 @@
 					"label": "Freeing Evil Dave",
 					"requirements": [
 						{
-							"label": "Cat",
+							"label": "Cat (except Overgrown)",
 							"cards": [
-								"Cat"
-							],
-							"type": "item"
-						},
-						{
-							"label": "Overgrown cat",
-							"cards": [
-								"Overgrown cat"
+								"Kitten",
+								"Cat",
+								"Wily cat",
+								"Lazy cat"
 							],
 							"type": "item"
 						},
@@ -8880,13 +9192,6 @@
 							"type": "item"
 						},
 						{
-							"label": "Machete",
-							"cards": [
-								"Machete"
-							],
-							"type": "item"
-						},
-						{
 							"label": "Gorilla greegree",
 							"cards": [
 								"Gorilla greegree"
@@ -8901,6 +9206,13 @@
 							"type": "item"
 						},
 						{
+							"label": "Pestle and mortar",
+							"cards": [
+								"Pestle and mortar"
+							],
+							"type": "item"
+						},
+						{
 							"label": "Big Snake",
 							"cards": [
 								"Big Snake"
@@ -8908,9 +9220,23 @@
 							"type": "enemy"
 						},
 						{
-							"label": "Monkey Guard",
+							"label": "Monkey guard",
 							"cards": [
 								"Monkey Guard"
+							],
+							"type": "enemy"
+						},
+						{
+							"label": "Monkey archer",
+							"cards": [
+								"Monkey Archer"
+							],
+							"type": "enemy"
+						},
+						{
+							"label": "Zombie monkey",
+							"cards": [
+								"Monkey Zombie"
 							],
 							"type": "enemy"
 						}
@@ -8919,6 +9245,48 @@
 				{
 					"label": "Freeing Sir Amik Varze",
 					"requirements": [
+						{
+							"label": "Bucket of milk / Bottomless milk bucket",
+							"cards": [
+								"Bucket of milk",
+								"Bottomless milk bucket"
+							],
+							"type": "item"
+						},
+						{
+							"label": "Vanilla pod gathering",
+							"logic": "ALL",
+							"children": [
+								{
+									"label": "Any axe",
+									"cards": [
+										"Crystal axe",
+										"3rd age axe",
+										"Infernal axe",
+										"Dragon axe",
+										"Rune axe",
+										"Gilded axe",
+										"Adamant axe",
+										"Mithril axe",
+										"Black axe",
+										"Steel axe",
+										"Iron axe",
+										"Bronze axe"
+									],
+									"type": "item"
+								},
+								{
+									"label": "Any machete",
+									"cards": [
+										"Red topaz machete",
+										"Jade machete",
+										"Opal machete",
+										"Machete"
+									],
+									"type": "item"
+								}
+							]
+						},
 						{
 							"label": "Raw chicken",
 							"cards": [
@@ -8930,6 +9298,13 @@
 							"label": "Pot of cream",
 							"cards": [
 								"Pot of cream"
+							],
+							"type": "item"
+						},
+						{
+							"label": "Pestle and mortar",
+							"cards": [
+								"Pestle and mortar"
 							],
 							"type": "item"
 						},
@@ -8952,6 +9327,42 @@
 				{
 					"label": "Freeing Skrach Uglogwee",
 					"requirements": [
+						{
+							"label": "Any pickaxe",
+							"cards": [
+								"Crystal pickaxe",
+								"3rd age pickaxe",
+								"Infernal pickaxe",
+								"Dragon pickaxe",
+								"Rune pickaxe",
+								"Gilded pickaxe",
+								"Adamant pickaxe",
+								"Mithril pickaxe",
+								"Black pickaxe",
+								"Steel pickaxe",
+								"Iron pickaxe",
+								"Bronze pickaxe"
+							],
+							"type": "item"
+						},
+						{
+							"label": "Any axe",
+							"cards": [
+								"Crystal axe",
+								"3rd age axe",
+								"Infernal axe",
+								"Dragon axe",
+								"Rune axe",
+								"Gilded axe",
+								"Adamant axe",
+								"Mithril axe",
+								"Black axe",
+								"Steel axe",
+								"Iron axe",
+								"Bronze axe"
+							],
+							"type": "item"
+						},
 						{
 							"label": "Raw chompy",
 							"cards": [
@@ -8986,6 +9397,47 @@
 								"Ball of wool"
 							],
 							"type": "item"
+						},
+						{
+							"label": "Ogre arrow materials (if making)",
+							"logic": "ALL",
+							"children": [
+								{ 
+									"label": "Chisel",
+									"cards": [
+										"Chisel"
+									],
+									"type": "item"
+								},
+								{
+									"label": "Knife",
+									"cards": [
+										"Knife"
+									],
+									"type": "item"
+								},
+								{
+									"label": "Wolf bones",
+									"cards": [
+										"Wolf bones"
+									],
+									"type": "item"
+								},
+								{
+									"label": "Feather",
+									"cards": [
+										"Feather"
+									],
+									"type": "item"
+								}
+							]
+						},
+						{
+							"label": "Jubbly bird",
+							"cards": [
+								"Jubbly bird"
+							],
+							"type": "enemy"
 						}
 					]
 				},
@@ -9137,28 +9589,82 @@
 							"type": "item"
 						},
 						{
-							"label": "Arrows (metal, unpoisoned)",
-							"cards": [
-								"Rune arrow",
-								"Adamant arrow",
-								"Mithril arrow",
-								"Steel arrow",
-								"Iron arrow",
-								"Bronze arrow"
-							],
-							"type": "item"
-						},
-						{
-							"label": "Gloves which fully cover your hand",
-							"cards": [
-								"Ham gloves",
-								"Leather gloves",
-								"Mystic gloves",
-								"White gloves",
-								"Clue hunter gloves",
-								"Graceful gloves"
-							],
-							"type": "item"
+							"label": "Arrows (unpoisoned) and fire arrows",
+							"logic": "ANY",
+							"children": [
+								{
+									"label": "Bronze arrow/fire",
+									"logic": "ALL",
+									"cards": [
+										"Bronze arrow",
+										"Bronze fire arrow"
+									],
+									"type": "item"
+								},
+								{
+									"label": "Iron arrow/fire",
+									"logic": "ALL",
+									"cards": [
+										"Iron arrow",
+										"Iron fire arrow"
+									],
+									"type": "item"
+								},
+								{
+									"label": "Steel arrow/fire",
+									"logic": "ALL",
+									"cards": [
+										"Steel arrow",
+										"Steel fire arrow"
+									],
+									"type": "item"
+								},
+								{
+									"label": "Mithril arrow/fire",
+									"logic": "ALL",
+									"cards": [
+										"Mithril arrow",
+										"Mithril fire arrow"
+									],
+									"type": "item"
+								},
+								{
+									"label": "Adamant arrow/fire",
+									"logic": "ALL",
+									"cards": [
+										"Adamant arrow",
+										"Adamant fire arrow"
+									],
+									"type": "item"
+								},
+								{
+									"label": "Rune arrow/fire",
+									"logic": "ALL",
+									"cards": [
+										"Rune arrow",
+										"Rune fire arrow"
+									],
+									"type": "item"
+								},
+								{
+									"label": "Dragon arrow/fire",
+									"logic": "ALL",
+									"cards": [
+										"Dragon arrow",
+										"Dragon fire arrow"
+									],
+									"type": "item"
+								},
+								{
+									"label": "Amethyst arrow/fire",
+									"logic": "ALL",
+									"cards": [
+										"Amethyst arrow",
+										"Amethyst fire arrow"
+									],
+									"type": "item"
+								}
+							]
 						},
 						{
 							"label": "Bow (not crossbow)",
@@ -9177,6 +9683,32 @@
 								"Longbow"
 							],
 							"type": "item"
+						},
+						{
+							"label": "Gloves (check wiki for more)",
+							"cards": [
+								"Bloodbark gauntlets",
+								"Clue hunter gloves",
+								"Gloves of silence",
+								"Graceful gloves",
+								"Granite gloves",
+								"Ham gloves",
+								"Iron gloves",
+								"Karamja gloves 1",
+								"Karamja gloves 2",
+								"Karamja gloves 3",
+								"Karamja gloves 4",
+								"Leather gloves",
+								"Mime gloves",
+								"Mystic gloves",
+								"Ornate gloves",
+								"Purple gloves",
+								"Regen bracelet",
+								"Swampbark gauntlets",
+								"Void knight gloves",
+								"Warm gloves",
+								"Zombie gloves"
+							]
 						}
 					]
 				},
@@ -9203,15 +9735,33 @@
 					"label": "Items",
 					"requirements": [
 						{
-							"label": "Cowhide / Grey wolf fur / Snakeskin / Bear fur / Wool",
-							"cards": [
-								"Cowhide",
-								"Grey wolf fur",
-								"Snakeskin",
-								"Bear fur",
-								"Wool"
-							],
-							"type": "item"
+							"label": "Animal hides or dyes",
+							"logic": "ANY",
+							"children": [
+								{
+									"label": "Animal hides",
+									"cards": [
+										"Cowhide",
+										"Grey wolf fur",
+										"Snakeskin",
+										"Bear fur",
+										"Wool"
+									],
+									"type": "item"
+								},
+								{
+									"label": "Dyes",
+									"cards": [
+										"Red dye",
+										"Blue dye",
+										"Yellow dye",
+										"Green dye",
+										"Orange dye",
+										"Purple dye"
+									],
+									"type": "item"
+								}
+							]
 						}
 					]
 				}
@@ -9364,7 +9914,7 @@
 					]
 				}
 			],
-			"notes": ""
+			"notes": "Seed dibber not required if Farming Barbarian Training has been completed\nSlayer gloves not required if attacking from range"
 		},
 		{
 			"name": "Rune Mysteries",
@@ -9374,9 +9924,9 @@
 					"label": "Items",
 					"requirements": [
 						{
-							"label": "Air Talisman",
+							"label": "Air talisman",
 							"cards": [
-								"Air Talisman"
+								"Air talisman"
 							],
 							"type": "item"
 						}
@@ -9393,7 +9943,7 @@
 					"label": "Items",
 					"requirements": [
 						{
-							"label": "Dusty key Or 70 Agility",
+							"label": "Dusty key or 70 Agility",
 							"cards": [
 								"Dusty key"
 							],
@@ -9452,7 +10002,7 @@
 							"type": "item"
 						},
 						{
-							"label": "Nail",
+							"label": "Nails",
 							"cards": [
 								"Steel nails",
 								"Iron nails",
@@ -9574,13 +10124,6 @@
 								"Strange Creature"
 							],
 							"type": "enemy"
-						},
-						{
-							"label": "Strange creature (Shadows of Custodia)",
-							"cards": [
-								"Strange creature (Shadows of Custodia)"
-							],
-							"type": "enemy"
 						}
 					]
 				}
@@ -9675,8 +10218,13 @@
 							"type": "item"
 						},
 						{
-							"label": "pieces of black clothing",
+							"label": "3 Pieces of black clothing",
 							"cards": [
+								"Black d'hide body",
+								"Black d'hide chaps",
+								"Black d'hide vambraces",
+								"Black d'hide shield",
+								"Black spiky vambraces",
 								"Black chainbody",
 								"Black platebody",
 								"Black platelegs",
@@ -9684,7 +10232,17 @@
 								"Black med helm",
 								"Black cape",
 								"Black unicorn mask",
-								"Black demon mask"
+								"Black demon mask",
+								"Black gloves",
+								"Shade robe",
+								"Shade robe top"
+							],
+							"type": "item"
+						},
+						{
+							"label": "Coins (for buying Shantay passes)",
+							"cards": [
+								"Coins"
 							],
 							"type": "item"
 						}
@@ -9703,7 +10261,7 @@
 					]
 				}
 			],
-			"notes": ""
+			"notes": "Black desert robes, black priest outfit, dark mystic, ghostly robes, black wizard robes, black Christmas pieces, and dark dye Graceful pieces count"
 		},
 		{
 			"name": "Shadows of Custodia",
@@ -9805,9 +10363,9 @@
 							"type": "item"
 						},
 						{
-							"label": "Ball of Wool",
+							"label": "Ball of wool",
 							"cards": [
-								"Ball of Wool"
+								"Ball of wool"
 							],
 							"type": "item"
 						}
@@ -9885,10 +10443,12 @@
 							"type": "item"
 						},
 						{
-							"label": "Torch / Candle",
+							"label": "Torch, lit candle, candle lantern, lit black candle, or bruma torch",
 							"cards": [
 								"Torch",
-								"Candle"
+								"Lit candle",
+								"Candle lantern",
+								"Bruma torch"
 							],
 							"type": "item"
 						},
@@ -9917,13 +10477,6 @@
 							"label": "Bones",
 							"cards": [
 								"Bones"
-							],
-							"type": "item"
-						},
-						{
-							"label": "Lit torch or candle",
-							"cards": [
-								"Lit candle"
 							],
 							"type": "item"
 						}
@@ -10158,6 +10711,41 @@
 								"Bucket of water"
 							],
 							"type": "item"
+						},
+						{
+							"label": "Chocolate dust",
+							"cards": [
+								"Chocolate dust"
+							],
+							"type": "item"
+						},
+						{
+							"label": "Bowl of water",
+							"cards": [
+								"Bowl of water"
+							],
+							"type": "item"
+						},
+						{
+							"label": "Gloves for nettles",
+							"cards": [
+								"Leather gloves"
+							],
+							"type": "item"
+						},
+						{
+							"label": "Snape grass",
+							"cards": [
+								"Snape grass"
+							],
+							"type": "item"
+						},
+						{
+							"label": "Bucket of milk",
+							"cards": [
+								"Bucket of milk"
+							],
+							"type": "item"
 						}
 					]
 				}
@@ -10186,7 +10774,7 @@
 							"type": "item"
 						},
 						{
-							"label": "Any hammer",
+							"label": "Hammer",
 							"cards": [
 								"Hammer"
 							],
@@ -10200,11 +10788,10 @@
 							"type": "item"
 						},
 						{
-							"label": "Bucket of water",
+							"label": "Bucket of water or ice gloves",
 							"cards": [
 								"Bucket of water"
-							],
-							"type": "item"
+							]
 						},
 						{
 							"label": "Nails",
@@ -10309,19 +10896,25 @@
 							"type": "item"
 						},
 						{
-							"label": "Any seeds",
-							"cards": [
-								"Mithril seeds",
-								"Adamant seeds"
-							],
-							"type": "item"
-						},
-						{
-							"label": "Irit leaf",
-							"cards": [
-								"Irit leaf"
-							],
-							"type": "item"
+							"label": "Flowers or irif leaf",
+							"logic": "ANY",
+							"children": [
+								{
+									"label": "Flowers",
+									"cards": [
+										"Mithril seeds",
+										"Adamant seeds"
+									],
+									"type": "item"
+								},
+								{
+									"label": "Irit leaf",
+									"cards": [
+										"Irit leaf"
+									],
+									"type": "item"
+								}
+							]
 						},
 						{
 							"label": "Adamant chainbody",
@@ -10331,18 +10924,24 @@
 							"type": "item"
 						},
 						{
-							"label": "Wine of zamorak",
-							"cards": [
-								"Wine of zamorak"
-							],
-							"type": "item"
-						},
-						{
-							"label": "Zamorak brew",
-							"cards": [
-								"Zamorak brew"
-							],
-							"type": "item"
+							"label": "Wine of zamorak or Zamorak brew(4)",
+							"logic": "ANY",
+							"children": [
+								{
+									"label": "Wine of zamorak",
+									"cards": [
+										"Wine of zamorak"
+									],
+									"type": "item"
+								},
+								{
+									"label": "Zamorak brew(4)",
+									"cards": [
+										"Zamorak brew(4)"
+									],
+									"type": "item"
+								}
+							]
 						},
 						{
 							"label": "Cabbage",
@@ -10352,18 +10951,24 @@
 							"type": "item"
 						},
 						{
-							"label": "Black knife",
-							"cards": [
-								"Black knife"
-							],
-							"type": "item"
-						},
-						{
-							"label": "Black dagger",
-							"cards": [
-								"Black dagger"
-							],
-							"type": "item"
+							"label": "Black knife or dagger",
+							"logic": "ANY",
+							"children": [
+								{
+									"label": "Black knife",
+									"cards": [
+										"Black knife"
+									],
+									"type": "item"
+								},
+								{
+									"label": "Black dagger",
+									"cards": [
+										"Black dagger"
+									],
+									"type": "item"
+								}
+							]
 						},
 						{
 							"label": "Cadantine seed",
@@ -10521,7 +11126,7 @@
 					]
 				}
 			],
-			"notes": ""
+			"notes": "Seed dibber not required if Farming Barbarian Training has been completed"
 		},
 		{
 			"name": "Spirit of Adventure",
@@ -10585,14 +11190,14 @@
 							"type": "item"
 						},
 						{
-							"label": "Air Rune",
+							"label": "Air rune",
 							"cards": [
 								"Air rune"
 							],
 							"type": "item"
 						},
 						{
-							"label": "Law Rune",
+							"label": "Law rune",
 							"cards": [
 								"Law rune"
 							],
@@ -10614,7 +11219,7 @@
 							"type": "item"
 						},
 						{
-							"label": "Any Pickaxe",
+							"label": "Any pickaxe",
 							"cards": [
 								"Crystal pickaxe",
 								"3rd age pickaxe",
@@ -10632,34 +11237,76 @@
 							"type": "item"
 						},
 						{
-							"label": "Any bow",
-							"cards": [
-								"Magic shortbow",
-								"Magic longbow",
-								"Yew shortbow",
-								"Yew longbow",
-								"Maple shortbow",
-								"Maple longbow",
-								"Willow shortbow",
-								"Willow longbow",
-								"Oak shortbow",
-								"Oak longbow",
-								"Shortbow",
-								"Longbow"
-							],
-							"type": "item"
-						},
-						{
-							"label": "Arrows for bow",
-							"cards": [
-								"Rune arrow",
-								"Adamant arrow",
-								"Mithril arrow",
-								"Steel arrow",
-								"Iron arrow",
-								"Bronze arrow"
-							],
-							"type": "item"
+							"label": "Ranged or magic combat option",
+							"logic": "ANY",
+							"children": [
+								{
+									"label": "Ranged combat option",
+									"logic": "ALL",
+									"children": [
+										{
+											"label": "Any bow",
+											"cards": [
+												"Magic shortbow",
+												"Magic longbow",
+												"Yew shortbow",
+												"Yew longbow",
+												"Maple shortbow",
+												"Maple longbow",
+												"Willow shortbow",
+												"Willow longbow",
+												"Oak shortbow",
+												"Oak longbow",
+												"Shortbow",
+												"Longbow"
+											],
+											"type": "item"
+										},
+										{
+											"label": "Arrows for bow",
+											"cards": [
+												"Rune arrow",
+												"Adamant arrow",
+												"Mithril arrow",
+												"Steel arrow",
+												"Iron arrow",
+												"Bronze arrow"
+											],
+											"type": "item"
+										}
+									]
+								},
+								{
+									"label": "Magic combat spell options",
+									"logic": "ALL",
+									"children": [
+										{
+											"label": "Any catalytic rune",
+											"cards": [
+												"Mind rune",
+												"Chaos rune",
+												"Death rune",
+												"Blood rune",
+												"Wrath rune"
+											]
+										},
+										{
+											"label": "Any elemental rune",
+											"cards": [
+												"Air rune",
+												"Water rune",
+												"Earth rune",
+												"Fire rune",
+												"Mist rune",
+												"Dust rune",
+												"Mud rune",
+												"Smoke rune",
+												"Lava rune"
+											]
+										}
+									]
+								}
+							]
 						}
 					]
 				},
@@ -10764,7 +11411,7 @@
 							"type": "item"
 						},
 						{
-							"label": "Hammer (obtainable in quest)",
+							"label": "Hammer",
 							"cards": [
 								"Hammer"
 							],
@@ -10844,7 +11491,7 @@
 							"type": "item"
 						},
 						{
-							"label": "Any logs to make a fire",
+							"label": "Any logs",
 							"cards": [
 								"Logs",
 								"Oak logs",
@@ -10881,7 +11528,7 @@
 							"type": "item"
 						},
 						{
-							"label": "Agility potion",
+							"label": "Agility potion(4) (must be 4 dose)",
 							"cards": [
 								"Agility potion"
 							],
@@ -10917,13 +11564,6 @@
 							"quantity": 30
 						},
 						{
-							"label": "Hammer",
-							"cards": [
-								"Hammer"
-							],
-							"type": "item"
-						},
-						{
 							"label": "Raw karambwan",
 							"cards": [
 								"Raw karambwan"
@@ -10936,7 +11576,7 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Monkey (monster)",
+							"label": "Monkey",
 							"cards": [
 								"Monkey (monster)"
 							],
@@ -10978,6 +11618,116 @@
 								"Bronze pickaxe"
 							],
 							"type": "item"
+						},
+						{
+							"label": "Magic combat spell options",
+							"logic": "ALL",
+							"children": [
+								{
+									"label": "Any catalytic rune",
+									"cards": [
+										"Mind rune",
+										"Chaos rune",
+										"Death rune",
+										"Blood rune",
+										"Wrath rune"
+									]
+								},
+								{
+									"label": "Any elemental rune",
+									"cards": [
+										"Air rune",
+										"Water rune",
+										"Earth rune",
+										"Fire rune",
+										"Mist rune",
+										"Dust rune",
+										"Mud rune",
+										"Smoke rune",
+										"Lava rune"
+									]
+								}
+							]
+						},
+						{
+							"label": "Ranged weapon options",
+							"logic": "ANY",
+							"children": [
+								{
+									"label": "Any bow/arrow combo",
+									"cards": [
+										"Magic shortbow",
+										"Magic longbow",
+										"Yew shortbow",
+										"Yew longbow",
+										"Maple shortbow",
+										"Maple longbow",
+										"Willow shortbow",
+										"Willow longbow",
+										"Oak shortbow",
+										"Oak longbow",
+										"Shortbow",
+										"Longbow",
+										"Bronze arrow",
+										"Iron arrow",
+										"Steel arrow",
+										"Mithril arrow",
+										"Adamant arrow",
+										"Rune arrow",
+										"Dragon arrow"
+									],
+									"type": "item"
+								},
+								{
+									"label": "Any crossbow/bolt combo",
+									"cards": [
+										"Bronze crossbow",
+										"Iron crossbow",
+										"Steel crossbow",
+										"Mithril crossbow",
+										"Adamant crossbow",
+										"Rune crossbow",
+										"Dragon crossbow",
+										"Bronze bolts",
+										"Iron bolts",
+										"Steel bolts",
+										"Mithril bolts",
+										"Adamant bolts",
+										"Rune bolts",
+										"Dragon bolts"
+									],
+									"type": "item"
+								},
+								{
+									"label": "Thrown weapons",
+									"cards": [
+										"Bronze knife",
+										"Iron knife",
+										"Steel knife",
+										"Black knife",
+										"Mithril knife",
+										"Adamant knife",
+										"Rune knife",
+										"Dragon knife",
+										"Bronze dart",
+										"Iron dart",
+										"Steel dart",
+										"Black dart",
+										"Mithril dart",
+										"Adamant dart",
+										"Rune dart",
+										"Amethyst dart",
+										"Dragon dart",
+										"Bronze thrownaxe",
+										"Iron thrownaxe",
+										"Steel thrownaxe",
+										"Mithril thrownaxe",
+										"Rune thrownaxe",
+										"Dragon thrownaxe"
+									],
+									"type": "item"
+								}
+							]
 						}
 					]
 				},
@@ -11937,13 +12687,6 @@
 							"label": "Rune thrownaxe, or a friend to help enter Waterbirth Isle Dungeon",
 							"cards": [
 								"Rune thrownaxe"
-							],
-							"type": "item"
-						},
-						{
-							"label": "Ice gloves or Smiths gloves (i)",
-							"cards": [
-								"Smiths gloves"
 							],
 							"type": "item"
 						}
