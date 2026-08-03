@@ -57,14 +57,6 @@ Slayer, PvM and Rumours. Quest requirements are grouped into Items and Enemies,
 support nested alternatives and route-specific requirements, and count accepted
 shared cards. Quests, Collection and Shared Cards each have focused search.
 
-## How it works
-
-Curious how it all works? [docs/HOW_IT_WORKS.md](docs/HOW_IT_WORKS.md) is a
-plain-language walkthrough of the whole architecture, from the collection
-decode chain to the life of a blocked click. The other files in `docs/` are
-the data-audit reports behind the bundled catalogs.
-
-
 ## Support
 
 If you would like to support then please firstly support the OSRS TCG Devs through their [Patreon](https://www.patreon.com/Azderi).
