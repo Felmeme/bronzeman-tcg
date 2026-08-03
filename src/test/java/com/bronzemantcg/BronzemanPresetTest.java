@@ -117,6 +117,41 @@ public class BronzemanPresetTest
 	}
 
 	@Test
+	public void sidePanelMetadataCoversTheExplicitRegistry()
+	{
+		Set<String> registryKeys = new HashSet<>();
+		for (BronzemanSettingRegistry.Definition definition
+			: BronzemanSettingRegistry.all())
+		{
+			registryKeys.add(definition.getKey());
+		}
+
+		Set<String> metadataKeys = new HashSet<>();
+		for (SidePanelSettingMetadata.Entry entry : SidePanelSettingMetadata.all())
+		{
+			assertTrue(entry.key, metadataKeys.add(entry.key));
+			assertFalse(entry.key, entry.name.trim().isEmpty());
+			assertFalse(entry.key, entry.description.trim().isEmpty());
+			assertTrue(entry.key, entry.min <= entry.max);
+		}
+		assertEquals(registryKeys, metadataKeys);
+	}
+
+	@Test
+	public void importPreviewUsesDropdownLabelsInsteadOfEnumConstants()
+	{
+		BronzemanSettingRegistry.Definition herblore =
+			BronzemanSettingRegistry.require("herbloreMode");
+		assertEquals("Input Only", herblore.displaySerialized("INPUT_ONLY"));
+		assertEquals("Input + Pots", herblore.displaySerialized("REQUIRE_UNFINISHED"));
+
+		BronzemanSettingRegistry.Definition itemUsage =
+			BronzemanSettingRegistry.require("itemUsageMode");
+		assertEquals("Require Card", itemUsage.displaySerialized("LOCKED"));
+		assertEquals("No Card Needed", itemUsage.displaySerialized("UNLOCKED"));
+	}
+
+	@Test
 	public void everyPresetValueIsAcceptedByTheRegistry()
 	{
 		for (BronzemanPreset preset : BronzemanPreset.values())

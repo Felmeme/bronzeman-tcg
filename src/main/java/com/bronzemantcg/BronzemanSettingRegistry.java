@@ -10,8 +10,10 @@ import java.util.Map;
 
 /**
  * Explicit, reviewable description of every player-facing setting used by the compact panel.
- * RuneLite's ConfigDescriptor remains the source of labels, descriptions, sections and ranges;
- * this registry supplies only direct getters and value validation, replacing Java reflection.
+ * This registry supplies direct getters and value validation without Java reflection.
+ * Side-panel labels, descriptions, sections and ranges live in
+ * {@link SidePanelSettingMetadata}; RuneLite's normal config panel still uses the annotations
+ * on {@link BronzemanTcgConfig}.
  */
 final class BronzemanSettingRegistry
 {
@@ -248,6 +250,14 @@ final class BronzemanSettingRegistry
 			}
 			return value instanceof Enum
 				? ((Enum<?>) value).name() : String.valueOf(value);
+		}
+
+		String displaySerialized(String value)
+		{
+			Object parsed = parse(value);
+			return parsed instanceof Color
+				? String.format("#%08X", ((Color) parsed).getRGB())
+				: String.valueOf(parsed);
 		}
 	}
 }

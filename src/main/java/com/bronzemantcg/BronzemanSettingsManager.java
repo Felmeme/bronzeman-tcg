@@ -12,11 +12,10 @@ import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
-import net.runelite.client.config.ConfigDescriptor;
-import net.runelite.client.config.ConfigItemDescriptor;
 import net.runelite.client.config.ConfigManager;
 
 /** Applies built-in presets and encodes validated, plugin-only share strings. */
@@ -26,6 +25,7 @@ final class BronzemanSettingsManager
 	private static final int FORMAT_VERSION = 1;
 	private static final int MAX_IMPORT_LENGTH = 16_384;
 	private static final int MAX_DECOMPRESSED_LENGTH = 65_536;
+	private static final String EXEMPT_LIST_KEY = "lootExemptNames";
 
 	private static final Set<String> GAMEPLAY_KEYS;
 	private static final Set<String> EXPORT_KEYS;
@@ -42,20 +42,12 @@ final class BronzemanSettingsManager
 	private final BronzemanTcgConfig config;
 	private final ConfigManager configManager;
 	private final Gson gson;
-	private final Map<String, String> displayNames;
 
-	BronzemanSettingsManager(Gson gson, BronzemanTcgConfig config, ConfigManager configManager,
-		ConfigDescriptor descriptor)
+	BronzemanSettingsManager(Gson gson, BronzemanTcgConfig config, ConfigManager configManager)
 	{
 		this.gson = gson;
 		this.config = config;
 		this.configManager = configManager;
-		Map<String, String> names = new LinkedHashMap<>();
-		for (ConfigItemDescriptor item : descriptor.getItems())
-		{
-			names.put(item.getItem().keyName(), item.getItem().name());
-		}
-		this.displayNames = Collections.unmodifiableMap(names);
 	}
 
 	void apply(BronzemanPreset preset)
@@ -65,12 +57,40 @@ final class BronzemanSettingsManager
 
 	void apply(Map<String, String> settings)
 	{
-		for (Map.Entry<String, String> entry : settings.entrySet())
+		String exemptList = configManager.getConfiguration(
+			BronzemanTcgConfig.GROUP, EXEMPT_LIST_KEY);
+		try
 		{
-			if (EXPORT_KEYS.contains(entry.getKey()))
+			for (Map.Entry<String, String> entry : settings.entrySet())
 			{
-				save(entry.getKey(), entry.getValue());
+				if (EXPORT_KEYS.contains(entry.getKey()))
+				{
+					save(entry.getKey(), entry.getValue());
+				}
 			}
+		}
+		finally
+		{
+			restoreExemptList(exemptList);
+		}
+	}
+
+	private void restoreExemptList(String expected)
+	{
+		String current = configManager.getConfiguration(
+			BronzemanTcgConfig.GROUP, EXEMPT_LIST_KEY);
+		if (Objects.equals(expected, current))
+		{
+			return;
+		}
+		if (expected == null)
+		{
+			configManager.unsetConfiguration(BronzemanTcgConfig.GROUP, EXEMPT_LIST_KEY);
+		}
+		else
+		{
+			configManager.setConfiguration(
+				BronzemanTcgConfig.GROUP, EXEMPT_LIST_KEY, expected);
 		}
 	}
 
@@ -238,8 +258,9 @@ final class BronzemanSettingsManager
 			if (!oldValue.equals(entry.getValue()))
 			{
 				changes.add(new Change(
-					displayNames.getOrDefault(entry.getKey(), entry.getKey()),
-					oldValue, entry.getValue()));
+					SidePanelSettingMetadata.require(entry.getKey()).name,
+					definition.displaySerialized(oldValue),
+					definition.displaySerialized(entry.getValue())));
 			}
 		}
 		return Collections.unmodifiableList(changes);

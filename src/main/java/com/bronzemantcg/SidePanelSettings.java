@@ -18,8 +18,6 @@ import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -39,11 +37,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
 import lombok.extern.slf4j.Slf4j;
-import net.runelite.client.config.ConfigDescriptor;
-import net.runelite.client.config.ConfigItem;
-import net.runelite.client.config.ConfigItemDescriptor;
 import net.runelite.client.config.ConfigManager;
-import net.runelite.client.config.Range;
 import net.runelite.client.ui.ColorScheme;
 
 /** Explicit-registry-backed compact settings view shown inside the plugin panel. */
@@ -58,17 +52,16 @@ final class SidePanelSettings
 	private final Set<String> expandedCategories = new HashSet<>();
 	private final Set<String> expandedSections = new HashSet<>();
 	private boolean onboardingPending;
+	private boolean rebuilding;
 
 	SidePanelSettings(Gson gson, BronzemanTcgConfig config, ConfigManager configManager,
 		boolean onboardingPending, Runnable closeSettings)
 	{
 		this.configManager = configManager;
-		ConfigDescriptor descriptor = configManager.getConfigDescriptor(config);
-		this.settingsManager = new BronzemanSettingsManager(
-			gson, config, configManager, descriptor);
+		this.settingsManager = new BronzemanSettingsManager(gson, config, configManager);
 		this.onboardingPending = onboardingPending;
 		this.closeSettings = closeSettings;
-		this.categories = buildCategories(descriptor);
+		this.categories = buildCategories();
 	}
 
 	JPanel component()
@@ -77,6 +70,19 @@ final class SidePanelSettings
 	}
 
 	void refresh()
+	{
+		rebuilding = true;
+		try
+		{
+			rebuild();
+		}
+		finally
+		{
+			rebuilding = false;
+		}
+	}
+
+	private void rebuild()
 	{
 		panel.removeAll();
 		if (onboardingPending)
@@ -123,7 +129,7 @@ final class SidePanelSettings
 				if (sectionExpanded)
 				{
 					panel.add(listDivider());
-					for (ConfigItemDescriptor item : section.items)
+					for (SidePanelSettingMetadata.Entry item : section.items)
 					{
 						panel.add(settingControl(item));
 					}
@@ -351,91 +357,43 @@ final class SidePanelSettings
 		return label;
 	}
 
-	private static List<Category> buildCategories(ConfigDescriptor descriptor)
+	private static List<Category> buildCategories()
 	{
-		Map<String, List<ConfigItemDescriptor>> bySection = new HashMap<>();
-		Set<String> visibleKeys = new HashSet<>();
-		for (ConfigItemDescriptor descriptorItem : descriptor.getItems())
-		{
-			ConfigItem item = descriptorItem.getItem();
-			if (!item.hidden())
-			{
-				if (BronzemanSettingRegistry.find(item.keyName()) == null)
-				{
-					throw new IllegalStateException(
-						"Visible setting is missing from registry: " + item.keyName());
-				}
-				visibleKeys.add(item.keyName());
-				bySection.computeIfAbsent(item.section(), ignored -> new ArrayList<>())
-					.add(descriptorItem);
-			}
-		}
-		for (BronzemanSettingRegistry.Definition definition : BronzemanSettingRegistry.all())
-		{
-			if (!visibleKeys.contains(definition.getKey()))
-			{
-				throw new IllegalStateException(
-					"Registry setting has no visible config item: " + definition.getKey());
-			}
-		}
-		for (List<ConfigItemDescriptor> items : bySection.values())
-		{
-			items.sort(Comparator.comparingInt(ConfigItemDescriptor::position));
-		}
-
 		List<Category> result = new ArrayList<>();
-		result.add(category("Settings", bySection,
-			section("General", BronzemanTcgConfig.generalSettings),
-			section("Visuals", BronzemanTcgConfig.visualsSection),
-			section("External Plugins", BronzemanTcgConfig.externalPluginsSection)));
-		result.add(category("Gathering", bySection,
-			section("Farming", BronzemanTcgConfig.farmingSection),
-			section("Fishing", BronzemanTcgConfig.fishingSection),
-			section("Hunter", BronzemanTcgConfig.hunterSection),
-			section("Mining", BronzemanTcgConfig.miningSection),
-			section("Thieving", BronzemanTcgConfig.thievingSection),
-			section("Woodcutting", BronzemanTcgConfig.woodcuttingSection)));
-		result.add(category("Production", bySection,
-			section("Cooking", BronzemanTcgConfig.cookingSection),
-			section("Crafting", BronzemanTcgConfig.craftingSection),
-			section("Firemaking", BronzemanTcgConfig.firemakingSection),
-			section("Fletching", BronzemanTcgConfig.fletchingSection),
-			section("Herblore", BronzemanTcgConfig.herbloreSection),
-			section("Runecrafting", BronzemanTcgConfig.runecraftingSection),
-			section("Smithing", BronzemanTcgConfig.smithingSection)));
-		result.add(category("Other", bySection,
-			section("Sailing", BronzemanTcgConfig.sailingSection),
-			section("Slayer", BronzemanTcgConfig.slayerSection)));
-		return result;
-	}
-
-	private static Category category(String name,
-		Map<String, List<ConfigItemDescriptor>> bySection,
-		Section... definitions)
-	{
-		List<Section> sections = new ArrayList<>();
-		for (Section definition : definitions)
+		for (SidePanelSettingMetadata.Category category
+			: SidePanelSettingMetadata.Category.values())
 		{
-			List<ConfigItemDescriptor> items =
-				bySection.getOrDefault(definition.key, Collections.emptyList());
-			if (!items.isEmpty())
+			List<Section> sections = new ArrayList<>();
+			for (SidePanelSettingMetadata.Section section
+				: SidePanelSettingMetadata.Section.values())
 			{
-				sections.add(new Section(definition.name, definition.key, items));
+				if (section.category != category)
+				{
+					continue;
+				}
+				List<SidePanelSettingMetadata.Entry> items = new ArrayList<>();
+				for (SidePanelSettingMetadata.Entry entry : SidePanelSettingMetadata.all())
+				{
+					if (entry.section == section)
+					{
+						BronzemanSettingRegistry.require(entry.key);
+						items.add(entry);
+					}
+				}
+				if (!items.isEmpty())
+				{
+					sections.add(new Section(section.label, section.name(), items));
+				}
 			}
+			result.add(new Category(category.label, sections));
 		}
-		return new Category(name, sections);
+		return Collections.unmodifiableList(result);
 	}
 
-	private static Section section(String name, String key)
+	private JPanel settingControl(SidePanelSettingMetadata.Entry item)
 	{
-		return new Section(name, key, Collections.emptyList());
-	}
-
-	private JPanel settingControl(ConfigItemDescriptor descriptor)
-	{
-		ConfigItem item = descriptor.getItem();
 		BronzemanSettingRegistry.Definition definition =
-			BronzemanSettingRegistry.require(item.keyName());
+			BronzemanSettingRegistry.require(item.key);
 		Object value;
 		try
 		{
@@ -443,27 +401,27 @@ final class SidePanelSettings
 		}
 		catch (RuntimeException ex)
 		{
-			log.warn("Could not read side-panel setting {}", item.keyName(), ex);
+			log.warn("Could not read side-panel setting {}", item.key, ex);
 			JPanel unavailable = settingRow();
-			unavailable.add(mutedRow(item.name() + " (unavailable)"));
+			unavailable.add(mutedRow(item.name + " (unavailable)"));
 			return unavailable;
 		}
 
-		String tooltip = "<html>" + item.name() + ":<br>"
-			+ item.description() + "</html>";
+		String tooltip = "<html>" + item.name + ":<br>"
+			+ item.description + "</html>";
 		if (value instanceof Boolean)
 		{
-			JCheckBox checkBox = new JCheckBox(item.name(), (Boolean) value);
+			JCheckBox checkBox = new JCheckBox(item.name, (Boolean) value);
 			styleSettingComponent(checkBox, tooltip);
 			checkBox.addActionListener(event ->
-				save(item.keyName(), checkBox.isSelected()));
+				save(item.key, checkBox.isSelected()));
 			JPanel result = settingRow();
 			result.add(checkBox);
 			return result;
 		}
 
 		JPanel result = settingRow();
-		JLabel label = new JLabel(item.name());
+		JLabel label = new JLabel(item.name);
 		label.setForeground(Color.WHITE);
 		label.setToolTipText(tooltip);
 		result.add(label);
@@ -476,18 +434,15 @@ final class SidePanelSettings
 			combo.setSelectedItem(value);
 			styleSettingComponent(combo, tooltip);
 			combo.addActionListener(event ->
-				save(item.keyName(), ((Enum<?>) combo.getSelectedItem()).name()));
+				save(item.key, ((Enum<?>) combo.getSelectedItem()).name()));
 			result.add(combo);
 		}
 		else if (value instanceof Integer)
 		{
-			Range range = descriptor.getRange();
-			int min = range == null ? Integer.MIN_VALUE : range.min();
-			int max = range == null ? Integer.MAX_VALUE : range.max();
 			JSpinner spinner = new JSpinner(
-				new SpinnerNumberModel(((Integer) value).intValue(), min, max, 1));
+				new SpinnerNumberModel(((Integer) value).intValue(), item.min, item.max, 1));
 			styleSettingComponent(spinner, tooltip);
-			spinner.addChangeListener(event -> save(item.keyName(), spinner.getValue()));
+			spinner.addChangeListener(event -> save(item.key, spinner.getValue()));
 			result.add(spinner);
 		}
 		else if (value instanceof Color)
@@ -497,21 +452,29 @@ final class SidePanelSettings
 			styleSettingComponent(colour, tooltip);
 			colour.addActionListener(event ->
 			{
-				Color selected = JColorChooser.showDialog(panel, item.name(),
+				Color selected = JColorChooser.showDialog(panel, item.name,
 					colour.getBackground());
 				if (selected != null)
 				{
 					colour.setBackground(selected);
-					save(item.keyName(), selected);
+					save(item.key, selected);
 				}
 			});
 			result.add(colour);
 		}
 		else
 		{
-			JTextField text = new JTextField(value == null ? "" : value.toString());
+			String initialValue = value == null ? "" : value.toString();
+			JTextField text = new JTextField(initialValue);
 			styleSettingComponent(text, tooltip);
-			Runnable saveText = () -> save(item.keyName(), text.getText());
+			Runnable saveText = () ->
+			{
+				if (!rebuilding && text.isShowing()
+					&& !initialValue.equals(text.getText()))
+				{
+					save(item.key, text.getText());
+				}
+			};
 			text.addActionListener(event -> saveText.run());
 			text.addFocusListener(new FocusAdapter()
 			{
@@ -599,9 +562,10 @@ final class SidePanelSettings
 	{
 		private final String name;
 		private final String key;
-		private final List<ConfigItemDescriptor> items;
+		private final List<SidePanelSettingMetadata.Entry> items;
 
-		private Section(String name, String key, List<ConfigItemDescriptor> items)
+		private Section(String name, String key,
+			List<SidePanelSettingMetadata.Entry> items)
 		{
 			this.name = name;
 			this.key = key;
