@@ -436,6 +436,7 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 				nodeCatalog,
 				questCatalog,
 				questRequirementCatalog,
+				exemptionList,
 				contentCatalog,
 				monsterAreaCatalog,
 				collectionReader,
@@ -784,12 +785,6 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 				{
 					return true;
 				}
-				// Pickpocket is deliberately click-only even though it is an NPC option.
-				// The interaction remains blocked and chat supplies the missing-card reason.
-				if (PICKPOCKET_OPTION.equals(optionLower))
-				{
-					return false;
-				}
 				// Prevent Interaction strips every option (Examine is a different MenuAction, so it
 				// survives untouched). Slayer masters answer only to the Slayer section, and
 				// started-quest NPCs keep Prevent Combat treatment so quests never brick.
@@ -819,8 +814,19 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 			case GROUND_ITEM_THIRD_OPTION:
 			case GROUND_ITEM_FOURTH_OPTION:
 			case GROUND_ITEM_FIFTH_OPTION:
-				// Ground-item options stay visible; the click path remains the final guard.
-				return false;
+			{
+				// Restored after 0.2.15 made these unconditionally visible: with Ground Items
+				// on Require Card, a locked Take is hidden again. Exempt names and unlocked
+				// items keep their option, and the click path stays the final guard.
+				if (config.groundItemsMode() != LockState.LOCKED
+					|| !TAKE_OPTION.equals(optionLower))
+				{
+					return false;
+				}
+				String itemName = itemManager.getItemComposition(entry.getIdentifier()).getName();
+				return itemName != null && !itemName.isEmpty() && !isLootExempt(itemName)
+					&& !isUnlocked(itemCatalog, itemName);
+			}
 			case GAME_OBJECT_FIRST_OPTION:
 			case GAME_OBJECT_SECOND_OPTION:
 			case GAME_OBJECT_THIRD_OPTION:

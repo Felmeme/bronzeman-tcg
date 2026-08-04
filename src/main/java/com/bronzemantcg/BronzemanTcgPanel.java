@@ -87,6 +87,7 @@ class BronzemanTcgPanel extends PluginPanel
 	private final ResourceNodeCatalog nodeCatalog;
 	private final QuestCatalog questCatalog;
 	private final QuestRequirementCatalog questRequirementCatalog;
+	private final ExemptionList exemptionList;
 	private final ContentCatalog contentCatalog;
 	private final MonsterAreaCatalog monsterAreaCatalog;
 	private final TcgCollectionReader collectionReader;
@@ -187,6 +188,7 @@ class BronzemanTcgPanel extends PluginPanel
 			ResourceNodeCatalog nodeCatalog,
 			QuestCatalog questCatalog,
 			QuestRequirementCatalog questRequirementCatalog,
+			ExemptionList exemptionList,
 			ContentCatalog contentCatalog,
 			MonsterAreaCatalog monsterAreaCatalog,
 			TcgCollectionReader collectionReader,
@@ -203,6 +205,7 @@ class BronzemanTcgPanel extends PluginPanel
 		this.nodeCatalog = nodeCatalog;
 		this.questCatalog = questCatalog;
 		this.questRequirementCatalog = questRequirementCatalog;
+		this.exemptionList = exemptionList;
 		this.contentCatalog = contentCatalog;
 		this.monsterAreaCatalog = monsterAreaCatalog;
 		this.collectionReader = collectionReader;
@@ -649,8 +652,18 @@ class BronzemanTcgPanel extends PluginPanel
 		shared.removeAll(owned);
 		Set<String> visibleShared = config.acceptSharedUnlocks()
 			? Collections.unmodifiableSet(shared) : Collections.emptySet();
+		// Quest readiness asks "can I complete this", not "do I own the card", so it
+		// counts anything the plugin will never restrict: shared cards, the exempt list
+		// and the Coins toggle. The Collection tab deliberately keeps showing true
+		// ownership, which is why this stays separate from `owned`.
 		Set<String> questCards = new HashSet<>(owned);
 		questCards.addAll(visibleShared);
+		questCards.addAll(exemptionList.resolve(config.lootExemptNames())
+			.getCardNamesLowerCase());
+		if (config.coinMode() == LockState.UNLOCKED)
+		{
+			questCards.add("coins");
+		}
 		boolean includeSlayerSuperiors = config.restrictSlayerSuperiors();
 		Set<String> completed = completedQuestNames;
 		QuestCatalog.RouteSelection route = questRoute;
@@ -814,7 +827,7 @@ class BronzemanTcgPanel extends PluginPanel
 		List<QuestCatalog.QuestEntry> visible = new ArrayList<>();
 		for (QuestCatalog.QuestEntry quest : source)
 		{
-			boolean completed = isQuestCompleted(quest.name);
+			boolean completed = isQuestCompleted(quest.questName);
 			boolean completable = quest.satisfiedCount(snapshot.questCards, snapshot.questRoute)
 				== quest.requirements.size()
 				&& meetsRequirements(quest.name);
@@ -936,6 +949,7 @@ class BronzemanTcgPanel extends PluginPanel
 				snapshot.completedQuests);
 	}
 
+	/** Takes the RuneLite game name, which a shortened display name may not equal. */
 	private boolean isQuestCompleted(String name)
 	{
 		String key = name.toLowerCase(Locale.ROOT);
@@ -2705,7 +2719,10 @@ class BronzemanTcgPanel extends PluginPanel
 		bar.setValue(total == 0 && complete ? 1 : done);
 		bar.setPreferredSize(new Dimension(PluginPanel.PANEL_WIDTH - 20, 6));
 		bar.setForeground(complete ? UNLOCKED : ColorScheme.BRAND_ORANGE);
-		bar.setBackground(ColorScheme.DARKER_GRAY_COLOR);
+		// The unfilled track must not match either row state, or the bar disappears until
+		// expanded: collapsed rows are DARKER_GRAY (#1E1E1E), the same colour it used to
+		// be. MEDIUM_GRAY (#4D4D4D) reads against both that and the expanded brown.
+		bar.setBackground(ColorScheme.MEDIUM_GRAY_COLOR);
 		row.add(bar, BorderLayout.SOUTH);
 		return row;
 	}
@@ -2738,7 +2755,10 @@ class BronzemanTcgPanel extends PluginPanel
 		bar.setValue(total == 0 && complete ? 1 : done);
 		bar.setPreferredSize(new Dimension(48, 6));
 		bar.setForeground(complete ? UNLOCKED : ColorScheme.BRAND_ORANGE);
-		bar.setBackground(ColorScheme.DARKER_GRAY_COLOR);
+		// The unfilled track must not match either row state, or the bar disappears until
+		// expanded: collapsed rows are DARKER_GRAY (#1E1E1E), the same colour it used to
+		// be. MEDIUM_GRAY (#4D4D4D) reads against both that and the expanded brown.
+		bar.setBackground(ColorScheme.MEDIUM_GRAY_COLOR);
 		progress.add(bar, BorderLayout.CENTER);
 
 		JLabel count = new JLabel(done + "/" + total);

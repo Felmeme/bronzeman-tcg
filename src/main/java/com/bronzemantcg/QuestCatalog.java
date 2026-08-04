@@ -15,6 +15,7 @@ import java.util.Set;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import lombok.extern.slf4j.Slf4j;
+import net.runelite.api.Quest;
 
 /**
  * Informational quest data for the side panel: which cards a player must own to complete
@@ -124,9 +125,10 @@ public class QuestCatalog
 				}
 				if (!monsters.isEmpty())
 				{
-					monsterMap.put(dto.name.trim(), Collections.unmodifiableList(monsters));
+					// Keyed by the game name: QuestNpcIndex matches these against Quest.getName().
+					monsterMap.put(gameName(dto), Collections.unmodifiableList(monsters));
 				}
-				QuestEntry entry = new QuestEntry(dto.name.trim(), dto.miniquest,
+				QuestEntry entry = new QuestEntry(dto.name.trim(), gameName(dto), dto.miniquest,
 					sections.toArray(new Section[0]),
 					dto.notes == null ? "" : dto.notes.trim());
 				(dto.miniquest ? loadedMiniquests : loaded).add(entry);
@@ -151,6 +153,24 @@ public class QuestCatalog
 		{
 			log.warn("Failed to load quest_cards.json", ex);
 		}
+	}
+
+	/** Resolve the optional RuneLite constant to the game's own quest name. */
+	private static String gameName(QuestDto dto)
+	{
+		if (dto.runeliteQuest == null || dto.runeliteQuest.trim().isEmpty())
+		{
+			return dto.name.trim();
+		}
+		for (Quest quest : Quest.values())
+		{
+			if (quest.name().equals(dto.runeliteQuest.trim()))
+			{
+				return quest.getName();
+			}
+		}
+		log.warn("Unknown quest constant '{}' on '{}'", dto.runeliteQuest, dto.name);
+		return dto.name.trim();
 	}
 
 	private static Requirement loadRequirement(RequirementDto dto)
@@ -227,6 +247,12 @@ public class QuestCatalog
 	public static class QuestEntry
 	{
 		public final String name;
+		/**
+		 * The name RuneLite's {@link Quest} enum uses. Usually identical to {@link #name},
+		 * but a shortened display name ("RFD - King Awowogei") must still resolve to the
+		 * game's own name or quest-completion lookups silently never match.
+		 */
+		public final String questName;
 		public final boolean miniquest;
 		public final List<Section> sections;
 		public final List<Requirement> requirements;
@@ -245,7 +271,14 @@ public class QuestCatalog
 
 		private QuestEntry(String name, boolean miniquest, Section[] sections, String notes)
 		{
+			this(name, name, miniquest, sections, notes);
+		}
+
+		private QuestEntry(String name, String questName, boolean miniquest,
+			Section[] sections, String notes)
+		{
 			this.name = name;
+			this.questName = questName == null || questName.trim().isEmpty() ? name : questName;
 			this.miniquest = miniquest;
 			List<Section> sectionList = new ArrayList<>();
 			Collections.addAll(sectionList, sections);
@@ -460,6 +493,8 @@ public class QuestCatalog
 	private static class QuestDto
 	{
 		String name;
+		/** Optional RuneLite Quest constant when the display name differs from the game's. */
+		String runeliteQuest;
 		boolean miniquest;
 		List<SectionDto> sections;
 		String notes;

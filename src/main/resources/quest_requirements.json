@@ -2,7 +2,7 @@
 	"schema": 1,
 	"source": {
 		"provider": "osrs-wiki",
-		"fetched": "2026-08-03"
+		"fetched": "2026-08-04"
 	},
 	"quests": [
 		{
@@ -1775,7 +1775,7 @@
 					"runeliteQuest": "THE_EYES_OF_GLOUPHRIE"
 				},
 				{
-					"name": "Recipe for Disaster - King Awowogei",
+					"name": "RFD - King Awowogei",
 					"runeliteQuest": "RECIPE_FOR_DISASTER__KING_AWOWOGEI"
 				},
 				{
@@ -2043,63 +2043,11 @@
 			]
 		},
 		{
-			"name": "Recipe for Disaster",
-			"runeliteQuest": "RECIPE_FOR_DISASTER",
+			"name": "RFD - Another Cook's Quest",
+			"runeliteQuest": "RECIPE_FOR_DISASTER__ANOTHER_COOKS_QUEST",
 			"skills": [
 				{
 					"skill": "COOKING",
-					"level": 70
-				},
-				{
-					"skill": "MAGIC",
-					"level": 59
-				},
-				{
-					"skill": "FISHING",
-					"level": 53
-				},
-				{
-					"skill": "THIEVING",
-					"level": 53
-				},
-				{
-					"skill": "FIREMAKING",
-					"level": 50
-				},
-				{
-					"skill": "MINING",
-					"level": 50
-				},
-				{
-					"skill": "AGILITY",
-					"level": 48
-				},
-				{
-					"skill": "CRAFTING",
-					"level": 40
-				},
-				{
-					"skill": "RANGED",
-					"level": 40
-				},
-				{
-					"skill": "SMITHING",
-					"level": 40
-				},
-				{
-					"skill": "WOODCUTTING",
-					"level": 36
-				},
-				{
-					"skill": "HERBLORE",
-					"level": 25
-				},
-				{
-					"skill": "COOKING",
-					"level": 10
-				},
-				{
-					"skill": "FLETCHING",
 					"level": 10
 				}
 			],
@@ -2107,18 +2055,74 @@
 				{
 					"name": "Cook's Assistant",
 					"runeliteQuest": "COOKS_ASSISTANT"
+				}
+			]
+		},
+		{
+			"name": "RFD - Mountain Dwarf",
+			"runeliteQuest": "RECIPE_FOR_DISASTER__MOUNTAIN_DWARF",
+			"quests": [
+				{
+					"name": "RFD - Another Cook's Quest",
+					"runeliteQuest": "RECIPE_FOR_DISASTER__ANOTHER_COOKS_QUEST"
 				},
 				{
 					"name": "Fishing Contest",
 					"runeliteQuest": "FISHING_CONTEST"
+				}
+			]
+		},
+		{
+			"name": "RFD - Wartface & Bentnoze",
+			"runeliteQuest": "RECIPE_FOR_DISASTER__WARTFACE__BENTNOZE",
+			"quests": [
+				{
+					"name": "RFD - Another Cook's Quest",
+					"runeliteQuest": "RECIPE_FOR_DISASTER__ANOTHER_COOKS_QUEST"
 				},
 				{
 					"name": "Goblin Diplomacy",
 					"runeliteQuest": "GOBLIN_DIPLOMACY"
-				},
+				}
+			]
+		},
+		{
+			"name": "RFD - Pirate Pete",
+			"runeliteQuest": "RECIPE_FOR_DISASTER__PIRATE_PETE",
+			"skills": [
+				{
+					"skill": "COOKING",
+					"level": 31
+				}
+			],
+			"quests": [
+				{
+					"name": "RFD - Another Cook's Quest",
+					"runeliteQuest": "RECIPE_FOR_DISASTER__ANOTHER_COOKS_QUEST"
+				}
+			]
+		},
+		{
+			"name": "RFD - Lumbridge Guide",
+			"runeliteQuest": "RECIPE_FOR_DISASTER__LUMBRIDGE_GUIDE",
+			"skills": [
+				{
+					"skill": "COOKING",
+					"level": 40
+				}
+			],
+			"quests": [
 				{
 					"name": "Big Chompy Bird Hunting",
 					"runeliteQuest": "BIG_CHOMPY_BIRD_HUNTING"
+				},
+				{
+					"name": "Biohazard",
+					"runeliteQuest": "BIOHAZARD"
+				},
+				{
+					"name": "Demon Slayer",
+					"runeliteQuest": "DEMON_SLAYER"
 				},
 				{
 					"name": "Murder Mystery",
@@ -2129,25 +2133,116 @@
 					"runeliteQuest": "NATURE_SPIRIT"
 				},
 				{
+					"name": "RFD - Another Cook's Quest",
+					"runeliteQuest": "RECIPE_FOR_DISASTER__ANOTHER_COOKS_QUEST"
+				},
+				{
 					"name": "Witch's House",
 					"runeliteQuest": "WITCHS_HOUSE"
-				},
+				}
+			]
+		},
+		{
+			"name": "RFD - Evil Dave",
+			"runeliteQuest": "RECIPE_FOR_DISASTER__EVIL_DAVE",
+			"quests": [
 				{
 					"name": "Gertrude's Cat",
 					"runeliteQuest": "GERTRUDES_CAT"
 				},
 				{
-					"name": "Shadow of the Storm",
-					"runeliteQuest": "SHADOW_OF_THE_STORM"
+					"name": "RFD - Another Cook's Quest",
+					"runeliteQuest": "RECIPE_FOR_DISASTER__ANOTHER_COOKS_QUEST"
 				},
 				{
-					"name": "Legends' Quest",
-					"runeliteQuest": "LEGENDS_QUEST"
+					"name": "Shadow of the Storm",
+					"runeliteQuest": "SHADOW_OF_THE_STORM"
+				}
+			]
+		},
+		{
+			"name": "RFD - King Awowogei",
+			"runeliteQuest": "RECIPE_FOR_DISASTER__KING_AWOWOGEI",
+			"skills": [
+				{
+					"skill": "COOKING",
+					"level": 70
 				},
+				{
+					"skill": "AGILITY",
+					"level": 48
+				}
+			],
+			"quests": [
 				{
 					"name": "Monkey Madness I",
 					"runeliteQuest": "MONKEY_MADNESS_I"
 				},
+				{
+					"name": "RFD - Another Cook's Quest",
+					"runeliteQuest": "RECIPE_FOR_DISASTER__ANOTHER_COOKS_QUEST"
+				}
+			]
+		},
+		{
+			"name": "RFD - Sir Amik Varze",
+			"runeliteQuest": "RECIPE_FOR_DISASTER__SIR_AMIK_VARZE",
+			"quests": [
+				{
+					"name": "Family Crest",
+					"runeliteQuest": "FAMILY_CREST"
+				},
+				{
+					"name": "Heroes' Quest",
+					"runeliteQuest": "HEROES_QUEST"
+				},
+				{
+					"name": "RFD - Another Cook's Quest",
+					"runeliteQuest": "RECIPE_FOR_DISASTER__ANOTHER_COOKS_QUEST"
+				},
+				{
+					"name": "Shilo Village",
+					"runeliteQuest": "SHILO_VILLAGE"
+				},
+				{
+					"name": "Underground Pass",
+					"runeliteQuest": "UNDERGROUND_PASS"
+				},
+				{
+					"name": "Waterfall Quest",
+					"runeliteQuest": "WATERFALL_QUEST"
+				}
+			],
+			"questPoints": 107
+		},
+		{
+			"name": "RFD - Skrach Uglogwee",
+			"runeliteQuest": "RECIPE_FOR_DISASTER__SKRACH_UGLOGWEE",
+			"skills": [
+				{
+					"skill": "COOKING",
+					"level": 41
+				},
+				{
+					"skill": "FIREMAKING",
+					"level": 20
+				}
+			],
+			"quests": [
+				{
+					"name": "Big Chompy Bird Hunting",
+					"runeliteQuest": "BIG_CHOMPY_BIRD_HUNTING"
+				},
+				{
+					"name": "RFD - Another Cook's Quest",
+					"runeliteQuest": "RECIPE_FOR_DISASTER__ANOTHER_COOKS_QUEST"
+				}
+			]
+		},
+		{
+			"name": "RFD - Culinaromancer",
+			"runeliteQuest": "RECIPE_FOR_DISASTER__CULINAROMANCER",
+			"quests": [
 				{
 					"name": "Desert Treasure I",
 					"runeliteQuest": "DESERT_TREASURE_I"
@@ -2155,6 +2250,38 @@
 				{
 					"name": "Horror from the Deep",
 					"runeliteQuest": "HORROR_FROM_THE_DEEP"
+				},
+				{
+					"name": "RFD - Evil Dave",
+					"runeliteQuest": "RECIPE_FOR_DISASTER__EVIL_DAVE"
+				},
+				{
+					"name": "RFD - Wartface & Bentnoze",
+					"runeliteQuest": "RECIPE_FOR_DISASTER__WARTFACE__BENTNOZE"
+				},
+				{
+					"name": "RFD - Lumbridge Guide",
+					"runeliteQuest": "RECIPE_FOR_DISASTER__LUMBRIDGE_GUIDE"
+				},
+				{
+					"name": "RFD - Mountain Dwarf",
+					"runeliteQuest": "RECIPE_FOR_DISASTER__MOUNTAIN_DWARF"
+				},
+				{
+					"name": "RFD - Pirate Pete",
+					"runeliteQuest": "RECIPE_FOR_DISASTER__PIRATE_PETE"
+				},
+				{
+					"name": "RFD - Sir Amik Varze",
+					"runeliteQuest": "RECIPE_FOR_DISASTER__SIR_AMIK_VARZE"
+				},
+				{
+					"name": "RFD - Skrach Uglogwee",
+					"runeliteQuest": "RECIPE_FOR_DISASTER__SKRACH_UGLOGWEE"
+				},
+				{
+					"name": "RFD - King Awowogei",
+					"runeliteQuest": "RECIPE_FOR_DISASTER__KING_AWOWOGEI"
 				}
 			],
 			"questPoints": 175
@@ -3149,7 +3276,7 @@
 					"runeliteQuest": "CABIN_FEVER"
 				},
 				{
-					"name": "Recipe for Disaster - Pirate Pete",
+					"name": "RFD - Pirate Pete",
 					"runeliteQuest": "RECIPE_FOR_DISASTER__PIRATE_PETE"
 				}
 			]

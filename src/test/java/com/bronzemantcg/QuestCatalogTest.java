@@ -24,7 +24,8 @@ public class QuestCatalogTest
 	public void loadsFullQuestsAndMiniquestsWithoutCountingLeadingTheForSorting()
 	{
 		QuestCatalog catalog = new QuestCatalog(new Gson());
-		Assert.assertEquals(180, catalog.getQuests().size());
+		// 189, not 180: Recipe for Disaster is carried as its ten subquests, not one entry.
+		Assert.assertEquals(189, catalog.getQuests().size());
 		Assert.assertEquals(23, catalog.getMiniquests().size());
 		assertSortedIgnoringThe(catalog.getQuests());
 		assertSortedIgnoringThe(catalog.getMiniquests());
@@ -40,14 +41,43 @@ public class QuestCatalogTest
 		Assert.assertEquals(QuestCatalog.Logic.ANY, spells.logic);
 		Assert.assertTrue(spells.displayCardsOnly);
 		Assert.assertEquals(2, spells.children.size());
+		Assert.assertEquals("Fire Wave", spells.children.get(0).label);
+		Assert.assertEquals("Fire Surge", spells.children.get(1).label);
 		Assert.assertEquals(21, child(spells.children.get(0), "Fire rune").quantity);
 		Assert.assertEquals(30, child(spells.children.get(1), "Fire rune").quantity);
+		// The catalytic rune is what separates the two tiers, so pin it: sharing a Fire
+		// rune count would not prove the branches are actually distinct spells.
+		Assert.assertEquals(3, child(spells.children.get(0), "Blood rune").quantity);
+		Assert.assertEquals(3, child(spells.children.get(1), "Wrath rune").quantity);
 		Assert.assertEquals("Items", dragonSlayer.sections.get(0).label);
 		Assert.assertNotNull(requirement(dragonSlayer, "Chisel"));
 		assertNoQuestHelperSections(catalog.getQuests());
 		assertNoQuestHelperSections(catalog.getMiniquests());
 
-		Assert.assertEquals(10, quest(catalog, "Recipe for Disaster").sections.size());
+		// Recipe for Disaster is split into its ten subquests rather than carried as one
+		// entry with ten sections. The display prefix is the owner's call, so accept
+		// either the short or the full RuneLite form here.
+		Assert.assertTrue(catalog.getQuests().stream()
+			.noneMatch(entry -> "Recipe for Disaster".equals(entry.name)));
+		Assert.assertEquals(10, catalog.getQuests().stream()
+			.filter(entry -> entry.name.startsWith("RFD - ")
+				|| entry.name.startsWith("Recipe for Disaster - "))
+			.count());
+		// A shortened display name must still resolve to RuneLite's own quest name, or
+		// Hide completed and the quest-NPC index silently stop matching these entries.
+		for (QuestCatalog.QuestEntry entry : catalog.getQuests())
+		{
+			if (entry.name.startsWith("RFD - "))
+			{
+				Assert.assertTrue(entry.name + " -> " + entry.questName,
+					entry.questName.startsWith("Recipe for Disaster - "));
+			}
+		}
+		QuestCatalog.QuestEntry awowogei = quest(catalog, "RFD - King Awowogei");
+		Assert.assertEquals("Recipe for Disaster - King Awowogei", awowogei.questName);
+		Assert.assertEquals("Items", awowogei.sections.get(0).label);
+		Assert.assertEquals("Enemies", awowogei.sections.get(1).label);
+		Assert.assertNotNull(requirement(awowogei, "Gorilla greegree"));
 	}
 
 	@Test

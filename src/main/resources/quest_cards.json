@@ -867,7 +867,7 @@
 					]
 				}
 			],
-			"notes": "Toy mouse \u2014 Card required: Item is used mid-quest"
+			"notes": "Toy mouse — Card required: Item is used mid-quest"
 		},
 		{
 			"name": "Barbarian Training",
@@ -8646,11 +8646,12 @@
 			"notes": ""
 		},
 		{
-			"name": "Recipe for Disaster",
+			"name": "RFD - Another Cook's Quest",
+			"runeliteQuest": "RECIPE_FOR_DISASTER__ANOTHER_COOKS_QUEST",
 			"miniquest": false,
 			"sections": [
 				{
-					"label": "Another Cook's Quest",
+					"label": "Items",
 					"requirements": [
 						{
 							"label": "Eye of newt",
@@ -8688,9 +8689,17 @@
 							"type": "item"
 						}
 					]
-				},
+				}
+			],
+			"notes": ""
+		},
+		{
+			"name": "RFD - Mountain Dwarf",
+			"runeliteQuest": "RECIPE_FOR_DISASTER__MOUNTAIN_DWARF",
+			"miniquest": false,
+			"sections": [
 				{
-					"label": "Freeing the Mountain Dwarf",
+					"label": "Items",
 					"requirements": [
 						{
 							"label": "Coins",
@@ -8719,7 +8728,12 @@
 								"Asgarnian ale"
 							],
 							"type": "item"
-						},
+						}
+					]
+				},
+				{
+					"label": "Enemies",
+					"requirements": [
 						{
 							"label": "Icefiend",
 							"cards": [
@@ -8728,9 +8742,17 @@
 							"type": "enemy"
 						}
 					]
-				},
+				}
+			],
+			"notes": ""
+		},
+		{
+			"name": "RFD - Wartface & Bentnoze",
+			"runeliteQuest": "RECIPE_FOR_DISASTER__WARTFACE__BENTNOZE",
+			"miniquest": false,
+			"sections": [
 				{
-					"label": "Freeing the Goblin generals",
+					"label": "Items",
 					"requirements": [
 						{
 							"label": "Bucket of water",
@@ -8776,9 +8798,17 @@
 							"type": "item"
 						}
 					]
-				},
+				}
+			],
+			"notes": ""
+		},
+		{
+			"name": "RFD - Pirate Pete",
+			"runeliteQuest": "RECIPE_FOR_DISASTER__PIRATE_PETE",
+			"miniquest": false,
+			"sections": [
 				{
-					"label": "Freeing Pirate Pete",
+					"label": "Items",
 					"requirements": [
 						{
 							"label": "Fishbowl",
@@ -8814,7 +8844,12 @@
 								"Raw cod"
 							],
 							"type": "item"
-						},
+						}
+					]
+				},
+				{
+					"label": "Enemies",
+					"requirements": [
 						{
 							"label": "Mudskipper",
 							"cards": [
@@ -8830,9 +8865,17 @@
 							"type": "enemy"
 						}
 					]
-				},
+				}
+			],
+			"notes": ""
+		},
+		{
+			"name": "RFD - Lumbridge Guide",
+			"runeliteQuest": "RECIPE_FOR_DISASTER__LUMBRIDGE_GUIDE",
+			"miniquest": false,
+			"sections": [
 				{
-					"label": "Freeing the Lumbridge Guide",
+					"label": "Items",
 					"requirements": [
 						{
 							"label": "Cake tin",
@@ -8842,9 +8885,17 @@
 							"type": "item"
 						}
 					]
-				},
+				}
+			],
+			"notes": ""
+		},
+		{
+			"name": "RFD - Evil Dave",
+			"runeliteQuest": "RECIPE_FOR_DISASTER__EVIL_DAVE",
+			"miniquest": false,
+			"sections": [
 				{
-					"label": "Freeing Evil Dave",
+					"label": "Items",
 					"requirements": [
 						{
 							"label": "Cat",
@@ -8868,9 +8919,17 @@
 							"type": "item"
 						}
 					]
-				},
+				}
+			],
+			"notes": ""
+		},
+		{
+			"name": "RFD - King Awowogei",
+			"runeliteQuest": "RECIPE_FOR_DISASTER__KING_AWOWOGEI",
+			"miniquest": false,
+			"sections": [
 				{
-					"label": "Freeing King Awowogei",
+					"label": "Items",
 					"requirements": [
 						{
 							"label": "Banana",
@@ -8899,7 +8958,12 @@
 								"Rope"
 							],
 							"type": "item"
-						},
+						}
+					]
+				},
+				{
+					"label": "Enemies",
+					"requirements": [
 						{
 							"label": "Big Snake",
 							"cards": [
@@ -8915,9 +8979,17 @@
 							"type": "enemy"
 						}
 					]
-				},
+				}
+			],
+			"notes": ""
+		},
+		{
+			"name": "RFD - Sir Amik Varze",
+			"runeliteQuest": "RECIPE_FOR_DISASTER__SIR_AMIK_VARZE",
+			"miniquest": false,
+			"sections": [
 				{
-					"label": "Freeing Sir Amik Varze",
+					"label": "Items",
 					"requirements": [
 						{
 							"label": "Raw chicken",
@@ -8932,7 +9004,12 @@
 								"Pot of cream"
 							],
 							"type": "item"
-						},
+						}
+					]
+				},
+				{
+					"label": "Enemies",
+					"requirements": [
 						{
 							"label": "Evil Chicken",
 							"cards": [
@@ -8948,9 +9025,17 @@
 							"type": "enemy"
 						}
 					]
-				},
+				}
+			],
+			"notes": ""
+		},
+		{
+			"name": "RFD - Skrach Uglogwee",
+			"runeliteQuest": "RECIPE_FOR_DISASTER__SKRACH_UGLOGWEE",
+			"miniquest": false,
+			"sections": [
 				{
-					"label": "Freeing Skrach Uglogwee",
+					"label": "Items",
 					"requirements": [
 						{
 							"label": "Raw chompy",
@@ -8988,9 +9073,17 @@
 							"type": "item"
 						}
 					]
-				},
+				}
+			],
+			"notes": ""
+		},
+		{
+			"name": "RFD - Culinaromancer",
+			"runeliteQuest": "RECIPE_FOR_DISASTER__CULINAROMANCER",
+			"miniquest": false,
+			"sections": [
 				{
-					"label": "Defeating the Culinaromancer",
+					"label": "Enemies",
 					"requirements": [
 						{
 							"label": "Agrith-Na-Na",
@@ -10415,7 +10508,7 @@
 							"type": "item"
 						},
 						{
-							"label": "Ode to eternity \u2014 Card required: Item is used mid-quest",
+							"label": "Ode to eternity — Card required: Item is used mid-quest",
 							"cards": [
 								"Ode to eternity"
 							],
