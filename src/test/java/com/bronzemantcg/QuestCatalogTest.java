@@ -26,7 +26,9 @@ public class QuestCatalogTest
 		QuestCatalog catalog = new QuestCatalog(new Gson());
 		// 189, not 180: Recipe for Disaster is carried as its ten subquests, not one entry.
 		Assert.assertEquals(189, catalog.getQuests().size());
-		Assert.assertEquals(23, catalog.getMiniquests().size());
+		// 19: four miniquests removed from the game (Architectural Alliance, Lost Lover,
+		// Rogue Trader, Spirit of Adventure) - none had a RuneLite Quest constant either.
+		Assert.assertEquals(19, catalog.getMiniquests().size());
 		assertSortedIgnoringThe(catalog.getQuests());
 		assertSortedIgnoringThe(catalog.getMiniquests());
 	}
@@ -43,12 +45,12 @@ public class QuestCatalogTest
 		Assert.assertEquals(2, spells.children.size());
 		Assert.assertEquals("Fire Wave", spells.children.get(0).label);
 		Assert.assertEquals("Fire Surge", spells.children.get(1).label);
-		Assert.assertEquals(21, child(spells.children.get(0), "Fire rune").quantity);
-		Assert.assertEquals(30, child(spells.children.get(1), "Fire rune").quantity);
-		// The catalytic rune is what separates the two tiers, so pin it: sharing a Fire
-		// rune count would not prove the branches are actually distinct spells.
-		Assert.assertEquals(3, child(spells.children.get(0), "Blood rune").quantity);
-		Assert.assertEquals(3, child(spells.children.get(1), "Wrath rune").quantity);
+		// Quantities were stripped from the data and are read by nothing, so the tiers are
+		// pinned by their catalytic rune instead - that is what makes them distinct spells.
+		Assert.assertNotNull(child(spells.children.get(0), "Fire rune"));
+		Assert.assertNotNull(child(spells.children.get(1), "Fire rune"));
+		Assert.assertNotNull(child(spells.children.get(0), "Blood rune"));
+		Assert.assertNotNull(child(spells.children.get(1), "Wrath rune"));
 		Assert.assertEquals("Items", dragonSlayer.sections.get(0).label);
 		Assert.assertNotNull(requirement(dragonSlayer, "Chisel"));
 		assertNoQuestHelperSections(catalog.getQuests());

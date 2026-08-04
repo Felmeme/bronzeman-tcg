@@ -178,15 +178,6 @@
 			]
 		},
 		{
-			"name": "Architectural Alliance",
-			"skills": [
-				{
-					"skill": "MINING",
-					"level": 42
-				}
-			]
-		},
-		{
 			"name": "At First Light",
 			"runeliteQuest": "AT_FIRST_LIGHT",
 			"skills": [
@@ -2317,23 +2308,6 @@
 				{
 					"name": "Underground Pass",
 					"runeliteQuest": "UNDERGROUND_PASS"
-				}
-			]
-		},
-		{
-			"name": "Rogue Trader",
-			"quests": [
-				{
-					"name": "The Feud",
-					"runeliteQuest": "THE_FEUD"
-				},
-				{
-					"name": "Rune Mysteries",
-					"runeliteQuest": "RUNE_MYSTERIES"
-				},
-				{
-					"name": "Icthlarin's Little Helper",
-					"runeliteQuest": "ICTHLARINS_LITTLE_HELPER"
 				}
 			]
 		},

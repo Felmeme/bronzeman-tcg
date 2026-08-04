@@ -612,8 +612,7 @@
 													"cards": [
 														"Air rune"
 													],
-													"type": "item",
-													"quantity": 3
+													"type": "item"
 												},
 												{
 													"label": "Air staff",
@@ -815,12 +814,6 @@
 			"notes": ""
 		},
 		{
-			"name": "Architectural Alliance",
-			"miniquest": true,
-			"sections": [],
-			"notes": ""
-		},
-		{
 			"name": "At First Light",
 			"miniquest": false,
 			"sections": [
@@ -858,8 +851,7 @@
 									"cards": [
 										"Jerboa tail"
 									],
-									"type": "item",
-									"quantity": 2
+									"type": "item"
 								},
 								{
 									"label": "Box trap",
@@ -960,8 +952,7 @@
 							"cards": [
 								"Coins"
 							],
-							"type": "item",
-							"quantity": 3
+							"type": "item"
 						}
 					]
 				},
@@ -2143,8 +2134,7 @@
 							"cards": [
 								"Bones"
 							],
-							"type": "item",
-							"quantity": 25
+							"type": "item"
 						},
 						{
 							"label": "Bucket of water",
@@ -2368,56 +2358,49 @@
 									"cards": [
 										"Death rune"
 									],
-									"type": "item",
-									"quantity": 8
+									"type": "item"
 								},
 								{
 									"label": "Chaos runes",
 									"cards": [
 										"Chaos rune"
 									],
-									"type": "item",
-									"quantity": 16
+									"type": "item"
 								},
 								{
 									"label": "Blood runes",
 									"cards": [
 										"Blood rune"
 									],
-									"type": "item",
-									"quantity": 2
+									"type": "item"
 								},
 								{
 									"label": "Water runes",
 									"cards": [
 										"Water rune"
 									],
-									"type": "item",
-									"quantity": 4
+									"type": "item"
 								},
 								{
 									"label": "Soul runes",
 									"cards": [
 										"Soul rune"
 									],
-									"type": "item",
-									"quantity": 2
+									"type": "item"
 								},
 								{
 									"label": "Air runes",
 									"cards": [
 										"Air rune"
 									],
-									"type": "item",
-									"quantity": 3
+									"type": "item"
 								},
 								{
 									"label": "Fire runes",
 									"cards": [
 										"Fire rune"
 									],
-									"type": "item",
-									"quantity": 2
+									"type": "item"
 								}
 							]
 						}
@@ -2657,8 +2640,7 @@
 							"cards": [
 								"Plank"
 							],
-							"type": "item",
-							"quantity": 3
+							"type": "item"
 						},
 						{
 							"label": "Coins",
@@ -2745,8 +2727,7 @@
 							"cards": [
 								"Oak plank"
 							],
-							"type": "item",
-							"quantity": 8
+							"type": "item"
 						},
 						{
 							"label": "Swamp paste",
@@ -2848,24 +2829,21 @@
 											"cards": [
 												"Blood rune"
 											],
-											"type": "item",
-											"quantity": 3
+											"type": "item"
 										},
 										{
 											"label": "Fire rune",
 											"cards": [
 												"Fire rune"
 											],
-											"type": "item",
-											"quantity": 21
+											"type": "item"
 										},
 										{
 											"label": "Air rune",
 											"cards": [
 												"Air rune"
 											],
-											"type": "item",
-											"quantity": 15
+											"type": "item"
 										}
 									]
 								},
@@ -2878,24 +2856,21 @@
 											"cards": [
 												"Wrath rune"
 											],
-											"type": "item",
-											"quantity": 3
+											"type": "item"
 										},
 										{
 											"label": "Fire rune",
 											"cards": [
 												"Fire rune"
 											],
-											"type": "item",
-											"quantity": 30
+											"type": "item"
 										},
 										{
 											"label": "Air rune",
 											"cards": [
 												"Air rune"
 											],
-											"type": "item",
-											"quantity": 21
+											"type": "item"
 										}
 									]
 								}
@@ -2972,8 +2947,7 @@
 								"Adamantite nails",
 								"Rune nails"
 							],
-							"type": "item",
-							"quantity": 12
+							"type": "item"
 						}
 					]
 				},
@@ -3299,8 +3273,7 @@
 									"cards": [
 										"Coins"
 									],
-									"type": "item",
-									"quantity": 12
+									"type": "item"
 								}
 							]
 						},
@@ -3471,8 +3444,7 @@
 							"cards": [
 								"Coal"
 							],
-							"type": "item",
-							"quantity": 8
+							"type": "item"
 						},
 						{
 							"label": "Any pickaxe",
@@ -3870,7 +3842,7 @@
 						{
 							"label": "Empty Sack",
 							"cards": [
-								"Empty Sack"
+								"Empty sack"
 							],
 							"type": "item"
 						},
@@ -3884,14 +3856,14 @@
 						{
 							"label": "Yellow Dye",
 							"cards": [
-								"Yellow Dye"
+								"Yellow dye"
 							],
 							"type": "item"
 						},
 						{
 							"label": "Red Dye",
 							"cards": [
-								"Red Dye"
+								"Red dye"
 							],
 							"type": "item"
 						},
@@ -3914,8 +3886,7 @@
 							"cards": [
 								"Logs"
 							],
-							"type": "item",
-							"quantity": 10
+							"type": "item"
 						},
 						{
 							"label": "Tinderbox",
@@ -3973,8 +3944,7 @@
 							"cards": [
 								"Coins"
 							],
-							"type": "item",
-							"quantity": 3000
+							"type": "item"
 						}
 					]
 				}
@@ -4372,8 +4342,7 @@
 							"cards": [
 								"Bucket of water"
 							],
-							"type": "item",
-							"quantity": 2
+							"type": "item"
 						},
 						{
 							"label": "Dwarven stout",
@@ -4758,24 +4727,21 @@
 									"cards": [
 										"Red dye"
 									],
-									"type": "item",
-									"quantity": 3
+									"type": "item"
 								},
 								{
 									"label": "Blue dye",
 									"cards": [
 										"Blue dye"
 									],
-									"type": "item",
-									"quantity": 3
+									"type": "item"
 								},
 								{
 									"label": "Yellow dye",
 									"cards": [
 										"Yellow dye"
 									],
-									"type": "item",
-									"quantity": 3
+									"type": "item"
 								}
 							]
 						}
@@ -5453,8 +5419,7 @@
 							"cards": [
 								"Coins"
 							],
-							"type": "item",
-							"quantity": 600
+							"type": "item"
 						},
 						{
 							"label": "Willow logs",
@@ -5472,8 +5437,7 @@
 									"cards": [
 										"Coins"
 									],
-									"type": "item",
-									"quantity": 30
+									"type": "item"
 								}
 							]
 						}
@@ -5539,8 +5503,7 @@
 							"cards": [
 								"Bucket"
 							],
-							"type": "item",
-							"quantity": 5
+							"type": "item"
 						},
 						{
 							"label": "Hammer",
@@ -5677,8 +5640,7 @@
 								"Adamantite nails",
 								"Rune nails"
 							],
-							"type": "item",
-							"quantity": 44
+							"type": "item"
 						},
 						{
 							"label": "Raw mackerel or Raw snail",
@@ -5689,8 +5651,7 @@
 									"cards": [
 										"Raw mackerel"
 									],
-									"type": "item",
-									"quantity": 10
+									"type": "item"
 								},
 								{
 									"label": "Raw snail",
@@ -6289,7 +6250,7 @@
 							"cards": [
 								"Earth rune"
 							],
-							"type": "item"	
+							"type": "item"
 						},
 						{
 							"label": "Unpowered orb",
@@ -6326,10 +6287,10 @@
 								{
 									"label": "30 of any elemental runes",
 									"cards": [
-										"Air runes",
-										"Earth runes",
-										"Fire runes",
-										"Water runes"
+										"Air rune",
+										"Earth rune",
+										"Fire rune",
+										"Water rune"
 									],
 									"type": "item"
 								}
@@ -6462,12 +6423,6 @@
 					]
 				}
 			],
-			"notes": ""
-		},
-		{
-			"name": "Lost Lover",
-			"miniquest": true,
-			"sections": [],
 			"notes": ""
 		},
 		{
@@ -7161,8 +7116,7 @@
 									"cards": [
 										"Coins"
 									],
-									"type": "item",
-									"quantity": 1000
+									"type": "item"
 								}
 							]
 						},
@@ -7633,8 +7587,7 @@
 							"cards": [
 								"Supercompost"
 							],
-							"type": "item",
-							"quantity": 8
+							"type": "item"
 						},
 						{
 							"label": "Rake",
@@ -8598,8 +8551,7 @@
 							"cards": [
 								"Coins"
 							],
-							"type": "item",
-							"quantity": 902
+							"type": "item"
 						},
 						{
 							"label": "Any light source",
@@ -8622,15 +8574,20 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Wolf",
+							"label": "Baby blue dragon",
 							"cards": [
-								"Wolf",
-								"Big Wolf",
-								"White wolf",
-								"Ice wolf",
-								"Dire Wolf",
-								"Desert Wolf",
-								"Jungle Wolf"
+								"Baby blue dragon"
+							],
+							"type": "enemy"
+						},
+						{
+							"label": "Basilisk",
+							"cards": [
+								"Basilisk",
+								"Basilisk Knight",
+								"Basilisk Sentinel",
+								"Basilisk Youngling",
+								"Monstrous basilisk"
 							],
 							"type": "enemy"
 						},
@@ -8642,31 +8599,61 @@
 							"type": "enemy"
 						},
 						{
-							"label": "Rat",
+							"label": "Cave goblin",
 							"cards": [
-								"Rat",
-								"Brine rat",
-								"Giant rat",
-								"Crypt rat"
+								"Cave goblin (monster)",
+								"Cave goblin guard",
+								"Cave goblin miner"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Baby blue dragon",
+							"label": "Dagannoth",
 							"cards": [
-								"Baby blue dragon"
+								"Blue dagannoth",
+								"Dagannoth",
+								"Dagannoth fledgeling",
+								"Dagannoth mother",
+								"Dagannoth Prime",
+								"Dagannoth Rex",
+								"Dagannoth spawn",
+								"Dagannoth Supreme"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Ogre",
+							"label": "Experiment",
 							"cards": [
-								"Ogre",
-								"Gorad",
-								"Enclave guard",
-								"Ogre chieftain",
-								"Ogress Shaman",
-								"Ogress Warrior"
+								"Experiment",
+								"Experiment No.2"
+							],
+							"type": "enemy"
+						},
+						{
+							"label": "Fire giant",
+							"cards": [
+								"Fire giant"
+							],
+							"type": "enemy"
+						},
+						{
+							"label": "Ghoul",
+							"cards": [
+								"Ghoul"
+							],
+							"type": "enemy"
+						},
+						{
+							"label": "Ice giant",
+							"cards": [
+								"Ice giant"
+							],
+							"type": "enemy"
+						},
+						{
+							"label": "Jackal",
+							"cards": [
+								"Jackal"
 							],
 							"type": "enemy"
 						},
@@ -8678,11 +8665,9 @@
 							"type": "enemy"
 						},
 						{
-							"label": "Zogre",
+							"label": "Lizard",
 							"cards": [
-								"Zogre",
-								"Skogre",
-								"Slash Bash"
+								"Lizard"
 							],
 							"type": "enemy"
 						},
@@ -8690,48 +8675,6 @@
 							"label": "Mogre",
 							"cards": [
 								"Mogre"
-							],
-							"type": "enemy"
-						},
-						{
-							"label": "Dagannoth",
-							"cards": [
-								"Blue dagannoth",
-								"Dagannoth",
-								"Dagannoth Rex",
-								"Dagannoth Supreme",
-								"Dagannoth Prime",
-								"Dagannoth fledgeling",
-								"Dagannoth mother",
-								"Dagannoth spawn"
-							],
-							"type": "enemy"
-						},
-						{
-							"label": "Snake",
-							"cards": [
-								"Bush snake",
-								"Snake"
-							],
-							"type": "enemy"
-						},
-						{
-							"label": "Zombie",
-							"cards": [
-								"Armoured zombie (Defender of Varrock)",
-								"Armoured zombie (Zemouregal's Fort)",
-								"Nazastarool",
-								"Sorebones",
-								"Zombie",
-								"Zombie pirate",
-								"Zombie swab"
-							],
-							"type": "enemy"
-						},
-						{
-							"label": "Werewolf",
-							"cards": [
-								"Werewolf"
 							],
 							"type": "enemy"
 						},
@@ -8745,16 +8688,47 @@
 							"type": "enemy"
 						},
 						{
-							"label": "Fire giant",
+							"label": "Ogre",
 							"cards": [
-								"Fire giant"
+								"Enclave guard",
+								"Gorad",
+								"Ogre",
+								"Ogre chieftain",
+								"Ogress Shaman",
+								"Ogress Warrior"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Ice giant",
+							"label": "Rabbit",
 							"cards": [
-								"Ice giant"
+								"Bunny",
+								"Rabbit"
+							],
+							"type": "enemy"
+						},
+						{
+							"label": "Rat",
+							"cards": [
+								"Brine rat",
+								"Crypt rat",
+								"Giant rat",
+								"Rat"
+							],
+							"type": "enemy"
+						},
+						{
+							"label": "Seagull",
+							"cards": [
+								"Seagull"
+							],
+							"type": "enemy"
+						},
+						{
+							"label": "Snake",
+							"cards": [
+								"Bush snake",
+								"Snake"
 							],
 							"type": "enemy"
 						},
@@ -8764,13 +8738,6 @@
 								"Mutated Terrorbird",
 								"Terrorbird",
 								"Warped Terrorbird"
-							],
-							"type": "enemy"
-						},
-						{
-							"label": "Ghoul",
-							"cards": [
-								"Ghoul"
 							],
 							"type": "enemy"
 						},
@@ -8795,59 +8762,9 @@
 							"type": "enemy"
 						},
 						{
-							"label": "Seagull",
-							"cards": [
-								"Seagull"
-							],
-							"type": "enemy"
-						},
-						{
 							"label": "Undead cow",
 							"cards": [
 								"Undead cow"
-							],
-							"type": "enemy"
-						},
-						{
-							"label": "Experiment",
-							"cards": [
-								"Experiment",
-								"Experiment No.2"
-							],
-							"type": "enemy"
-						},
-						{
-							"label": "Rabbit",
-							"cards": [
-								"Rabbit",
-								"Bunny"
-							],
-							"type": "enemy"
-						},
-						{
-							"label": "Basilisk",
-							"cards": [
-								"Basilisk",
-								"Basilisk Knight",
-								"Basilisk Sentinel",
-								"Basilisk Youngling",
-								"Monstrous basilisk"
-							],
-							"type": "enemy"
-						},
-						{
-							"label": "Lizard",
-							"cards": [
-								"Lizard"
-							],
-							"type": "enemy"
-						},
-						{
-							"label": "Cave goblin",
-							"cards": [
-								"Cave goblin (monster)",
-								"Cave goblin miner",
-								"Cave goblin guard"
 							],
 							"type": "enemy"
 						},
@@ -8859,9 +8776,44 @@
 							"type": "enemy"
 						},
 						{
-							"label": "Jackal",
+							"label": "Werewolf",
 							"cards": [
-								"Jackal"
+								"Werewolf"
+							],
+							"type": "enemy"
+						},
+						{
+							"label": "Wolf",
+							"cards": [
+								"Big Wolf",
+								"Desert Wolf",
+								"Dire Wolf",
+								"Ice wolf",
+								"Jungle Wolf",
+								"White wolf",
+								"Wolf"
+							],
+							"type": "enemy"
+						},
+						{
+							"label": "Zogre",
+							"cards": [
+								"Skogre",
+								"Slash Bash",
+								"Zogre"
+							],
+							"type": "enemy"
+						},
+						{
+							"label": "Zombie",
+							"cards": [
+								"Armoured zombie (Defender of Varrock)",
+								"Armoured zombie (Zemouregal's Fort)",
+								"Nazastarool",
+								"Sorebones",
+								"Zombie",
+								"Zombie pirate",
+								"Zombie swab"
 							],
 							"type": "enemy"
 						}
@@ -8946,7 +8898,6 @@
 								"Kwuarm"
 							]
 						}
-						
 					]
 				}
 			],
@@ -9035,7 +8986,7 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Icefiend, Ice gloves/Smith gloves (i), or 2 hours",
+							"label": "Icefiend - For Rock Cake",
 							"cards": [
 								"Icefiend"
 							]
@@ -9500,7 +9451,7 @@
 							"label": "Ogre arrow materials (if making)",
 							"logic": "ALL",
 							"children": [
-								{ 
+								{
 									"label": "Chisel",
 									"cards": [
 										"Chisel"
@@ -9827,47 +9778,6 @@
 								"Tyras guard"
 							],
 							"type": "enemy"
-						}
-					]
-				}
-			],
-			"notes": ""
-		},
-		{
-			"name": "Rogue Trader",
-			"miniquest": true,
-			"sections": [
-				{
-					"label": "Items",
-					"requirements": [
-						{
-							"label": "Animal hides or dyes",
-							"logic": "ANY",
-							"children": [
-								{
-									"label": "Animal hides",
-									"cards": [
-										"Cowhide",
-										"Grey wolf fur",
-										"Snakeskin",
-										"Bear fur",
-										"Wool"
-									],
-									"type": "item"
-								},
-								{
-									"label": "Dyes",
-									"cards": [
-										"Red dye",
-										"Blue dye",
-										"Yellow dye",
-										"Green dye",
-										"Orange dye",
-										"Purple dye"
-									],
-									"type": "item"
-								}
-							]
 						}
 					]
 				}
@@ -10667,8 +10577,7 @@
 									"cards": [
 										"Coins"
 									],
-									"type": "item",
-									"quantity": 1950
+									"type": "item"
 								}
 							]
 						},
@@ -10689,8 +10598,7 @@
 													"cards": [
 														"Fire rune"
 													],
-													"type": "item",
-													"quantity": 5
+													"type": "item"
 												},
 												{
 													"label": "Fire staff",
@@ -11056,7 +10964,7 @@
 								{
 									"label": "Zamorak brew(4)",
 									"cards": [
-										"Zamorak brew(4)"
+										"Zamorak brew"
 									],
 									"type": "item"
 								}
@@ -11246,32 +11154,6 @@
 				}
 			],
 			"notes": "Seed dibber not required if Farming Barbarian Training has been completed"
-		},
-		{
-			"name": "Spirit of Adventure",
-			"miniquest": true,
-			"sections": [
-				{
-					"label": "Items",
-					"requirements": [
-						{
-							"label": "Logs",
-							"cards": [
-								"Logs"
-							],
-							"type": "item"
-						},
-						{
-							"label": "Tinderbox",
-							"cards": [
-								"Tinderbox"
-							],
-							"type": "item"
-						}
-					]
-				}
-			],
-			"notes": ""
 		},
 		{
 			"name": "Spirits of the Elid",
@@ -11679,8 +11561,7 @@
 							"cards": [
 								"Coins"
 							],
-							"type": "item",
-							"quantity": 30
+							"type": "item"
 						},
 						{
 							"label": "Raw karambwan",
@@ -11805,14 +11686,14 @@
 										"Steel crossbow",
 										"Mithril crossbow",
 										"Adamant crossbow",
-										"Rune crossbow",
+										"Runite crossbow",
 										"Dragon crossbow",
 										"Bronze bolts",
 										"Iron bolts",
 										"Steel bolts",
 										"Mithril bolts",
 										"Adamant bolts",
-										"Rune bolts",
+										"Runite bolts",
 										"Dragon bolts"
 									],
 									"type": "item"
@@ -12315,7 +12196,7 @@
 								"Steel crossbow",
 								"Mithril crossbow",
 								"Adamant crossbow",
-								"Rune crossbow",
+								"Runite crossbow",
 								"Dragon crossbow"
 							],
 							"type": "item"
@@ -12771,16 +12652,14 @@
 									"cards": [
 										"Keg of beer"
 									],
-									"type": "item",
-									"quantity": 2
+									"type": "item"
 								},
 								{
 									"label": "Coins",
 									"cards": [
 										"Coins"
 									],
-									"type": "item",
-									"quantity": 650
+									"type": "item"
 								}
 							]
 						},
@@ -13094,7 +12973,7 @@
 								"Steel crossbow",
 								"Mithril crossbow",
 								"Adamant crossbow",
-								"Rune crossbow",
+								"Runite crossbow",
 								"Dragon crossbow"
 							],
 							"type": "item"
@@ -13500,8 +13379,7 @@
 											"cards": [
 												"Plank"
 											],
-											"type": "item",
-											"quantity": 10
+											"type": "item"
 										},
 										{
 											"label": "Fur",
@@ -13510,8 +13388,7 @@
 												"Bear fur",
 												"Grey wolf fur"
 											],
-											"type": "item",
-											"quantity": 10
+											"type": "item"
 										}
 									]
 								}
@@ -13813,7 +13690,7 @@
 								"Steel crossbow",
 								"Mithril crossbow",
 								"Adamant crossbow",
-								"Rune crossbow",
+								"Runite crossbow",
 								"Dragon crossbow"
 							],
 							"type": "item"
@@ -14144,8 +14021,7 @@
 									"cards": [
 										"Coins"
 									],
-									"type": "item",
-									"quantity": 1875
+									"type": "item"
 								},
 								{
 									"label": "Any axe",
@@ -14800,8 +14676,7 @@
 									"cards": [
 										"Coins"
 									],
-									"type": "item",
-									"quantity": 2
+									"type": "item"
 								}
 							]
 						}
@@ -14835,8 +14710,7 @@
 								"Rune essence",
 								"Pure essence"
 							],
-							"type": "item",
-							"quantity": 20
+							"type": "item"
 						},
 						{
 							"label": "Materials or Coins",
@@ -14874,8 +14748,7 @@
 									"cards": [
 										"Coins"
 									],
-									"type": "item",
-									"quantity": 10000
+									"type": "item"
 								}
 							]
 						},
@@ -15078,24 +14951,21 @@
 							"cards": [
 								"Air rune"
 							],
-							"type": "item",
-							"quantity": 6
+							"type": "item"
 						},
 						{
 							"label": "Earth rune",
 							"cards": [
 								"Earth rune"
 							],
-							"type": "item",
-							"quantity": 6
+							"type": "item"
 						},
 						{
 							"label": "Water rune",
 							"cards": [
 								"Water rune"
 							],
-							"type": "item",
-							"quantity": 6
+							"type": "item"
 						},
 						{
 							"label": "Rope",
@@ -15121,8 +14991,7 @@
 							"cards": [
 								"Chaos rune"
 							],
-							"type": "item",
-							"quantity": 15
+							"type": "item"
 						},
 						{
 							"label": "Bowl",
@@ -15312,8 +15181,7 @@
 							"cards": [
 								"Coins"
 							],
-							"type": "item",
-							"quantity": 520
+							"type": "item"
 						},
 						{
 							"label": "Elemental Spell Runes",
@@ -15423,24 +15291,21 @@
 									"cards": [
 										"Air rune"
 									],
-									"type": "item",
-									"quantity": 8
+									"type": "item"
 								},
 								{
 									"label": "Astral rune",
 									"cards": [
 										"Astral rune"
 									],
-									"type": "item",
-									"quantity": 2
+									"type": "item"
 								},
 								{
 									"label": "Cosmic rune",
 									"cards": [
 										"Cosmic rune"
 									],
-									"type": "item",
-									"quantity": 2
+									"type": "item"
 								}
 							]
 						},
@@ -15453,8 +15318,7 @@
 									"cards": [
 										"Cosmic rune"
 									],
-									"type": "item",
-									"quantity": 3
+									"type": "item"
 								},
 								{
 									"label": "Elemental runes",
@@ -15465,32 +15329,28 @@
 											"cards": [
 												"Air rune"
 											],
-											"type": "item",
-											"quantity": 30
+											"type": "item"
 										},
 										{
 											"label": "Water runes",
 											"cards": [
 												"Water rune"
 											],
-											"type": "item",
-											"quantity": 30
+											"type": "item"
 										},
 										{
 											"label": "Earth runes",
 											"cards": [
 												"Earth rune"
 											],
-											"type": "item",
-											"quantity": 30
+											"type": "item"
 										},
 										{
 											"label": "Fire runes",
 											"cards": [
 												"Fire rune"
 											],
-											"type": "item",
-											"quantity": 30
+											"type": "item"
 										}
 									]
 								}
@@ -15587,11 +15447,18 @@
 								"Witch's experiment"
 							],
 							"type": "enemy"
+						},
+						{
+							"label": "Mouse",
+							"cards": [
+								"Mouse"
+							],
+							"type": "enemy"
 						}
 					]
 				}
 			],
-			"notes": ""
+			"notes": "Mouse Card May Be Needed For Magnet - Prevent Interactions Users."
 		},
 		{
 			"name": "Witch's Potion",
