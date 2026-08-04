@@ -8156,25 +8156,38 @@
 							"type": "item"
 						},
 						{
-							"label": "Bucket of milk",
-							"cards": [
-								"Bucket of milk"
-							],
-							"type": "item"
-						},
-						{
-							"label": "Chocolate dust",
-							"cards": [
-								"Chocolate dust"
-							],
-							"type": "item"
-						},
-						{
-							"label": "Snape grass",
-							"cards": [
-								"Snape grass"
-							],
-							"type": "item"
+							"label": "Hangover cure materials",
+							"logic": "ALL",
+							"children": [
+								{
+									"label": "Bucket of milk",
+									"cards": [
+										"Bucket of milk"
+									],
+									"type": "item"
+								},
+								{
+									"label": "Chocolate dust",
+									"cards": [
+										"Chocolate dust"
+									],
+									"type": "item"
+								},
+								{
+									"label": "Chocolatey milk",
+									"cards": [
+										"Chocolatey milk"
+									],
+									"type": "item"
+								},
+								{
+									"label": "Snape grass",
+									"cards": [
+										"Snape grass"
+									],
+									"type": "item"
+								}
+							]
 						}
 					]
 				}
@@ -10713,13 +10726,6 @@
 							"type": "item"
 						},
 						{
-							"label": "Chocolate dust",
-							"cards": [
-								"Chocolate dust"
-							],
-							"type": "item"
-						},
-						{
 							"label": "Bowl of water",
 							"cards": [
 								"Bowl of water"
@@ -10734,18 +10740,38 @@
 							"type": "item"
 						},
 						{
-							"label": "Snape grass",
-							"cards": [
-								"Snape grass"
-							],
-							"type": "item"
-						},
-						{
-							"label": "Bucket of milk",
-							"cards": [
-								"Bucket of milk"
-							],
-							"type": "item"
+							"label": "Hangover cure materials",
+							"logic": "ALL",
+							"children": [
+								{
+									"label": "Bucket of milk",
+									"cards": [
+										"Bucket of milk"
+									],
+									"type": "item"
+								},
+								{
+									"label": "Chocolate dust",
+									"cards": [
+										"Chocolate dust"
+									],
+									"type": "item"
+								},
+								{
+									"label": "Chocolatey milk",
+									"cards": [
+										"Chocolatey milk"
+									],
+									"type": "item"
+								},
+								{
+									"label": "Snape grass",
+									"cards": [
+										"Snape grass"
+									],
+									"type": "item"
+								}
+							]
 						}
 					]
 				}
