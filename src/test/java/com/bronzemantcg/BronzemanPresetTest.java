@@ -104,7 +104,7 @@ public class BronzemanPresetTest
 			"hunterMode", "restrictHunterRumours", "farmingRakeMode", "compostMode",
 			"slayerMode", "restrictSlayerSuperiors", "thievingMode", "hamFullLoot",
 			"masterFarmerInsanity", "stallThievingMode", "sailingUpgradeMode",
-			"restrictSalvaging", "lockedItemMarkMode", "tintLockedNpcs",
+			"restrictSalvaging", "lockedItemMarkMode", "tintLockedNpcs", "tintLockedGroundItems",
 			"duelistCityMode", "lockedOutlineColor", "lockedOutlineWidth",
 			"lockedOutlineFeather");
 		Set<String> actual = new HashSet<>();

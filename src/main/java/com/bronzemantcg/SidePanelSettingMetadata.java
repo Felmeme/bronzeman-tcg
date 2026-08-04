@@ -136,6 +136,10 @@ final class SidePanelSettingMetadata
 				+ "<br>'Fade + Icon' adds a small bank-filler badge on top of the faded sprite. "));
 		entries.add(setting(Section.VISUALS, "tintLockedNpcs", "Tint locked NPCs grey",
 			"NPCs whose card you have not collected are greyed out in the world."));
+		entries.add(setting(Section.VISUALS, "tintLockedGroundItems",
+			"Tint locked ground items grey",
+			"Ground items whose card you have not collected are outlined in the world."
+				+ "<br>Shown whether or not Ground Items requires a card."));
 		entries.add(setting(Section.VISUALS, "lockedOutlineColor", "Outline colour",
 			"Colour (and opacity) of the locked-NPC outline."));
 		entries.add(range(Section.VISUALS, "lockedOutlineWidth", "Outline width",

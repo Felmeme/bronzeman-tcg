@@ -31,10 +31,14 @@ import net.runelite.api.Quest;
 import net.runelite.api.QuestState;
 import net.runelite.api.Renderable;
 import net.runelite.api.ScriptID;
+import net.runelite.api.Tile;
+import net.runelite.api.TileItem;
 import net.runelite.api.WorldView;
 import net.runelite.api.events.GameStateChanged;
 import net.runelite.api.events.GameTick;
 import net.runelite.api.events.ItemContainerChanged;
+import net.runelite.api.events.ItemDespawned;
+import net.runelite.api.events.ItemSpawned;
 import net.runelite.api.events.MenuEntryAdded;
 import net.runelite.api.events.MenuOptionClicked;
 import net.runelite.api.events.PlayerChanged;
@@ -335,6 +339,27 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	private Set<String> carriedAxes = Collections.emptySet();
 	// Fishing rules use their role:"tool" groups as the allowlist. Keep every carried
 	// item name here so bait, feathers and future spot-specific inputs stay data-driven.
+	// Every visible ground item, tracked from spawn/despawn rather than by scanning the
+	// scene: the outline overlay runs every frame and a 104x104x4 tile walk there would be
+	// far too costly. The name is resolved once at spawn; `blocked` is recomputed only when
+	// the effective owned set actually changes, so the render path just reads a boolean.
+	private final Map<TileItem, GroundItem> groundItems = new HashMap<>();
+	private Set<String> groundItemOwnedSnapshot;
+
+	/** One tracked ground item: its tile, its resolved name, and whether it is locked. */
+	static final class GroundItem
+	{
+		final Tile tile;
+		final String name;
+		boolean blocked;
+
+		GroundItem(Tile tile, String name)
+		{
+			this.tile = tile;
+			this.name = name;
+		}
+	}
+
 	private Set<String> carriedFishingInputs = Collections.emptySet();
 	private Set<String> inventoryItemNamesLower = Collections.emptySet();
 	// The item-on-item pair that most recently opened a "make" interface. Some menus
@@ -475,10 +500,59 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	}
 
 	@Subscribe
+	public void onItemSpawned(ItemSpawned event)
+	{
+		TileItem item = event.getItem();
+		if (item == null)
+		{
+			return;
+		}
+		GroundItem tracked = new GroundItem(event.getTile(),
+			itemManager.getItemComposition(item.getId()).getName());
+		tracked.blocked = isBlockedItemName(tracked.name);
+		groundItems.put(item, tracked);
+	}
+
+	@Subscribe
+	public void onItemDespawned(ItemDespawned event)
+	{
+		groundItems.remove(event.getItem());
+	}
+
+	/** Tracked ground items for the outline overlay. */
+	Map<TileItem, GroundItem> getGroundItems()
+	{
+		return groundItems;
+	}
+
+	/**
+	 * Re-evaluate tracked ground items after a card is gained or lost, or the exempt list
+	 * changes. effectiveOwnedCards() is identity-cached, so the common case is one
+	 * reference comparison per tick and no work at all.
+	 */
+	private void refreshGroundItemLocks()
+	{
+		Set<String> owned = effectiveOwnedCards();
+		if (owned == groundItemOwnedSnapshot)
+		{
+			return;
+		}
+		groundItemOwnedSnapshot = owned;
+		for (GroundItem tracked : groundItems.values())
+		{
+			tracked.blocked = isBlockedItemName(tracked.name);
+		}
+	}
+
+	@Subscribe
 	public void onGameStateChanged(GameStateChanged event)
 	{
 		switch (event.getGameState())
 		{
+			case LOADING:
+				// New scene: every tracked Tile belongs to the old one.
+				groundItems.clear();
+				break;
 			case LOGGED_IN:
 				questStateInitialized = false;
 				scheduleWelcome();
@@ -915,6 +989,7 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	@Subscribe
 	public void onGameTick(GameTick event)
 	{
+		refreshGroundItemLocks();
 		boolean newUnlock = recentUnlocksTracker.update(
 			collectionReader.getOwnedCardNamesLowerCase(), collectionReader.isStateAvailable());
 		if (newUnlock)

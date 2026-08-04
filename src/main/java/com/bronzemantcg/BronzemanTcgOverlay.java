@@ -4,11 +4,13 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.util.Collections;
+import java.util.Map;
 import java.util.Set;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import net.runelite.api.Client;
 import net.runelite.api.NPC;
+import net.runelite.api.TileItem;
 import net.runelite.api.NPCComposition;
 import net.runelite.api.WorldView;
 import net.runelite.client.ui.overlay.Overlay;
@@ -32,11 +34,13 @@ class BronzemanTcgOverlay extends Overlay
 	private final TcgCollectionReader collectionReader;
 	private final SharedUnlockStore sharedUnlockStore;
 	private final ModelOutlineRenderer modelOutlineRenderer;
+	private final BronzemanTcgPlugin plugin;
 
 	@Inject
 	BronzemanTcgOverlay(Client client, BronzemanTcgConfig config,
 		TrackedMonsterCatalog monsterCatalog, TcgCollectionReader collectionReader,
-		SharedUnlockStore sharedUnlockStore, ModelOutlineRenderer modelOutlineRenderer)
+		SharedUnlockStore sharedUnlockStore, ModelOutlineRenderer modelOutlineRenderer,
+		BronzemanTcgPlugin plugin)
 	{
 		this.client = client;
 		this.config = config;
@@ -44,6 +48,7 @@ class BronzemanTcgOverlay extends Overlay
 		this.collectionReader = collectionReader;
 		this.sharedUnlockStore = sharedUnlockStore;
 		this.modelOutlineRenderer = modelOutlineRenderer;
+		this.plugin = plugin;
 		setPosition(OverlayPosition.DYNAMIC);
 		setLayer(OverlayLayer.ABOVE_SCENE);
 	}
@@ -52,7 +57,12 @@ class BronzemanTcgOverlay extends Overlay
 	public Dimension render(Graphics2D graphics)
 	{
 		// Hidden entities never render, so outlining them would just draw over scenery.
-		if (!config.tintLockedNpcs() || config.npcVisibilityMode() == NpcVisibilityMode.HIDE)
+		boolean outlineNpcs = config.tintLockedNpcs()
+			&& config.npcVisibilityMode() != NpcVisibilityMode.HIDE;
+		// Deliberately not gated on groundItemsMode: the outline says "you do not own this
+		// card", which stays true and useful even when pickup itself is allowed.
+		boolean outlineGroundItems = config.tintLockedGroundItems();
+		if (!outlineNpcs && !outlineGroundItems)
 		{
 			return null;
 		}
@@ -76,13 +86,33 @@ class BronzemanTcgOverlay extends Overlay
 		Color color = config.lockedOutlineColor();
 		int width = config.lockedOutlineWidth();
 		int feather = config.lockedOutlineFeather();
-		for (NPC npc : worldView.npcs())
+		if (outlineNpcs)
 		{
-			if (npc == null || !isLocked(npc, owned, shared))
+			for (NPC npc : worldView.npcs())
 			{
-				continue;
+				if (npc == null || !isLocked(npc, owned, shared))
+				{
+					continue;
+				}
+				modelOutlineRenderer.drawOutline(npc, width, color, feather);
 			}
-			modelOutlineRenderer.drawOutline(npc, width, color, feather);
+		}
+
+		if (outlineGroundItems)
+		{
+			// blocked is precomputed, so this does no name lookups or allocation per frame.
+			for (Map.Entry<TileItem, BronzemanTcgPlugin.GroundItem> entry
+				: plugin.getGroundItems().entrySet())
+			{
+				BronzemanTcgPlugin.GroundItem tracked = entry.getValue();
+				if (!tracked.blocked || tracked.tile == null
+					|| tracked.tile.getItemLayer() == null)
+				{
+					continue;
+				}
+				modelOutlineRenderer.drawOutline(
+					tracked.tile.getItemLayer(), entry.getKey(), width, color, feather);
+			}
 		}
 		return null;
 	}

@@ -80,6 +80,8 @@ final class BronzemanSettingRegistry
 			enumSetting("lockedItemMarkMode", BronzemanTcgConfig::lockedItemMarkMode,
 				LockedItemMarkMode.values()),
 			booleanSetting("tintLockedNpcs", BronzemanTcgConfig::tintLockedNpcs),
+			booleanSetting("tintLockedGroundItems",
+				BronzemanTcgConfig::tintLockedGroundItems),
 			booleanSetting("duelistCityMode", BronzemanTcgConfig::duelistCityMode),
 			colorSetting("lockedOutlineColor", BronzemanTcgConfig::lockedOutlineColor),
 			integerSetting("lockedOutlineWidth", BronzemanTcgConfig::lockedOutlineWidth),
