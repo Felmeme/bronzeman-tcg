@@ -93,6 +93,14 @@ import net.runelite.client.util.Text;
 public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 {
 	private static final String ATTACK_OPTION = "attack";
+	/**
+	 * Barbarian Training's Farming section. RuneLite has no VarbitID constant for it;
+	 * the id was captured in-client with the Var Inspector (cache name
+	 * brut_farming_planting). It counts up 0 -> 1 -> 2 -> 3 as the section progresses,
+	 * and bare-handed planting is unlocked from 1, so this is a >= test, not == 1.
+	 */
+	private static final int BRUT_FARMING_PLANTING_VARBIT = 9609;
+
 	private static final String TAKE_OPTION = "take";
 	private static final String PICKPOCKET_OPTION = "pickpocket";
 	private static final String MASTER_FARMER_NAME = "master farmer";
@@ -2431,6 +2439,16 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	 * @return roles to skip during evaluation, or null when the category is switched off.
 	 *         Unknown categories restrict fully so new data stays loud rather than inert.
 	 */
+	/**
+	 * True once Barbarian Training's Farming section is under way, which lets the player
+	 * plant seeds bare-handed. Read directly rather than scheduled: every caller is
+	 * already on the client thread, same as the LMS and Tutorial Island checks.
+	 */
+	private boolean hasBareHandedPlanting()
+	{
+		return client.getVarbitValue(BRUT_FARMING_PLANTING_VARBIT) >= 1;
+	}
+
 	private Set<String> excludedRolesFor(String category)
 	{
 		switch (category)
@@ -2476,6 +2494,12 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 				}
 				return excluded;
 			}
+			case "farming-plant":
+				// Completing (or starting) the Farming portion of Barbarian Training removes
+				// the game's own seed dibber requirement, so stop demanding its card. The
+				// seed and produce groups are untouched - only the tool goes.
+				return hasBareHandedPlanting()
+					? Collections.singleton("tool") : Collections.emptySet();
 			case "farming-compost":
 				return config.compostMode() == CardRequirement.CARD_REQUIRED
 					? Collections.emptySet() : null;
@@ -2488,6 +2512,8 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 			case "farming-rake":
 				switch (config.farmingRakeMode())
 				{
+					case OFF:
+						return null;
 					case TOOLS:
 						return Set.of("weeds");
 					case BOTH:
