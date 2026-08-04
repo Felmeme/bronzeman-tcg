@@ -151,8 +151,9 @@ final class SidePanelSettingMetadata
 				+ "<br>Use the TCG Locked side panel to sync your group."));
 
 		entries.add(setting(Section.FARMING, "farmingRakeMode", "Raking",
-			"Raking a patch requires the Rake card."
-				+ "<br>'Tools + Weeds' additionally requires the Weeds card."));
+			"'Tools only': raking a patch requires the Rake card."
+				+ "<br>'Tools + Weeds' additionally requires the Weeds card."
+				+ "<br>'No Restrictions': raking is never blocked."));
 		entries.add(setting(Section.FARMING, "compostMode", "Compost bins",
 			"'Card Required': collecting compost from a bin requires any compost card."));
 		entries.add(setting(Section.FISHING, "fishingMode", "Fishing Options",
