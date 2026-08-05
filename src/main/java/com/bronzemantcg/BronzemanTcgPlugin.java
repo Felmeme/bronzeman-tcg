@@ -67,6 +67,7 @@ import net.runelite.client.events.PluginMessage;
 import net.runelite.client.events.RuneScapeProfileChanged;
 import net.runelite.client.game.FishingSpot;
 import net.runelite.client.game.ItemManager;
+import net.runelite.client.game.SpriteManager;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
 import net.runelite.client.plugins.PluginManager;
@@ -227,6 +228,9 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 
 	@Inject
 	private ImportantUnlocksCatalog importantUnlocksCatalog;
+
+	@Inject
+	private SpriteManager spriteManager;
 
 	@Inject
 	private TrackedMonsterCatalog monsterCatalog;
@@ -476,6 +480,7 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 				sharedUnlockStore,
 				recentUnlocksTracker,
 				importantUnlocksCatalog,
+				spriteManager,
 				config,
 				configManager,
 				executor,
@@ -2570,11 +2575,26 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 				return excluded;
 			}
 			case "farming-plant":
+			{
+				if (config.farmingRakeMode() == FarmingRakeMode.OFF)
+				{
+					return null;
+				}
+				Set<String> excluded = new HashSet<>();
+				// Farming never requires what the patch yields, only what goes into it.
+				excluded.add("produce");
+				if (config.farmingRakeMode() == FarmingRakeMode.TOOLS)
+				{
+					excluded.add("seed");
+				}
 				// Completing (or starting) the Farming portion of Barbarian Training removes
-				// the game's own seed dibber requirement, so stop demanding its card. The
-				// seed and produce groups are untouched - only the tool goes.
-				return hasBareHandedPlanting()
-					? Collections.singleton("tool") : Collections.emptySet();
+				// the game's own seed dibber requirement, so stop demanding its card.
+				if (hasBareHandedPlanting())
+				{
+					excluded.add("tool");
+				}
+				return excluded;
+			}
 			case "farming-compost":
 				return config.compostMode() == CardRequirement.CARD_REQUIRED
 					? Collections.emptySet() : null;
@@ -2585,17 +2605,11 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 				// quest progression is the permit, no toggle.
 				return questNpcIndex.isCotsInProgress() ? null : Collections.emptySet();
 			case "farming-rake":
-				switch (config.farmingRakeMode())
-				{
-					case OFF:
-						return null;
-					case TOOLS:
-						return Set.of("weeds");
-					case BOTH:
-						return Collections.emptySet();
-					default:
-						return null;
-				}
+				// Weeds are what raking yields, so they fall under the same "never require
+				// the end product" rule as produce. Raking therefore only ever asks for the
+				// rake itself, and both restricted modes behave identically here.
+				return config.farmingRakeMode() == FarmingRakeMode.OFF
+					? null : Collections.singleton("weeds");
 			case "sailing-upgrades":
 				switch (config.sailingUpgradeMode())
 				{

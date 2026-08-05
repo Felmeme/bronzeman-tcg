@@ -676,10 +676,10 @@ public interface BronzemanTcgConfig extends Config
 	//----------------
 	@ConfigItem(
 		keyName = "farmingRakeMode",
-		name = "Raking",
-		description = "'Tools only': raking a patch requires the Rake card."
-			+ "<br>'Tools + Weeds' additionally requires the Weeds card."
-			+ "<br>'No Restrictions': raking is never blocked.",
+		name = "Farming Options",
+		description = "'Tools Only': the Rake or Seed dibber card."
+			+ "<br>'Tools and Seeds': also requires the card of the seed being planted."
+			+ "<br>'No Restrictions': raking and planting are never blocked.",
 		section = farmingSection,
 		position = 0
 	)

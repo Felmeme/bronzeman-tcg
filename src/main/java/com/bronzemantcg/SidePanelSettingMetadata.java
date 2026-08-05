@@ -154,10 +154,11 @@ final class SidePanelSettingMetadata
 				+ "<br>Use the `Party` plugin to share the cards you pull with your group members."
 				+ "<br>Use the TCG Locked side panel to sync your group."));
 
-		entries.add(setting(Section.FARMING, "farmingRakeMode", "Raking",
-			"'Tools only': raking a patch requires the Rake card."
-				+ "<br>'Tools + Weeds' additionally requires the Weeds card."
-				+ "<br>'No Restrictions': raking is never blocked."));
+		entries.add(setting(Section.FARMING, "farmingRakeMode", "Farming Options",
+			"Covers raking and planting. What a patch produces is never required."
+				+ "<br>'Tools Only': the Rake or Seed dibber card."
+				+ "<br>'Tools and Seeds': also requires the card of the seed being planted."
+				+ "<br>'No Restrictions': raking and planting are never blocked."));
 		entries.add(setting(Section.FARMING, "compostMode", "Compost bins",
 			"'Card Required': collecting compost from a bin requires any compost card."));
 		entries.add(setting(Section.FISHING, "fishingMode", "Fishing Options",

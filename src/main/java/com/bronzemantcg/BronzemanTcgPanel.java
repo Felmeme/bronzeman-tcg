@@ -1,6 +1,7 @@
 package com.bronzemantcg;
 
 import com.google.gson.Gson;
+import java.awt.BasicStroke;
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Color;
@@ -10,12 +11,15 @@ import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.Graphics2D;
 import java.awt.GridBagLayout;
 import java.awt.Image;
 import java.awt.Insets;
 import java.awt.LayoutManager;
+import java.awt.RenderingHints;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
 import java.time.Instant;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
@@ -36,6 +40,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -44,11 +49,13 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Skill;
 import net.runelite.client.config.ConfigManager;
+import net.runelite.client.game.SpriteManager;
 import net.runelite.client.ui.ColorScheme;
 import net.runelite.client.ui.PluginPanel;
 import net.runelite.client.ui.components.IconTextField;
@@ -94,6 +101,7 @@ class BronzemanTcgPanel extends PluginPanel
 	private final SharedUnlockStore sharedUnlockStore;
 	private final RecentUnlocksTracker recentUnlocksTracker;
 	private final ImportantUnlocksCatalog importantUnlocksCatalog;
+	private final SpriteManager spriteManager;
 	private final BronzemanTcgConfig config;
 	private final ConfigManager configManager;
 	private final ScheduledExecutorService executor;
@@ -106,10 +114,39 @@ class BronzemanTcgPanel extends PluginPanel
 	private PanelTab selectedTab = PanelTab.QUESTS;
 	private PanelTab lastContentTab = PanelTab.QUESTS;
 	private final Map<PanelTab, MaterialTab> materialTabs = new EnumMap<>(PanelTab.class);
-	/** Square, sized around the cog glyph rather than the banner's height. */
-	private static final int SETTINGS_BUTTON = 24;
+	/** Square, sized around the cog icon rather than the banner's height. */
+	private static final int SETTINGS_BUTTON = 26;
 
-	private final JButton settingsButton = new JButton("\u2699");
+	/**
+	 * The game's own Options tab sprite. RuneLite only names this one on the deprecated
+	 * net.runelite.api.SpriteID (RS2_TAB_OPTIONS), and gameval has no equivalent, so the
+	 * raw id is used rather than importing a deprecated class.
+	 */
+	private static final int SETTINGS_TAB_SPRITE = 785;
+
+	/**
+	 * The tick and cross glyphs are the panel's original look and are kept wherever the
+	 * font can actually draw them. On the minority of clients whose font cannot, they
+	 * render as empty boxes, so those fall back to equivalent drawn icons instead.
+	 */
+	private static final boolean MARK_GLYPHS_SUPPORTED = markGlyphsSupported();
+	private static final String TICK_GLYPH = "✓";
+	private static final String CROSS_GLYPH = "✗";
+	private static final int MARK_SIZE = 12;
+	private static final Icon TICK_ICON = markIcon(true, UNLOCKED);
+	private static final Icon CROSS_ICON = markIcon(false, LOCKED);
+
+	private static boolean markGlyphsSupported()
+	{
+		// UIManager rather than a live component: this runs at class load, which is not
+		// guaranteed to be on the EDT.
+		Font font = UIManager.getFont("Label.font");
+		return font != null
+			&& font.canDisplay(TICK_GLYPH.charAt(0))
+			&& font.canDisplay(CROSS_GLYPH.charAt(0));
+	}
+
+	private final JButton settingsButton = new JButton();
 
 	private final IconTextField searchBar = new IconTextField();
 	private final JPanel searchResults = sectionBody();
@@ -195,6 +232,7 @@ class BronzemanTcgPanel extends PluginPanel
 			SharedUnlockStore sharedUnlockStore,
 			RecentUnlocksTracker recentUnlocksTracker,
 			ImportantUnlocksCatalog importantUnlocksCatalog,
+			SpriteManager spriteManager,
 			BronzemanTcgConfig config,
 			ConfigManager configManager,
 			ScheduledExecutorService executor,
@@ -212,6 +250,7 @@ class BronzemanTcgPanel extends PluginPanel
 		this.sharedUnlockStore = sharedUnlockStore;
 		this.recentUnlocksTracker = recentUnlocksTracker;
 		this.importantUnlocksCatalog = importantUnlocksCatalog;
+		this.spriteManager = spriteManager;
 		this.config = config;
 		this.configManager = configManager;
 		this.executor = executor;
@@ -442,6 +481,17 @@ class BronzemanTcgPanel extends PluginPanel
 		settingsButton.setBorder(BorderFactory.createLineBorder(bronze));
 		settingsButton.setPreferredSize(new Dimension(SETTINGS_BUTTON, SETTINGS_BUTTON));
 		settingsButton.setMargin(new Insets(0, 0, 0, 0));
+		// The game's Options tab sprite, used at its native size - it already suits the
+		// button. Loaded from the player's cache, so the icon appears once sprites are
+		// ready and the button simply stays blank until then.
+		spriteManager.getSpriteAsync(SETTINGS_TAB_SPRITE, 0, sprite ->
+			SwingUtilities.invokeLater(() ->
+			{
+				if (sprite != null)
+				{
+					settingsButton.setIcon(new ImageIcon(sprite));
+				}
+			}));
 		settingsButton.addActionListener(event ->
 		{
 			if (selectedTab == PanelTab.SETTINGS)
@@ -889,7 +939,7 @@ class BronzemanTcgPanel extends PluginPanel
 			// them, but never part of the filter - hence a neutral marker, not a cross.
 			for (String note : requirements.other)
 			{
-				text.append("<br>&nbsp;&nbsp;&#8226; ").append(escapeHtml(note));
+				text.append("<br>&nbsp;&nbsp;").append(bullet()).append(escapeHtml(note));
 			}
 		}
 		return text.append("</html>").toString();
@@ -912,16 +962,53 @@ class BronzemanTcgPanel extends PluginPanel
 		}
 	}
 
+	/** Bullet for a line with no pass/fail state, matching the mark's font support. */
+	private static String bullet()
+	{
+		return MARK_GLYPHS_SUPPORTED ? "&#8226; " : "- ";
+	}
+
+	/**
+	 * Tooltips are HTML rather than Swing components, so a drawn icon would mean
+	 * embedding image data. The glyphs are used wherever the font supports them and
+	 * degrade to ASCII where it does not; colour carries the meaning either way.
+	 */
 	private static String markedLine(boolean met, boolean known, String label)
 	{
 		if (!known)
 		{
-			return "<br>&nbsp;&nbsp;&#8226; " + escapeHtml(label);
+			return "<br>&nbsp;&nbsp;" + bullet() + escapeHtml(label);
 		}
 		String colour = String.format("#%06x",
 			(met ? UNLOCKED : LOCKED).getRGB() & 0xFFFFFF);
+		String mark = MARK_GLYPHS_SUPPORTED
+			? (met ? "&#10004;" : "&#10008;") : (met ? "[x]" : "[ ]");
 		return "<br>&nbsp;&nbsp;<font color='" + colour + "'>"
-			+ (met ? "&#10004;" : "&#10008;") + "</font> " + escapeHtml(label);
+			+ mark + "</font> " + escapeHtml(label);
+	}
+
+	/** A tick or cross drawn once at class load and shared by every row that needs it. */
+	private static Icon markIcon(boolean tick, Color color)
+	{
+		BufferedImage image = new BufferedImage(
+			MARK_SIZE, MARK_SIZE, BufferedImage.TYPE_INT_ARGB);
+		Graphics2D graphics = image.createGraphics();
+		graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
+			RenderingHints.VALUE_ANTIALIAS_ON);
+		graphics.setColor(color);
+		graphics.setStroke(new BasicStroke(2f, BasicStroke.CAP_ROUND,
+			BasicStroke.JOIN_ROUND));
+		if (tick)
+		{
+			graphics.drawPolyline(new int[]{2, 5, 10}, new int[]{6, 9, 2}, 3);
+		}
+		else
+		{
+			graphics.drawLine(2, 2, 9, 9);
+			graphics.drawLine(9, 2, 2, 9);
+		}
+		graphics.dispose();
+		return new ImageIcon(image);
 	}
 
 	private static String skillLabel(Skill skill)
@@ -2635,9 +2722,17 @@ class BronzemanTcgPanel extends PluginPanel
 		nameLabel.setForeground(Color.WHITE);
 		row.add(nameLabel, BorderLayout.CENTER);
 
-		JLabel status = new JLabel(unlocked ? "✓" : "✗");
-		status.setForeground(unlocked ? UNLOCKED : LOCKED);
-		status.setFont(status.getFont().deriveFont(Font.BOLD));
+		JLabel status;
+		if (MARK_GLYPHS_SUPPORTED)
+		{
+			status = new JLabel(unlocked ? TICK_GLYPH : CROSS_GLYPH);
+			status.setForeground(unlocked ? UNLOCKED : LOCKED);
+			status.setFont(status.getFont().deriveFont(Font.BOLD));
+		}
+		else
+		{
+			status = new JLabel(unlocked ? TICK_ICON : CROSS_ICON);
+		}
 		row.add(status, BorderLayout.EAST);
 
 		if (missingCards != null && !missingCards.isEmpty())
@@ -2659,10 +2754,23 @@ class BronzemanTcgPanel extends PluginPanel
 		nameLabel.setForeground(Color.WHITE);
 		row.add(nameLabel, BorderLayout.CENTER);
 
-		JLabel status = new JLabel(shared ? "Shared" : "✓");
-		status.setForeground(shared ? ColorScheme.LIGHT_GRAY_COLOR : UNLOCKED);
-		status.setFont(shared
-			? status.getFont().deriveFont(10f) : status.getFont().deriveFont(Font.BOLD));
+		JLabel status;
+		if (shared)
+		{
+			status = new JLabel("Shared");
+			status.setForeground(ColorScheme.LIGHT_GRAY_COLOR);
+			status.setFont(status.getFont().deriveFont(10f));
+		}
+		else if (MARK_GLYPHS_SUPPORTED)
+		{
+			status = new JLabel(TICK_GLYPH);
+			status.setForeground(UNLOCKED);
+			status.setFont(status.getFont().deriveFont(Font.BOLD));
+		}
+		else
+		{
+			status = new JLabel(TICK_ICON);
+		}
 		row.add(status, BorderLayout.EAST);
 
 		JLabel when = new JLabel((shared ? "Shared " : "Unlocked ")
