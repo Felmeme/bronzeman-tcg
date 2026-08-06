@@ -702,17 +702,17 @@ class BronzemanTcgPanel extends PluginPanel
 		shared.removeAll(owned);
 		Set<String> visibleShared = config.acceptSharedUnlocks()
 			? Collections.unmodifiableSet(shared) : Collections.emptySet();
-		// Quest readiness asks "can I complete this", not "do I own the card", so it
-		// counts anything the plugin will never restrict: shared cards, the exempt list
-		// and the Coins toggle. The Collection tab deliberately keeps showing true
-		// ownership, which is why this stays separate from `owned`.
-		Set<String> questCards = new HashSet<>(owned);
-		questCards.addAll(visibleShared);
-		questCards.addAll(exemptionList.resolve(config.lootExemptNames())
+		// Readiness asks "can I do this", not "do I own the card", so it counts anything
+		// the plugin will never restrict: shared cards, the exempt list and the Coins
+		// toggle. Kept separate from `owned` because the row indicators still need to
+		// distinguish a card you own from one the group is sharing.
+		Set<String> usableCards = new HashSet<>(owned);
+		usableCards.addAll(visibleShared);
+		usableCards.addAll(exemptionList.resolve(config.lootExemptNames())
 			.getCardNamesLowerCase());
 		if (config.coinMode() == LockState.UNLOCKED)
 		{
-			questCards.add("coins");
+			usableCards.add("coins");
 		}
 		boolean includeSlayerSuperiors = config.restrictSlayerSuperiors();
 		Set<String> completed = completedQuestNames;
@@ -720,7 +720,7 @@ class BronzemanTcgPanel extends PluginPanel
 
 		return new PanelSnapshot(data, owned, visibleShared, recentUnlocksTracker.getRecent(),
 			recentUnlocksTracker.getSharedRecent(),
-			Collections.unmodifiableSet(questCards), includeSlayerSuperiors, completed, route,
+			Collections.unmodifiableSet(usableCards), includeSlayerSuperiors, completed, route,
 			realSkillLevels, questPoints,
 			countUnlocked(monsterCatalog.getEntityToCards(), owned),
 			countUnlocked(itemCatalog.getEntityToCards(), owned));
@@ -785,7 +785,7 @@ class BronzemanTcgPanel extends PluginPanel
 			|| previous.includeSlayerSuperiors != next.includeSlayerSuperiors;
 		boolean questStateChanged = first
 			|| !previous.completedQuests.equals(next.completedQuests)
-			|| !previous.questCards.equals(next.questCards)
+			|| !previous.usableCards.equals(next.usableCards)
 			|| previous.questRoute != next.questRoute
 			|| !java.util.Arrays.equals(previous.realSkillLevels, next.realSkillLevels)
 			|| previous.questPoints != next.questPoints;
@@ -878,7 +878,7 @@ class BronzemanTcgPanel extends PluginPanel
 		for (QuestCatalog.QuestEntry quest : source)
 		{
 			boolean completed = isQuestCompleted(quest.questName);
-			boolean completable = quest.satisfiedCount(snapshot.questCards, snapshot.questRoute)
+			boolean completable = quest.satisfiedCount(snapshot.usableCards, snapshot.questRoute)
 				== quest.requirements.size()
 				&& meetsRequirements(quest.name);
 			if ((!hideCompletedQuests.isSelected() || !completed)
@@ -1054,7 +1054,7 @@ class BronzemanTcgPanel extends PluginPanel
 		int completable = 0;
 		for (QuestCatalog.QuestEntry entry : entries)
 		{
-			if (entry.satisfiedCount(snapshot.questCards, snapshot.questRoute)
+			if (entry.satisfiedCount(snapshot.usableCards, snapshot.questRoute)
 				== entry.requirements.size())
 			{
 				completable++;
@@ -1099,7 +1099,7 @@ class BronzemanTcgPanel extends PluginPanel
 
 	private JPanel questEntryRow(QuestCatalog.QuestEntry entry)
 	{
-		int have = entry.satisfiedCount(snapshot.questCards, snapshot.questRoute);
+		int have = entry.satisfiedCount(snapshot.usableCards, snapshot.questRoute);
 		int total = entry.requirements.size();
 		boolean expanded = expandedQuests.contains(entry.name);
 		JPanel row = compactProgressRow(entry.name, have, total);
@@ -1133,7 +1133,7 @@ class BronzemanTcgPanel extends PluginPanel
 			String label = section.label.isEmpty() ? "Requirements" : section.label;
 			String key = entry.name + "\0section\0" + sectionIndex;
 			boolean expanded = expandedQuestSections.contains(key);
-			int have = section.satisfiedCount(snapshot.questCards, snapshot.questRoute);
+			int have = section.satisfiedCount(snapshot.usableCards, snapshot.questRoute);
 			int total = section.requirements.size();
 			JPanel row = questSectionRow(label, have, total, expanded);
 			makeClickable(row, () ->
@@ -1179,8 +1179,7 @@ class BronzemanTcgPanel extends PluginPanel
 		boolean expandable = isExpandableQuestRequirement(requirement);
 		if (!expandable)
 		{
-			JPanel row = requirementRow(requirement,
-				requirement.isSatisfied(snapshot.questCards, snapshot.questRoute));
+			JPanel row = requirementRow(requirement, questRequirementState(requirement));
 			styleListContent(row);
 			questList.add(row);
 			return;
@@ -1207,7 +1206,7 @@ class BronzemanTcgPanel extends PluginPanel
 			for (String card : cards.values())
 			{
 				JPanel cardRow = statusRow("      " + displayCardName(card),
-					snapshot.questCards.contains(card.toLowerCase(Locale.ROOT)), null);
+					cardState(card.toLowerCase(Locale.ROOT)), null);
 				styleListContent(cardRow);
 				questList.add(cardRow);
 			}
@@ -1226,7 +1225,7 @@ class BronzemanTcgPanel extends PluginPanel
 			for (String card : requirement.displayCards)
 			{
 				JPanel cardRow = statusRow("      " + displayCardName(card),
-					snapshot.questCards.contains(card.toLowerCase(Locale.ROOT)), null);
+					cardState(card.toLowerCase(Locale.ROOT)), null);
 				styleListContent(cardRow);
 				questList.add(cardRow);
 			}
@@ -1326,7 +1325,7 @@ class BronzemanTcgPanel extends PluginPanel
 		int ready = 0;
 		for (SlayerMasterEntry master : snapshot.data.slayer)
 		{
-			if (master.satisfiedCount(snapshot.owned, snapshot.includeSlayerSuperiors)
+			if (master.satisfiedCount(snapshot.usableCards, snapshot.includeSlayerSuperiors)
 				== master.requirementCount(snapshot.includeSlayerSuperiors))
 			{
 				ready++;
@@ -1381,7 +1380,7 @@ class BronzemanTcgPanel extends PluginPanel
 			return false;
 		}
 
-		int have = satisfiedRequirements(superiors, snapshot.owned);
+		int have = satisfiedRequirements(superiors, snapshot.usableCards);
 		slayerList.add(clickableProgressRow("Superior Creatures",
 			have, superiors.size(), expandedGlobalSuperiors, () ->
 			{
@@ -1395,7 +1394,7 @@ class BronzemanTcgPanel extends PluginPanel
 				if (hasVisibleSlayerCards(superior.displayCards))
 				{
 					slayerList.add(statusRow("  " + superior.label,
-						superior.isSatisfied(snapshot.owned), null));
+						requirementState(superior), null));
 				}
 			}
 		}
@@ -1405,7 +1404,7 @@ class BronzemanTcgPanel extends PluginPanel
 	private void addSlayerMaster(SlayerMasterEntry master)
 	{
 		boolean expanded = expandedSlayer.contains(master.name);
-		int have = master.satisfiedCount(snapshot.owned, snapshot.includeSlayerSuperiors);
+		int have = master.satisfiedCount(snapshot.usableCards, snapshot.includeSlayerSuperiors);
 		int total = master.requirementCount(snapshot.includeSlayerSuperiors);
 		slayerList.add(clickableProgressRow(master.name, have, total, expanded, () ->
 		{
@@ -1430,7 +1429,7 @@ class BronzemanTcgPanel extends PluginPanel
 			boolean taskExpanded = expandedSlayerTasks.contains(key);
 			if (task.locationSpecific)
 			{
-				int locationsOwned = satisfiedRequirements(task.requirements, snapshot.owned);
+				int locationsOwned = satisfiedRequirements(task.requirements, snapshot.usableCards);
 				slayerList.add(clickableHierarchyCountRow(
 					task.label, locationsOwned, task.requirements.size(), taskExpanded,
 					() ->
@@ -1445,7 +1444,7 @@ class BronzemanTcgPanel extends PluginPanel
 			else
 			{
 				QuestCatalog.Requirement requirement = task.requirements.get(0);
-				int variantsOwned = countOwned(requirement.displayCards, snapshot.owned);
+				int variantsOwned = countOwned(requirement.displayCards, snapshot.usableCards);
 				slayerList.add(clickableHierarchyCountRow(
 					task.label, variantsOwned, requirement.displayCards.size(), taskExpanded,
 					() ->
@@ -1471,7 +1470,7 @@ class BronzemanTcgPanel extends PluginPanel
 				if (task.locationSpecific)
 				{
 					slayerList.add(statusRow("    " + requirement.label,
-						requirement.isSatisfied(snapshot.owned), null));
+						requirementState(requirement), null));
 				}
 				for (String card : requirement.displayCards)
 				{
@@ -1479,7 +1478,7 @@ class BronzemanTcgPanel extends PluginPanel
 					{
 						String indent = task.locationSpecific ? "      " : "    ";
 						slayerList.add(statusRow(indent + displayCardName(card),
-							snapshot.owned.contains(card.toLowerCase(Locale.ROOT)), null));
+							cardState(card.toLowerCase(Locale.ROOT)), null));
 					}
 				}
 			}
@@ -1505,7 +1504,7 @@ class BronzemanTcgPanel extends PluginPanel
 					if (hasVisibleSlayerCards(superior.displayCards))
 					{
 						slayerList.add(statusRow("    " + superior.label,
-							superior.isSatisfied(snapshot.owned), null));
+							requirementState(superior), null));
 					}
 				}
 			}
@@ -1532,7 +1531,7 @@ class BronzemanTcgPanel extends PluginPanel
 		int ready = 0;
 		for (QuestCatalog.QuestEntry entry : entries)
 		{
-			if (entry.satisfiedCount(snapshot.owned) == entry.requirements.size())
+			if (entry.satisfiedCount(snapshot.usableCards) == entry.requirements.size())
 			{
 				ready++;
 			}
@@ -1564,7 +1563,7 @@ class BronzemanTcgPanel extends PluginPanel
 			String key = nestedKey(sectionName, entry.name);
 			boolean groupExpanded = expandedPvmGroups.contains(key);
 			contentList.add(clickableHierarchyCountRow(entry.name,
-				entry.satisfiedCount(snapshot.owned), entry.requirements.size(),
+				entry.satisfiedCount(snapshot.usableCards), entry.requirements.size(),
 				groupExpanded, () ->
 				{
 					if (!expandedPvmGroups.remove(key))
@@ -1577,11 +1576,10 @@ class BronzemanTcgPanel extends PluginPanel
 			{
 				for (QuestCatalog.Requirement requirement : entry.requirements)
 				{
-					boolean unlocked = requirement.isSatisfied(snapshot.owned);
-					if (isPvmEntryVisible(unlocked))
+					CardState state = requirementState(requirement);
+					if (isPvmEntryVisible(state != CardState.LOCKED))
 					{
-						contentList.add(statusRow("    " + requirement.label,
-							unlocked, null));
+						contentList.add(statusRow("    " + requirement.label, state, null));
 					}
 				}
 			}
@@ -1628,7 +1626,7 @@ class BronzemanTcgPanel extends PluginPanel
 
 	private boolean isSlayerCardVisible(String card)
 	{
-		boolean unlocked = snapshot.owned.contains(card.toLowerCase(Locale.ROOT));
+		boolean unlocked = snapshot.usableCards.contains(card.toLowerCase(Locale.ROOT));
 		return unlocked ? showUnlockedSlayer.isSelected() : showLockedSlayer.isSelected();
 	}
 
@@ -1636,7 +1634,7 @@ class BronzemanTcgPanel extends PluginPanel
 	{
 		for (QuestCatalog.Requirement requirement : entry.requirements)
 		{
-			if (isPvmEntryVisible(requirement.isSatisfied(snapshot.owned)))
+			if (isPvmEntryVisible(requirement.isSatisfied(snapshot.usableCards)))
 			{
 				return true;
 			}
@@ -1730,7 +1728,7 @@ class BronzemanTcgPanel extends PluginPanel
 		int completable = 0;
 		for (QuestCatalog.QuestEntry entry : entries)
 		{
-			if (entry.satisfiedCount(snapshot.owned) == entry.requirements.size())
+			if (entry.satisfiedCount(snapshot.usableCards) == entry.requirements.size())
 			{
 				completable++;
 			}
@@ -1751,14 +1749,13 @@ class BronzemanTcgPanel extends PluginPanel
 			{
 				addSpacedDivider(rumoursList);
 			}
-			rumoursList.add(checklistRow(entry, snapshot.owned, expandedRumours,
+			rumoursList.add(checklistRow(entry, snapshot.usableCards, expandedRumours,
 				this::refreshRumours));
 			if (expandedRumours.contains(entry.name))
 			{
 				for (QuestCatalog.Requirement requirement : entry.requirements)
 				{
-					rumoursList.add(requirementRow(requirement,
-						requirement.isSatisfied(snapshot.owned)));
+					rumoursList.add(requirementRow(requirement, requirementState(requirement)));
 				}
 				if (entry.requirements.isEmpty())
 				{
@@ -1828,7 +1825,8 @@ class BronzemanTcgPanel extends PluginPanel
 			}
 			for (String card : category.items)
 			{
-				sharedCardsList.add(statusRow("  " + displayCardName(card), true, null));
+				sharedCardsList.add(statusRow("  " + displayCardName(card),
+					CardState.SHARED, null));
 			}
 			for (Map.Entry<String, List<String>> entry : category.subcategories.entrySet())
 			{
@@ -1840,7 +1838,7 @@ class BronzemanTcgPanel extends PluginPanel
 					for (String card : entry.getValue())
 					{
 						sharedCardsList.add(statusRow(
-							"    " + displayCardName(card), true, null));
+							"    " + displayCardName(card), CardState.SHARED, null));
 					}
 				}
 			}
@@ -2163,7 +2161,9 @@ class BronzemanTcgPanel extends PluginPanel
 	private void refreshImportantUnlocks()
 	{
 		importantUnlocksList.removeAll();
-		Set<String> owned = snapshot.owned;
+		// Counts and the locked/unlocked filter both work off what the player can
+		// actually use; the per-row indicator separately distinguishes owned from shared.
+		Set<String> usable = snapshot.usableCards;
 		String query = searchText(importantUnlocksSearchBar);
 		boolean searching = !query.isEmpty();
 		if (!showLockedImportant.isSelected() && !showUnlockedImportant.isSelected())
@@ -2179,7 +2179,7 @@ class BronzemanTcgPanel extends PluginPanel
 		{
 			boolean categoryMatches = matchesSearch(category.name, query);
 			List<String> visibleItems = visibleImportantItems(
-				category.items, owned, query, categoryMatches);
+				category.items, usable, query, categoryMatches);
 			Map<ImportantUnlocksCatalog.Subcategory, List<String>> visibleSubcategories =
 				new LinkedHashMap<>();
 			for (ImportantUnlocksCatalog.Subcategory subcategory : category.subcategories)
@@ -2187,7 +2187,7 @@ class BronzemanTcgPanel extends PluginPanel
 				boolean headingMatches = categoryMatches
 					|| matchesSearch(subcategory.name, query);
 				List<String> subcategoryItems = visibleImportantItems(
-					subcategory.items, owned, query, headingMatches);
+					subcategory.items, usable, query, headingMatches);
 				if (!subcategoryItems.isEmpty())
 				{
 					visibleSubcategories.put(subcategory, subcategoryItems);
@@ -2203,15 +2203,14 @@ class BronzemanTcgPanel extends PluginPanel
 				addSpacedDivider(importantUnlocksList);
 			}
 			visibleCategories++;
-			int have = countOwned(category.allItems, owned);
+			int have = countOwned(category.allItems, usable);
 			importantUnlocksList.add(importantCategoryRow(category, have, searching));
 			if (searching || expandedImportantCategories.contains(category.name))
 			{
 				for (String card : visibleItems)
 				{
-					boolean unlocked = owned.contains(card.toLowerCase(Locale.ROOT));
 					importantUnlocksList.add(statusRow("  " + displayCardName(card),
-						unlocked, null));
+						cardState(card.toLowerCase(Locale.ROOT)), null));
 				}
 				int visibleSubcategoryIndex = 0;
 				for (Map.Entry<ImportantUnlocksCatalog.Subcategory, List<String>> entry
@@ -2224,15 +2223,15 @@ class BronzemanTcgPanel extends PluginPanel
 					visibleSubcategoryIndex++;
 					ImportantUnlocksCatalog.Subcategory subcategory = entry.getKey();
 					importantUnlocksList.add(importantSubcategoryRow(category, subcategory,
-						countOwned(subcategory.items, owned), searching));
+						countOwned(subcategory.items, usable), searching));
 					if (searching || expandedImportantSubcategories.contains(
 						importantSubcategoryKey(category.name, subcategory.name)))
 					{
 						for (String card : entry.getValue())
 						{
-							boolean unlocked = owned.contains(card.toLowerCase(Locale.ROOT));
 							importantUnlocksList.add(statusRow(
-								"    " + displayCardName(card), unlocked, null));
+								"    " + displayCardName(card),
+								cardState(card.toLowerCase(Locale.ROOT)), null));
 						}
 					}
 				}
@@ -2503,12 +2502,12 @@ class BronzemanTcgPanel extends PluginPanel
 		return row;
 	}
 
-	private JPanel requirementRow(QuestCatalog.Requirement requirement, boolean have)
+	private JPanel requirementRow(QuestCatalog.Requirement requirement, CardState state)
 	{
 		String alternatives = requirement.displayCards.size() > 1
 			? ": " + String.join(" / ", requirement.displayCards)
 			: "";
-		JPanel row = statusRow("  " + requirement.label + alternatives, have, null);
+		JPanel row = statusRow("  " + requirement.label + alternatives, state, null);
 		styleListContent(row);
 		return row;
 	}
@@ -2519,6 +2518,83 @@ class BronzemanTcgPanel extends PluginPanel
 	{
 		return field.getText() == null ? ""
 			: field.getText().trim().toLowerCase(Locale.ROOT);
+	}
+
+	/**
+	 * True only while a group is actually sharing something. Without this the "Shared"
+	 * label would be dead weight for solo players, who are the majority.
+	 */
+	private boolean sharingActive()
+	{
+		return snapshot != null && !snapshot.shared.isEmpty();
+	}
+
+	/** State of one card name, already lower-cased. */
+	private CardState cardState(String cardLowerCase)
+	{
+		if (snapshot == null)
+		{
+			return CardState.LOCKED;
+		}
+		if (snapshot.owned.contains(cardLowerCase))
+		{
+			return CardState.OWNED;
+		}
+		return sharingActive() && snapshot.shared.contains(cardLowerCase)
+			? CardState.SHARED : CardState.LOCKED;
+	}
+
+	/**
+	 * Quest rows resolve through the route-aware overload, so a Shield of Arrav branch
+	 * the player has not chosen is not mistaken for a group-supplied card.
+	 */
+	private CardState questRequirementState(QuestCatalog.Requirement requirement)
+	{
+		if (snapshot == null)
+		{
+			return CardState.LOCKED;
+		}
+		if (requirement.isSatisfied(snapshot.owned, snapshot.questRoute))
+		{
+			return CardState.OWNED;
+		}
+		return sharingActive()
+			&& requirement.isSatisfied(snapshot.usableCards, snapshot.questRoute)
+			? CardState.SHARED : CardState.LOCKED;
+	}
+
+	/** Same, for any-of card lists such as search entries. */
+	private CardState cardState(Set<String> cards)
+	{
+		if (snapshot == null)
+		{
+			return CardState.LOCKED;
+		}
+		if (ownsAny(snapshot.owned, cards))
+		{
+			return CardState.OWNED;
+		}
+		return sharingActive() && ownsAny(snapshot.shared, cards)
+			? CardState.SHARED : CardState.LOCKED;
+	}
+
+	/**
+	 * A requirement is SHARED when the player cannot satisfy it alone but the group can.
+	 * Evaluated against the requirement's own any-of/all-of logic rather than card names,
+	 * so a group-supplied card inside a nested group still resolves correctly.
+	 */
+	private CardState requirementState(QuestCatalog.Requirement requirement)
+	{
+		if (snapshot == null)
+		{
+			return CardState.LOCKED;
+		}
+		if (requirement.isSatisfied(snapshot.owned))
+		{
+			return CardState.OWNED;
+		}
+		return sharingActive() && requirement.isSatisfied(snapshot.usableCards)
+			? CardState.SHARED : CardState.LOCKED;
 	}
 
 	private static boolean matchesSearch(String value, String query)
@@ -2551,9 +2627,9 @@ class BronzemanTcgPanel extends PluginPanel
 				matches++;
 				if (++shown <= MAX_SEARCH_RESULTS)
 				{
-					boolean unlocked = ownsAny(snapshot.owned, entry.cards);
-					searchResults.add(statusRow(entry.displayName, unlocked,
-						unlocked ? null : String.join(" / ", entry.cards)));
+					CardState state = cardState(entry.cards);
+					searchResults.add(statusRow(entry.displayName, state,
+						state == CardState.LOCKED ? String.join(" / ", entry.cards) : null));
 				}
 			}
 			if (matches > MAX_SEARCH_RESULTS)
@@ -2715,6 +2791,24 @@ class BronzemanTcgPanel extends PluginPanel
 
 	private static JPanel statusRow(String name, boolean unlocked, String missingCards)
 	{
+		return statusRow(name, unlocked ? CardState.OWNED : CardState.LOCKED, missingCards);
+	}
+
+	/**
+	 * A card the player owns, one a group member is sharing, or one nobody has. "Shared"
+	 * is only ever reported for cards the player does not own themselves - the snapshot's
+	 * shared set already has the owned cards removed - so pulling a card yourself flips
+	 * the row from "Shared" to a tick with no extra bookkeeping.
+	 */
+	enum CardState
+	{
+		OWNED,
+		SHARED,
+		LOCKED
+	}
+
+	private static JPanel statusRow(String name, CardState state, String missingCards)
+	{
 		JPanel row = row(new BorderLayout(6, 0));
 		styleListContent(row);
 
@@ -2723,15 +2817,23 @@ class BronzemanTcgPanel extends PluginPanel
 		row.add(nameLabel, BorderLayout.CENTER);
 
 		JLabel status;
-		if (MARK_GLYPHS_SUPPORTED)
+		if (state == CardState.SHARED)
 		{
+			// Same treatment as the Recent Unlocks tab, so "Shared" reads consistently.
+			status = new JLabel("Shared");
+			status.setForeground(ColorScheme.LIGHT_GRAY_COLOR);
+			status.setFont(status.getFont().deriveFont(10f));
+		}
+		else if (MARK_GLYPHS_SUPPORTED)
+		{
+			boolean unlocked = state == CardState.OWNED;
 			status = new JLabel(unlocked ? TICK_GLYPH : CROSS_GLYPH);
 			status.setForeground(unlocked ? UNLOCKED : LOCKED);
 			status.setFont(status.getFont().deriveFont(Font.BOLD));
 		}
 		else
 		{
-			status = new JLabel(unlocked ? TICK_ICON : CROSS_ICON);
+			status = new JLabel(state == CardState.OWNED ? TICK_ICON : CROSS_ICON);
 		}
 		row.add(status, BorderLayout.EAST);
 
@@ -3074,7 +3176,7 @@ class BronzemanTcgPanel extends PluginPanel
 		private final PreparedData data;
 		private final Set<String> owned;
 		private final Set<String> shared;
-		private final Set<String> questCards;
+		private final Set<String> usableCards;
 		private final List<RecentUnlocksTracker.Unlock> recentUnlocks;
 		private final List<RecentUnlocksTracker.Unlock> sharedRecentUnlocks;
 		private final boolean includeSlayerSuperiors;
@@ -3089,7 +3191,7 @@ class BronzemanTcgPanel extends PluginPanel
 		private PanelSnapshot(PreparedData data, Set<String> owned, Set<String> shared,
 			List<RecentUnlocksTracker.Unlock> recentUnlocks,
 			List<RecentUnlocksTracker.Unlock> sharedRecentUnlocks,
-			Set<String> questCards, boolean includeSlayerSuperiors,
+			Set<String> usableCards, boolean includeSlayerSuperiors,
 			Set<String> completedQuests, QuestCatalog.RouteSelection questRoute,
 			int[] realSkillLevels, int questPoints,
 			int unlockedMonsters,
@@ -3100,7 +3202,7 @@ class BronzemanTcgPanel extends PluginPanel
 			this.data = data;
 			this.owned = owned;
 			this.shared = shared;
-			this.questCards = questCards;
+			this.usableCards = usableCards;
 			this.recentUnlocks = recentUnlocks;
 			this.sharedRecentUnlocks = sharedRecentUnlocks;
 			this.includeSlayerSuperiors = includeSlayerSuperiors;
