@@ -16844,6 +16844,60 @@
 			],
 			"requireAll": true,
 			"notes": "46 generated RuneLite assignment requirements; superiors remain opt-in"
+		},
+		{
+			"category": "item-usage",
+			"kind": "object",
+			"name": "Inactive cell tile",
+			"options": [
+				"Place-cell"
+			],
+			"requiredCardGroups": [
+				[
+					"Weak cell"
+				]
+			],
+			"groupRoles": [
+				"used-item"
+			],
+			"requireAll": true,
+			"notes": "Temple of the Eye: direct Place-cell consumes the carried Weak cell without inventory Use; the target tile has no separate card requirement."
+		},
+		{
+			"category": "item-usage",
+			"kind": "object",
+			"name": "Essence pile (elemental)",
+			"options": [
+				"Assemble"
+			],
+			"requiredCardGroups": [
+				[
+					"Weak cell"
+				]
+			],
+			"groupRoles": [
+				"used-item"
+			],
+			"requireAll": true,
+			"notes": "Temple of the Eye: direct Assemble consumes the carried Weak cell without inventory Use; require only the used item card."
+		},
+		{
+			"category": "item-usage",
+			"kind": "object",
+			"name": "Essence pile (catalytic)",
+			"options": [
+				"Assemble"
+			],
+			"requiredCardGroups": [
+				[
+					"Weak cell"
+				]
+			],
+			"groupRoles": [
+				"used-item"
+			],
+			"requireAll": true,
+			"notes": "Temple of the Eye: direct Assemble consumes the carried Weak cell without inventory Use; require only the used item card."
 		}
 	],
 	"masterFarmerSeedCards": [
