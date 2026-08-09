@@ -561,6 +561,43 @@
 			"category": "smithing-smelt",
 			"inputs": [
 				[
+					"Lead ore"
+				]
+			],
+			"output": "Lead bar",
+			"trigger": {
+				"kind": "interface",
+				"name": "Lead bar",
+				"targets": [
+					"furnace"
+				]
+			},
+			"notes": "Two Lead ore per bar; card requirements are binary. Standard-furnace recipe from Wiki revision 15226137."
+		},
+		{
+			"category": "smithing-smelt",
+			"inputs": [
+				[
+					"Copper ore"
+				],
+				[
+					"Nickel ore"
+				]
+			],
+			"output": "Cupronickel bar",
+			"trigger": {
+				"kind": "interface",
+				"name": "Cupronickel bar",
+				"targets": [
+					"furnace"
+				]
+			},
+			"notes": "Two Copper ore and one Nickel ore per bar; card requirements are binary. Standard-furnace recipe from Wiki revision 15281194."
+		},
+		{
+			"category": "smithing-smelt",
+			"inputs": [
+				[
 					"Runite ore"
 				],
 				[
