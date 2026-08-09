@@ -3749,7 +3749,7 @@
 					"Soft clay"
 				]
 			],
-			"output": "Pot",
+			"output": "Unfired pot",
 			"trigger": {
 				"kind": "interface",
 				"name": "Pot",
@@ -3757,7 +3757,7 @@
 					"potter's wheel"
 				]
 			},
-			"notes": "Pottery: mould soft clay on wheel then fire in a pottery oven (2-step; simplified to product)."
+			"notes": "Potter's wheel shaping step: Soft clay becomes an Unfired pot. Firing is a separate interaction."
 		},
 		{
 			"category": "crafting",
@@ -3766,7 +3766,7 @@
 					"Soft clay"
 				]
 			],
-			"output": "Bowl",
+			"output": "Unfired bowl",
 			"trigger": {
 				"kind": "interface",
 				"name": "Bowl",
@@ -3774,7 +3774,7 @@
 					"potter's wheel"
 				]
 			},
-			"notes": "Pottery: mould soft clay on wheel then fire in a pottery oven (2-step; simplified to product)."
+			"notes": "Potter's wheel shaping step: Soft clay becomes an Unfired bowl. Firing is a separate interaction."
 		},
 		{
 			"category": "crafting",
@@ -3783,7 +3783,7 @@
 					"Soft clay"
 				]
 			],
-			"output": "Pie dish",
+			"output": "Unfired pie dish",
 			"trigger": {
 				"kind": "interface",
 				"name": "Pie dish",
@@ -3791,7 +3791,7 @@
 					"potter's wheel"
 				]
 			},
-			"notes": "Pottery: mould soft clay on wheel then fire in a pottery oven (2-step; simplified to product)."
+			"notes": "Potter's wheel shaping step: Soft clay becomes an Unfired pie dish. Firing is a separate interaction."
 		},
 		{
 			"category": "crafting",
