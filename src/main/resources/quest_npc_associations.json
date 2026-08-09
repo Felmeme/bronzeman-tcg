@@ -38,6 +38,7 @@
 		{ "quest": "Secrets of the North", "npc": "Guard", "startsQuest": true },
 		{ "quest": "Secrets of the North", "npc": "Hazeel" },
 		{ "quest": "Shades of Mort'ton", "npc": "Ulsquire Shauncy" },
+		{ "quest": "Shades of Mort'ton", "npc": "Afflicted(Ulsquire)" },
 		{ "quest": "Sins of the Father", "npc": "Vanescula Drakan" },
 		{ "quest": "Sleeping Giants", "npc": "Kovac", "startsQuest": true },
 		{ "quest": "Swan Song", "npc": "Wise Old Man" },
