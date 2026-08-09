@@ -9292,6 +9292,31 @@
 		{
 			"category": "runecrafting",
 			"kind": "object",
+			"name": "Blood Altar",
+			"objectIds": [
+				27978
+			],
+			"options": [
+				"bind"
+			],
+			"requiredCardGroups": [
+				[
+					"Dark essence fragments"
+				],
+				[
+					"Blood rune"
+				]
+			],
+			"groupRoles": [
+				"essence",
+				"rune"
+			],
+			"requireAll": true,
+			"notes": "Kourend's recreated Blood Altar binds Dark essence fragments. Wiki revision 15199139."
+		},
+		{
+			"category": "runecrafting",
+			"kind": "object",
 			"name": "Blood altar",
 			"objectIds": [
 				43479
@@ -9601,13 +9626,15 @@
 			"category": "runecrafting",
 			"kind": "object",
 			"name": "Soul altar",
+			"objectIds": [
+				27980
+			],
 			"options": [
-				"craft-rune"
+				"bind"
 			],
 			"requiredCardGroups": [
 				[
-					"Pure essence",
-					"Daeyalt essence"
+					"Dark essence fragments"
 				],
 				[
 					"Soul rune"
@@ -9618,7 +9645,7 @@
 				"rune"
 			],
 			"requireAll": true,
-			"notes": "Requires pure (or daeyalt) essence; rune essence cannot craft this rune. No talisman/tiara needed for access (favour/quest-gated); talisman group omitted."
+			"notes": "Kourend's Soul Altar binds Dark essence fragments; no talisman or tiara is used. Wiki revision 15232951."
 		},
 		{
 			"category": "runecrafting",
