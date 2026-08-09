@@ -800,10 +800,10 @@ public interface BronzemanTcgConfig extends Config
 	@ConfigItem(
 		keyName = "sailingUpgradeMode",
 		name = "Boat upgrades",
-		description = "Installing a hull or keel tier requires cards."
-			+ "<br>'Parts': the tier's part card (e.g. Oak hull parts)."
-			+ "<br>'Parts + Materials': also the underlying material card (Oak plank, Bronze bar)."
-			+ "<br>'Everything': additionally the log card and the Large part variant's card."
+		description = "Building a hull, keel, or its parts requires cards for the exact recipe."
+			+ "<br>'Parts': the primary material actually consumed (e.g. Oak logs on a raft)."
+			+ "<br>'Parts + Materials': every card-backed material consumed by the recipe."
+			+ "<br>'Everything': the same exact-material check, retained for compatibility."
 			+ "<br>Masts, helms, cannons and cargo holds have no part cards and are never restricted.",
 		section = sailingSection,
 		position = 0

@@ -1966,14 +1966,26 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback, KeyLis
 		String option = Text.removeTags(event.getMenuOption()).trim();
 		String optionLower = option.toLowerCase(Locale.ROOT);
 		int group = WidgetUtil.componentToInterface(entry.getParam1());
+		Widget eventWidget = event.getWidget();
+		int itemId = eventWidget != null && eventWidget.getItemId() > 0
+			? eventWidget.getItemId() : entry.getItemId();
+		if ((group == InterfaceID.SAILING_MENU
+			|| group == InterfaceID.SAILING_CUSTOMISATION
+			|| group == InterfaceID.SKILLMULTI
+			|| group == InterfaceID.SMITHING
+			|| isMakeVerb(optionLower))
+			&& checkSailingUpgradeRecipe(event, itemId))
+		{
+			return;
+		}
 
 		if (group == InterfaceID.SAILING_MENU || group == InterfaceID.SAILING_CUSTOMISATION)
 		{
-			Widget widget = event.getWidget();
+			Widget widget = eventWidget;
 			String itemName = null;
-			if (widget != null && widget.getItemId() > 0)
+			if (itemId > 0)
 			{
-				itemName = itemManager.getItemComposition(widget.getItemId()).getName();
+				itemName = itemManager.getItemComposition(itemId).getName();
 			}
 			if (log.isDebugEnabled())
 			{
@@ -1984,7 +1996,7 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback, KeyLis
 					widget == null ? -1 : widget.getIndex(),
 					option,
 					Text.removeTags(event.getMenuTarget()),
-					widget == null ? -1 : widget.getItemId(),
+					itemId,
 					itemName == null ? "(no item id)" : itemName,
 					widget == null || widget.getText() == null
 						? "" : Text.removeTags(widget.getText()),
@@ -2097,6 +2109,24 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback, KeyLis
 					resolveInterfaceMaterial(product));
 			}
 		}
+	}
+
+	/** @return true when this item ID is an exact Sailing recipe, blocked or allowed. */
+	private boolean checkSailingUpgradeRecipe(MenuOptionClicked event, int itemId)
+	{
+		SailingUpgradeRecipeCatalog.Recipe recipe = SailingUpgradeRecipeCatalog.find(itemId);
+		if (recipe == null)
+		{
+			return false;
+		}
+		List<String> missing = recipe.missingRequirements(
+			effectiveOwnedCards(), config.sailingUpgradeMode());
+		if (!missing.isEmpty())
+		{
+			event.consume();
+			sendBlockedCardsMessage(missing);
+		}
+		return true;
 	}
 
 
