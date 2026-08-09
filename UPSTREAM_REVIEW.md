@@ -47,19 +47,18 @@ runtime facts and no-fix reasons are in the ledger.
 
 ## Finalized quest-NPC result
 
-See `QUEST_NPC_REVIEW_LEDGER.md` for all 54 decisions. The shared association
-engine (`86fe0cc`) and four combat requirements (`091e553`) remain, with two
-material corrections:
+See `QUEST_NPC_REVIEW_LEDGER.md` for all 54 audited decisions. The shared
+association engine (`86fe0cc`) retains 48 card-mapped runtime names, and the four
+combat requirements (`091e553`) remain, with two material corrections:
 
 - `030a496` removes the incorrect `startsQuest → alwaysShown` behavior. All 15
   starter rows (13 unique names) now remain card-gated while `NOT_STARTED`; normal
   noncombat quest exemption begins only after quest state changes. This also stops
   King Roald, Arianwyn, Sir Tiffy Cashien, and Prince Itzla Arkan from becoming
   globally exempt because another quest starts through the same NPC.
-- `8b2ae81` maps Avan to the audited Man card and both
-  `Afflicted(Ulsquire)`/`Ulsquire Shauncy` to the Afflicted card, and adds the
-  transformed Ulsquire name to the quest association. The used serum remains
-  governed by its own Item Usage gate.
+- Avan and both `Afflicted(Ulsquire)`/`Ulsquire Shauncy` runtime names are
+  excluded because the generated OSRS TCG monster catalogue does not map those
+  NPCs to cards. The review build no longer invents Man or Afflicted substitutes.
 
 Generic runtime NPC names are an explicit review risk. The ledger marks them.
 

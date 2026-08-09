@@ -15,16 +15,30 @@ public class QuestNpcAssociationCatalogTest
 		QuestNpcAssociationCatalog catalog = new QuestNpcAssociationCatalog(new Gson());
 		List<QuestNpcAssociationCatalog.Association> associations = catalog.getAssociations();
 
-		// 48 confirmed omissions plus two already-indexed combat starters, and the
-		// transformed Afflicted(Ulsquire) runtime name for one audited NPC. Starter
+		// Only audited runtime names already represented by the generated OSRS TCG
+		// monster-card catalog are eligible for quest-state associations. Starter
 		// metadata remains evidence only; it must not create a global exemption.
-		Assert.assertEquals(51, associations.size());
+		Assert.assertEquals(48, associations.size());
 		Assert.assertEquals(15, associations.stream().filter(a -> a.startsQuest).count());
 		assertAssociation(associations, "A Porcine of Interest", "Spria", false);
 		assertAssociation(associations, "Lost City", "Warrior", true);
 		assertAssociation(associations, "Temple of Ikov", "Lucien", true);
 		assertAssociation(associations, "The Heart of Darkness", "Prince Itzla Arkan", true);
-		assertAssociation(associations, "Shades of Mort'ton", "Afflicted(Ulsquire)", false);
+	}
+
+	@Test
+	public void everyAssociationHasAnExistingMonsterCardMapping()
+	{
+		List<QuestNpcAssociationCatalog.Association> associations =
+			new QuestNpcAssociationCatalog(new Gson()).getAssociations();
+		TrackedMonsterCatalog monsterCatalog = new TrackedMonsterCatalog(new Gson());
+
+		for (QuestNpcAssociationCatalog.Association association : associations)
+		{
+			Assert.assertTrue("Association has no existing NPC card mapping: "
+				+ association.quest + " -> " + association.npc,
+				monsterCatalog.isTracked(association.npc));
+		}
 	}
 
 	@Test

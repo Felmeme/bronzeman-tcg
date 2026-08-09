@@ -24,7 +24,8 @@ commit does not create noise.
 
 9. `86fe0cc` — shared noncombat association catalogue/loader.
 10. `030a496` — required starter-state correction; depends on `86fe0cc`.
-11. `8b2ae81` — Avan/Ulsquire exact runtime-name aliases; depends on `86fe0cc`.
+11. The later no-card correction removes Avan and both Ulsquire runtime names;
+    no substitute NPC cards are assigned.
 12. `091e553` — four combat quest requirements; independent of the noncombat
     catalogue.
 

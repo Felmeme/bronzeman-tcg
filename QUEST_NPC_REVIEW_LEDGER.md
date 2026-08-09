@@ -3,10 +3,11 @@
 The noncombat engine is `86fe0cc`; the four combat requirements are `091e553`.
 `030a496` corrects starter semantics: a carded starter remains card-gated while
 `NOT_STARTED`, then the quest-state association permits noncombat progress after
-the quest starts. Attack is never waived. `8b2ae81` supplies exact card aliases
-for Avan/Man and both Ulsquire runtime names. Item-on-NPC actions still rely on
-the initial inventory Item Usage gate for the used item; there is no invented
-second NPC-card check.
+the quest starts. Attack is never waived. Avan and both Ulsquire runtime names
+are deliberately excluded because the generated OSRS TCG monster catalogue has
+no card mapping for those NPCs. No substitute NPC card is invented. Item-on-NPC
+actions still rely on the initial inventory Item Usage gate for the used item;
+there is no invented second NPC-card check.
 
 Evidence: `A01` = quest-NPC audit `01_CURRENT_CARD_NONCOMBAT_MISSED.csv`; `A02`
 = `02_CURRENT_CARD_COMBAT_MISSED.csv`; `A05` =
@@ -23,7 +24,7 @@ Evidence: `A01` = quest-NPC audit `01_CURRENT_CARD_NONCOMBAT_MISSED.csv`; `A02`
 | 6 | Devious Minds | Monk — starter Talk | Card-gated pre-start; permit after start; generic-name scope noted | A01/A05/H |
 | 7 | Devious Minds | Sir Tiffy Cashien — Talk | Permit after start; no global exemption from other starter rows | A01/H |
 | 8 | Dragon Slayer II | King Roald — Talk | Permit after start | A01/H |
-| 9 | Family Crest | Man/Avan — Talk | `Man` already maps to Man card; Avan alias maps to same card, then quest exemption applies after start | A01/M/H |
+| 9 | Family Crest | Avan — Talk | Excluded: Avan has no current OSRS TCG NPC-card mapping; no Man-card substitute is invented | A01/M/H |
 | 10 | Fight Arena | Head Guard — Talk | Permit after start | A01/H |
 | 11 | Garden of Tranquillity | Wise Old Man — Talk | Permit after start | A01/H |
 | 12 | Hopespear's Will | Ghost — starter Talk | Card-gated pre-start; permit after start; generic-name scope noted | A01/A05/H |
@@ -45,7 +46,7 @@ Evidence: `A01` = quest-NPC audit `01_CURRENT_CARD_NONCOMBAT_MISSED.csv`; `A02`
 | 28 | RFD — Sir Amik Varze | Wise Old Man — Talk | Permit after start | A01/H |
 | 29 | Secrets of the North | Guard — starter Talk | Card-gated pre-start; permit after start; generic-name scope noted | A01/A05/H |
 | 30 | Secrets of the North | Hazeel — Talk | Permit after start | A01/H |
-| 31 | Shades of Mort'ton | Afflicted(Ulsquire) / Ulsquire Shauncy — serum/Talk | Both runtime names map to Afflicted card and both are state-associated; used serum remains Item-Usage gated | A01/M/H |
+| 31 | Shades of Mort'ton | Afflicted(Ulsquire) / Ulsquire Shauncy — serum/Talk | Excluded: neither runtime name has its own current OSRS TCG NPC-card mapping; no Afflicted-card substitute is invented | A01/M/H |
 | 32 | Sins of the Father | Vanescula Drakan — Talk | Permit after start | A01/H |
 | 33 | Sleeping Giants | Kovac/Hill Giant — starter Strike/Talk | Kovac starter card-gated pre-start; permit relevant noncombat state after start; transformed form remains a manual fixture | A01/A05/M/H |
 | 34 | Swan Song | Wise Old Man — Talk | Permit after start | A01/H |
@@ -70,8 +71,9 @@ Evidence: `A01` = quest-NPC audit `01_CURRENT_CARD_NONCOMBAT_MISSED.csv`; `A02`
 | 53 | Skippy and the Mogres | Mogre — fight | Add exact enemy requirement | A02 |
 | 54 | The Final Dawn | Metzli, Teokan of Ranul — defeat | Add exact enemy requirement; noncombat association never waives attack | A02 |
 
-The shared association loader and its 51 runtime-name rows are one implementation
-family, but every decision is listed above for row-level acceptance or rejection.
+The shared association loader and its 48 card-mapped runtime-name rows are one
+implementation family, but every audited decision—including excluded no-card
+NPCs—is listed above for row-level acceptance or rejection.
 The four combat JSON additions are likewise listed individually. Generic names
 (`Monk`, `Ghost`, `Warrior`, `Guard`, `Monkey`, `Bandit`, `Snake`) can affect every
 NPC with that runtime name; this is explicit review risk, not hidden certainty.
