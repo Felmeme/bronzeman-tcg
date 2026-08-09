@@ -1735,6 +1735,20 @@
 								"Coins"
 							],
 							"type": "item"
+						},
+						{
+							"label": "Tiny net",
+							"cards": [
+								"Tiny net"
+							],
+							"type": "item"
+						},
+						{
+							"label": "Mayor of catherby",
+							"cards": [
+								"Mayor of catherby"
+							],
+							"type": "item"
 						}
 					]
 				}
