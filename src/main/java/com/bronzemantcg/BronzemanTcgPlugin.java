@@ -829,6 +829,11 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback, KeyLis
 		{
 			return;
 		}
+		if (shouldHideGroundFiremakingEntry(entry))
+		{
+			client.getMenu().removeMenuEntry(entry);
+			return;
+		}
 		if (shouldHideEntry(entry))
 		{
 			client.getMenu().removeMenuEntry(entry);
@@ -848,6 +853,90 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback, KeyLis
 			default:
 				return false;
 		}
+	}
+
+	private boolean shouldHideGroundFiremakingEntry(MenuEntry entry)
+	{
+		if (!isPlainGroundItemAction(entry.getType())
+			|| !isGroundFiremakingOption(entry.getOption()))
+		{
+			return false;
+		}
+		String itemName = itemManager.getItemComposition(entry.getIdentifier()).getName();
+		if (itemName == null || itemName.isEmpty()
+			|| recipeCatalog.find(RecipeCatalog.KIND_ITEM_ON_ITEM,
+				"Tinderbox", itemName) == null)
+		{
+			return false;
+		}
+		return evaluateGroundFiremakingRecipe(itemName) != null
+			|| (config.itemUsageMode() == LockState.LOCKED && isBlockedItemName(itemName));
+	}
+
+	private boolean handleGroundFiremakingInteraction(MenuOptionClicked event, MenuAction action)
+	{
+		if (!isPlainGroundItemAction(action)
+			|| !isGroundFiremakingOption(event.getMenuOption()))
+		{
+			return false;
+		}
+		String itemName = itemManager.getItemComposition(event.getId()).getName();
+		if (itemName == null || itemName.isEmpty()
+			|| recipeCatalog.find(RecipeCatalog.KIND_ITEM_ON_ITEM,
+				"Tinderbox", itemName) == null)
+		{
+			return false;
+		}
+		// Ground Light is neither an inventory item op nor item-on-item, so it
+		// otherwise bypasses both the Tinderbox recipe and locked-log Item Usage.
+		List<String> missing = evaluateGroundFiremakingRecipe(itemName);
+		if (missing != null)
+		{
+			event.consume();
+			sendBlockedCardsMessage(missing);
+		}
+		else if (config.itemUsageMode() == LockState.LOCKED)
+		{
+			blockIfLockedItem(event, itemName);
+		}
+		return true;
+	}
+
+	private List<String> evaluateGroundFiremakingRecipe(String itemName)
+	{
+		RecipeCatalog.Recipe recipe = recipeCatalog.find(RecipeCatalog.KIND_ITEM_ON_ITEM,
+			"Tinderbox", itemName);
+		if (recipe == null || config.tinderboxMode() != CardRequirement.CARD_REQUIRED)
+		{
+			return null;
+		}
+		List<String> missing = recipe.missingRequirements(
+			effectiveOwnedCards(), true, false);
+		// Preserve the pinned Firemaking policy: covered recipes ask for the Tinderbox
+		// card only. The locked ground log is enforced separately by Item Usage.
+		missing.removeIf(card -> !"Tinderbox".equalsIgnoreCase(card));
+		return missing.isEmpty() ? null : missing;
+	}
+
+	private static boolean isPlainGroundItemAction(MenuAction action)
+	{
+		switch (action)
+		{
+			case GROUND_ITEM_FIRST_OPTION:
+			case GROUND_ITEM_SECOND_OPTION:
+			case GROUND_ITEM_THIRD_OPTION:
+			case GROUND_ITEM_FOURTH_OPTION:
+			case GROUND_ITEM_FIFTH_OPTION:
+				return true;
+			default:
+				return false;
+		}
+	}
+
+	static boolean isGroundFiremakingOption(String option)
+	{
+		return option != null
+			&& "light".equals(Text.removeTags(option).trim().toLowerCase(Locale.ROOT));
 	}
 
 	private boolean shouldHideEntry(MenuEntry entry)
@@ -1680,6 +1769,10 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback, KeyLis
 
 		MenuAction action = event.getMenuAction();
 		if (action == null)
+		{
+			return;
+		}
+		if (handleGroundFiremakingInteraction(event, action))
 		{
 			return;
 		}
