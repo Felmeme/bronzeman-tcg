@@ -9213,6 +9213,9 @@
 			"category": "runecrafting",
 			"kind": "object",
 			"name": "Air altar",
+			"objectIds": [
+				34760
+			],
 			"options": [
 				"craft-rune"
 			],
@@ -9242,6 +9245,9 @@
 			"category": "runecrafting",
 			"kind": "object",
 			"name": "Altar",
+			"objectIds": [
+				29631
+			],
 			"options": [
 				"craft-rune"
 			],
@@ -9261,6 +9267,9 @@
 			"category": "runecrafting",
 			"kind": "object",
 			"name": "Astral altar",
+			"objectIds": [
+				34771
+			],
 			"options": [
 				"craft-rune"
 			],
@@ -9284,6 +9293,9 @@
 			"category": "runecrafting",
 			"kind": "object",
 			"name": "Blood altar",
+			"objectIds": [
+				43479
+			],
 			"options": [
 				"craft-rune"
 			],
@@ -9307,6 +9319,9 @@
 			"category": "runecrafting",
 			"kind": "object",
 			"name": "Body altar",
+			"objectIds": [
+				34765
+			],
 			"options": [
 				"craft-rune"
 			],
@@ -9336,6 +9351,9 @@
 			"category": "runecrafting",
 			"kind": "object",
 			"name": "Chaos altar",
+			"objectIds": [
+				34769
+			],
 			"options": [
 				"craft-rune"
 			],
@@ -9364,6 +9382,9 @@
 			"category": "runecrafting",
 			"kind": "object",
 			"name": "Cosmic altar",
+			"objectIds": [
+				34766
+			],
 			"options": [
 				"craft-rune"
 			],
@@ -9392,6 +9413,9 @@
 			"category": "runecrafting",
 			"kind": "object",
 			"name": "Death altar",
+			"objectIds": [
+				34770
+			],
 			"options": [
 				"craft-rune"
 			],
@@ -9419,6 +9443,9 @@
 			"category": "runecrafting",
 			"kind": "object",
 			"name": "Earth altar",
+			"objectIds": [
+				34763
+			],
 			"options": [
 				"craft-rune"
 			],
@@ -9448,6 +9475,9 @@
 			"category": "runecrafting",
 			"kind": "object",
 			"name": "Fire altar",
+			"objectIds": [
+				34764
+			],
 			"options": [
 				"craft-rune"
 			],
@@ -9477,6 +9507,9 @@
 			"category": "runecrafting",
 			"kind": "object",
 			"name": "Law altar",
+			"objectIds": [
+				34767
+			],
 			"options": [
 				"craft-rune"
 			],
@@ -9505,6 +9538,9 @@
 			"category": "runecrafting",
 			"kind": "object",
 			"name": "Mind altar",
+			"objectIds": [
+				34761
+			],
 			"options": [
 				"craft-rune"
 			],
@@ -9534,6 +9570,9 @@
 			"category": "runecrafting",
 			"kind": "object",
 			"name": "Nature altar",
+			"objectIds": [
+				34768
+			],
 			"options": [
 				"craft-rune"
 			],
@@ -9585,6 +9624,9 @@
 			"category": "runecrafting",
 			"kind": "object",
 			"name": "Water altar",
+			"objectIds": [
+				34762
+			],
 			"options": [
 				"craft-rune"
 			],
@@ -9614,6 +9656,9 @@
 			"category": "runecrafting",
 			"kind": "object",
 			"name": "Wrath altar",
+			"objectIds": [
+				34772
+			],
 			"options": [
 				"craft-rune"
 			],
