@@ -935,6 +935,16 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback, KeyLis
 			case GROUND_ITEM_FOURTH_OPTION:
 			case GROUND_ITEM_FIFTH_OPTION:
 			{
+				String itemName = itemManager.getItemComposition(entry.getIdentifier()).getName();
+				// Hunter traps retain Lay after being dropped. Reuse the exact inventory
+				// activity rule so moving a snare to the ground cannot bypass Hunter mode.
+				if (isGroundPlacementOption(option)
+					&& itemName != null && !itemName.isEmpty()
+					&& evaluateNodeRule(ResourceNodeCatalog.KIND_INVENTORY,
+						itemName, option) != null)
+				{
+					return true;
+				}
 				// Restored after 0.2.15 made these unconditionally visible: with Ground Items
 				// on Require Card, a locked Take is hidden again. Exempt names and unlocked
 				// items keep their option, and the click path stays the final guard.
@@ -943,7 +953,6 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback, KeyLis
 				{
 					return false;
 				}
-				String itemName = itemManager.getItemComposition(entry.getIdentifier()).getName();
 				return itemName != null && !itemName.isEmpty() && !isLootExempt(itemName)
 					&& !isUnlocked(itemCatalog, itemName);
 			}
@@ -1806,19 +1815,27 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback, KeyLis
 
 	private void handleGroundItemInteraction(MenuOptionClicked event, MenuAction action)
 	{
-		if (config.groundItemsMode() != LockState.LOCKED)
-		{
-			return;
-		}
 		if (action != MenuAction.WIDGET_TARGET_ON_GROUND_ITEM)
 		{
-			// Telegrab (widget-on-ground-item) is always loot; plain clicks only for "Take".
 			String option = event.getMenuOption();
+			ItemComposition composition = itemManager.getItemComposition(event.getId());
+			String itemName = composition.getName();
+			if (isGroundPlacementOption(option) && itemName != null && !itemName.isEmpty()
+				&& checkNodeRule(event, ResourceNodeCatalog.KIND_INVENTORY, itemName,
+					Text.removeTags(option).trim()))
+			{
+				return;
+			}
+			// Telegrab (widget-on-ground-item) is always loot; plain clicks only for "Take".
 			if (option == null
 				|| !TAKE_OPTION.equals(Text.removeTags(option).trim().toLowerCase(Locale.ROOT)))
 			{
 				return;
 			}
+		}
+		if (config.groundItemsMode() != LockState.LOCKED)
+		{
+			return;
 		}
 
 		ItemComposition composition = itemManager.getItemComposition(event.getId());
@@ -1835,6 +1852,12 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback, KeyLis
 
 		event.consume();
 		sendBlockedMessage(itemName);
+	}
+
+	static boolean isGroundPlacementOption(String option)
+	{
+		return option != null
+			&& "lay".equals(Text.removeTags(option).trim().toLowerCase(Locale.ROOT));
 	}
 
 	// ------------------------------------------------------------------ carried tools
