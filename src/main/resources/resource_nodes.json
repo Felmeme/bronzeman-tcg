@@ -5476,6 +5476,19 @@
 		{
 			"category": "mining",
 			"kind": "object",
+			"name": "Crashed Star",
+			"options": [
+				"mine"
+			],
+			"requiredCards": [
+				"Stardust"
+			],
+			"requireAll": true,
+			"notes": "Shooting Stars tiers 1-9 share this display name; Prospect remains unrestricted."
+		},
+		{
+			"category": "mining",
+			"kind": "object",
 			"name": "Copper rocks",
 			"options": [
 				"mine"
