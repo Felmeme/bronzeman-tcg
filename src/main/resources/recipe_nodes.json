@@ -12514,6 +12514,21 @@
 				"targets": []
 			},
 			"notes": "Glassblowing product click. Menu label 'Empty light orb' -> you receive Empty light orb. Owner-observed labels differ from item names (the menu drops the 'Empty ' prefix and calls the battlestaff orb 'Unpowered staff orb'), so both spellings are keyed."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Celastrus bark"
+				]
+			],
+			"output": "Battlestaff",
+			"trigger": {
+				"kind": "interface",
+				"name": "Battlestaff",
+				"targets": []
+			},
+			"notes": "The Fremennik Trials optional alternate route: Fletch Celastrus bark into a Battlestaff. This exact output rule covers mouse and keyboard selection after the interface opens."
 		}
 	]
 }
