@@ -12182,6 +12182,22 @@
 		{
 			"category": "woodcutting",
 			"kind": "object",
+			"name": "Camphor tree",
+			"objectIds": [
+				58557
+			],
+			"options": [
+				"chop down"
+			],
+			"requiredCards": [
+				"Camphor logs"
+			],
+			"requireAll": true,
+			"notes": "Sailing-region tree. Wiki revision 15264047."
+		},
+		{
+			"category": "woodcutting",
+			"kind": "object",
 			"name": "Dead tree",
 			"options": [
 				"chop down"
@@ -12204,6 +12220,22 @@
 			],
 			"requireAll": true,
 			"notes": "Dying trees in Varrock next to Agi course."
+		},
+		{
+			"category": "woodcutting",
+			"kind": "object",
+			"name": "Ironwood tree",
+			"objectIds": [
+				58559
+			],
+			"options": [
+				"chop down"
+			],
+			"requiredCards": [
+				"Ironwood logs"
+			],
+			"requireAll": true,
+			"notes": "Sailing-region tree. Wiki revision 15264036."
 		},
 		{
 			"category": "woodcutting",
@@ -12286,6 +12318,22 @@
 		{
 			"category": "woodcutting",
 			"kind": "object",
+			"name": "Mature juniper tree",
+			"objectIds": [
+				27499
+			],
+			"options": [
+				"chop down"
+			],
+			"requiredCards": [
+				"Juniper logs"
+			],
+			"requireAll": true,
+			"notes": "Hosidius charcoal route. Wiki revision 15216840."
+		},
+		{
+			"category": "woodcutting",
+			"kind": "object",
 			"name": "Oak tree",
 			"options": [
 				"chop down"
@@ -12308,6 +12356,22 @@
 			],
 			"requireAll": true,
 			"notes": "Verify in-game object name suffix ('X' vs 'X tree'); both variants included as separate nodes."
+		},
+		{
+			"category": "woodcutting",
+			"kind": "object",
+			"name": "Rosewood tree",
+			"objectIds": [
+				58561
+			],
+			"options": [
+				"chop down"
+			],
+			"requiredCards": [
+				"Rosewood logs"
+			],
+			"requireAll": true,
+			"notes": "Sailing-region tree. Wiki revision 15264045."
 		},
 		{
 			"category": "woodcutting",
