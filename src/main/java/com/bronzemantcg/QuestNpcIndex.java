@@ -47,7 +47,7 @@ class QuestNpcIndex
 	private volatile boolean cotsInProgress;
 
 	@Inject
-	QuestNpcIndex(QuestCatalog questCatalog)
+	QuestNpcIndex(QuestCatalog questCatalog, QuestNpcAssociationCatalog associationCatalog)
 	{
 		Map<String, Quest> questsByName = new HashMap<>();
 		for (Quest quest : Quest.values())
@@ -85,6 +85,30 @@ class QuestNpcIndex
 		for (Map.Entry<String, Quest> entry : INTERACTION_NPCS.entrySet())
 		{
 			npcQuests.computeIfAbsent(entry.getKey(), k -> new ArrayList<>()).add(entry.getValue());
+		}
+		for (QuestNpcAssociationCatalog.Association association
+			: associationCatalog.getAssociations())
+		{
+			if (association == null || association.npc == null || association.quest == null)
+			{
+				continue;
+			}
+			String npc = association.npc.trim().toLowerCase(Locale.ROOT);
+			if (npc.isEmpty())
+			{
+				continue;
+			}
+			Quest quest = questsByName.get(normalise(association.quest));
+			if (association.startsQuest || quest == null)
+			{
+				// A quest-start interaction has to remain reachable before the quest state
+				// changes. Unmatched quest names retain the existing fail-open policy.
+				alwaysShown.add(npc);
+			}
+			else
+			{
+				npcQuests.computeIfAbsent(npc, k -> new ArrayList<>()).add(quest);
+			}
 		}
 		log.info("Quest NPC index: {} NPCs across matched quests, {} fail-open from {} unmatched quest names",
 			npcQuests.size(), alwaysShown.size(), unmatched);
