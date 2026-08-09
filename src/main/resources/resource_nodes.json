@@ -5450,6 +5450,19 @@
 		{
 			"category": "mining",
 			"kind": "object",
+			"name": "Calcified rocks",
+			"options": [
+				"mine"
+			],
+			"requiredCards": [
+				"Blessed bone shards"
+			],
+			"requireAll": true,
+			"notes": "Cam Torum; the Mining calculator's singular shard item maps to the exact Blessed bone shards card. Wiki revision 15227295."
+		},
+		{
+			"category": "mining",
+			"kind": "object",
 			"name": "Clay rocks",
 			"options": [
 				"mine"
@@ -5528,6 +5541,19 @@
 		{
 			"category": "mining",
 			"kind": "object",
+			"name": "Dense runestone",
+			"options": [
+				"chip"
+			],
+			"requiredCards": [
+				"Dense essence block"
+			],
+			"requireAll": true,
+			"notes": "Dense essence mine; the live object option is Chip and yields dense essence blocks. Wiki revision 15276706."
+		},
+		{
+			"category": "mining",
+			"kind": "object",
 			"name": "Efh salt rocks",
 			"options": [
 				"mine"
@@ -5599,6 +5625,19 @@
 		{
 			"category": "mining",
 			"kind": "object",
+			"name": "Lead rocks",
+			"options": [
+				"mine"
+			],
+			"requiredCards": [
+				"Lead ore"
+			],
+			"requireAll": true,
+			"notes": "Sailing islands; active object yields Lead ore. Wiki revision 15281645."
+		},
+		{
+			"category": "mining",
+			"kind": "object",
 			"name": "Limestone rocks",
 			"options": [
 				"mine"
@@ -5638,6 +5677,19 @@
 		{
 			"category": "mining",
 			"kind": "object",
+			"name": "Nickel rocks",
+			"options": [
+				"mine"
+			],
+			"requiredCards": [
+				"Nickel ore"
+			],
+			"requireAll": true,
+			"notes": "Sailing islands; active object yields Nickel ore. Wiki revision 15286620."
+		},
+		{
+			"category": "mining",
+			"kind": "object",
 			"name": "Ore Vein",
 			"options": [
 				"mine"
@@ -5647,6 +5699,19 @@
 			],
 			"requireAll": true,
 			"notes": ""
+		},
+		{
+			"category": "mining",
+			"kind": "object",
+			"name": "Rubium deposit",
+			"options": [
+				"mine"
+			],
+			"requiredCards": [
+				"Rubium geode"
+			],
+			"requireAll": true,
+			"notes": "Charred Dungeon level-68 deposit route; yields Rubium geodes, not the uncarded splinters from level-48 Rubium rocks. Wiki revision 15246848."
 		},
 		{
 			"category": "mining",
@@ -5713,6 +5778,19 @@
 			],
 			"requireAll": true,
 			"notes": ""
+		},
+		{
+			"category": "mining",
+			"kind": "object",
+			"name": "Soft clay rocks",
+			"options": [
+				"mine"
+			],
+			"requiredCards": [
+				"Soft clay"
+			],
+			"requireAll": true,
+			"notes": "Trahaearn mine; requires Mining 70 and Song of the Elves in game. Wiki revision 15208425."
 		},
 		{
 			"category": "mining",
