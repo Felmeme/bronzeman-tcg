@@ -2912,6 +2912,11 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback, KeyLis
 	{
 		switch (category)
 		{
+			case "item-usage":
+				// Some target objects expose a direct action which consumes a carried item
+				// without first selecting inventory Use. Exact quest-object rules use this
+				// category so they follow Item Usage without inventing a card for the object.
+				return directItemActionExcludedRoles(config.itemUsageMode());
 			case "pickpocketing":
 				switch (config.thievingMode())
 				{
@@ -3038,6 +3043,11 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback, KeyLis
 				// data stays challenge-mode-loud rather than silently inert.
 				return Collections.emptySet();
 		}
+	}
+
+	static Set<String> directItemActionExcludedRoles(LockState itemUsageMode)
+	{
+		return itemUsageMode == LockState.LOCKED ? Collections.emptySet() : null;
 	}
 
 	/** @return true when the event was consumed (blocked). */
