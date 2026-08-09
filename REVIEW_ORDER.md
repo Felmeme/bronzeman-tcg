@@ -6,26 +6,26 @@ commit does not create noise.
 
 ## Foundation and exact quest cases
 
-1. `7399e31` — SkillMulti keyboard policy (foundation for keyboard case proofs).
-2. `f54b34e` — exact direct-target Item Usage policy.
-3. `e902070` — Temple of the Eye Weak cell `Place-cell`/`Assemble` rules; depends
-   on `f54b34e`.
-4. `e590333` — Forsaken Tower exact existing keyboard rule proof; depends on
-   `7399e31`, no behavior data change.
-5. `8251c90` — Zogre singular/plural shaft keyboard proof; depends on `7399e31`.
-6. `26e9fb8` — Sheep Shearer Wool/Ball of wool keyboard proof; depends on
-   `7399e31`.
-7. `9e5c175` — optional Celastrus bark → Battlestaff recipe; keyboard protection
-   depends on `7399e31`, mouse recipe enforcement does not.
-8. `bb9b589` — Recruitment Drive bidirectional item-on-item regression proof;
+1. `95ae56f` — SkillMulti keyboard policy (foundation for keyboard case proofs).
+2. `8790f68` — exact direct-target Item Usage policy.
+3. `a95fde1` — Temple of the Eye Weak cell `Place-cell`/`Assemble` rules; depends
+   on `8790f68`.
+4. `c9a0889` — Forsaken Tower exact existing keyboard rule proof; depends on
+   `95ae56f`, no behavior data change.
+5. `321ad46` — Zogre singular/plural shaft keyboard proof; depends on `95ae56f`.
+6. `0001bf9` — Sheep Shearer Wool/Ball of wool keyboard proof; depends on
+   `95ae56f`.
+7. `c13cf77` — optional Celastrus bark → Battlestaff recipe; keyboard protection
+   depends on `95ae56f`, mouse recipe enforcement does not.
+8. `18b5097` — Recruitment Drive bidirectional item-on-item regression proof;
    intentionally adds no restriction.
 
 ## Quest NPCs
 
-9. `febbe2c` — shared noncombat association catalogue/loader.
-10. `cea6842` — required starter-state correction; depends on `febbe2c`.
-11. `3a780e0` — Avan/Ulsquire exact runtime-name aliases; depends on `febbe2c`.
-12. `182aaf1` — four combat quest requirements; independent of the noncombat
+9. `86fe0cc` — shared noncombat association catalogue/loader.
+10. `030a496` — required starter-state correction; depends on `86fe0cc`.
+11. `8b2ae81` — Avan/Ulsquire exact runtime-name aliases; depends on `86fe0cc`.
+12. `091e553` — four combat quest requirements; independent of the noncombat
     catalogue.
 
 Every NPC decision is separately listed in `QUEST_NPC_REVIEW_LEDGER.md`; the

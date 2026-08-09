@@ -1,9 +1,9 @@
 # Quest-NPC review ledger
 
-The noncombat engine is `febbe2c`; the four combat requirements are `182aaf1`.
-`cea6842` corrects starter semantics: a carded starter remains card-gated while
+The noncombat engine is `86fe0cc`; the four combat requirements are `091e553`.
+`030a496` corrects starter semantics: a carded starter remains card-gated while
 `NOT_STARTED`, then the quest-state association permits noncombat progress after
-the quest starts. Attack is never waived. `3a780e0` supplies exact card aliases
+the quest starts. Attack is never waived. `8b2ae81` supplies exact card aliases
 for Avan/Man and both Ulsquire runtime names. Item-on-NPC actions still rely on
 the initial inventory Item Usage gate for the used item; there is no invented
 second NPC-card check.

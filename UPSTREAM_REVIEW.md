@@ -33,12 +33,12 @@ event-path families.
 See `QUEST_ITEM_REVIEW_LEDGER.md` for all 13 decisions. The safe changes are:
 
 - Temple of the Eye exact `Place-cell` and `Assemble` rules require Weak cell
-  through Item Usage (`f54b34e`, `e902070`).
+  through Item Usage (`8790f68`, `a95fde1`).
 - The existing generic SkillMulti keyboard gate is proved against exact Forsaken
-  Tower, Zogre, and Sheep Shearer catalogue rules (`e590333`, `8251c90`, `26e9fb8`).
+  Tower, Zogre, and Sheep Shearer catalogue rules (`c9a0889`, `321ad46`, `0001bf9`).
 - The optional Celastrus bark → Battlestaff route gets one exact Fletching recipe
-  (`9e5c175`).
-- Recruitment Drive source/destination ordering is already covered; `bb9b589`
+  (`c13cf77`).
+- Recruitment Drive source/destination ordering is already covered; `18b5097`
   makes that invariant directly testable without adding a rule.
 
 No guessed rules were added for Conductor, Bow-sword, Airtight pot, Cold War direct
@@ -48,15 +48,15 @@ runtime facts and no-fix reasons are in the ledger.
 ## Finalized quest-NPC result
 
 See `QUEST_NPC_REVIEW_LEDGER.md` for all 54 decisions. The shared association
-engine (`febbe2c`) and four combat requirements (`182aaf1`) remain, with two
+engine (`86fe0cc`) and four combat requirements (`091e553`) remain, with two
 material corrections:
 
-- `cea6842` removes the incorrect `startsQuest → alwaysShown` behavior. All 15
+- `030a496` removes the incorrect `startsQuest → alwaysShown` behavior. All 15
   starter rows (13 unique names) now remain card-gated while `NOT_STARTED`; normal
   noncombat quest exemption begins only after quest state changes. This also stops
   King Roald, Arianwyn, Sir Tiffy Cashien, and Prince Itzla Arkan from becoming
   globally exempt because another quest starts through the same NPC.
-- `3a780e0` maps Avan to the audited Man card and both
+- `8b2ae81` maps Avan to the audited Man card and both
   `Afflicted(Ulsquire)`/`Ulsquire Shauncy` to the Afflicted card, and adds the
   transformed Ulsquire name to the quest association. The used serum remains
   governed by its own Item Usage gate.
