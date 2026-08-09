@@ -15,6 +15,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ScheduledExecutorService;
+import java.util.function.Predicate;
 import javax.inject.Inject;
 import javax.swing.SwingUtilities;
 import lombok.extern.slf4j.Slf4j;
@@ -2431,11 +2432,21 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback, KeyLis
 		// Locked usage: a locked item can't be used on anything (or be used upon).
 		if (config.itemUsageMode() == LockState.LOCKED)
 		{
-			if (!blockIfLockedItem(event, source))
+			String blockedItem = firstBlockedItem(source, destination, this::isBlockedItemName);
+			if (blockedItem != null)
 			{
-				blockIfLockedItem(event, destination);
+				blockIfLockedItem(event, blockedItem);
 			}
 		}
+	}
+
+	static String firstBlockedItem(String source, String destination, Predicate<String> blocked)
+	{
+		if (blocked.test(source))
+		{
+			return source;
+		}
+		return blocked.test(destination) ? destination : null;
 	}
 
 	/**
