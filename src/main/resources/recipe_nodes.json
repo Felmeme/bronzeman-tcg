@@ -204,6 +204,38 @@
 			"category": "firemaking",
 			"inputs": [
 				[
+					"Achey tree logs",
+					"Arctic pine logs",
+					"Blisterwood logs",
+					"Camphor logs",
+					"Ironwood logs",
+					"Jatoba logs",
+					"Rosewood logs"
+				],
+				[
+					"Tinderbox"
+				]
+			],
+			"output": null,
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Tinderbox",
+				"targets": [
+					"achey tree logs",
+					"arctic pine logs",
+					"blisterwood logs",
+					"camphor logs",
+					"ironwood logs",
+					"jatoba logs",
+					"rosewood logs"
+				]
+			},
+			"notes": "Audited ordinary-log Tinderbox routes. The Firemaking setting remains Tinderbox-only; Item Usage independently handles a card-backed log. Wiki revisions 15226200, 15276914, 15270949, 15271962, 15216688, 15193832, and 15226799."
+		},
+		{
+			"category": "firemaking",
+			"inputs": [
+				[
 					"Blue logs"
 				],
 				[
