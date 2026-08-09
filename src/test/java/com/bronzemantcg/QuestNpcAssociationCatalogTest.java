@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import org.junit.Assert;
 import org.junit.Test;
+import net.runelite.api.Quest;
 
 public class QuestNpcAssociationCatalogTest
 {
@@ -14,8 +15,8 @@ public class QuestNpcAssociationCatalogTest
 		QuestNpcAssociationCatalog catalog = new QuestNpcAssociationCatalog(new Gson());
 		List<QuestNpcAssociationCatalog.Association> associations = catalog.getAssociations();
 
-		// 48 confirmed omissions plus two already-indexed combat NPCs whose first-step
-		// interactions still need the pre-start exception.
+		// 48 confirmed omissions plus two already-indexed combat starters. Starter
+		// metadata remains evidence only; it must not create a global exemption.
 		Assert.assertEquals(50, associations.size());
 		Assert.assertEquals(15, associations.stream().filter(a -> a.startsQuest).count());
 		assertAssociation(associations, "A Porcine of Interest", "Spria", false);
@@ -32,6 +33,13 @@ public class QuestNpcAssociationCatalogTest
 		Assert.assertEquals(associations.size(), associations.stream()
 			.map(a -> a.quest + "\n" + a.npc)
 			.collect(Collectors.toSet()).size());
+	}
+
+	@Test
+	public void starterMetadataDoesNotCreateAGlobalExemption()
+	{
+		Assert.assertFalse(QuestNpcIndex.shouldFailOpenAssociation(Quest.LOST_CITY));
+		Assert.assertTrue(QuestNpcIndex.shouldFailOpenAssociation(null));
 	}
 
 	private static void assertAssociation(List<QuestNpcAssociationCatalog.Association> entries,

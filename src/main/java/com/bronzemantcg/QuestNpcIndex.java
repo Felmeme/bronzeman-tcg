@@ -99,10 +99,11 @@ class QuestNpcIndex
 				continue;
 			}
 			Quest quest = questsByName.get(normalise(association.quest));
-			if (association.startsQuest || quest == null)
+			if (shouldFailOpenAssociation(quest))
 			{
-				// A quest-start interaction has to remain reachable before the quest state
-				// changes. Unmatched quest names retain the existing fail-open policy.
+				// Only an unresolvable quest name fails open. A true starter interaction
+				// occurs while the quest is NOT_STARTED, so a carded starter still requires
+				// its card until normal quest progress activates the association.
 				alwaysShown.add(npc);
 			}
 			else
@@ -112,6 +113,11 @@ class QuestNpcIndex
 		}
 		log.info("Quest NPC index: {} NPCs across matched quests, {} fail-open from {} unmatched quest names",
 			npcQuests.size(), alwaysShown.size(), unmatched);
+	}
+
+	static boolean shouldFailOpenAssociation(Quest quest)
+	{
+		return quest == null;
 	}
 
 	/** Recompute the shown set. Client thread only; called on a slow tick cadence. */
