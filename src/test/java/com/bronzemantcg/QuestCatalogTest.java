@@ -115,6 +115,20 @@ public class QuestCatalogTest
 		Assert.assertTrue(catalog.getQuestsForCard("Lyre Monsters - Check wiki").isEmpty());
 	}
 
+	@Test
+	public void includesAuditedCombatNpcOmissions()
+	{
+		QuestCatalog catalog = new QuestCatalog(new Gson());
+		Assert.assertTrue(catalog.getQuestMonsterCards().get("Beneath Cursed Sands")
+			.contains("Menaphite Shadow"));
+		Assert.assertTrue(catalog.getQuestMonsterCards().get("Legends' Quest")
+			.contains("Viyeldi"));
+		Assert.assertTrue(catalog.getQuestMonsterCards().get("Skippy and the Mogres")
+			.contains("Mogre"));
+		Assert.assertTrue(catalog.getQuestMonsterCards().get("The Final Dawn")
+			.contains("Metzli, Teokan of Ranul"));
+	}
+
 	private static QuestCatalog.QuestEntry quest(QuestCatalog catalog, String name)
 	{
 		for (QuestCatalog.QuestEntry entry : catalog.getQuests())
