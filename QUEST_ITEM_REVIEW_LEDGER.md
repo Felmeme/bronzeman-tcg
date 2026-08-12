@@ -22,8 +22,9 @@ are already gated by Item Usage in public `main`.
 | 11 | Recruitment Drive — required | Cake tin / Knife; reversed item-on-item order | Public handler already checks both source and destination after trying recipes both ways. | No new restriction; refactor only enough to unit-test both orders. | `18b5097`; rows `recruitmentdrive-0045-01137` and `0050-01141`, Wiki rev `15152414`; **already covered**. |
 | 12 | Temple of the Eye — required | Weak cell; `Place-cell` and `Assemble` | Direct object actions avoid inventory Use. Cache provides exact object names/options. | Exact Item-Usage-backed object rules require only Weak cell; no card is invented for the tile or pile. | `8790f68` + `a95fde1`; objects `43739`, `43722`, `43723`, Wiki rev `15208320`; **safe**. |
 | 13 | Shades of Mort'ton — optional funeral-pyre action | Pyre logs; direct `Build` | Empty Funeral Pyre `4093` exposes `Build`, but public evidence does not prove automatic Pyre-log consumption. | No rule until one live fixture confirms consumption. | `additional-shadesofmortton-funeral-pyre-build`, Wiki rev `14988872`; **evidence-blocked**. |
+| 14 | Current Affairs — required | Mayor of catherby; use form 7r4-5h on the Mayor | Public Item Usage already blocks the tracked Mayor item when locked, but Current Affairs lists only Coins in the quest-card panel. | Add the exact `Mayor of catherby` item card as a separate displayed quest requirement; do not alter enforcement. | Owner-tested 2026-08-11; Wiki rev `15204331`; exact tracked-item mapping; **safe quest-data correction**. |
 
-Disposition: five source-safe proposed families (#4, #5, #7, #10, #12), one
+Disposition: six source-safe proposed families (#4, #5, #7, #10, #12, #14), one
 already-covered family with a regression proof (#11), and seven bounded no-fix
 cases (#1, #2, #3, #6, #8, #9, #13). Optional paths remain optional; none is
 converted into an unconditional base-quest rule.

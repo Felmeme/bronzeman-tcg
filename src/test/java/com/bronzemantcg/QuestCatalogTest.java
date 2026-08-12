@@ -129,6 +129,17 @@ public class QuestCatalogTest
 			.contains("Metzli, Teokan of Ranul"));
 	}
 
+	@Test
+	public void currentAffairsDeclaresMayorItemCard()
+	{
+		QuestCatalog catalog = new QuestCatalog(new Gson());
+		QuestCatalog.QuestEntry currentAffairs = quest(catalog, "Current Affairs");
+		QuestCatalog.Requirement mayor = requirement(currentAffairs, "Mayor of Catherby");
+		Assert.assertTrue(mayor.displayCards.contains("Mayor of catherby"));
+		Assert.assertTrue(catalog.getQuestsForCard("Mayor of catherby")
+			.contains("Current Affairs"));
+	}
+
 	private static QuestCatalog.QuestEntry quest(QuestCatalog catalog, String name)
 	{
 		for (QuestCatalog.QuestEntry entry : catalog.getQuests())

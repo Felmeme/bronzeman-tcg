@@ -41,6 +41,11 @@ See `QUEST_ITEM_REVIEW_LEDGER.md` for all 13 decisions. The safe changes are:
 - Recruitment Drive source/destination ordering is already covered; `18b5097`
   makes that invariant directly testable without adding a rule.
 
+Current Affairs now also declares the already-enforced `Mayor of catherby` item
+card in its quest panel. Public Item Usage already blocks the required form-on-
+Mayor interaction when that item is locked; this is a quest-data correction,
+not a new restriction or an Arhein NPC requirement.
+
 No guessed rules were added for Conductor, Bow-sword, Airtight pot, Cold War direct
 Use, Poison karambwan, Hair → Rope, or Funeral Pyre Build. Their exact missing
 runtime facts and no-fix reasons are in the ledger.

@@ -1735,6 +1735,13 @@
 								"Coins"
 							],
 							"type": "item"
+						},
+						{
+							"label": "Mayor of Catherby",
+							"cards": [
+								"Mayor of catherby"
+							],
+							"type": "item"
 						}
 					]
 				}
