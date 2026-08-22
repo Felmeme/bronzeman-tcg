@@ -3,16 +3,20 @@ package com.bronzemantcg;
 import com.bronzemantcg.collection.BetaCollectionSnapshotService;
 import com.google.gson.Gson;
 import com.google.inject.Provides;
+import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ScheduledExecutorService;
+import java.util.function.Predicate;
 import javax.inject.Inject;
 import javax.swing.SwingUtilities;
 import lombok.extern.slf4j.Slf4j;
@@ -36,6 +40,7 @@ import net.runelite.api.Tile;
 import net.runelite.api.TileItem;
 import net.runelite.api.WorldView;
 import net.runelite.api.events.GameStateChanged;
+import net.runelite.api.events.ClientTick;
 import net.runelite.api.events.GameTick;
 import net.runelite.api.events.ItemContainerChanged;
 import net.runelite.api.events.ItemDespawned;
@@ -69,6 +74,8 @@ import net.runelite.client.events.RuneScapeProfileChanged;
 import net.runelite.client.game.FishingSpot;
 import net.runelite.client.game.ItemManager;
 import net.runelite.client.game.SpriteManager;
+import net.runelite.client.input.KeyListener;
+import net.runelite.client.input.KeyManager;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
 import net.runelite.client.plugins.PluginManager;
@@ -86,9 +93,8 @@ import net.runelite.client.util.Text;
  * decoding its persisted ConfigManager state on hub versions that predate
  * the API (see {@link TcgCollectionReader}); there is no compile-time
  * dependency, so both plugins install independently from the Plugin Hub.
- * Everything works by consuming MenuOptionClicked. Known limitation
- * (documented, owner-accepted): keyboard-driven interface defaults
- * (spacebar "make") bypass the menu pipeline and cannot be consumed.
+ * World and menu interactions work by consuming MenuOptionClicked. The standard
+ * SkillMulti keyboard shortcuts are consumed separately through RuneLite's KeyManager.
  */
 @Slf4j
 @PluginDescriptor(
@@ -96,8 +102,28 @@ import net.runelite.client.util.Text;
 	description = "Account restriction settings to work alongside the OSRS TCG Plugin.",
 	tags = {"bronzeman", "tcg", "restriction", "ironman", "challenge"}
 )
-public class BronzemanTcgPlugin extends Plugin implements RenderCallback
+public class BronzemanTcgPlugin extends Plugin implements RenderCallback, KeyListener
 {
+	private static final int[] SKILL_MULTI_PRODUCTS = {
+		InterfaceID.Skillmulti.A,
+		InterfaceID.Skillmulti.B,
+		InterfaceID.Skillmulti.C,
+		InterfaceID.Skillmulti.D,
+		InterfaceID.Skillmulti.E,
+		InterfaceID.Skillmulti.F,
+		InterfaceID.Skillmulti.G,
+		InterfaceID.Skillmulti.H,
+		InterfaceID.Skillmulti.I,
+		InterfaceID.Skillmulti.J,
+		InterfaceID.Skillmulti.K,
+		InterfaceID.Skillmulti.L,
+		InterfaceID.Skillmulti.M,
+		InterfaceID.Skillmulti.N,
+		InterfaceID.Skillmulti.O,
+		InterfaceID.Skillmulti.P,
+		InterfaceID.Skillmulti.Q,
+		InterfaceID.Skillmulti.R
+	};
 	private static final String ATTACK_OPTION = "attack";
 	/**
 	 * Barbarian Training's Farming section. RuneLite has no VarbitID constant for it;
@@ -284,6 +310,9 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	private ClientThread clientThread;
 
 	@Inject
+	private KeyManager keyManager;
+
+	@Inject
 	private QuestNpcIndex questNpcIndex;
 
 	@Inject
@@ -382,6 +411,8 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	private int lastUsedItemTick = Integer.MIN_VALUE;
 	private boolean markRefreshQueued;
 	private int markTickCounter;
+	private volatile MakeInterfaceKeyboardState makeInterfaceKeyboardState =
+		MakeInterfaceKeyboardState.NONE;
 
 	@Override
 	protected void startUp()
@@ -420,6 +451,7 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 		overlayManager.add(overlay);
 		overlayManager.add(lockedItemIconOverlay);
 		renderCallbackManager.register(this);
+		keyManager.registerKeyListener(this);
 
 		log.info("Bronzeman TCG started. Tracking {} TCG-linked NPCs, {} items, {} node rules, {} recipe rules.",
 			monsterCatalog.size(), itemCatalog.size(), nodeCatalog.size(), recipeCatalog.size());
@@ -436,6 +468,8 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 		// this plugin is unloaded nothing is listening. Dropping them here means a restart starts
 		// from nothing and re-asks, rather than reviving a set that may since have been withdrawn.
 		sharedUnlockStore.clear();
+		keyManager.unregisterKeyListener(this);
+		makeInterfaceKeyboardState = MakeInterfaceKeyboardState.NONE;
 		renderCallbackManager.unregister(this);
 		overlayManager.remove(overlay);
 		overlayManager.remove(lockedItemIconOverlay);
@@ -804,6 +838,11 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 		{
 			return;
 		}
+		if (shouldHideGroundFiremakingEntry(entry))
+		{
+			client.getMenu().removeMenuEntry(entry);
+			return;
+		}
 		if (shouldHideEntry(entry))
 		{
 			client.getMenu().removeMenuEntry(entry);
@@ -823,6 +862,90 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 			default:
 				return false;
 		}
+	}
+
+	private boolean shouldHideGroundFiremakingEntry(MenuEntry entry)
+	{
+		if (!isPlainGroundItemAction(entry.getType())
+			|| !isGroundFiremakingOption(entry.getOption()))
+		{
+			return false;
+		}
+		String itemName = itemManager.getItemComposition(entry.getIdentifier()).getName();
+		if (itemName == null || itemName.isEmpty()
+			|| recipeCatalog.find(RecipeCatalog.KIND_ITEM_ON_ITEM,
+				"Tinderbox", itemName) == null)
+		{
+			return false;
+		}
+		return evaluateGroundFiremakingRecipe(itemName) != null
+			|| (config.itemUsageMode() == LockState.LOCKED && isBlockedItemName(itemName));
+	}
+
+	private boolean handleGroundFiremakingInteraction(MenuOptionClicked event, MenuAction action)
+	{
+		if (!isPlainGroundItemAction(action)
+			|| !isGroundFiremakingOption(event.getMenuOption()))
+		{
+			return false;
+		}
+		String itemName = itemManager.getItemComposition(event.getId()).getName();
+		if (itemName == null || itemName.isEmpty()
+			|| recipeCatalog.find(RecipeCatalog.KIND_ITEM_ON_ITEM,
+				"Tinderbox", itemName) == null)
+		{
+			return false;
+		}
+		// Ground Light is neither an inventory item op nor item-on-item, so it
+		// otherwise bypasses both the Tinderbox recipe and locked-log Item Usage.
+		List<String> missing = evaluateGroundFiremakingRecipe(itemName);
+		if (missing != null)
+		{
+			event.consume();
+			sendBlockedCardsMessage(missing);
+		}
+		else if (config.itemUsageMode() == LockState.LOCKED)
+		{
+			blockIfLockedItem(event, itemName);
+		}
+		return true;
+	}
+
+	private List<String> evaluateGroundFiremakingRecipe(String itemName)
+	{
+		RecipeCatalog.Recipe recipe = recipeCatalog.find(RecipeCatalog.KIND_ITEM_ON_ITEM,
+			"Tinderbox", itemName);
+		if (recipe == null || config.tinderboxMode() != CardRequirement.CARD_REQUIRED)
+		{
+			return null;
+		}
+		List<String> missing = recipe.missingRequirements(
+			effectiveOwnedCards(), true, false);
+		// Preserve the pinned Firemaking policy: covered recipes ask for the Tinderbox
+		// card only. The locked ground log is enforced separately by Item Usage.
+		missing.removeIf(card -> !"Tinderbox".equalsIgnoreCase(card));
+		return missing.isEmpty() ? null : missing;
+	}
+
+	private static boolean isPlainGroundItemAction(MenuAction action)
+	{
+		switch (action)
+		{
+			case GROUND_ITEM_FIRST_OPTION:
+			case GROUND_ITEM_SECOND_OPTION:
+			case GROUND_ITEM_THIRD_OPTION:
+			case GROUND_ITEM_FOURTH_OPTION:
+			case GROUND_ITEM_FIFTH_OPTION:
+				return true;
+			default:
+				return false;
+		}
+	}
+
+	static boolean isGroundFiremakingOption(String option)
+	{
+		return option != null
+			&& "light".equals(Text.removeTags(option).trim().toLowerCase(Locale.ROOT));
 	}
 
 	private boolean shouldHideEntry(MenuEntry entry)
@@ -910,6 +1033,16 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 			case GROUND_ITEM_FOURTH_OPTION:
 			case GROUND_ITEM_FIFTH_OPTION:
 			{
+				String itemName = itemManager.getItemComposition(entry.getIdentifier()).getName();
+				// Hunter traps retain Lay after being dropped. Reuse the exact inventory
+				// activity rule so moving a snare to the ground cannot bypass Hunter mode.
+				if (isGroundPlacementOption(option)
+					&& itemName != null && !itemName.isEmpty()
+					&& evaluateNodeRule(ResourceNodeCatalog.KIND_INVENTORY,
+						itemName, option) != null)
+				{
+					return true;
+				}
 				// Restored after 0.2.15 made these unconditionally visible: with Ground Items
 				// on Require Card, a locked Take is hidden again. Exempt names and unlocked
 				// items keep their option, and the click path stays the final guard.
@@ -918,7 +1051,6 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 				{
 					return false;
 				}
-				String itemName = itemManager.getItemComposition(entry.getIdentifier()).getName();
 				return itemName != null && !itemName.isEmpty() && !isLootExempt(itemName)
 					&& !isUnlocked(itemCatalog, itemName);
 			}
@@ -999,6 +1131,206 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	 * Gathers the nearby tracked-NPC snapshot on the client thread every few ticks and
 	 * hands it to the panel on the Swing EDT (game state must not be read from Swing).
 	 */
+	@Subscribe
+	public void onClientTick(ClientTick event)
+	{
+		makeInterfaceKeyboardState = readMakeInterfaceKeyboardState();
+	}
+
+	@Override
+	public void keyPressed(KeyEvent event)
+	{
+		List<String> missing = event.getKeyCode() == KeyEvent.VK_SPACE
+			? makeInterfaceKeyboardState.spaceMissing
+			: makeInterfaceKeyboardState.missingByShortcut.get(
+				MakeInterfaceKeyboardPolicy.shortcutForKeyCode(event.getKeyCode()));
+		consumeBlockedMakeShortcut(event, missing);
+	}
+
+	@Override
+	public void keyTyped(KeyEvent event)
+	{
+		List<String> missing = event.getKeyChar() == ' '
+			? makeInterfaceKeyboardState.spaceMissing
+			: makeInterfaceKeyboardState.missingByShortcut.get(
+				MakeInterfaceKeyboardPolicy.shortcutForCharacter(event.getKeyChar()));
+		consumeBlockedMakeShortcut(event, missing);
+	}
+
+	@Override
+	public void keyReleased(KeyEvent event)
+	{
+		// The SkillMulti shortcuts act on press/typed events; releases remain untouched.
+	}
+
+	private void consumeBlockedMakeShortcut(KeyEvent event, List<String> missing)
+	{
+		if (missing == null || missing.isEmpty())
+		{
+			return;
+		}
+		event.consume();
+		List<String> messageCards = missing;
+		clientThread.invokeLater(() -> sendBlockedCardsMessage(messageCards));
+	}
+
+	private MakeInterfaceKeyboardState readMakeInterfaceKeyboardState()
+	{
+		if (isEnforcementBypassed())
+		{
+			return MakeInterfaceKeyboardState.NONE;
+		}
+		Widget quantityPrompt = client.getWidget(InterfaceID.Chatbox.MES_TEXT);
+		if (quantityPrompt != null && !quantityPrompt.isHidden()
+			&& MakeInterfaceKeyboardPolicy.isQuantityAmountPrompt(quantityPrompt.getText()))
+		{
+			// Number keys here are quantity input, not product selection.
+			return MakeInterfaceKeyboardState.NONE;
+		}
+
+		Map<Character, List<String>> missingByShortcut = new LinkedHashMap<>();
+		List<String> spaceMissing = null;
+		int previousSelection = client.getVarpValue(VarPlayerID.SKILLMULTI_PREVIOUSSELECTION);
+		for (int index = 0; index < SKILL_MULTI_PRODUCTS.length; index++)
+		{
+			Widget product = client.getWidget(SKILL_MULTI_PRODUCTS[index]);
+			if (product == null || product.isHidden())
+			{
+				continue;
+			}
+			List<String> missing = evaluateMakeProductWidget(product);
+			if (missing == null || missing.isEmpty())
+			{
+				continue;
+			}
+			char shortcut = MakeInterfaceKeyboardPolicy.shortcutForIndex(index);
+			if (shortcut != '\0')
+			{
+				missingByShortcut.put(shortcut, missing);
+			}
+			if (previousSelection == index)
+			{
+				spaceMissing = missing;
+			}
+		}
+		return missingByShortcut.isEmpty() ? MakeInterfaceKeyboardState.NONE
+			: new MakeInterfaceKeyboardState(missingByShortcut, spaceMissing);
+	}
+
+	private List<String> evaluateMakeProductWidget(Widget widget)
+	{
+		Set<String> candidates = new LinkedHashSet<>();
+		collectMakeProductCandidates(widget, 0, candidates);
+		List<String> missing = new ArrayList<>();
+		for (String candidate : candidates)
+		{
+			List<String> candidateMissing = evaluateNodeRule(
+				ResourceNodeCatalog.KIND_INTERFACE, candidate,
+				ResourceNodeCatalog.ANY_OPTION);
+			if (candidateMissing == null)
+			{
+				candidateMissing = evaluateRecipe(RecipeCatalog.KIND_INTERFACE, candidate,
+					resolveInterfaceMaterial(candidate));
+			}
+			if (candidateMissing != null)
+			{
+				for (String card : candidateMissing)
+				{
+					if (!missing.contains(card))
+					{
+						missing.add(card);
+					}
+				}
+			}
+		}
+		return missing.isEmpty() ? null : Collections.unmodifiableList(missing);
+	}
+
+	private void collectMakeProductCandidates(Widget widget, int depth, Set<String> candidates)
+	{
+		if (widget == null || widget.isHidden() || depth > 3)
+		{
+			return;
+		}
+		addMakeProductItemCandidate(widget.getItemId(), candidates);
+		Object[] onKeyListener = widget.getOnKeyListener();
+		if (onKeyListener != null)
+		{
+			for (Object argument : onKeyListener)
+			{
+				if (argument instanceof Number)
+				{
+					addMakeProductItemCandidate(((Number) argument).intValue(), candidates);
+				}
+			}
+		}
+		addMakeProductTextCandidate(widget.getText(), candidates);
+		addMakeProductTextCandidate(widget.getName(), candidates);
+		String[] actions = widget.getActions();
+		if (actions != null)
+		{
+			for (String action : actions)
+			{
+				addMakeProductTextCandidate(action, candidates);
+			}
+		}
+		collectMakeProductCandidates(widget.getDynamicChildren(), depth, candidates);
+		collectMakeProductCandidates(widget.getStaticChildren(), depth, candidates);
+		collectMakeProductCandidates(widget.getNestedChildren(), depth, candidates);
+	}
+
+	private void collectMakeProductCandidates(Widget[] children, int depth,
+		Set<String> candidates)
+	{
+		if (children == null)
+		{
+			return;
+		}
+		for (Widget child : children)
+		{
+			collectMakeProductCandidates(child, depth + 1, candidates);
+		}
+	}
+
+	private void addMakeProductItemCandidate(int itemId, Set<String> candidates)
+	{
+		if (itemId > 0)
+		{
+			addMakeProductTextCandidate(
+				itemManager.getItemComposition(itemId).getName(), candidates);
+		}
+	}
+
+	private static void addMakeProductTextCandidate(String value, Set<String> candidates)
+	{
+		if (value == null)
+		{
+			return;
+		}
+		String candidate = stripProductQuantity(Text.removeTags(value));
+		if (!candidate.isEmpty())
+		{
+			candidates.add(candidate);
+		}
+	}
+
+	private static final class MakeInterfaceKeyboardState
+	{
+		private static final MakeInterfaceKeyboardState NONE =
+			new MakeInterfaceKeyboardState(Collections.emptyMap(), null);
+
+		private final Map<Character, List<String>> missingByShortcut;
+		private final List<String> spaceMissing;
+
+		private MakeInterfaceKeyboardState(Map<Character, List<String>> missingByShortcut,
+			List<String> spaceMissing)
+		{
+			this.missingByShortcut = Collections.unmodifiableMap(
+				new LinkedHashMap<>(missingByShortcut));
+			this.spaceMissing = spaceMissing;
+		}
+	}
+
 	@Subscribe
 	public void onGameTick(GameTick event)
 	{
@@ -1473,6 +1805,10 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 		{
 			return;
 		}
+		if (handleGroundFiremakingInteraction(event, action))
+		{
+			return;
+		}
 		switch (action)
 		{
 			case GROUND_ITEM_FIRST_OPTION:
@@ -1605,19 +1941,27 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 
 	private void handleGroundItemInteraction(MenuOptionClicked event, MenuAction action)
 	{
-		if (config.groundItemsMode() != LockState.LOCKED)
-		{
-			return;
-		}
 		if (action != MenuAction.WIDGET_TARGET_ON_GROUND_ITEM)
 		{
-			// Telegrab (widget-on-ground-item) is always loot; plain clicks only for "Take".
 			String option = event.getMenuOption();
+			ItemComposition composition = itemManager.getItemComposition(event.getId());
+			String itemName = composition.getName();
+			if (isGroundPlacementOption(option) && itemName != null && !itemName.isEmpty()
+				&& checkNodeRule(event, ResourceNodeCatalog.KIND_INVENTORY, itemName,
+					Text.removeTags(option).trim()))
+			{
+				return;
+			}
+			// Telegrab (widget-on-ground-item) is always loot; plain clicks only for "Take".
 			if (option == null
 				|| !TAKE_OPTION.equals(Text.removeTags(option).trim().toLowerCase(Locale.ROOT)))
 			{
 				return;
 			}
+		}
+		if (config.groundItemsMode() != LockState.LOCKED)
+		{
+			return;
 		}
 
 		ItemComposition composition = itemManager.getItemComposition(event.getId());
@@ -1634,6 +1978,12 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 
 		event.consume();
 		sendBlockedMessage(itemName);
+	}
+
+	static boolean isGroundPlacementOption(String option)
+	{
+		return option != null
+			&& "lay".equals(Text.removeTags(option).trim().toLowerCase(Locale.ROOT));
 	}
 
 	// ------------------------------------------------------------------ carried tools
@@ -1765,14 +2115,26 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 		String option = Text.removeTags(event.getMenuOption()).trim();
 		String optionLower = option.toLowerCase(Locale.ROOT);
 		int group = WidgetUtil.componentToInterface(entry.getParam1());
+		Widget eventWidget = event.getWidget();
+		int itemId = eventWidget != null && eventWidget.getItemId() > 0
+			? eventWidget.getItemId() : entry.getItemId();
+		if ((group == InterfaceID.SAILING_MENU
+			|| group == InterfaceID.SAILING_CUSTOMISATION
+			|| group == InterfaceID.SKILLMULTI
+			|| group == InterfaceID.SMITHING
+			|| isMakeVerb(optionLower))
+			&& checkSailingUpgradeRecipe(event, itemId))
+		{
+			return;
+		}
 
 		if (group == InterfaceID.SAILING_MENU || group == InterfaceID.SAILING_CUSTOMISATION)
 		{
-			Widget widget = event.getWidget();
+			Widget widget = eventWidget;
 			String itemName = null;
-			if (widget != null && widget.getItemId() > 0)
+			if (itemId > 0)
 			{
-				itemName = itemManager.getItemComposition(widget.getItemId()).getName();
+				itemName = itemManager.getItemComposition(itemId).getName();
 			}
 			if (log.isDebugEnabled())
 			{
@@ -1783,7 +2145,7 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 					widget == null ? -1 : widget.getIndex(),
 					option,
 					Text.removeTags(event.getMenuTarget()),
-					widget == null ? -1 : widget.getItemId(),
+					itemId,
 					itemName == null ? "(no item id)" : itemName,
 					widget == null || widget.getText() == null
 						? "" : Text.removeTags(widget.getText()),
@@ -1843,8 +2205,8 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 
 		if (group == InterfaceID.SKILLMULTI || group == InterfaceID.SMITHING)
 		{
-			// Make-X product click: only the product name is reliable. Mouse-only block;
-			// keyboard defaults bypass the menu pipeline (owner-accepted limitation).
+			// Make-X product click: only the product name is reliable. The parallel
+			// KeyManager path applies the same decision to SkillMulti shortcuts.
 			// Node rules get first refusal, same as the make-verb fallback below - cooking
 			// lives there, and this interface is how range-click "Cook" flows arrive.
 			String product = stripProductQuantity(Text.removeTags(event.getMenuTarget()));
@@ -1896,6 +2258,24 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 					resolveInterfaceMaterial(product));
 			}
 		}
+	}
+
+	/** @return true when this item ID is an exact Sailing recipe, blocked or allowed. */
+	private boolean checkSailingUpgradeRecipe(MenuOptionClicked event, int itemId)
+	{
+		SailingUpgradeRecipeCatalog.Recipe recipe = SailingUpgradeRecipeCatalog.find(itemId);
+		if (recipe == null)
+		{
+			return false;
+		}
+		List<String> missing = recipe.missingRequirements(
+			effectiveOwnedCards(), config.sailingUpgradeMode());
+		if (!missing.isEmpty())
+		{
+			event.consume();
+			sendBlockedCardsMessage(missing);
+		}
+		return true;
 	}
 
 
@@ -2084,11 +2464,21 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 		// Locked usage: a locked item can't be used on anything (or be used upon).
 		if (config.itemUsageMode() == LockState.LOCKED)
 		{
-			if (!blockIfLockedItem(event, source))
+			String blockedItem = firstBlockedItem(source, destination, this::isBlockedItemName);
+			if (blockedItem != null)
 			{
-				blockIfLockedItem(event, destination);
+				blockIfLockedItem(event, blockedItem);
 			}
 		}
+	}
+
+	static String firstBlockedItem(String source, String destination, Predicate<String> blocked)
+	{
+		if (blocked.test(source))
+		{
+			return source;
+		}
+		return blocked.test(destination) ? destination : null;
 	}
 
 	/**
@@ -2565,6 +2955,11 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	{
 		switch (category)
 		{
+			case "item-usage":
+				// Some target objects expose a direct action which consumes a carried item
+				// without first selecting inventory Use. Exact quest-object rules use this
+				// category so they follow Item Usage without inventing a card for the object.
+				return directItemActionExcludedRoles(config.itemUsageMode());
 			case "pickpocketing":
 				switch (config.thievingMode())
 				{
@@ -2693,13 +3088,31 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 		}
 	}
 
+	static Set<String> directItemActionExcludedRoles(LockState itemUsageMode)
+	{
+		return itemUsageMode == LockState.LOCKED ? Collections.emptySet() : null;
+	}
+
 	/** @return true when the event was consumed (blocked). */
 	private boolean checkRecipe(MenuOptionClicked event, String kind, String name, String target)
+	{
+		List<String> missing = evaluateRecipe(kind, name, target);
+		if (missing == null)
+		{
+			return false;
+		}
+		event.consume();
+		sendBlockedCardsMessage(missing);
+		return true;
+	}
+
+	/** Restriction decision shared by mouse clicks and SkillMulti keyboard shortcuts. */
+	private List<String> evaluateRecipe(String kind, String name, String target)
 	{
 		RecipeCatalog.Recipe recipe = recipeCatalog.find(kind, name, target);
 		if (recipe == null)
 		{
-			return false;
+			return null;
 		}
 
 		boolean enforceInputs;
@@ -2715,7 +3128,7 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 				// keep only it (the logs are dropped from the block by the filter below).
 				if (config.tinderboxMode() != CardRequirement.CARD_REQUIRED)
 				{
-					return false;
+					return null;
 				}
 				enforceInputs = true;
 				enforceOutput = false;
@@ -2727,7 +3140,7 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 				SmeltingMode mode = config.smeltingMode();
 				if (mode == SmeltingMode.OFF)
 				{
-					return false;
+					return null;
 				}
 				enforceInputs = mode == SmeltingMode.ORE || mode == SmeltingMode.BOTH;
 				enforceOutput = mode == SmeltingMode.BOTH;
@@ -2738,7 +3151,7 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 				SmithingMode mode = config.smithingMode();
 				if (mode == SmithingMode.OFF)
 				{
-					return false;
+					return null;
 				}
 				enforceInputs = mode == SmithingMode.BARS || mode == SmithingMode.BOTH;
 				enforceOutput = mode == SmithingMode.BOTH;
@@ -2751,7 +3164,7 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 				CookingMode mode = config.cookingMode();
 				if (mode == CookingMode.OFF)
 				{
-					return false;
+					return null;
 				}
 				enforceInputs = mode == CookingMode.INPUT_ONLY || mode == CookingMode.INPUT_OUTPUT;
 				enforceOutput = mode == CookingMode.INPUT_OUTPUT;
@@ -2762,7 +3175,7 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 				CraftingMode mode = config.craftingMode();
 				if (mode == CraftingMode.OFF)
 				{
-					return false;
+					return null;
 				}
 				enforceInputs = mode == CraftingMode.INPUT_ONLY || mode == CraftingMode.BOTH;
 				enforceOutput = mode == CraftingMode.BOTH;
@@ -2771,7 +3184,7 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 			case "enchanting":
 				if (!config.restrictEnchanting())
 				{
-					return false;
+					return null;
 				}
 				enforceInputs = true;
 				enforceOutput = true;
@@ -2781,7 +3194,7 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 				FletchingMode mode = config.fletchingMode();
 				if (mode == FletchingMode.OFF)
 				{
-					return false;
+					return null;
 				}
 				enforceInputs = mode == FletchingMode.INPUT_ONLY
 					|| mode == FletchingMode.PRODUCT_AND_MATERIALS;
@@ -2793,7 +3206,7 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 				HerbloreMode mode = config.herbloreMode();
 				if (mode == HerbloreMode.OFF)
 				{
-					return false;
+					return null;
 				}
 				enforceInputs = mode.enforcesInputs();
 				enforceOutput = mode.enforcesOutput(recipe.herbloreStage);
@@ -2819,12 +3232,9 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 		}
 		if (missing.isEmpty())
 		{
-			return false;
+			return null;
 		}
-
-		event.consume();
-		sendBlockedCardsMessage(missing);
-		return true;
+		return missing;
 	}
 
 	// ------------------------------------------------------------------ helpers

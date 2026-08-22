@@ -1050,6 +1050,13 @@
 								"Menaphite Akh"
 							],
 							"type": "enemy"
+						},
+						{
+							"label": "Menaphite Shadow",
+							"cards": [
+								"Menaphite Shadow"
+							],
+							"type": "enemy"
 						}
 					]
 				}
@@ -1726,6 +1733,13 @@
 							"label": "Coins",
 							"cards": [
 								"Coins"
+							],
+							"type": "item"
+						},
+						{
+							"label": "Mayor of Catherby",
+							"cards": [
+								"Mayor of catherby"
 							],
 							"type": "item"
 						}
@@ -6356,6 +6370,13 @@
 								"Nezikchened"
 							],
 							"type": "enemy"
+						},
+						{
+							"label": "Viyeldi",
+							"cards": [
+								"Viyeldi"
+							],
+							"type": "enemy"
 						}
 					]
 				}
@@ -10775,6 +10796,18 @@
 							]
 						}
 					]
+				},
+				{
+					"label": "Enemies",
+					"requirements": [
+						{
+							"label": "Mogre",
+							"cards": [
+								"Mogre"
+							],
+							"type": "enemy"
+						}
+					]
 				}
 			],
 			"notes": ""
@@ -12559,6 +12592,13 @@
 							"label": "Ennius Tullus",
 							"cards": [
 								"Ennius Tullus"
+							],
+							"type": "enemy"
+						},
+						{
+							"label": "Metzli, Teokan of Ranul",
+							"cards": [
+								"Metzli, Teokan of Ranul"
 							],
 							"type": "enemy"
 						}

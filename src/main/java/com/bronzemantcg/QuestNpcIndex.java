@@ -47,7 +47,7 @@ class QuestNpcIndex
 	private volatile boolean cotsInProgress;
 
 	@Inject
-	QuestNpcIndex(QuestCatalog questCatalog)
+	QuestNpcIndex(QuestCatalog questCatalog, QuestNpcAssociationCatalog associationCatalog)
 	{
 		Map<String, Quest> questsByName = new HashMap<>();
 		for (Quest quest : Quest.values())
@@ -86,8 +86,38 @@ class QuestNpcIndex
 		{
 			npcQuests.computeIfAbsent(entry.getKey(), k -> new ArrayList<>()).add(entry.getValue());
 		}
+		for (QuestNpcAssociationCatalog.Association association
+			: associationCatalog.getAssociations())
+		{
+			if (association == null || association.npc == null || association.quest == null)
+			{
+				continue;
+			}
+			String npc = association.npc.trim().toLowerCase(Locale.ROOT);
+			if (npc.isEmpty())
+			{
+				continue;
+			}
+			Quest quest = questsByName.get(normalise(association.quest));
+			if (shouldFailOpenAssociation(quest))
+			{
+				// Only an unresolvable quest name fails open. A true starter interaction
+				// occurs while the quest is NOT_STARTED, so a carded starter still requires
+				// its card until normal quest progress activates the association.
+				alwaysShown.add(npc);
+			}
+			else
+			{
+				npcQuests.computeIfAbsent(npc, k -> new ArrayList<>()).add(quest);
+			}
+		}
 		log.info("Quest NPC index: {} NPCs across matched quests, {} fail-open from {} unmatched quest names",
 			npcQuests.size(), alwaysShown.size(), unmatched);
+	}
+
+	static boolean shouldFailOpenAssociation(Quest quest)
+	{
+		return quest == null;
 	}
 
 	/** Recompute the shown set. Client thread only; called on a slow tick cadence. */

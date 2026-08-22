@@ -5450,6 +5450,19 @@
 		{
 			"category": "mining",
 			"kind": "object",
+			"name": "Calcified rocks",
+			"options": [
+				"mine"
+			],
+			"requiredCards": [
+				"Blessed bone shards"
+			],
+			"requireAll": true,
+			"notes": "Cam Torum; the Mining calculator's singular shard item maps to the exact Blessed bone shards card. Wiki revision 15227295."
+		},
+		{
+			"category": "mining",
+			"kind": "object",
 			"name": "Clay rocks",
 			"options": [
 				"mine"
@@ -5472,6 +5485,19 @@
 			],
 			"requireAll": true,
 			"notes": ""
+		},
+		{
+			"category": "mining",
+			"kind": "object",
+			"name": "Crashed Star",
+			"options": [
+				"mine"
+			],
+			"requiredCards": [
+				"Stardust"
+			],
+			"requireAll": true,
+			"notes": "Shooting Stars tiers 1-9 share this display name; Prospect remains unrestricted."
 		},
 		{
 			"category": "mining",
@@ -5511,6 +5537,19 @@
 			],
 			"requireAll": true,
 			"notes": "Meiyerditch mine (Darkness of Hallowvale)."
+		},
+		{
+			"category": "mining",
+			"kind": "object",
+			"name": "Dense runestone",
+			"options": [
+				"chip"
+			],
+			"requiredCards": [
+				"Dense essence block"
+			],
+			"requireAll": true,
+			"notes": "Dense essence mine; the live object option is Chip and yields dense essence blocks. Wiki revision 15276706."
 		},
 		{
 			"category": "mining",
@@ -5586,6 +5625,19 @@
 		{
 			"category": "mining",
 			"kind": "object",
+			"name": "Lead rocks",
+			"options": [
+				"mine"
+			],
+			"requiredCards": [
+				"Lead ore"
+			],
+			"requireAll": true,
+			"notes": "Sailing islands; active object yields Lead ore. Wiki revision 15281645."
+		},
+		{
+			"category": "mining",
+			"kind": "object",
 			"name": "Limestone rocks",
 			"options": [
 				"mine"
@@ -5625,6 +5677,19 @@
 		{
 			"category": "mining",
 			"kind": "object",
+			"name": "Nickel rocks",
+			"options": [
+				"mine"
+			],
+			"requiredCards": [
+				"Nickel ore"
+			],
+			"requireAll": true,
+			"notes": "Sailing islands; active object yields Nickel ore. Wiki revision 15286620."
+		},
+		{
+			"category": "mining",
+			"kind": "object",
 			"name": "Ore Vein",
 			"options": [
 				"mine"
@@ -5634,6 +5699,19 @@
 			],
 			"requireAll": true,
 			"notes": ""
+		},
+		{
+			"category": "mining",
+			"kind": "object",
+			"name": "Rubium deposit",
+			"options": [
+				"mine"
+			],
+			"requiredCards": [
+				"Rubium geode"
+			],
+			"requireAll": true,
+			"notes": "Charred Dungeon level-68 deposit route; yields Rubium geodes, not the uncarded splinters from level-48 Rubium rocks. Wiki revision 15246848."
 		},
 		{
 			"category": "mining",
@@ -5700,6 +5778,19 @@
 			],
 			"requireAll": true,
 			"notes": ""
+		},
+		{
+			"category": "mining",
+			"kind": "object",
+			"name": "Soft clay rocks",
+			"options": [
+				"mine"
+			],
+			"requiredCards": [
+				"Soft clay"
+			],
+			"requireAll": true,
+			"notes": "Trahaearn mine; requires Mining 70 and Song of the Elves in game. Wiki revision 15208425."
 		},
 		{
 			"category": "mining",
@@ -9122,6 +9213,9 @@
 			"category": "runecrafting",
 			"kind": "object",
 			"name": "Air altar",
+			"objectIds": [
+				34760
+			],
 			"options": [
 				"craft-rune"
 			],
@@ -9151,6 +9245,9 @@
 			"category": "runecrafting",
 			"kind": "object",
 			"name": "Altar",
+			"objectIds": [
+				29631
+			],
 			"options": [
 				"craft-rune"
 			],
@@ -9170,6 +9267,9 @@
 			"category": "runecrafting",
 			"kind": "object",
 			"name": "Astral altar",
+			"objectIds": [
+				34771
+			],
 			"options": [
 				"craft-rune"
 			],
@@ -9192,7 +9292,35 @@
 		{
 			"category": "runecrafting",
 			"kind": "object",
+			"name": "Blood Altar",
+			"objectIds": [
+				27978
+			],
+			"options": [
+				"bind"
+			],
+			"requiredCardGroups": [
+				[
+					"Dark essence fragments"
+				],
+				[
+					"Blood rune"
+				]
+			],
+			"groupRoles": [
+				"essence",
+				"rune"
+			],
+			"requireAll": true,
+			"notes": "Kourend's recreated Blood Altar binds Dark essence fragments. Wiki revision 15199139."
+		},
+		{
+			"category": "runecrafting",
+			"kind": "object",
 			"name": "Blood altar",
+			"objectIds": [
+				43479
+			],
 			"options": [
 				"craft-rune"
 			],
@@ -9216,6 +9344,9 @@
 			"category": "runecrafting",
 			"kind": "object",
 			"name": "Body altar",
+			"objectIds": [
+				34765
+			],
 			"options": [
 				"craft-rune"
 			],
@@ -9245,6 +9376,9 @@
 			"category": "runecrafting",
 			"kind": "object",
 			"name": "Chaos altar",
+			"objectIds": [
+				34769
+			],
 			"options": [
 				"craft-rune"
 			],
@@ -9273,6 +9407,9 @@
 			"category": "runecrafting",
 			"kind": "object",
 			"name": "Cosmic altar",
+			"objectIds": [
+				34766
+			],
 			"options": [
 				"craft-rune"
 			],
@@ -9301,6 +9438,9 @@
 			"category": "runecrafting",
 			"kind": "object",
 			"name": "Death altar",
+			"objectIds": [
+				34770
+			],
 			"options": [
 				"craft-rune"
 			],
@@ -9328,6 +9468,9 @@
 			"category": "runecrafting",
 			"kind": "object",
 			"name": "Earth altar",
+			"objectIds": [
+				34763
+			],
 			"options": [
 				"craft-rune"
 			],
@@ -9357,6 +9500,9 @@
 			"category": "runecrafting",
 			"kind": "object",
 			"name": "Fire altar",
+			"objectIds": [
+				34764
+			],
 			"options": [
 				"craft-rune"
 			],
@@ -9386,6 +9532,9 @@
 			"category": "runecrafting",
 			"kind": "object",
 			"name": "Law altar",
+			"objectIds": [
+				34767
+			],
 			"options": [
 				"craft-rune"
 			],
@@ -9414,6 +9563,9 @@
 			"category": "runecrafting",
 			"kind": "object",
 			"name": "Mind altar",
+			"objectIds": [
+				34761
+			],
 			"options": [
 				"craft-rune"
 			],
@@ -9443,6 +9595,9 @@
 			"category": "runecrafting",
 			"kind": "object",
 			"name": "Nature altar",
+			"objectIds": [
+				34768
+			],
 			"options": [
 				"craft-rune"
 			],
@@ -9471,13 +9626,15 @@
 			"category": "runecrafting",
 			"kind": "object",
 			"name": "Soul altar",
+			"objectIds": [
+				27980
+			],
 			"options": [
-				"craft-rune"
+				"bind"
 			],
 			"requiredCardGroups": [
 				[
-					"Pure essence",
-					"Daeyalt essence"
+					"Dark essence fragments"
 				],
 				[
 					"Soul rune"
@@ -9488,12 +9645,15 @@
 				"rune"
 			],
 			"requireAll": true,
-			"notes": "Requires pure (or daeyalt) essence; rune essence cannot craft this rune. No talisman/tiara needed for access (favour/quest-gated); talisman group omitted."
+			"notes": "Kourend's Soul Altar binds Dark essence fragments; no talisman or tiara is used. Wiki revision 15232951."
 		},
 		{
 			"category": "runecrafting",
 			"kind": "object",
 			"name": "Water altar",
+			"objectIds": [
+				34762
+			],
 			"options": [
 				"craft-rune"
 			],
@@ -9523,6 +9683,9 @@
 			"category": "runecrafting",
 			"kind": "object",
 			"name": "Wrath altar",
+			"objectIds": [
+				34772
+			],
 			"options": [
 				"craft-rune"
 			],
@@ -12019,6 +12182,22 @@
 		{
 			"category": "woodcutting",
 			"kind": "object",
+			"name": "Camphor tree",
+			"objectIds": [
+				58557
+			],
+			"options": [
+				"chop down"
+			],
+			"requiredCards": [
+				"Camphor logs"
+			],
+			"requireAll": true,
+			"notes": "Sailing-region tree. Wiki revision 15264047."
+		},
+		{
+			"category": "woodcutting",
+			"kind": "object",
 			"name": "Dead tree",
 			"options": [
 				"chop down"
@@ -12041,6 +12220,22 @@
 			],
 			"requireAll": true,
 			"notes": "Dying trees in Varrock next to Agi course."
+		},
+		{
+			"category": "woodcutting",
+			"kind": "object",
+			"name": "Ironwood tree",
+			"objectIds": [
+				58559
+			],
+			"options": [
+				"chop down"
+			],
+			"requiredCards": [
+				"Ironwood logs"
+			],
+			"requireAll": true,
+			"notes": "Sailing-region tree. Wiki revision 15264036."
 		},
 		{
 			"category": "woodcutting",
@@ -12123,6 +12318,22 @@
 		{
 			"category": "woodcutting",
 			"kind": "object",
+			"name": "Mature juniper tree",
+			"objectIds": [
+				27499
+			],
+			"options": [
+				"chop down"
+			],
+			"requiredCards": [
+				"Juniper logs"
+			],
+			"requireAll": true,
+			"notes": "Hosidius charcoal route. Wiki revision 15216840."
+		},
+		{
+			"category": "woodcutting",
+			"kind": "object",
 			"name": "Oak tree",
 			"options": [
 				"chop down"
@@ -12145,6 +12356,22 @@
 			],
 			"requireAll": true,
 			"notes": "Verify in-game object name suffix ('X' vs 'X tree'); both variants included as separate nodes."
+		},
+		{
+			"category": "woodcutting",
+			"kind": "object",
+			"name": "Rosewood tree",
+			"objectIds": [
+				58561
+			],
+			"options": [
+				"chop down"
+			],
+			"requiredCards": [
+				"Rosewood logs"
+			],
+			"requireAll": true,
+			"notes": "Sailing-region tree. Wiki revision 15264045."
 		},
 		{
 			"category": "woodcutting",
@@ -16617,6 +16844,60 @@
 			],
 			"requireAll": true,
 			"notes": "46 generated RuneLite assignment requirements; superiors remain opt-in"
+		},
+		{
+			"category": "item-usage",
+			"kind": "object",
+			"name": "Inactive cell tile",
+			"options": [
+				"Place-cell"
+			],
+			"requiredCardGroups": [
+				[
+					"Weak cell"
+				]
+			],
+			"groupRoles": [
+				"used-item"
+			],
+			"requireAll": true,
+			"notes": "Temple of the Eye: direct Place-cell consumes the carried Weak cell without inventory Use; the target tile has no separate card requirement."
+		},
+		{
+			"category": "item-usage",
+			"kind": "object",
+			"name": "Essence pile (elemental)",
+			"options": [
+				"Assemble"
+			],
+			"requiredCardGroups": [
+				[
+					"Weak cell"
+				]
+			],
+			"groupRoles": [
+				"used-item"
+			],
+			"requireAll": true,
+			"notes": "Temple of the Eye: direct Assemble consumes the carried Weak cell without inventory Use; require only the used item card."
+		},
+		{
+			"category": "item-usage",
+			"kind": "object",
+			"name": "Essence pile (catalytic)",
+			"options": [
+				"Assemble"
+			],
+			"requiredCardGroups": [
+				[
+					"Weak cell"
+				]
+			],
+			"groupRoles": [
+				"used-item"
+			],
+			"requireAll": true,
+			"notes": "Temple of the Eye: direct Assemble consumes the carried Weak cell without inventory Use; require only the used item card."
 		}
 	],
 	"masterFarmerSeedCards": [

@@ -8,6 +8,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 public class HunterResourceDataTest
 {
@@ -24,6 +25,15 @@ public class HunterResourceDataTest
 			List.of("Magic butterfly net", "Impling jar"));
 		assertMissing("npc", "Horned graahk", "tease", Set.of("monster", "loot"),
 			List.of("Teasing stick"));
+	}
+
+	@Test
+	public void groundBirdSnareLayReusesTheInventoryActivityRule()
+	{
+		assertTrue(BronzemanTcgPlugin.isGroundPlacementOption("Lay"));
+		assertTrue(BronzemanTcgPlugin.isGroundPlacementOption("<col=ff9040>Lay</col>"));
+		assertNotNull(catalog.find(ResourceNodeCatalog.KIND_INVENTORY,
+			"Bird snare", "Lay"));
 	}
 
 	@Test

@@ -248,10 +248,10 @@ final class SidePanelSettingMetadata
 				+ "<br>The Hammer card is always required while enabled."));
 
 		entries.add(setting(Section.SAILING, "sailingUpgradeMode", "Boat upgrades",
-			"Installing a hull or keel tier requires cards."
-				+ "<br>'Parts': the tier's part card (e.g. Oak hull parts)."
-				+ "<br>'Parts + Materials': also the underlying material card (Oak plank, Bronze bar)."
-				+ "<br>'Everything': additionally the log card and the Large part variant's card."
+			"Building a hull, keel, or its parts requires cards for the exact recipe."
+				+ "<br>'Parts': the primary material actually consumed (e.g. Oak logs on a raft)."
+				+ "<br>'Parts + Materials': every card-backed material consumed by the recipe."
+				+ "<br>'Everything': the same exact-material check, retained for compatibility."
 				+ "<br>Masts, helms, cannons and cargo holds have no part cards and are never restricted."));
 		entries.add(setting(Section.SAILING, "restrictSalvaging", "Salvaging",
 			"Salvaging a shipwreck requires the card of the salvage type that wreck tier yields."

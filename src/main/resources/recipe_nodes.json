@@ -204,6 +204,38 @@
 			"category": "firemaking",
 			"inputs": [
 				[
+					"Achey tree logs",
+					"Arctic pine logs",
+					"Blisterwood logs",
+					"Camphor logs",
+					"Ironwood logs",
+					"Jatoba logs",
+					"Rosewood logs"
+				],
+				[
+					"Tinderbox"
+				]
+			],
+			"output": null,
+			"trigger": {
+				"kind": "item-on-item",
+				"name": "Tinderbox",
+				"targets": [
+					"achey tree logs",
+					"arctic pine logs",
+					"blisterwood logs",
+					"camphor logs",
+					"ironwood logs",
+					"jatoba logs",
+					"rosewood logs"
+				]
+			},
+			"notes": "Audited ordinary-log Tinderbox routes. The Firemaking setting remains Tinderbox-only; Item Usage independently handles a card-backed log. Wiki revisions 15226200, 15276914, 15270949, 15271962, 15216688, 15193832, and 15226799."
+		},
+		{
+			"category": "firemaking",
+			"inputs": [
+				[
 					"Blue logs"
 				],
 				[
@@ -524,6 +556,43 @@
 				]
 			},
 			"notes": "1 adamantite ore + 6 coal. Smelting make-interface product click."
+		},
+		{
+			"category": "smithing-smelt",
+			"inputs": [
+				[
+					"Lead ore"
+				]
+			],
+			"output": "Lead bar",
+			"trigger": {
+				"kind": "interface",
+				"name": "Lead bar",
+				"targets": [
+					"furnace"
+				]
+			},
+			"notes": "Two Lead ore per bar; card requirements are binary. Standard-furnace recipe from Wiki revision 15226137."
+		},
+		{
+			"category": "smithing-smelt",
+			"inputs": [
+				[
+					"Copper ore"
+				],
+				[
+					"Nickel ore"
+				]
+			],
+			"output": "Cupronickel bar",
+			"trigger": {
+				"kind": "interface",
+				"name": "Cupronickel bar",
+				"targets": [
+					"furnace"
+				]
+			},
+			"notes": "Two Copper ore and one Nickel ore per bar; card requirements are binary. Standard-furnace recipe from Wiki revision 15281194."
 		},
 		{
 			"category": "smithing-smelt",
@@ -3749,7 +3818,7 @@
 					"Soft clay"
 				]
 			],
-			"output": "Pot",
+			"output": "Unfired pot",
 			"trigger": {
 				"kind": "interface",
 				"name": "Pot",
@@ -3757,7 +3826,7 @@
 					"potter's wheel"
 				]
 			},
-			"notes": "Pottery: mould soft clay on wheel then fire in a pottery oven (2-step; simplified to product)."
+			"notes": "Potter's wheel shaping step: Soft clay becomes an Unfired pot. Firing is a separate interaction."
 		},
 		{
 			"category": "crafting",
@@ -3766,7 +3835,7 @@
 					"Soft clay"
 				]
 			],
-			"output": "Bowl",
+			"output": "Unfired bowl",
 			"trigger": {
 				"kind": "interface",
 				"name": "Bowl",
@@ -3774,7 +3843,7 @@
 					"potter's wheel"
 				]
 			},
-			"notes": "Pottery: mould soft clay on wheel then fire in a pottery oven (2-step; simplified to product)."
+			"notes": "Potter's wheel shaping step: Soft clay becomes an Unfired bowl. Firing is a separate interaction."
 		},
 		{
 			"category": "crafting",
@@ -3783,7 +3852,7 @@
 					"Soft clay"
 				]
 			],
-			"output": "Pie dish",
+			"output": "Unfired pie dish",
 			"trigger": {
 				"kind": "interface",
 				"name": "Pie dish",
@@ -3791,7 +3860,7 @@
 					"potter's wheel"
 				]
 			},
-			"notes": "Pottery: mould soft clay on wheel then fire in a pottery oven (2-step; simplified to product)."
+			"notes": "Potter's wheel shaping step: Soft clay becomes an Unfired pie dish. Firing is a separate interaction."
 		},
 		{
 			"category": "crafting",
@@ -12445,6 +12514,21 @@
 				"targets": []
 			},
 			"notes": "Glassblowing product click. Menu label 'Empty light orb' -> you receive Empty light orb. Owner-observed labels differ from item names (the menu drops the 'Empty ' prefix and calls the battlestaff orb 'Unpowered staff orb'), so both spellings are keyed."
+		},
+		{
+			"category": "fletching",
+			"inputs": [
+				[
+					"Celastrus bark"
+				]
+			],
+			"output": "Battlestaff",
+			"trigger": {
+				"kind": "interface",
+				"name": "Battlestaff",
+				"targets": []
+			},
+			"notes": "The Fremennik Trials optional alternate route: Fletch Celastrus bark into a Battlestaff. This exact output rule covers mouse and keyboard selection after the interface opens."
 		}
 	]
 }
