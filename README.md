@@ -1,26 +1,27 @@
 # Bronzeman TCG
 
 A card-collection challenge mode for RuneLite, driven by the
-[OSRS TCG](https://runelite.net/plugin-hub/show/osrs-tcg) plugin's gacha collection:
+[OSRS TCG](https://runelite.net/plugin-hub/show/osrs-tcg) plugin's card collection:
 **almost everything you do is locked until you pull the matching card.**
 
-Install both plugins from the Plugin Hub; this one reads the TCG collection
-and enforces the restrictions. Every restriction is individually toggleable,
-so you tune the difficulty to taste.
+Install both plugins from the Plugin Hub; this plugin allows you to lock the
+items and NPCs in the world until you get the card that matches. The plugin has
+a lot of customisable settings to allow you to tweak the difficulty to taste.
+
+By default the plugin restricts Combat, Item Equipping and Usage but allows
+picking up ground items and banking. There is a Maximum Restrictions preset in
+the side panel. You can also tweak individual skills requirements.
 
 ## What gets restricted
- 
+
 - **Combat** — attacking an NPC (and casting spells / using items on it) is
   blocked until you own its card. Cards with location variants ("Soldier
   (Yanille)") all unlock the plain NPC name; owning any variant counts.
 - **Loot** — picking up (or telegrabbing) a ground item needs its card. Coins
-  have their own default-on exemption, and the separate exempt list supports
-  case-insensitive `*` wildcards.
-- **Items** — equipping locked items can be blocked; an optional *forced
-  drop* mode reduces locked inventory items to Drop/Examine/Destroy only
-  (with an "allow banking" variant where deposits work but withdrawals
-  stay locked); shop buying and Grand Exchange search selection can be
-  blocked; potion drinking can be gated (all doses map to the one card).
+  have their own exemption, and the separate exempt list supports Foil card rule unlocks!
+- **Items** — equipping locked items is blocked; you can toggle picking up items
+  in the settings as well as enabling full banking. Shop buying and Grand Exchange
+  search selection can be blocked; potion drinking and food locks can be toggled.
 - **Processing skills** — firemaking, smelting, smithing, crafting,
   enchanting, fletching and herblore recipes require input and/or output
   cards, with per-skill modes.
@@ -29,7 +30,7 @@ so you tune the difficulty to taste.
 - **Thieving** — pickpocketing needs the loot cards (Coins + Coin pouch),
   or in *NPC + Loot* mode the target's own card too; Master Farmer has his
   own dial, including an *Insanity* mode requiring all 45 seed cards on
-  his table.
+  his table. HAM Members have additional difficulty.
 - **Hunter** — birds, butterflies, implings, chinchompas, salamanders and
   pitfalls need their gear cards (Magic butterfly net counts); an *Extreme
   Hunter* option locks each rumour master until you own every creature card
@@ -39,8 +40,8 @@ so you tune the difficulty to taste.
   checkbox stacks the superior variant cards on top. (Superiors are always
   separately combat-locked by their own cards regardless.)
 - **Runecrafting & Farming** — altars need essence/talisman (tiara counts)
-  and optionally the rune card; patches need tools, seeds and optionally the
-  produce card at planting time; compost bins need a compost card.
+  and optionally the rune card; patches need tools and seeds; compost bins
+  need a compost card.
 - **Sailing** — hull and keel upgrades need their part cards (modes add the
   material and Large-part cards); salvaging each shipwreck tier needs its
   salvage card.
@@ -50,6 +51,9 @@ so you tune the difficulty to taste.
 Locked NPCs get a configurable grey outline or can be hidden entirely. Locked
 inventory items can also be marked without changing their chosen visual mode
 when Item Usage is temporarily unrestricted.
+
+Locked Items also now have a grey outline! It's a little subtle so feel free
+to adjust the colour of the outlines in the settings.
 
 The sidebar panel provides overall progress, recent unlocks, Collection and
 TCG Locked Shared Cards views, plus readiness tabs for Quests, Miniquests,
