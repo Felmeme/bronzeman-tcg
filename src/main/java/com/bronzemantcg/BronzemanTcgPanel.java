@@ -1,5 +1,6 @@
 package com.bronzemantcg;
 
+import com.bronzemantcg.collection.BetaCollectionSnapshotService;
 import com.google.gson.Gson;
 import java.awt.BasicStroke;
 import java.awt.BorderLayout;
@@ -98,6 +99,7 @@ class BronzemanTcgPanel extends PluginPanel
 	private final ContentCatalog contentCatalog;
 	private final MonsterAreaCatalog monsterAreaCatalog;
 	private final TcgCollectionReader collectionReader;
+	private final BetaCollectionSnapshotService betaCollectionSnapshotService;
 	private final SharedUnlockStore sharedUnlockStore;
 	private final RecentUnlocksTracker recentUnlocksTracker;
 	private final ImportantUnlocksCatalog importantUnlocksCatalog;
@@ -215,6 +217,8 @@ class BronzemanTcgPanel extends PluginPanel
 	private final JCheckBox showUnlockedImportant = new JCheckBox("Show unlocked");
 
 	private final JPanel importantUnlocksList = sectionBody();
+	private final JButton saveBetaCollectionButton = new JButton("Save Beta Collection");
+	private final JLabel betaCollectionSnapshotStatus = mutedRow("No beta collection saved yet.");
 	private final Set<String> expandedImportantCategories = new HashSet<>();
 	private final Set<String> expandedImportantSubcategories = new HashSet<>();
 
@@ -229,6 +233,7 @@ class BronzemanTcgPanel extends PluginPanel
 			ContentCatalog contentCatalog,
 			MonsterAreaCatalog monsterAreaCatalog,
 			TcgCollectionReader collectionReader,
+			BetaCollectionSnapshotService betaCollectionSnapshotService,
 			SharedUnlockStore sharedUnlockStore,
 			RecentUnlocksTracker recentUnlocksTracker,
 			ImportantUnlocksCatalog importantUnlocksCatalog,
@@ -247,6 +252,7 @@ class BronzemanTcgPanel extends PluginPanel
 		this.contentCatalog = contentCatalog;
 		this.monsterAreaCatalog = monsterAreaCatalog;
 		this.collectionReader = collectionReader;
+		this.betaCollectionSnapshotService = betaCollectionSnapshotService;
 		this.sharedUnlockStore = sharedUnlockStore;
 		this.recentUnlocksTracker = recentUnlocksTracker;
 		this.importantUnlocksCatalog = importantUnlocksCatalog;
@@ -384,6 +390,8 @@ class BronzemanTcgPanel extends PluginPanel
 		pvmPanel.add(Box.createVerticalStrut(4));
 		pvmPanel.add(contentList);
 
+		configureBetaCollectionBackup(importantUnlocksPanel);
+		importantUnlocksPanel.add(Box.createVerticalStrut(6));
 		configureTabSearchBar(importantUnlocksSearchBar, "Search Collection",
 			this::refreshImportantUnlocks);
 		importantUnlocksPanel.add(importantUnlocksSearchBar);
@@ -431,6 +439,110 @@ class BronzemanTcgPanel extends PluginPanel
 			showSettings();
 		}
 
+	}
+
+	private void configureBetaCollectionBackup(JPanel collectionPanel)
+	{
+		JPanel backup = sectionBody();
+		backup.setBorder(BorderFactory.createCompoundBorder(
+			BorderFactory.createLineBorder(new Color(153, 102, 51)),
+			BorderFactory.createEmptyBorder(6, 6, 6, 6)));
+
+		JLabel title = new JLabel("Beta Collection Backup");
+		title.setForeground(Color.WHITE);
+		title.setFont(title.getFont().deriveFont(Font.BOLD));
+		backup.add(title);
+		backup.add(Box.createVerticalStrut(4));
+
+		saveBetaCollectionButton.setAlignmentX(Component.LEFT_ALIGNMENT);
+		saveBetaCollectionButton.setFocusable(false);
+		saveBetaCollectionButton.setToolTipText(
+			"Save your current OSRS TCG beta collection before migrating to v1");
+		saveBetaCollectionButton.addActionListener(event -> saveBetaCollectionSnapshot());
+		backup.add(saveBetaCollectionButton);
+		backup.add(Box.createVerticalStrut(2));
+		backup.add(betaCollectionSnapshotStatus);
+
+		collectionPanel.add(backup);
+		refreshBetaSnapshotStatus();
+	}
+
+	private void saveBetaCollectionSnapshot()
+	{
+		saveBetaCollectionButton.setEnabled(false);
+		betaCollectionSnapshotStatus.setText("Saving beta collection...");
+		executor.execute(() ->
+		{
+			collectionReader.refreshNow();
+			BetaCollectionSnapshotService.SaveResult result =
+				betaCollectionSnapshotService.saveCurrent(
+					collectionReader.getOwnedCardNamesLowerCase(),
+					collectionReader.isStateAvailable());
+			SwingUtilities.invokeLater(() -> applyBetaSnapshotSaveResult(result));
+		});
+	}
+
+	private void applyBetaSnapshotSaveResult(BetaCollectionSnapshotService.SaveResult result)
+	{
+		if (disposed)
+		{
+			return;
+		}
+		switch (result.getOutcome())
+		{
+			case UNAVAILABLE:
+				betaCollectionSnapshotStatus.setText(
+					"Could not read OSRS TCG. Nothing was changed.");
+				saveBetaCollectionButton.setEnabled(true);
+				break;
+			case PERSISTENCE_FAILED:
+				betaCollectionSnapshotStatus.setText(
+					"Could not save the beta collection. Nothing was changed.");
+				saveBetaCollectionButton.setEnabled(true);
+				break;
+			default:
+				applyBetaSnapshotView(result.getSnapshot());
+		}
+	}
+
+	void refreshBetaSnapshotStatus()
+	{
+		if (!SwingUtilities.isEventDispatchThread())
+		{
+			SwingUtilities.invokeLater(this::refreshBetaSnapshotStatus);
+			return;
+		}
+		if (!disposed)
+		{
+			applyBetaSnapshotView(betaCollectionSnapshotService.getView());
+		}
+	}
+
+	private void applyBetaSnapshotView(BetaCollectionSnapshotService.SnapshotView view)
+	{
+		int count = view.getUniqueCardCount();
+		switch (view.getStatus())
+		{
+			case PROVISIONAL:
+				betaCollectionSnapshotStatus.setText("Saved " + count + " unique beta "
+					+ (count == 1 ? "card" : "cards"));
+				saveBetaCollectionButton.setEnabled(true);
+				break;
+			case FROZEN_CAPTURED:
+			case FROZEN_INFERRED:
+				betaCollectionSnapshotStatus.setText("Beta collection secured · " + count
+					+ " unique " + (count == 1 ? "card" : "cards"));
+				saveBetaCollectionButton.setEnabled(false);
+				break;
+			case INCOMPATIBLE:
+				betaCollectionSnapshotStatus.setText(
+					"Saved beta data is incompatible and was left untouched.");
+				saveBetaCollectionButton.setEnabled(false);
+				break;
+			default:
+				betaCollectionSnapshotStatus.setText("No beta collection saved yet.");
+				saveBetaCollectionButton.setEnabled(true);
+		}
 	}
 
 	private MaterialTab addTab(String title, JPanel content, PanelTab panelTab)

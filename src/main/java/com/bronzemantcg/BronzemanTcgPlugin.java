@@ -1,5 +1,6 @@
 package com.bronzemantcg;
 
+import com.bronzemantcg.collection.BetaCollectionSnapshotService;
 import com.google.gson.Gson;
 import com.google.inject.Provides;
 import java.awt.image.BufferedImage;
@@ -135,6 +136,8 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	private static final String TCG_API_REPLY = "owned-names";
 	private static final String TCG_API_CHANGED = "owned-names-changed";
 	private static final String TCG_API_NAMES_KEY = "ownedNames";
+	private static final String TCG_API_ITEM_IDS_KEY = "ownedItemIds";
+	private static final String TCG_API_NPC_IDS_KEY = "ownedNpcIds";
 	// This plugin's own PluginMessage API, for sibling plugins that run a group mode on top of the
 	// same collection: they post their extra unlocked card names and the restriction engine honours
 	// them. Without it those modes have no effect here, because every lock check reads this
@@ -219,6 +222,9 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 
 	@Inject
 	private TcgCollectionReader collectionReader;
+
+	@Inject
+	private BetaCollectionSnapshotService betaCollectionSnapshotService;
 
 	@Inject
 	private SharedUnlockStore sharedUnlockStore;
@@ -384,6 +390,7 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 		// fresh install is distinguished from an existing user upgrading this release.
 		presetOnboardingRequired = preparePresetOnboarding();
 		collectionReader.invalidate();
+		betaCollectionSnapshotService.reload();
 		recentUnlocksTracker.reload();
 		// Nothing shared survives a restart of this plugin. Sources are asked to re-offer on the
 		// first tick, so a set from before we unloaded can never linger unnoticed.
@@ -477,6 +484,7 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 				contentCatalog,
 				monsterAreaCatalog,
 				collectionReader,
+				betaCollectionSnapshotService,
 				sharedUnlockStore,
 				recentUnlocksTracker,
 				importantUnlocksCatalog,
@@ -995,6 +1003,12 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 	public void onGameTick(GameTick event)
 	{
 		refreshGroundItemLocks();
+		boolean snapshotChanged = betaCollectionSnapshotService.observeLegacy(
+			collectionReader.getOwnedCardNamesLowerCase(), collectionReader.isStateAvailable());
+		if (snapshotChanged)
+		{
+			refreshBetaSnapshotStatus();
+		}
 		boolean newUnlock = recentUnlocksTracker.update(
 			collectionReader.getOwnedCardNamesLowerCase(), collectionReader.isStateAvailable());
 		if (newUnlock)
@@ -1298,6 +1312,8 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 		// New account/profile: never let a previous profile's collection linger. This
 		// drops any API-provided data too, so re-arm the query for the new profile.
 		collectionReader.invalidate();
+		betaCollectionSnapshotService.reload();
+		refreshBetaSnapshotStatus();
 		recentUnlocksTracker.reload();
 		// Shared unlocks describe a group this account was in, not this one; ask the sources for
 		// the new profile's picture rather than waiting for one of them to notice.
@@ -1369,6 +1385,13 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 		}
 		boolean firstPayload = !collectionReader.hasApiData();
 		collectionReader.onApiOwnedNames((List<?>) names);
+		boolean completeV1Payload = data.get(TCG_API_ITEM_IDS_KEY) instanceof List
+			&& data.get(TCG_API_NPC_IDS_KEY) instanceof List;
+		if (betaCollectionSnapshotService.observeApi(
+			collectionReader.getOwnedCardNamesLowerCase(), completeV1Payload))
+		{
+			refreshBetaSnapshotStatus();
+		}
 		if (firstPayload)
 		{
 			recentUnlocksTracker.resetBaseline();
@@ -1398,6 +1421,15 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 				target.requestRefresh();
 			}
 		});
+	}
+
+	private void refreshBetaSnapshotStatus()
+	{
+		BronzemanTcgPanel target = panel;
+		if (target != null)
+		{
+			SwingUtilities.invokeLater(target::refreshBetaSnapshotStatus);
+		}
 	}
 
 	/** Only trees still remove a blocked world-object option; other nodes use chat feedback. */

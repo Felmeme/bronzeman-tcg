@@ -84,6 +84,16 @@ public class TcgCollectionReader
 		return apiOwnedLowerCaseNames != null;
 	}
 
+	/** Force the persisted-state fallback to refresh for an explicit user snapshot save. */
+	public synchronized void refreshNow()
+	{
+		if (apiOwnedLowerCaseNames == null)
+		{
+			lastRefreshMs = 0L;
+			refresh();
+		}
+	}
+
 	/**
 	 * Feed in an "ownedNames" payload from osrs-tcg's PluginMessage API. Elements are
 	 * validated individually rather than trusting the cast - the data map is untyped, and
