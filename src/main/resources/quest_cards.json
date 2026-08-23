@@ -693,6 +693,13 @@
 								"Coins"
 							],
 							"type": "item"
+						},
+						{
+							"label": "Barcrawl card",
+							"cards": [
+								"Barcrawl card"
+							],
+							"type": "item"
 						}
 					]
 				}
@@ -1726,6 +1733,20 @@
 							"label": "Coins",
 							"cards": [
 								"Coins"
+							],
+							"type": "item"
+						},
+						{
+							"label": "Tiny net",
+							"cards": [
+								"Tiny net"
+							],
+							"type": "item"
+						},
+						{
+							"label": "Mayor of catherby",
+							"cards": [
+								"Mayor of catherby"
 							],
 							"type": "item"
 						}
@@ -11928,6 +11949,27 @@
 					"label": "Items",
 					"requirements": [
 						{
+							"label": "Weak cell",
+							"cards": [
+								"Weak cell"
+							],
+							"type": "item"
+						},
+						{
+							"label": "Guardian fragments",
+							"cards": [
+								"Guardian fragments"
+							],
+							"type": "item"
+						},
+						{
+							"label": "Guardian essence",
+							"cards": [
+								"Guardian essence"
+							],
+							"type": "item"
+						},
+						{
 							"label": "Bucket of water",
 							"cards": [
 								"Bucket of water"
@@ -13318,18 +13360,6 @@
 			"name": "The Grand Tree",
 			"miniquest": false,
 			"sections": [
-				{
-					"label": "Items",
-					"requirements": [
-						{
-							"label": "Coins",
-							"cards": [
-								"Coins"
-							],
-							"type": "item"
-						}
-					]
-				},
 				{
 					"label": "Enemies",
 					"requirements": [
