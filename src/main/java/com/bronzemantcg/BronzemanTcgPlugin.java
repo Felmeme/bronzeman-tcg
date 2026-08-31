@@ -285,8 +285,9 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 		betaCollectionSnapshotService.reload();
 		remoteCatalogService.setListener(this::onActiveCatalogChanged);
 		remoteCatalogService.startUp();
+		remoteCatalogService.setEnabled(config.allowRemoteCatalog());
 		// Arm the catalogue gate before requesting ownership so even an immediate v1 reply can
-		// start the one permitted conditional fetch for this plugin startup.
+		// start the one permitted conditional fetch when the player has allowed it.
 		osrsTcgInteropService.startUp();
 		observeBetaCollectionSnapshot();
 		recentUnlocksTracker.reload();
@@ -668,6 +669,13 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 			{
 				sharedUnlockStore.clear();
 			}
+		}
+
+		if (BronzemanTcgConfig.GROUP.equals(event.getGroup())
+			&& "allowRemoteCatalog".equals(event.getKey()))
+		{
+			// Read the current setting so resetting it to its default is treated as disabled.
+			remoteCatalogService.setEnabled(config.allowRemoteCatalog());
 		}
 
 		if (BronzemanTcgConfig.GROUP.equals(event.getGroup()))

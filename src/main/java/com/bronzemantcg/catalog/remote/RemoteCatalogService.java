@@ -27,6 +27,7 @@ public final class RemoteCatalogService
 		new AtomicReference<>();
 
 	private boolean running;
+	private boolean enabled;
 	private boolean v1Capable;
 	private boolean fetchStarted;
 	private OsrsTcgCatalogSnapshot pendingSnapshot;
@@ -58,11 +59,58 @@ public final class RemoteCatalogService
 		synchronized (this)
 		{
 			running = true;
+			enabled = false;
 			v1Capable = false;
 			fetchStarted = false;
 			pendingSnapshot = null;
 			pendingVersion = null;
 			activeCatalog.useBundled();
+		}
+	}
+
+	/** Enables or disables every request to the public catalogue endpoint. */
+	public void setEnabled(boolean enabled)
+	{
+		boolean cancelFetch = false;
+		long changedRevision;
+		long fetchGeneration = -1L;
+		synchronized (this)
+		{
+			long before = activeCatalog.getRevision();
+			boolean wasEnabled = this.enabled;
+			this.enabled = running && enabled;
+			if (!this.enabled)
+			{
+				activeCatalog.useBundled();
+				if (wasEnabled)
+				{
+					generation.incrementAndGet();
+					cancelFetch = true;
+					if (pendingSnapshot == null)
+					{
+						fetchStarted = false;
+					}
+				}
+			}
+			else
+			{
+				activatePendingIfReady();
+				if (v1Capable && pendingSnapshot == null && !fetchStarted)
+				{
+					fetchStarted = true;
+					fetchGeneration = generation.get();
+				}
+			}
+			changedRevision = changedRevision(before);
+		}
+		if (cancelFetch)
+		{
+			cancelActiveFetch();
+		}
+		notifyChanged(changedRevision);
+		if (fetchGeneration >= 0)
+		{
+			startFetch(fetchGeneration);
 		}
 	}
 
@@ -105,7 +153,7 @@ public final class RemoteCatalogService
 			{
 				activeCatalog.useBundled();
 			}
-			else
+			else if (enabled)
 			{
 				activatePendingIfReady();
 				if (pendingSnapshot == null && !fetchStarted)
@@ -130,6 +178,7 @@ public final class RemoteCatalogService
 		synchronized (this)
 		{
 			running = false;
+			enabled = false;
 			v1Capable = false;
 			fetchStarted = false;
 			pendingSnapshot = null;
@@ -193,7 +242,7 @@ public final class RemoteCatalogService
 
 	private void activatePendingIfReady()
 	{
-		if (running && v1Capable && pendingSnapshot != null)
+		if (running && enabled && v1Capable && pendingSnapshot != null)
 		{
 			activeCatalog.activate(pendingSnapshot, pendingSnapshot.getEntries(), pendingVersion);
 		}

@@ -358,13 +358,28 @@ public interface BronzemanTcgConfig extends Config
 	}
 
 	@ConfigItem(
+		keyName = "allowRemoteCatalog",
+		name = "Download live catalogue",
+		description = "Downloads the current card catalogue from the public OSRS TCG API."
+			+ "<br>When disabled, Bronzeman uses its bundled Beta compatibility catalogue.",
+		warning = "The catalogue server receives your IP address as part of the connection. "
+			+ "No RuneScape profile, account, or collection data is sent.",
+		section = externalPluginsSection,
+		position = 0
+	)
+	default boolean allowRemoteCatalog()
+	{
+		return false;
+	}
+
+	@ConfigItem(
 		keyName = "acceptSharedUnlocks",
 		name = "TCG Locked Party Sharing",
 		description = "Toggle on for group play while using TCG Locked."
 			+ "<br>Use the `Party` plugin to share the cards you pull with your group members."
 			+ "<br>Use the TCG Locked side panel to sync your group.",
 		section = externalPluginsSection,
-		position = 0
+		position = 1
 	)
 	default boolean acceptSharedUnlocks()
 	{

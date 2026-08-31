@@ -7,6 +7,8 @@ import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 import okhttp3.OkHttpClient;
@@ -38,13 +40,17 @@ public class RemoteCatalogServiceTest
 	}
 
 	@Test
-	public void startupWaitsForLiveV1CapabilityBeforeFetching() throws Exception
+	public void startupRequiresExplicitEnablementAndLiveV1CapabilityBeforeFetching()
+		throws Exception
 	{
 		service.startUp();
 		assertFalse(active.isRemoteActive());
 		assertEquals(0, client.fetches);
 
 		service.setV1Capable(true);
+		assertEquals(0, client.fetches);
+
+		service.setEnabled(true);
 		assertEquals(1, client.fetches);
 		client.succeed(fixture(), "version-1");
 
@@ -58,6 +64,7 @@ public class RemoteCatalogServiceTest
 	public void repeatedCapabilityMessagesStartOnlyOneFetch() throws Exception
 	{
 		service.startUp();
+		service.setEnabled(true);
 		service.setV1Capable(true);
 		service.setV1Capable(true);
 		service.setV1Capable(true);
@@ -74,6 +81,7 @@ public class RemoteCatalogServiceTest
 		throws Exception
 	{
 		service.startUp();
+		service.setEnabled(true);
 		service.setV1Capable(true);
 		client.succeed(fixture(), "version-1");
 		assertTrue(active.isRemoteActive());
@@ -93,6 +101,7 @@ public class RemoteCatalogServiceTest
 		throws Exception
 	{
 		service.startUp();
+		service.setEnabled(true);
 		service.setV1Capable(true);
 		service.setV1Capable(false);
 		client.succeed(fixture(), "version-1");
@@ -108,15 +117,38 @@ public class RemoteCatalogServiceTest
 	public void invalidResponseAndLateShutdownCallbackNeverActivate()
 	{
 		service.startUp();
+		service.setEnabled(true);
 		service.setV1Capable(true);
 		client.succeed("{}".getBytes(StandardCharsets.UTF_8), "invalid");
 		assertFalse(active.isRemoteActive());
 
 		service.startUp();
+		service.setEnabled(true);
 		service.setV1Capable(true);
 		service.shutDown();
 		client.succeed("{}".getBytes(StandardCharsets.UTF_8), "late");
 		assertFalse(active.isRemoteActive());
+	}
+
+	@Test
+	public void disablingCancelsFetchRejectsLateResponseAndAllowsRefetch() throws Exception
+	{
+		service.startUp();
+		service.setEnabled(true);
+		service.setV1Capable(true);
+		OsrsTcgCatalogClient.FetchHandle firstHandle = client.handles.get(0);
+
+		service.setEnabled(false);
+
+		assertTrue(firstHandle.isCancelled());
+		assertFalse(active.isRemoteActive());
+		client.succeed(0, fixture(), "cancelled-version");
+		assertFalse(active.isRemoteActive());
+
+		service.setEnabled(true);
+		assertEquals(2, client.fetches);
+		client.succeed(1, fixture(), "enabled-version");
+		assertTrue(active.isRemoteActive());
 	}
 
 	private static byte[] fixture() throws IOException
@@ -134,7 +166,8 @@ public class RemoteCatalogServiceTest
 
 	private static final class FakeClient extends OsrsTcgCatalogClient
 	{
-		private Listener listener;
+		private final List<Listener> listeners = new ArrayList<>();
+		private final List<FetchHandle> handles = new ArrayList<>();
 		private int fetches;
 
 		private FakeClient()
@@ -146,13 +179,20 @@ public class RemoteCatalogServiceTest
 		public FetchHandle fetch(Listener listener)
 		{
 			fetches++;
-			this.listener = listener;
-			return new FetchHandle();
+			listeners.add(listener);
+			FetchHandle handle = new FetchHandle();
+			handles.add(handle);
+			return handle;
 		}
 
 		private void succeed(byte[] body, String version)
 		{
-			listener.onSuccess(new CatalogResponse(body, version, false));
+			succeed(listeners.size() - 1, body, version);
+		}
+
+		private void succeed(int index, byte[] body, String version)
+		{
+			listeners.get(index).onSuccess(new CatalogResponse(body, version, false));
 		}
 	}
 }
