@@ -1,0 +1,71 @@
+{
+  "items": [
+    {
+      "id": 555,
+      "name": "Water rune",
+      "imagePath": "/images/items/detail/Water_rune_detail.png",
+      "tcg": {
+        "tierLabel": "Uncommon",
+        "variants": [
+          {"id": 9691, "name": "Water rune"},
+          {"id": 11687, "name": "Water rune"},
+          {"id": 12730, "name": "Water rune pack"}
+        ]
+      }
+    },
+    {
+      "id": 249,
+      "name": "Guam leaf",
+      "tcg": {
+        "variants": [
+          {"id": 91, "name": "Guam potion (unf)"},
+          {"id": 199, "name": "Grimy guam leaf"}
+        ]
+      }
+    },
+    {
+      "id": 7975,
+      "name": "Crawling hand",
+      "tcg": {
+        "variants": [
+          {"id": 7982, "name": "Stuffed crawling hand"}
+        ]
+      }
+    }
+  ],
+  "npcs": [
+    {
+      "id": 0,
+      "name": "Tool Leprechaun",
+      "tcg": {}
+    },
+    {
+      "id": 453,
+      "name": "Crawling Hand",
+      "tcg": {
+        "variants": [
+          {"id": 448, "name": "Crawling Hand"}
+        ]
+      }
+    },
+    {
+      "id": 12077,
+      "name": "Phantom Muspah",
+      "tcg": {
+        "variants": [
+          {"id": 12063, "name": "Strange Creature"},
+          {"id": 12078, "name": "Phantom Muspah"}
+        ]
+      }
+    },
+    {
+      "id": 14702,
+      "name": "Juvenile custodian stalker",
+      "tcg": {
+        "variants": [
+          {"id": 14706, "name": "Strange creature"}
+        ]
+      }
+    }
+  ]
+}

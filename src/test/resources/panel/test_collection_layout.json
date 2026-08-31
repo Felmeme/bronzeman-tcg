@@ -1,0 +1,131 @@
+{
+  "schemaVersion": 1,
+  "source": {
+    "organiserFingerprint": "sha256:test",
+    "organiserProjectSha256": "TEST"
+  },
+  "sections": [
+    {
+      "id": "items",
+      "name": "Items",
+      "visible": true,
+      "categories": [
+        {"id": "magic", "name": "Magic", "visible": true},
+        {"id": "npcs", "name": "NPCs", "visible": true}
+      ]
+    },
+    {
+      "id": "section-beta-only-items",
+      "name": "Beta Only Items",
+      "visible": true,
+      "categories": [
+        {
+          "id": "category-needs-review-beta-only-npcs",
+          "name": "Beta-only NPCs",
+          "visible": true
+        }
+      ]
+    }
+  ],
+  "collectionPlacements": [
+    {
+      "kind": "ITEM",
+      "cardName": "Water rune",
+      "categoryIndexes": [0, 1]
+    },
+    {
+      "kind": "ITEM",
+      "cardName": "Manta ray",
+      "categoryIndexes": [0]
+    },
+    {
+      "kind": "NPC",
+      "cardName": "Manta ray",
+      "categoryIndexes": [1]
+    },
+    {
+      "kind": "NPC",
+      "cardName": "Phantom Muspah",
+      "categoryIndexes": [1]
+    },
+    {
+      "kind": "NPC",
+      "cardName": "Juvenile custodian stalker",
+      "categoryIndexes": [1]
+    },
+    {
+      "kind": "NPC",
+      "cardName": "Promoted NPC",
+      "categoryIndexes": [2]
+    }
+  ],
+  "betaCollectionCards": [
+    {
+      "key": "ITEM:555:1",
+      "kind": "ITEM",
+      "parentName": "Water rune",
+      "betaOnly": false,
+      "visible": true,
+      "categoryIndexes": [0],
+      "variants": [
+        {"name": "Water rune", "entityIds": [555]},
+        {"name": "Water rune pack", "entityIds": [12730]}
+      ]
+    },
+    {
+      "key": "NPC:12073:2",
+      "kind": "NPC",
+      "parentName": "Phantom Muspah",
+      "betaOnly": false,
+      "visible": true,
+      "categoryIndexes": [1],
+      "variants": [
+        {"name": "Strange Creature", "entityIds": [12073, 14706]}
+      ]
+    },
+    {
+      "key": "NPC:14702:3",
+      "kind": "NPC",
+      "parentName": "Juvenile custodian stalker",
+      "betaOnly": false,
+      "visible": true,
+      "categoryIndexes": [1],
+      "variants": [
+        {"name": "Strange creature (Shadows of Custodia)", "entityIds": [14706]}
+      ]
+    },
+    {
+      "key": "ITEM:42:4",
+      "kind": "ITEM",
+      "parentName": "Beta-only item",
+      "betaOnly": true,
+      "visible": true,
+      "categoryIndexes": [2],
+      "variants": [
+        {"name": "Beta-only item", "entityIds": [42]}
+      ]
+    },
+    {
+      "key": "ITEM:391:5",
+      "kind": "ITEM",
+      "parentName": "Manta ray",
+      "betaOnly": false,
+      "visible": true,
+      "categoryIndexes": [0],
+      "variants": [
+        {"name": "Manta ray", "entityIds": [391]}
+      ]
+    },
+    {
+      "key": "NPC:15220:6",
+      "kind": "NPC",
+      "parentName": "Manta ray",
+      "betaOnly": false,
+      "visible": true,
+      "categoryIndexes": [1],
+      "variants": [
+        {"name": "Manta ray", "entityIds": [15220]}
+      ]
+    }
+  ]
+}

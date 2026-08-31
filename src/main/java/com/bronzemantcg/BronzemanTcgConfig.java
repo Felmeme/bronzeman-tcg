@@ -1,5 +1,28 @@
 package com.bronzemantcg;
 
+import com.bronzemantcg.feature.LockedItemMarkMode;
+import com.bronzemantcg.restriction.NpcVisibilityMode;
+import com.bronzemantcg.catalog.CardRequirement;
+import com.bronzemantcg.restriction.BankingMode;
+import com.bronzemantcg.restriction.CookingMode;
+import com.bronzemantcg.restriction.CraftingMode;
+import com.bronzemantcg.restriction.FarmingRakeMode;
+import com.bronzemantcg.restriction.FishingRestrictionMode;
+import com.bronzemantcg.restriction.FletchingMode;
+import com.bronzemantcg.restriction.FoodSettingsMode;
+import com.bronzemantcg.restriction.HerbloreMode;
+import com.bronzemantcg.restriction.HunterMode;
+import com.bronzemantcg.restriction.LockState;
+import com.bronzemantcg.restriction.MiningMode;
+import com.bronzemantcg.restriction.RunecraftingMode;
+import com.bronzemantcg.restriction.SailingUpgradeMode;
+import com.bronzemantcg.restriction.SlayerMode;
+import com.bronzemantcg.restriction.SmeltingMode;
+import com.bronzemantcg.restriction.SmithingMode;
+import com.bronzemantcg.restriction.ThievingPolicy.HamPickpocketingMode;
+import com.bronzemantcg.restriction.ThievingPolicy.StallThievingMode;
+import com.bronzemantcg.restriction.ThievingPolicy.ThievingMode;
+import com.bronzemantcg.restriction.WoodcuttingMode;
 import java.awt.Color;
 import net.runelite.client.config.Alpha;
 import net.runelite.client.config.Config;
@@ -278,10 +301,11 @@ public interface BronzemanTcgConfig extends Config
 	@ConfigItem(
 			keyName = "foodSettingsMode",
 			name = "Food Settings",
-			description = "'Require Card': Consumables are not usable without their card."
-					+ "<br>'Pots Only': potions are usable without Cards. "
-					+ "<br>'Food Only': food usable without Cards."
-					+ "<br>'No Card Needed': both are usable without cards.",
+			description = "Controls only Eat and Drink inventory actions while Item Usage requires Cards."
+					+ "<br>'Require Card': both actions require the item's Card."
+					+ "<br>'Pots Only': Drink is allowed without the Card."
+					+ "<br>'Food Only': Eat is allowed without the Card."
+					+ "<br>'No Card Needed': both actions are allowed without the Card.",
 			section = generalSettings,
 			position = 5
 	)
@@ -391,6 +415,19 @@ public interface BronzemanTcgConfig extends Config
 		return false;
 	}
 
+	@ConfigItem(
+		keyName = "showBetaCollectionTab",
+		name = "Show Beta tab",
+		description = "Show the personal Beta collection snapshot in the side panel."
+			+ "<br>Hiding the tab does not delete or change the saved snapshot.",
+		section = generalSettings,
+		position = 11
+	)
+	default boolean showBetaCollectionTab()
+	{
+		return true;
+	}
+
 	//----------------
 	//Resource nodes
 	//----------------
@@ -428,8 +465,8 @@ public interface BronzemanTcgConfig extends Config
 		keyName = "fishingMode",
 		name = "Fishing Options",
 		description = "Restrict fishing using the exact fishing spot and selected method."
-			+ "<br>'Tools Only': every carried card-backed tool, bait or consumable applicable "
-			+ "to that method must be unlocked."
+			+ "<br>'Tools Only': every required card-backed tool, bait or consumable applicable "
+			+ "to that method must be unlocked. Bare-handed harpooning remains permitted."
 			+ "<br>'Tools + Any Fish': also requires any one carded catch from that method."
 			+ "<br>'Tools + Fish': requires every carded catch from that method."
 			+ "<br>'No Restrictions': no fishing restriction.",
@@ -469,21 +506,6 @@ public interface BronzemanTcgConfig extends Config
 	default CookingMode cookingMode()
 	{
 		return CookingMode.INPUT_ONLY;
-	}
-
-	@ConfigItem(
-		keyName = "burntFoodMode",
-		name = "Burnt Food Cards",
-		description = "'Require Card': also need the burnt version's card to cook something."
-			+ "<br>Fish that burns into the generic 'Burnt fish' has no card, so they are never "
-			+ "affected."
-			+ "<br>No effect while Cooking is set to 'No restrictions'.",
-		section = cookingSection,
-		position = 1
-	)
-	default BurntFoodMode burntFoodMode()
-	{
-		return BurntFoodMode.OFF;
 	}
 
 	//----------------
@@ -743,36 +765,41 @@ public interface BronzemanTcgConfig extends Config
 		keyName = "thievingMode",
 		name = "Pickpocketing Options",
 		description = "'NPC Only': requires the target's NPC card when one exists."
-			+ "<br>'Coins + Pouch': requires Coins and Coin pouch."
-			+ "<br>'Coins + Pouch + NPC': also requires the target's NPC card when one exists."
+			+ "<br>'Coins': requires the v1 Coins parent card."
+			+ "<br>'Coins + NPC': also requires the target's NPC card when one exists."
 			+ "<br>'Require All': requires all reviewed loot and the NPC card."
-			+ "<br>H.A.M. Members and Master Farmers use their separate Full Loot options.",
+			+ "<br>H.A.M. Members and Master Farmers use their separate options.",
 		section = thievingSection,
 		position = 0
 	)
 	default ThievingMode thievingMode()
 	{
-		return ThievingMode.COINS_POUCH;
+		return ThievingMode.COINS;
 	}
 
 	@ConfigItem(
-		keyName = "hamFullLoot",
-		name = "H.A.M. Full Loot",
-			description = "With All mode, require all 37 pickpocket items instead of the Ham Outfit pieces.",
+		keyName = "hamPickpocketingMode",
+		name = "H.A.M. Members",
+		description = "'No Restrictions': H.A.M. Members are unrestricted."
+			+ "<br>'Member Card': requires the H.A.M. Member card."
+			+ "<br>'Member + Outfit': also requires all seven H.A.M. outfit cards."
+			+ "<br>'Full Loot': requires the member, outfit and all reviewed loot cards."
+			+ "<br>The v1 Coins parent is never required.",
 			section = thievingSection,
 			position = 2
 	)
-	default boolean hamFullLoot()
+	default HamPickpocketingMode hamPickpocketingMode()
 	{
-		return false;
+		return HamPickpocketingMode.MEMBER_CARD;
 	}
 
 	@ConfigItem(
 		keyName = "masterFarmerInsanity",
 		name = "Master Farmer Full Loot",
-			description = "With All mode, require all 45 Master Farmer seeds.",
-			section = thievingSection,
-			position = 3
+		description = "When enabled, require all 45 Master Farmer seeds. Master Farmers "
+			+ "otherwise have no NPC-card or Coins requirement.",
+		section = thievingSection,
+		position = 3
 	)
 	default boolean masterFarmerInsanity()
 	{

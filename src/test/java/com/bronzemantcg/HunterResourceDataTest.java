@@ -1,11 +1,11 @@
 package com.bronzemantcg;
 
+import com.bronzemantcg.catalog.ResourceNodeCatalog;
 import com.google.gson.Gson;
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 import org.junit.Test;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
@@ -21,7 +21,7 @@ public class HunterResourceDataTest
 		assertMissing("npc", "Black warlock", "catch", Set.of("output"),
 			List.of("Butterfly net / Magic butterfly net", "Butterfly jar"));
 		assertMissing("npc", "Baby impling", "catch", Set.of("output"),
-			List.of("Magic butterfly net", "Impling jar"));
+			List.of("Magic butterfly net"));
 		assertMissing("npc", "Horned graahk", "tease", Set.of("monster", "loot"),
 			List.of("Teasing stick"));
 	}
@@ -30,9 +30,9 @@ public class HunterResourceDataTest
 	public void allCardsDataAddsImplingAndGuaranteedPitfallOutputs()
 	{
 		assertMissing("npc", "Baby impling", "catch", Collections.emptySet(),
-			List.of("Magic butterfly net", "Impling jar", "Baby impling jar"));
+			List.of("Magic butterfly net", "Baby impling"));
 		assertMissing("npc", "Horned graahk", "tease", Collections.emptySet(),
-			List.of("Teasing stick", "Horned graahk", "Big bones", "Raw graahk"));
+			List.of("Teasing stick", "Big bones", "Raw graahk"));
 		assertMissing("npc", "Spined larupia", "tease", Collections.emptySet(),
 			List.of("Teasing stick", "Big bones", "Raw larupia"));
 	}

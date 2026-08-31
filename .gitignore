@@ -1,17 +1,17 @@
-.gradle
-build
+.gradle/
+build/
 bin/
-launch-client.bat
+out/
 .idea/
+*.iml
+launch-client.bat
 
-# Local working notes - not for the repo
-docs/api_merge_checklist.md
-/AGENTS.md
-/scripts/FishingSpotCacheDump.java
-/scripts/rebuild_fishing_data.js
-/scripts/build_monster_areas.js
+# Local project memory, tooling and agent configuration - not for Plugin Hub
+/.agents/
 /.claude/
+/.codex/
 /docs/
-/CHANGELOG.md
-/CLAUDE.md
 /scripts/
+/AGENTS.md
+/CLAUDE.md
+/CHANGELOG.md

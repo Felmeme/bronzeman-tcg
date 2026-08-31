@@ -1,11 +1,7 @@
 package com.bronzemantcg;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
-
+import com.bronzemantcg.catalog.QuestCatalog;
+import com.bronzemantcg.catalog.QuestRequirementCatalog;
 import com.google.gson.Gson;
 import java.util.Collections;
 import java.util.HashSet;
@@ -14,6 +10,11 @@ import java.util.Set;
 import net.runelite.api.Quest;
 import net.runelite.api.Skill;
 import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 public class QuestRequirementCatalogTest
 {

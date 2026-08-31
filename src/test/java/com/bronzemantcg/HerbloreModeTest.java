@@ -1,7 +1,8 @@
 package com.bronzemantcg;
 
+import com.bronzemantcg.restriction.HerbloreMode;
+import com.bronzemantcg.catalog.HerbloreRecipeStage;
 import org.junit.Test;
-
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 

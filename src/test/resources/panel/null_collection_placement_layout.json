@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "source": {
+    "organiserFingerprint": "sha256:test-null-row",
+    "organiserProjectSha256": "TEST"
+  },
+  "sections": [
+    {
+      "id": "items",
+      "name": "Items",
+      "visible": true,
+      "categories": [
+        {"id": "items-general", "name": "General", "visible": true}
+      ]
+    }
+  ],
+  "collectionPlacements": [null],
+  "betaCollectionCards": []
+}

@@ -1,5 +1,6 @@
 package com.bronzemantcg;
 
+import com.bronzemantcg.restriction.RestrictionDecisionService;
 import org.junit.Test;
 
 import static org.junit.Assert.assertFalse;
@@ -10,14 +11,14 @@ public class TutorialIslandBypassTest
 	@Test
 	public void activeTutorialProgressBypassesRestrictions()
 	{
-		assertTrue(BronzemanTcgPlugin.isTutorialIslandProgress(1));
-		assertTrue(BronzemanTcgPlugin.isTutorialIslandProgress(670));
+		assertTrue(RestrictionDecisionService.isTutorialIslandProgress(1));
+		assertTrue(RestrictionDecisionService.isTutorialIslandProgress(670));
 	}
 
 	@Test
 	public void completedOrUnsetTutorialDoesNotBypassRestrictions()
 	{
-		assertFalse(BronzemanTcgPlugin.isTutorialIslandProgress(0));
-		assertFalse(BronzemanTcgPlugin.isTutorialIslandProgress(1000));
+		assertFalse(RestrictionDecisionService.isTutorialIslandProgress(0));
+		assertFalse(RestrictionDecisionService.isTutorialIslandProgress(1000));
 	}
 }

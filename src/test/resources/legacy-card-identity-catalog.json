@@ -1,0 +1,26 @@
+{
+  "identities": [
+    {
+      "kind": "ITEM",
+      "cardName": "Water rune",
+      "legacyCardNames": [
+        "Water rune pack",
+        " water rune pack ",
+        "Water rune",
+        ""
+      ],
+      "entityNames": [
+        "Water rune",
+        "Water rune pack"
+      ],
+      "entityIds": [
+        555,
+        12730
+      ],
+      "ownedNameRequiredEntityIds": [
+        12730,
+        99999
+      ]
+    }
+  ]
+}

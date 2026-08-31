@@ -1,10 +1,12 @@
 package com.bronzemantcg;
 
+import com.bronzemantcg.restriction.HunterAreaSpecies;
+import com.bronzemantcg.restriction.HunterTrapType;
 import java.util.List;
 import net.runelite.api.gameval.ObjectID;
 import org.junit.Test;
-
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
@@ -46,17 +48,19 @@ public class HunterMappingsTest
 	@Test
 	public void mapsOfficialRuneLiteTrapObjectIdsToTheirExpectedCards()
 	{
-		assertEquals("Swamp lizard",
-			HunterTrapType.fromObjectId(ObjectID.HUNTING_SAPLING_UP_SWAMP).getCardName());
-		assertEquals("Orange salamander",
-			HunterTrapType.fromObjectId(ObjectID.HUNTING_SAPLING_UP_ORANGE).getCardName());
-		assertEquals("Red salamander",
-			HunterTrapType.fromObjectId(ObjectID.HUNTING_SAPLING_UP_RED).getCardName());
-		assertEquals("Black salamander",
-			HunterTrapType.fromObjectId(ObjectID.HUNTING_SAPLING_UP_BLACK).getCardName());
-		assertEquals("Tecu salamander",
-			HunterTrapType.fromObjectId(ObjectID.HUNTING_SAPLING_UP_MOUNTAIN).getCardName());
+		assertTrapCard(ObjectID.HUNTING_SAPLING_UP_SWAMP, "Swamp lizard");
+		assertTrapCard(ObjectID.HUNTING_SAPLING_UP_ORANGE, "Orange salamander");
+		assertTrapCard(ObjectID.HUNTING_SAPLING_UP_RED, "Red salamander");
+		assertTrapCard(ObjectID.HUNTING_SAPLING_UP_BLACK, "Black salamander");
+		assertTrapCard(ObjectID.HUNTING_SAPLING_UP_MOUNTAIN, "Tecu salamander");
 
 		assertNull(HunterTrapType.fromObjectId(-1));
+	}
+
+	private static void assertTrapCard(int objectId, String expectedCardName)
+	{
+		HunterTrapType trapType = HunterTrapType.fromObjectId(objectId);
+		assertNotNull(trapType);
+		assertEquals(expectedCardName, trapType.getCardName());
 	}
 }

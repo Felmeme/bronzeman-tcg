@@ -1,0 +1,491 @@
+{
+  "schemaVersion": 1,
+  "sourceCommit": "c83c3532c8d722e8c158ad888b85644c3e2a64db",
+  "contents": [
+    {
+      "name": "Tombs of Amascut",
+      "monsterCards": [
+        "Agile Scarab",
+        "Akkha",
+        "Akkha's Phantom",
+        "Akkha's Shadow",
+        "Arcane Scarab",
+        "Ba-Ba",
+        "Ba-Ba's Phantom",
+        "Baboon",
+        "Baboon Brawler",
+        "Baboon Mage",
+        "Baboon Shaman",
+        "Baboon Thrall",
+        "Baboon Thrower",
+        "Crocodile",
+        "Cursed Baboon",
+        "Elidinis' Warden",
+        "Kephri",
+        "Kephri's Phantom",
+        "Scarab (Tombs of Amascut)",
+        "Scarab Swarm",
+        "Soldier Scarab",
+        "Spitting Scarab",
+        "Tumeken's Warden",
+        "Volatile Baboon",
+        "Zebak"
+      ],
+      "notes": ""
+    }
+  ],
+  "nodes": [
+    {
+      "category": "hunter-rumours",
+      "name": "Guild Hunter Aco",
+      "requiredCardGroups": [
+        [
+          "Orange salamander"
+        ],
+        [
+          "Chinchompa"
+        ],
+        [
+          "Dark kebbit"
+        ],
+        [
+          "Red salamander"
+        ],
+        [
+          "Red chinchompa"
+        ],
+        [
+          "Dashing kebbit"
+        ],
+        [
+          "Sunlight antelope"
+        ],
+        [
+          "Tecu salamander"
+        ]
+      ],
+      "groupRoles": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "groupLabels": null
+    },
+    {
+      "category": "hunter-rumours",
+      "name": "Guild Hunter Cervus",
+      "requiredCardGroups": [
+        [
+          "Swamp lizard"
+        ],
+        [
+          "Horned graahk"
+        ],
+        [
+          "Spotted kebbit fur"
+        ],
+        [
+          "Orange salamander"
+        ],
+        [
+          "Chinchompa"
+        ],
+        [
+          "Dark kebbit"
+        ],
+        [
+          "Raw pyre fox"
+        ],
+        [
+          "Red chinchompa"
+        ]
+      ],
+      "groupRoles": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "groupLabels": null
+    },
+    {
+      "category": "hunter-rumours",
+      "name": "Guild Hunter Teco",
+      "requiredCardGroups": [
+        [
+          "Chinchompa"
+        ],
+        [
+          "Dark kebbit"
+        ],
+        [
+          "Red salamander"
+        ],
+        [
+          "Red chinchompa"
+        ],
+        [
+          "Dashing kebbit"
+        ]
+      ],
+      "groupRoles": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "groupLabels": null
+    },
+    {
+      "category": "hunter-rumours",
+      "name": "Guild Hunter Wolf",
+      "requiredCardGroups": [
+        [
+          "Red salamander"
+        ],
+        [
+          "Red chinchompa"
+        ],
+        [
+          "Dashing kebbit"
+        ],
+        [
+          "Tecu salamander"
+        ],
+        [
+          "Moonlight antelope"
+        ]
+      ],
+      "groupRoles": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "groupLabels": null
+    },
+    {
+      "category": "hunter-rumours",
+      "name": "Huntmaster Gilman",
+      "requiredCardGroups": [
+        [
+          "Tropical wagtail"
+        ],
+        [
+          "Wild kebbit"
+        ],
+        [
+          "Swamp lizard"
+        ],
+        [
+          "Barb-tailed kebbit"
+        ],
+        [
+          "Embertailed jerboa"
+        ],
+        [
+          "Horned graahk"
+        ],
+        [
+          "Spotted kebbit fur"
+        ],
+        [
+          "Orange salamander"
+        ],
+        [
+          "Chinchompa"
+        ],
+        [
+          "Dark kebbit"
+        ],
+        [
+          "Raw pyre fox"
+        ],
+        [
+          "Red salamander"
+        ],
+        [
+          "Red chinchompa"
+        ],
+        [
+          "Dashing kebbit"
+        ],
+        [
+          "Sunlight antelope"
+        ],
+        [
+          "Tecu salamander"
+        ],
+        [
+          "Moonlight antelope"
+        ]
+      ],
+      "groupRoles": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "groupLabels": null
+    },
+    {
+      "category": "slayer",
+      "name": "Achtryn",
+      "requiredCardGroups": [
+        [
+          "Achtryn"
+        ],
+        [
+          "Banshee",
+          "Twisted Banshee"
+        ],
+        [
+          "Bat",
+          "Giant bat",
+          "Albino bat"
+        ],
+        [
+          "Black bear",
+          "Grizzly bear",
+          "Grizzly bear cub"
+        ],
+        [
+          "Catablepon"
+        ],
+        [
+          "Cave bug"
+        ],
+        [
+          "Cave crawler"
+        ],
+        [
+          "Cave slime"
+        ],
+        [
+          "Cockatrice",
+          "Moonlight Cockatrice"
+        ],
+        [
+          "Crab",
+          "Ammonite Crab",
+          "Frost Crab",
+          "King Sand Crab",
+          "Rock Crab",
+          "Giant Rock Crab",
+          "Sand Crab",
+          "Swamp Crab"
+        ],
+        [
+          "Crawling Hand"
+        ],
+        [
+          "Guard dog",
+          "Wild dog",
+          "Jackal"
+        ],
+        [
+          "Flesh Crawler"
+        ],
+        [
+          "Ghost"
+        ],
+        [
+          "Ghoul"
+        ],
+        [
+          "Hill Giant",
+          "Cyclops"
+        ],
+        [
+          "Hobgoblin"
+        ],
+        [
+          "Ice warrior"
+        ],
+        [
+          "Kalphite Worker",
+          "Kalphite Soldier",
+          "Kalphite Guardian"
+        ],
+        [
+          "Killerwatt"
+        ],
+        [
+          "Lizard",
+          "Desert Lizard",
+          "Grimy Lizard",
+          "Small Lizard",
+          "Sulphur Lizard"
+        ],
+        [
+          "Mogre"
+        ],
+        [
+          "Pyrefiend"
+        ],
+        [
+          "Rockslug"
+        ],
+        [
+          "Scorpion",
+          "King Scorpion",
+          "Poison Scorpion",
+          "Pit Scorpion"
+        ],
+        [
+          "Shade",
+          "Loar Shade",
+          "Phrin Shade",
+          "Riyl Shade",
+          "Asyn Shade",
+          "Fiyr Shade",
+          "Urium Shade"
+        ],
+        [
+          "Skeleton"
+        ],
+        [
+          "Feral Vampyre",
+          "Vampyre Juvinate",
+          "Vyrewatch",
+          "Vyrewatch Sentinel"
+        ],
+        [
+          "Wall beast"
+        ],
+        [
+          "Wolf",
+          "Big Wolf",
+          "Dire Wolf",
+          "Jungle Wolf",
+          "Desert Wolf",
+          "Ice wolf"
+        ],
+        [
+          "Zombie",
+          "Zogre"
+        ],
+        [
+          "Chasm Crawler"
+        ],
+        [
+          "Cockathrice"
+        ],
+        [
+          "Crushing hand"
+        ],
+        [
+          "Flaming pyrelord"
+        ],
+        [
+          "Giant rockslug"
+        ],
+        [
+          "Screaming banshee"
+        ]
+      ],
+      "groupRoles": [
+        "master",
+        "monsters",
+        "monsters",
+        "monsters",
+        "monsters",
+        "monsters",
+        "monsters",
+        "monsters",
+        "monsters",
+        "monsters",
+        "monsters",
+        "monsters",
+        "monsters",
+        "monsters",
+        "monsters",
+        "monsters",
+        "monsters",
+        "monsters",
+        "monsters",
+        "monsters",
+        "monsters",
+        "monsters",
+        "monsters",
+        "monsters",
+        "monsters",
+        "monsters",
+        "monsters",
+        "monsters",
+        "monsters",
+        "monsters",
+        "monsters",
+        "superiors",
+        "superiors",
+        "superiors",
+        "superiors",
+        "superiors",
+        "superiors"
+      ],
+      "groupLabels": [
+        "Achtryn",
+        "Banshees",
+        "Bats",
+        "Bears",
+        "Catablepon",
+        "Cave Bugs",
+        "Cave Crawlers",
+        "Cave Slimes",
+        "Cockatrice",
+        "Crabs",
+        "Crawling Hands",
+        "Dogs",
+        "Fleshcrawlers",
+        "Ghosts",
+        "Ghouls",
+        "Hill Giants",
+        "Hobgoblins",
+        "Ice Warriors",
+        "Kalphites",
+        "Killerwatts",
+        "Lizards",
+        "Mogres",
+        "Pyrefiends",
+        "Rockslugs",
+        "Scorpions",
+        "Shades",
+        "Skeletons",
+        "Vampyres",
+        "Wall Beasts",
+        "Wolves",
+        "Zombies",
+        "Chasm Crawler",
+        "Cockathrice",
+        "Crushing hand",
+        "Flaming pyrelord",
+        "Giant rockslug",
+        "Screaming banshee"
+      ]
+    }
+  ]
+}

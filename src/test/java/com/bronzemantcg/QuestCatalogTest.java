@@ -1,5 +1,6 @@
 package com.bronzemantcg;
 
+import com.bronzemantcg.catalog.QuestCatalog;
 import com.google.gson.Gson;
 import java.util.List;
 import java.util.Locale;

@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "sections": [
+    {
+      "id": "items",
+      "name": "Items",
+      "visible": true,
+      "categories": [
+        {"id": "tools", "name": "Tools", "visible": true}
+      ]
+    }
+  ],
+  "collectionPlacements": [
+    {
+      "kind": "ITEM",
+      "cardName": "Invalid placement",
+      "categoryIndexes": [99]
+    }
+  ],
+  "betaCollectionCards": []
+}

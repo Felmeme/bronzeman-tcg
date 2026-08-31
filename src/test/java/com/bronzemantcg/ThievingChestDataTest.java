@@ -1,11 +1,11 @@
 package com.bronzemantcg;
 
+import com.bronzemantcg.catalog.ResourceNodeCatalog;
 import com.google.gson.Gson;
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 import org.junit.Test;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;

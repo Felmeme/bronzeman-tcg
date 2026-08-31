@@ -1,0 +1,289 @@
+package com.bronzemantcg.catalog;
+
+import com.google.gson.Gson;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.function.Predicate;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Set;
+import javax.inject.Inject;
+import javax.inject.Singleton;
+import lombok.extern.slf4j.Slf4j;
+
+/**
+ * Processing-skill recipes (firemaking, smithing, crafting, enchanting, fletching, herblore)
+ * loaded from resources/nodes/recipe_nodes.json. Each recipe declares input card groups (any one
+ * card per group, all groups needed) and an output card; the per-skill config mode decides
+ * whether inputs, output, or both are enforced at click time.
+ *
+ * Trigger kinds and their lookup keys:
+ *  - item-on-item:  (used item name, target item name) e.g. ("Tinderbox", "oak logs")
+ *  - item-on-object:(used item name, target object)    e.g. ("Iron ore", "furnace")
+ *  - interface:     (product name, "*") - make-X interface clicks only carry the product
+ *  - spell-on-item: keyed by the TARGET item alone ((item, "*")) since each enchantable
+ *    item has exactly one enchant spell; spell-name strings vary by client widget.
+ */
+@Slf4j
+@Singleton
+public class RecipeCatalog
+{
+	public static final String KIND_ITEM_ON_ITEM = "item-on-item";
+	public static final String KIND_ITEM_ON_OBJECT = "item-on-object";
+	public static final String KIND_INTERFACE = "interface";
+	public static final String KIND_SPELL_ON_ITEM = "spell-on-item";
+	public static final String ANY_TARGET = "*";
+	private static final String COSTUME_NEEDLE = "costume needle";
+	private static final Set<String> COSTUME_NEEDLE_REPLACEMENTS = new HashSet<>(Arrays.asList(
+		"needle", "thread"));
+
+	private static final Set<String> EVENT_LOGS = new HashSet<>(Arrays.asList(
+		"blue logs", "green logs", "red logs", "purple logs", "white logs"));
+
+	private Map<String, Recipe> recipes = Collections.emptyMap();
+
+	@Inject
+	public RecipeCatalog(Gson gson)
+	{
+		load(gson);
+	}
+
+	/**
+	 * Exact lookup with no ANY_TARGET fallback. Used to decide which of several
+	 * candidate items is the real material behind a generic interface label: a
+	 * fallback match would answer "yes" for every candidate and tell us nothing.
+	 */
+	public Recipe findExact(String kind, String name, String target)
+	{
+		if (name == null || target == null)
+		{
+			return null;
+		}
+		return recipes.get(key(kind,
+			canonicalTriggerName(kind,
+				CardNames.stripDoseSuffix(name.trim().toLowerCase(Locale.ROOT))),
+			CardNames.stripDoseSuffix(target.trim().toLowerCase(Locale.ROOT))));
+	}
+
+	/** @return the recipe for this interaction, or null if unrestricted. */
+	public Recipe find(String kind, String name, String target)
+	{
+		if (name == null)
+		{
+			return null;
+		}
+		String nameKey = canonicalTriggerName(kind,
+			CardNames.stripDoseSuffix(name.trim().toLowerCase(Locale.ROOT)));
+		String targetKey = target == null ? ANY_TARGET
+			: CardNames.stripDoseSuffix(target.trim().toLowerCase(Locale.ROOT));
+		Recipe recipe = recipes.get(key(kind, nameKey, targetKey));
+		if (recipe == null && !ANY_TARGET.equals(targetKey))
+		{
+			recipe = recipes.get(key(kind, nameKey, ANY_TARGET));
+		}
+		return recipe;
+	}
+
+	public int size()
+	{
+		return recipes.size();
+	}
+
+	private static String key(String kind, String nameLower, String targetLower)
+	{
+		return kind + '|' + nameLower + '|' + targetLower;
+	}
+
+	/** Costume needle opens the same sewing interfaces as Needle. */
+	private static String canonicalTriggerName(String kind, String nameLower)
+	{
+		return KIND_ITEM_ON_ITEM.equals(kind) && COSTUME_NEEDLE.equals(nameLower)
+			? "needle" : nameLower;
+	}
+
+	private void load(Gson gson)
+	{
+		try (InputStream stream = getClass().getResourceAsStream("/nodes/recipe_nodes.json"))
+		{
+			if (stream == null)
+			{
+				log.warn("recipe_nodes.json missing from classpath; recipe restrictions disabled.");
+				return;
+			}
+			Snapshot snapshot = gson.fromJson(
+				new InputStreamReader(stream, StandardCharsets.UTF_8), Snapshot.class);
+			if (snapshot == null || snapshot.recipes == null)
+			{
+				return;
+			}
+			// Interface names shared by several recipes (e.g. the knife menu labels every
+			// crossbow stock tier "Crossbow stock") cannot take the ANY_TARGET catch-all
+			// below: all of them would write the same key and only the last would survive,
+			// silently gating every tier on the last one's cards. Those must be matched on
+			// their declared target instead. Counted up front so the rule is automatic -
+			// any future generic-label family is handled without anyone noticing this trap.
+			Map<String, Integer> interfaceNameCounts = new HashMap<>();
+			for (RecipeDto dto : snapshot.recipes)
+			{
+				if (dto != null && dto.trigger != null && dto.trigger.kind != null
+					&& dto.trigger.name != null
+					&& KIND_INTERFACE.equals(dto.trigger.kind.trim().toLowerCase(Locale.ROOT)))
+				{
+					String n = dto.trigger.name.trim().toLowerCase(Locale.ROOT);
+					interfaceNameCounts.merge(n, 1, Integer::sum);
+				}
+			}
+
+			Map<String, Recipe> map = new HashMap<>();
+			for (RecipeDto dto : snapshot.recipes)
+			{
+				if (dto == null || dto.category == null || dto.trigger == null
+					|| dto.trigger.kind == null || dto.trigger.name == null)
+				{
+					continue;
+				}
+				List<ResourceNodeCatalog.CardGroup> inputs = new ArrayList<>();
+				if (dto.inputs != null)
+				{
+					for (List<String> group : dto.inputs)
+					{
+						ResourceNodeCatalog.CardGroup g =
+							ResourceNodeCatalog.CardGroup.of(group, null, null);
+						if (g != null)
+						{
+							inputs.add(g);
+						}
+					}
+				}
+				String kind = dto.trigger.kind.trim().toLowerCase(Locale.ROOT);
+				String name = dto.trigger.name.trim().toLowerCase(Locale.ROOT);
+				List<String> targets = dto.trigger.targets == null || dto.trigger.targets.isEmpty()
+					? Collections.singletonList(ANY_TARGET) : dto.trigger.targets;
+
+				for (String target : targets)
+				{
+					String targetKey = target == null ? ANY_TARGET : target.trim().toLowerCase(Locale.ROOT);
+					boolean eventLog = "firemaking".equals(dto.category) && EVENT_LOGS.contains(targetKey);
+					Recipe recipe = new Recipe(dto.category, inputs, dto.output, eventLog,
+						dto.crushable, HerbloreRecipeStage.from(dto.stage));
+					map.put(key(kind, name, targetKey), recipe);
+					if (KIND_SPELL_ON_ITEM.equals(kind))
+					{
+						// Also key enchants by the target jewellery alone: each enchantable
+						// item has exactly one enchant spell, and the clicked spell's menu
+						// string is less stable than the item name.
+						map.put(key(kind, targetKey, ANY_TARGET), recipe);
+					}
+					if (KIND_INTERFACE.equals(kind) && interfaceNameCounts.getOrDefault(name, 0) <= 1)
+					{
+						// Make-X clicks only expose the product name, not the station, so a
+						// uniquely-named product is matched by name alone. Skipped for shared
+						// names (see interfaceNameCounts above) - those match on target only,
+						// and failing to resolve one simply means no restriction.
+						map.put(key(kind, name, ANY_TARGET), recipe);
+					}
+				}
+			}
+			recipes = Collections.unmodifiableMap(map);
+			log.info("Loaded {} recipe rules from snapshot", recipes.size());
+		}
+		catch (IOException ex)
+		{
+			log.warn("Failed to load recipe_nodes.json", ex);
+		}
+	}
+
+	public static class Recipe
+	{
+		public final String category;
+		public final List<ResourceNodeCatalog.CardGroup> inputGroups;
+		/** Exact output card name, or null (e.g. firemaking produces no item). */
+		public final String output;
+		public final boolean eventLog;
+		/** Gem-cutting recipes whose gem can shatter into a Crushed gem; config-gated extra. */
+		public final boolean crushable;
+		/** Herblore chain position; null for non-Herblore recipes. */
+		public final HerbloreRecipeStage herbloreStage;
+
+		Recipe(String category, List<ResourceNodeCatalog.CardGroup> inputGroups, String output,
+			boolean eventLog, boolean crushable, HerbloreRecipeStage herbloreStage)
+		{
+			this.category = category.trim().toLowerCase(Locale.ROOT);
+			this.inputGroups = Collections.unmodifiableList(inputGroups);
+			this.output = output;
+			this.eventLog = eventLog;
+			this.crushable = crushable;
+			this.herbloreStage = herbloreStage;
+		}
+
+		/** Display strings for unmet requirements under the given enforcement, empty = allowed. */
+		public List<String> missingRequirements(Set<String> owned, boolean enforceInputs,
+			boolean enforceOutput)
+		{
+			return missingRequirements(owned::contains, enforceInputs, enforceOutput);
+		}
+
+		/** Identity-aware form used by enforcement; display strings and any-of groups are unchanged. */
+		public List<String> missingRequirements(Predicate<String> ownsCard,
+			boolean enforceInputs, boolean enforceOutput)
+		{
+			List<String> missing = new ArrayList<>();
+			boolean costumeNeedleOwned = "crafting".equals(category)
+				&& ownsCard.test(COSTUME_NEEDLE);
+			if (enforceInputs)
+			{
+				for (ResourceNodeCatalog.CardGroup group : inputGroups)
+				{
+					if (!group.isSatisfied(ownsCard)
+						&& !(costumeNeedleOwned && isCostumeNeedleReplacement(group)))
+					{
+						missing.add(String.join(" / ", group.displayCards));
+					}
+				}
+			}
+			if (enforceOutput && output != null
+				&& !ownsCard.test(output.toLowerCase(Locale.ROOT)))
+			{
+				missing.add(output);
+			}
+			return missing;
+		}
+
+		private static boolean isCostumeNeedleReplacement(ResourceNodeCatalog.CardGroup group)
+		{
+			return group.displayCards.size() == 1
+				&& COSTUME_NEEDLE_REPLACEMENTS.contains(
+					group.displayCards.get(0).toLowerCase(Locale.ROOT));
+		}
+	}
+
+	private static class Snapshot
+	{
+		List<RecipeDto> recipes;
+	}
+
+	private static class RecipeDto
+	{
+		String category;
+		String stage;
+		List<List<String>> inputs;
+		String output;
+		boolean crushable;
+		TriggerDto trigger;
+	}
+
+	private static class TriggerDto
+	{
+		String kind;
+		String name;
+		List<String> targets;
+	}
+}
