@@ -25,6 +25,13 @@ public class OsrsTcgCatalogClientTest
 	private static final String ENDPOINT = "https://example.test/catalog";
 
 	@Test
+	public void usesDedicatedApiSubdomain()
+	{
+		assertEquals("https://api.osrs-tcg.net/api/v1/catalog/cards/live",
+			OsrsTcgCatalogClient.LIVE_CATALOG_URL);
+	}
+
+	@Test
 	public void downloadsBodyAndCapturesVersionAsynchronously() throws Exception
 	{
 		String json = "{\"items\":[],\"npcs\":[]}";

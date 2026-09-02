@@ -123,6 +123,18 @@ public class RestrictionDecisionServiceTest
 	}
 
 	@Test
+	public void permanentNpcExemptionsBypassCardOwnership()
+	{
+		RestrictionDecisionService service = RestrictionDecisionTestSupport.harness()
+			.ownership(emptyIds())
+			.getService();
+
+		assertFalse(service.isNpcLocked(2850, "Veos"));
+		assertFalse(service.isNpcLocked(311, "Ironman tutor"));
+		assertTrue(service.isNpcLocked(2848, "Monkey"));
+	}
+
+	@Test
 	public void unknownAndNamelessEntitiesStillFailOpen()
 	{
 		RestrictionDecisionService service =
