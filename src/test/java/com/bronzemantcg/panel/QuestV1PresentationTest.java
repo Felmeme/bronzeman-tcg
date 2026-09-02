@@ -37,7 +37,7 @@ public class QuestV1PresentationTest
 		QuestV1Presentation.Data projected = presentation.project(source);
 		QuestCatalog.Requirement zombie = requirement(
 			quest(projected.getQuests(), "Defender of Varrock"),
-			"Armoured zombie (Defender of Varrock)");
+			"Armoured zombie");
 
 		assertEquals(List.of("Armoured zombie"), zombie.displayCards);
 		assertTrue(zombie.isSatisfied(Set.of("armoured zombie")));
@@ -47,7 +47,7 @@ public class QuestV1PresentationTest
 	}
 
 	@Test
-	public void omitsRetiredAlternativesWithoutChangingPinnedSource()
+	public void canonicalSourceNeedsNoRetiredAlternativeProjection()
 	{
 		QuestV1Presentation.Data projected = presentation.project(source);
 		QuestCatalog.QuestEntry digSite = quest(projected.getQuests(), "The Dig Site");
@@ -55,12 +55,13 @@ public class QuestV1PresentationTest
 			"RFD - Wartface & Bentnoze");
 
 		assertFalse(hasRequirement(digSite, "Cup of tea"));
-		assertFalse(hasRequirement(wartface, "Dye"));
-		assertTrue(hasRequirement(quest(source.getQuests(), "The Dig Site"),
+		assertEquals(List.of("Blue dye", "Green dye", "Purple dye"),
+			requirement(wartface, "Dye").displayCards);
+		assertFalse(hasRequirement(quest(source.getQuests(), "The Dig Site"),
 			"Cup of tea"));
-		assertEquals(List.of("Armoured zombie (Defender of Varrock)"),
+		assertEquals(List.of("Armoured zombie"),
 			requirement(quest(source.getQuests(), "Defender of Varrock"),
-				"Armoured zombie (Defender of Varrock)").displayCards);
+				"Armoured zombie").displayCards);
 	}
 
 	@Test

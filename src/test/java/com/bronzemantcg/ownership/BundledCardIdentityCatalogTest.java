@@ -5,6 +5,7 @@ import java.util.List;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 public class BundledCardIdentityCatalogTest
@@ -115,6 +116,19 @@ public class BundledCardIdentityCatalogTest
 		BundledCardIdentityCatalog catalog = new BundledCardIdentityCatalog(new Gson());
 		assertSingleCard(catalog.findByCardName(CardEntityKind.ITEM, "Burnt lobster"),
 			"Lobster");
+	}
+
+	@Test
+	public void coinPouchResolvesToCoinsWithoutOwningIt()
+	{
+		BundledCardIdentityCatalog catalog = new BundledCardIdentityCatalog(new Gson());
+		CardIdentity coins = catalog.findById(CardEntityKind.ITEM, 22521).get(0);
+
+		assertEquals("Coins", coins.getCardName());
+		assertTrue(catalog.findByCardName(CardEntityKind.ITEM, "Coin pouch").isEmpty());
+		assertTrue(coins.getOwnedNameRequiredEntityIds().contains(22521));
+		assertFalse(coins.isOwnedBy(TcgOwnershipSnapshot.namesOnly(
+			java.util.Set.of("Coin pouch"))));
 	}
 
 	private static void assertSingleCard(List<CardIdentity> matches, String cardName)

@@ -95,6 +95,7 @@ public final class OsrsTcgCatalogParser
 			}
 
 			Set<Integer> entityIds = new LinkedHashSet<>();
+			Set<Integer> ownedNameRequiredEntityIds = new LinkedHashSet<>();
 			Set<String> entityNames = new LinkedHashSet<>();
 			Set<String> legacyCardNames = new LinkedHashSet<>();
 			entityIds.add(parentId);
@@ -116,15 +117,28 @@ public final class OsrsTcgCatalogParser
 				claimId(parentsById, variantId, parentName, variantLocation);
 				entityIds.add(variantId);
 				entityNames.add(variantName);
-				if (!normalize(parentName).equals(normalize(variantName)))
+				if (requiresParentOwnershipName(kind, parentName, variantName))
+				{
+					ownedNameRequiredEntityIds.add(variantId);
+				}
+				else if (!normalize(parentName).equals(normalize(variantName)))
 				{
 					legacyCardNames.add(variantName);
 				}
 			}
 
-			CardIdentity identity = new CardIdentity(kind, parentName, legacyCardNames, entityIds);
+			CardIdentity identity = new CardIdentity(kind, parentName, legacyCardNames,
+				entityIds, ownedNameRequiredEntityIds);
 			entries.add(new ImmutableCardIdentityCatalog.Entry(identity, entityNames));
 		}
+	}
+
+	private static boolean requiresParentOwnershipName(CardEntityKind kind,
+		String parentName, String variantName)
+	{
+		return kind == CardEntityKind.ITEM
+			&& "coins".equals(normalize(parentName))
+			&& "coin pouch".equals(normalize(variantName));
 	}
 
 	private static void claimId(Map<Integer, String> parentsById, int entityId,

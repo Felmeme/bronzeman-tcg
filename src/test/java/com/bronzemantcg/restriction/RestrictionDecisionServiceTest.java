@@ -91,6 +91,26 @@ public class RestrictionDecisionServiceTest
 	}
 
 	@Test
+	public void betaCoinPouchDoesNotUnlockV1Coins()
+	{
+		RestrictionDecisionTestSupport.Harness harness = RestrictionDecisionTestSupport.harness()
+			.ownership(TcgOwnershipSnapshot.namesOnly(Set.of("coin pouch")));
+		RestrictionDecisionService service = harness.getService();
+
+		assertEquals("Coins", service.missingItemCardName(22521, "Coin pouch"));
+		harness.ownership(TcgOwnershipSnapshot.fromApi(List.of("Coin pouch"),
+			List.of(22521), Collections.emptyList(), null));
+		assertEquals("Coins", service.missingItemCardName(22521, "Coin pouch"));
+
+		harness.ownership(TcgOwnershipSnapshot.fromApi(List.of("Coins"),
+			List.of(22521), Collections.emptyList(), null));
+		assertNull(service.missingItemCardName(22521, "Coin pouch"));
+		harness.ownership(TcgOwnershipSnapshot.fromApi(Collections.emptyList(),
+			List.of(995), Collections.emptyList(), null));
+		assertNull(service.missingItemCardName(995, "Coins"));
+	}
+
+	@Test
 	public void npcChecksUseOnlyExplicitExemptions()
 	{
 		RestrictionDecisionTestSupport.Harness harness = RestrictionDecisionTestSupport.harness()
