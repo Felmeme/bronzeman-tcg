@@ -1339,14 +1339,14 @@
 			"miniquest": false,
 			"sections": [
 				{
-					"label": "Items",
+					"label": "NPCs",
 					"requirements": [
 						{
 							"label": "Guard (marked during the quest)",
 							"cards": [
 								"Guard"
 							],
-							"type": "card"
+							"type": "npc"
 						}
 					]
 				}
@@ -7510,6 +7510,18 @@
 							"type": "item"
 						}
 					]
+				},
+				{
+					"label": "NPCs",
+					"requirements": [
+						{
+							"label": "Guard",
+							"cards": [
+								"Guard"
+							],
+							"type": "npc"
+						}
+					]
 				}
 			],
 			"notes": ""
@@ -9694,7 +9706,20 @@
 		{
 			"name": "Romeo & Juliet",
 			"miniquest": false,
-			"sections": [],
+			"sections": [
+				{
+					"label": "NPCs",
+					"requirements": [
+						{
+							"label": "Guard",
+							"cards": [
+								"Guard"
+							],
+							"type": "npc"
+						}
+					]
+				}
+			],
 			"notes": ""
 		},
 		{
@@ -13634,6 +13659,18 @@
 			"name": "The Restless Ghost",
 			"miniquest": false,
 			"sections": [
+				{
+					"label": "Items",
+					"requirements": [
+						{
+							"label": "Ghostspeak Amulet",
+							"cards": [
+								"Ghostspeak amulet"
+							],
+							"type": "item"
+						}
+					]
+				},
 				{
 					"label": "Enemies",
 					"requirements": [
