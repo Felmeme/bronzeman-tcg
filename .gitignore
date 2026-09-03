@@ -6,6 +6,21 @@ out/
 *.iml
 launch-client.bat
 
+# macOS
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+
+# Linux
+*~
+.directory
+.Trash-*
+.classpath
+.factorypath
+.project
+.settings/
+
 # Local project memory, tooling and agent configuration - not for Plugin Hub
 /.agents/
 /.claude/
