@@ -9945,6 +9945,32 @@
 								"Air talisman"
 							],
 							"type": "item"
+						},
+						{
+							"label": "Any pickaxe",
+							"cards": [
+								"Crystal pickaxe",
+								"3rd age pickaxe",
+								"Infernal pickaxe",
+								"Dragon pickaxe",
+								"Rune pickaxe",
+								"Gilded pickaxe",
+								"Adamant pickaxe",
+								"Mithril pickaxe",
+								"Black pickaxe",
+								"Steel pickaxe",
+								"Iron pickaxe",
+								"Bronze pickaxe"
+							],
+							"type": "item"
+						},
+						{
+							"label": "Any essence",
+							"cards": [
+								"Rune essence",
+								"Pure essence"
+							],
+							"type": "item"
 						}
 					]
 				}
