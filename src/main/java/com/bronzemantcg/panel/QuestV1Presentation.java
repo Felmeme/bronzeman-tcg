@@ -142,19 +142,19 @@ public final class QuestV1Presentation
 
 	private static CardIdentity resolve(String card, String type, CardResolver resolver)
 	{
-		if ("item".equals(type))
-		{
-			return tracked(resolver.resolveCardName(CardEntityKind.ITEM, card));
+		switch (type) {
+			case "item":
+				return tracked(resolver.resolveCardName(CardEntityKind.ITEM, card));
+			case "enemy":
+			case "npc":
+				return tracked(resolver.resolveCardName(CardEntityKind.NPC, card));
+			default:
+				CardIdentity item = tracked(
+						resolver.resolveCardName(CardEntityKind.ITEM, card));
+				CardIdentity npc = tracked(
+						resolver.resolveCardName(CardEntityKind.NPC, card));
+				return item == null ? npc : npc == null ? item : null;
 		}
-		if ("enemy".equals(type))
-		{
-			return tracked(resolver.resolveCardName(CardEntityKind.NPC, card));
-		}
-		CardIdentity item = tracked(
-			resolver.resolveCardName(CardEntityKind.ITEM, card));
-		CardIdentity npc = tracked(
-			resolver.resolveCardName(CardEntityKind.NPC, card));
-		return item == null ? npc : npc == null ? item : null;
 	}
 
 	private static CardIdentity tracked(CardResolver.Result result)
