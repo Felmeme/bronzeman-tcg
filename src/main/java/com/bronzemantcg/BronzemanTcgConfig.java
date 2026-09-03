@@ -363,7 +363,7 @@ public interface BronzemanTcgConfig extends Config
 		description = "Downloads the current card catalogue from the public OSRS TCG API."
 			+ "<br>When disabled, Bronzeman uses its bundled Beta compatibility catalogue.",
 		warning = "This plugin submits your IP address, and may submit various account data,"
-			+ "<br>to a 3rd-party server not controlled or verified by Runelite developers.",
+			+ "to a 3rd-party server not controlled or verified by Runelite developers.",
 		section = externalPluginsSection,
 		position = 0
 	)
