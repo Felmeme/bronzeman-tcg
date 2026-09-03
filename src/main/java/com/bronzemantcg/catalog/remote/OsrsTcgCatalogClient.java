@@ -20,7 +20,7 @@ import okhttp3.ResponseBody;
 @Singleton
 public class OsrsTcgCatalogClient
 {
-	static final String LIVE_CATALOG_URL = "https://osrs-tcg.net/api/v1/catalog/cards/live";
+	static final String LIVE_CATALOG_URL = "https://api.osrs-tcg.net/api/v1/catalog/cards/live";
 	static final int MAX_RESPONSE_BYTES = 8 * 1024 * 1024;
 
 	private final OkHttpClient httpClient;

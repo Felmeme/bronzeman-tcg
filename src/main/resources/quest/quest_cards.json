@@ -2,7 +2,11 @@
 	"schema": 2,
 	"source": {
 		"questHelperCommit": "5ea99d5ea9ba3fb096ebe7b5ed02d80883e9819d",
-		"questHelperVersion": "4.16.1"
+		"questHelperVersion": "4.16.1",
+		"v1CatalogueCaptured": "2026-09-01",
+		"v1CatalogueVersion": "sha256:89a4a37cd140073989c5e71470fe887eb956be79e6c71e3c0113ca96e9751246",
+		"v1CatalogueBodySha256": "bdd9b5dae23e878e38ccc05f36476330c8f3355a45ab67e1d1569995902a4fd5",
+		"cardPolicy": "canonical-live-v1-parents"
 	},
 	"quests": [
 		{
@@ -52,7 +56,6 @@
 							"cards": [
 								"Crystal axe",
 								"3rd age axe",
-								"Infernal axe",
 								"Dragon axe",
 								"Rune axe",
 								"Gilded axe",
@@ -153,7 +156,6 @@
 							"cards": [
 								"Crystal axe",
 								"3rd age axe",
-								"Infernal axe",
 								"Dragon axe",
 								"Rune axe",
 								"Gilded axe",
@@ -435,12 +437,7 @@
 						{
 							"label": "Any cat",
 							"cards": [
-								"Cat",
-								"Kitten",
-								"Overgrown cat",
-								"Lazy cat",
-								"Wily cat",
-								"Hellcat"
+								"Pet cat"
 							],
 							"type": "item"
 						},
@@ -469,10 +466,7 @@
 								"Maple logs",
 								"Mahogany logs",
 								"Yew logs",
-								"Magic logs",
-								"Green logs",
-								"Red logs",
-								"Blue logs"
+								"Magic logs"
 							],
 							"type": "item"
 						},
@@ -639,13 +633,6 @@
 											"type": "item"
 										}
 									]
-								},
-								{
-									"label": "Emerald enchant tablet",
-									"cards": [
-										"Enchant emerald or jade"
-									],
-									"type": "item"
 								}
 							]
 						}
@@ -774,7 +761,7 @@
 								"Bruma torch",
 								"Bullseye lantern",
 								"Candle lantern",
-								"Lit candle",
+								"Candle",
 								"Mining helmet",
 								"Oil lamp",
 								"Oil lantern",
@@ -836,9 +823,9 @@
 							"type": "item"
 						},
 						{
-							"label": "Toy mouse",
+							"label": "Clockwork",
 							"cards": [
-								"Toy mouse"
+								"Clockwork"
 							],
 							"type": "item"
 						},
@@ -1096,7 +1083,6 @@
 							"cards": [
 								"Crystal pickaxe",
 								"3rd age pickaxe",
-								"Infernal pickaxe",
 								"Dragon pickaxe",
 								"Rune pickaxe",
 								"Gilded pickaxe",
@@ -1122,9 +1108,9 @@
 							"type": "enemy"
 						},
 						{
-							"label": "Arzinian Being of Bordanzan",
+							"label": "Arzinian Being",
 							"cards": [
-								"Arzinian Being of Bordanzan"
+								"Arzinian Being"
 							],
 							"type": "enemy"
 						}
@@ -1215,7 +1201,6 @@
 							"cards": [
 								"Crystal axe",
 								"3rd age axe",
-								"Infernal axe",
 								"Dragon axe",
 								"Rune axe",
 								"Gilded axe",
@@ -1321,7 +1306,7 @@
 						{
 							"label": "Marrentill potion (unf)",
 							"cards": [
-								"Marrentill potion"
+								"Marrentill"
 							],
 							"type": "item"
 						}
@@ -1556,7 +1541,7 @@
 								"Bruma torch",
 								"Bullseye lantern",
 								"Candle lantern",
-								"Lit candle",
+								"Candle",
 								"Mining helmet",
 								"Oil lamp",
 								"Oil lantern",
@@ -1995,7 +1980,7 @@
 								"Bruma torch",
 								"Bullseye lantern",
 								"Candle lantern",
-								"Lit candle",
+								"Candle",
 								"Mining helmet",
 								"Oil lamp",
 								"Oil lantern",
@@ -2008,7 +1993,6 @@
 							"cards": [
 								"Crystal pickaxe",
 								"3rd age pickaxe",
-								"Infernal pickaxe",
 								"Dragon pickaxe",
 								"Rune pickaxe",
 								"Gilded pickaxe",
@@ -2064,7 +2048,6 @@
 							"cards": [
 								"Crystal pickaxe",
 								"3rd age pickaxe",
-								"Infernal pickaxe",
 								"Dragon pickaxe",
 								"Rune pickaxe",
 								"Gilded pickaxe",
@@ -2083,23 +2066,23 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Armoured zombie (Defender of Varrock)",
+							"label": "Armoured zombie",
 							"cards": [
-								"Armoured zombie (Defender of Varrock)"
+								"Armoured zombie"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Armoured zombie (The Curse of Arrav)",
+							"label": "Armoured zombie",
 							"cards": [
-								"Armoured zombie (The Curse of Arrav)"
+								"Armoured zombie"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Armoured zombie (Zemouregal's Fort)",
+							"label": "Armoured zombie",
 							"cards": [
-								"Armoured zombie (Zemouregal's Fort)"
+								"Armoured zombie"
 							],
 							"type": "enemy"
 						},
@@ -2580,9 +2563,9 @@
 					"label": "Items",
 					"requirements": [
 						{
-							"label": "Unfired bowl",
+							"label": "Bowl",
 							"cards": [
-								"Unfired bowl"
+								"Bowl"
 							],
 							"type": "item"
 						},
@@ -2746,9 +2729,6 @@
 						{
 							"label": "Any machete",
 							"cards": [
-								"Red topaz machete",
-								"Jade machete",
-								"Opal machete",
 								"Machete"
 							],
 							"type": "item"
@@ -2882,7 +2862,6 @@
 							"cards": [
 								"Crystal axe",
 								"3rd age axe",
-								"Infernal axe",
 								"Dragon axe",
 								"Rune axe",
 								"Gilded axe",
@@ -2902,7 +2881,7 @@
 								"Bruma torch",
 								"Bullseye lantern",
 								"Candle lantern",
-								"Lit candle",
+								"Candle",
 								"Mining helmet",
 								"Oil lamp",
 								"Oil lantern",
@@ -2923,7 +2902,6 @@
 							"cards": [
 								"Crystal pickaxe",
 								"3rd age pickaxe",
-								"Infernal pickaxe",
 								"Dragon pickaxe",
 								"Rune pickaxe",
 								"Gilded pickaxe",
@@ -3230,9 +3208,9 @@
 							"type": "item"
 						},
 						{
-							"label": "Pineapple chunks",
+							"label": "Pineapple",
 							"cards": [
-								"Pineapple chunks"
+								"Pineapple"
 							],
 							"type": "item"
 						},
@@ -3287,7 +3265,7 @@
 						{
 							"label": "Ranarr potion (unf)",
 							"cards": [
-								"Ranarr potion"
+								"Ranarr weed"
 							],
 							"type": "item"
 						}
@@ -3330,9 +3308,9 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Kebbit (Eagles' Peak)",
+							"label": "Kebbit",
 							"cards": [
-								"Kebbit (Eagles' Peak)"
+								"Kebbit"
 							],
 							"type": "enemy"
 						}
@@ -3395,7 +3373,6 @@
 							"cards": [
 								"Crystal pickaxe",
 								"3rd age pickaxe",
-								"Infernal pickaxe",
 								"Dragon pickaxe",
 								"Rune pickaxe",
 								"Gilded pickaxe",
@@ -3451,7 +3428,6 @@
 							"cards": [
 								"Crystal pickaxe",
 								"3rd age pickaxe",
-								"Infernal pickaxe",
 								"Dragon pickaxe",
 								"Rune pickaxe",
 								"Gilded pickaxe",
@@ -3585,7 +3561,6 @@
 							"cards": [
 								"Crystal pickaxe",
 								"3rd age pickaxe",
-								"Infernal pickaxe",
 								"Dragon pickaxe",
 								"Rune pickaxe",
 								"Gilded pickaxe",
@@ -3840,7 +3815,7 @@
 							"type": "item"
 						},
 						{
-							"label": "Empty Sack",
+							"label": "Empty sack",
 							"cards": [
 								"Empty sack"
 							],
@@ -3854,14 +3829,14 @@
 							"type": "item"
 						},
 						{
-							"label": "Yellow Dye",
+							"label": "Yellow dye",
 							"cards": [
 								"Yellow dye"
 							],
 							"type": "item"
 						},
 						{
-							"label": "Red Dye",
+							"label": "Red dye",
 							"cards": [
 								"Red dye"
 							],
@@ -4074,7 +4049,6 @@
 							"cards": [
 								"Crystal pickaxe",
 								"3rd age pickaxe",
-								"Infernal pickaxe",
 								"Dragon pickaxe",
 								"Rune pickaxe",
 								"Gilded pickaxe",
@@ -4414,9 +4388,9 @@
 							"type": "item"
 						},
 						{
-							"label": "Filled plant pot",
+							"label": "Plant pot",
 							"cards": [
-								"Filled plant pot"
+								"Plant pot"
 							],
 							"type": "item"
 						},
@@ -4506,7 +4480,7 @@
 							"type": "item"
 						},
 						{
-							"label": "Raw Sardine",
+							"label": "Raw sardine",
 							"cards": [
 								"Raw sardine"
 							],
@@ -4812,7 +4786,7 @@
 						{
 							"label": "Tarromin potion (unf)",
 							"cards": [
-								"Tarromin potion"
+								"Tarromin"
 							],
 							"type": "item"
 						},
@@ -4842,7 +4816,6 @@
 							"cards": [
 								"Crystal axe",
 								"3rd age axe",
-								"Infernal axe",
 								"Dragon axe",
 								"Rune axe",
 								"Gilded axe",
@@ -4956,7 +4929,6 @@
 								"Bronze pickaxe",
 								"Crystal pickaxe",
 								"3rd age pickaxe",
-								"Infernal pickaxe",
 								"Dragon pickaxe",
 								"Rune pickaxe",
 								"Gilded pickaxe",
@@ -4999,7 +4971,7 @@
 						{
 							"label": "Harralander potion (unf)",
 							"cards": [
-								"Harralander potion"
+								"Harralander"
 							],
 							"type": "item"
 						},
@@ -5162,9 +5134,9 @@
 					"label": "Items",
 					"requirements": [
 						{
-							"label": "Morytania legs 2",
+							"label": "Morytania legs",
 							"cards": [
-								"Morytania legs 2"
+								"Morytania legs"
 							],
 							"type": "item"
 						}
@@ -5370,12 +5342,7 @@
 						{
 							"label": "Any cat or kitten",
 							"cards": [
-								"Cat",
-								"Kitten",
-								"Overgrown cat",
-								"Lazy cat",
-								"Wily cat",
-								"Hellcat"
+								"Pet cat"
 							],
 							"type": "item"
 						},
@@ -5608,7 +5575,6 @@
 							"cards": [
 								"Crystal pickaxe",
 								"3rd age pickaxe",
-								"Infernal pickaxe",
 								"Dragon pickaxe",
 								"Rune pickaxe",
 								"Gilded pickaxe",
@@ -5830,16 +5796,16 @@
 							"type": "enemy"
 						},
 						{
-							"label": "Tumeken's Warden",
+							"label": "The Wardens",
 							"cards": [
-								"Tumeken's Warden"
+								"The Wardens"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Elidinis' Warden",
+							"label": "The Wardens",
 							"cards": [
-								"Elidinis' Warden"
+								"The Wardens"
 							],
 							"type": "enemy"
 						}
@@ -6058,7 +6024,7 @@
 								"Bruma torch",
 								"Bullseye lantern",
 								"Candle lantern",
-								"Lit candle",
+								"Candle",
 								"Mining helmet",
 								"Oil lamp",
 								"Oil lantern",
@@ -6069,7 +6035,7 @@
 						{
 							"label": "Toadflax potion (unf)",
 							"cards": [
-								"Toadflax potion"
+								"Toadflax"
 							],
 							"type": "item"
 						}
@@ -6150,8 +6116,7 @@
 							"label": "Rune axe or higher",
 							"cards": [
 								"Rune axe",
-								"Dragon axe",
-								"Infernal axe"
+								"Dragon axe"
 							],
 							"type": "item"
 						},
@@ -6301,7 +6266,6 @@
 							"cards": [
 								"Crystal pickaxe",
 								"3rd age pickaxe",
-								"Infernal pickaxe",
 								"Dragon pickaxe",
 								"Rune pickaxe",
 								"Gilded pickaxe",
@@ -6317,9 +6281,6 @@
 						{
 							"label": "Any machete",
 							"cards": [
-								"Red topaz machete",
-								"Jade machete",
-								"Opal machete",
 								"Machete"
 							],
 							"type": "item"
@@ -6389,7 +6350,6 @@
 								"Bronze axe",
 								"Crystal axe",
 								"3rd age axe",
-								"Infernal axe",
 								"Dragon axe",
 								"Rune axe",
 								"Gilded axe",
@@ -6515,7 +6475,6 @@
 							"cards": [
 								"Crystal pickaxe",
 								"3rd age pickaxe",
-								"Infernal pickaxe",
 								"Dragon pickaxe",
 								"Rune pickaxe",
 								"Gilded pickaxe",
@@ -6533,7 +6492,6 @@
 							"cards": [
 								"Crystal axe",
 								"3rd age axe",
-								"Infernal axe",
 								"Dragon axe",
 								"Rune axe",
 								"Gilded axe",
@@ -6657,10 +6615,7 @@
 								"Adamant scimitar",
 								"Rune scimitar",
 								"Dragon scimitar",
-								"Wilderness sword 1",
-								"Wilderness sword 2",
-								"Wilderness sword 3",
-								"Wilderness sword 4"
+								"Wilderness sword"
 							],
 							"type": "item"
 						}
@@ -6724,10 +6679,7 @@
 								"Adamant scimitar",
 								"Rune scimitar",
 								"Dragon scimitar",
-								"Wilderness sword 1",
-								"Wilderness sword 2",
-								"Wilderness sword 3",
-								"Wilderness sword 4"
+								"Wilderness sword"
 							],
 							"type": "item"
 						}
@@ -7127,7 +7079,7 @@
 								"Bruma torch",
 								"Bullseye lantern",
 								"Candle lantern",
-								"Lit candle",
+								"Candle",
 								"Mining helmet",
 								"Oil lamp",
 								"Oil lantern",
@@ -7140,7 +7092,6 @@
 							"cards": [
 								"Crystal pickaxe",
 								"3rd age pickaxe",
-								"Infernal pickaxe",
 								"Dragon pickaxe",
 								"Rune pickaxe",
 								"Gilded pickaxe",
@@ -7231,7 +7182,6 @@
 							"cards": [
 								"Crystal axe",
 								"3rd age axe",
-								"Infernal axe",
 								"Dragon axe",
 								"Rune axe",
 								"Gilded axe",
@@ -7250,7 +7200,6 @@
 								"Bronze pickaxe",
 								"Crystal pickaxe",
 								"3rd age pickaxe",
-								"Infernal pickaxe",
 								"Dragon pickaxe",
 								"Rune pickaxe",
 								"Gilded pickaxe",
@@ -7461,7 +7410,6 @@
 								{
 									"label": "Catalytic talisman/tiara",
 									"cards": [
-										"Catalytic talisman",
 										"Catalytic tiara"
 									],
 									"type": "item"
@@ -7511,15 +7459,13 @@
 										"Swamp paste",
 										"Thread",
 										"Tinderbox",
-										"Unicorn horn dust",
+										"Unicorn horn",
 										"Vial of water",
 										"White apron",
 										"White berries",
 										"Archery ticket",
 										"Agility arena ticket",
 										"Castle wars ticket",
-										"Crumbling tome",
-										"Jail key",
 										"Dusty key"
 									]
 								}
@@ -7531,9 +7477,9 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Shadow (Temple of Light)",
+							"label": "Shadow",
 							"cards": [
-								"Shadow (Temple of Light)"
+								"Shadow"
 							],
 							"type": "enemy"
 						}
@@ -7743,7 +7689,6 @@
 							"cards": [
 								"Crystal axe",
 								"3rd age axe",
-								"Infernal axe",
 								"Dragon axe",
 								"Rune axe",
 								"Gilded axe",
@@ -7834,9 +7779,9 @@
 									"type": "item"
 								},
 								{
-									"label": "Cup of hot water",
+									"label": "Empty cup",
 									"cards": [
-										"Cup of hot water"
+										"Empty cup"
 									],
 									"type": "item"
 								}
@@ -8337,13 +8282,6 @@
 								"Redberry pie"
 							],
 							"type": "item"
-						},
-						{
-							"label": "Captain's log",
-							"cards": [
-								"Captain's log"
-							],
-							"type": "item"
 						}
 					]
 				},
@@ -8468,7 +8406,7 @@
 						{
 							"label": "Monkey",
 							"cards": [
-								"Monkey (monster)",
+								"Monkey",
 								"Monkey Zombie"
 							],
 							"type": "enemy"
@@ -8560,7 +8498,7 @@
 								"Bruma torch",
 								"Bullseye lantern",
 								"Candle lantern",
-								"Lit candle",
+								"Candle",
 								"Mining helmet",
 								"Oil lamp",
 								"Oil lantern",
@@ -8601,7 +8539,7 @@
 						{
 							"label": "Cave goblin",
 							"cards": [
-								"Cave goblin (monster)",
+								"Cave goblin",
 								"Cave goblin guard",
 								"Cave goblin miner"
 							],
@@ -8665,9 +8603,9 @@
 							"type": "enemy"
 						},
 						{
-							"label": "Lizard",
+							"label": "Desert Lizard",
 							"cards": [
-								"Lizard"
+								"Desert Lizard"
 							],
 							"type": "enemy"
 						},
@@ -8682,8 +8620,7 @@
 							"label": "Moss Giant",
 							"cards": [
 								"Bryophyta",
-								"Moss giant",
-								"Moss Giant (Iorwerth Dungeon)"
+								"Moss Giant"
 							],
 							"type": "enemy"
 						},
@@ -8753,9 +8690,9 @@
 								"Mountain troll",
 								"Pee Hat",
 								"River troll",
-								"Rock (Troll)",
+								"Rock",
 								"Stick",
-								"Thrower Troll",
+								"Thrower troll",
 								"Troll general",
 								"Twig"
 							],
@@ -8807,8 +8744,7 @@
 						{
 							"label": "Zombie",
 							"cards": [
-								"Armoured zombie (Defender of Varrock)",
-								"Armoured zombie (Zemouregal's Fort)",
+								"Armoured zombie",
 								"Nazastarool",
 								"Sorebones",
 								"Zombie",
@@ -8832,11 +8768,7 @@
 						{
 							"label": "Cat / Hellcat (not Overgrown)",
 							"cards": [
-								"Kitten",
-								"Cat",
-								"Wily cat",
-								"Lazy cat",
-								"Hellcat"
+								"Pet cat"
 							],
 							"type": "item"
 						},
@@ -8855,9 +8787,9 @@
 							"type": "item"
 						},
 						{
-							"label": "Unicorn horn dust",
+							"label": "Unicorn horn",
 							"cards": [
-								"Unicorn horn dust"
+								"Unicorn horn"
 							],
 							"type": "item"
 						},
@@ -9008,7 +8940,6 @@
 							"label": "Dye",
 							"cards": [
 								"Blue dye",
-								"Black dye",
 								"Green dye",
 								"Purple dye"
 							]
@@ -9021,9 +8952,9 @@
 							"type": "item"
 						},
 						{
-							"label": "Orange slices",
+							"label": "Orange",
 							"cards": [
-								"Orange slices"
+								"Orange"
 							],
 							"type": "item"
 						},
@@ -9070,9 +9001,9 @@
 					"label": "Items",
 					"requirements": [
 						{
-							"label": "Fishbowl",
+							"label": "Empty fishbowl",
 							"cards": [
-								"Fishbowl"
+								"Empty fishbowl"
 							],
 							"type": "item"
 						},
@@ -9180,10 +9111,7 @@
 						{
 							"label": "Cat (except Overgrown)",
 							"cards": [
-								"Kitten",
-								"Cat",
-								"Wily cat",
-								"Lazy cat"
+								"Pet cat"
 							],
 							"type": "item"
 						},
@@ -9215,9 +9143,9 @@
 							"type": "item"
 						},
 						{
-							"label": "Gorilla greegree",
+							"label": "Monkey greegree",
 							"cards": [
-								"Gorilla greegree"
+								"Monkey greegree"
 							],
 							"type": "item"
 						},
@@ -9248,14 +9176,14 @@
 							"type": "enemy"
 						},
 						{
-							"label": "Monkey guard",
+							"label": "Monkey Guard",
 							"cards": [
 								"Monkey Guard"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Monkey archer",
+							"label": "Monkey Archer",
 							"cards": [
 								"Monkey Archer"
 							],
@@ -9298,7 +9226,6 @@
 									"cards": [
 										"Crystal axe",
 										"3rd age axe",
-										"Infernal axe",
 										"Dragon axe",
 										"Rune axe",
 										"Gilded axe",
@@ -9314,9 +9241,6 @@
 								{
 									"label": "Any machete",
 									"cards": [
-										"Red topaz machete",
-										"Jade machete",
-										"Opal machete",
 										"Machete"
 									],
 									"type": "item"
@@ -9381,7 +9305,6 @@
 							"cards": [
 								"Crystal pickaxe",
 								"3rd age pickaxe",
-								"Infernal pickaxe",
 								"Dragon pickaxe",
 								"Rune pickaxe",
 								"Gilded pickaxe",
@@ -9399,7 +9322,6 @@
 							"cards": [
 								"Crystal axe",
 								"3rd age axe",
-								"Infernal axe",
 								"Dragon axe",
 								"Rune axe",
 								"Gilded axe",
@@ -9413,9 +9335,9 @@
 							"type": "item"
 						},
 						{
-							"label": "Raw chompy",
+							"label": "Cooked chompy",
 							"cards": [
-								"Raw chompy"
+								"Cooked chompy"
 							],
 							"type": "item"
 						},
@@ -9617,13 +9539,6 @@
 							"type": "item"
 						},
 						{
-							"label": "Strip of cloth",
-							"cards": [
-								"Strip of cloth"
-							],
-							"type": "item"
-						},
-						{
 							"label": "Pestle and mortar",
 							"cards": [
 								"Pestle and mortar"
@@ -9653,8 +9568,7 @@
 									"label": "Bronze arrow/fire",
 									"logic": "ALL",
 									"cards": [
-										"Bronze arrow",
-										"Bronze fire arrow"
+										"Bronze arrow"
 									],
 									"type": "item"
 								},
@@ -9663,7 +9577,7 @@
 									"logic": "ALL",
 									"cards": [
 										"Iron arrow",
-										"Iron fire arrow"
+										"Steel arrow"
 									],
 									"type": "item"
 								},
@@ -9671,8 +9585,7 @@
 									"label": "Steel arrow/fire",
 									"logic": "ALL",
 									"cards": [
-										"Steel arrow",
-										"Steel fire arrow"
+										"Steel arrow"
 									],
 									"type": "item"
 								},
@@ -9681,7 +9594,7 @@
 									"logic": "ALL",
 									"cards": [
 										"Mithril arrow",
-										"Mithril fire arrow"
+										"Steel arrow"
 									],
 									"type": "item"
 								},
@@ -9689,8 +9602,7 @@
 									"label": "Adamant arrow/fire",
 									"logic": "ALL",
 									"cards": [
-										"Adamant arrow",
-										"Adamant fire arrow"
+										"Adamant arrow"
 									],
 									"type": "item"
 								},
@@ -9699,7 +9611,7 @@
 									"logic": "ALL",
 									"cards": [
 										"Rune arrow",
-										"Rune fire arrow"
+										"Steel arrow"
 									],
 									"type": "item"
 								},
@@ -9707,8 +9619,7 @@
 									"label": "Dragon arrow/fire",
 									"logic": "ALL",
 									"cards": [
-										"Dragon arrow",
-										"Dragon fire arrow"
+										"Dragon arrow"
 									],
 									"type": "item"
 								},
@@ -9716,8 +9627,7 @@
 									"label": "Amethyst arrow/fire",
 									"logic": "ALL",
 									"cards": [
-										"Amethyst arrow",
-										"Amethyst fire arrow"
+										"Amethyst arrow"
 									],
 									"type": "item"
 								}
@@ -9751,10 +9661,7 @@
 								"Granite gloves",
 								"Ham gloves",
 								"Iron gloves",
-								"Karamja gloves 1",
-								"Karamja gloves 2",
-								"Karamja gloves 3",
-								"Karamja gloves 4",
+								"Karamja gloves",
 								"Leather gloves",
 								"Mime gloves",
 								"Mystic gloves",
@@ -10161,9 +10068,9 @@
 							"type": "enemy"
 						},
 						{
-							"label": "Strange Creature",
+							"label": "Phantom Muspah",
 							"cards": [
-								"Strange Creature"
+								"Phantom Muspah"
 							],
 							"type": "enemy"
 						}
@@ -10189,7 +10096,7 @@
 						{
 							"label": "Tarromin potion (unf)",
 							"cards": [
-								"Tarromin potion"
+								"Tarromin"
 							],
 							"type": "item"
 						},
@@ -10346,16 +10253,16 @@
 					"label": "Enemies",
 					"requirements": [
 						{
-							"label": "Strange Creature",
+							"label": "Phantom Muspah",
 							"cards": [
-								"Strange Creature"
+								"Phantom Muspah"
 							],
 							"type": "enemy"
 						},
 						{
-							"label": "Strange creature (Shadows of Custodia)",
+							"label": "Juvenile custodian stalker",
 							"cards": [
-								"Strange creature (Shadows of Custodia)"
+								"Juvenile custodian stalker"
 							],
 							"type": "enemy"
 						}
@@ -10488,7 +10395,7 @@
 							"label": "Torch, lit candle, candle lantern, lit black candle, or bruma torch",
 							"cards": [
 								"Torch",
-								"Lit candle",
+								"Candle",
 								"Candle lantern",
 								"Bruma torch"
 							],
@@ -10651,13 +10558,6 @@
 											"type": "item"
 										}
 									]
-								},
-								{
-									"label": "Ruby enchant tablet",
-									"cards": [
-										"Enchant ruby or topaz"
-									],
-									"type": "item"
 								}
 							]
 						},
@@ -10666,7 +10566,6 @@
 							"cards": [
 								"Crystal axe",
 								"3rd age axe",
-								"Infernal axe",
 								"Dragon axe",
 								"Rune axe",
 								"Gilded axe",
@@ -11073,18 +10972,10 @@
 							"type": "item"
 						},
 						{
-							"label": "Ode to eternity — Card required: Item is used mid-quest",
-							"cards": [
-								"Ode to eternity"
-							],
-							"type": "item"
-						},
-						{
 							"label": "Any axe",
 							"cards": [
 								"Crystal axe",
 								"3rd age axe",
-								"Infernal axe",
 								"Dragon axe",
 								"Rune axe",
 								"Gilded axe",
@@ -11102,7 +10993,6 @@
 							"cards": [
 								"Crystal pickaxe",
 								"3rd age pickaxe",
-								"Infernal pickaxe",
 								"Dragon pickaxe",
 								"Rune pickaxe",
 								"Gilded pickaxe",
@@ -11237,7 +11127,7 @@
 								"Bruma torch",
 								"Bullseye lantern",
 								"Candle lantern",
-								"Lit candle",
+								"Candle",
 								"Mining helmet",
 								"Oil lamp",
 								"Oil lantern",
@@ -11250,7 +11140,6 @@
 							"cards": [
 								"Crystal pickaxe",
 								"3rd age pickaxe",
-								"Infernal pickaxe",
 								"Dragon pickaxe",
 								"Rune pickaxe",
 								"Gilded pickaxe",
@@ -11528,17 +11417,14 @@
 								"Maple logs",
 								"Mahogany logs",
 								"Yew logs",
-								"Magic logs",
-								"Green logs",
-								"Red logs",
-								"Blue logs"
+								"Magic logs"
 							],
 							"type": "item"
 						},
 						{
-							"label": "Poison karambwan",
+							"label": "Cooked karambwan",
 							"cards": [
-								"Poison karambwan"
+								"Cooked karambwan"
 							],
 							"type": "item"
 						},
@@ -11604,7 +11490,7 @@
 						{
 							"label": "Monkey",
 							"cards": [
-								"Monkey (monster)"
+								"Monkey"
 							],
 							"type": "enemy"
 						}
@@ -11632,7 +11518,6 @@
 							"cards": [
 								"Crystal pickaxe",
 								"3rd age pickaxe",
-								"Infernal pickaxe",
 								"Dragon pickaxe",
 								"Rune pickaxe",
 								"Gilded pickaxe",
@@ -11712,7 +11597,7 @@
 										"Steel crossbow",
 										"Mithril crossbow",
 										"Adamant crossbow",
-										"Runite crossbow",
+										"Rune crossbow",
 										"Dragon crossbow",
 										"Bronze bolts",
 										"Iron bolts",
@@ -11805,7 +11690,6 @@
 							"cards": [
 								"Crystal pickaxe",
 								"3rd age pickaxe",
-								"Infernal pickaxe",
 								"Dragon pickaxe",
 								"Rune pickaxe",
 								"Gilded pickaxe",
@@ -11865,7 +11749,7 @@
 								"Bruma torch",
 								"Bullseye lantern",
 								"Candle lantern",
-								"Lit candle",
+								"Candle",
 								"Mining helmet",
 								"Oil lamp",
 								"Oil lantern",
@@ -11972,7 +11856,6 @@
 							"cards": [
 								"Crystal pickaxe",
 								"3rd age pickaxe",
-								"Infernal pickaxe",
 								"Dragon pickaxe",
 								"Rune pickaxe",
 								"Gilded pickaxe",
@@ -12042,7 +11925,6 @@
 							"cards": [
 								"Crystal pickaxe",
 								"3rd age pickaxe",
-								"Infernal pickaxe",
 								"Dragon pickaxe",
 								"Rune pickaxe",
 								"Gilded pickaxe",
@@ -12199,7 +12081,6 @@
 							"cards": [
 								"Crystal pickaxe",
 								"3rd age pickaxe",
-								"Infernal pickaxe",
 								"Dragon pickaxe",
 								"Rune pickaxe",
 								"Gilded pickaxe",
@@ -12222,7 +12103,7 @@
 								"Steel crossbow",
 								"Mithril crossbow",
 								"Adamant crossbow",
-								"Runite crossbow",
+								"Rune crossbow",
 								"Dragon crossbow"
 							],
 							"type": "item"
@@ -12299,13 +12180,6 @@
 							"type": "item"
 						},
 						{
-							"label": "Cup of tea",
-							"cards": [
-								"Cup of tea"
-							],
-							"type": "item"
-						},
-						{
 							"label": "Rope",
 							"cards": [
 								"Rope"
@@ -12315,8 +12189,7 @@
 						{
 							"label": "Opal",
 							"cards": [
-								"Opal",
-								"Uncut opal"
+								"Opal"
 							],
 							"type": "item"
 						}
@@ -12441,10 +12314,7 @@
 								"Granite gloves",
 								"Ham gloves",
 								"Iron gloves",
-								"Karamja gloves 1",
-								"Karamja gloves 2",
-								"Karamja gloves 3",
-								"Karamja gloves 4",
+								"Karamja gloves",
 								"Leather gloves",
 								"Mime gloves",
 								"Mystic gloves",
@@ -12455,13 +12325,6 @@
 								"Void knight gloves",
 								"Warm gloves",
 								"Zombie gloves"
-							],
-							"type": "item"
-						},
-						{
-							"label": "Kharidian headpiece",
-							"cards": [
-								"Kharidian headpiece"
 							],
 							"type": "item"
 						},
@@ -12694,7 +12557,6 @@
 							"cards": [
 								"Crystal pickaxe",
 								"3rd age pickaxe",
-								"Infernal pickaxe",
 								"Dragon pickaxe",
 								"Rune pickaxe",
 								"Gilded pickaxe",
@@ -12734,9 +12596,9 @@
 							"type": "enemy"
 						},
 						{
-							"label": "Monstrous Basilisk (The Fremennik Exiles)",
+							"label": "Monstrous basilisk",
 							"cards": [
-								"Monstrous Basilisk (The Fremennik Exiles)"
+								"Monstrous basilisk"
 							],
 							"type": "enemy"
 						},
@@ -12894,7 +12756,6 @@
 									"cards": [
 										"Crystal axe",
 										"3rd age axe",
-										"Infernal axe",
 										"Dragon axe",
 										"Rune axe",
 										"Gilded axe",
@@ -12999,7 +12860,7 @@
 								"Steel crossbow",
 								"Mithril crossbow",
 								"Adamant crossbow",
-								"Runite crossbow",
+								"Rune crossbow",
 								"Dragon crossbow"
 							],
 							"type": "item"
@@ -13436,7 +13297,7 @@
 						{
 							"label": "Holy symbol material",
 							"cards": [
-								"Unblessed symbol"
+								"Holy symbol"
 							],
 							"type": "item"
 						}
@@ -13507,9 +13368,9 @@
 							"type": "item"
 						},
 						{
-							"label": "Lantern lens",
+							"label": "Bullseye lantern",
 							"cards": [
-								"Lantern lens"
+								"Bullseye lantern"
 							],
 							"type": "item"
 						},
@@ -13629,7 +13490,6 @@
 							"cards": [
 								"Crystal pickaxe",
 								"3rd age pickaxe",
-								"Infernal pickaxe",
 								"Dragon pickaxe",
 								"Rune pickaxe",
 								"Gilded pickaxe",
@@ -13664,7 +13524,6 @@
 								"Crystal pickaxe",
 								"Dragon pickaxe",
 								"Gilded pickaxe",
-								"Infernal pickaxe",
 								"Iron pickaxe",
 								"Mithril pickaxe",
 								"Rune pickaxe",
@@ -13679,7 +13538,7 @@
 								"Bruma torch",
 								"Bullseye lantern",
 								"Candle lantern",
-								"Lit candle",
+								"Candle",
 								"Mining helmet",
 								"Oil lamp",
 								"Oil lantern",
@@ -13716,7 +13575,7 @@
 								"Steel crossbow",
 								"Mithril crossbow",
 								"Adamant crossbow",
-								"Runite crossbow",
+								"Rune crossbow",
 								"Dragon crossbow"
 							],
 							"type": "item"
@@ -13833,7 +13692,6 @@
 								"Crystal axe",
 								"Dragon axe",
 								"Gilded axe",
-								"Infernal axe",
 								"Iron axe",
 								"Mithril axe",
 								"Rune axe",
@@ -13914,7 +13772,7 @@
 						{
 							"label": "Access to the Mind Altar",
 							"cards": [
-								"Catalytic talisman",
+								"Catalytic tiara",
 								"Mind talisman"
 							],
 							"type": "item"
@@ -14059,7 +13917,6 @@
 										"Crystal axe",
 										"Dragon axe",
 										"Gilded axe",
-										"Infernal axe",
 										"Iron axe",
 										"Mithril axe",
 										"Rune axe",
@@ -14084,7 +13941,6 @@
 										"Crystal pickaxe",
 										"Dragon pickaxe",
 										"Gilded pickaxe",
-										"Infernal pickaxe",
 										"Iron pickaxe",
 										"Mithril pickaxe",
 										"Rune pickaxe",
@@ -14106,8 +13962,8 @@
 							"label": "Any non-silver ring you are willing to lose",
 							"cards": [
 								"Gold ring",
-								"Sapphire ring",
-								"Emerald ring",
+								"Ring of recoil",
+								"Ring of dueling",
 								"Ruby ring",
 								"Diamond ring"
 							],
@@ -14364,7 +14220,6 @@
 							"cards": [
 								"Crystal axe",
 								"3rd age axe",
-								"Infernal axe",
 								"Dragon axe",
 								"Rune axe",
 								"Gilded axe",
@@ -14409,7 +14264,7 @@
 					"label": "Items",
 					"requirements": [
 						{
-							"label": "Quetzal Feed",
+							"label": "Quetzal feed",
 							"cards": [
 								"Quetzal feed"
 							],
@@ -14489,8 +14344,7 @@
 									"label": "Bronze arrow/fire",
 									"logic": "ALL",
 									"cards": [
-										"Bronze arrow",
-										"Bronze fire arrow"
+										"Bronze arrow"
 									],
 									"type": "item"
 								},
@@ -14499,7 +14353,7 @@
 									"logic": "ALL",
 									"cards": [
 										"Iron arrow",
-										"Iron fire arrow"
+										"Steel arrow"
 									],
 									"type": "item"
 								},
@@ -14507,8 +14361,7 @@
 									"label": "Steel arrow/fire",
 									"logic": "ALL",
 									"cards": [
-										"Steel arrow",
-										"Steel fire arrow"
+										"Steel arrow"
 									],
 									"type": "item"
 								},
@@ -14517,7 +14370,7 @@
 									"logic": "ALL",
 									"cards": [
 										"Mithril arrow",
-										"Mithril fire arrow"
+										"Steel arrow"
 									],
 									"type": "item"
 								},
@@ -14525,8 +14378,7 @@
 									"label": "Adamant arrow/fire",
 									"logic": "ALL",
 									"cards": [
-										"Adamant arrow",
-										"Adamant fire arrow"
+										"Adamant arrow"
 									],
 									"type": "item"
 								},
@@ -14535,7 +14387,7 @@
 									"logic": "ALL",
 									"cards": [
 										"Rune arrow",
-										"Rune fire arrow"
+										"Steel arrow"
 									],
 									"type": "item"
 								},
@@ -14543,8 +14395,7 @@
 									"label": "Dragon arrow/fire",
 									"logic": "ALL",
 									"cards": [
-										"Dragon arrow",
-										"Dragon fire arrow"
+										"Dragon arrow"
 									],
 									"type": "item"
 								},
@@ -14552,8 +14403,7 @@
 									"label": "Amethyst arrow/fire",
 									"logic": "ALL",
 									"cards": [
-										"Amethyst arrow",
-										"Amethyst fire arrow"
+										"Amethyst arrow"
 									],
 									"type": "item"
 								}
@@ -14785,7 +14635,7 @@
 								"Bruma torch",
 								"Bullseye lantern",
 								"Candle lantern",
-								"Lit candle",
+								"Candle",
 								"Mining helmet",
 								"Oil lamp",
 								"Oil lantern",
@@ -14908,7 +14758,7 @@
 								"Bruma torch",
 								"Bullseye lantern",
 								"Candle lantern",
-								"Lit candle",
+								"Candle",
 								"Mining helmet",
 								"Oil lamp",
 								"Oil lantern",
@@ -14921,7 +14771,6 @@
 							"cards": [
 								"Crystal pickaxe",
 								"3rd age pickaxe",
-								"Infernal pickaxe",
 								"Dragon pickaxe",
 								"Rune pickaxe",
 								"Gilded pickaxe",
@@ -14937,7 +14786,7 @@
 						{
 							"label": "Guam potion (unf)",
 							"cards": [
-								"Guam potion"
+								"Guam leaf"
 							],
 							"type": "item"
 						}
@@ -15029,7 +14878,7 @@
 						{
 							"label": "Access to the Chaos Altar",
 							"cards": [
-								"Catalytic talisman",
+								"Catalytic tiara",
 								"Chaos talisman"
 							],
 							"type": "item"
@@ -15080,9 +14929,9 @@
 							"type": "item"
 						},
 						{
-							"label": "Lantern lens",
+							"label": "Bullseye lantern",
 							"cards": [
-								"Lantern lens"
+								"Bullseye lantern"
 							],
 							"type": "item"
 						},
@@ -15496,7 +15345,7 @@
 						{
 							"label": "Burnt meat (check wiki)",
 							"cards": [
-								"Burnt meat"
+								"Cooked meat"
 							],
 							"type": "item"
 						},
@@ -15580,13 +15429,12 @@
 								{
 									"label": "Any brutal arrows",
 									"cards": [
-										"Bronze brutal",
-										"Iron brutal",
-										"Steel brutal",
-										"Black brutal",
-										"Mithril brutal",
-										"Adamant brutal",
-										"Rune brutal"
+										"Bronze arrow",
+										"Iron arrow",
+										"Steel arrow",
+										"Mithril arrow",
+										"Adamant arrow",
+										"Rune arrow"
 									],
 									"type": "item"
 								},

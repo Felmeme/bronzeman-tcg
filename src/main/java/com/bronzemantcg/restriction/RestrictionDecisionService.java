@@ -191,7 +191,8 @@ public final class RestrictionDecisionService
 
 	public boolean isNpcLocked(int npcId, String name)
 	{
-		if (name == null || name.isEmpty() || NpcRestrictionPolicy.isCardRestrictionExempt(npcId))
+		if (name == null || name.isEmpty()
+			|| NpcRestrictionPolicy.isCardRestrictionExempt(npcId, name))
 		{
 			return false;
 		}

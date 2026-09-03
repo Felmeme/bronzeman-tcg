@@ -15,4 +15,14 @@ public class NpcRestrictionPolicyTest
 			NpcID.MACRO_EVIL_BOB_FEMALE_SERVANT));
 		assertFalse(NpcRestrictionPolicy.isCardRestrictionExempt(NpcID.DEATH_SERVANT1));
 	}
+
+	@Test
+	public void veosAndIronmanTutorArePermanentExactNameExemptions()
+	{
+		assertTrue(NpcRestrictionPolicy.isCardRestrictionExempt(2850, "Veos"));
+		assertTrue(NpcRestrictionPolicy.isCardRestrictionExempt(311, "Ironman tutor"));
+		assertTrue(NpcRestrictionPolicy.isCardRestrictionExempt(999999, " VEOS "));
+		assertFalse(NpcRestrictionPolicy.isCardRestrictionExempt(999999, "Veos assistant"));
+		assertFalse(NpcRestrictionPolicy.isCardRestrictionExempt(999999, "Ironman"));
+	}
 }

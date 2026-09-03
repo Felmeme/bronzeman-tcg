@@ -3,6 +3,7 @@ package com.bronzemantcg.catalog.remote;
 import com.bronzemantcg.ownership.CardEntityKind;
 import com.bronzemantcg.ownership.CardIdentity;
 import com.bronzemantcg.ownership.ImmutableCardIdentityCatalog;
+import com.bronzemantcg.ownership.TcgOwnershipSnapshot;
 import com.google.gson.Gson;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -15,6 +16,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThrows;
 import static org.junit.Assert.assertTrue;
 
@@ -144,6 +146,28 @@ public class OsrsTcgCatalogParserTest
 			catalogue(item, validNpc())));
 		assertSingleParent(snapshot.findById(CardEntityKind.ITEM, 1), "Item");
 		assertSingleParent(snapshot.findById(CardEntityKind.ITEM, 2), "Item");
+	}
+
+	@Test
+	public void coinPouchRemainsAnEntityAliasButCannotOwnCoins() throws Exception
+	{
+		String coins = "{\"id\":617,\"name\":\"Coins\",\"tcg\":{\"variants\":["
+			+ "{\"id\":995,\"name\":\"Coins\"},"
+			+ "{\"id\":22521,\"name\":\"Coin pouch\"}]}}";
+		OsrsTcgCatalogSnapshot snapshot = parser.parse(new StringReader(
+			catalogue(coins, validNpc())));
+		CardIdentity identity = snapshot.findById(CardEntityKind.ITEM, 22521).get(0);
+
+		assertSingleParent(snapshot.findByName(CardEntityKind.ITEM, "Coin pouch"), "Coins");
+		assertTrue(snapshot.findByCardName(CardEntityKind.ITEM, "Coin pouch").isEmpty());
+		assertTrue(identity.getOwnedNameRequiredEntityIds().contains(22521));
+		assertFalse(identity.isOwnedBy(TcgOwnershipSnapshot.namesOnly(Set.of("Coin pouch"))));
+		assertFalse(identity.isOwnedBy(TcgOwnershipSnapshot.fromApi(List.of("Coin pouch"),
+			List.of(22521), List.of(), null)));
+		assertTrue(identity.isOwnedBy(TcgOwnershipSnapshot.fromApi(List.of("Coins"),
+			List.of(22521), List.of(), null)));
+		assertTrue(identity.isOwnedBy(TcgOwnershipSnapshot.fromApi(List.of(),
+			List.of(995), List.of(), null)));
 	}
 
 	private OsrsTcgCatalogSnapshot fixture() throws Exception

@@ -80,7 +80,7 @@ public class QuestCatalogTest
 		Assert.assertEquals("Recipe for Disaster - King Awowogei", awowogei.questName);
 		Assert.assertEquals("Items", awowogei.sections.get(0).label);
 		Assert.assertEquals("Enemies", awowogei.sections.get(1).label);
-		Assert.assertNotNull(requirement(awowogei, "Gorilla greegree"));
+		Assert.assertNotNull(requirement(awowogei, "Monkey greegree"));
 	}
 
 	@Test
@@ -114,6 +114,20 @@ public class QuestCatalogTest
 		Assert.assertTrue(catalog.getQuestsForCard(
 			"Don't have to attack to complete quest").isEmpty());
 		Assert.assertTrue(catalog.getQuestsForCard("Lyre Monsters - Check wiki").isEmpty());
+	}
+
+	@Test
+	public void usesCanonicalV1QuestCardsAndDropsRetiredBetaRequirements()
+	{
+		QuestCatalog catalog = new QuestCatalog(new Gson());
+		QuestCatalog.QuestEntry defender = quest(catalog, "Defender of Varrock");
+
+		Assert.assertNotNull(requirement(defender, "Armoured zombie"));
+		Assert.assertTrue(catalog.getQuestsForCard(
+			"Armoured zombie (Defender of Varrock)").isEmpty());
+		Assert.assertTrue(catalog.getQuestsForCard("Cup of tea").isEmpty());
+		Assert.assertTrue(catalog.getQuestsForCard("Captain's log").isEmpty());
+		Assert.assertTrue(catalog.getQuestsForCard("Ode to eternity").isEmpty());
 	}
 
 	private static QuestCatalog.QuestEntry quest(QuestCatalog catalog, String name)
