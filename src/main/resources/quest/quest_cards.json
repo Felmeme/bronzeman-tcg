@@ -954,6 +954,18 @@
 							"type": "enemy"
 						}
 					]
+				},
+				{
+					"label": "NPCs",
+					"requirements": [
+						{
+							"label": "Ramarno",
+							"cards": [
+								"Ramarno"
+							],
+							"type": "npc"
+						}
+					]
 				}
 			],
 			"notes": ""
@@ -2747,6 +2759,46 @@
 								"Elvarg"
 							],
 							"type": "enemy"
+						}
+					]
+				},
+				{
+					"label": "NPCs",
+					"rewuirements": [
+						{
+							"label": "Oziach",
+							"cards": [
+								"Oziarch"
+							],
+							"type": "npc"
+						},
+						{
+							"label": "Duke Horacio",
+							"cards": [
+								"Duke horacio"
+							],
+							"type": "npc"
+						},
+						{
+							"label": "Oracle",
+							"cards": [
+								"Oracle"
+							],
+							"type": "npc"
+						},
+						{
+							"label": "General Bentnoze",
+							"cards": [
+								"Goblin generals"
+							],
+							"type": "npc"
+						},
+						{
+							"label": "Ned",
+							"cards": [
+								"Ned"
+							],
+							"type": "npc"
 						}
 					]
 				}
@@ -13616,6 +13668,18 @@
 							"type": "enemy"
 						}
 					]
+				},
+				{
+					"label": "NPCs",
+					"requirements": [
+						{
+							"label": "Duke Horacio",
+							"cards": [
+								"Duke horacio"
+							],
+							"type": "npc"
+						}
+					]
 				}
 			],
 			"notes": ""
@@ -15596,6 +15660,18 @@
 								"Spade"
 							],
 							"type": "item"
+						}
+					]
+				},
+				{
+					"label": "NPCs",
+					"requirements": [
+						{
+							"label": "Veos",
+							"cards": [
+								"Veos"
+							],
+							"type": "npc"
 						}
 					]
 				}
