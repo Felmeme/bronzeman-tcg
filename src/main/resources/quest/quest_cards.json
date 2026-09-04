@@ -1285,6 +1285,30 @@
 							"type": "item"
 						}
 					]
+				},
+				{
+					"label": "NPCs",
+					"requirements": [
+						{
+							"label": "Sir Amik Varze",
+							"cards": [
+								"Sir amik varze"
+							],
+							"type": "npc"
+						}
+					]
+				},
+				{
+					"label": "Enemies",
+					"requirements": [
+						{
+							"label": "Black Knight (optional)",
+							"cards": [
+								"Black knight"
+							],
+							"type": "enemy"
+						}
+					]
 				}
 			],
 			"notes": ""
@@ -2137,6 +2161,25 @@
 								"Delrith"
 							],
 							"type": "enemy"
+						},
+						{
+							"label": "Dark Wizard",
+							"cards": [
+								"Dark wizard"
+							],
+							"type": "enemy"
+						}
+					]
+				},
+				{
+					"label": "NPCs",
+					"requirements": [
+						{
+							"label": "Wizard Traiborn",
+							"cards": [
+								"Wizard traiborn"
+							],
+							"type": "npc"
 						}
 					]
 				}
@@ -2549,6 +2592,18 @@
 								"Iron ore"
 							],
 							"type": "item"
+						}
+					]
+				},
+				{
+					"label": "NPCs",
+					"requirements": [
+						{
+							"label": "Doric",
+							"cards": [
+								"Doric"
+							],
+							"type": "npc"
 						}
 					]
 				}
@@ -3903,6 +3958,30 @@
 							"type": "item"
 						}
 					]
+				},
+				{
+					"label": "Enemies",
+					"requirements": [
+						{
+							"label": "Skeleton (optional)",
+							"cards": [
+								"Skeleton"
+							],
+							"type": "enemy"
+						}
+					]
+				},
+				{
+					"label": "NPCs",
+					"requirements": [
+						{
+							"label": "Professor Oddenstein",
+							"cards": [
+								"Professor oddenstein"
+							],
+							"type": "npc"
+						}
+					]
 				}
 			],
 			"notes": ""
@@ -4770,6 +4849,32 @@
 								"Yellow dye"
 							],
 							"type": "item"
+						}
+					]
+				},
+				{
+					"label": "NPCs",
+					"requirements": [
+						{
+							"label": "General Bentnoze",
+							"cards": [
+								"Goblin generals"
+							],
+							"type": "npc"
+						},
+						{
+							"label": "General Wartface",
+							"cards": [
+								"Goblin generals"
+							],
+							"type": "npc"
+						},
+						{
+							"label": "Wyson the Gardener (optional)",
+							"cards": [
+								"Wyson the gardener"
+							],
+							"type": "npc"
 						}
 					]
 				}
@@ -10353,6 +10458,25 @@
 			"miniquest": false,
 			"sections": [
 				{
+					"label": "NPCs",
+					"requirements": [
+						{
+							"label": "Reldo",
+							"cards": [
+								"Reldo"
+							],
+							"type": "npc"
+						},
+						{
+							"label": "King Roald",
+							"cards": [
+								"King roald"
+							],
+							"type": "npc"
+						}
+					]
+				},
+				{
 					"label": "Gang routes",
 					"requirements": [
 						{
@@ -10371,6 +10495,13 @@
 												"Weaponsmaster"
 											],
 											"type": "enemy"
+										},
+										{
+											"label": "Charlie the Tramp",
+											"cards": [
+												"Charlie the tramp"
+											],
+											"type": "npc"
 										}
 									]
 								},
@@ -13526,6 +13657,39 @@
 								"Bronze pickaxe"
 							],
 							"type": "item"
+						},
+						{
+							"label": "Blurite ore",
+							"cards": [
+								"Blurite ore"
+							],
+							"type": "item"
+						}
+					]
+				},
+				{
+					"label": "NPCs",
+					"requirements": [
+						{
+							"label": "Squire",
+							"cards": [
+								"Squire"
+							],
+							"type": "npc"
+						},
+						{
+							"label": "Reldo",
+							"cards": [
+								"Reldo"
+							],
+							"type": "npc"
+						},
+						{
+							"label": "Thurgo",
+							"cards": [
+								"Thurgo"
+							],
+							"type": "npc"
 						}
 					]
 				}
