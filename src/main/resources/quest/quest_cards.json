@@ -2764,7 +2764,7 @@
 				},
 				{
 					"label": "NPCs",
-					"rewuirements": [
+					"requirements": [
 						{
 							"label": "Oziach",
 							"cards": [
