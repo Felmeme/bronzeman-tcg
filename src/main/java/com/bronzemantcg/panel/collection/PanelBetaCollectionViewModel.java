@@ -155,11 +155,13 @@ public final class PanelBetaCollectionViewModel
 		Map<PanelCollectionLayout.BetaVariant, PanelCollectionViewModel.Status>
 			variantStates = new LinkedHashMap<>();
 		int ownedParents = 0;
+		Set<String> unmatched = new java.util.TreeSet<>(betaSnapshotNames);
 		for (PanelCollectionLayout.BetaCollectionCard parent : parents)
 		{
 			boolean parentOwned = false;
 			for (PanelCollectionLayout.BetaVariant variant : parent.getVariants())
 			{
+				unmatched.remove(normalize(variant.getName()));
 				boolean variantOwned = ownership.isBetaVariantInSnapshot(
 					variant, betaSnapshotNames);
 				PanelCollectionViewModel.Status status = variantOwned
@@ -177,7 +179,7 @@ public final class PanelBetaCollectionViewModel
 			}
 			parentStates.put(parent, parentStatus);
 		}
-		return new State(parentStates, variantStates, ownedParents, snapshotStatus);
+		return new State(parentStates, variantStates, ownedParents, snapshotStatus, unmatched);
 	}
 
 	private static Map<PanelCollectionLayout.BetaCollectionCard, String> buildDisplayNames(
@@ -214,17 +216,25 @@ public final class PanelBetaCollectionViewModel
 			PanelCollectionViewModel.Status> variantStates;
 		private final int ownedParents;
 		private final BetaCollectionSnapshotService.Status snapshotStatus;
+		private final Set<String> unmatchedNames;
 
 		private State(Map<PanelCollectionLayout.BetaCollectionCard,
 			PanelCollectionViewModel.Status> parentStates,
 			Map<PanelCollectionLayout.BetaVariant,
 				PanelCollectionViewModel.Status> variantStates,
-			int ownedParents, BetaCollectionSnapshotService.Status snapshotStatus)
+			int ownedParents, BetaCollectionSnapshotService.Status snapshotStatus,
+			Set<String> unmatchedNames)
 		{
 			this.parentStates = Collections.unmodifiableMap(new LinkedHashMap<>(parentStates));
 			this.variantStates = Collections.unmodifiableMap(new LinkedHashMap<>(variantStates));
 			this.ownedParents = ownedParents;
 			this.snapshotStatus = snapshotStatus;
+			this.unmatchedNames = Collections.unmodifiableSet(new LinkedHashSet<>(unmatchedNames));
+		}
+
+		public Set<String> getUnmatchedNames()
+		{
+			return unmatchedNames;
 		}
 
 		public PanelCollectionViewModel.Status getParentStatus(
@@ -263,6 +273,7 @@ public final class PanelBetaCollectionViewModel
 			State state = (State) other;
 			return ownedParents == state.ownedParents
 				&& snapshotStatus == state.snapshotStatus
+				&& unmatchedNames.equals(state.unmatchedNames)
 				&& parentStates.equals(state.parentStates)
 				&& variantStates.equals(state.variantStates);
 		}
@@ -273,7 +284,8 @@ public final class PanelBetaCollectionViewModel
 			int result = parentStates.hashCode();
 			result = 31 * result + variantStates.hashCode();
 			result = 31 * result + ownedParents;
-			return 31 * result + snapshotStatus.hashCode();
+			result = 31 * result + snapshotStatus.hashCode();
+			return 31 * result + unmatchedNames.hashCode();
 		}
 	}
 

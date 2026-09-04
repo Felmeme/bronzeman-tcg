@@ -49,6 +49,7 @@ public final class SidePanelSettings
 	private final ConfigManager configManager;
 	private final BronzemanSettingsManager settingsManager;
 	private final Runnable closeSettings;
+	private final BetaCardsSettings betaCards;
 	private final List<Category> categories;
 	private final Set<String> expandedCategories = new HashSet<>();
 	private final Set<String> expandedSections = new HashSet<>();
@@ -56,12 +57,13 @@ public final class SidePanelSettings
 	private boolean rebuilding;
 
 	public SidePanelSettings(Gson gson, BronzemanTcgConfig config, ConfigManager configManager,
-		boolean onboardingPending, Runnable closeSettings)
+		boolean onboardingPending, Runnable closeSettings, BetaCardsSettings betaCards)
 	{
 		this.configManager = configManager;
 		this.settingsManager = new BronzemanSettingsManager(gson, config, configManager);
 		this.onboardingPending = onboardingPending;
 		this.closeSettings = closeSettings;
+		this.betaCards = betaCards;
 		this.categories = buildCategories();
 	}
 
@@ -119,6 +121,15 @@ public final class SidePanelSettings
 			for (Section section : category.sections)
 			{
 				panel.add(Box.createVerticalStrut(3));
+				if (section.key.equals(SidePanelSettingMetadata.Section.BETA_CARDS.name()))
+				{
+					panel.add(betaCards.component());
+					for (SidePanelSettingMetadata.Entry item : section.items)
+					{
+						panel.add(settingControl(item));
+					}
+					continue;
+				}
 				boolean sectionExpanded = expandedSections.contains(section.key);
 				JPanel sectionRow = hierarchyLabelRow(section.name, sectionExpanded, true);
 				makeClickable(sectionRow, () ->
@@ -381,7 +392,7 @@ public final class SidePanelSettings
 						items.add(entry);
 					}
 				}
-				if (!items.isEmpty())
+				if (!items.isEmpty() || section == SidePanelSettingMetadata.Section.BETA_CARDS)
 				{
 					sections.add(new Section(section.label, section.name(), items));
 				}

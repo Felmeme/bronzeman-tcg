@@ -3,22 +3,31 @@ package com.bronzemantcg.interop;
 import java.util.List;
 
 /**
- * Deliberately minimal mirror of osrs-tcg's persisted TcgState JSON shape
- * (schemaVersion 3). Gson ignores JSON fields with no matching Java field, so
- * we only declare what we actually read. Field names must match osrs-tcg's
- * plain (un-annotated) Gson output exactly:
- *   TcgState.cardInstances[].cardName
- * Verified against a real decoded state blob captured from a live client
- * (2026-07-10); the collection lives at top level, not under a nested
- * collectionState object.
+ * Deliberately minimal mirror of the legacy and current osrs-tcg persisted
+ * collection shapes. Gson ignores fields with no matching Java field, so only
+ * ownership and beta-provenance fields are declared here.
  */
 public class TcgStateDto
 {
 	public List<OwnedCardInstanceDto> cardInstances;
+	public List<CardEntryDto> cardEntries;
 
 	public static class OwnedCardInstanceDto
 	{
 		public String cardName;
 		public boolean foil;
+		public Boolean beta;
+	}
+
+	public static class CardEntryDto
+	{
+		public String cardName;
+		public List<CardVariantDto> variants;
+	}
+
+	public static class CardVariantDto
+	{
+		public Boolean beta;
+		public Integer quantity;
 	}
 }

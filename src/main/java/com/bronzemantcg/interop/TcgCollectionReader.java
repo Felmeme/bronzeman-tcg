@@ -45,6 +45,8 @@ public class TcgCollectionReader
 	private Set<String> cachedOwnedLowerCaseNames = Collections.emptySet();
 	private TcgOwnershipSnapshot cachedFallbackOwnership =
 		TcgOwnershipSnapshot.namesOnly(Collections.emptySet());
+	private PersistedBetaCollection cachedPersistedBetaCollection =
+		PersistedBetaCollection.unavailable();
 	private boolean stateAvailable;
 	private long lastRefreshMs = 0L;
 	// Null until the first API payload lands; non-null means the API path is live.
@@ -107,6 +109,17 @@ public class TcgCollectionReader
 	}
 
 	/**
+	 * Exact beta provenance retained in osrs-tcg's profile-scoped persisted state.
+	 * This remains readable after the live API takes ownership precedence and is used
+	 * only to repair/protect the historical Beta Collection snapshot.
+	 */
+	public synchronized PersistedBetaCollection getPersistedBetaCollection()
+	{
+		ensureFresh();
+		return cachedPersistedBetaCollection;
+	}
+
+	/**
 	 * Feed in the ownership payload from osrs-tcg's PluginMessage API. Elements are
 	 * validated individually rather than trusting the cast - the data map is untyped, and
 	 * a malformed payload should degrade to the config fallback, not throw on a click.
@@ -157,7 +170,9 @@ public class TcgCollectionReader
 		try
 		{
 			String raw = configManager.getRSProfileConfiguration(TCG_CONFIG_GROUP, TCG_STATE_KEY);
-			String json = TcgStateDecoder.decode(raw);
+			PersistedState parsed = parsePersistedState(raw, gson);
+			cachedPersistedBetaCollection = parsed.betaCollection;
+			String json = parsed.json;
 			if (json.isEmpty())
 			{
 				cachedOwnedLowerCaseNames = Collections.emptySet();
@@ -166,8 +181,7 @@ public class TcgCollectionReader
 				return;
 			}
 
-			TcgStateDto dto = gson.fromJson(json, TcgStateDto.class);
-			if (dto == null || dto.cardInstances == null)
+			if (!parsed.collectionPresent)
 			{
 				cachedOwnedLowerCaseNames = Collections.emptySet();
 				cachedFallbackOwnership = TcgOwnershipSnapshot.namesOnly(cachedOwnedLowerCaseNames);
@@ -176,14 +190,7 @@ public class TcgCollectionReader
 			}
 			stateAvailable = true;
 
-			Set<String> names = new HashSet<>();
-			for (TcgStateDto.OwnedCardInstanceDto instance : dto.cardInstances)
-			{
-				if (instance != null && instance.cardName != null && !instance.cardName.trim().isEmpty())
-				{
-					names.add(instance.cardName.trim().toLowerCase(Locale.ROOT));
-				}
-			}
+			Set<String> names = new HashSet<>(parsed.ownedNames);
 			cachedOwnedLowerCaseNames = Collections.unmodifiableSet(names);
 			cachedFallbackOwnership = TcgOwnershipSnapshot.namesOnly(cachedOwnedLowerCaseNames);
 		}
@@ -195,6 +202,174 @@ public class TcgCollectionReader
 			cachedOwnedLowerCaseNames = Collections.emptySet();
 			cachedFallbackOwnership = TcgOwnershipSnapshot.namesOnly(cachedOwnedLowerCaseNames);
 			stateAvailable = false;
+			cachedPersistedBetaCollection = PersistedBetaCollection.unavailable();
+		}
+	}
+
+	static PersistedState parsePersistedState(String raw, Gson gson)
+	{
+		String json = TcgStateDecoder.decode(raw);
+		if (json.isEmpty() || gson == null)
+		{
+			return PersistedState.unavailable();
+		}
+
+		TcgStateDto dto = gson.fromJson(json, TcgStateDto.class);
+		if (dto == null)
+		{
+			return PersistedState.unavailable();
+		}
+
+		Set<String> ownedNames = new HashSet<>();
+		Set<String> betaNames = new HashSet<>();
+		boolean collectionPresent;
+		if (dto.cardEntries != null
+			&& (!dto.cardEntries.isEmpty() || dto.cardInstances == null))
+		{
+			collectionPresent = true;
+			for (TcgStateDto.CardEntryDto entry : dto.cardEntries)
+			{
+				String name = normalizedName(entry == null ? null : entry.cardName);
+				if (name == null || entry.variants == null)
+				{
+					continue;
+				}
+				boolean owned = false;
+				boolean beta = false;
+				for (TcgStateDto.CardVariantDto variant : entry.variants)
+				{
+					if (variant == null || (variant.quantity != null && variant.quantity <= 0))
+					{
+						continue;
+					}
+					owned = true;
+					beta |= Boolean.TRUE.equals(variant.beta);
+				}
+				if (owned)
+				{
+					ownedNames.add(name);
+				}
+				if (beta)
+				{
+					betaNames.add(name);
+				}
+			}
+		}
+		else if (dto.cardInstances != null)
+		{
+			collectionPresent = true;
+			boolean betaMetadataPresent = false;
+			for (TcgStateDto.OwnedCardInstanceDto instance : dto.cardInstances)
+			{
+				if (instance != null && instance.beta != null)
+				{
+					betaMetadataPresent = true;
+					break;
+				}
+			}
+			for (TcgStateDto.OwnedCardInstanceDto instance : dto.cardInstances)
+			{
+				String name = normalizedName(instance == null ? null : instance.cardName);
+				if (name == null)
+				{
+					continue;
+				}
+				ownedNames.add(name);
+				if (betaMetadataPresent ? Boolean.TRUE.equals(instance.beta)
+					: raw != null && raw.startsWith(TcgStateDecoder.STORAGE_PREFIX_V2))
+				{
+					betaNames.add(name);
+				}
+			}
+		}
+		else
+		{
+			collectionPresent = false;
+		}
+
+		PersistedBetaCollection betaCollection = collectionPresent
+			? PersistedBetaCollection.available(betaNames)
+			: PersistedBetaCollection.unavailable();
+		return new PersistedState(json, collectionPresent, ownedNames, betaCollection);
+	}
+
+	private static String normalizedName(String value)
+	{
+		if (value == null || value.trim().isEmpty())
+		{
+			return null;
+		}
+		return value.trim().toLowerCase(Locale.ROOT);
+	}
+
+	static final class PersistedState
+	{
+		private final String json;
+		private final boolean collectionPresent;
+		private final Set<String> ownedNames;
+		private final PersistedBetaCollection betaCollection;
+
+		private PersistedState(String json, boolean collectionPresent,
+			Set<String> ownedNames, PersistedBetaCollection betaCollection)
+		{
+			this.json = json;
+			this.collectionPresent = collectionPresent;
+			this.ownedNames = Collections.unmodifiableSet(new HashSet<>(ownedNames));
+			this.betaCollection = betaCollection;
+		}
+
+		private static PersistedState unavailable()
+		{
+			return new PersistedState("", false, Collections.emptySet(),
+				PersistedBetaCollection.unavailable());
+		}
+
+		boolean isCollectionPresent()
+		{
+			return collectionPresent;
+		}
+
+		Set<String> getOwnedNames()
+		{
+			return ownedNames;
+		}
+
+		PersistedBetaCollection getBetaCollection()
+		{
+			return betaCollection;
+		}
+	}
+
+	public static final class PersistedBetaCollection
+	{
+		private final boolean available;
+		private final Set<String> ownedNamesLowerCase;
+
+		private PersistedBetaCollection(boolean available, Set<String> ownedNamesLowerCase)
+		{
+			this.available = available;
+			this.ownedNamesLowerCase = Collections.unmodifiableSet(
+				new HashSet<>(ownedNamesLowerCase));
+		}
+
+		private static PersistedBetaCollection available(Set<String> names)
+		{
+			return new PersistedBetaCollection(true, names);
+		}
+
+		private static PersistedBetaCollection unavailable()
+		{
+			return new PersistedBetaCollection(false, Collections.emptySet());
+		}
+
+		public boolean isAvailable()
+		{
+			return available;
+		}
+
+		public Set<String> getOwnedNamesLowerCase()
+		{
+			return ownedNamesLowerCase;
 		}
 	}
 }
