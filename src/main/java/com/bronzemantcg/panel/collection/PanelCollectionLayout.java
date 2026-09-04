@@ -38,6 +38,7 @@ public final class PanelCollectionLayout
 	private final List<Section> sections;
 	private final List<CollectionPlacement> collectionPlacements;
 	private final List<BetaCollectionCard> betaCollectionCards;
+	private final List<BetaCollectionCard> legacyBetaCollectionCards;
 	private final Map<CardEntityKind, Map<Integer, Integer>> betaIdUseCounts;
 	private final Map<String, Integer> betaNameUseCounts;
 	private final String organiserFingerprint;
@@ -51,7 +52,17 @@ public final class PanelCollectionLayout
 
 	PanelCollectionLayout(Gson gson, String resourcePath)
 	{
+		this(gson, resourcePath, DEFAULT_RESOURCE.equals(resourcePath));
+	}
+
+	PanelCollectionLayout(Gson gson, String resourcePath, boolean correctFishChunks)
+	{
 		Loaded loaded = load(gson, resourcePath);
+		legacyBetaCollectionCards = loaded.betaCollectionCards;
+		if (correctFishChunks)
+		{
+			loaded = correctFishChunksHistory(loaded);
+		}
 		sections = loaded.sections;
 		collectionPlacements = loaded.collectionPlacements;
 		betaCollectionCards = loaded.betaCollectionCards;
@@ -74,6 +85,44 @@ public final class PanelCollectionLayout
 	public List<BetaCollectionCard> getBetaCollectionCards()
 	{
 		return betaCollectionCards;
+	}
+
+	/** Frozen schema-1 bit positions; presentation corrections must never reorder this set. */
+	public List<BetaCollectionCard> getLegacyBetaCollectionCards()
+	{
+		return legacyBetaCollectionCards;
+	}
+
+	/**
+	 * Fish chunks is present in the reviewed v1 catalogue and a migrated Beta save, but missing
+	 * from the frozen Beta source. Add its historical name using the existing placement only.
+	 * Keep the original rows separately for schema-1 snapshot decoding; do not invent entity IDs.
+	 */
+	private static Loaded correctFishChunksHistory(Loaded base)
+	{
+		String name = "Fish chunks";
+		String normalized = normalize(name);
+		if (base.betaNameUseCounts.containsKey(normalized)
+			|| base.betaCollectionCards.stream().anyMatch(row -> row.kind == CardEntityKind.ITEM
+				&& normalize(row.parentName).equals(normalized)))
+		{
+			return base;
+		}
+		CollectionPlacement placement = base.collectionPlacements.stream()
+			.filter(row -> row.kind == CardEntityKind.ITEM && normalize(row.cardName).equals(normalized))
+			.findFirst().orElse(null);
+		if (placement == null)
+		{
+			return base;
+		}
+		List<BetaCollectionCard> cards = new ArrayList<>(base.betaCollectionCards);
+		cards.add(new BetaCollectionCard("beta-correction:ITEM:fish chunks", CardEntityKind.ITEM,
+			name, false, true, placement.categoryIds,
+			List.of(new BetaVariant(CardEntityKind.ITEM, name, Collections.emptySet()))));
+		Map<String, Integer> names = new LinkedHashMap<>(base.betaNameUseCounts);
+		names.put(normalized, 1);
+		return new Loaded(base.sections, base.collectionPlacements, cards, base.betaIdUseCounts,
+			Collections.unmodifiableMap(names), base.organiserFingerprint, base.organiserProjectSha256);
 	}
 
 	public String getOrganiserFingerprint()

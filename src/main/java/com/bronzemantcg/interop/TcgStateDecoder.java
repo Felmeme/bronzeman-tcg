@@ -1,6 +1,7 @@
 package com.bronzemantcg.interop;
 
 import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
@@ -12,14 +13,17 @@ import lombok.extern.slf4j.Slf4j;
  * Mirrors osrs-tcg's TcgStateStorageEncoding decode routine.
  * Reimplemented here (not imported) so this plugin has no compile-time
  * dependency on the osrs-tcg plugin. The encoding is a simple, fixed,
- * publicly-known transform (gzip -> XOR with a hardcoded salt -> base64
- * with a version prefix) - there is nothing secret being reversed here,
- * it's just osrs-tcg's own on-disk format.
+ * publicly-known transform. Legacy v2 uses gzip -> XOR -> base64, while v3
+ * uses gzip -> base64. There is nothing secret being reversed here; these
+ * are osrs-tcg's own persisted formats.
  */
 @Slf4j
 public final class TcgStateDecoder
 {
-	private static final String STORAGE_PREFIX = "RLTCG_v2:";
+	static final String STORAGE_PREFIX_V2 = "RLTCG_v2:";
+	static final String STORAGE_PREFIX_V3 = "RLTCG_v3:";
+	private static final int MAX_STORED_CHARS = 16 * 1024 * 1024;
+	private static final int MAX_DECODED_BYTES = 16 * 1024 * 1024;
 
 	// Must match osrs-tcg's TcgStateStorageEncoding.XOR_SALT exactly.
 	private static final byte[] XOR_SALT = {
@@ -39,15 +43,27 @@ public final class TcgStateDecoder
 	public static String decode(String stored)
 	{
 		String s = Objects.requireNonNullElse(stored, "");
-		if (!s.startsWith(STORAGE_PREFIX))
+		if (s.length() > MAX_STORED_CHARS)
 		{
 			return "";
 		}
 
 		try
 		{
-			byte[] compressed = Base64.getDecoder().decode(s.substring(STORAGE_PREFIX.length()));
-			xorWithSalt(compressed);
+			byte[] compressed;
+			if (s.startsWith(STORAGE_PREFIX_V3))
+			{
+				compressed = Base64.getDecoder().decode(s.substring(STORAGE_PREFIX_V3.length()));
+			}
+			else if (s.startsWith(STORAGE_PREFIX_V2))
+			{
+				compressed = Base64.getDecoder().decode(s.substring(STORAGE_PREFIX_V2.length()));
+				xorWithSalt(compressed);
+			}
+			else
+			{
+				return "";
+			}
 			return gzipDecompress(compressed);
 		}
 		catch (IllegalArgumentException | IOException ex)
@@ -61,7 +77,20 @@ public final class TcgStateDecoder
 	{
 		try (GZIPInputStream gzis = new GZIPInputStream(new ByteArrayInputStream(compressed)))
 		{
-			return new String(gzis.readAllBytes(), StandardCharsets.UTF_8);
+			ByteArrayOutputStream output = new ByteArrayOutputStream();
+			byte[] buffer = new byte[8192];
+			int total = 0;
+			int read;
+			while ((read = gzis.read(buffer)) >= 0)
+			{
+				total += read;
+				if (total > MAX_DECODED_BYTES)
+				{
+					throw new IOException("decoded osrs-tcg state exceeds size limit");
+				}
+				output.write(buffer, 0, read);
+			}
+			return output.toString(StandardCharsets.UTF_8);
 		}
 	}
 

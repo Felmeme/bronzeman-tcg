@@ -21,7 +21,8 @@ final class SidePanelSettingMetadata
 		SETTINGS("Settings"),
 		GATHERING("Gathering"),
 		PRODUCTION("Production"),
-		OTHER("Other");
+		OTHER("Other"),
+		BETA_IMPORTS("Beta Card Imports");
 
 		final String label;
 
@@ -34,6 +35,7 @@ final class SidePanelSettingMetadata
 	enum Section
 	{
 		GENERAL(Category.SETTINGS, "General"),
+		BETA_CARDS(Category.BETA_IMPORTS, "Beta Card Imports"),
 		VISUALS(Category.SETTINGS, "Visuals"),
 		EXTERNAL_PLUGINS(Category.SETTINGS, "External Plugins"),
 		FARMING(Category.GATHERING, "Farming"),
@@ -132,7 +134,7 @@ final class SidePanelSettingMetadata
 				+ "<br>Other resource and ground-item options are already kept visible."
 				+ "<br>Ordinary NPC options remain controlled by NPC Locks."
 				+ "<br>The click is still blocked and chat explains which cards are missing."));
-		entries.add(setting(Section.GENERAL, "showBetaCollectionTab", "Show Beta tab",
+		entries.add(setting(Section.BETA_CARDS, "showBetaCollectionTab", "Show Beta tab",
 			"Show the personal Beta collection snapshot in the side panel."
 				+ "<br>Hiding the tab does not delete or change the saved snapshot."));
 

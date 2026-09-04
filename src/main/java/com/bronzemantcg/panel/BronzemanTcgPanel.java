@@ -15,6 +15,8 @@ import com.bronzemantcg.panel.collection.PanelSharedCardsViewModel;
 import com.bronzemantcg.restriction.ExemptionList;
 import com.bronzemantcg.restriction.LockState;
 import com.bronzemantcg.settings.SidePanelSettings;
+import com.bronzemantcg.settings.BetaCardsSettings;
+import com.bronzemantcg.interop.BetaSaveImporter;
 import com.google.gson.Gson;
 import java.awt.BasicStroke;
 import java.awt.BorderLayout;
@@ -332,7 +334,9 @@ public class BronzemanTcgPanel extends PluginPanel
 		this.configManager = configManager;
 		this.executor = executor;
 		this.sidePanelSettings = new SidePanelSettings(gson, config, configManager,
-			presetOnboardingRequired, () -> selectContentTab(PanelTab.ACTIVITIES));
+			presetOnboardingRequired, () -> selectContentTab(PanelTab.ACTIVITIES),
+			new BetaCardsSettings(betaCollectionSnapshotService, new BetaSaveImporter(gson),
+				betaCollectionViewModel, executor, () -> disposed, this::requestRefresh));
 
 		JPanel activitiesPanel = sectionBody();
 		JPanel questPanel = sectionBody();
@@ -689,8 +693,13 @@ public class BronzemanTcgPanel extends PluginPanel
 				break;
 			case FROZEN_CAPTURED:
 			case FROZEN_INFERRED:
+			case IMPORTED:
 				betaCollectionSaveStatus.setText("Beta collection secured · " + count
 					+ " " + (count == 1 ? "card" : "cards"));
+				saveBetaCollectionButton.setEnabled(false);
+				break;
+			case CLEARED:
+				betaCollectionSaveStatus.setText("Beta history cleared; use Beta Card Imports");
 				saveBetaCollectionButton.setEnabled(false);
 				break;
 			case INCOMPATIBLE:
@@ -1202,7 +1211,9 @@ public class BronzemanTcgPanel extends PluginPanel
 		BetaCollectionSnapshotService.SnapshotView betaSnapshot =
 			betaCollectionSnapshotService.getView();
 		Set<String> frozenBetaNames = betaSnapshot.getStatus().isFrozen()
-			? betaSnapshot.getOwnedNamesLowerCase() : Collections.emptySet();
+			? new HashSet<>(betaSnapshot.getOwnedNamesLowerCase()) : new HashSet<>();
+		// Unreviewed imported names remain historical evidence, not live-parent assignments.
+		frozenBetaNames.removeAll(betaCollectionSnapshotService.unmatchedNames(frozenBetaNames));
 		boolean hideBetaProgress = getSavedProfileBoolean(
 			COLLECTION_HIDE_BETA_PROGRESS_KEY, false);
 		PanelCollectionViewModel.State collection = collectionViewModel.prepare(
@@ -2940,6 +2951,28 @@ public class BronzemanTcgPanel extends PluginPanel
 			snapshot.betaCollection.getOwnedParents(), betaCollectionViewModel.getParentTotal())));
 		betaCollectionList.add(betaSnapshotStatusRow(
 			snapshot.betaCollection.getSnapshotStatus()));
+		Set<String> unmatchedBetaNames = snapshot.betaCollection.getUnmatchedNames();
+		if (!unmatchedBetaNames.isEmpty() && showUnlockedBetaCollection.isSelected())
+		{
+			betaCollectionList.add(mutedRow(unmatchedBetaNames.size()
+				+ " imported names outside the catalogue (not in totals)"));
+			int shown = 0;
+			for (String name : unmatchedBetaNames)
+			{
+				if (matchesSearch(name, query))
+				{
+					if (shown++ == 200)
+					{
+						betaCollectionList.add(mutedRow("Showing 200 matches; refine your search"));
+						break;
+					}
+					JLabel label = mutedRow("");
+					label.putClientProperty("html.disable", Boolean.TRUE);
+					label.setText(name);
+					betaCollectionList.add(label);
+				}
+			}
+		}
 
 		int visibleSections = 0;
 		for (PanelBetaCollectionViewModel.Section section : betaCollectionViewModel.getSections())
@@ -3153,28 +3186,31 @@ public class BronzemanTcgPanel extends PluginPanel
 		{
 			case PROVISIONAL:
 				text = "Beta snapshot: preparing (not frozen)";
-				detail = "This personal snapshot follows the legacy collection until an "
-					+ "OSRS TCG v1 payload is detected.";
+				detail = "";
 				break;
 			case FROZEN_CAPTURED:
 				text = "Beta snapshot: saved from pre-v1";
-				detail = "This personal beta collection is frozen and later v1 pulls will "
-					+ "not change it.";
+				detail = "";
 				break;
 			case FROZEN_INFERRED:
 				text = "Beta snapshot: estimated from v1";
-				detail = "No earlier Bronzeman snapshot was available, so matching cards "
-					+ "from the first v1 payload were used.";
+				detail = "";
 				break;
 			case INCOMPATIBLE:
 				text = "Beta snapshot: saved data incompatible";
-				detail = "The saved snapshot was left untouched because its beta identity "
-					+ "list does not match this release.";
+				detail = "";
+				break;
+			case IMPORTED:
+				text = "Beta snapshot: imported from save";
+				detail = "";
+				break;
+			case CLEARED:
+				text = "Beta snapshot: cleared by you";
+				detail = "";
 				break;
 			default:
 				text = "Beta snapshot: waiting for collection";
-				detail = "Bronzeman has not yet seen a readable personal OSRS TCG "
-					+ "collection for this profile.";
+				detail = "";
 		}
 		JLabel row = mutedRow(text);
 		row.setToolTipText(detail);
