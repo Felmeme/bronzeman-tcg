@@ -797,8 +797,17 @@ public class BronzemanTcgPlugin extends Plugin implements RenderCallback
 
 	private boolean observeBetaCollectionSnapshot()
 	{
+		boolean changed = false;
+		if (collectionReader.hasLiveV1Capability()
+			&& betaCollectionSnapshotService.canRecoverExact())
+		{
+			TcgCollectionReader.PersistedBetaCollection persisted =
+				collectionReader.getPersistedBetaCollection();
+			changed = betaCollectionSnapshotService.recoverExact(
+				persisted.getOwnedNamesLowerCase(), persisted.isAvailable());
+		}
 		return betaCollectionSnapshotService.observe(collectionReader.getOwnershipSnapshot(),
-			collectionReader.isStateAvailable());
+			collectionReader.isStateAvailable()) || changed;
 	}
 
 	private void onActiveCatalogChanged(long revision, boolean v1CatalogAvailable)

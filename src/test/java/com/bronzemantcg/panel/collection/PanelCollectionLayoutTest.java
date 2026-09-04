@@ -56,8 +56,9 @@ public class PanelCollectionLayoutTest
 			.filter(card -> card.getKind() == CardEntityKind.NPC).count());
 		assertFalse(layout.getCollectionPlacements().stream()
 			.anyMatch(card -> card.getCategoryIds().isEmpty()));
-		assertEquals(5561, layout.getBetaCollectionCards().size());
-		assertEquals(6361, layout.getBetaCollectionCards().stream()
+		assertEquals(5561, layout.getLegacyBetaCollectionCards().size());
+		assertEquals(5562, layout.getBetaCollectionCards().size());
+		assertEquals(6362, layout.getBetaCollectionCards().stream()
 			.mapToInt(card -> card.getVariants().size()).sum());
 		assertEquals(1075, layout.getBetaCollectionCards().stream()
 			.filter(PanelCollectionLayout.BetaCollectionCard::isBetaOnly).count());
@@ -68,6 +69,31 @@ public class PanelCollectionLayoutTest
 		PanelCollectionLayout.BetaCollectionCard betaAkkha = betaParent(layout, "Akkha");
 		variant(betaAkkha, "Akkha's Shadow");
 		assertTrue(betaParent(layout, "Akkha's Phantom").isBetaOnly());
+	}
+
+	@Test
+	public void fishChunksCorrectionUsesReviewedPlacementWithoutInventingEntityIds()
+	{
+		PanelCollectionLayout layout = new PanelCollectionLayout(new Gson());
+		PanelCollectionLayout.BetaCollectionCard fish = betaParent(layout, "Fish chunks");
+		assertEquals(placement(layout, CardEntityKind.ITEM, "Fish chunks").getCategoryIds(),
+			fish.getCategoryIds());
+		assertFalse(fish.isBetaOnly());
+		assertEquals("Fish chunks", fish.getVariants().get(0).getName());
+		assertTrue(fish.getVariants().get(0).getEntityIds().isEmpty());
+		assertTrue(layout.isBetaVariantNameUnique("fish chunks"));
+		assertFalse(layout.getLegacyBetaCollectionCards().contains(fish));
+		assertTrue(new PanelCollectionOwnership(layout).isBetaVariantInSnapshot(
+			fish.getVariants().get(0), Set.of("fish chunks")));
+	}
+
+	@Test
+	public void missingFishChunksPlacementLeavesTheBaseLayoutUntouched()
+	{
+		PanelCollectionLayout layout = new PanelCollectionLayout(new Gson(),
+			"/panel/test_collection_layout.json", true);
+		assertFalse(layout.getBetaCollectionCards().isEmpty());
+		assertEquals(layout.getLegacyBetaCollectionCards(), layout.getBetaCollectionCards());
 	}
 
 	@Test

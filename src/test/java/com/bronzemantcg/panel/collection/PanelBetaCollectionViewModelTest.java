@@ -14,15 +14,27 @@ import static org.junit.Assert.assertTrue;
 public class PanelBetaCollectionViewModelTest
 {
 	@Test
+	public void unmatchedImportedNamesAreVisibleButDoNotInflateParentTotals()
+	{
+		PanelBetaCollectionViewModel view = fixtureView();
+		PanelBetaCollectionViewModel.State state = view.prepare(
+			Set.of("water rune", "water rune pack", "fish chunks"),
+			BetaCollectionSnapshotService.Status.IMPORTED);
+		assertEquals(1, state.getOwnedParents());
+		assertEquals(Set.of("fish chunks"), state.getUnmatchedNames());
+		assertFalse(state.equals(view.prepare(Set.of("water rune", "water rune pack"),
+			BetaCollectionSnapshotService.Status.IMPORTED)));
+	}
+	@Test
 	public void productionViewContainsEveryVisibleBetaParentAndVariant()
 	{
 		PanelBetaCollectionViewModel view = productionView();
 		Set<PanelCollectionLayout.BetaCollectionCard> displayed = new HashSet<>();
 		view.getSections().forEach(section -> displayed.addAll(section.getCards()));
 
-		assertEquals(5561, view.getParentTotal());
-		assertEquals(6361, view.getVariantTotal());
-		assertEquals(5561, displayed.size());
+		assertEquals(5562, view.getParentTotal());
+		assertEquals(6362, view.getVariantTotal());
+		assertEquals(5562, displayed.size());
 		assertTrue(view.getSections().stream()
 			.anyMatch(section -> section.getId().equals(
 				PanelCollectionViewModel.BETA_ONLY_SECTION_ID)));
