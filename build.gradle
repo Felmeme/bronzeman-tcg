@@ -45,6 +45,9 @@ tasks.register('run', JavaExec) {
 	classpath = sourceSets.test.runtimeClasspath
 	mainClass = 'com.bronzemantcg.BronzemanTcgPluginTest'
 
-	jvmArgs "-ea"
+	jvmArgs "-ea",
+			"--add-opens=java.desktop/com.apple.eawt=ALL-UNNAMED",
+			"--add-opens=java.base/java.net=ALL-UNNAMED",
+			"--add-opens=java.base/java.io=ALL-UNNAMED"
 	args "--developer-mode", "--debug"
 }

@@ -9879,6 +9879,32 @@
 							"type": "item"
 						}
 					]
+				},
+				{
+					"label": "NPCs",
+					"requirements": [
+						{
+							"label": "Duke Horacio",
+							"cards": [
+								"Duke horacio"
+							],
+							"type": "npc"
+						},
+						{
+							"label": "Archmage Sedridor",
+							"cards": [
+								"Archmage sedridor"
+							],
+							"type": "npc"
+						},
+						{
+							"label": "Aubury",
+							"cards": [
+								"Aubury"
+							],
+							"type": "npc"
+						}
+					]
 				}
 			],
 			"notes": ""

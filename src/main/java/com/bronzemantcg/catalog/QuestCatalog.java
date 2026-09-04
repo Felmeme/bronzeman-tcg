@@ -214,7 +214,7 @@ public class QuestCatalog
 		String questName, Requirement requirement, List<String> monsters)
 	{
 		indexQuestCards(questsByCard, questName, requirement.displayCards);
-		if ("enemy".equals(requirement.type))
+		if ("enemy".equals(requirement.type) || "npc".equals(requirement.type))
 		{
 			for (String card : requirement.displayCards)
 			{

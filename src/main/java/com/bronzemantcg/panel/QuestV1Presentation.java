@@ -142,6 +142,8 @@ public final class QuestV1Presentation
 
 	private static CardIdentity resolve(String card, String type, CardResolver resolver)
 	{
+		CardIdentity item = null;
+		CardIdentity npc = null;
 		switch (type) {
 			case "item":
 				return tracked(resolver.resolveCardName(CardEntityKind.ITEM, card));
@@ -149,12 +151,14 @@ public final class QuestV1Presentation
 			case "npc":
 				return tracked(resolver.resolveCardName(CardEntityKind.NPC, card));
 			default:
-				CardIdentity item = tracked(
-						resolver.resolveCardName(CardEntityKind.ITEM, card));
-				CardIdentity npc = tracked(
-						resolver.resolveCardName(CardEntityKind.NPC, card));
-				return item == null ? npc : npc == null ? item : null;
-		}
+				CardIdentity internalCard = tracked(resolver.resolveCardName(CardEntityKind.ITEM, card));
+				if (internalCard != null) {
+					return internalCard;
+				}
+
+				internalCard = tracked(resolver.resolveCardName(CardEntityKind.NPC, card));
+                return internalCard;
+        }
 	}
 
 	private static CardIdentity tracked(CardResolver.Result result)
