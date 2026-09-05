@@ -954,6 +954,18 @@
 							"type": "enemy"
 						}
 					]
+				},
+				{
+					"label": "NPCs",
+					"requirements": [
+						{
+							"label": "Ramarno",
+							"cards": [
+								"Ramarno"
+							],
+							"type": "npc"
+						}
+					]
 				}
 			],
 			"notes": ""
@@ -1285,6 +1297,30 @@
 							"type": "item"
 						}
 					]
+				},
+				{
+					"label": "NPCs",
+					"requirements": [
+						{
+							"label": "Sir Amik Varze",
+							"cards": [
+								"Sir amik varze"
+							],
+							"type": "npc"
+						}
+					]
+				},
+				{
+					"label": "Enemies",
+					"requirements": [
+						{
+							"label": "Black Knight (optional)",
+							"cards": [
+								"Black knight"
+							],
+							"type": "enemy"
+						}
+					]
 				}
 			],
 			"notes": ""
@@ -1339,14 +1375,14 @@
 			"miniquest": false,
 			"sections": [
 				{
-					"label": "Items",
+					"label": "NPCs",
 					"requirements": [
 						{
 							"label": "Guard (marked during the quest)",
 							"cards": [
 								"Guard"
 							],
-							"type": "card"
+							"type": "npc"
 						}
 					]
 				}
@@ -2137,6 +2173,25 @@
 								"Delrith"
 							],
 							"type": "enemy"
+						},
+						{
+							"label": "Dark Wizard",
+							"cards": [
+								"Dark wizard"
+							],
+							"type": "enemy"
+						}
+					]
+				},
+				{
+					"label": "NPCs",
+					"requirements": [
+						{
+							"label": "Wizard Traiborn",
+							"cards": [
+								"Wizard traiborn"
+							],
+							"type": "npc"
 						}
 					]
 				}
@@ -2551,6 +2606,18 @@
 							"type": "item"
 						}
 					]
+				},
+				{
+					"label": "NPCs",
+					"requirements": [
+						{
+							"label": "Doric",
+							"cards": [
+								"Doric"
+							],
+							"type": "npc"
+						}
+					]
 				}
 			],
 			"notes": ""
@@ -2692,6 +2759,46 @@
 								"Elvarg"
 							],
 							"type": "enemy"
+						}
+					]
+				},
+				{
+					"label": "NPCs",
+					"requirements": [
+						{
+							"label": "Oziach",
+							"cards": [
+								"Oziarch"
+							],
+							"type": "npc"
+						},
+						{
+							"label": "Duke Horacio",
+							"cards": [
+								"Duke horacio"
+							],
+							"type": "npc"
+						},
+						{
+							"label": "Oracle",
+							"cards": [
+								"Oracle"
+							],
+							"type": "npc"
+						},
+						{
+							"label": "General Bentnoze",
+							"cards": [
+								"Goblin generals"
+							],
+							"type": "npc"
+						},
+						{
+							"label": "Ned",
+							"cards": [
+								"Ned"
+							],
+							"type": "npc"
 						}
 					]
 				}
@@ -3903,6 +4010,30 @@
 							"type": "item"
 						}
 					]
+				},
+				{
+					"label": "Enemies",
+					"requirements": [
+						{
+							"label": "Skeleton (optional)",
+							"cards": [
+								"Skeleton"
+							],
+							"type": "enemy"
+						}
+					]
+				},
+				{
+					"label": "NPCs",
+					"requirements": [
+						{
+							"label": "Professor Oddenstein",
+							"cards": [
+								"Professor oddenstein"
+							],
+							"type": "npc"
+						}
+					]
 				}
 			],
 			"notes": ""
@@ -4770,6 +4901,32 @@
 								"Yellow dye"
 							],
 							"type": "item"
+						}
+					]
+				},
+				{
+					"label": "NPCs",
+					"requirements": [
+						{
+							"label": "General Bentnoze",
+							"cards": [
+								"Goblin generals"
+							],
+							"type": "npc"
+						},
+						{
+							"label": "General Wartface",
+							"cards": [
+								"Goblin generals"
+							],
+							"type": "npc"
+						},
+						{
+							"label": "Wyson the Gardener (optional)",
+							"cards": [
+								"Wyson the gardener"
+							],
+							"type": "npc"
 						}
 					]
 				}
@@ -7510,6 +7667,18 @@
 							"type": "item"
 						}
 					]
+				},
+				{
+					"label": "NPCs",
+					"requirements": [
+						{
+							"label": "Guard",
+							"cards": [
+								"Guard"
+							],
+							"type": "npc"
+						}
+					]
 				}
 			],
 			"notes": ""
@@ -8160,15 +8329,21 @@
 							"type": "item"
 						},
 						{
-							"label": "Yellow dye / Onion",
+							"label": "Yellow dye",
 							"cards": [
 								"Yellow dye",
-								"Onion"
 							],
 							"type": "item"
 						},
 						{
-							"label": "Coins",
+							"label": "Onions (optional)",
+							"cards": [
+								"onion"
+							],
+							"type": "item"
+						},
+						{
+							"label": "Coins (optional)",
 							"cards": [
 								"Coins"
 							],
@@ -9694,7 +9869,34 @@
 		{
 			"name": "Romeo & Juliet",
 			"miniquest": false,
-			"sections": [],
+			"sections": [
+				{
+					"label": "NPCs",
+					"requirements": [
+						{
+							"label": "Guard",
+							"cards": [
+								"Guard"
+							],
+							"type": "npc"
+						},
+						{
+							"label": "Romeo",
+							"cards": [
+								"Romeo"
+							],
+							"type": "npc"
+						},
+						{
+							"label": "Juliet",
+							"cards": [
+								"Juliet"
+							],
+							"type": "npc"
+						}
+					]
+				}
+			],
 			"notes": ""
 		},
 		{
@@ -9852,6 +10054,32 @@
 								"Air talisman"
 							],
 							"type": "item"
+						}
+					]
+				},
+				{
+					"label": "NPCs",
+					"requirements": [
+						{
+							"label": "Duke Horacio",
+							"cards": [
+								"Duke horacio"
+							],
+							"type": "npc"
+						},
+						{
+							"label": "Archmage Sedridor",
+							"cards": [
+								"Archmage sedridor"
+							],
+							"type": "npc"
+						},
+						{
+							"label": "Aubury",
+							"cards": [
+								"Aubury"
+							],
+							"type": "npc"
 						}
 					]
 				}
@@ -10302,6 +10530,25 @@
 			"miniquest": false,
 			"sections": [
 				{
+					"label": "NPCs",
+					"requirements": [
+						{
+							"label": "Reldo",
+							"cards": [
+								"Reldo"
+							],
+							"type": "npc"
+						},
+						{
+							"label": "King Roald",
+							"cards": [
+								"King roald"
+							],
+							"type": "npc"
+						}
+					]
+				},
+				{
 					"label": "Gang routes",
 					"requirements": [
 						{
@@ -10320,6 +10567,13 @@
 												"Weaponsmaster"
 											],
 											"type": "enemy"
+										},
+										{
+											"label": "Charlie the Tramp",
+											"cards": [
+												"Charlie the tramp"
+											],
+											"type": "npc"
 										}
 									]
 								},
@@ -13434,6 +13688,18 @@
 							"type": "enemy"
 						}
 					]
+				},
+				{
+					"label": "NPCs",
+					"requirements": [
+						{
+							"label": "Duke Horacio",
+							"cards": [
+								"Duke horacio"
+							],
+							"type": "npc"
+						}
+					]
 				}
 			],
 			"notes": ""
@@ -13475,6 +13741,39 @@
 								"Bronze pickaxe"
 							],
 							"type": "item"
+						},
+						{
+							"label": "Blurite ore",
+							"cards": [
+								"Blurite ore"
+							],
+							"type": "item"
+						}
+					]
+				},
+				{
+					"label": "NPCs",
+					"requirements": [
+						{
+							"label": "Squire",
+							"cards": [
+								"Squire"
+							],
+							"type": "npc"
+						},
+						{
+							"label": "Reldo",
+							"cards": [
+								"Reldo"
+							],
+							"type": "npc"
+						},
+						{
+							"label": "Thurgo",
+							"cards": [
+								"Thurgo"
+							],
+							"type": "npc"
 						}
 					]
 				}
@@ -13634,6 +13933,18 @@
 			"name": "The Restless Ghost",
 			"miniquest": false,
 			"sections": [
+				{
+					"label": "Items",
+					"requirements": [
+						{
+							"label": "Ghostspeak Amulet",
+							"cards": [
+								"Ghostspeak amulet"
+							],
+							"type": "item"
+						}
+					]
+				},
 				{
 					"label": "Enemies",
 					"requirements": [
@@ -15369,6 +15680,18 @@
 								"Spade"
 							],
 							"type": "item"
+						}
+					]
+				},
+				{
+					"label": "NPCs",
+					"requirements": [
+						{
+							"label": "Veos",
+							"cards": [
+								"Veos"
+							],
+							"type": "npc"
 						}
 					]
 				}
