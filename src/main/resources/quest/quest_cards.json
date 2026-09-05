@@ -8329,15 +8329,21 @@
 							"type": "item"
 						},
 						{
-							"label": "Yellow dye / Onion",
+							"label": "Yellow dye",
 							"cards": [
 								"Yellow dye",
-								"Onion"
 							],
 							"type": "item"
 						},
 						{
-							"label": "Coins",
+							"label": "Onions (optional)",
+							"cards": [
+								"onion"
+							],
+							"type": "item"
+						},
+						{
+							"label": "Coins (optional)",
 							"cards": [
 								"Coins"
 							],
