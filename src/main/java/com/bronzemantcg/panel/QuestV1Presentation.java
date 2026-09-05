@@ -142,8 +142,6 @@ public final class QuestV1Presentation
 
 	private static CardIdentity resolve(String card, String type, CardResolver resolver)
 	{
-		CardIdentity item = null;
-		CardIdentity npc = null;
 		switch (type) {
 			case "item":
 				return tracked(resolver.resolveCardName(CardEntityKind.ITEM, card));
