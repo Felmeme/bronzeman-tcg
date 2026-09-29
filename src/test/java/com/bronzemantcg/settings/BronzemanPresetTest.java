@@ -46,6 +46,7 @@ public class BronzemanPresetTest
 			assertFalse(settings.containsKey("lootExemptNames"));
 			assertFalse(settings.containsKey("acceptSharedUnlocks"));
 			assertFalse(settings.containsKey("showLockedMenuOptions"));
+			assertFalse(settings.containsKey("disableBetaVariants"));
 			assertFalse(settings.containsKey("lockedItemMarkMode"));
 			assertFalse(settings.containsKey("duelistCityMode"));
 		}
@@ -106,6 +107,7 @@ public class BronzemanPresetTest
 			"npcVisibilityMode", "groundItemsMode", "itemUsageMode", "foodSettingsMode",
 			"bankingMode", "grandExchangeMode", "coinMode", "acceptSharedUnlocks",
 			"lootExemptNames", "showLockedMenuOptions", "showBetaCollectionTab",
+			"disableBetaVariants",
 			"woodcuttingMode", "miningMode",
 			"fishingMode", "cookingMode", "tinderboxMode",
 			"smeltingMode", "smithingMode", "craftingMode", "restrictEnchanting",
@@ -151,7 +153,10 @@ public class BronzemanPresetTest
 	{
 		SidePanelSettingMetadata.Entry visibility = SidePanelSettingMetadata.all().stream()
 			.filter(entry -> entry.key.equals("showBetaCollectionTab")).findFirst().orElseThrow();
+		SidePanelSettingMetadata.Entry unlocks = SidePanelSettingMetadata.all().stream()
+			.filter(entry -> entry.key.equals("disableBetaVariants")).findFirst().orElseThrow();
 		assertEquals(SidePanelSettingMetadata.Section.BETA_CARDS, visibility.section);
+		assertEquals(SidePanelSettingMetadata.Section.BETA_CARDS, unlocks.section);
 		assertEquals(SidePanelSettingMetadata.Category.BETA_CARDS, visibility.section.category);
 		assertEquals("Beta Cards", visibility.section.category.label);
 		assertEquals(SidePanelSettingMetadata.Category.OTHER.ordinal() + 1,
@@ -164,12 +169,14 @@ public class BronzemanPresetTest
 		settings.put("betaCollectionManualV1", "private Beta names");
 		settings.put("betaCollectionSnapshotV1", "private legacy snapshot");
 		settings.put("allowBetaCardLookup", "true");
+		settings.put("disableBetaVariants", "true");
 		settings.put("bankingMode", BankingMode.FULL.name());
 		Map<String, String> exported = BronzemanSettingsManager.decodeSettings(GSON,
 			BronzemanSettingsManager.encodeSettings(GSON, settings));
 		assertFalse(exported.containsKey("betaCollectionManualV1"));
 		assertFalse(exported.containsKey("betaCollectionSnapshotV1"));
 		assertFalse(exported.containsKey("allowBetaCardLookup"));
+		assertFalse(exported.containsKey("disableBetaVariants"));
 	}
 
 	@Test

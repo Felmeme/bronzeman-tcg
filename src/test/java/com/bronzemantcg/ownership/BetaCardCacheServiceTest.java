@@ -29,6 +29,7 @@ public class BetaCardCacheServiceTest
 	public final TemporaryFolder temporaryFolder = new TemporaryFolder();
 
 	private final AtomicBoolean consent = new AtomicBoolean(true);
+	private final AtomicBoolean disableBetaVariants = new AtomicBoolean(false);
 	private final TestProfileAccess profiles = new TestProfileAccess("profile-one");
 	private ScheduledExecutorService executor;
 	private BetaCardCacheStore store;
@@ -85,6 +86,31 @@ public class BetaCardCacheServiceTest
 		assertTrue(unlocks.getParentNamesLowerCase(CardEntityKind.NPC).isEmpty());
 		assertFalse(unlocks.getParentNamesLowerCase().contains("crawling hand"));
 		assertFalse(unlocks.getParentNamesLowerCase().contains("future beta card"));
+	}
+
+	@Test
+	public void disablingBetaVariantsSuppressesGameplayUnlocksWithoutDeletingCache()
+		throws Exception
+	{
+		store.save("profile-one", "Player One", 7, 999L,
+			List.of("Water rune pack", "Teak logs", "Aberrant spectre"));
+		service.startUp();
+
+		assertEquals(Set.of("water rune", "teak logs"),
+			service.getBetaCardUnlocks().getParentNamesLowerCase(CardEntityKind.ITEM));
+		assertEquals(Set.of("aberrant spectre"),
+			service.getBetaCardUnlocks().getParentNamesLowerCase(CardEntityKind.NPC));
+		disableBetaVariants.set(true);
+		assertTrue(service.getBetaCardUnlocks().getParentNamesLowerCase().isEmpty());
+		assertEquals(BetaCardCacheService.Status.CACHED, service.getState().getStatus());
+		assertEquals(Set.of("water rune pack", "teak logs", "aberrant spectre"),
+			service.getState().getBetaNamesLowerCase());
+
+		disableBetaVariants.set(false);
+		assertEquals(Set.of("water rune", "teak logs"),
+			service.getBetaCardUnlocks().getParentNamesLowerCase(CardEntityKind.ITEM));
+		assertEquals(Set.of("aberrant spectre"),
+			service.getBetaCardUnlocks().getParentNamesLowerCase(CardEntityKind.NPC));
 	}
 
 	@Test
@@ -202,6 +228,10 @@ public class BetaCardCacheServiceTest
 				if (method.getName().equals("allowBetaCardLookup"))
 				{
 					return consent.get();
+				}
+				if (method.getName().equals("disableBetaVariants"))
+				{
+					return disableBetaVariants.get();
 				}
 				if (method.getName().equals("toString"))
 				{

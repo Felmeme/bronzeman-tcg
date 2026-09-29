@@ -34,6 +34,8 @@ public final class BetaCardCacheService implements BetaCardUnlockSource
 {
 	static final String PRIVATE_ALBUM_MESSAGE = "Please turn on public album sharing in OSRS TCG, "
 		+ "then refresh again. You can turn sharing off after Bronzeman saves the Beta names.";
+	private static final BetaCardUnlockSource.View DISABLED_GAMEPLAY_VIEW =
+		new BetaCardUnlockSource.View(0L, Collections.emptySet(), Collections.emptySet());
 
 	private final Client client;
 	private final ClientThread clientThread;
@@ -343,7 +345,7 @@ public final class BetaCardCacheService implements BetaCardUnlockSource
 	@Override
 	public synchronized BetaCardUnlockSource.View getBetaCardUnlocks()
 	{
-		return gameplayView;
+		return config.disableBetaVariants() ? DISABLED_GAMEPLAY_VIEW : gameplayView;
 	}
 
 	private BetaCardUnlockSource.View projectGameplayView(Set<String> betaNames,

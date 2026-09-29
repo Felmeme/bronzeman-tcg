@@ -137,6 +137,10 @@ final class SidePanelSettingMetadata
 		entries.add(setting(Section.BETA_CARDS, "showBetaCollectionTab", "Show Beta tab",
 			"Show the cached personal Beta collection in the side panel."
 				+ "<br>Hiding the tab does not delete the cache or change Beta-derived unlocks."));
+		entries.add(setting(Section.BETA_CARDS, "disableBetaVariants", "Disable Beta Variants",
+			"Ignore saved Beta cards when deciding whether v1 parents and their variants are unlocked."
+				+ "<br>This does not delete the Beta cache or hide the Beta tab."
+				+ "<br>Current OSRS TCG and shared ownership still apply."));
 
 		entries.add(setting(Section.VISUALS, "lockedItemMarkMode", "Locked Item Indicator",
 			"Fade items in your inventory and bank while their card is uncollected."

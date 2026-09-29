@@ -36,4 +36,18 @@ public class BronzemanTcgConfigTest
 		assertFalse(item.warning().trim().isEmpty());
 		assertTrue(item.description().contains("No request is made automatically"));
 	}
+
+	@Test
+	public void betaVariantUnlocksRemainEnabledByDefault() throws Exception
+	{
+		BronzemanTcgConfig defaults = new BronzemanTcgConfig() { };
+		assertFalse(defaults.disableBetaVariants());
+
+		Method method = BronzemanTcgConfig.class.getMethod("disableBetaVariants");
+		ConfigItem item = method.getAnnotation(ConfigItem.class);
+		assertNotNull(item);
+		assertEquals("disableBetaVariants", item.keyName());
+		assertTrue(item.description().contains("does not delete the Beta cache"));
+		assertTrue(item.description().contains("Current OSRS TCG and shared ownership still apply"));
+	}
 }

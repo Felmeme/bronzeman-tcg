@@ -461,6 +461,21 @@ public interface BronzemanTcgConfig extends Config
 		return true;
 	}
 
+	@ConfigItem(
+		keyName = "disableBetaVariants",
+		name = "Disable Beta Variants",
+		description = "Ignore saved Beta cards when deciding whether v1 parents and their variants "
+			+ "are unlocked."
+			+ "<br>This does not delete the Beta cache or hide the Beta tab."
+			+ "<br>Current OSRS TCG and shared ownership still apply.",
+		section = generalSettings,
+		position = 12
+	)
+	default boolean disableBetaVariants()
+	{
+		return false;
+	}
+
 	//----------------
 	//Resource nodes
 	//----------------
