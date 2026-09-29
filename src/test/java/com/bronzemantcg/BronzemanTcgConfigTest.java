@@ -50,4 +50,31 @@ public class BronzemanTcgConfigTest
 		assertTrue(item.description().contains("does not delete the Beta cache"));
 		assertTrue(item.description().contains("Current OSRS TCG and shared ownership still apply"));
 	}
+
+	@Test
+	public void questNpcExceptionsRemainEnabledByDefault() throws Exception
+	{
+		BronzemanTcgConfig defaults = new BronzemanTcgConfig() { };
+		assertFalse(defaults.disableQuestNpcExceptions());
+
+		Method method = BronzemanTcgConfig.class.getMethod("disableQuestNpcExceptions");
+		ConfigItem item = method.getAnnotation(ConfigItem.class);
+		assertNotNull(item);
+		assertEquals("disableQuestNpcExceptions", item.keyName());
+		assertTrue(item.warning().trim().isEmpty());
+		assertTrue(item.description().contains("Children of the Sun"));
+	}
+
+	@Test
+	public void questListShowsNpcRequirementsByDefault() throws Exception
+	{
+		BronzemanTcgConfig defaults = new BronzemanTcgConfig() { };
+		assertFalse(defaults.hideNpcsFromQuestList());
+
+		Method method = BronzemanTcgConfig.class.getMethod("hideNpcsFromQuestList");
+		ConfigItem item = method.getAnnotation(ConfigItem.class);
+		assertNotNull(item);
+		assertEquals("hideNpcsFromQuestList", item.keyName());
+		assertTrue(item.description().contains("does not change card ownership"));
+	}
 }

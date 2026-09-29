@@ -47,6 +47,8 @@ public class BronzemanPresetTest
 			assertFalse(settings.containsKey("acceptSharedUnlocks"));
 			assertFalse(settings.containsKey("showLockedMenuOptions"));
 			assertFalse(settings.containsKey("disableBetaVariants"));
+			assertFalse(settings.containsKey("disableQuestNpcExceptions"));
+			assertFalse(settings.containsKey("hideNpcsFromQuestList"));
 			assertFalse(settings.containsKey("lockedItemMarkMode"));
 			assertFalse(settings.containsKey("duelistCityMode"));
 		}
@@ -107,7 +109,7 @@ public class BronzemanPresetTest
 			"npcVisibilityMode", "groundItemsMode", "itemUsageMode", "foodSettingsMode",
 			"bankingMode", "grandExchangeMode", "coinMode", "acceptSharedUnlocks",
 			"lootExemptNames", "showLockedMenuOptions", "showBetaCollectionTab",
-			"disableBetaVariants",
+			"disableBetaVariants", "disableQuestNpcExceptions", "hideNpcsFromQuestList",
 			"woodcuttingMode", "miningMode",
 			"fishingMode", "cookingMode", "tinderboxMode",
 			"smeltingMode", "smithingMode", "craftingMode", "restrictEnchanting",
@@ -149,7 +151,7 @@ public class BronzemanPresetTest
 	}
 
 	@Test
-	public void betaControlsKeepLookupConsentOutOfCompactSettingsAndExports()
+	public void betaControlsAndProtectedPreferencesStayOutOfExports()
 	{
 		SidePanelSettingMetadata.Entry visibility = SidePanelSettingMetadata.all().stream()
 			.filter(entry -> entry.key.equals("showBetaCollectionTab")).findFirst().orElseThrow();
@@ -170,6 +172,8 @@ public class BronzemanPresetTest
 		settings.put("betaCollectionSnapshotV1", "private legacy snapshot");
 		settings.put("allowBetaCardLookup", "true");
 		settings.put("disableBetaVariants", "true");
+		settings.put("disableQuestNpcExceptions", "true");
+		settings.put("hideNpcsFromQuestList", "true");
 		settings.put("bankingMode", BankingMode.FULL.name());
 		Map<String, String> exported = BronzemanSettingsManager.decodeSettings(GSON,
 			BronzemanSettingsManager.encodeSettings(GSON, settings));
@@ -177,6 +181,8 @@ public class BronzemanPresetTest
 		assertFalse(exported.containsKey("betaCollectionSnapshotV1"));
 		assertFalse(exported.containsKey("allowBetaCardLookup"));
 		assertFalse(exported.containsKey("disableBetaVariants"));
+		assertFalse(exported.containsKey("disableQuestNpcExceptions"));
+		assertFalse(exported.containsKey("hideNpcsFromQuestList"));
 	}
 
 	@Test

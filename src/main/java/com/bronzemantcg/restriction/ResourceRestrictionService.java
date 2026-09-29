@@ -366,7 +366,8 @@ public final class ResourceRestrictionService
 			case "hunter-rumours":
 				return sources.restrictHunterRumours() ? Collections.emptySet() : null;
 			case "quest-cots":
-				return sources.isCotsInProgress() ? null : Collections.emptySet();
+				return sources.questNpcExceptionsEnabled() && sources.isCotsInProgress()
+					? null : Collections.emptySet();
 			case "farming-rake":
 				return sources.farmingRakeMode() == FarmingRakeMode.OFF
 					? null : Collections.singleton("weeds");
@@ -453,6 +454,7 @@ public final class ResourceRestrictionService
 		boolean restrictHunterRumours();
 		boolean restrictSalvaging();
 		boolean restrictSlayerSuperiors();
+		boolean questNpcExceptionsEnabled();
 		boolean isGuardiansOfTheRift();
 		boolean hasBareHandedPlanting();
 		boolean isCotsInProgress();
@@ -494,6 +496,10 @@ public final class ResourceRestrictionService
 		public boolean restrictHunterRumours() { return config.restrictHunterRumours(); }
 		public boolean restrictSalvaging() { return config.restrictSalvaging(); }
 		public boolean restrictSlayerSuperiors() { return config.restrictSlayerSuperiors(); }
+		public boolean questNpcExceptionsEnabled()
+		{
+			return !config.disableQuestNpcExceptions();
+		}
 		public boolean isGuardiansOfTheRift()
 		{
 			return client.getVarbitValue(VarbitID.GOTR_IS_PLAYING) != 0;

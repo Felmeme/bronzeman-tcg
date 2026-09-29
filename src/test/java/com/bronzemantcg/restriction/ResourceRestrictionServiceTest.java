@@ -224,6 +224,9 @@ public class ResourceRestrictionServiceTest
 		harness.sources.cotsInProgress = true;
 		assertNull(harness.service.evaluate(ResourceNodeCatalog.KIND_NPC,
 			"Guard", "Mark"));
+		harness.sources.questNpcExceptionsEnabled = false;
+		assertFalse(harness.service.evaluate(ResourceNodeCatalog.KIND_NPC,
+			"Guard", "Mark").isEmpty());
 	}
 
 	@Test
@@ -298,6 +301,7 @@ public class ResourceRestrictionServiceTest
 		private boolean restrictHunterRumours;
 		private boolean restrictSalvaging;
 		private boolean cotsInProgress;
+		private boolean questNpcExceptionsEnabled = true;
 
 		public MiningMode miningMode() { return miningMode; }
 		public WoodcuttingMode woodcuttingMode() { return woodcuttingMode; }
@@ -316,6 +320,7 @@ public class ResourceRestrictionServiceTest
 		public boolean restrictHunterRumours() { return restrictHunterRumours; }
 		public boolean restrictSalvaging() { return restrictSalvaging; }
 		public boolean restrictSlayerSuperiors() { return false; }
+		public boolean questNpcExceptionsEnabled() { return questNpcExceptionsEnabled; }
 		public boolean isGuardiansOfTheRift() { return gotr; }
 		public boolean hasBareHandedPlanting() { return false; }
 		public boolean isCotsInProgress() { return cotsInProgress; }

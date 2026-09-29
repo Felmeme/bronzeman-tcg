@@ -49,6 +49,8 @@ final class BronzemanSettingRegistry
 		List<Definition> definitions = Arrays.asList(
 			enumSetting("npcVisibilityMode", BronzemanTcgConfig::npcVisibilityMode,
 				NpcVisibilityMode.values()),
+			booleanSetting("disableQuestNpcExceptions",
+				BronzemanTcgConfig::disableQuestNpcExceptions),
 			enumSetting("groundItemsMode", BronzemanTcgConfig::groundItemsMode,
 				LockState.values()),
 			enumSetting("itemUsageMode", BronzemanTcgConfig::itemUsageMode,
@@ -65,6 +67,7 @@ final class BronzemanSettingRegistry
 			booleanSetting("showLockedMenuOptions", BronzemanTcgConfig::showLockedMenuOptions),
 			booleanSetting("showBetaCollectionTab", BronzemanTcgConfig::showBetaCollectionTab),
 			booleanSetting("disableBetaVariants", BronzemanTcgConfig::disableBetaVariants),
+			booleanSetting("hideNpcsFromQuestList", BronzemanTcgConfig::hideNpcsFromQuestList),
 
 			enumSetting("woodcuttingMode", BronzemanTcgConfig::woodcuttingMode,
 				WoodcuttingMode.values()),

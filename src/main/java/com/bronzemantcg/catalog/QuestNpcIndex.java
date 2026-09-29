@@ -20,8 +20,8 @@ import net.runelite.api.QuestState;
  * Quest-state awareness for NPC restriction: an NPC tied to a quest the player has
  * STARTED (in progress or finished) is "shown" - visible in Hide mode and granted
  * Prevent Combat treatment in the strict tiers, so no quest is ever bricked by
- * restriction settings. Attack always stays card-gated; quest progression is the
- * permit for everything else (owner's model, no toggle).
+ * restriction settings while the quest-NPC exception is enabled. Attack always stays
+ * card-gated; quest progression is the permit for everything else.
  *
  * Quest names from quest_cards.json are matched to RuneLite's {@link Quest} enum by
  * normalised name. Unmatched quests (renames, miniquests missing from the enum) FAIL
@@ -117,7 +117,7 @@ public class QuestNpcIndex
 		cotsInProgress = Quest.CHILDREN_OF_THE_SUN.getState(client) == QuestState.IN_PROGRESS;
 	}
 
-	/** True when this NPC belongs to a started (or unmatched) quest and must stay reachable. */
+	/** True when this NPC belongs to a started (or unmatched) quest and is exception-eligible. */
 	public boolean isShownQuestNpc(String npcName)
 	{
 		return npcName != null && shownNpcs.contains(npcName.trim().toLowerCase(Locale.ROOT));

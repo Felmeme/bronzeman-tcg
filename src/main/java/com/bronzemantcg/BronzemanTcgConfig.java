@@ -209,14 +209,28 @@ public interface BronzemanTcgConfig extends Config
 			+ "<br>'Prevent Interaction': every menu option except Examine is removed, and items "
 			+ "can't be used on the NPC."
 			+ "<br>'Hide NPCs': locked NPCs are invisible."
-			+ "<br>NPCs of quests you have started are always shown and talkable (Attack still "
-			+ "needs the card)",
+			+ "<br>By default, NPCs of quests you have started are always shown and talkable "
+			+ "(Attack still needs the card). Disable Quest NPC Exceptions applies normal locks instead.",
 		section = generalSettings,
 		position = 1
 	)
 	default NpcVisibilityMode npcVisibilityMode()
 	{
 		return NpcVisibilityMode.PREVENT_COMBAT;
+	}
+
+	@ConfigItem(
+		keyName = "disableQuestNpcExceptions",
+		name = "Disable Quest NPC Exceptions",
+		description = "Apply normal card restrictions to quest NPCs even after their quest has started."
+			+ "<br>Locked quest NPCs may be hidden or uninteractable according to NPC Locks."
+			+ "<br>This also requires the Guard card to mark guards during Children of the Sun.",
+		section = generalSettings,
+		position = 2
+	)
+	default boolean disableQuestNpcExceptions()
+	{
+		return false;
 	}
 
 	@ConfigItem(
@@ -472,6 +486,19 @@ public interface BronzemanTcgConfig extends Config
 		position = 12
 	)
 	default boolean disableBetaVariants()
+	{
+		return false;
+	}
+
+	@ConfigItem(
+		keyName = "hideNpcsFromQuestList",
+		name = "Hide NPCs from Quest List",
+		description = "Hide NPC and Enemy card requirements from the quest list and its progress totals."
+			+ "<br>This does not change card ownership or in-world NPC restrictions.",
+		section = generalSettings,
+		position = 13
+	)
+	default boolean hideNpcsFromQuestList()
 	{
 		return false;
 	}

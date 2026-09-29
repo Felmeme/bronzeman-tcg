@@ -64,7 +64,7 @@ public final class NpcRestrictionService
 
 	private boolean shouldRenderResolved(int npcId, String npcName)
 	{
-		if (isBlank(npcName) || sources.isShownQuestNpc(npcName))
+		if (isBlank(npcName) || isShownQuestNpc(npcName))
 		{
 			return true;
 		}
@@ -217,7 +217,12 @@ public final class NpcRestrictionService
 
 	private boolean isStrictOptionException(String npcName)
 	{
-		return sources.isSlayerNpc(npcName) || sources.isShownQuestNpc(npcName);
+		return sources.isSlayerNpc(npcName) || isShownQuestNpc(npcName);
+	}
+
+	private boolean isShownQuestNpc(String npcName)
+	{
+		return sources.questNpcExceptionsEnabled() && sources.isShownQuestNpc(npcName);
 	}
 
 	private static boolean hasMissing(List<String> missing)
@@ -289,6 +294,7 @@ public final class NpcRestrictionService
 		String resolveNpcName(NPC npc);
 		boolean isNpcLocked(int npcId, String npcName);
 		boolean isSlayerNpc(String npcName);
+		boolean questNpcExceptionsEnabled();
 		boolean isShownQuestNpc(String npcName);
 		String fishingSpotName(int npcId);
 		List<String> evaluateMasterFarmer();
@@ -330,6 +336,10 @@ public final class NpcRestrictionService
 			return restrictionDecisionService.isNpcLocked(npcId, npcName);
 		}
 		public boolean isSlayerNpc(String npcName) { return nodeCatalog.isSlayerNpc(npcName); }
+		public boolean questNpcExceptionsEnabled()
+		{
+			return !config.disableQuestNpcExceptions();
+		}
 		public boolean isShownQuestNpc(String npcName)
 		{
 			return questNpcIndex.isShownQuestNpc(npcName);

@@ -71,6 +71,29 @@ public class NpcRestrictionServiceTest
 	}
 
 	@Test
+	public void disablingQuestNpcExceptionsRestoresOrdinaryVisibilityMenusAndClicks()
+	{
+		Harness harness = new Harness();
+		harness.sources.locked = true;
+		harness.sources.questNpc = true;
+		harness.sources.mode = NpcVisibilityMode.HIDE;
+
+		assertTrue(harness.service.shouldRender(1, "Guard"));
+		harness.sources.questNpcExceptionsEnabled = false;
+		assertFalse(harness.service.shouldRender(1, "Guard"));
+
+		harness.sources.mode = NpcVisibilityMode.PREVENT_INTERACTION;
+		assertTrue(harness.service.shouldHideMenuEntry(1, "Guard", "Talk-to"));
+		assertTrue(harness.service.evaluateInteraction(1, "Guard",
+			MenuAction.NPC_FIRST_OPTION, "Talk-to", false).isBlocked());
+
+		harness.sources.slayerNpc = true;
+		assertFalse(harness.service.shouldHideMenuEntry(1, "Guard", "Talk-to"));
+		assertFalse(harness.service.evaluateInteraction(1, "Guard",
+			MenuAction.NPC_FIRST_OPTION, "Talk-to", false).isBlocked());
+	}
+
+	@Test
 	public void fishingMenusStayVisibleAndDiscoverabilityControlsOtherResources()
 	{
 		Harness harness = new Harness();
@@ -208,6 +231,7 @@ public class NpcRestrictionServiceTest
 		private boolean locked;
 		private boolean slayerNpc;
 		private boolean questNpc;
+		private boolean questNpcExceptionsEnabled = true;
 		private String fishingSpot;
 		private List<String> masterFarmerMissing;
 		private List<String> resourceMissing;
@@ -222,6 +246,7 @@ public class NpcRestrictionServiceTest
 		public String resolveNpcName(NPC npc) { return null; }
 		public boolean isNpcLocked(int npcId, String npcName) { return locked; }
 		public boolean isSlayerNpc(String npcName) { return slayerNpc; }
+		public boolean questNpcExceptionsEnabled() { return questNpcExceptionsEnabled; }
 		public boolean isShownQuestNpc(String npcName) { return questNpc; }
 		public String fishingSpotName(int npcId) { return fishingSpot; }
 		public List<String> evaluateMasterFarmer() { return masterFarmerMissing; }

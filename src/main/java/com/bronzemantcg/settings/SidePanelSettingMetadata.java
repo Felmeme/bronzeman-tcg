@@ -98,8 +98,13 @@ final class SidePanelSettingMetadata
 				+ "<br>'Prevent Interaction': every menu option except Examine is removed, and items "
 				+ "can't be used on the NPC."
 				+ "<br>'Hide NPCs': locked NPCs are invisible."
-				+ "<br>NPCs of quests you have started are always shown and talkable (Attack still "
-				+ "needs the card)"));
+				+ "<br>By default, NPCs of quests you have started are always shown and talkable "
+				+ "(Attack still needs the card). Disable Quest NPC Exceptions applies normal locks instead."));
+		entries.add(setting(Section.GENERAL, "disableQuestNpcExceptions",
+			"Disable Quest NPC Exceptions",
+			"Apply normal card restrictions to quest NPCs even after their quest has started."
+				+ "<br>Locked quest NPCs may be hidden or uninteractable according to NPC Locks."
+				+ "<br>This also requires the Guard card to mark guards during Children of the Sun."));
 		entries.add(setting(Section.GENERAL, "groundItemsMode", "Ground Items",
 			"'Require Card': hides options for picking up Ground Items"
 				+ "<br>'No Card Needed': Ground items do not require their card to unlock."));
@@ -134,6 +139,10 @@ final class SidePanelSettingMetadata
 				+ "<br>Other resource and ground-item options are already kept visible."
 				+ "<br>Ordinary NPC options remain controlled by NPC Locks."
 				+ "<br>The click is still blocked and chat explains which cards are missing."));
+		entries.add(setting(Section.GENERAL, "hideNpcsFromQuestList",
+			"Hide NPCs from Quest List",
+			"Hide NPC and Enemy card requirements from the quest list and its progress totals."
+				+ "<br>This does not change card ownership or in-world NPC restrictions."));
 		entries.add(setting(Section.BETA_CARDS, "showBetaCollectionTab", "Show Beta tab",
 			"Show the cached personal Beta collection in the side panel."
 				+ "<br>Hiding the tab does not delete the cache or change Beta-derived unlocks."));

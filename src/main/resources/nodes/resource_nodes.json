@@ -8582,7 +8582,7 @@
         ""
       ],
       "requireAll": true,
-      "notes": "Children of the Sun: marking the patrolling guards is a direct 'Mark' NPC option (not item-on-NPC as first assumed). Gated behind the Guard card by default; the 'Allow CotS guard marking' toggle disables this rule AND unhides Guards from hide-locked-NPCs so the quest stays completable without the card."
+      "notes": "Children of the Sun: marking the patrolling guards is a direct 'Mark' NPC option (not item-on-NPC as first assumed). The Guard card is waived while the quest is in progress unless Disable Quest NPC Exceptions is enabled."
     },
     {
       "category": "runecrafting",
