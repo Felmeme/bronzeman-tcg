@@ -148,6 +148,37 @@ public class BetaCardCacheServiceTest
 	}
 
 	@Test
+	public void underscorePlayerAcceptsMatchingResponse() throws Exception
+	{
+		service.startUp();
+
+		service.beginRefresh("profile-one", "TCG_Bruh");
+		lookup.respond(200,
+			"{\"displayName\":\"TCG_Bruh\",\"revision\":57,\"cardNames\":[]}");
+		waitForStatus(BetaCardCacheService.Status.CACHED);
+
+		assertEquals("TCG_Bruh", service.getState().getDisplayName());
+		assertEquals(57, store.load("profile-one").getRevision());
+	}
+
+	@Test
+	public void underscorePlayerRejectsSpaceNameResponseAndKeepsPreviousCache()
+		throws Exception
+	{
+		store.save("profile-one", "TCG_Bruh", 7, 999L,
+			List.of("Water rune pack"));
+		service.startUp();
+
+		service.beginRefresh("profile-one", "TCG_Bruh");
+		lookup.respond(200,
+			"{\"displayName\":\"TCG Bruh\",\"revision\":58,\"cardNames\":[]}");
+		waitForStatus(BetaCardCacheService.Status.FAILED);
+
+		assertEquals(Set.of("water rune pack"), service.getState().getBetaNamesLowerCase());
+		assertEquals(7, store.load("profile-one").getRevision());
+	}
+
+	@Test
 	public void responseWithoutRevisionIsRejected() throws Exception
 	{
 		store.save("profile-one", "Player One", 7, 999L,

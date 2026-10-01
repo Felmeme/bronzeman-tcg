@@ -56,7 +56,7 @@ public class BetaCardLookupClient
 			throw new IllegalArgumentException("display name and listener are required");
 		}
 		HttpUrl url = playersUrl.newBuilder()
-			.addPathSegment(displayName.trim())
+			.addPathSegment(escapePlayerPathName(displayName))
 			.addPathSegment("beta-names")
 			.build();
 		Request request = new Request.Builder().url(url).get().cacheControl(NO_STORAGE).build();
@@ -100,6 +100,11 @@ public class BetaCardLookupClient
 			}
 		});
 		return handle;
+	}
+
+	private static String escapePlayerPathName(String displayName)
+	{
+		return displayName.trim().replace("_", "__");
 	}
 
 	private byte[] readBounded(ResponseBody body) throws IOException

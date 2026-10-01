@@ -533,8 +533,8 @@ public final class BetaCardCacheService implements BetaCardUnlockSource
 
 	private static String normalizePlayerName(String value)
 	{
-		return value == null ? "" : value.trim().replace('_', ' ')
-			.replaceAll("\\s+", " ").toLowerCase(Locale.ROOT);
+		return value == null ? "" : value.trim().replaceAll("\\s+", " ")
+			.toLowerCase(Locale.ROOT);
 	}
 
 	private static String normalizeCardName(String value)

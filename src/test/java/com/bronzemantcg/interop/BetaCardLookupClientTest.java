@@ -50,6 +50,25 @@ public class BetaCardLookupClientTest
 	}
 
 	@Test
+	public void doublesLiteralUnderscoresForPlayerApiRouting() throws Exception
+	{
+		byte[] body = "{\"displayName\":\"TCG_Bruh\",\"revision\":1,\"cardNames\":[]}"
+			.getBytes(StandardCharsets.UTF_8);
+		OkHttpClient http = new OkHttpClient.Builder().addInterceptor(chain ->
+		{
+			assertEquals("/api/v1/players/TCG__Bruh/beta-names",
+				chain.request().url().encodedPath());
+			return response(chain.request(), 200, body);
+		}).build();
+
+		BetaCardLookupClient.LookupResponse result = fetch(
+			new BetaCardLookupClient(http, ENDPOINT, 1024), "TCG_Bruh");
+
+		assertEquals(200, result.getStatusCode());
+		assertArrayEquals(body, result.getBody());
+	}
+
+	@Test
 	public void rejectsResponsesAboveTheConfiguredLimit()
 	{
 		BetaCardLookupClient client = new BetaCardLookupClient(
