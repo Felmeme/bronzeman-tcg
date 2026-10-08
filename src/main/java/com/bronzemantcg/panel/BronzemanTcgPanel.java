@@ -117,6 +117,7 @@ public class BronzemanTcgPanel extends PluginPanel
 	private static final String PVM_SHOW_LOCKED_KEY = "pvmShowLocked";
 	private static final String PVM_SHOW_UNLOCKED_KEY = "pvmShowUnlocked";
 	private static final String RECENT_SHOW_SHARED_KEY = "recentShowShared";
+	private static final String OVERALL_PROGRESS_EXPANDED_KEY = "overallProgressExpanded";
 
 	private final QuestCatalog questCatalog;
 	private final QuestV1Presentation questV1Presentation;
@@ -144,6 +145,7 @@ public class BronzemanTcgPanel extends PluginPanel
 	private PanelSnapshot snapshot;
 	private PanelTab selectedTab = PanelTab.ACTIVITIES;
 	private PanelTab lastContentTab = PanelTab.ACTIVITIES;
+	private boolean overallProgressExpanded;
 	private PanelNavigationModel.State navigationState =
 		PanelNavigationModel.resolve(false, false, true);
 	private final Map<PanelTab, JButton> navigationButtons = new EnumMap<>(PanelTab.class);
@@ -202,7 +204,6 @@ public class BronzemanTcgPanel extends PluginPanel
 		new SearchResultsScrollPane(searchResults, SEARCH_VISIBLE_ROWS);
 	private final JPanel contentControls = sectionBody();
 	private final JPanel navigationGrid = sectionBody();
-	private final JLabel progressHeader = progressHeader();
 	private final JPanel progressList = sectionBody();
 	private final JPanel progressFooter = sectionBody();
 
@@ -329,6 +330,8 @@ public class BronzemanTcgPanel extends PluginPanel
 		this.config = config;
 		this.configManager = configManager;
 		this.executor = executor;
+		this.overallProgressExpanded = getSavedBoolean(
+			OVERALL_PROGRESS_EXPANDED_KEY, true);
 		this.sidePanelSettings = new SidePanelSettings(gson, config, configManager,
 			presetOnboardingRequired, () -> selectContentTab(PanelTab.ACTIVITIES),
 			new BetaCardsSettings(betaCardCacheService, config, this::requestRefresh));
@@ -525,8 +528,7 @@ public class BronzemanTcgPanel extends PluginPanel
 		add(header, BorderLayout.NORTH);
 
 		add(contentScroll, BorderLayout.CENTER);
-		progressFooter.add(progressHeader);
-		progressFooter.add(progressList);
+		configureProgressFooter();
 		add(progressFooter, BorderLayout.SOUTH);
 
 		applyNavigationState(currentNavigationState());
@@ -3470,6 +3472,27 @@ public class BronzemanTcgPanel extends PluginPanel
 
 	// ------------------------------------------------------------------ progress
 
+	private void configureProgressFooter()
+	{
+		progressFooter.removeAll();
+		JPanel header = topLevelDropdownRow("Overall Progress", overallProgressExpanded);
+		makeClickable(header, () ->
+		{
+			overallProgressExpanded = !overallProgressExpanded;
+			configManager.setConfiguration(BronzemanTcgConfig.GROUP,
+				OVERALL_PROGRESS_EXPANDED_KEY, overallProgressExpanded);
+			configureProgressFooter();
+		});
+		progressFooter.add(header);
+		if (overallProgressExpanded)
+		{
+			progressFooter.add(Box.createVerticalStrut(4));
+			progressFooter.add(progressList);
+		}
+		progressFooter.revalidate();
+		progressFooter.repaint();
+	}
+
 	private void refreshProgress(PanelSnapshot current)
 	{
 		progressList.removeAll();
@@ -3583,16 +3606,6 @@ public class BronzemanTcgPanel extends PluginPanel
 			height += Math.max(0, rows[i].getPreferredSize().height);
 		}
 		return height;
-	}
-
-	private static JLabel progressHeader()
-	{
-		JLabel label = new JLabel("Overall Progress");
-		label.setFont(label.getFont().deriveFont(Font.BOLD));
-		label.setForeground(ColorScheme.BRAND_ORANGE);
-		label.setBorder(BorderFactory.createEmptyBorder(0, 0, 4, 0));
-		label.setAlignmentX(Component.LEFT_ALIGNMENT);
-		return label;
 	}
 
 	/**
