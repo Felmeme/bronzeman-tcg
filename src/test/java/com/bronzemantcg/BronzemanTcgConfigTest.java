@@ -66,15 +66,24 @@ public class BronzemanTcgConfigTest
 	}
 
 	@Test
-	public void questListShowsNpcRequirementsByDefault() throws Exception
+	public void questListShowsNpcAndEnemyRequirementsByDefault() throws Exception
 	{
 		BronzemanTcgConfig defaults = new BronzemanTcgConfig() { };
 		assertFalse(defaults.hideNpcsFromQuestList());
+		assertFalse(defaults.hideEnemiesFromQuestList());
 
-		Method method = BronzemanTcgConfig.class.getMethod("hideNpcsFromQuestList");
-		ConfigItem item = method.getAnnotation(ConfigItem.class);
-		assertNotNull(item);
-		assertEquals("hideNpcsFromQuestList", item.keyName());
-		assertTrue(item.description().contains("does not change card ownership"));
+		ConfigItem npcItem = BronzemanTcgConfig.class.getMethod("hideNpcsFromQuestList")
+			.getAnnotation(ConfigItem.class);
+		assertNotNull(npcItem);
+		assertEquals("hideNpcsFromQuestList", npcItem.keyName());
+		assertFalse(npcItem.description().contains("Enemy"));
+		assertTrue(npcItem.description().contains("does not change card ownership"));
+
+		ConfigItem enemyItem = BronzemanTcgConfig.class.getMethod("hideEnemiesFromQuestList")
+			.getAnnotation(ConfigItem.class);
+		assertNotNull(enemyItem);
+		assertEquals("hideEnemiesFromQuestList", enemyItem.keyName());
+		assertTrue(enemyItem.description().contains("Enemy"));
+		assertTrue(enemyItem.description().contains("does not change card ownership"));
 	}
 }

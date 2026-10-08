@@ -1087,10 +1087,13 @@ public class BronzemanTcgPanel extends PluginPanel
 		long identityRevision = v1Presentation
 			? questV1Presentation.getRevision() : PreparedData.PRE_V1_REVISION;
 		boolean hideNpcRequirements = config.hideNpcsFromQuestList();
+		boolean hideEnemyRequirements = config.hideEnemiesFromQuestList();
 		if (data == null || data.identityRevision != identityRevision
-			|| data.hideNpcRequirements != hideNpcRequirements)
+			|| data.hideNpcRequirements != hideNpcRequirements
+			|| data.hideEnemyRequirements != hideEnemyRequirements)
 		{
-			data = prepareStaticData(v1Presentation, hideNpcRequirements);
+			data = prepareStaticData(v1Presentation, hideNpcRequirements,
+				hideEnemyRequirements);
 			if (v1Presentation)
 			{
 				v1PreparedData = data;
@@ -1142,7 +1145,8 @@ public class BronzemanTcgPanel extends PluginPanel
 			v1Presentation, currentNavigationState(v1Presentation));
 	}
 
-	private PreparedData prepareStaticData(boolean v1Capable, boolean hideNpcRequirements)
+	private PreparedData prepareStaticData(boolean v1Capable, boolean hideNpcRequirements,
+		boolean hideEnemyRequirements)
 	{
 		PanelPresentationCatalog.Data presentation =
 			presentationCatalog.select(v1Capable);
@@ -1152,10 +1156,12 @@ public class BronzemanTcgPanel extends PluginPanel
 			? questPresentation.getQuests() : questCatalog.getQuests();
 		List<QuestCatalog.QuestEntry> miniquests = v1Capable
 			? questPresentation.getMiniquests() : questCatalog.getMiniquests();
-		if (hideNpcRequirements)
+		if (hideNpcRequirements || hideEnemyRequirements)
 		{
-			quests = QuestListPresentation.hideNpcRequirements(quests);
-			miniquests = QuestListPresentation.hideNpcRequirements(miniquests);
+			quests = QuestListPresentation.hideRequirements(quests,
+				hideNpcRequirements, hideEnemyRequirements);
+			miniquests = QuestListPresentation.hideRequirements(miniquests,
+				hideNpcRequirements, hideEnemyRequirements);
 		}
 		quests = sortedEntries(quests);
 		miniquests = sortedEntries(miniquests);
@@ -1168,7 +1174,7 @@ public class BronzemanTcgPanel extends PluginPanel
 			sortedEntries(buildRumourMasterEntries(presentation.getRumourRules()));
 
 		return new PreparedData(v1Capable ? questPresentation.getRevision()
-			: PreparedData.PRE_V1_REVISION, hideNpcRequirements,
+			: PreparedData.PRE_V1_REVISION, hideNpcRequirements, hideEnemyRequirements,
 			quests, miniquests, contents, slayer,
 			allSuperiors, rumours);
 	}
@@ -1632,8 +1638,8 @@ public class BronzemanTcgPanel extends PluginPanel
 
 	private void renderQuestRequirement(QuestCatalog.Requirement requirement, String key)
 	{
-		if (config.hideNpcsFromQuestList()
-			&& QuestListPresentation.isNpcRequirement(requirement))
+		if (QuestListPresentation.isHiddenRequirement(requirement,
+			config.hideNpcsFromQuestList(), config.hideEnemiesFromQuestList()))
 		{
 			return;
 		}
@@ -3910,6 +3916,7 @@ public class BronzemanTcgPanel extends PluginPanel
 		private static final long PRE_V1_REVISION = -1L;
 		private final long identityRevision;
 		private final boolean hideNpcRequirements;
+		private final boolean hideEnemyRequirements;
 		private final List<QuestCatalog.QuestEntry> quests;
 		private final List<QuestCatalog.QuestEntry> miniquests;
 		private final List<QuestCatalog.QuestEntry> contents;
@@ -3918,6 +3925,7 @@ public class BronzemanTcgPanel extends PluginPanel
 		private final List<QuestCatalog.QuestEntry> rumours;
 
 		private PreparedData(long identityRevision, boolean hideNpcRequirements,
+			boolean hideEnemyRequirements,
 			List<QuestCatalog.QuestEntry> quests,
 			List<QuestCatalog.QuestEntry> miniquests,
 			List<QuestCatalog.QuestEntry> contents,
@@ -3927,6 +3935,7 @@ public class BronzemanTcgPanel extends PluginPanel
 		{
 			this.identityRevision = identityRevision;
 			this.hideNpcRequirements = hideNpcRequirements;
+			this.hideEnemyRequirements = hideEnemyRequirements;
 			this.quests = quests;
 			this.miniquests = miniquests;
 			this.contents = contents;

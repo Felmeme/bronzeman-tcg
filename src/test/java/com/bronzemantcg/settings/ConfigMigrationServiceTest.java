@@ -122,6 +122,49 @@ public class ConfigMigrationServiceTest
 	}
 
 	@Test
+	public void questListSplitPreservesTheOldCombinedEnabledBehavior()
+	{
+		MemoryConfig config = allOneShotMarkers()
+			.with("tcgLockedDefaultsMigrated", true)
+			.with("hideNpcsFromQuestList", true);
+
+		new ConfigMigrationService(config).migrateLegacySettings(false);
+
+		assertEquals("true", config.get("questListNpcEnemySplitMigrated"));
+		assertEquals("true", config.get("hideNpcsFromQuestList"));
+		assertEquals("true", config.get("hideEnemiesFromQuestList"));
+	}
+
+	@Test
+	public void questListSplitPreservesExplicitEnemyChoiceAndIsIdempotent()
+	{
+		MemoryConfig config = allOneShotMarkers()
+			.with("tcgLockedDefaultsMigrated", true)
+			.with("hideNpcsFromQuestList", true)
+			.with("hideEnemiesFromQuestList", false);
+
+		ConfigMigrationService service = new ConfigMigrationService(config);
+		service.migrateLegacySettings(false);
+		assertEquals("false", config.get("hideEnemiesFromQuestList"));
+
+		config.set("hideEnemiesFromQuestList", true);
+		service.migrateLegacySettings(false);
+		assertEquals("true", config.get("hideEnemiesFromQuestList"));
+	}
+
+	@Test
+	public void questListSplitLeavesFreshInstallDefaultsUnset()
+	{
+		MemoryConfig config = allOneShotMarkers()
+			.with("tcgLockedDefaultsMigrated", true);
+
+		new ConfigMigrationService(config).migrateLegacySettings(true);
+
+		assertEquals("true", config.get("questListNpcEnemySplitMigrated"));
+		assertNull(config.get("hideEnemiesFromQuestList"));
+	}
+
+	@Test
 	public void hamModesMigrateFromTheFormerSharedControls()
 	{
 		assertHamMigration("OFF", false, HamPickpocketingMode.OFF);

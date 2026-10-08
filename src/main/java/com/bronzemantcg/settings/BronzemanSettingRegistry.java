@@ -68,6 +68,8 @@ final class BronzemanSettingRegistry
 			booleanSetting("showBetaCollectionTab", BronzemanTcgConfig::showBetaCollectionTab),
 			booleanSetting("disableBetaVariants", BronzemanTcgConfig::disableBetaVariants),
 			booleanSetting("hideNpcsFromQuestList", BronzemanTcgConfig::hideNpcsFromQuestList),
+			booleanSetting("hideEnemiesFromQuestList",
+				BronzemanTcgConfig::hideEnemiesFromQuestList),
 
 			enumSetting("woodcuttingMode", BronzemanTcgConfig::woodcuttingMode,
 				WoodcuttingMode.values()),

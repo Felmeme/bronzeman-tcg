@@ -15,17 +15,23 @@ public class QuestListPresentationTest
 	private final QuestCatalog source = new QuestCatalog(new Gson());
 
 	@Test
-	public void removesNpcAndEnemyRequirementsWithoutMutatingSource()
+	public void npcAndEnemyFiltersAreIndependentWithoutMutatingSource()
 	{
-		List<QuestCatalog.QuestEntry> filtered =
-			QuestListPresentation.hideNpcRequirements(source.getQuests());
+		List<QuestCatalog.QuestEntry> unchanged = QuestListPresentation.hideRequirements(
+			source.getQuests(), false, false);
+		List<QuestCatalog.QuestEntry> npcHidden = QuestListPresentation.hideRequirements(
+			source.getQuests(), true, false);
+		List<QuestCatalog.QuestEntry> enemiesHidden = QuestListPresentation.hideRequirements(
+			source.getQuests(), false, true);
 
-		assertNoNpcRequirements(filtered);
-		QuestCatalog.QuestEntry original = quest(source.getQuests(), "Defender of Varrock");
-		QuestCatalog.QuestEntry projected = quest(filtered, "Defender of Varrock");
-		assertTrue(projected.requirements.size() < original.requirements.size());
-		assertNotNull(requirement(original, "Armoured zombie"));
-		assertFalse(hasRequirement(projected, "Armoured zombie"));
+		assertTrue(hasRequirement(quest(unchanged, "Shield of Arrav"), "Charlie the Tramp"));
+		assertTrue(hasRequirement(quest(unchanged, "Shield of Arrav"), "Weaponsmaster"));
+		assertFalse(hasRequirement(quest(npcHidden, "Shield of Arrav"), "Charlie the Tramp"));
+		assertTrue(hasRequirement(quest(npcHidden, "Shield of Arrav"), "Weaponsmaster"));
+		assertTrue(hasRequirement(quest(enemiesHidden, "Shield of Arrav"), "Charlie the Tramp"));
+		assertFalse(hasRequirement(quest(enemiesHidden, "Shield of Arrav"), "Weaponsmaster"));
+		assertNotNull(requirement(quest(source.getQuests(), "Defender of Varrock"),
+			"Armoured zombie"));
 	}
 
 	@Test
@@ -35,7 +41,7 @@ public class QuestListPresentationTest
 			quest(source.getQuests(), "Shield of Arrav"),
 			"Your Shield of Arrav gang route");
 		QuestCatalog.Requirement filtered = requirement(quest(
-			QuestListPresentation.hideNpcRequirements(source.getQuests()),
+			QuestListPresentation.hideRequirements(source.getQuests(), true, true),
 			"Shield of Arrav"), "Your Shield of Arrav gang route");
 
 		assertFalse(original.isSatisfied(Set.of(), QuestCatalog.RouteSelection.BLACK_ARM));
@@ -49,36 +55,27 @@ public class QuestListPresentationTest
 	}
 
 	@Test
-	public void appliesToMiniquestsAndDropsEmptyNpcSections()
+	public void appliesIndependentFiltersToMiniquestsAndDropsEmptySections()
 	{
-		List<QuestCatalog.QuestEntry> filtered =
-			QuestListPresentation.hideNpcRequirements(source.getMiniquests());
+		QuestCatalog.QuestEntry npcHidden = quest(QuestListPresentation.hideRequirements(
+			source.getMiniquests(), true, false), "Mage Arena II");
+		QuestCatalog.QuestEntry enemiesHidden = quest(QuestListPresentation.hideRequirements(
+			source.getMiniquests(), false, true), "Mage Arena II");
+		QuestCatalog.QuestEntry bothHidden = quest(QuestListPresentation.hideRequirements(
+			source.getMiniquests(), true, true), "Mage Arena II");
 
-		assertNoNpcRequirements(filtered);
-		QuestCatalog.QuestEntry mageArena = quest(filtered, "Mage Arena I");
-		assertFalse(hasRequirement(mageArena, "Kolodion"));
-		assertFalse(mageArena.sections.stream().anyMatch(section ->
-			"NPCs".equalsIgnoreCase(section.label) || "Enemies".equalsIgnoreCase(section.label)));
-	}
-
-	private static void assertNoNpcRequirements(List<QuestCatalog.QuestEntry> entries)
-	{
-		for (QuestCatalog.QuestEntry entry : entries)
-		{
-			for (QuestCatalog.Requirement requirement : entry.requirements)
-			{
-				assertNoNpcRequirements(requirement);
-			}
-		}
-	}
-
-	private static void assertNoNpcRequirements(QuestCatalog.Requirement requirement)
-	{
-		assertFalse(requirement.type, QuestListPresentation.isNpcRequirement(requirement));
-		for (QuestCatalog.Requirement child : requirement.children)
-		{
-			assertNoNpcRequirements(child);
-		}
+		assertFalse(npcHidden.sections.stream().anyMatch(section ->
+			"NPCs".equalsIgnoreCase(section.label)));
+		assertTrue(npcHidden.sections.stream().anyMatch(section ->
+			"Enemies".equalsIgnoreCase(section.label)));
+		assertTrue(enemiesHidden.sections.stream().anyMatch(section ->
+			"NPCs".equalsIgnoreCase(section.label)));
+		assertFalse(enemiesHidden.sections.stream().anyMatch(section ->
+			"Enemies".equalsIgnoreCase(section.label)));
+		assertFalse(hasRequirement(bothHidden, "Kolodion"));
+		assertFalse(bothHidden.sections.stream().anyMatch(section ->
+			"NPCs".equalsIgnoreCase(section.label)
+				|| "Enemies".equalsIgnoreCase(section.label)));
 	}
 
 	private static QuestCatalog.QuestEntry quest(

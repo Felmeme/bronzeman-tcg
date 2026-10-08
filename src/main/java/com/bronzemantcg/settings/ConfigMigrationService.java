@@ -119,8 +119,24 @@ public final class ConfigMigrationService
 		migrateHunterMode();
 		migrateHamPickpocketingMode(freshInstall);
 		migrateThievingMode();
+		migrateQuestListFilters();
 		removeRetiredGeneralSettings();
 		migrateTcgLockedDefaults(freshInstall);
+	}
+
+	private void migrateQuestListFilters()
+	{
+		if (Boolean.parseBoolean(config.get("questListNpcEnemySplitMigrated")))
+		{
+			return;
+		}
+		config.set("questListNpcEnemySplitMigrated", true);
+
+		if (config.get("hideEnemiesFromQuestList") == null
+			&& Boolean.parseBoolean(config.get("hideNpcsFromQuestList")))
+		{
+			config.set("hideEnemiesFromQuestList", true);
+		}
 	}
 
 	private void migrateHamPickpocketingMode(boolean freshInstall)

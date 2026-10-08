@@ -141,7 +141,11 @@ final class SidePanelSettingMetadata
 				+ "<br>The click is still blocked and chat explains which cards are missing."));
 		entries.add(setting(Section.GENERAL, "hideNpcsFromQuestList",
 			"Hide NPCs from Quest List",
-			"Hide NPC and Enemy card requirements from the quest list and its progress totals."
+			"Hide NPC card requirements from the quest list and its progress totals."
+				+ "<br>This does not change card ownership or in-world NPC restrictions."));
+		entries.add(setting(Section.GENERAL, "hideEnemiesFromQuestList",
+			"Hide Enemies from Quest List",
+			"Hide Enemy card requirements from the quest list and its progress totals."
 				+ "<br>This does not change card ownership or in-world NPC restrictions."));
 		entries.add(setting(Section.BETA_CARDS, "showBetaCollectionTab", "Show Beta tab",
 			"Show the cached personal Beta collection in the side panel."

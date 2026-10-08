@@ -49,6 +49,7 @@ public class BronzemanPresetTest
 			assertFalse(settings.containsKey("disableBetaVariants"));
 			assertFalse(settings.containsKey("disableQuestNpcExceptions"));
 			assertFalse(settings.containsKey("hideNpcsFromQuestList"));
+			assertFalse(settings.containsKey("hideEnemiesFromQuestList"));
 			assertFalse(settings.containsKey("lockedItemMarkMode"));
 			assertFalse(settings.containsKey("duelistCityMode"));
 		}
@@ -110,6 +111,7 @@ public class BronzemanPresetTest
 			"bankingMode", "grandExchangeMode", "coinMode", "acceptSharedUnlocks",
 			"lootExemptNames", "showLockedMenuOptions", "showBetaCollectionTab",
 			"disableBetaVariants", "disableQuestNpcExceptions", "hideNpcsFromQuestList",
+			"hideEnemiesFromQuestList",
 			"woodcuttingMode", "miningMode",
 			"fishingMode", "cookingMode", "tinderboxMode",
 			"smeltingMode", "smithingMode", "craftingMode", "restrictEnchanting",
@@ -174,6 +176,7 @@ public class BronzemanPresetTest
 		settings.put("disableBetaVariants", "true");
 		settings.put("disableQuestNpcExceptions", "true");
 		settings.put("hideNpcsFromQuestList", "true");
+		settings.put("hideEnemiesFromQuestList", "true");
 		settings.put("bankingMode", BankingMode.FULL.name());
 		Map<String, String> exported = BronzemanSettingsManager.decodeSettings(GSON,
 			BronzemanSettingsManager.encodeSettings(GSON, settings));
@@ -183,6 +186,7 @@ public class BronzemanPresetTest
 		assertFalse(exported.containsKey("disableBetaVariants"));
 		assertFalse(exported.containsKey("disableQuestNpcExceptions"));
 		assertFalse(exported.containsKey("hideNpcsFromQuestList"));
+		assertFalse(exported.containsKey("hideEnemiesFromQuestList"));
 	}
 
 	@Test

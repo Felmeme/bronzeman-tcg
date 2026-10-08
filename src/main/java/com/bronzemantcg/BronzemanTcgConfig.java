@@ -493,12 +493,25 @@ public interface BronzemanTcgConfig extends Config
 	@ConfigItem(
 		keyName = "hideNpcsFromQuestList",
 		name = "Hide NPCs from Quest List",
-		description = "Hide NPC and Enemy card requirements from the quest list and its progress totals."
+		description = "Hide NPC card requirements from the quest list and its progress totals."
 			+ "<br>This does not change card ownership or in-world NPC restrictions.",
 		section = generalSettings,
 		position = 13
 	)
 	default boolean hideNpcsFromQuestList()
+	{
+		return false;
+	}
+
+	@ConfigItem(
+		keyName = "hideEnemiesFromQuestList",
+		name = "Hide Enemies from Quest List",
+		description = "Hide Enemy card requirements from the quest list and its progress totals."
+			+ "<br>This does not change card ownership or in-world NPC restrictions.",
+		section = generalSettings,
+		position = 14
+	)
+	default boolean hideEnemiesFromQuestList()
 	{
 		return false;
 	}

@@ -5,15 +5,15 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-/** Presentation-only projection which removes NPC-backed quest requirements. */
+/** Presentation-only projection which removes selected NPC-backed quest requirements. */
 final class QuestListPresentation
 {
 	private QuestListPresentation()
 	{
 	}
 
-	static List<QuestCatalog.QuestEntry> hideNpcRequirements(
-		List<QuestCatalog.QuestEntry> entries)
+	static List<QuestCatalog.QuestEntry> hideRequirements(
+		List<QuestCatalog.QuestEntry> entries, boolean hideNpcs, boolean hideEnemies)
 	{
 		List<QuestCatalog.QuestEntry> projected = new ArrayList<>();
 		for (QuestCatalog.QuestEntry entry : entries)
@@ -24,7 +24,7 @@ final class QuestListPresentation
 				List<QuestCatalog.Requirement> requirements = new ArrayList<>();
 				for (QuestCatalog.Requirement requirement : section.requirements)
 				{
-					Projection result = project(requirement);
+					Projection result = project(requirement, hideNpcs, hideEnemies);
 					if (!result.hidden)
 					{
 						requirements.add(result.requirement);
@@ -42,13 +42,25 @@ final class QuestListPresentation
 
 	static boolean isNpcRequirement(QuestCatalog.Requirement requirement)
 	{
-		return requirement != null
-			&& ("npc".equals(requirement.type) || "enemy".equals(requirement.type));
+		return requirement != null && "npc".equals(requirement.type);
 	}
 
-	private static Projection project(QuestCatalog.Requirement source)
+	static boolean isEnemyRequirement(QuestCatalog.Requirement requirement)
 	{
-		if (isNpcRequirement(source))
+		return requirement != null && "enemy".equals(requirement.type);
+	}
+
+	static boolean isHiddenRequirement(QuestCatalog.Requirement requirement,
+		boolean hideNpcs, boolean hideEnemies)
+	{
+		return hideNpcs && isNpcRequirement(requirement)
+			|| hideEnemies && isEnemyRequirement(requirement);
+	}
+
+	private static Projection project(QuestCatalog.Requirement source,
+		boolean hideNpcs, boolean hideEnemies)
+	{
+		if (isHiddenRequirement(source, hideNpcs, hideEnemies))
 		{
 			return Projection.hidden();
 		}
@@ -59,7 +71,7 @@ final class QuestListPresentation
 		boolean routed = !source.selector.isEmpty();
 		for (QuestCatalog.Requirement child : source.children)
 		{
-			Projection projected = project(child);
+			Projection projected = project(child, hideNpcs, hideEnemies);
 			if (projected.hidden)
 			{
 				hiddenChild = true;
