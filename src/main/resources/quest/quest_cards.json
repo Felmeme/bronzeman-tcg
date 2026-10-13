@@ -2319,13 +2319,6 @@
 							"type": "item"
 						},
 						{
-							"label": "Mayor of Catherby",
-							"cards": [
-								"Mayor of catherby"
-							],
-							"type": "item"
-						},
-						{
 							"label": "Current Duck",
 							"cards": [
 								"Current duck"
@@ -2338,6 +2331,18 @@
 								"Tiny net"
 							],
 							"type": "item"
+						}
+					]
+				},
+				{
+					"label": "NPCs",
+					"requirements": [
+						{
+							"label": "Mayor of Catherby",
+							"cards": [
+								"Mayor of Catherby"
+							],
+							"type": "npc"
 						}
 					]
 				}
@@ -4365,6 +4370,13 @@
 								"Hammer"
 							],
 							"type": "item"
+						},
+						{
+							"label": "Ammo Mould",
+							"cards": [
+								"Ammo mould"
+							],
+							"type": "item"
 						}
 					]
 				}
@@ -4453,6 +4465,13 @@
 								"Ranarr weed"
 							],
 							"type": "item"
+						},
+						{
+							"label": "Knife",
+							"cards": [
+								"Knife"
+							],
+							"type": "item"
 						}
 					]
 				},
@@ -4503,6 +4522,13 @@
 							"label": "Coins",
 							"cards": [
 								"Coins"
+							],
+							"type": "item"
+						},
+						{
+							"label": "Ferret",
+							"cards": [
+								"Ferret"
 							],
 							"type": "item"
 						}
@@ -6181,6 +6207,13 @@
 								"Yellow dye"
 							],
 							"type": "item"
+						},
+						{
+							"label": "Orange dye",
+							"cards": [
+								"Orange dye"
+							],
+							"type": "item"
 						}
 					]
 				},
@@ -6433,9 +6466,9 @@
 							"type": "item"
 						},
 						{
-							"label": "Smiths gloves",
+							"label": "Ice Gloves",
 							"cards": [
-								"Smiths gloves"
+								"Ice gloves"
 							],
 							"type": "item"
 						}
@@ -8715,7 +8748,7 @@
 						{
 							"label": "Minotaur",
 							"cards": [
-								"Minotaur"
+								"Minotaur (f2p)"
 							],
 							"type": "enemy"
 						}
@@ -10528,6 +10561,25 @@
 								"Jail guard"
 							],
 							"type": "enemy"
+						}
+					]
+				},
+				{
+					"label": "NPCs",
+					"requirements": [
+						{
+							"label": "Osman",
+							"cards": [
+								"Osman"
+							],
+							"type": "npc"
+						},
+						{
+							"label": "Prince Ali",
+							"cards": [
+								"Prince ali"
+							],
+							"type": "npc"
 						}
 					]
 				}
@@ -13098,6 +13150,18 @@
 								"Coins"
 							],
 							"type": "item"
+						}
+					]
+				},
+				{
+					"label": "NPCs",
+					"requirements": [
+						{
+							"label": "Fred the Farmer",
+							"cards": [
+								"Fred the farmer"
+							],
+							"type": "npc"
 						}
 					]
 				}
@@ -17463,6 +17527,18 @@
 			"name": "The Restless Ghost",
 			"miniquest": false,
 			"sections": [
+				{
+					"label": "Items",
+					"requirements": [
+						{
+							"label": "Ghostspeak Amulet",
+							"cards": [
+								"Ghostspeak amulet"
+							],
+							"type": "item"
+						}
+					]
+				},
 				{
 					"label": "Enemies",
 					"requirements": [

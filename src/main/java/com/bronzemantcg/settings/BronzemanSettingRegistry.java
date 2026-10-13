@@ -254,7 +254,7 @@ final class BronzemanSettingRegistry
 
 		boolean accepts(String value)
 		{
-			if (value == null || kind == Kind.STRING && value.length() > 2_000)
+			if (value == null || kind == Kind.STRING && value.length() > 10_000)
 			{
 				return false;
 			}
