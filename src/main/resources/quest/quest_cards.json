@@ -2317,6 +2317,27 @@
 								"Coins"
 							],
 							"type": "item"
+						},
+						{
+							"label": "Mayor of Catherby",
+							"cards": [
+								"Mayor of catherby"
+							],
+							"type": "item"
+						},
+						{
+							"label": "Current Duck",
+							"cards": [
+								"Current duck"
+							],
+							"type": "item"
+						},
+						{
+							"label": "Tiny Net",
+							"cards": [
+								"Tiny net"
+							],
+							"type": "item"
 						}
 					]
 				}
@@ -4498,6 +4519,18 @@
 							"type": "enemy"
 						}
 					]
+				},
+				{
+					"label": "NPCs",
+					"requirements": [
+						{
+							"label": "Ferret",
+							"cards": [
+								"Ferret"
+							],
+							"type": "npc"
+						}
+					]
 				}
 			],
 			"notes": ""
@@ -5154,6 +5187,14 @@
 							"label": "Dramen staff",
 							"cards": [
 								"Dramen staff"
+							],
+							"type": "item"
+						},
+						{
+							"label": "Magic Secateurs or Ring of Recoil",
+							"cards": [
+								"Magic secateurs",
+								"Ring of recoil"
 							],
 							"type": "item"
 						}
@@ -14753,6 +14794,13 @@
 									"label": "Sapphire",
 									"cards": [
 										"Sapphire"
+									],
+									"type": "item"
+								},
+								{
+									"label": "Swamp Tar",
+									"cards": [
+										"Swamp tar"
 									],
 									"type": "item"
 								}
